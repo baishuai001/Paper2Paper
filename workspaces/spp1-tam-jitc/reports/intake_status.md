@@ -1,10 +1,6 @@
 # Intake status
 
-The PaperRoute G0 reports were intentionally removed from active state during
-the Paper2Paper 0.3 rebuild. They remain recoverable from the repository import
-boundary and Git history.
-
-Facts carried forward:
+Current intake facts:
 
 - anchor DOI: `10.1136/jitc-2025-014128`;
 - local source materials exist outside Git;

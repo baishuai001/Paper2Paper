@@ -268,17 +268,12 @@ class Paper2PaperCoreTests(unittest.TestCase):
             report = validate_project(project)
             self.assertTrue(report.ok, report.errors)
 
-    def test_init_creates_valid_intake_without_legacy_policy(self) -> None:
+    def test_init_creates_valid_intake(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
             init_project(target, "P2P-TEST", "Test project")
             report = validate_project(target)
             self.assertTrue(report.ok, report.errors)
-            manifest = json.loads(
-                (target / "PROJECT.json").read_text(encoding="utf-8")
-            )
-            self.assertFalse(manifest["adaptation_policy"]["novelty_required"])
-            self.assertNotIn("quality_axes", manifest["publication_goal"])
             self.assertTrue(
                 (target / "registry" / "datasets.tsv").exists()
             )
@@ -289,36 +284,42 @@ class Paper2PaperCoreTests(unittest.TestCase):
                 (target / "registry" / "figure_plan.tsv").exists()
             )
 
-    def test_legacy_policy_keys_are_rejected(self) -> None:
+    def test_unknown_policy_keys_are_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
             init_project(target, "P2P-TEST", "Test project")
             manifest_path = target / "PROJECT.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            manifest["publication_goal"]["quality_axes"] = ["novelty"]
+            manifest["adaptation_policy"]["hidden_ranking_gate"] = True
             manifest_path.write_text(
                 json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
             )
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any("legacy PaperRoute policy keys" in e for e in report.errors)
+                any(
+                    "unexpected keys hidden_ranking_gate" in error
+                    for error in report.errors
+                )
             )
 
-    def test_novelty_cannot_be_reintroduced_as_a_gate(self) -> None:
+    def test_unknown_manifest_sections_are_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
             init_project(target, "P2P-TEST", "Test project")
             manifest_path = target / "PROJECT.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            manifest["adaptation_policy"]["novelty_required"] = True
+            manifest["unreviewed_policy"] = {"enabled": True}
             manifest_path.write_text(
                 json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
             )
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any("novelty_required must be false" in e for e in report.errors)
+                any(
+                    "unexpected keys unreviewed_policy" in error
+                    for error in report.errors
+                )
             )
 
     def test_marker_substitution_is_an_allowed_route(self) -> None:
@@ -560,11 +561,33 @@ class Paper2PaperCoreTests(unittest.TestCase):
         impacted = downstream_impact(SPP1_PROJECT, "PAPER-SPP1-001")
         self.assertEqual([item["entity_id"] for item in impacted], ["WORK-SPP1-001"])
 
-    def test_active_schema_has_no_legacy_direction_registries(self) -> None:
-        registries = load_contract()["registries"]
-        self.assertNotIn("directions", registries)
-        self.assertNotIn("direction_assessments", registries)
-        self.assertNotIn("novelty", json.dumps(registries))
+    def test_active_schema_has_expected_registries(self) -> None:
+        registries = set(load_contract()["registries"])
+        self.assertEqual(
+            registries,
+            {
+                "papers",
+                "routes",
+                "route_adaptations",
+                "route_assessments",
+                "datasets",
+                "dataset_route_map",
+                "code_sources",
+                "code_module_map",
+                "publication_overlap",
+                "figure_plan",
+                "claims",
+                "resources",
+                "work_items",
+                "modules",
+                "decisions",
+                "reviews",
+                "runs",
+                "results",
+                "change_requests",
+                "dependencies",
+            },
+        )
 
 
 if __name__ == "__main__":

@@ -2,9 +2,9 @@
 
 ## Purpose
 
-Paper2Paper does not use novelty as a route gate. It does require evidence that
-the planned manuscript is not a substantive duplicate of an existing paper.
-This is a narrower, auditable question.
+Paper2Paper does not rank routes by perceived originality. It does require
+evidence that the planned manuscript is not a substantive duplicate of an
+existing paper. This is a narrower, auditable question.
 
 ## Required dimensions
 

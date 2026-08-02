@@ -26,7 +26,6 @@
     ],
     "require_explicit_adaptation_map": true,
     "prioritize_template_preserving_routes": true,
-    "novelty_required": false,
     "reject_substantive_duplicate": true,
     "require_human_route_selection": true
   },

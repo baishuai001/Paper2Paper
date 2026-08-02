@@ -52,23 +52,20 @@ def _split_reference(value: str, multi: bool) -> list[str]:
     return [item.strip() for item in value.split(";") if item.strip()]
 
 
-def _legacy_manifest_paths(value: Any, prefix: str = "") -> list[str]:
-    legacy_keys = {
-        "quality_axes",
-        "treat_repair_as_non_novel_by_default",
-        "require_independent_quality_assessments",
-    }
-    found: list[str] = []
-    if isinstance(value, dict):
-        for key, child in value.items():
-            path = f"{prefix}.{key}" if prefix else key
-            if key in legacy_keys:
-                found.append(path)
-            found.extend(_legacy_manifest_paths(child, path))
-    elif isinstance(value, list):
-        for index, child in enumerate(value):
-            found.extend(_legacy_manifest_paths(child, f"{prefix}[{index}]"))
-    return found
+def _validate_object_keys(
+    value: dict[str, Any],
+    required: set[str],
+    label: str,
+    report: ValidationReport,
+) -> None:
+    missing = sorted(required - set(value))
+    if missing:
+        report.errors.append(f"{label}: missing keys " + ", ".join(missing))
+    unexpected = sorted(set(value) - required)
+    if unexpected:
+        report.errors.append(
+            f"{label}: unexpected keys " + ", ".join(unexpected)
+        )
 
 
 def load_project(project_dir: Path) -> dict[str, Any]:
@@ -188,11 +185,7 @@ def _validate_manifest(
         "scope_policy",
         "feedback_policy",
     }
-    missing_manifest = sorted(required_manifest - set(manifest))
-    if missing_manifest:
-        report.errors.append(
-            "PROJECT.json: missing keys " + ", ".join(missing_manifest)
-        )
+    _validate_object_keys(manifest, required_manifest, "PROJECT.json", report)
 
     if manifest.get("schema_version") != contract["schema_version"]:
         report.errors.append(
@@ -210,13 +203,6 @@ def _validate_manifest(
             f"{manifest.get('current_gate')!r}"
         )
 
-    legacy_paths = _legacy_manifest_paths(manifest)
-    if legacy_paths:
-        report.errors.append(
-            "PROJECT.json: legacy PaperRoute policy keys are not allowed: "
-            + ", ".join(sorted(legacy_paths))
-        )
-
     publication_goal = manifest.get("publication_goal", {})
     required_goal_keys = {
         "primary_output",
@@ -227,12 +213,12 @@ def _validate_manifest(
     if not isinstance(publication_goal, dict):
         report.errors.append("PROJECT.json publication_goal must be an object")
     else:
-        missing = sorted(required_goal_keys - set(publication_goal))
-        if missing:
-            report.errors.append(
-                "PROJECT.json publication_goal: missing keys "
-                + ", ".join(missing)
-            )
+        _validate_object_keys(
+            publication_goal,
+            required_goal_keys,
+            "PROJECT.json publication_goal",
+            report,
+        )
         for key in required_goal_keys:
             value = publication_goal.get(key)
             if not isinstance(value, str) or not value.strip():
@@ -246,19 +232,18 @@ def _validate_manifest(
         "allowed_route_modes",
         "require_explicit_adaptation_map",
         "prioritize_template_preserving_routes",
-        "novelty_required",
         "reject_substantive_duplicate",
         "require_human_route_selection",
     }
     if not isinstance(adaptation, dict):
         report.errors.append("PROJECT.json adaptation_policy must be an object")
     else:
-        missing = sorted(required_adaptation_keys - set(adaptation))
-        if missing:
-            report.errors.append(
-                "PROJECT.json adaptation_policy: missing keys "
-                + ", ".join(missing)
-            )
+        _validate_object_keys(
+            adaptation,
+            required_adaptation_keys,
+            "PROJECT.json adaptation_policy",
+            report,
+        )
         modes = adaptation.get("allowed_route_modes")
         if not isinstance(modes, list) or not modes:
             report.errors.append(
@@ -282,12 +267,6 @@ def _validate_manifest(
                 report.errors.append(
                     f"PROJECT.json adaptation_policy: {key} must be true"
                 )
-        if adaptation.get("novelty_required") is not False:
-            report.errors.append(
-                "PROJECT.json adaptation_policy: novelty_required must be "
-                "false; novelty is not a Paper2Paper gate"
-            )
-
     execution = manifest.get("execution_policy", {})
     required_execution_keys = {
         "require_verified_data_for_approval",
@@ -301,12 +280,12 @@ def _validate_manifest(
     if not isinstance(execution, dict):
         report.errors.append("PROJECT.json execution_policy must be an object")
     else:
-        missing = sorted(required_execution_keys - set(execution))
-        if missing:
-            report.errors.append(
-                "PROJECT.json execution_policy: missing keys "
-                + ", ".join(missing)
-            )
+        _validate_object_keys(
+            execution,
+            required_execution_keys,
+            "PROJECT.json execution_policy",
+            report,
+        )
         for key in {
             "require_verified_data_for_approval",
             "require_qualified_code_for_approval",
@@ -364,11 +343,12 @@ def _validate_manifest(
     if not isinstance(scope, dict):
         report.errors.append("PROJECT.json scope_policy must be an object")
     else:
-        missing = sorted(required_scope_keys - set(scope))
-        if missing:
-            report.errors.append(
-                "PROJECT.json scope_policy: missing keys " + ", ".join(missing)
-            )
+        _validate_object_keys(
+            scope,
+            required_scope_keys,
+            "PROJECT.json scope_policy",
+            report,
+        )
         if set(scope.get("allowed_work_reasons", [])) != set(
             contract["work_reasons"]
         ):
@@ -392,9 +372,20 @@ def _validate_manifest(
                 )
 
     feedback = manifest.get("feedback_policy", {})
+    required_feedback_keys = {
+        "effects_requiring_change_request",
+        "invalidate_downstream_on_approved_change",
+        "require_review_before_high_impact_change",
+    }
     if not isinstance(feedback, dict):
         report.errors.append("PROJECT.json feedback_policy must be an object")
     else:
+        _validate_object_keys(
+            feedback,
+            required_feedback_keys,
+            "PROJECT.json feedback_policy",
+            report,
+        )
         effects = set(feedback.get("effects_requiring_change_request", []))
         if effects != {"refine", "reroute", "stop"}:
             report.errors.append(
@@ -945,7 +936,6 @@ def init_project(target: Path, project_id: str, title: str) -> Path:
             "allowed_route_modes": list(contract["route_modes"]),
             "require_explicit_adaptation_map": True,
             "prioritize_template_preserving_routes": True,
-            "novelty_required": False,
             "reject_substantive_duplicate": True,
             "require_human_route_selection": True,
         },

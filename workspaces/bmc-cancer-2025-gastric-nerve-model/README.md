@@ -4,9 +4,9 @@ This is an intake-stage Paper2Paper workspace for “Development and validation
 of a novel nerve-related prognostic model for gastric cancer based on bulk and
 single-cell RNA sequencing data.”
 
-The workspace deliberately contains no migrated PaperRoute direction,
-assessment, candidate portfolio, or recommendation. It retains only neutral
-paper, dataset, code-availability, document, method, and provenance facts.
+The workspace currently contains only neutral paper, dataset,
+code-availability, document, method, and provenance facts. No candidate route
+or recommendation is active.
 
 Current state:
 

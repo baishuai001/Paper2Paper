@@ -79,8 +79,7 @@ source table。Markdown 报告只是它们的可读视图。只存在于聊天�
 审查记录和报告。不要提交服务器密码、token、患者可识别信息、受控数据、未经许可的
 PDF，或大型 FASTQ/H5AD/RDS/图像文件。
 
-更多约束见 [项目纪律](PROJECT_DISCIPLINE.md)、[workflow](docs/workflow.md) 和
-[从 PaperRoute 迁移说明](MIGRATION_FROM_PAPERROUTE.md)。
+更多约束见 [项目纪律](PROJECT_DISCIPLINE.md) 和 [workflow](docs/workflow.md)。
 
 ## License
 

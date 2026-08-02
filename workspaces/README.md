@@ -14,8 +14,9 @@ Rules:
 1. Every paper receives a separate directory and `project_id`.
 2. Entity IDs are workspace-scoped; use `project_id + entity_id` when comparing
    across workspaces.
-3. Candidate routes and decisions from PaperRoute are historical, not active.
-4. Only neutral provenance facts may be migrated without reassessment.
+3. Candidate routes and decisions become active only after validation and
+   human approval in their own workspace.
+4. Only neutral provenance facts may be imported without reassessment.
 5. Source PDFs, credentials, controlled data, and large analysis files remain
    outside Git and are represented by URIs, checksums, and access records.
 6. Paper-specific adapters stay inside a workspace until at least two real

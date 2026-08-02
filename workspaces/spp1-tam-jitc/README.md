@@ -4,9 +4,9 @@ This is an intake-stage Paper2Paper workspace for the anchor article
 “Targeting SPP1+TAMs associated with liver metastasis reverses
 immunosuppression and synergizes with immunotherapy in colorectal cancer.”
 
-The workspace deliberately contains no migrated PaperRoute direction,
-assessment, candidate portfolio, or recommendation. It retains only neutral
-paper, dataset, code-availability, method, environment, and provenance facts.
+The workspace currently contains only neutral paper, dataset,
+code-availability, method, environment, and provenance facts. No candidate
+route or recommendation is active.
 
 Current state:
 

@@ -6,9 +6,10 @@ Route selection answers a practical question: which adaptation of this anchor
 paper is most likely to become a correct, reproducible, reviewable manuscript
 with the data, code, time, compute, and skills actually available?
 
-It does not ask candidates to prove a novelty threshold. A simple substitution
-is legitimate when the scientific design remains valid, its execution path is
-real, and the final central claim is not a substantive publication duplicate.
+It does not ask candidates to clear an originality threshold. A simple
+substitution is legitimate when the scientific design remains valid, its
+execution path is real, and the final central claim is not a substantive
+publication duplicate.
 
 ## Step 1: decompose the anchor
 
