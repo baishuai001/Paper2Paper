@@ -1,2 +1,1 @@
-module_id	work_id	claim_id	status	title	input_contract	biological_unit	method_resource_id	code_resource_id	validity
-MODULE-001	WORK-002	CLAIM-002	retired	Published myeloid-state transportability pilot	Per-cohort counts or expression; study_id; patient_id; sample_id; tissue; treatment; frozen state panel	Patient or independent sample within cohort; independent study for synthesis	RESOURCE-METHOD-002	RESOURCE-CODE-002	stale
+module_id	work_id	route_id	claim_id	status	title	input_contract	biological_unit	method_resource_id	code_map_id	validity

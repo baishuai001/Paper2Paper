@@ -1,32 +1,4 @@
 upstream_id	downstream_id	relation	active	notes
-PAPER-001	DIR-001	anchors	true	The anchor paper supplies the initial research grammar.
-DIR-001	CLAIM-001	governs	true	Direction changes may invalidate or replace the claim.
-CLAIM-001	MODULE-001	tests	false	The illustrative SPP1-only pilot was superseded in the G0 proposal; the claim remains registered until human review.
-RESOURCE-DATA-001	MODULE-001	uses	true	The candidate dataset supplies observations.
-RESOURCE-METHOD-001	MODULE-001	uses	false	The G0 proposal changes the module from a single-cohort differential-state pilot to cross-cohort synthesis.
-RESOURCE-CODE-001	MODULE-001	uses	false	The official vignette remains a method fragment but is not the proposed engineering backbone.
-RESOURCE-ENV-001	MODULE-001	requires	true	The module requires a pinned execution environment.
-WORK-001	DECISION-001	governs	true	The direction decision is the manuscript-linked output of this work item.
-WORK-002	MODULE-001	governs	false	The work item and module are blocked because DIR-002 is challenged.
-DECISION-001	DIR-001	governs	true	The direction cannot be activated before this decision is reviewed.
-DIR-001	DIR-002	derived_from	true	DIR-002 is the proposed bounded child route from the anchor audit.
-DIR-001	DIR-003	derived_from	true	DIR-003 is the proposed higher-burden backup route.
-DIR-001	DIR-004	derived_from	true	DIR-004 is retained only as a conditional treatment-context route.
-DIR-001	DIR-005	derived_from	true	DIR-005 retains the training reconstruction separately from manuscript novelty.
-DIR-002	CLAIM-002	governs	false	The historical transportability claim is stale while DIR-002 is challenged.
-DIR-003	CLAIM-003	governs	false	The historical ecological claim is stale while DIR-003 is challenged.
-DIR-004	CLAIM-004	governs	false	The historical treatment claim is stale while DIR-004 is challenged.
-CLAIM-002	MODULE-001	tests	false	The module is retired until DIR-002 passes corrected G0 review.
-RESOURCE-METHOD-002	MODULE-001	uses	false	The method remains a candidate donor but no implementation is authorized.
-RESOURCE-CODE-002	MODULE-001	uses	false	The atlas remains a candidate donor but no implementation is authorized.
-RESOURCE-DOC-001	DECISION-001	supports	true	The dated G0 review packet records the recommendation and stopping conditions.
-PAPER-002	DIR-002	supports	true	The source cohort and M/N framework inform candidate state definitions and contrasts.
-PAPER-003	DIR-002	supports	true	The foundational CRLM atlas contributes published myeloid states and spatial evidence.
-PAPER-005	DIR-002	challenges	true	The CXCL9-SPP1 polarity paper constrains novelty and motivates continuous-state sensitivity analyses.
-PAPER-010	DIR-002	supports	true	The independent multiregional cohort can test spatial-zone transportability.
-PAPER-011	DIR-002	supports	true	The CRC atlas supplies a public reference object and strong engineering donor.
-PAPER-002	DIR-003	anchors	true	The malignancy-linked versus niche-linked concept originates in this study.
-RESOURCE-DATA-002	DIR-002	supports	true	GSE225857 is a candidate independent single-cell and spatial cohort.
-RESOURCE-DATA-004	DIR-002	supports	true	The CRC atlas supplies reference mapping and study-level discovery metadata.
-RESOURCE-DATA-005	DIR-002	supports	true	The Bellomo cohort supplies independent regional validation.
-RESOURCE-DATA-003	DIR-004	supports	true	GSE205506 is the key conditional treatment cohort.
+PAPER-SPP1-001	WORK-SPP1-001	anchors	true	The anchor paper defines the intake scope.
+DATA-SPP1-001	WORK-SPP1-001	requires	true	This dataset is a first candidate for route triage, not an approved dependency.
+CODE-SPP1-AUTHOR	WORK-SPP1-001	challenges	true	Missing exact author code must be handled by qualified donors or reconstruction.

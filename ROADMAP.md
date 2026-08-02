@@ -1,70 +1,45 @@
 # Roadmap
 
-Roadmap items are accepted only when they advance a real manuscript claim,
-close an evidence gap, reduce a conclusion-changing correctness risk, satisfy
-a minimum reproducibility requirement, or answer a review requirement.
-Software generalization is not a goal by itself.
+Roadmap 只接收能缩短从锚点论文到可审查稿件距离的工作。产品工程达到最低充分状态后，
+优先推进真实工作区的数据、代码、图件和稿件。
 
-## v0.1 - Direction audit and feedback
+## v0.3 - Execution-first core
 
-- Project manifest and entity registries
-- Direction, claim, resource, module, decision, review, run, and result entities
-- Result-driven change requests
-- Dependency impact analysis
-- Validation and status commands
-- SPP1+TAM pilot instance
+- 新建 `paper2paper` 包和 schema 0.3；
+- 允许并优先呈现模板保留型替换路线；
+- 删除旧创新门槛、字段、批准逻辑和活动案例结论；
+- 建立数据资格、代码资格、发表重合和图件计划 registry；
+- 用透明 P0-P3 规则替代不透明排序；
+- 将 SPP1 与 NRRS 工作区重置为事实型 intake；
+- 保留依赖影响、人工审查、结果反馈和 workspace 隔离能力。
 
-## v0.2 - Scientific direction model and evidence availability
+## v0.4 - Route generation and executable spike
 
-- Project-specific decision briefs and anchor-role profiles
-- Claim-scoped flaw registers
-- Multi-axis retain/repair/replace/extend/drop maps
-- Independent validity, feasibility, novelty, value, burden, learning, and
-  reuse assessments
-- Scientific decision regression cases
-- Paper and supplementary-material intake
-- Dataset, file, method, and code-source specialization
-- Availability and access gates
-- Evidence snapshots and provenance checks
-- Generated review packets
+- 为各路线模式提供候选生成模板；
+- 自动生成 dataset-route、code-module 和 figure-plan 缺口表；
+- 下载最小样本并验证 metadata；
+- 在目标 R/Python 环境运行安装与 smoke tests；
+- 由验证结果自动更新 P0-P3，而不是凭文字印象推荐。
 
-## v0.3 - Analysis specifications
+## v0.5 - Analysis specification and full pilot
 
-- Typed input and output contracts
-- Deep biological replicate and estimand specifications beyond the minimum G0
-  manuscript kernel
-- Parameter provenance
-- Discovery and validation separation
-- Claim-ceiling checks
-
-## v0.4 - Executable modules
-
-- R, Python, and external workflow adapters
-- Run manifests and checkpoints
-- Scientific invariants and regression tests
-- Server execution profiles
-- Stale-artifact enforcement
-
-## v0.5 - Full pilot
-
-- Complete SPP1+TAM JITC workflow instance
-- Direction audit through result and claim review
-- Figure source-table registry
-- Leave-one-dataset-out and negative-control examples
+- 冻结统计单位、estimand、协变量、排除标准和 signature 公式；
+- 建立数据 adapter、模块输入输出 contract 和科学不变量测试；
+- 至少完成一个工作区从 G0 到 G6 的全流程；
+- 生成 source tables、正文图、Methods 和 reproducibility report。
 
 ## v1.0 - Stable workflow
 
-- Versioned schemas and migrations
-- Complete review and release protocol
-- Reusable project template
-- Documentation for beginning imitators and reviewers
+- schema migration 与向后兼容策略；
+- 稳定的路线模板、review packet 和 release protocol；
+- 面向初学者的逐步审查指南；
+- 至少两个不同论文类型的完整实践验证。
 
-## Deferred decisions
+## Deferred
 
-- Open-source license
-- Preferred workflow engine for mixed R/Python projects
-- Whether paper-specific instances live in separate repositories
-- Optional web review interface
+- Web review 界面；
+- 大型数据自动下载器；
+- 混合 R/Python workflow engine；
+- 自动投稿格式化。
 
-Deferred items remain deferred unless a manuscript-linked work item and stop
-condition justify promoting them.
+Deferred 项目只有在真实稿件连续两次证明需要时，才进入当前优先级。

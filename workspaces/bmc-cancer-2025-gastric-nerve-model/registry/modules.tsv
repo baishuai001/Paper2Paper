@@ -1,1 +1,1 @@
-module_id	work_id	claim_id	status	title	input_contract	biological_unit	method_resource_id	code_resource_id	validity
+module_id	work_id	route_id	claim_id	status	title	input_contract	biological_unit	method_resource_id	code_map_id	validity

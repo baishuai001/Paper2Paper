@@ -1,82 +1,48 @@
 # Result feedback and human review
 
-PaperRoute assumes that results can change the plan.
+Paper2Paper assumes that execution can invalidate the plan.
 
 ```text
-run
- -> result
- -> directional effect
- -> change request
- -> dependency impact
- -> human review
- -> new version or rejection
- -> stale downstream entities
- -> rerun
+run -> result -> route effect -> change request -> impact analysis
+    -> human review -> new version or rejection -> rerun
 ```
 
-## Directional effects
+## Route effects
 
-- `none`: the result has no implication for project direction.
-- `continue`: the result is compatible with the current route.
-- `refine`: data, code, methods, parameters, evidence, or a bounded claim may
-  change while the approved manuscript kernel remains the same.
-- `reroute`: the central question, target effect, primary outcome, decisive
-  evidence, or contribution type changes so that the approved evidence chain
-  no longer answers the new manuscript kernel.
-- `stop`: continuing the current route is not justified.
+- `none`: no route implication;
+- `continue`: compatible with the approved plan;
+- `refine`: adjust data, code, methods, parameters, a figure, or a bounded
+  claim while answering the same central question;
+- `reroute`: change the central question, target disease/object, primary
+  outcome, or evidence chain so the approved route no longer answers it;
+- `stop`: continuing cannot produce a defensible manuscript.
 
-The validator requires a change request for every `refine`, `reroute`, or
-`stop` result.
+Every `refine`, `reroute`, or `stop` result requires a ChangeRequest.
 
-Alternative transformations compared before G0 approval are candidates, not
-reroutes. Replacing one or multiple axes during candidate generation is allowed
-when the change map and independent assessments are complete. The reroute rule
-applies only after a direction has been approved or activated.
+## Change control
 
-## Change requests
+A change request records the triggering result, work item, affected entities,
+proposal, severity, gate to reopen, and approval. High-impact changes cannot
+be implemented without a completed approving review.
 
-A change request records:
-
-- the triggering result, if any;
-- the manuscript-linked work item;
-- change type and severity;
-- affected entities;
-- proposed action;
-- expected manuscript implication;
-- gate to reopen;
-- review and implementation status.
-
-High-impact changes to direction, claims, datasets, methods, or scope should not
-be applied without a completed approving review.
-
-## Impact analysis
-
-Dependencies are directed from upstream to downstream. The command
+Use:
 
 ```bash
-paperroute impact PROJECT_DIR ENTITY_ID
+paper2paper impact PROJECT_DIR ENTITY_ID
 ```
 
-lists all downstream entities that may become stale if `ENTITY_ID` changes.
-Version `0.1` reports impact but does not automatically mutate project files.
-This is deliberate: invalidation should be reviewed before it is applied.
+to list active downstream dependencies that may become stale. Impact reporting
+does not silently mutate project state; invalidation is a reviewable decision.
 
-## Adjustment without hindsight bias
+## Protection against hindsight bias
 
-Result-driven adaptation is permitted, but it must remain distinguishable from
-the original plan:
-
-1. preserve the original direction and analysis version;
-2. record the observed result before changing the plan;
-3. create a change request with rationale;
-4. assess all affected claims and modules;
-5. obtain review for high-impact changes;
+1. preserve the original specification and result;
+2. record the observation before changing the plan;
+3. create a change request;
+4. inspect downstream claims, figures, modules, data, and code mappings;
+5. obtain review when required;
 6. create a new version;
-7. label post-result analyses as exploratory unless independently validated.
+7. label post-result analyses exploratory until independently validated.
 
-This prevents a negative result from being silently converted into a different
-positive hypothesis.
-
-Feedback is not permission for unlimited optimization. A change request without
-a manuscript-linked work item, an expected output, and a stopping condition is
-out of scope.
+Feedback is not permission for unlimited optimization. Every follow-up needs a
+manuscript destination, minimum deliverable, and stop condition.

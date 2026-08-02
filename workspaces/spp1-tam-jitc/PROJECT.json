@@ -1,66 +1,71 @@
 {
-  "schema_version": "0.2.0",
-  "project_id": "PRJ-SPP1-TAM-JITC",
-  "title": "SPP1+TAM JITC direction-audit pilot",
-  "project_status": "direction_review",
-  "current_gate": "G0_DIRECTION",
-  "anchor_paper_id": "PAPER-001",
-  "active_direction_id": "DIR-001",
+  "schema_version": "0.3.0",
+  "project_id": "P2P-SPP1-TAM-JITC",
+  "title": "SPP1+TAM JITC adaptation intake",
+  "project_status": "intake",
+  "current_gate": "G0_SCOPE",
+  "anchor_paper_id": "PAPER-SPP1-001",
+  "active_route_id": "",
   "publication_goal": {
     "primary_output": "A scientifically defensible manuscript",
     "audience": "Beginner-led project with AI assistance",
-    "approach": "Audited imitation and justified adaptation, not copying",
-    "quality_axes": [
-      "feasibility",
-      "scientific_validity",
-      "novelty",
-      "scientific_value",
-      "logical_rigor",
-      "implementation_burden",
-      "learning_value",
-      "anchor_reuse"
-    ],
-    "success_definition": "An evidence-linked manuscript draft with reproducible source tables, figures, methods, and explicit limitations"
+    "approach": "Retain useful SPP1+TAM paper modules while comparing simple substitutions and combinations by verified data, qualified code, figure closure, and scientific validity",
+    "success_definition": "A non-duplicate manuscript draft whose figures, source tables, methods, inputs, code, runs, and limitations are traceable"
   },
-  "project_brief": {
-    "manuscript_goal": "Produce a beginner-executable manuscript that learns from the anchor's cross-scale tumor-immune ecology while comparing biologically specific adaptations, evidence extensions, and repair routes without assuming that a generic validation audit is the answer.",
-    "anchor_use_intent": "Use the SPP1+TAM paper primarily as a biological-question, design, narrative, and evidence-chain donor; reuse its data, methods, and code only where provenance and implementation quality are verified, and permit stronger supporting papers to supply missing modules.",
-    "allowed_change_axes": [
-      "disease_context",
-      "biological_object",
-      "central_relation",
-      "primary_outcome",
-      "evidence_architecture",
-      "data",
-      "method",
-      "code",
-      "claim_level"
+  "adaptation_policy": {
+    "allowed_route_modes": [
+      "faithful_reproduction",
+      "marker_substitution",
+      "gene_set_substitution",
+      "cell_type_substitution",
+      "cancer_type_substitution",
+      "pan_cancer_extension",
+      "signature_construction",
+      "combined_substitution",
+      "custom"
     ],
-    "preferred_contribution_types": [
-      "biological",
-      "clinical",
-      "validation",
-      "methodological"
+    "require_explicit_adaptation_map": true,
+    "prioritize_template_preserving_routes": true,
+    "novelty_required": false,
+    "reject_substantive_duplicate": true,
+    "require_human_route_selection": true
+  },
+  "execution_policy": {
+    "require_verified_data_for_approval": true,
+    "require_qualified_code_for_approval": true,
+    "require_complete_figure_plan_for_approval": true,
+    "allowed_approval_code_grades": [
+      "A",
+      "B"
     ],
-    "resource_constraints": "Prioritize public or accessible human sequencing and spatial data, verified code donors, the available 512 GB RAM and 24 GB GPU server, and a beginner-auditable implementation; do not make wet-lab intervention or therapeutic-synergy evidence a hidden dependency.",
-    "decision_policy": {
-      "allow_multi_axis_change": true,
-      "require_explicit_change_map": true,
-      "require_independent_quality_assessments": true,
-      "require_candidate_portfolio": true,
-      "require_human_selection": true,
-      "treat_repair_as_non_novel_by_default": true
-    }
+    "allowed_approval_overlap": [
+      "clear",
+      "adjacent",
+      "high_overlap_distinguishable"
+    ],
+    "minimum_required_figures": 4,
+    "priority_order": [
+      "code_readiness",
+      "data_readiness",
+      "figure_coverage",
+      "scientific_validity",
+      "anchor_reuse",
+      "beginner_burden",
+      "publication_overlap"
+    ]
   },
   "scope_policy": {
     "allowed_work_reasons": [
       "manuscript_claim",
-      "evidence_gap",
+      "manuscript_figure",
+      "data_qualification",
+      "code_qualification",
+      "publication_overlap",
       "correctness_risk",
       "reproducibility_requirement",
       "review_requirement"
     ],
-    "optimization_stop_rule": "Stop when the minimum implementation needed for manuscript validity, reproducibility, and reviewability is complete",
+    "optimization_stop_rule": "Stop workflow engineering when the selected manuscript can be generated, checked, and reviewed reliably",
     "require_work_item_for_modules": true,
     "require_manuscript_implication_for_results": true
   },

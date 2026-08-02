@@ -8,6 +8,7 @@ from pathlib import Path
 from .core import (
     downstream_impact,
     init_project,
+    route_priorities,
     status_summary,
     validate_project,
 )
@@ -15,15 +16,15 @@ from .core import (
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="paperroute",
+        prog="paper2paper",
         description=(
-            "Validate and inspect direction-first, auditable paper workflows."
+            "Validate execution-first, auditable paper-adaptation projects."
         ),
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     init_parser = subparsers.add_parser(
-        "init", help="create a new draft project"
+        "init", help="create a new intake-stage project"
     )
     init_parser.add_argument("project_dir", type=Path)
     init_parser.add_argument("--project-id", required=True)
@@ -41,6 +42,13 @@ def _build_parser() -> argparse.ArgumentParser:
     status_parser.add_argument("project_dir", type=Path)
     status_parser.add_argument("--json", action="store_true")
 
+    priority_parser = subparsers.add_parser(
+        "priorities",
+        help="show recorded and rule-derived execution priorities",
+    )
+    priority_parser.add_argument("project_dir", type=Path)
+    priority_parser.add_argument("--json", action="store_true")
+
     impact_parser = subparsers.add_parser(
         "impact", help="show downstream entities affected by a change"
     )
@@ -57,10 +65,8 @@ def main(argv: list[str] | None = None) -> int:
 
     try:
         if args.command == "init":
-            target = init_project(
-                args.project_dir, args.project_id, args.title
-            )
-            print(f"initialized draft project: {target}")
+            target = init_project(args.project_dir, args.project_id, args.title)
+            print(f"initialized intake project: {target}")
             return 0
 
         if args.command == "validate":
@@ -99,47 +105,45 @@ def main(argv: list[str] | None = None) -> int:
                 print(f"status: {summary['project_status']}")
                 print(f"gate: {summary['current_gate']}")
                 print(
-                    f"active direction: "
-                    f"{summary['active_direction_id'] or '(not selected)'}"
+                    "active route: "
+                    f"{summary['active_route_id'] or '(not selected)'}"
                 )
                 print(
                     "open work items: "
-                    + (
-                        ", ".join(summary["open_work_items"])
-                        or "none"
-                    )
+                    + (", ".join(summary["open_work_items"]) or "none")
                 )
                 print(
                     "pending reviews: "
-                    + (
-                        ", ".join(summary["pending_reviews"])
-                        or "none"
-                    )
+                    + (", ".join(summary["pending_reviews"]) or "none")
                 )
                 print(
                     "pending decisions: "
-                    + (
-                        ", ".join(summary["pending_decisions"])
-                        or "none"
-                    )
+                    + (", ".join(summary["pending_decisions"]) or "none")
                 )
                 print(
                     "open changes: "
-                    + (
-                        ", ".join(summary["open_change_requests"])
-                        or "none"
-                    )
+                    + (", ".join(summary["open_change_requests"]) or "none")
                 )
-                print(
-                    f"validation errors: "
-                    f"{len(summary['validation_errors'])}"
-                )
+                print(f"validation errors: {len(summary['validation_errors'])}")
             return 0 if not summary["validation_errors"] else 1
 
+        if args.command == "priorities":
+            priorities = route_priorities(args.project_dir)
+            if args.json:
+                print(json.dumps(priorities, indent=2, ensure_ascii=False))
+            else:
+                if not priorities:
+                    print("no route assessments")
+                for item in priorities:
+                    print(
+                        f"{item['route_id']}\trecorded={item['recorded']}\t"
+                        f"expected={item['expected']}\t"
+                        f"match={str(item['matches']).lower()}"
+                    )
+            return 0
+
         if args.command == "impact":
-            impacted = downstream_impact(
-                args.project_dir, args.entity_id
-            )
+            impacted = downstream_impact(args.project_dir, args.entity_id)
             if args.json:
                 print(json.dumps(impacted, indent=2, ensure_ascii=False))
             else:

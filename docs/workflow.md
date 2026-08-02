@@ -1,111 +1,101 @@
 # Workflow and gates
 
-PaperRoute uses a two-pass audit. The first pass gathers enough evidence to
-choose a direction without downloading every large dataset. The second pass
-performs deep data, method, code, and implementation audit after the direction
-is approved.
+Paper2Paper uses cheap evidence first and expensive execution only after a
+route survives triage. Every gate has a concrete exit condition.
 
-At every gate, proposed work must pass the manuscript-relevance test:
+## G0 - Scope and anchor decomposition
 
-1. Which manuscript claim, section, figure, evidence gap, or review does it
-   serve?
-2. What is the minimum sufficient output?
-3. What is the stopping condition?
-4. Would not doing it materially weaken scientific validity or reproducibility?
+Tasks:
 
-## G0 - Direction
+- define the intended paper type, audience, resources, and stopping rule;
+- audit the anchor at claim, figure, dataset, method, and code-module level;
+- generate all plausible route modes, including simple substitutions;
+- record an explicit adaptation map for every non-reproduction route.
 
-G0 follows the binding [decision standard](g0-decision-standard.md):
+Exit: a reviewable route portfolio without an approved route.
 
-1. **Project brief** — state the manuscript goal, intended anchor roles,
-   permitted change axes, contribution preferences, resource constraints, and
-   human decision policy.
-2. **Anchor decomposition** — extract disease context, biological object,
-   central relation, primary outcome, evidence architecture, data, methods,
-   code, and claim level.
-3. **Flaw triage** — distinguish claim-, module-, resource-, and route-level
-   flaws from ordinary limitations and opportunities. A flaw does not
-   automatically become the new manuscript question.
-4. **Candidate portfolio** — generate scientifically coherent combinations of
-   retain, repair, replace, extend, and drop actions. Multi-axis change is
-   permitted; change count is not a novelty metric.
-5. **Change maps** — give every non-umbrella candidate exactly one explicit
-   decision for each core axis, plus rationale, contribution role, evidence,
-   donor plan, linked flaw, and risk.
-6. **Independent assessment** — audit scientific validity, feasibility,
-   novelty, scientific value, implementation burden, learning value, and anchor
-   reuse separately. Do not collapse them into an ambition tier or total score.
-7. **Manuscript kernel** — state the plain-language question, biological unit,
-   decisive evidence, falsifier, target contribution, and claim ceiling.
-8. **Human selection** — present non-dominated trade-offs. AI recommendations
-   remain proposed until the project owner approves one direction and records
-   the rationale.
+## G1 - Data, code, figure, and overlap triage
 
-### Required G0 outputs
+Tasks:
 
-G0 is not complete until the review packet contains:
+- verify dataset identifiers, access, required metadata, cohort overlap, and
+  minimum downloadable files;
+- locate author code and independent code donors, then assign provisional
+  A-D/U grades;
+- map every planned main figure to data, code, and an acceptance test;
+- search nearest publications and classify overlap.
 
-1. a project-specific brief rather than the generic goal of “a defensible
-   manuscript”;
-2. an anchor-role verdict separating question, design, data, method, code,
-   evidence-chain, narrative, and negative-example reuse;
-3. a flaw register with scope, severity, required response, and candidate
-   implication;
-4. a dataset access, overlap, independence, and minimum-field map;
-5. a candidate portfolio with explicit rejected or challenged routes;
-6. one core-axis change map and one independent assessment per candidate;
-7. a manuscript kernel and minimum sufficient evidence for every live
-   manuscript candidate;
-8. a training-only route when useful, kept separate from manuscript candidates;
-9. a diagnosis of whether weak recommendations arose from the workflow, the
-   anchor paper, the available evidence, or their interaction.
+Exit: every live route has one complete assessment and rule-derived P0-P3.
 
-G0 has no single ambition-tier enum. Evidence level, implementation burden,
-learning value, anchor reuse, and scientific contribution are orthogonal and
-may coexist in different combinations.
+## G2 - Executable spike and route approval
 
-## G1 - Evidence
+Tasks:
 
-- Inventory papers, datasets, files, methods, and code.
-- Resolve identifiers, access conditions, patient overlap, and missing inputs.
-- Classify evidence as exact, approximate, blocked, or invalid.
+- download and parse representative data;
+- install the environment and run noninteractive smoke tests;
+- produce a representative source table or figure fragment;
+- resolve critical metadata, license, dependency, or duplicate risks;
+- obtain human approval for one P0 route.
 
-## G2 - Design
+Exit: one approved route with verified required datasets, A/B code mappings,
+a complete minimum figure map, a non-duplicate overlap record, and an approving
+review.
 
-- Convert claims into analysis specifications.
-- Define biological units, estimands, covariates, input contracts, outputs,
-  controls, and validation.
-- Separate discovery from validation.
+## G3 - Analysis specification
 
-## G3 - Implementation
+Tasks:
 
-- Build dataset adapters and common analysis modules.
-- Pin configuration and environment.
-- Add unit, smoke, integration, and scientific-invariant tests.
+- freeze cohorts, exclusions, biological units, comparisons, outcomes,
+  covariates, parameters, random seeds, and signature formulae;
+- separate discovery, validation, sensitivity, and exploratory analyses;
+- define module input/output contracts and scientific-invariant tests;
+- freeze the manuscript claim and figure plan version.
 
-## G4 - Verification
+Exit: executable specifications contain no silent analyst choices.
 
-- Execute approved modules.
-- Verify data, computational, statistical, and scientific correctness.
-- Register provisional and verified results.
+## G4 - Execution
 
-## G5 - Claim audit
+Tasks:
 
-- Compare results with claims and claim ceilings.
-- Record support, contradiction, uncertainty, and unresolved evidence.
-- Trigger refinement, rerouting, or stopping where needed.
+- build adapters and execute approved modules;
+- record commit, environment, configuration, data manifest, timestamps, logs,
+  and artifacts;
+- verify source tables before styling figures;
+- register failures and negative results rather than overwriting them.
+
+Exit: required figures and tables can be regenerated from recorded inputs.
+
+## G5 - Result and claim audit
+
+Tasks:
+
+- compare results with prespecified claims and claim ceilings;
+- assess robustness, leakage, pseudoreplication, cohort heterogeneity, and
+  alternative explanations;
+- trigger continue, refine, reroute, or stop through change requests;
+- draft Results, Methods, and Limitations from verified artifacts.
+
+Exit: every manuscript claim has adequate evidence or is removed/downgraded.
 
 ## G6 - Release
 
-- Freeze an immutable run manifest.
-- Generate source tables, figures, review packets, and a reproducibility report.
-- Tag a reviewed release.
+Tasks:
 
-## Reopening
+- rerun the submission configuration from a clean environment where practical;
+- freeze manifests, source tables, figures, code versions, and checksums;
+- update the publication-overlap search;
+- complete human review of claims, limitations, and reproducibility package;
+- tag a reviewed release.
 
-Approval is versioned, not permanent. New results or external evidence may
-reopen an earlier gate. Reopening creates a new direction, claim, decision, or
-method version; it does not silently overwrite the previously reviewed state.
-Reopening must also explain whether the change strengthens the manuscript,
-changes its contribution, lowers its claim ceiling, or makes the route
-unpublishable.
+Exit: a manuscript and reproducibility package are ready for submission.
+
+## Work relevance at every gate
+
+Before adding work, answer:
+
+1. Which claim, figure, section, qualification gap, or review does it serve?
+2. What is the minimum deliverable?
+3. What is the stopping condition?
+4. Would omission materially weaken execution, scientific validity, or review?
+
+If these cannot be answered, the work does not enter the active scope.

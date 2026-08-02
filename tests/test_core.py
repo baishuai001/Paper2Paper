@@ -7,16 +7,18 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from paperroute.core import (
+from paper2paper.core import (
     downstream_impact,
+    expected_execution_priority,
     init_project,
+    load_contract,
     validate_project,
 )
 
 
 REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 SPP1_PROJECT = REPOSITORY_ROOT / "workspaces" / "spp1-tam-jitc"
-BMC_PROJECT = (
+NRRS_PROJECT = (
     REPOSITORY_ROOT
     / "workspaces"
     / "bmc-cancer-2025-gastric-nerve-model"
@@ -49,335 +51,520 @@ def write_tsv_rows(
         writer.writerows(rows)
 
 
-class PaperRouteCoreTests(unittest.TestCase):
-    def test_example_project_validates(self) -> None:
-        report = validate_project(SPP1_PROJECT)
-        self.assertTrue(report.ok, report.errors)
+def update_manifest(target: Path, **changes: object) -> None:
+    manifest_path = target / "PROJECT.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    manifest.update(changes)
+    manifest_path.write_text(
+        json.dumps(manifest, indent=2, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
 
-    def test_bmc_audit_workspace_validates(self) -> None:
-        report = validate_project(BMC_PROJECT)
-        self.assertTrue(report.ok, report.errors)
 
-    def test_direction_impact_reaches_candidates_but_not_retired_module(
-        self,
-    ) -> None:
-        impacted = downstream_impact(SPP1_PROJECT, "DIR-001")
-        ids = {item["entity_id"] for item in impacted}
-        self.assertIn("CLAIM-001", ids)
-        self.assertIn("DIR-002", ids)
-        self.assertNotIn("MODULE-001", ids)
+def make_approved_project(target: Path) -> None:
+    init_project(target, "P2P-APPROVED", "Approved fixture")
+    update_manifest(
+        target,
+        project_status="active",
+        current_gate="G2_SPIKE",
+        anchor_paper_id="PAPER-001",
+        active_route_id="ROUTE-001",
+    )
+    append_tsv(
+        target / "registry" / "papers.tsv",
+        [
+            "PAPER-001",
+            "Fixture anchor",
+            "10.0000/fixture",
+            "anchor",
+            "accepted",
+            "https://example.org/paper",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "routes.tsv",
+        [
+            "ROUTE-001",
+            "1",
+            "",
+            "manuscript_candidate",
+            "faithful_reproduction",
+            "approved",
+            "Executable route",
+            "Is the prespecified patient-level association present?",
+            "test cancer",
+            "test cell state",
+            "patient outcome",
+            "design;figure_order;method",
+            "patient-level discovery and validation",
+            "a null external-validation effect",
+            "associational",
+            "REVIEW-001",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "route_assessments.tsv",
+        [
+            "ASSESS-001",
+            "ROUTE-001",
+            "pass",
+            "Patient-level design and bounded claim are prespecified.",
+            "verified",
+            "A representative input was downloaded and parsed.",
+            "qualified",
+            "Every required module maps to grade A code.",
+            "complete",
+            "The minimum figure plan is ready.",
+            "low",
+            "low",
+            "high",
+            "clear",
+            "A dated search found no substantive duplicate.",
+            "P0",
+            "Small fixture with complete execution path.",
+            "none",
+            "primary",
+            "approved",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "datasets.tsv",
+        [
+            "DATA-001",
+            "Fixture dataset",
+            "FIXTURE-001",
+            "https://example.org/data",
+            "bulk RNA-seq",
+            "test cancer",
+            "100 patients",
+            "patient",
+            "counts and clinical table",
+            "patient_id;outcome;counts",
+            "public",
+            "sample_verified",
+            "abc123",
+            "1 MB",
+            "FIXTURE",
+            "discovery",
+            "accepted",
+            "2026-08-02",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "dataset_route_map.tsv",
+        [
+            "DATAMAP-001",
+            "ROUTE-001",
+            "DATA-001",
+            "discovery and validation fixture",
+            "true",
+            "patient_id;outcome;counts",
+            "verified",
+            "not_applicable",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "code_sources.tsv",
+        [
+            "CODE-001",
+            "Fixture pipeline",
+            "https://example.org/code",
+            "reconstructed",
+            "abc123",
+            "MIT",
+            "Python 3.11",
+            "requirements.lock",
+            "python -m fixture_pipeline",
+            "true",
+            "full_pass",
+            "false",
+            "false",
+            "passed",
+            "passed",
+            "A",
+            "accepted",
+            "2026-08-02",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "code_module_map.tsv",
+        [
+            "CODEMAP-001",
+            "ROUTE-001",
+            "primary_analysis",
+            "CODE-001",
+            "src/fixture_pipeline.py",
+            "none",
+            "true",
+            "unit;smoke;integration;scientific_invariant",
+            "verified",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "publication_overlap.tsv",
+        [
+            "OVERLAP-001",
+            "ROUTE-001",
+            "",
+            "Nearest searched paper",
+            "https://example.org/neighbor",
+            "test cancer test cell state patient outcome",
+            "2026-08-02",
+            "clear",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "none",
+            "No central overlap found in fixture search.",
+            "proceed",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "figure_plan.tsv",
+        [
+            "FIGURE-001",
+            "ROUTE-001",
+            "main",
+            "Figure 1",
+            "Patient-level primary effect figure",
+            "",
+            "DATA-001",
+            "primary_analysis",
+            "CODEMAP-001",
+            "outputs/figure_001_source.tsv",
+            "One row per patient and prespecified contrast direction.",
+            "true",
+            "ready",
+            "Synthetic test fixture",
+        ],
+    )
+    append_tsv(
+        target / "registry" / "reviews.tsv",
+        [
+            "REVIEW-001",
+            "G2_SPIKE",
+            "ROUTE-001",
+            "completed",
+            "approve",
+            "fixture-reviewer",
+            "All execution gates pass in the synthetic fixture.",
+            "2026-08-02",
+        ],
+    )
 
-    def test_init_creates_valid_draft(self) -> None:
+
+class Paper2PaperCoreTests(unittest.TestCase):
+    def test_intake_workspaces_validate(self) -> None:
+        for project in (SPP1_PROJECT, NRRS_PROJECT):
+            report = validate_project(project)
+            self.assertTrue(report.ok, report.errors)
+
+    def test_init_creates_valid_intake_without_legacy_policy(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
-            target = Path(temp_dir) / "draft"
-            init_project(target, "PRJ-TEST", "Test project")
+            target = Path(temp_dir) / "project"
+            init_project(target, "P2P-TEST", "Test project")
             report = validate_project(target)
             self.assertTrue(report.ok, report.errors)
-            self.assertTrue(
-                (target / "registry" / "work_items.tsv").exists()
-            )
-            self.assertTrue(
-                (target / "registry" / "direction_changes.tsv").exists()
-            )
             manifest = json.loads(
                 (target / "PROJECT.json").read_text(encoding="utf-8")
             )
+            self.assertFalse(manifest["adaptation_policy"]["novelty_required"])
+            self.assertNotIn("quality_axes", manifest["publication_goal"])
             self.assertTrue(
-                manifest["project_brief"]["decision_policy"][
-                    "allow_multi_axis_change"
-                ]
+                (target / "registry" / "datasets.tsv").exists()
+            )
+            self.assertTrue(
+                (target / "registry" / "code_sources.tsv").exists()
+            )
+            self.assertTrue(
+                (target / "registry" / "figure_plan.tsv").exists()
             )
 
-    def test_publication_goal_is_required(self) -> None:
+    def test_legacy_policy_keys_are_rejected(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(SPP1_PROJECT, target)
+            init_project(target, "P2P-TEST", "Test project")
             manifest_path = target / "PROJECT.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            del manifest["publication_goal"]
+            manifest["publication_goal"]["quality_axes"] = ["novelty"]
             manifest_path.write_text(
-                json.dumps(manifest, indent=2) + "\n",
-                encoding="utf-8",
+                json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
             )
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any("publication_goal" in error for error in report.errors)
+                any("legacy PaperRoute policy keys" in e for e in report.errors)
             )
 
-    def test_project_brief_is_required(self) -> None:
+    def test_novelty_cannot_be_reintroduced_as_a_gate(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(SPP1_PROJECT, target)
+            init_project(target, "P2P-TEST", "Test project")
             manifest_path = target / "PROJECT.json"
             manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            del manifest["project_brief"]
+            manifest["adaptation_policy"]["novelty_required"] = True
             manifest_path.write_text(
-                json.dumps(manifest, indent=2) + "\n",
-                encoding="utf-8",
+                json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
             )
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any("project_brief" in error for error in report.errors)
+                any("novelty_required must be false" in e for e in report.errors)
             )
 
-    def test_candidate_cannot_change_a_project_disallowed_axis(self) -> None:
+    def test_marker_substitution_is_an_allowed_route(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(BMC_PROJECT, target)
-            manifest_path = target / "PROJECT.json"
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-            manifest["project_brief"]["allowed_change_axes"].remove(
-                "biological_object"
+            init_project(target, "P2P-TEST", "Test project")
+            update_manifest(
+                target,
+                project_status="route_review",
+                current_gate="G0_SCOPE",
+                anchor_paper_id="PAPER-001",
             )
-            manifest_path.write_text(
-                json.dumps(manifest, indent=2) + "\n",
-                encoding="utf-8",
+            append_tsv(
+                target / "registry" / "papers.tsv",
+                [
+                    "PAPER-001", "Anchor", "", "anchor", "accepted",
+                    "https://example.org/anchor", "Fixture",
+                ],
+            )
+            append_tsv(
+                target / "registry" / "routes.tsv",
+                [
+                    "ROUTE-001", "1", "", "manuscript_candidate",
+                    "marker_substitution", "proposed", "Replace marker",
+                    "Does marker B reproduce the anchor relation?", "cancer",
+                    "marker B cells", "patient outcome", "design;figures",
+                    "patient-level association", "null validation effect",
+                    "associational", "",
+                ],
+            )
+            append_tsv(
+                target / "registry" / "route_adaptations.tsv",
+                [
+                    "ADAPT-001", "ROUTE-001", "marker_gene", "substitute",
+                    "marker A", "marker B", "Biological rationale recorded.",
+                    "expression and patient outcome", "anchor workflow",
+                    "medium", "proposed",
+                ],
             )
             report = validate_project(target)
-            self.assertFalse(report.ok)
-            self.assertTrue(
-                any(
-                    "project-disallowed axis='biological_object'" in error
-                    for error in report.errors
-                )
-            )
+            self.assertTrue(report.ok, report.errors)
 
-    def test_work_item_requires_a_stop_condition(self) -> None:
+    def test_non_reproduction_route_requires_an_adaptation_map(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(SPP1_PROJECT, target)
-            registry_path = target / "registry" / "work_items.tsv"
-            with registry_path.open(
-                encoding="utf-8", newline=""
-            ) as handle:
-                reader = csv.DictReader(handle, delimiter="\t")
-                fieldnames = reader.fieldnames
-                rows = list(reader)
-            self.assertIsNotNone(fieldnames)
-            rows[0]["stop_condition"] = ""
-            with registry_path.open(
-                "w", encoding="utf-8", newline=""
-            ) as handle:
-                writer = csv.DictWriter(
-                    handle,
-                    fieldnames=fieldnames,
-                    delimiter="\t",
-                    lineterminator="\n",
-                )
-                writer.writeheader()
-                writer.writerows(rows)
-
+            init_project(target, "P2P-TEST", "Test project")
+            append_tsv(
+                target / "registry" / "routes.tsv",
+                [
+                    "ROUTE-001", "1", "", "manuscript_candidate",
+                    "cancer_type_substitution", "proposed", "Replace cancer",
+                    "Does the relation hold in cancer B?", "cancer B", "cell",
+                    "outcome", "design", "patient evidence", "null result",
+                    "associational", "",
+                ],
+            )
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any(
-                    "empty required value stop_condition" in error
-                    for error in report.errors
-                )
+                any("explicit adaptation" in e for e in report.errors)
             )
 
-    def test_non_umbrella_direction_requires_every_core_axis(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            target = Path(temp_dir) / "project"
-            shutil.copytree(SPP1_PROJECT, target)
-            registry_path = target / "registry" / "direction_changes.tsv"
-            fieldnames, rows = read_tsv_rows(registry_path)
-            rows = [
-                row
-                for row in rows
-                if not (
-                    row["direction_id"] == "DIR-002"
-                    and row["axis"] == "primary_outcome"
-                )
-            ]
-            write_tsv_rows(registry_path, fieldnames, rows)
-
-            report = validate_project(target)
-            self.assertFalse(report.ok)
-            self.assertTrue(
-                any(
-                    "DIR-002 lacks core change-map axes" in error
-                    and "primary_outcome" in error
-                    for error in report.errors
-                )
-            )
-
-    def test_repair_action_requires_a_linked_flaw(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            target = Path(temp_dir) / "project"
-            shutil.copytree(BMC_PROJECT, target)
-            registry_path = target / "registry" / "direction_changes.tsv"
-            fieldnames, rows = read_tsv_rows(registry_path)
-            target_row = next(
-                row
-                for row in rows
-                if row["change_id"] == "CHANGE-D002-02"
-            )
-            target_row["linked_flaw_ids"] = ""
-            write_tsv_rows(registry_path, fieldnames, rows)
-
-            report = validate_project(target)
-            self.assertFalse(report.ok)
-            self.assertTrue(
-                any(
-                    "CHANGE-D002-02 uses action=repair" in error
-                    for error in report.errors
-                )
-            )
-
-    def test_candidate_must_respond_to_every_fatal_anchor_flaw(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            target = Path(temp_dir) / "project"
-            shutil.copytree(BMC_PROJECT, target)
-            registry_path = target / "registry" / "direction_changes.tsv"
-            fieldnames, rows = read_tsv_rows(registry_path)
-            target_row = next(
-                row
-                for row in rows
-                if row["change_id"] == "CHANGE-D003-04"
-            )
-            target_row["linked_flaw_ids"] = "FLAW-006"
-            write_tsv_rows(registry_path, fieldnames, rows)
-
-            report = validate_project(target)
-            self.assertFalse(report.ok)
-            self.assertTrue(
-                any(
-                    "DIR-003 does not explicitly respond" in error
-                    and "FLAW-005" in error
-                    for error in report.errors
-                )
-            )
-
-    def test_multi_axis_adaptation_is_allowed(self) -> None:
-        fieldnames, rows = read_tsv_rows(
-            BMC_PROJECT / "registry" / "direction_changes.tsv"
-        )
-        self.assertIn("action", fieldnames)
-        changed_axes = {
-            row["axis"]
-            for row in rows
-            if row["direction_id"] == "DIR-003"
-            and row["action"] in {"replace", "extend", "drop"}
+    def test_priority_rules_are_transparent(self) -> None:
+        baseline = {
+            "scientific_validity": "pass",
+            "data_readiness": "verified",
+            "code_readiness": "qualified",
+            "figure_coverage": "complete",
+            "publication_overlap": "adjacent",
         }
-        self.assertGreaterEqual(len(changed_axes), 3)
-        report = validate_project(BMC_PROJECT)
-        self.assertTrue(report.ok, report.errors)
+        self.assertEqual(expected_execution_priority(baseline), "P0")
+        self.assertEqual(
+            expected_execution_priority({**baseline, "code_readiness": "adaptable"}),
+            "P1",
+        )
+        self.assertEqual(
+            expected_execution_priority(
+                {
+                    **baseline,
+                    "data_readiness": "partial",
+                    "code_readiness": "rebuild_required",
+                }
+            ),
+            "P2",
+        )
+        self.assertEqual(
+            expected_execution_priority(
+                {**baseline, "publication_overlap": "duplicate"}
+            ),
+            "P3",
+        )
 
-    def test_challenged_direction_cannot_remain_primary(self) -> None:
+    def test_fully_qualified_route_can_be_approved(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(BMC_PROJECT, target)
-            registry_path = (
-                target / "registry" / "direction_assessments.tsv"
-            )
-            fieldnames, rows = read_tsv_rows(registry_path)
-            target_row = next(
-                row
-                for row in rows
-                if row["direction_id"] == "DIR-002"
-            )
-            target_row["recommendation"] = "primary"
-            write_tsv_rows(registry_path, fieldnames, rows)
+            make_approved_project(target)
+            report = validate_project(target)
+            self.assertTrue(report.ok, report.errors)
 
+    def test_approved_route_requires_sample_verified_data(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            target = Path(temp_dir) / "project"
+            make_approved_project(target)
+            path = target / "registry" / "datasets.tsv"
+            fields, rows = read_tsv_rows(path)
+            rows[0]["download_status"] = "metadata_verified"
+            write_tsv_rows(path, fields, rows)
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any(
-                    "challenged direction DIR-002 cannot remain" in error
-                    for error in report.errors
-                )
+                any("verified sample or download" in e for e in report.errors)
             )
 
-    def test_approved_manuscript_direction_must_pass_assessment(self) -> None:
+    def test_approved_route_requires_grade_a_or_b_code(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(BMC_PROJECT, target)
-            directions_path = target / "registry" / "directions.tsv"
-            fieldnames, rows = read_tsv_rows(directions_path)
-            target_row = next(
-                row for row in rows if row["direction_id"] == "DIR-004"
-            )
-            target_row["status"] = "approved"
-            write_tsv_rows(directions_path, fieldnames, rows)
-
+            make_approved_project(target)
+            path = target / "registry" / "code_sources.tsv"
+            fields, rows = read_tsv_rows(path)
+            rows[0]["qualification_grade"] = "C"
+            write_tsv_rows(path, fields, rows)
             report = validate_project(target)
             self.assertFalse(report.ok)
             self.assertTrue(
-                any(
-                    "approved manuscript direction DIR-004 does not pass"
-                    in error
-                    for error in report.errors
-                )
+                any("uses unqualified code" in e for e in report.errors)
             )
 
-    def test_directional_result_requires_change_request(self) -> None:
+    def test_grade_a_code_has_strict_engineering_requirements(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             target = Path(temp_dir) / "project"
-            shutil.copytree(SPP1_PROJECT, target)
+            make_approved_project(target)
+            path = target / "registry" / "code_sources.tsv"
+            fields, rows = read_tsv_rows(path)
+            rows[0]["hardcoded_paths"] = "true"
+            write_tsv_rows(path, fields, rows)
+            report = validate_project(target)
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("grade A cannot contain hardcoded paths" in e for e in report.errors)
+            )
 
+    def test_adjacent_publication_overlap_is_allowed(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            target = Path(temp_dir) / "project"
+            make_approved_project(target)
+            assessment_path = target / "registry" / "route_assessments.tsv"
+            fields, rows = read_tsv_rows(assessment_path)
+            rows[0]["publication_overlap"] = "adjacent"
+            write_tsv_rows(assessment_path, fields, rows)
+            overlap_path = target / "registry" / "publication_overlap.tsv"
+            fields, rows = read_tsv_rows(overlap_path)
+            rows[0]["overlap_level"] = "adjacent"
+            rows[0]["decision"] = "proceed_with_distinction"
+            write_tsv_rows(overlap_path, fields, rows)
+            report = validate_project(target)
+            self.assertTrue(report.ok, report.errors)
+
+    def test_substantive_duplicate_is_a_hard_stop(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            target = Path(temp_dir) / "project"
+            make_approved_project(target)
+            assessment_path = target / "registry" / "route_assessments.tsv"
+            fields, rows = read_tsv_rows(assessment_path)
+            rows[0]["publication_overlap"] = "duplicate"
+            rows[0]["execution_priority"] = "P3"
+            write_tsv_rows(assessment_path, fields, rows)
+            overlap_path = target / "registry" / "publication_overlap.tsv"
+            fields, rows = read_tsv_rows(overlap_path)
+            rows[0]["overlap_level"] = "duplicate"
+            rows[0]["decision"] = "stop"
+            write_tsv_rows(overlap_path, fields, rows)
+            report = validate_project(target)
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("publication duplicate" in e for e in report.errors)
+            )
+
+    def test_route_effect_requires_change_request(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            target = Path(temp_dir) / "project"
+            make_approved_project(target)
+            append_tsv(
+                target / "registry" / "claims.tsv",
+                [
+                    "CLAIM-001", "ROUTE-001", "approved", "Fixture claim",
+                    "patient", "patient-level estimate", "associational", "current",
+                ],
+            )
+            append_tsv(
+                target / "registry" / "work_items.tsv",
+                [
+                    "WORK-001", "Test analysis", "completed", "manuscript_claim",
+                    "CLAIM-001", "Figure 1 result", "Verified source table",
+                    "Stop after the prespecified test", "high", "Fixture",
+                ],
+            )
+            append_tsv(
+                target / "registry" / "modules.tsv",
+                [
+                    "MODULE-001", "WORK-001", "ROUTE-001", "CLAIM-001",
+                    "verified", "Primary module", "DATA-001 patient table",
+                    "patient", "", "CODEMAP-001", "current",
+                ],
+            )
             append_tsv(
                 target / "registry" / "runs.tsv",
                 [
-                    "RUN-TEST-001",
-                    "completed",
-                    "test-commit",
-                    "config-hash",
-                    "manifest-hash",
-                    "RESOURCE-ENV-001",
-                    "2026-01-01T00:00:00Z",
-                    "2026-01-01T00:01:00Z",
-                    "Synthetic test run",
+                    "RUN-001", "completed", "abc123", "config", "data",
+                    "", "2026-08-02T00:00:00Z", "2026-08-02T00:01:00Z", "Fixture",
                 ],
             )
             append_tsv(
                 target / "registry" / "results.tsv",
                 [
-                    "RESULT-TEST-001",
-                    "RUN-TEST-001",
-                    "MODULE-001",
-                    "CLAIM-001",
-                    "provisional",
-                    "current",
-                    "reroute",
-                    "associational",
-                    "Synthetic result used only to test feedback validation.",
-                    "The synthetic result would require revising the "
-                    "manuscript direction.",
-                    "outputs/test.tsv",
-                    "2026-01-01T00:01:00Z",
+                    "RESULT-001", "RUN-001", "MODULE-001", "CLAIM-001",
+                    "verified", "current", "refine", "associational",
+                    "Sensitivity result requires a bounded update.",
+                    "Revise the limitation and sensitivity figure.",
+                    "outputs/result.tsv", "2026-08-02T00:01:00Z",
                 ],
             )
-
-            missing_change = validate_project(target)
-            self.assertFalse(missing_change.ok)
+            missing = validate_project(target)
+            self.assertFalse(missing.ok)
             self.assertTrue(
-                any(
-                    "no change request" in error
-                    for error in missing_change.errors
-                )
+                any("no change request" in e for e in missing.errors)
             )
-
             append_tsv(
                 target / "registry" / "change_requests.tsv",
                 [
-                    "CHANGE-TEST-001",
-                    "WORK-001",
-                    "RESULT-TEST-001",
-                    "direction",
-                    "high",
-                    "DIR-001",
-                    "Reopen direction audit after the synthetic result.",
-                    "proposed",
-                    "G0_DIRECTION",
-                    "",
-                    "2026-01-01T00:02:00Z",
+                    "CHANGE-001", "WORK-001", "RESULT-001", "claim", "medium",
+                    "CLAIM-001", "Add the prespecified sensitivity limitation.",
+                    "proposed", "G5_AUDIT", "", "2026-08-02T00:02:00Z",
                 ],
             )
-            linked_change = validate_project(target)
-            self.assertTrue(linked_change.ok, linked_change.errors)
+            linked = validate_project(target)
+            self.assertTrue(linked.ok, linked.errors)
+
+    def test_downstream_impact_is_retained(self) -> None:
+        impacted = downstream_impact(SPP1_PROJECT, "PAPER-SPP1-001")
+        self.assertEqual([item["entity_id"] for item in impacted], ["WORK-SPP1-001"])
+
+    def test_active_schema_has_no_legacy_direction_registries(self) -> None:
+        registries = load_contract()["registries"]
+        self.assertNotIn("directions", registries)
+        self.assertNotIn("direction_assessments", registries)
+        self.assertNotIn("novelty", json.dumps(registries))
 
 
 if __name__ == "__main__":

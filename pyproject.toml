@@ -3,13 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "paperroute-workflow"
-version = "0.2.0a1"
-description = "Direction-first, auditable workflow from anchor papers to executable studies"
+name = "paper2paper-workflow"
+version = "0.3.0a1"
+description = "Execution-first workflow for reproducible paper adaptation"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
-  { name = "PaperRoute contributors" }
+  { name = "Paper2Paper contributors" }
 ]
 classifiers = [
   "Development Status :: 3 - Alpha",
@@ -19,7 +19,7 @@ classifiers = [
 ]
 
 [project.scripts]
-paperroute = "paperroute.cli:main"
+paper2paper = "paper2paper.cli:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -28,4 +28,4 @@ package-dir = {"" = "src"}
 where = ["src"]
 
 [tool.setuptools.package-data]
-paperroute = ["data/*.json"]
+paper2paper = ["data/*.json"]

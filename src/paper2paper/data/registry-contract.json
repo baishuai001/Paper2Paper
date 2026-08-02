@@ -1,0 +1,516 @@
+{
+  "schema_version": "0.3.0",
+  "route_modes": [
+    "faithful_reproduction",
+    "marker_substitution",
+    "gene_set_substitution",
+    "cell_type_substitution",
+    "cancer_type_substitution",
+    "pan_cancer_extension",
+    "signature_construction",
+    "combined_substitution",
+    "custom"
+  ],
+  "adaptation_axes": [
+    "marker_gene",
+    "gene_set",
+    "cell_type",
+    "cancer_type",
+    "scope",
+    "central_relation",
+    "primary_outcome",
+    "evidence_order",
+    "dataset",
+    "method",
+    "code",
+    "claim_level",
+    "other"
+  ],
+  "project_statuses": [
+    "intake",
+    "route_review",
+    "spike",
+    "active",
+    "paused",
+    "blocked",
+    "completed",
+    "archived"
+  ],
+  "gates": [
+    "G0_SCOPE",
+    "G1_TRIAGE",
+    "G2_SPIKE",
+    "G3_SPECIFICATION",
+    "G4_EXECUTION",
+    "G5_AUDIT",
+    "G6_RELEASE"
+  ],
+  "work_reasons": [
+    "manuscript_claim",
+    "manuscript_figure",
+    "data_qualification",
+    "code_qualification",
+    "publication_overlap",
+    "correctness_risk",
+    "reproducibility_requirement",
+    "review_requirement"
+  ],
+  "registries": {
+    "papers": {
+      "file": "papers.tsv",
+      "id_field": "paper_id",
+      "required_columns": [
+        "paper_id", "title", "doi", "role", "status", "source_uri", "notes"
+      ],
+      "nonempty_fields": ["title", "role", "status"],
+      "enums": {
+        "role": ["anchor", "supporting", "method", "data", "code", "overlap", "other"],
+        "status": ["candidate", "accepted", "rejected", "unavailable"]
+      },
+      "references": []
+    },
+    "routes": {
+      "file": "routes.tsv",
+      "id_field": "route_id",
+      "required_columns": [
+        "route_id", "version", "parent_route_id", "route_kind", "route_mode",
+        "status", "title", "plain_language_question", "target_disease",
+        "target_object", "primary_outcome", "anchor_modules_reused",
+        "required_evidence", "falsifier", "claim_ceiling", "approved_review_id"
+      ],
+      "nonempty_fields": [
+        "version", "route_kind", "route_mode", "status", "title",
+        "plain_language_question", "target_disease", "target_object",
+        "primary_outcome", "anchor_modules_reused", "required_evidence",
+        "falsifier", "claim_ceiling"
+      ],
+      "enums": {
+        "route_kind": ["manuscript_candidate", "training_only"],
+        "route_mode": [
+          "faithful_reproduction", "marker_substitution", "gene_set_substitution",
+          "cell_type_substitution", "cancer_type_substitution",
+          "pan_cancer_extension", "signature_construction",
+          "combined_substitution", "custom"
+        ],
+        "status": [
+          "proposed", "triaged", "spike_passed", "approved", "active",
+          "blocked", "superseded", "rejected"
+        ]
+      },
+      "references": [
+        {"field": "parent_route_id", "target": "routes", "optional": true},
+        {"field": "approved_review_id", "target": "reviews", "optional": true}
+      ]
+    },
+    "route_adaptations": {
+      "file": "route_adaptations.tsv",
+      "id_field": "adaptation_id",
+      "required_columns": [
+        "adaptation_id", "route_id", "axis", "action", "anchor_value",
+        "target_value", "rationale", "evidence_needed", "donor_plan", "risk", "status"
+      ],
+      "nonempty_fields": [
+        "route_id", "axis", "action", "anchor_value", "target_value",
+        "rationale", "evidence_needed", "donor_plan", "risk", "status"
+      ],
+      "enums": {
+        "axis": [
+          "marker_gene", "gene_set", "cell_type", "cancer_type", "scope",
+          "central_relation", "primary_outcome", "evidence_order", "dataset",
+          "method", "code", "claim_level", "other"
+        ],
+        "action": ["retain", "repair", "substitute", "extend", "drop"],
+        "risk": ["low", "medium", "high", "critical", "unknown"],
+        "status": ["proposed", "accepted", "rejected", "superseded"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false}
+      ]
+    },
+    "route_assessments": {
+      "file": "route_assessments.tsv",
+      "id_field": "assessment_id",
+      "required_columns": [
+        "assessment_id", "route_id", "scientific_validity",
+        "scientific_validity_basis", "data_readiness", "data_readiness_basis",
+        "code_readiness", "code_readiness_basis", "figure_coverage",
+        "figure_coverage_basis", "implementation_burden", "beginner_burden",
+        "anchor_reuse", "publication_overlap", "publication_overlap_basis",
+        "execution_priority", "key_tradeoff", "fatal_blocker",
+        "recommendation", "status"
+      ],
+      "nonempty_fields": [
+        "route_id", "scientific_validity", "scientific_validity_basis",
+        "data_readiness", "data_readiness_basis", "code_readiness",
+        "code_readiness_basis", "figure_coverage", "figure_coverage_basis",
+        "implementation_burden", "beginner_burden", "anchor_reuse",
+        "publication_overlap", "publication_overlap_basis", "execution_priority",
+        "key_tradeoff", "fatal_blocker", "recommendation", "status"
+      ],
+      "enums": {
+        "scientific_validity": ["pass", "conditional", "fail", "unknown"],
+        "data_readiness": ["verified", "partial", "unverified", "blocked"],
+        "code_readiness": ["qualified", "adaptable", "rebuild_required", "unusable", "unknown"],
+        "figure_coverage": ["complete", "partial", "not_mapped", "blocked"],
+        "implementation_burden": ["low", "medium", "high", "very_high", "unknown"],
+        "beginner_burden": ["low", "medium", "high", "very_high", "unknown"],
+        "anchor_reuse": ["low", "medium", "high", "very_high", "unknown"],
+        "publication_overlap": ["clear", "adjacent", "high_overlap_distinguishable", "duplicate", "unknown"],
+        "execution_priority": ["P0", "P1", "P2", "P3"],
+        "recommendation": ["primary", "backup", "conditional", "training_only", "reject", "reassess"],
+        "status": ["draft", "review_ready", "approved", "challenged"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false}
+      ]
+    },
+    "datasets": {
+      "file": "datasets.tsv",
+      "id_field": "dataset_id",
+      "required_columns": [
+        "dataset_id", "name", "accession", "uri", "platform", "disease",
+        "cohort_size", "biological_unit", "data_level", "required_metadata",
+        "access", "download_status", "checksum", "file_size", "overlap_group",
+        "role", "status", "last_verified", "notes"
+      ],
+      "nonempty_fields": [
+        "name", "uri", "platform", "disease", "biological_unit", "data_level",
+        "required_metadata", "access", "download_status", "role", "status",
+        "last_verified"
+      ],
+      "enums": {
+        "access": ["public", "controlled", "request_only", "not_public", "local", "unknown"],
+        "download_status": ["not_checked", "metadata_verified", "sample_verified", "downloaded", "checksum_verified", "blocked"],
+        "role": ["discovery", "validation", "spatial_validation", "training", "reference", "other"],
+        "status": ["candidate", "accepted", "rejected", "blocked"]
+      },
+      "references": []
+    },
+    "dataset_route_map": {
+      "file": "dataset_route_map.tsv",
+      "id_field": "dataset_map_id",
+      "required_columns": [
+        "dataset_map_id", "route_id", "dataset_id", "purpose", "required",
+        "required_fields", "availability_verdict", "independence_status", "notes"
+      ],
+      "nonempty_fields": [
+        "route_id", "dataset_id", "purpose", "required", "required_fields",
+        "availability_verdict", "independence_status"
+      ],
+      "enums": {
+        "required": ["true", "false"],
+        "availability_verdict": ["verified", "partial", "unverified", "blocked"],
+        "independence_status": ["independent", "overlap", "unknown", "not_applicable"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false},
+        {"field": "dataset_id", "target": "datasets", "optional": false}
+      ]
+    },
+    "code_sources": {
+      "file": "code_sources.tsv",
+      "id_field": "code_id",
+      "required_columns": [
+        "code_id", "name", "uri", "source_type", "version_ref", "license",
+        "language", "environment", "entrypoint", "noninteractive", "test_status",
+        "hardcoded_paths", "private_dependencies", "install_status", "smoke_test",
+        "qualification_grade", "status", "last_verified", "notes"
+      ],
+      "nonempty_fields": [
+        "name", "uri", "source_type", "language", "noninteractive",
+        "test_status", "hardcoded_paths", "private_dependencies",
+        "install_status", "smoke_test", "qualification_grade", "status",
+        "last_verified"
+      ],
+      "enums": {
+        "source_type": ["author", "method_official", "paper_donor", "reconstructed", "other"],
+        "noninteractive": ["true", "false", "unknown"],
+        "test_status": ["not_checked", "none", "smoke_pass", "full_pass", "failed"],
+        "hardcoded_paths": ["true", "false", "unknown"],
+        "private_dependencies": ["true", "false", "unknown"],
+        "install_status": ["not_checked", "passed", "failed", "blocked"],
+        "smoke_test": ["not_run", "passed", "failed", "blocked"],
+        "qualification_grade": ["A", "B", "C", "D", "U"],
+        "status": ["candidate", "accepted", "rejected", "blocked"]
+      },
+      "references": []
+    },
+    "code_module_map": {
+      "file": "code_module_map.tsv",
+      "id_field": "code_map_id",
+      "required_columns": [
+        "code_map_id", "route_id", "module_key", "code_id", "source_path",
+        "adaptation_needed", "required", "required_tests", "status", "notes"
+      ],
+      "nonempty_fields": [
+        "route_id", "module_key", "code_id", "adaptation_needed", "required",
+        "required_tests", "status"
+      ],
+      "enums": {
+        "adaptation_needed": ["none", "minor", "moderate", "major", "rebuild"],
+        "required": ["true", "false"],
+        "status": ["planned", "mapped", "verified", "rejected", "blocked"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false},
+        {"field": "code_id", "target": "code_sources", "optional": false}
+      ]
+    },
+    "publication_overlap": {
+      "file": "publication_overlap.tsv",
+      "id_field": "overlap_id",
+      "required_columns": [
+        "overlap_id", "route_id", "paper_id", "citation", "source_uri",
+        "search_query", "checked_at", "overlap_level", "disease_overlap",
+        "object_overlap", "outcome_overlap", "dataset_overlap", "analysis_overlap",
+        "figure_story_overlap", "central_claim_overlap", "distinguishability",
+        "decision", "notes"
+      ],
+      "nonempty_fields": [
+        "route_id", "citation", "source_uri", "search_query", "checked_at",
+        "overlap_level", "disease_overlap", "object_overlap", "outcome_overlap",
+        "dataset_overlap", "analysis_overlap", "figure_story_overlap",
+        "central_claim_overlap", "distinguishability", "decision"
+      ],
+      "enums": {
+        "overlap_level": ["clear", "adjacent", "high_overlap_distinguishable", "duplicate"],
+        "disease_overlap": ["none", "partial", "same", "unknown"],
+        "object_overlap": ["none", "partial", "same", "unknown"],
+        "outcome_overlap": ["none", "partial", "same", "unknown"],
+        "dataset_overlap": ["none", "partial", "same", "unknown"],
+        "analysis_overlap": ["none", "partial", "same", "unknown"],
+        "figure_story_overlap": ["none", "partial", "same", "unknown"],
+        "central_claim_overlap": ["none", "partial", "same", "unknown"],
+        "decision": ["proceed", "proceed_with_distinction", "stop"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false},
+        {"field": "paper_id", "target": "papers", "optional": true}
+      ]
+    },
+    "figure_plan": {
+      "file": "figure_plan.tsv",
+      "id_field": "figure_id",
+      "required_columns": [
+        "figure_id", "route_id", "manuscript_role", "anchor_figure",
+        "target_output", "claim_id", "dataset_ids", "analysis_module",
+        "code_map_ids", "source_table", "acceptance_test", "required", "status", "notes"
+      ],
+      "nonempty_fields": [
+        "route_id", "manuscript_role", "target_output", "dataset_ids",
+        "analysis_module", "code_map_ids", "source_table", "acceptance_test",
+        "required", "status"
+      ],
+      "enums": {
+        "manuscript_role": ["main", "supplement", "table", "methods", "other"],
+        "required": ["true", "false"],
+        "status": ["idea", "mapped", "ready", "generated", "verified", "blocked", "dropped"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false},
+        {"field": "claim_id", "target": "claims", "optional": true},
+        {"field": "dataset_ids", "target": "datasets", "optional": false, "multi": true},
+        {"field": "code_map_ids", "target": "code_module_map", "optional": false, "multi": true}
+      ]
+    },
+    "claims": {
+      "file": "claims.tsv",
+      "id_field": "claim_id",
+      "required_columns": [
+        "claim_id", "route_id", "status", "claim_text", "biological_unit",
+        "required_evidence", "claim_ceiling", "validity"
+      ],
+      "nonempty_fields": [
+        "route_id", "status", "claim_text", "biological_unit",
+        "required_evidence", "claim_ceiling", "validity"
+      ],
+      "enums": {
+        "status": ["proposed", "approved", "tested", "supported", "contradicted", "inconclusive", "retired"],
+        "validity": ["current", "stale", "invalidated"]
+      },
+      "references": [
+        {"field": "route_id", "target": "routes", "optional": false}
+      ]
+    },
+    "resources": {
+      "file": "resources.tsv",
+      "id_field": "resource_id",
+      "required_columns": [
+        "resource_id", "resource_type", "name", "uri", "availability", "role", "status", "notes"
+      ],
+      "nonempty_fields": ["resource_type", "name", "availability", "role", "status"],
+      "enums": {
+        "resource_type": ["document", "method", "environment", "other"],
+        "availability": ["public", "controlled", "request_only", "not_public", "local", "unknown"],
+        "status": ["candidate", "accepted", "rejected", "blocked"]
+      },
+      "references": []
+    },
+    "work_items": {
+      "file": "work_items.tsv",
+      "id_field": "work_id",
+      "required_columns": [
+        "work_id", "title", "status", "reason", "linked_ids",
+        "expected_manuscript_output", "minimum_deliverable", "stop_condition",
+        "priority", "notes"
+      ],
+      "nonempty_fields": [
+        "title", "status", "reason", "linked_ids", "expected_manuscript_output",
+        "minimum_deliverable", "stop_condition", "priority"
+      ],
+      "enums": {
+        "status": ["proposed", "approved", "in_progress", "blocked", "completed", "cancelled"],
+        "reason": [
+          "manuscript_claim", "manuscript_figure", "data_qualification",
+          "code_qualification", "publication_overlap", "correctness_risk",
+          "reproducibility_requirement", "review_requirement"
+        ],
+        "priority": ["low", "medium", "high", "critical"]
+      },
+      "references": [
+        {"field": "linked_ids", "target": "*", "optional": false, "multi": true}
+      ]
+    },
+    "modules": {
+      "file": "modules.tsv",
+      "id_field": "module_id",
+      "required_columns": [
+        "module_id", "work_id", "route_id", "claim_id", "status", "title",
+        "input_contract", "biological_unit", "method_resource_id", "code_map_id", "validity"
+      ],
+      "nonempty_fields": [
+        "work_id", "route_id", "claim_id", "status", "title",
+        "input_contract", "biological_unit", "validity"
+      ],
+      "enums": {
+        "status": ["planned", "approved", "implemented", "verified", "retired"],
+        "validity": ["current", "stale", "invalidated"]
+      },
+      "references": [
+        {"field": "work_id", "target": "work_items", "optional": false},
+        {"field": "route_id", "target": "routes", "optional": false},
+        {"field": "claim_id", "target": "claims", "optional": false},
+        {"field": "method_resource_id", "target": "resources", "optional": true},
+        {"field": "code_map_id", "target": "code_module_map", "optional": true}
+      ]
+    },
+    "decisions": {
+      "file": "decisions.tsv",
+      "id_field": "decision_id",
+      "required_columns": [
+        "decision_id", "work_id", "decision_type", "target_id", "status",
+        "proposal", "evidence", "alternatives", "risk", "impact",
+        "requires_review", "approved_review_id"
+      ],
+      "nonempty_fields": [
+        "work_id", "decision_type", "target_id", "status", "proposal",
+        "evidence", "alternatives", "risk", "impact", "requires_review"
+      ],
+      "enums": {
+        "decision_type": ["route", "claim", "dataset", "method", "code", "parameter", "exclusion", "interpretation", "other"],
+        "status": ["proposed", "approved", "rejected", "superseded"],
+        "risk": ["low", "medium", "high", "critical"],
+        "requires_review": ["true", "false"]
+      },
+      "references": [
+        {"field": "work_id", "target": "work_items", "optional": false},
+        {"field": "target_id", "target": "*", "optional": false},
+        {"field": "approved_review_id", "target": "reviews", "optional": true}
+      ]
+    },
+    "reviews": {
+      "file": "reviews.tsv",
+      "id_field": "review_id",
+      "required_columns": [
+        "review_id", "gate_id", "target_id", "status", "outcome", "reviewer", "rationale", "reviewed_at"
+      ],
+      "nonempty_fields": ["gate_id", "target_id", "status"],
+      "enums": {
+        "gate_id": "@gates",
+        "status": ["pending", "completed", "superseded"],
+        "outcome": ["", "approve", "reject", "request_changes", "reopen"]
+      },
+      "references": [
+        {"field": "target_id", "target": "*", "optional": false}
+      ]
+    },
+    "runs": {
+      "file": "runs.tsv",
+      "id_field": "run_id",
+      "required_columns": [
+        "run_id", "status", "commit_sha", "config_hash", "data_manifest_hash",
+        "environment_id", "started_at", "finished_at", "notes"
+      ],
+      "nonempty_fields": ["status"],
+      "enums": {
+        "status": ["planned", "running", "completed", "failed", "invalidated"]
+      },
+      "references": [
+        {"field": "environment_id", "target": "resources", "optional": true}
+      ]
+    },
+    "results": {
+      "file": "results.tsv",
+      "id_field": "result_id",
+      "required_columns": [
+        "result_id", "run_id", "module_id", "claim_id", "status", "validity",
+        "route_effect", "evidence_level", "summary", "manuscript_implication",
+        "artifact_uri", "created_at"
+      ],
+      "nonempty_fields": [
+        "run_id", "module_id", "claim_id", "status", "validity",
+        "route_effect", "evidence_level", "summary", "manuscript_implication"
+      ],
+      "enums": {
+        "status": ["provisional", "verified", "accepted", "rejected"],
+        "validity": ["current", "stale", "invalidated"],
+        "route_effect": ["none", "continue", "refine", "reroute", "stop"],
+        "evidence_level": ["descriptive", "associational", "predictive", "mechanistic", "causal", "unknown"]
+      },
+      "references": [
+        {"field": "run_id", "target": "runs", "optional": false},
+        {"field": "module_id", "target": "modules", "optional": false},
+        {"field": "claim_id", "target": "claims", "optional": false}
+      ]
+    },
+    "change_requests": {
+      "file": "change_requests.tsv",
+      "id_field": "change_id",
+      "required_columns": [
+        "change_id", "work_id", "source_result_id", "change_type", "severity",
+        "affected_ids", "proposal", "status", "reopen_gate",
+        "approved_review_id", "created_at"
+      ],
+      "nonempty_fields": [
+        "work_id", "change_type", "severity", "affected_ids", "proposal",
+        "status", "reopen_gate"
+      ],
+      "enums": {
+        "change_type": ["parameter", "dataset", "method", "claim", "route", "scope", "other"],
+        "severity": ["low", "medium", "high", "critical"],
+        "status": ["proposed", "approved", "rejected", "implemented", "closed"],
+        "reopen_gate": "@gates"
+      },
+      "references": [
+        {"field": "work_id", "target": "work_items", "optional": false},
+        {"field": "source_result_id", "target": "results", "optional": true},
+        {"field": "affected_ids", "target": "*", "optional": false, "multi": true},
+        {"field": "approved_review_id", "target": "reviews", "optional": true}
+      ]
+    },
+    "dependencies": {
+      "file": "dependencies.tsv",
+      "id_field": "",
+      "required_columns": ["upstream_id", "downstream_id", "relation", "active", "notes"],
+      "nonempty_fields": ["upstream_id", "downstream_id", "relation", "active"],
+      "enums": {
+        "relation": ["anchors", "governs", "requires", "uses", "tests", "produces", "supports", "challenges", "derived_from"],
+        "active": ["true", "false"]
+      },
+      "references": [
+        {"field": "upstream_id", "target": "*", "optional": false},
+        {"field": "downstream_id", "target": "*", "optional": false}
+      ]
+    }
+  }
+}

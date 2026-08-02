@@ -30,8 +30,8 @@ private_data/
 
 # Large sequencing and analysis artifacts
 data/
-!src/paperroute/data/
-!src/paperroute/data/*.json
+!src/paper2paper/data/
+!src/paper2paper/data/*.json
 cache/
 *.fastq
 *.fastq.gz
