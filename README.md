@@ -1,86 +1,122 @@
 # Paper2Paper
 
-Paper2Paper 是一个面向初学者的、以执行为优先的文献模仿 workflow。它从一篇
-锚点论文出发，允许优先考虑保留论文模板的改写，并把路线落实为可获取的数据、
-可审查的代码、可生成的图表和最终稿件。
+Paper2Paper 是一个面向初学者的论文模仿 workflow。它从一篇锚点论文出发，帮助用户完成：
 
-项目的终点是论文，不是无限扩建 workflow。具有明确科学问题且不构成实质性重复发表
-时，以下路线均可接受：
+1. 拆解锚点论文；
+2. 生成可比较的改写路线；
+3. 系统寻找并验证数据；
+4. 系统寻找、组合或重建代码；
+5. 用最小真实数据完成执行试验；
+6. 选择一条可完成的论文路线；
+7. 冻结分析设计并生成结果；
+8. 根据结果调整主张；
+9. 形成论文稿件和可复现包。
 
-- 原样复现，用于学习、核验或建立可靠基线；
-- 替换 marker、单个基因或基因集；
+终点是论文，不是方向推荐报告，也不是无限扩建 workflow。
+
+## 可以怎样模仿
+
+以下改写都可以进入候选组合：
+
+- 原样复现；
+- 替换 marker 或单个基因；
+- 替换基因集；
 - 替换核心细胞类型；
 - 替换癌种；
 - 扩展为泛癌；
 - 构建转录组 signature；
-- 组合上述替换；
-- 在保持稿件主线的前提下修复锚点论文的科学或计算问题。
+- 组合多个明确替换；
+- 保留锚点论文的科学和图件结构，采用其他论文或官方方法的可靠代码；
+- 修复锚点论文中的数据、统计或计算问题。
 
-Paper2Paper 不要求候选路线通过“创新性”门槛，也不按创新程度排序。发表重合检查是
-另一个问题：`adjacent` 和 `high_overlap_distinguishable` 可以继续，只有
-`duplicate` 必须停止。
+Paper2Paper 不按“改动有多大”排序，也不要求候选路线通过创新性门槛。简单替换可以接受；
+科学设计失效、数据不可得、代码无法可靠运行或与已发表论文实质重复则不能继续。
 
-## 执行优先原则
+## 新核心：执行和审查各占一半
 
-候选路线先看能否做成，再看是否值得投入。固定优先顺序为：
+Paper2Paper 不只保存结论。每条路线必须留下可检查的执行证据：
 
-1. 代码是否达到可复用资格；
-2. 数据及关键 metadata 是否已经验证可取得；
-3. 是否能覆盖最低充分的正文图和稿件证据链；
-4. 研究设计是否科学有效；
-5. 能否复用锚点论文的结构与模块；
-6. 初学者负担与完成时间；
-7. 是否存在实质性重复发表。
+- 数据需求、检索式、候选数据、代表性文件解析和队列独立性；
+- 代码模块需求、donor检索、版本、许可、入口、安装和smoke test；
+- Figure与数据需求、代码模块、source table和验收测试的映射；
+- 最近发表检索和可区分点；
+- 用户的路线选择和高影响变更决定；
+- 运行命令、环境、数据manifest、结果和稿件影响。
 
-路线使用透明分级而非不透明总分：
+结构化记录用于让用户审查AI的工作，不用于代替实际下载、运行和科学判断。
 
-- `P0`：科学设计合格，数据已验证，代码已达标，图件映射完整，且非重复发表；
-- `P1`：数据已验证，代码 donor 可小幅适配，仍需完成一次执行 spike；
-- `P2`：数据基本可用，但关键代码需要重建；
-- `P3`：关键数据、代码、科学设计、图件闭环或发表重合尚未过关。
+## 工作阶段
 
-只有 `P0` 路线能够被批准为活动稿件路线。
+```text
+anchor_audit
+  -> route_generation
+  -> verification
+  -> selection
+  -> specification
+  -> execution
+  -> interpretation
+  -> writing
+  -> complete
+```
+
+阶段含义见 [完整 workflow](docs/workflow.md)。
 
 ## Quick start
 
-Requires Python 3.10 or later and has no runtime dependencies outside the
-standard library.
+需要 Python 3.10 或更高版本，无第三方运行依赖。
 
 ```bash
 python -m pip install -e .
 
-paper2paper validate workspaces/spp1-tam-jitc
-paper2paper status workspaces/spp1-tam-jitc
-paper2paper priorities workspaces/spp1-tam-jitc
+paper2paper init ../my-project \
+  --project-id P2P-MY-PROJECT \
+  --title "My paper project" \
+  --anchor-title "Anchor paper title" \
+  --doi "10.xxxx/xxxxx"
+
+paper2paper validate ../my-project
+paper2paper status ../my-project
+paper2paper next ../my-project
+paper2paper report ../my-project
 ```
 
-Create a new intake workspace:
-
-```bash
-paper2paper init ../my-paper-project \
-  --project-id P2P-MY-PAPER \
-  --title "My paper adaptation"
-```
+`next` 根据当前事实列出下一步，而不是生成脱离数据和代码证据的方向结论。
 
 ## 仓库结构
 
-- `src/paper2paper/`：schema、验证、状态和依赖影响工具；
-- `docs/`：路线选择、数据、代码、发表重合、图件规划和反馈规则；
-- `tests/`：产品纪律和通用工程能力的回归测试；
-- `workspaces/`：彼此隔离的论文实例；
-- `templates/`：常见模仿路线的最小模板。
+- `docs/`：从锚点审计到稿件交付的操作手册；
+- `src/paper2paper/`：workspace初始化、校验、路线缺口和下一步工具；
+- `tests/`：关键科学与执行纪律的回归测试；
+- `pilots/`：彼此隔离的真实锚点论文测试实例。
 
-机器可读的事实和决定是来源真相：`PROJECT.json`、`registry/*.tsv`、运行清单和
-source table。Markdown 报告只是它们的可读视图。只存在于聊天中的决定不算项目决定。
+每个论文workspace由少量文件组成：
 
-## 数据与凭据边界
+```text
+PROJECT.json
+anchor/audit.md
+evidence/routes.tsv
+evidence/search_log.tsv
+evidence/data_requirements.tsv
+evidence/data_candidates.tsv
+evidence/code_requirements.tsv
+evidence/code_candidates.tsv
+evidence/figures.tsv
+evidence/literature.tsv
+evidence/decisions.tsv
+execution/runs.tsv
+execution/results.tsv
+analysis/specification.md
+manuscript/draft.md
+reports/readiness.md
+```
 
-仓库可以保存 schema、代码、配置、较小的 source table、校验和、数据 manifest、
-审查记录和报告。不要提交服务器密码、token、患者可识别信息、受控数据、未经许可的
-PDF，或大型 FASTQ/H5AD/RDS/图像文件。
+## 数据和凭据边界
 
-更多约束见 [项目纪律](PROJECT_DISCIPLINE.md) 和 [workflow](docs/workflow.md)。
+Git只保存代码、配置、较小的metadata、检索记录、manifest、source table、报告和稿件。
+不要提交服务器密码、token、患者可识别信息、受控数据、未经许可的PDF或大型测序文件。
+
+项目的绑定规则见 [RULES.md](RULES.md)。
 
 ## License
 
-尚未选择许可证。在许可证加入前，不要假定代码可被外部分发或再许可。
+尚未选择许可证。在许可证加入前，不要假定代码可以被外部分发或再许可。

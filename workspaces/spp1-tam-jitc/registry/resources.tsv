@@ -1,4 +1,0 @@
-resource_id	resource_type	name	uri	availability	role	status	notes
-RES-SPP1-ANCHOR	document	Anchor paper and supplementary materials	local://original-materials	local	Primary source	accepted	Source files remain outside Git; the DOI is recorded in papers.tsv.
-RES-SPP1-ENV	environment	R 4.4.1 analysis server	ssh://configured-analysis-server	local	Candidate execution environment	candidate	Credentials are not stored in Git; reported capacity is 512 GB RAM and 24 GB GPU memory.
-RES-SPP1-PSEUDOBULK	method	Patient-level pseudobulk differential testing	https://bioconductor.org/packages/release/bioc/html/muscat.html	public	Candidate statistical method	candidate	Final design depends on count availability and biological replicate structure.

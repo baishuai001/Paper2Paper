@@ -1,4 +1,0 @@
-upstream_id	downstream_id	relation	active	notes
-PAPER-NRRS-001	WORK-NRRS-001	anchors	true	The anchor paper defines the intake scope.
-DATA-NRRS-001	WORK-NRRS-001	requires	true	This dataset is a first candidate for route triage, not an approved dependency.
-CODE-NRRS-AUTHOR	WORK-NRRS-001	challenges	true	Missing exact author code must be handled by qualified donors or reconstruction.

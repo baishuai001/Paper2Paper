@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "P2P-GASTRIC-NRRS",
+  "title": "Gastric NRRS pilot",
+  "stage": "anchor_audit",
+  "selected_route_id": "",
+  "anchor": {
+    "title": "Development and validation of a novel nerve-related prognostic model for gastric cancer based on bulk and single-cell RNA sequencing data",
+    "doi": "10.1186/s12885-025-15202-9",
+    "citation": "",
+    "source_location": "outside Git"
+  },
+  "goal": {
+    "paper_type": "anchor-paper adaptation",
+    "target_audience": "beginner-led project with AI assistance",
+    "success_definition": "A scientifically defensible, non-duplicate manuscript with traceable data, code, figures, results and limitations"
+  },
+  "constraints": {
+    "beginner_led": true,
+    "deadline": "",
+    "compute": "",
+    "skills": ""
+  },
+  "stop_rule": "Stop workflow engineering when one selected route can be executed, reviewed and written reliably"
+}

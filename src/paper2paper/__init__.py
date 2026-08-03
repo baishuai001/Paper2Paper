@@ -1,3 +1,3 @@
-"""Paper2Paper workflow validation and execution-readiness utilities."""
+"""Paper2Paper workflow tools."""
 
-__version__ = "0.3.0-alpha.1"
+__version__ = "0.4.0a1"
