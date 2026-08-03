@@ -1,7 +1,0 @@
-resource_id	resource_type	name	uri	availability	role	status	notes
-RES-NRRS-PDF	document	Anchor PDF	local://anchor-paper.pdf	local	Primary source	accepted	SHA-256 9e29ec2176588f04c54a9fa1f580f8a05f7575bd83613eaa25b6e8c9c4e20b78; file is not committed.
-RES-NRRS-SUPPLEMENT	document	Supplementary DOCX	local://12885_2025_15202_MOESM1_ESM.docx	local	Supplementary source	accepted	SHA-256 96ca592b0049294cfa30b169c850088cb7f4e8d8660e8055b16a964687bf35d2; file is not committed.
-RES-NRRS-GENES	document	Published 441 nerve-related gene list	local://supplement-table-S4	local	Anchor construct input	candidate	The list is present; database version, retrieval date, pathway IDs, and inclusion logic are not reported.
-RES-NRRS-TRIPOD	method	TRIPOD prediction-model reporting framework	https://www.tripod-statement.org/	public	Prediction-model reporting	accepted	Use to distinguish development, internal validation, and genuine external validation.
-RES-NRRS-PROBAST	method	PROBAST risk-of-bias framework	https://www.probast.org/	public	Prediction-model bias audit	accepted	Use participant, predictor, outcome, and analysis domains.
-RES-NRRS-ENV	environment	R 4.4.1 analysis server	ssh://configured-analysis-server	local	Candidate execution environment	candidate	Credentials are not stored in Git; exact package lock and system dependencies are not frozen.

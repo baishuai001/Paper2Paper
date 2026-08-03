@@ -1,4 +1,3 @@
-# Python
 __pycache__/
 *.py[cod]
 *.egg-info/
@@ -9,29 +8,18 @@ dist/
 .venv/
 venv/
 
-# Editors and operating systems
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
-
-# Secrets
 .env
 .env.*
-*.pem
-*.key
 credentials*
 secrets*
+*.pem
+*.key
 
-# Source material and controlled data
 source_materials/
-controlled_data/
 private_data/
-
-# Large sequencing and analysis artifacts
-data/
-!src/paper2paper/data/
-!src/paper2paper/data/*.json
+controlled_data/
+raw_data/
+downloads/
 cache/
 *.fastq
 *.fastq.gz
@@ -44,6 +32,5 @@ cache/
 *.RData
 *.zarr/
 
-# Project-generated heavy outputs
-runs/*/artifacts/
+execution/artifacts/
 outputs/intermediate/

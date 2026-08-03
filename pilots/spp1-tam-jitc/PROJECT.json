@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "P2P-SPP1-TAM-JITC",
+  "title": "SPP1+TAM JITC pilot",
+  "stage": "anchor_audit",
+  "selected_route_id": "",
+  "anchor": {
+    "title": "Targeting SPP1+TAMs associated with liver metastasis reverses immunosuppression and synergizes with immunotherapy in colorectal cancer",
+    "doi": "10.1136/jitc-2025-014128",
+    "citation": "",
+    "source_location": "outside Git"
+  },
+  "goal": {
+    "paper_type": "anchor-paper adaptation",
+    "target_audience": "beginner-led project with AI assistance",
+    "success_definition": "A scientifically defensible, non-duplicate manuscript with traceable data, code, figures, results and limitations"
+  },
+  "constraints": {
+    "beginner_led": true,
+    "deadline": "",
+    "compute": "",
+    "skills": ""
+  },
+  "stop_rule": "Stop workflow engineering when one selected route can be executed, reviewed and written reliably"
+}

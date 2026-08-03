@@ -1,0 +1,349 @@
+from __future__ import annotations
+
+from typing import Any
+
+
+SCHEMA_VERSION = "1.0.0"
+
+STAGES = (
+    "anchor_audit",
+    "route_generation",
+    "verification",
+    "selection",
+    "specification",
+    "execution",
+    "interpretation",
+    "writing",
+    "complete",
+    "stopped",
+)
+
+ROUTE_MODES = (
+    "reproduction",
+    "marker",
+    "gene_set",
+    "cell_type",
+    "cancer_type",
+    "pan_cancer",
+    "signature",
+    "combined",
+    "custom",
+)
+
+PROJECT_KEYS = {
+    "schema_version",
+    "project_id",
+    "title",
+    "stage",
+    "selected_route_id",
+    "anchor",
+    "goal",
+    "constraints",
+    "stop_rule",
+}
+
+PROJECT_OBJECT_KEYS = {
+    "anchor": {"title", "doi", "citation", "source_location"},
+    "goal": {"paper_type", "target_audience", "success_definition"},
+    "constraints": {"beginner_led", "deadline", "compute", "skills"},
+}
+
+
+def _spec(
+    path: str,
+    id_field: str,
+    columns: tuple[str, ...],
+    nonempty: tuple[str, ...],
+    enums: dict[str, tuple[str, ...]] | None = None,
+    references: tuple[dict[str, Any], ...] = (),
+) -> dict[str, Any]:
+    return {
+        "path": path,
+        "id_field": id_field,
+        "columns": columns,
+        "nonempty": nonempty,
+        "enums": enums or {},
+        "references": references,
+    }
+
+
+TABLES = {
+    "routes": _spec(
+        "evidence/routes.tsv",
+        "route_id",
+        (
+            "route_id", "status", "mode", "title", "question",
+            "target_disease", "target_object", "biological_unit",
+            "comparison", "primary_outcome", "claim_ceiling", "falsifier",
+            "anchor_reuse", "changed_axes", "science_status",
+            "science_basis", "minimum_main_figures", "data_burden",
+            "code_burden", "beginner_burden", "estimated_calendar_time",
+            "main_risk", "stop_condition",
+        ),
+        (
+            "status", "mode", "title", "question", "target_disease",
+            "target_object", "biological_unit", "comparison",
+            "primary_outcome", "claim_ceiling", "falsifier", "anchor_reuse",
+            "changed_axes", "science_status", "science_basis",
+            "minimum_main_figures", "data_burden", "code_burden",
+            "beginner_burden", "estimated_calendar_time", "main_risk",
+            "stop_condition",
+        ),
+        {
+            "status": (
+                "candidate", "verifying", "ready", "selected", "backup",
+                "rejected", "stopped",
+            ),
+            "mode": ROUTE_MODES,
+            "science_status": ("unreviewed", "conditional", "pass", "fail"),
+            "data_burden": ("low", "medium", "high", "unknown"),
+            "code_burden": ("low", "medium", "high", "unknown"),
+            "beginner_burden": ("low", "medium", "high", "unknown"),
+        },
+    ),
+    "search_log": _spec(
+        "evidence/search_log.tsv",
+        "search_id",
+        (
+            "search_id", "route_id", "domain", "source", "query",
+            "searched_at", "result_count", "outcome", "notes",
+        ),
+        (
+            "route_id", "domain", "source", "query", "searched_at",
+            "result_count", "outcome",
+        ),
+        {
+            "domain": ("data", "code", "literature"),
+            "outcome": ("continue", "no_result", "stop"),
+        },
+        ({"field": "route_id", "target": "routes"},),
+    ),
+    "data_requirements": _spec(
+        "evidence/data_requirements.tsv",
+        "requirement_id",
+        (
+            "requirement_id", "route_id", "role", "disease", "tissue",
+            "modality", "biological_unit", "comparison_or_outcome",
+            "required_fields", "minimum_subjects", "access_limit",
+            "independence_required", "required", "notes",
+        ),
+        (
+            "route_id", "role", "disease", "tissue", "modality",
+            "biological_unit", "comparison_or_outcome", "required_fields",
+            "minimum_subjects", "access_limit", "independence_required",
+            "required",
+        ),
+        {
+            "independence_required": ("true", "false"),
+            "required": ("true", "false"),
+        },
+        ({"field": "route_id", "target": "routes"},),
+    ),
+    "data_candidates": _spec(
+        "evidence/data_candidates.tsv",
+        "data_id",
+        (
+            "data_id", "route_id", "requirement_id", "name", "accession",
+            "uri", "source", "disease", "tissue", "modality", "subjects",
+            "biological_unit", "fields_checked", "contract_match",
+            "access", "verification", "independence", "decision",
+            "checked_at", "checksum", "notes",
+        ),
+        (
+            "route_id", "requirement_id", "name", "uri", "source",
+            "disease", "tissue", "modality", "subjects", "biological_unit",
+            "fields_checked", "contract_match", "access",
+            "verification", "independence", "decision", "checked_at",
+        ),
+        {
+            "access": (
+                "public", "controlled", "request_only", "local",
+                "unavailable", "unknown",
+            ),
+            "contract_match": ("true", "false", "unknown"),
+            "verification": (
+                "not_checked", "metadata_checked", "sample_parsed",
+                "downloaded", "checksum_verified", "blocked",
+            ),
+            "independence": (
+                "independent", "overlap", "unknown", "not_applicable",
+            ),
+            "decision": ("candidate", "use", "reject", "blocked"),
+        },
+        (
+            {"field": "route_id", "target": "routes"},
+            {"field": "requirement_id", "target": "data_requirements"},
+        ),
+    ),
+    "code_requirements": _spec(
+        "evidence/code_requirements.tsv",
+        "module_id",
+        (
+            "module_id", "route_id", "name", "purpose", "input_contract",
+            "output_contract", "required_tests", "required", "notes",
+        ),
+        (
+            "route_id", "name", "purpose", "input_contract",
+            "output_contract", "required_tests", "required",
+        ),
+        {"required": ("true", "false")},
+        ({"field": "route_id", "target": "routes"},),
+    ),
+    "code_candidates": _spec(
+        "evidence/code_candidates.tsv",
+        "code_id",
+        (
+            "code_id", "route_id", "module_id", "name", "source_type",
+            "uri", "version", "license", "language", "environment",
+            "entrypoint", "contract_match", "noninteractive",
+            "private_inputs", "hardcoded_paths", "verification", "decision",
+            "checked_at", "smoke_input", "smoke_output", "tests_passed",
+            "notes",
+        ),
+        (
+            "route_id", "module_id", "name", "source_type", "uri",
+            "language", "noninteractive", "private_inputs", "hardcoded_paths",
+            "contract_match", "verification", "decision", "checked_at",
+        ),
+        {
+            "source_type": (
+                "author", "official", "data_paper", "method_paper",
+                "related_paper", "reconstructed", "other",
+            ),
+            "contract_match": ("true", "false", "unknown"),
+            "noninteractive": ("true", "false", "unknown"),
+            "private_inputs": ("true", "false", "unknown"),
+            "hardcoded_paths": ("true", "false", "unknown"),
+            "verification": (
+                "not_checked", "inspected", "install_passed",
+                "smoke_passed", "tested", "blocked",
+            ),
+            "decision": ("candidate", "use", "reject", "blocked"),
+        },
+        (
+            {"field": "route_id", "target": "routes"},
+            {"field": "module_id", "target": "code_requirements"},
+        ),
+    ),
+    "figures": _spec(
+        "evidence/figures.tsv",
+        "figure_id",
+        (
+            "figure_id", "route_id", "role", "title", "question",
+            "data_requirement_ids", "code_module_ids", "source_table",
+            "acceptance_test", "required", "status", "notes",
+        ),
+        (
+            "route_id", "role", "title", "question",
+            "data_requirement_ids", "code_module_ids", "source_table",
+            "acceptance_test", "required", "status",
+        ),
+        {
+            "role": ("main", "supplement", "table"),
+            "required": ("true", "false"),
+            "status": (
+                "idea", "mapped", "spike_generated", "generated",
+                "verified", "blocked", "dropped",
+            ),
+        },
+        (
+            {"field": "route_id", "target": "routes"},
+            {
+                "field": "data_requirement_ids",
+                "target": "data_requirements",
+                "multi": True,
+            },
+            {
+                "field": "code_module_ids",
+                "target": "code_requirements",
+                "multi": True,
+            },
+        ),
+    ),
+    "literature": _spec(
+        "evidence/literature.tsv",
+        "literature_id",
+        (
+            "literature_id", "route_id", "query", "nearest_paper", "uri",
+            "checked_at", "overlap_level", "disease_overlap",
+            "object_overlap", "outcome_overlap", "data_overlap",
+            "analysis_overlap", "claim_overlap", "decision", "distinction",
+            "notes",
+        ),
+        (
+            "route_id", "query", "nearest_paper", "uri", "checked_at",
+            "overlap_level", "disease_overlap", "object_overlap",
+            "outcome_overlap", "data_overlap", "analysis_overlap",
+            "claim_overlap", "decision", "distinction",
+        ),
+        {
+            "overlap_level": ("clear", "adjacent", "high", "duplicate"),
+            "disease_overlap": ("none", "partial", "same", "unknown"),
+            "object_overlap": ("none", "partial", "same", "unknown"),
+            "outcome_overlap": ("none", "partial", "same", "unknown"),
+            "data_overlap": ("none", "partial", "same", "unknown"),
+            "analysis_overlap": ("none", "partial", "same", "unknown"),
+            "claim_overlap": ("none", "partial", "same", "unknown"),
+            "decision": ("continue", "distinguish", "stop"),
+        },
+        ({"field": "route_id", "target": "routes"},),
+    ),
+    "decisions": _spec(
+        "evidence/decisions.tsv",
+        "decision_id",
+        (
+            "decision_id", "route_id", "stage", "decision", "reviewer",
+            "rationale", "decided_at",
+        ),
+        (
+            "route_id", "stage", "decision", "reviewer", "rationale",
+            "decided_at",
+        ),
+        {
+            "stage": STAGES,
+            "decision": (
+                "select", "backup", "reject", "continue", "refine",
+                "reroute", "stop", "approve_release",
+            ),
+        },
+        ({"field": "route_id", "target": "routes"},),
+    ),
+    "runs": _spec(
+        "execution/runs.tsv",
+        "run_id",
+        (
+            "run_id", "route_id", "status", "command", "commit",
+            "environment", "data_manifest", "started_at", "finished_at",
+            "log", "artifacts", "notes",
+        ),
+        (
+            "route_id", "status", "command", "commit", "environment",
+            "data_manifest", "started_at", "log", "artifacts",
+        ),
+        {"status": ("planned", "running", "passed", "failed", "invalidated")},
+        ({"field": "route_id", "target": "routes"},),
+    ),
+    "results": _spec(
+        "execution/results.tsv",
+        "result_id",
+        (
+            "result_id", "route_id", "run_id", "figure_id", "status",
+            "summary", "claim_effect", "next_action", "limitation",
+            "source_table",
+        ),
+        (
+            "route_id", "run_id", "figure_id", "status", "summary",
+            "claim_effect", "next_action", "limitation", "source_table",
+        ),
+        {
+            "status": ("provisional", "verified", "invalidated"),
+            "claim_effect": ("supports", "weakens", "contradicts", "inconclusive"),
+            "next_action": ("continue", "refine", "reroute", "stop"),
+        },
+        (
+            {"field": "route_id", "target": "routes"},
+            {"field": "run_id", "target": "runs"},
+            {"field": "figure_id", "target": "figures"},
+        ),
+    ),
+}
