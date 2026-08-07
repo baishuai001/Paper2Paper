@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "2.0.0",
+  "workspace_kind": "pilot",
   "project_id": "P2P-SPP1-TAM-JITC",
   "title": "SPP1+TAM JITC pilot",
   "stage": "anchor_audit",
@@ -10,10 +11,15 @@
     "citation": "",
     "source_location": "outside Git"
   },
+  "provenance": {
+    "source_pilot_id": "",
+    "source_route_id": "",
+    "source_run_ids": ""
+  },
   "goal": {
-    "paper_type": "anchor-paper adaptation",
+    "paper_type": "anchor-paper pilot",
     "target_audience": "beginner-led project with AI assistance",
-    "success_definition": "A scientifically defensible, non-duplicate manuscript with traceable data, code, figures, results and limitations"
+    "success_definition": "A reviewed pilot outcome with traceable anchor audit, route purpose, real-data execution, scientific limits and scoped product findings"
   },
   "constraints": {
     "beginner_led": true,
@@ -21,5 +27,5 @@
     "compute": "",
     "skills": ""
   },
-  "stop_rule": "Stop workflow engineering when one selected route can be executed, reviewed and written reliably"
+  "stop_rule": "Stop product work when the pilot can support a route decision and record its scoped reusable findings"
 }

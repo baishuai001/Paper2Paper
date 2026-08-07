@@ -20,14 +20,15 @@ expand the product; a product change requires a reusable control or record.
 | PF-012 | product | execution | medium | The first real run reached plotting and failed because lifelines expects `ax=`, not `axis=`. Inspection and unit tests that omitted plotting did not catch it. | A plausible reconstructed module can fail at the final noninteractive artifact step. | Added a KM artifact test and retained an honest failure summary. The original traceback was not saved, so the record must not claim that it was. |
 | PF-013 | both | model verification | high | Mean-probe and highest-variance-probe rules gave Spearman rho 0.972 but changed 14 of 300 high/low assignments. | An omitted probe rule may preserve cohort direction while changing individual classification and estimates. | The new computable-model contract makes mapping and duplicate-feature policy mandatory; both rules are reported as sensitivity. |
 | PF-014 | product | data verification | high | The NCBI series matrix had a 2026 Last-Modified date although the accession is from 2015. Public resources can be replaced in place. | Re-running the same URL may silently analyze a different file. | Added version, byte count and per-resource checksum; changed inputs fail closed pending re-audit. |
-| PF-015 | product | route selection | critical | The bounded NRRS reproduction is executable, but it asks the same central question as the anchor and is useful here as training rather than a new manuscript route. Readiness previously did not distinguish execution success from manuscript eligibility. | A technically successful reproduction could be presented to a beginner as a selectable paper direction despite substantive overlap. | Report `execution_ready` separately from `manuscript_eligible`. `training` and `supporting` routes may be execution-ready while remaining ineligible for manuscript selection. |
+| PF-015 | product | route selection | critical | The bounded NRRS reproduction is executable, but it asks the same central question as the anchor and is useful here as training rather than a new manuscript route. The old workflow did not separate execution evidence from promotion evidence and user approval. | A technically successful reproduction could be presented to a beginner as a selectable paper direction despite substantive overlap. | Report `execution_ready` separately from `promotion_evidence_complete`; create a formal manuscript only in a user-approved manuscript project. |
 
-## Decision rule
+## Decision rule under schema 2.0
 
-The core records each outcome by scope. `resolved_in_pilot` means only this
-gastric instance is fixed; `partially_resolved_in_core` means a generic field or
-rule exists but does not yet prove the underlying fact; `verified_in_core` means
-the reusable control has a regression test. PF-006 through PF-008 remain
-anchor-specific. The structured decisions and evidence live in
-`evidence/issues.tsv`; this Markdown file is the human-readable narrative, not
-the only record.
+The issue log separates where a problem was observed, its candidate scope, its
+type, the current instance status and any central promotion ID. `resolved`
+means only that the recorded issue instance has been handled; it does not mean
+the corresponding module or core rule is confirmed. Module maturity and rule
+promotion maturity are evaluated separately in the central registries and need
+independent cases for transfer or confirmation. PF-006 through PF-008 remain
+anchor/Pilot-specific. This Markdown file is the human-readable narrative;
+`evidence/issues.tsv` is the structured local record.

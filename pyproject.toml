@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "paper2paper-workflow"
-version = "0.4.0a1"
-description = "Beginner-oriented workflow from an anchor paper to an executable manuscript project"
+version = "0.5.0a1"
+description = "Beginner-oriented, evidence-gated workflow from real anchor papers to manuscript projects"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Paper2Paper contributors" }]

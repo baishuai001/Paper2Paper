@@ -49,15 +49,19 @@ The analysis also compares key results with
 
 - `GSE62254_nrrs_source_table.tsv`: generated locally with one row per patient;
   it is intentionally not committed until source-data redistribution terms are
-  fully audited.
+  fully audited. Its row count, columns, byte count and SHA256 are retained in
+  `GSE62254_local_artifact_receipt.tsv`.
 - `GSE62254_probe_mapping.tsv`: retained probes and sensitivity selection.
 - `GSE62254_nrrs_summary.tsv`: effect estimates and discrimination.
 - `GSE62254_nrrs_kaplan_meier.png`: reconstructed median-split survival plot.
 - `GSE62254_run_metadata.json`: code hash, package versions, resource hashes,
   identity checks, model contract, results and claim boundary.
+- `GSE62254_local_artifact_receipt.tsv`: repository-visible proof of the
+  local-only patient table without redistributing patient-level rows.
 
 See `reports/pilot-run-summary.md` for interpretation and
-`reports/pilot-findings.md` for issues promoted back into Paper2Paper.
+`reports/pilot-findings.md` for issues classified locally and, where justified,
+linked to separately reviewed module/core promotions.
 
 The MIT license covers Paper2Paper-authored code only. GEO files, the ACRG
 supplement, GPL annotation, and derived patient-level records retain their

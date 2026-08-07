@@ -1,2 +1,2 @@
-decision_id	route_id	stage	decision	reviewer	rationale	decided_at
-GN-DEC01	GN-R01	verification	continue	Paper2Paper pilot audit	The public-data computation and survival-direction spike passed, while the result remains development-exposed and non-independent. Continue retaining GN-R01 as a fixed bulk-signature worked example and as evidence that may inform a later non-duplicate route. This decision does not select a manuscript direction.	2026-08-07
+decision_id	route_id	stage	decision	authority	reviewer	rationale	decided_at
+GN-DEC01	GN-R01	pilot_review	continue	ai	Paper2Paper pilot audit	The public-data computation and survival-direction spike passed, while the result remains development-exposed and non-independent. The AI recommends retaining GN-R01 as a fixed bulk-signature worked example and scoped reference case. This is not a user close-pilot decision and does not select a manuscript direction.	2026-08-07

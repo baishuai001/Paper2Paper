@@ -131,6 +131,38 @@ class GSE62254SpikeTests(unittest.TestCase):
             self.assertTrue(output.exists())
             self.assertGreater(output.stat().st_size, 1000)
 
+    def test_patient_source_table_contract_fails_closed(self) -> None:
+        frame = pd.DataFrame(
+            {
+                "gsm_id": ["GSM1", "GSM2"],
+                "patient_id": ["P1", "P2"],
+                "os_months": [10.0, 20.0],
+                "death": [1, 0],
+                **{
+                    f"expression_{gene}": [float(index), float(index + 1)]
+                    for index, gene in enumerate(spike.TARGET_GENES, start=1)
+                },
+                **{
+                    f"z_{gene}": [-0.70710678, 0.70710678]
+                    for gene in spike.TARGET_GENES
+                },
+                "nrrs": [0.2, -0.2],
+                "risk_group": ["high", "low"],
+                "nrrs_max_variance_probe": [0.1, -0.1],
+            },
+            columns=spike.PATIENT_SOURCE_COLUMNS,
+        )
+        spike.validate_patient_source_table(frame, expected_subjects=2)
+
+        duplicate = frame.copy()
+        duplicate.loc[1, "patient_id"] = "P1"
+        with self.assertRaisesRegex(ValueError, "unique patient_id"):
+            spike.validate_patient_source_table(duplicate, expected_subjects=2)
+
+        missing = frame.drop(columns=["nrrs"])
+        with self.assertRaisesRegex(ValueError, "schema mismatch"):
+            spike.validate_patient_source_table(missing, expected_subjects=2)
+
     def test_expected_result_contract_passes_and_fails_closed(self) -> None:
         observed = {
             "main": {"hr": 1.5, "direction": True},

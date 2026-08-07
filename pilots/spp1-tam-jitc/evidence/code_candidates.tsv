@@ -1,1 +1,1 @@
-code_id	route_id	module_id	name	source_type	uri	version	license	language	environment	entrypoint	contract_match	noninteractive	private_inputs	hardcoded_paths	path_portability	path_test	verification	decision	checked_at	smoke_input	smoke_output	tests_passed	notes
+code_id	route_id	module_id	name	source_type	uri	version	license	language	environment	entrypoint	contract_match	noninteractive	private_inputs	hardcoded_paths	path_portability	path_test	verification	decision	checked_at	reusable_release_id	smoke_input	smoke_output	tests_passed	notes

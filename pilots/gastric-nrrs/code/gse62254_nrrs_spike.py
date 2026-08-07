@@ -58,6 +58,17 @@ COEFFICIENTS = {
 }
 TARGET_GENES = tuple(COEFFICIENTS)
 CLINICAL_SHEET = "ACRG"
+PATIENT_SOURCE_COLUMNS = (
+    "gsm_id",
+    "patient_id",
+    "os_months",
+    "death",
+    *[f"expression_{gene}" for gene in TARGET_GENES],
+    *[f"z_{gene}" for gene in TARGET_GENES],
+    "nrrs",
+    "risk_group",
+    "nrrs_max_variance_probe",
+)
 
 
 @dataclass(frozen=True)
@@ -426,6 +437,44 @@ def write_tsv(frame: pd.DataFrame, path: Path) -> None:
     frame.to_csv(path, sep="\t", index=False, lineterminator="\n")
 
 
+def validate_patient_source_table(
+    frame: pd.DataFrame, expected_subjects: int
+) -> None:
+    """Fail before writing an incomplete or non-patient-level score table."""
+
+    observed_columns = tuple(frame.columns)
+    if observed_columns != PATIENT_SOURCE_COLUMNS:
+        missing = sorted(set(PATIENT_SOURCE_COLUMNS) - set(observed_columns))
+        unexpected = sorted(set(observed_columns) - set(PATIENT_SOURCE_COLUMNS))
+        raise ValueError(
+            "patient source-table schema mismatch; "
+            f"missing={missing}; unexpected={unexpected}"
+        )
+    if len(frame) != expected_subjects:
+        raise ValueError(
+            "patient source table has "
+            f"{len(frame)} rows; expected {expected_subjects}"
+        )
+    for identifier in ("gsm_id", "patient_id"):
+        if frame[identifier].isna().any() or frame[identifier].duplicated().any():
+            raise ValueError(
+                f"patient source table requires complete unique {identifier}"
+            )
+    numeric_columns = [
+        "os_months",
+        "death",
+        *[f"expression_{gene}" for gene in TARGET_GENES],
+        *[f"z_{gene}" for gene in TARGET_GENES],
+        "nrrs",
+        "nrrs_max_variance_probe",
+    ]
+    numeric = frame[numeric_columns].apply(pd.to_numeric, errors="coerce")
+    if not np.isfinite(numeric.to_numpy(dtype=float)).all():
+        raise ValueError("patient source table contains non-finite numeric values")
+    if not set(frame["risk_group"].astype(str)).issubset({"high", "low"}):
+        raise ValueError("patient source table contains an invalid risk_group")
+
+
 def verify_expected_results(
     observed: dict[str, object], expected_path: Path
 ) -> dict[str, object]:
@@ -541,18 +590,9 @@ def analyze(
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    score_columns = [
-        "gsm_id",
-        "patient_id",
-        "os_months",
-        "death",
-        *[f"expression_{gene}" for gene in TARGET_GENES],
-        *[f"z_{gene}" for gene in TARGET_GENES],
-        "nrrs",
-        "risk_group",
-        "nrrs_max_variance_probe",
-    ]
-    write_tsv(main[score_columns], output_dir / "GSE62254_nrrs_source_table.tsv")
+    patient_source = main[list(PATIENT_SOURCE_COLUMNS)]
+    validate_patient_source_table(patient_source, expected_subjects=300)
+    write_tsv(patient_source, output_dir / "GSE62254_nrrs_source_table.tsv")
     mapping_output = pd.concat(mapping_frames, ignore_index=True)
     mapping_output["selected"] = mapping_output["selected"].astype(bool)
     write_tsv(mapping_output, output_dir / "GSE62254_probe_mapping.tsv")

@@ -45,8 +45,9 @@ implementation detail.
 The pilot exercised field-level resource provenance, cross-source identity
 checks, a cohort analysis-role ledger, a computable signature contract,
 target-environment path evidence, structured issue recording, checksum pinning,
-and separate execution/manuscript decisions. These controls are reusable only
-at the level directly covered by core tests. They do not transfer the gastric
-data, formula, expected results or scientific conclusions to another pilot.
-Details and paper-specific defects are separated in `pilot-findings.md` and
-`evidence/issues.tsv`.
+and separate execution/promotion decisions. Their exact coverage and maturity
+are recorded in the central capability, module, promotion and regression
+registries. One gastric reference plus focused tests does not establish an
+independent transfer. The gastric data, formula, expected results and scientific
+conclusions do not become defaults for another Pilot. Details and paper-specific
+defects are separated in `pilot-findings.md` and `evidence/issues.tsv`.
