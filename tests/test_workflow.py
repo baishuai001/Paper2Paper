@@ -409,6 +409,49 @@ def mark_pilot_for_promotion(project: Path) -> None:
 
 
 class Paper2PaperWorkflowTests(unittest.TestCase):
+    def test_binding_beginner_imitation_policy_is_present(self) -> None:
+        rules = (ROOT / "RULES.md").read_text(encoding="utf-8")
+        for required_phrase in (
+            "面向初学者",
+            "简单模仿路线可以接受并应被认真考虑",
+            "数据必须能够取得",
+            "代码需要可靠、稳定，缺失时要从同类文献补足",
+            "避免实质重复发表",
+            "最终目的是产出论文",
+            "不能重新引入 PaperRoute 的创新性门槛",
+        ):
+            with self.subTest(required_phrase=required_phrase):
+                self.assertIn(required_phrase, rules)
+
+    def test_direction_only_route_cannot_be_ranked_active_or_backup(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "pilot"
+            init_workspace(project, "P2P-CANDIDATE", "Test", "Anchor", "10.test/x")
+            make_executable_route(project)
+            rewrite_rows(
+                project / "evidence/routes.tsv",
+                lambda rows: rows[0].update(
+                    {
+                        "decision_status": "active",
+                        "evidence_stage": "direction_audited",
+                    }
+                ),
+            )
+
+            premature = validate_workspace(project)
+            self.assertFalse(premature.ok)
+            self.assertTrue(
+                any("must remain candidate" in error for error in premature.errors),
+                premature.errors,
+            )
+
+            rewrite_rows(
+                project / "evidence/routes.tsv",
+                lambda rows: rows[0].update({"decision_status": "candidate"}),
+            )
+            candidate = validate_workspace(project)
+            self.assertTrue(candidate.ok, candidate.errors)
+
     def test_iso_timestamp_parser_is_stable_on_python_310(self) -> None:
         parsed = _parse_iso_timestamp("2026-08-07T19:43:52.6379127Z")
         self.assertIsNotNone(parsed)
