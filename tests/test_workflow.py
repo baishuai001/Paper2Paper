@@ -419,6 +419,9 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             "避免实质重复发表",
             "最终目的是产出论文",
             "不能重新引入 PaperRoute 的创新性门槛",
+            "近邻论文必须同时按两种角色审查",
+            "不得用单个例子代表一整条改变轴",
+            "停止一个已经发表的具体组合，不得连带停止该论文作为 donor",
         ):
             with self.subTest(required_phrase=required_phrase):
                 self.assertIn(required_phrase, rules)
