@@ -35,3 +35,4 @@ cache/
 
 execution/artifacts/
 outputs/intermediate/
+pilots/gastric-nrrs/outputs/gse62254_spike/GSE62254_nrrs_source_table.tsv

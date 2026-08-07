@@ -1,0 +1,107 @@
+{
+  "run_at_utc": "2026-08-07T05:34:12.715488+00:00",
+  "code": {
+    "path": "pilots/gastric-nrrs/code/gse62254_nrrs_spike.py",
+    "sha256": "F3A3D7EB3FA2E1C87F591438D6CB280BEABB45B7E7CD81F0EECA1D1CC9A7BE58"
+  },
+  "python": "3.12.13",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "packages": {
+    "numpy": "2.5.1",
+    "pandas": "2.3.3",
+    "matplotlib": "3.11.1",
+    "lifelines": "0.30.3",
+    "openpyxl": "3.1.5",
+    "scipy": "1.18.0"
+  },
+  "resources": {
+    "ACRG_CLINICAL": {
+      "resource_id": "ACRG_CLINICAL",
+      "path": "pilots/gastric-nrrs/raw_data/GSE62254/41467_2018_4179_MOESM5_ESM.xlsx",
+      "bytes": 152611,
+      "sha256": "516BD4960C60A6CDEA5931B66E40F2FA738650E67C00974066BF41B7AE560281",
+      "verified": true
+    },
+    "GPL570_ANNOTATION": {
+      "resource_id": "GPL570_ANNOTATION",
+      "path": "pilots/gastric-nrrs/raw_data/GSE62254/GPL570.annot.gz",
+      "bytes": 8471521,
+      "sha256": "D7CD44352127B1E34F3A720EBEA86093EF255A38F1612A85A2962B71BDE8F394",
+      "verified": true
+    },
+    "GSE62254_MATRIX": {
+      "resource_id": "GSE62254_MATRIX",
+      "path": "pilots/gastric-nrrs/raw_data/GSE62254/GSE62254_series_matrix.txt.gz",
+      "bytes": 85256104,
+      "sha256": "DFD3622A445C0487596E182906E80FBEAF8930AB1ECCA120137DBA6207945145",
+      "verified": true
+    }
+  },
+  "model": {
+    "formula": "0.040*z(AGT) + -0.040*z(EPHB3) + 0.018*z(GNAI1) + -0.102*z(LPAR2) + 0.014*z(LRRC4C) + 0.072*z(NPY1R) + 0.175*z(NRP1) + 0.006*z(SEMA6A)",
+    "main_probe_rule": "mean of all unambiguous official GPL570 probes",
+    "normalization": "within-cohort gene z-score; sample SD (ddof=1)",
+    "cutoff": "cohort median with deterministic GEO-ID tie handling",
+    "missing_gene_policy": "fail"
+  },
+  "identity_checks": {
+    "matrix_samples": 300,
+    "clinical_samples": 300,
+    "exact_geo_id_set_match": true,
+    "target_genes": 8,
+    "target_probes": 19
+  },
+  "results": {
+    "mean_probes": {
+      "subjects": 300.0,
+      "events": 152.0,
+      "high_n": 150.0,
+      "low_n": 150.0,
+      "continuous_hr_per_sd": 1.4557087847209513,
+      "continuous_ci_lower": 1.2386523183376221,
+      "continuous_ci_upper": 1.7108013560720146,
+      "continuous_p": 5.167801977148083e-06,
+      "high_vs_low_hr": 1.5285637714892835,
+      "high_vs_low_ci_lower": 1.1087622008517166,
+      "high_vs_low_ci_upper": 2.107311379946674,
+      "high_vs_low_p": 0.009592355044931661,
+      "logrank_chi2": 6.8112472668833135,
+      "logrank_p": 0.009058547007380267,
+      "c_index": 0.5961232634200498,
+      "median_cutoff": -0.025079662685401224,
+      "aggregation": "mean_probes",
+      "risk_direction_matches_anchor": true
+    },
+    "max_variance_probe": {
+      "subjects": 300.0,
+      "events": 152.0,
+      "high_n": 150.0,
+      "low_n": 150.0,
+      "continuous_hr_per_sd": 1.4680972139224848,
+      "continuous_ci_lower": 1.2457150888499908,
+      "continuous_ci_upper": 1.7301784724440348,
+      "continuous_p": 4.614317781736321e-06,
+      "high_vs_low_hr": 1.4669266665196787,
+      "high_vs_low_ci_lower": 1.0648173512498589,
+      "high_vs_low_ci_upper": 2.020885405765332,
+      "high_vs_low_p": 0.019068592806879944,
+      "logrank_chi2": 5.563912499107478,
+      "logrank_p": 0.01833439505957495,
+      "c_index": 0.5914423740510697,
+      "median_cutoff": -0.02148946554413518,
+      "aggregation": "max_variance_probe",
+      "risk_direction_matches_anchor": true
+    },
+    "mapping_sensitivity": {
+      "spearman_score_correlation": 0.971646796075512,
+      "high_low_agreement": 0.9533333333333334
+    }
+  },
+  "expected_result_check": {
+    "path": "pilots/gastric-nrrs/config/gse62254_expected_results.json",
+    "sha256": "28FED621C032885E5169B3458624E6F1DB7B8168F14C64305420AB762039FF72",
+    "metrics_checked": 16,
+    "verified": true
+  },
+  "claim_boundary": "Reproduction spike only; GSE62254 participated in anchor feature screening and is not untouched external validation."
+}
