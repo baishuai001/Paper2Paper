@@ -24,6 +24,14 @@ The server-local project working directory follows:
 The concrete account path is kept outside this public repository. Credentials,
 hostnames and tokens must never be stored here.
 
+The core workflow currently passes its repository suite on the canonical
+server's Python 3.10 runtime. The gastric scientific module was reference-run
+under its recorded Python 3.12 environment; its exact lock is not currently
+resolvable from the server package index because `lifelines==0.30.3` is absent.
+The failed isolated install was not replaced with a nearby version, so the
+server must not be described as module-verified until the exact artifacts are
+available or a new environment release is rerun and reviewed.
+
 ## Real-paper Pilots
 
 - `P2P-GASTRIC-NRRS`: a bounded training/reference reconstruction. GN-R01 has

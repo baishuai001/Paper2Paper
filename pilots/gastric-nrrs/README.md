@@ -24,6 +24,14 @@ anchor's feature-screening stage, so it is not untouched external validation.
 
 ## Run from the repository root
 
+The lock below records the environment used by GN-RUN05/GN-RUN06 (Python
+3.12.13). Do not silently substitute a nearby package version when an exact
+artifact is unavailable: either restore the recorded artifacts or create,
+rerun and review a new environment release. In particular, the canonical
+server's Python 3.10 package index did not provide `lifelines==0.30.3` during
+the 2026-08-07 environment check, so only the core workflow—not this scientific
+module—has been verified there.
+
 ```powershell
 python -m pip install -r pilots/gastric-nrrs/code/requirements-gse62254.txt
 
