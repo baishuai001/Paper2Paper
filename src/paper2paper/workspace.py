@@ -1198,6 +1198,16 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
         execution_gaps = _execution_gaps_from_tables(project_dir, route, tables)
         evidence_stage = route.get("evidence_stage", "")
         if (
+            manifest.get("workspace_kind") == "pilot"
+            and evidence_stage == "direction_audited"
+            and route.get("decision_status") in {"active", "backup"}
+        ):
+            report.errors.append(
+                f"route {route.get('route_id')} must remain candidate at "
+                "direction_audited; active/backup requires the route-specific "
+                "availability precheck used for an execution choice"
+            )
+        if (
             EVIDENCE_STAGE_RANK.get(evidence_stage, -1)
             >= EVIDENCE_STAGE_RANK["minimal_real_run"]
             and execution_gaps

@@ -109,7 +109,8 @@ TABLES = {
         ),
         {
             "decision_status": (
-                "active", "backup", "promoted", "rejected", "stopped",
+                "candidate", "active", "backup", "promoted", "rejected",
+                "stopped",
             ),
             "evidence_stage": (
                 "direction_audited", "availability_prechecked",
