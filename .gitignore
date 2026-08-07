@@ -16,6 +16,7 @@ secrets*
 *.key
 
 source_materials/
+/WorkSpace/
 private_data/
 controlled_data/
 raw_data/
