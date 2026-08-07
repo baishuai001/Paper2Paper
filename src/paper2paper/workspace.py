@@ -1427,6 +1427,13 @@ ANCHOR_TEMPLATE = f"""# Anchor audit
 - Claim ceiling:
 - Result that would falsify the central claim:
 
+## Anchor framework assets
+
+Describe the paper-specific question, central relationship, evidence order,
+data/cohort roles, analysis-module sequence and Figure narrative that are worth
+retaining. Add any framework elements unique to this paper type; do not force
+the audit into a fixed substitution checklist.
+
 ## Figure-to-evidence map
 
 For every main and supplementary figure record its manuscript role, data,
@@ -1435,6 +1442,13 @@ metadata, method, code, output, statistical unit and unavailable dependencies.
 ## Module disposition
 
 Classify every module as retain, repair, substitute, extend, drop or blocked.
+
+## Defect-to-repair contracts
+
+For every material flaw record: evidence; affected Figure/claim; unaffected
+framework assets; candidate repair; how the target paper would implement it; the minimum
+evidence that could verify or falsify the repair; and residual risk/claim
+ceiling. A flaw does not by itself justify discarding the anchor framework.
 
 ## Reproduction boundary
 
@@ -1449,6 +1463,12 @@ PILOT_SPECIFICATION_TEMPLATE = f"""# Pilot minimal-run specification
 
 Complete the relevant sections before a minimal real-data run. This document
 does not freeze a future manuscript analysis.
+
+## Source framework retained, repaired and transformed
+
+State which anchor-framework assets the route preserves, which defect repairs
+it implements, which paper-specific elements it changes, and how those choices
+form the target paper. Predefined substitution examples are not a completeness test.
 
 ## Cohorts and exclusions
 

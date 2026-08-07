@@ -426,6 +426,18 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             self.assertEqual(manifest["workspace_kind"], "pilot")
             self.assertTrue((project / "reports/pilot-outcome.md").exists())
             self.assertFalse((project / "manuscript").exists())
+            anchor_template = (project / "anchor/audit.md").read_text(
+                encoding="utf-8"
+            )
+            self.assertIn("## Anchor framework assets", anchor_template)
+            self.assertIn("## Defect-to-repair contracts", anchor_template)
+            specification_template = (
+                project / "analysis/specification.md"
+            ).read_text(encoding="utf-8")
+            self.assertIn(
+                "## Source framework retained, repaired and transformed",
+                specification_template,
+            )
 
     def test_executable_route_requires_a_recorded_real_run(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
