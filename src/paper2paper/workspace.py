@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path, PurePosixPath, PureWindowsPath
@@ -167,8 +168,26 @@ def _recorded_path_exists(project_dir: Path, value: str) -> bool:
 
 
 def _parse_iso_timestamp(value: str) -> datetime | None:
+    if not isinstance(value, str):
+        return None
+    normalized = value.strip()
+    if normalized.endswith("Z"):
+        normalized = normalized[:-1] + "+00:00"
+    # Python 3.10 rejects fractional seconds longer than six digits, while
+    # newer runtimes accept and truncate them. Preserve the instant at the
+    # precision datetime can represent so recorded runs validate identically.
+    match = re.fullmatch(
+        r"(?P<prefix>.+[T ]\d{2}:\d{2}:\d{2})\."
+        r"(?P<fraction>\d{7,})(?P<offset>[+-]\d{2}:\d{2})?",
+        normalized,
+    )
+    if match:
+        normalized = (
+            f"{match.group('prefix')}.{match.group('fraction')[:6]}"
+            f"{match.group('offset') or ''}"
+        )
     try:
-        return datetime.fromisoformat(value)
+        return datetime.fromisoformat(normalized)
     except (TypeError, ValueError):
         return None
 

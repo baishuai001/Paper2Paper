@@ -6,10 +6,12 @@ import io
 import json
 import tempfile
 import unittest
+from datetime import timedelta
 from pathlib import Path
 
 from paper2paper.cli import _require_manuscript_target, main as cli_main
 from paper2paper.workspace import (
+    _parse_iso_timestamp,
     init_workspace,
     next_actions,
     promote_workspace,
@@ -407,6 +409,13 @@ def mark_pilot_for_promotion(project: Path) -> None:
 
 
 class Paper2PaperWorkflowTests(unittest.TestCase):
+    def test_iso_timestamp_parser_is_stable_on_python_310(self) -> None:
+        parsed = _parse_iso_timestamp("2026-08-07T19:43:52.6379127Z")
+        self.assertIsNotNone(parsed)
+        assert parsed is not None
+        self.assertEqual(parsed.microsecond, 637912)
+        self.assertEqual(parsed.utcoffset(), timedelta(0))
+
     def test_init_creates_pilot_not_manuscript(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             project = Path(temp_dir) / "pilot"
