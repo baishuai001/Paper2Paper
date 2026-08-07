@@ -1,1 +1,4 @@
 usage_id	route_id	data_id	cohort_key	analysis_step	role	outcome_used	features_influenced	parameters_influenced	cutoff_influenced	claimed_external_validation	acceptable	notes
+GN-U01	GN-R01	GN-DC01	ACRG-GSE62254	anchor GEO-meta outcome screen	feature_screening	true	true	false	false	false	true	The anchor pooled GSE62254 with GSE15459 and GSE57303 for outcome-guided screening, so this cohort is development-exposed.
+GN-U02	GN-R01	GN-DC01	ACRG-GSE62254	public-data fixed-score reproduction	reproduction	true	false	false	true	false	true	The median cutoff is reconstructed from this cohort without outcome optimization; the result is not external validation.
+GN-U03	GN-R01	GN-DC01	ACRG-GSE62254	probe-mapping sensitivity	sensitivity	true	false	true	false	false	true	Highest-variance probe selection uses expression variance only and is reported as sensitivity, not as the primary mapping rule.
