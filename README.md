@@ -32,18 +32,27 @@ Paper2Paper 是一个面向初学者的论文模仿 workflow。它从一篇锚�
 Paper2Paper 不按“改动有多大”排序，也不要求候选路线通过创新性门槛。简单替换可以接受；
 科学设计失效、数据不可得、代码无法可靠运行或与已发表论文实质重复则不能继续。
 
+`routes.tsv.route_role`明确区分三类用途：`manuscript_candidate`是接受投稿资格审查的
+稿件候选，`training`是限定在同类分析模块中的学习或重建实例，`supporting`只支撑其他
+稿件路线。执行完成与稿件资格分别报告：训练实例可以完整跑通，但不能因此被当作整个
+Paper2Paper的验收基准，也不能被误选为最终稿件主线。
+
 ## 新核心：执行和审查各占一半
 
 Paper2Paper 不只保存结论。每条路线必须留下可检查的执行证据：
 
-- 数据需求、检索式、候选数据、代表性文件解析和队列独立性；
-- 代码模块需求、donor检索、版本、许可、入口、安装和smoke test；
+- 数据需求、检索式、候选数据、字段级资源、代表性文件解析和队列用途；
+- 代码模块需求、donor检索、版本、许可、入口、目标路径环境、安装和smoke test；
+- signature的特征顺序、系数、映射、归一化、缺失策略和cutoff合同；
+- 运行中发现的问题、证据、影响、是否推广为通用约束及处理状态；
 - Figure与数据需求、代码模块、source table和验收测试的映射；
 - 最近发表检索和可区分点；
 - 用户的路线选择和高影响变更决定；
 - 运行命令、环境、数据manifest、结果和稿件影响。
 
 结构化记录用于让用户审查AI的工作，不用于代替实际下载、运行和科学判断。
+`paper2paper validate`只检查结构和已登记合同之间是否一致；它不会自动重新下载数据、
+复算checksum、执行分析、核对许可证含义或证明科学结论正确。
 
 ## 工作阶段
 
@@ -98,11 +107,15 @@ evidence/routes.tsv
 evidence/search_log.tsv
 evidence/data_requirements.tsv
 evidence/data_candidates.tsv
+evidence/data_resources.tsv
+evidence/cohort_usage.tsv
 evidence/code_requirements.tsv
 evidence/code_candidates.tsv
+evidence/model_specifications.tsv
 evidence/figures.tsv
 evidence/literature.tsv
 evidence/decisions.tsv
+evidence/issues.tsv
 execution/runs.tsv
 execution/results.tsv
 analysis/specification.md
@@ -112,11 +125,14 @@ reports/readiness.md
 
 ## 数据和凭据边界
 
-Git只保存代码、配置、较小的metadata、检索记录、manifest、source table、报告和稿件。
+Git只保存代码、配置、较小的metadata、检索记录、manifest、经过再分发审查的source table、报告和稿件。
 不要提交服务器密码、token、患者可识别信息、受控数据、未经许可的PDF或大型测序文件。
+逐患者派生表即使只含公开编号，也必须先核对原始数据的再分发和署名条件；未完成时只
+提交生成代码、汇总结果和不含逐患者记录的审计产物。
 
 项目的绑定规则见 [RULES.md](RULES.md)。
 
 ## License
 
-尚未选择许可证。在许可证加入前，不要假定代码可以被外部分发或再许可。
+Paper2Paper自有代码采用 [MIT License](LICENSE)。外部数据、论文附件和第三方代码仍受
+各自来源的许可证及使用条款约束，MIT许可证不会改变这些外部材料的权利状态。

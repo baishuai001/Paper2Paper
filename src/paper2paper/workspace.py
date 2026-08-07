@@ -18,6 +18,8 @@ from .schema import (
 TODO = "<!-- TODO -->"
 DATA_READY = {"sample_parsed", "downloaded", "checksum_verified"}
 CODE_READY = {"smoke_passed", "tested"}
+PATH_READY = {"target_environment_passed", "staged_workaround"}
+MODEL_READY = {"locked", "verified"}
 FIGURE_RANK = {
     "idea": 0,
     "mapped": 1,
@@ -221,6 +223,8 @@ def _validate_references(
                     else [row.get(field_name, "")]
                 )
                 if not values or not values[0]:
+                    if reference.get("optional"):
+                        continue
                     report.errors.append(
                         f"{spec['path']}:{row_number}: empty reference "
                         f"{field_name}"
@@ -241,6 +245,7 @@ def _validate_route_alignment(
     report: ValidationReport,
 ) -> None:
     data_requirements = indexes.get("data_requirements", {})
+    data_candidates = indexes.get("data_candidates", {})
     code_requirements = indexes.get("code_requirements", {})
     figures = indexes.get("figures", {})
     runs = indexes.get("runs", {})
@@ -251,6 +256,13 @@ def _validate_route_alignment(
             report.errors.append(
                 f"data candidate {row.get('data_id')} route does not match "
                 "its requirement"
+            )
+    for row in tables.get("cohort_usage", []):
+        parent = data_candidates.get(row.get("data_id", ""), {})
+        if parent and parent.get("route_id") != row.get("route_id"):
+            report.errors.append(
+                f"cohort usage {row.get('usage_id')} route does not match "
+                "its data candidate"
             )
     for row in tables.get("code_candidates", []):
         parent = code_requirements.get(row.get("module_id", ""), {})
@@ -315,6 +327,17 @@ def _same_contract_value(left: str, right: str) -> bool:
     return " ".join(left.split()).casefold() == " ".join(right.split()).casefold()
 
 
+def _qualified_license(value: str) -> bool:
+    normalized = " ".join(value.split()).casefold()
+    if not normalized:
+        return False
+    disallowed = (
+        "not selected", "unknown", "unlicensed", "no license",
+        "all rights reserved", "internal project use only",
+    )
+    return not any(marker in normalized for marker in disallowed)
+
+
 def _data_candidate_meets_contract(
     requirement: dict[str, str], candidate: dict[str, str]
 ) -> bool:
@@ -346,17 +369,71 @@ def _code_candidate_meets_contract(
     if any(
         not candidate.get(field_name)
         for field_name in (
-            "version", "license", "environment", "entrypoint",
+            "version", "environment", "entrypoint",
             "smoke_input", "smoke_output", "tests_passed",
         )
-    ):
+    ) or not _qualified_license(candidate.get("license", "")):
         return False
     required_tests = _normalized_items(module.get("required_tests", ""))
     passed_tests = _normalized_items(candidate.get("tests_passed", ""))
     return required_tests.issubset(passed_tests)
 
 
-def _route_gaps_from_tables(
+def _data_resources_meet_contract(
+    requirement: dict[str, str],
+    candidate: dict[str, str],
+    tables: dict[str, list[dict[str, str]]],
+) -> bool:
+    resources = [
+        row for row in tables.get("data_resources", [])
+        if row.get("data_id") == candidate.get("data_id")
+        and row.get("verification") in DATA_READY
+    ]
+    if not resources:
+        return False
+    supplied: set[str] = set()
+    for resource in resources:
+        supplied.update(_normalized_items(resource.get("fields_supplied", "")))
+    required = _normalized_items(requirement.get("required_fields", ""))
+    return required.issubset(supplied)
+
+
+def _cohort_usage_gaps(
+    route_id: str, tables: dict[str, list[dict[str, str]]]
+) -> list[str]:
+    gaps: list[str] = []
+    uses = [
+        row for row in tables.get("cohort_usage", [])
+        if row.get("route_id") == route_id
+    ]
+    if any(row.get("acceptable") == "false" for row in uses):
+        gaps.append("cohort usage ledger contains an unacceptable analysis role")
+    by_cohort: dict[str, list[dict[str, str]]] = {}
+    for row in uses:
+        by_cohort.setdefault(row.get("cohort_key", ""), []).append(row)
+    for cohort_key, rows in by_cohort.items():
+        influenced_development = any(
+            row.get(field) == "true"
+            for row in rows
+            for field in (
+                "features_influenced", "parameters_influenced",
+                "cutoff_influenced",
+            )
+        )
+        claimed_external = any(
+            row.get("role") == "external_validation"
+            or row.get("claimed_external_validation") == "true"
+            for row in rows
+        )
+        if influenced_development and claimed_external:
+            gaps.append(
+                f"cohort {cohort_key} influenced development and cannot be "
+                "claimed as external validation"
+            )
+    return gaps
+
+
+def _execution_gaps_from_tables(
     route: dict[str, str], tables: dict[str, list[dict[str, str]]]
 ) -> list[str]:
     route_id = route.get("route_id", "")
@@ -404,6 +481,7 @@ def _route_gaps_from_tables(
             and row.get("verification") in DATA_READY
             and row.get("access") not in {"unavailable", "unknown"}
             and _data_candidate_meets_contract(requirement, row)
+            and _data_resources_meet_contract(requirement, row, tables)
         ]
         if requirement.get("independence_required") == "true":
             usable = [
@@ -412,8 +490,21 @@ def _route_gaps_from_tables(
         if not usable:
             gaps.append(
                 f"data requirement {requirement_id} lacks a parsed usable "
-                "candidate meeting its contract and minimum subject count"
+                "candidate meeting its contract, field-level resource "
+                "provenance and minimum subject count"
             )
+
+    used_data_ids = {
+        row.get("data_id") for row in candidates
+        if row.get("route_id") == route_id and row.get("decision") == "use"
+    }
+    usage_data_ids = {
+        row.get("data_id") for row in tables.get("cohort_usage", [])
+        if row.get("route_id") == route_id
+    }
+    for data_id in sorted(used_data_ids - usage_data_ids):
+        gaps.append(f"data candidate {data_id} lacks a cohort usage ledger entry")
+    gaps.extend(_cohort_usage_gaps(route_id, tables))
 
     modules = [
         row for row in tables.get("code_requirements", [])
@@ -446,11 +537,22 @@ def _route_gaps_from_tables(
                 continue
             if row.get("hardcoded_paths") != "false":
                 continue
+            if row.get("path_portability") not in PATH_READY:
+                continue
             usable.append(row)
         if not usable:
             gaps.append(
                 f"code module {module_id} lacks a qualified smoke-tested donor"
             )
+
+    if route.get("model_spec_required") == "true":
+        model_specs = [
+            row for row in tables.get("model_specifications", [])
+            if row.get("route_id") == route_id
+            and row.get("status") in MODEL_READY
+        ]
+        if not model_specs:
+            gaps.append("route requires a locked computable model specification")
 
     required_figures = [
         row for row in tables.get("figures", [])
@@ -491,21 +593,53 @@ def _route_gaps_from_tables(
     ):
         gaps.append("publication comparison has no proceed decision")
 
+    blocking_issues = [
+        row for row in tables.get("issues", [])
+        if row.get("route_id") in {"", route_id}
+        and row.get("blocking") == "true"
+        and row.get("status") in {
+            "open", "accepted", "partially_resolved_in_core"
+        }
+    ]
+    if blocking_issues:
+        gaps.append(
+            "open blocking issues: "
+            + ", ".join(row.get("issue_id", "") for row in blocking_issues)
+        )
+
+    return gaps
+
+
+def _manuscript_selection_gaps(
+    route: dict[str, str], tables: dict[str, list[dict[str, str]]]
+) -> list[str]:
+    gaps = _execution_gaps_from_tables(route, tables)
+    if route.get("route_role") != "manuscript_candidate":
+        gaps.insert(
+            0,
+            f"route role {route.get('route_role') or 'missing'} is not eligible "
+            "for manuscript selection",
+        )
     return gaps
 
 
 def route_readiness(project_dir: Path) -> list[dict[str, Any]]:
     tables, _ = load_tables(Path(project_dir))
-    return [
-        {
+    readiness: list[dict[str, Any]] = []
+    for route in tables.get("routes", []):
+        execution_gaps = _execution_gaps_from_tables(route, tables)
+        manuscript_gaps = _manuscript_selection_gaps(route, tables)
+        readiness.append({
             "route_id": route.get("route_id"),
             "title": route.get("title"),
             "status": route.get("status"),
-            "ready": not _route_gaps_from_tables(route, tables),
-            "gaps": _route_gaps_from_tables(route, tables),
-        }
-        for route in tables.get("routes", [])
-    ]
+            "route_role": route.get("route_role"),
+            "execution_ready": not execution_gaps,
+            "manuscript_eligible": not manuscript_gaps,
+            "execution_gaps": execution_gaps,
+            "manuscript_gaps": manuscript_gaps,
+        })
+    return readiness
 
 
 def _document_complete(path: Path, minimum_length: int) -> bool:
@@ -559,6 +693,7 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             or row.get("access") in {"unavailable", "unknown"}
             or not requirement
             or not _data_candidate_meets_contract(requirement, row)
+            or not _data_resources_meet_contract(requirement, row, tables)
             or (
                 requirement.get("independence_required") == "true"
                 and row.get("independence") != "independent"
@@ -566,8 +701,29 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
         ):
             report.errors.append(
                 f"data candidate {row.get('data_id')} is marked use but does "
-                "not satisfy access, parsing, contract, sample-size and "
-                "independence requirements"
+                "not satisfy access, parsing, contract, field-level resource "
+                "provenance, sample-size and independence requirements"
+            )
+    for row in tables.get("data_resources", []):
+        verification = row.get("verification")
+        if verification in {"downloaded", "checksum_verified"} and not _positive_integer(
+            row.get("bytes", "")
+        ):
+            report.errors.append(
+                f"data resource {row.get('resource_id')} must record positive bytes"
+            )
+        if verification == "checksum_verified" and not row.get("checksum"):
+            report.errors.append(
+                f"data resource {row.get('resource_id')} must record a checksum"
+            )
+    for row in tables.get("cohort_usage", []):
+        if (
+            row.get("claimed_external_validation") == "true"
+            and row.get("role") != "external_validation"
+        ):
+            report.errors.append(
+                f"cohort usage {row.get('usage_id')} claims external validation "
+                "but its role is not external_validation"
             )
     for row in tables.get("code_candidates", []):
         if row.get("decision") != "use":
@@ -582,6 +738,7 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             or row.get("noninteractive") != "true"
             or row.get("private_inputs") != "false"
             or row.get("hardcoded_paths") != "false"
+            or row.get("path_portability") not in PATH_READY
         ):
             report.errors.append(
                 f"code candidate {row.get('code_id')} is marked use but does "
@@ -594,16 +751,26 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             report.errors.append(
                 f"route {route.get('route_id')} minimum_main_figures must be positive"
             )
-        gaps = _route_gaps_from_tables(route, tables)
-        if route.get("status") in {"ready", "selected"} and gaps:
+        execution_gaps = _execution_gaps_from_tables(route, tables)
+        if route.get("status") == "ready" and execution_gaps:
             report.errors.append(
                 f"route {route.get('route_id')} is marked {route.get('status')} "
-                f"but has gaps: {'; '.join(gaps)}"
+                f"but has execution gaps: {'; '.join(execution_gaps)}"
             )
-        if route.get("status") in {"candidate", "verifying"} and not gaps:
+        if route.get("status") == "selected":
+            manuscript_gaps = _manuscript_selection_gaps(route, tables)
+            if manuscript_gaps:
+                report.errors.append(
+                    f"route {route.get('route_id')} is marked selected but is not "
+                    f"manuscript-eligible: {'; '.join(manuscript_gaps)}"
+                )
+        if (
+            route.get("status") in {"candidate", "verifying"}
+            and not execution_gaps
+        ):
             report.warnings.append(
-                f"route {route.get('route_id')} has no readiness gaps and can "
-                "be marked ready"
+                f"route {route.get('route_id')} has no execution gaps and can "
+                "be marked execution-ready"
             )
 
     selected_route_id = manifest.get("selected_route_id", "")
@@ -642,10 +809,11 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
                 report.errors.append("selection stage requires selected_route_id")
             elif selected_route_id in indexes.get("routes", {}):
                 selected = indexes["routes"][selected_route_id]
-                gaps = _route_gaps_from_tables(selected, tables)
+                gaps = _manuscript_selection_gaps(selected, tables)
                 if gaps:
                     report.errors.append(
-                        "selected route is not execution-ready: " + "; ".join(gaps)
+                        "selected route is not manuscript-eligible: "
+                        + "; ".join(gaps)
                     )
                 decisions = [
                     row for row in tables.get("decisions", [])
@@ -896,19 +1064,26 @@ def next_actions(project_dir: Path) -> list[str]:
         )
         return actions
 
-    ready_routes: list[str] = []
+    selectable_routes: list[str] = []
     for route in tables.get("routes", []):
-        gaps = _route_gaps_from_tables(route, tables)
-        if not gaps:
-            ready_routes.append(route.get("route_id", ""))
-        elif route.get("status") not in {"rejected", "stopped"}:
-            for gap in gaps:
+        execution_gaps = _execution_gaps_from_tables(route, tables)
+        if execution_gaps and route.get("status") not in {"rejected", "stopped"}:
+            for gap in execution_gaps:
                 actions.append(f"{route.get('route_id')}: {gap}.")
+            continue
+        manuscript_gaps = _manuscript_selection_gaps(route, tables)
+        if not manuscript_gaps:
+            selectable_routes.append(route.get("route_id", ""))
+        elif route.get("route_role") in {"training", "supporting"}:
+            actions.append(
+                f"{route.get('route_id')}: execution is complete; retain it as "
+                f"{route.get('route_role')} evidence, not as a manuscript route."
+            )
 
     selected = manifest.get("selected_route_id", "")
-    if ready_routes and not selected:
+    if selectable_routes and not selected:
         actions.append(
-            "Review ready routes, record one select decision, mark that route "
+            "Review manuscript-eligible routes, record one select decision, mark that route "
             "selected and set PROJECT.json selected_route_id."
         )
     if selected:
@@ -960,17 +1135,22 @@ def write_readiness_report(project_dir: Path) -> Path:
             [
                 f"### {item['route_id']}: {item['title']}",
                 "",
-                f"- Ready for selection: `{str(item['ready']).lower()}`",
+                f"- Execution ready: `{str(item['execution_ready']).lower()}`",
+                f"- Manuscript eligible: `{str(item['manuscript_eligible']).lower()}`",
                 f"- Recorded status: `{item['status']}`",
+                f"- Route role: `{item['route_role']}`",
                 f"- Data burden: `{route.get('data_burden')}`",
                 f"- Code burden: `{route.get('code_burden')}`",
                 f"- Beginner burden: `{route.get('beginner_burden')}`",
                 f"- Estimated calendar time: {route.get('estimated_calendar_time')}",
             ]
         )
-        if item["gaps"]:
-            lines.append("- Gaps:")
-            lines.extend(f"  - {gap}" for gap in item["gaps"])
+        if item["execution_gaps"]:
+            lines.append("- Execution gaps:")
+            lines.extend(f"  - {gap}" for gap in item["execution_gaps"])
+        if item["manuscript_gaps"] and not item["execution_gaps"]:
+            lines.append("- Manuscript-selection limits:")
+            lines.extend(f"  - {gap}" for gap in item["manuscript_gaps"])
         lines.append("")
     lines.extend(["## Next actions", ""])
     lines.extend(f"- {action}" for action in next_actions(project_dir))

@@ -85,6 +85,7 @@ def make_ready_route(project: Path) -> None:
         {
             "route_id": "ROUTE-1",
             "status": "ready",
+            "route_role": "manuscript_candidate",
             "mode": "marker",
             "title": "Marker substitution",
             "question": "Is marker B associated with outcome Y at patient level?",
@@ -104,6 +105,7 @@ def make_ready_route(project: Path) -> None:
             "code_burden": "low",
             "beginner_burden": "low",
             "estimated_calendar_time": "two weeks for the minimum route",
+            "model_spec_required": "false",
             "main_risk": "marker instability",
             "stop_condition": "required data or code cannot pass the spike",
         },
@@ -182,6 +184,41 @@ def make_ready_route(project: Path) -> None:
         },
     )
     add_row(
+        evidence / "data_resources.tsv",
+        {
+            "resource_id": "RESOURCE-1",
+            "data_id": "DATA-1",
+            "name": "Example parsed file",
+            "role": "expression and outcome",
+            "uri": "https://example.org/data.tsv",
+            "source_version": "2026-08-03 snapshot",
+            "checked_at": "2026-08-03",
+            "verification": "sample_parsed",
+            "local_name": "data.tsv",
+            "fields_supplied": "patient_id;outcome;expression",
+            "identifier_field": "patient_id",
+            "notes": "fixture",
+        },
+    )
+    add_row(
+        evidence / "cohort_usage.tsv",
+        {
+            "usage_id": "USAGE-1",
+            "route_id": "ROUTE-1",
+            "data_id": "DATA-1",
+            "cohort_key": "EXAMPLE-COHORT",
+            "analysis_step": "primary association",
+            "role": "discovery",
+            "outcome_used": "true",
+            "features_influenced": "false",
+            "parameters_influenced": "false",
+            "cutoff_influenced": "false",
+            "claimed_external_validation": "false",
+            "acceptable": "true",
+            "notes": "fixture",
+        },
+    )
+    add_row(
         evidence / "code_candidates.tsv",
         {
             "code_id": "CODE-1",
@@ -199,6 +236,8 @@ def make_ready_route(project: Path) -> None:
             "noninteractive": "true",
             "private_inputs": "false",
             "hardcoded_paths": "false",
+            "path_portability": "target_environment_passed",
+            "path_test": "Windows path with spaces",
             "verification": "smoke_passed",
             "decision": "use",
             "checked_at": "2026-08-03",
@@ -294,7 +333,38 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             report = validate_workspace(project)
             self.assertTrue(report.ok, report.errors)
             readiness = route_readiness(project)
-            self.assertTrue(readiness[0]["ready"], readiness[0]["gaps"])
+            self.assertTrue(
+                readiness[0]["execution_ready"],
+                readiness[0]["execution_gaps"],
+            )
+            self.assertTrue(
+                readiness[0]["manuscript_eligible"],
+                readiness[0]["manuscript_gaps"],
+            )
+
+    def test_training_reproduction_cannot_be_selected_as_manuscript_route(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            rewrite_rows(
+                project / "evidence/routes.tsv",
+                lambda rows: rows[0].update({"route_role": "training"}),
+            )
+            readiness = route_readiness(project)
+            self.assertTrue(
+                readiness[0]["execution_ready"],
+                readiness[0]["execution_gaps"],
+            )
+            self.assertFalse(readiness[0]["manuscript_eligible"])
+            report = validate_workspace(project)
+            self.assertTrue(report.ok, report.errors)
+            select_route(project)
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("not manuscript-eligible" in e for e in report.errors)
+            )
 
     def test_metadata_only_data_cannot_support_a_ready_route(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -321,6 +391,137 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             report = validate_workspace(project)
             self.assertFalse(report.ok)
             self.assertTrue(any("smoke-tested donor" in e for e in report.errors))
+
+    def test_license_placeholder_cannot_qualify_code(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            rewrite_rows(
+                project / "evidence/code_candidates.tsv",
+                lambda rows: rows[0].update(
+                    {"license": "Repository license not selected; internal project use only"}
+                ),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(any("qualified smoke-tested donor" in e for e in report.errors))
+
+    def test_data_candidate_requires_field_level_resource_provenance(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            rewrite_rows(
+                project / "evidence/data_resources.tsv",
+                lambda rows: rows[0].update({"fields_supplied": "expression"}),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(any("field-level resource" in e for e in report.errors))
+
+    def test_target_environment_path_smoke_is_required(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            rewrite_rows(
+                project / "evidence/code_candidates.tsv",
+                lambda rows: rows[0].update(
+                    {"path_portability": "not_checked", "path_test": "not run"}
+                ),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(any("smoke-tested donor" in e for e in report.errors))
+
+    def test_development_cohort_cannot_be_claimed_as_external_validation(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            add_row(
+                project / "evidence/cohort_usage.tsv",
+                {
+                    "usage_id": "USAGE-2",
+                    "route_id": "ROUTE-1",
+                    "data_id": "DATA-1",
+                    "cohort_key": "EXAMPLE-COHORT",
+                    "analysis_step": "feature screening",
+                    "role": "feature_screening",
+                    "outcome_used": "true",
+                    "features_influenced": "true",
+                    "parameters_influenced": "false",
+                    "cutoff_influenced": "false",
+                    "claimed_external_validation": "false",
+                    "acceptable": "true",
+                    "notes": "fixture",
+                },
+            )
+            rewrite_rows(
+                project / "evidence/cohort_usage.tsv",
+                lambda rows: rows[0].update(
+                    {
+                        "role": "external_validation",
+                        "claimed_external_validation": "true",
+                    }
+                ),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(any("cannot be claimed" in e for e in report.errors))
+
+    def test_required_signature_needs_a_locked_computable_specification(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            rewrite_rows(
+                project / "evidence/routes.tsv",
+                lambda rows: rows[0].update({"model_spec_required": "true"}),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(any("computable model specification" in e for e in report.errors))
+
+    def test_open_blocking_issue_prevents_route_readiness(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "project"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_ready_route(project)
+            add_row(
+                project / "evidence/issues.tsv",
+                {
+                    "issue_id": "ISSUE-1",
+                    "route_id": "ROUTE-1",
+                    "scope": "product",
+                    "stage": "verification",
+                    "severity": "critical",
+                    "observation": "Required endpoint cannot be parsed.",
+                    "evidence": "smoke log",
+                    "consequence": "Primary result cannot be generated.",
+                    "proposed_action": "Repair parser.",
+                    "disposition": "promote_to_core",
+                    "status": "open",
+                    "blocking": "true",
+                    "notes": "fixture",
+                },
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(any("open blocking issues" in e for e in report.errors))
+            rewrite_rows(
+                project / "evidence/issues.tsv",
+                lambda rows: rows[0].update(
+                    {"status": "partially_resolved_in_core"}
+                ),
+            )
+            self.assertFalse(validate_workspace(project).ok)
+            rewrite_rows(
+                project / "evidence/issues.tsv",
+                lambda rows: rows[0].update({"status": "verified_in_core"}),
+            )
+            self.assertTrue(validate_workspace(project).ok)
 
     def test_too_few_subjects_cannot_support_a_ready_route(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -426,7 +627,8 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             path = write_readiness_report(project)
             text = path.read_text(encoding="utf-8")
             self.assertIn("ROUTE-1", text)
-            self.assertIn("Ready for selection: `true`", text)
+            self.assertIn("Execution ready: `true`", text)
+            self.assertIn("Manuscript eligible: `true`", text)
 
     def test_pilot_workspaces_validate(self) -> None:
         for project in (

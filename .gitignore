@@ -21,6 +21,7 @@ controlled_data/
 raw_data/
 downloads/
 cache/
+/tmp/
 *.fastq
 *.fastq.gz
 *.bam

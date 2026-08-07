@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 
 STAGES = (
     "anchor_audit",
@@ -28,6 +28,12 @@ ROUTE_MODES = (
     "signature",
     "combined",
     "custom",
+)
+
+ROUTE_ROLES = (
+    "manuscript_candidate",
+    "training",
+    "supporting",
 )
 
 PROJECT_KEYS = {
@@ -72,33 +78,35 @@ TABLES = {
         "evidence/routes.tsv",
         "route_id",
         (
-            "route_id", "status", "mode", "title", "question",
+            "route_id", "status", "route_role", "mode", "title", "question",
             "target_disease", "target_object", "biological_unit",
             "comparison", "primary_outcome", "claim_ceiling", "falsifier",
             "anchor_reuse", "changed_axes", "science_status",
             "science_basis", "minimum_main_figures", "data_burden",
             "code_burden", "beginner_burden", "estimated_calendar_time",
-            "main_risk", "stop_condition",
+            "model_spec_required", "main_risk", "stop_condition",
         ),
         (
-            "status", "mode", "title", "question", "target_disease",
+            "status", "route_role", "mode", "title", "question", "target_disease",
             "target_object", "biological_unit", "comparison",
             "primary_outcome", "claim_ceiling", "falsifier", "anchor_reuse",
             "changed_axes", "science_status", "science_basis",
             "minimum_main_figures", "data_burden", "code_burden",
             "beginner_burden", "estimated_calendar_time", "main_risk",
-            "stop_condition",
+            "model_spec_required", "stop_condition",
         ),
         {
             "status": (
                 "candidate", "verifying", "ready", "selected", "backup",
                 "rejected", "stopped",
             ),
+            "route_role": ROUTE_ROLES,
             "mode": ROUTE_MODES,
             "science_status": ("unreviewed", "conditional", "pass", "fail"),
             "data_burden": ("low", "medium", "high", "unknown"),
             "code_burden": ("low", "medium", "high", "unknown"),
             "beginner_burden": ("low", "medium", "high", "unknown"),
+            "model_spec_required": ("true", "false"),
         },
     ),
     "search_log": _spec(
@@ -175,6 +183,61 @@ TABLES = {
             {"field": "requirement_id", "target": "data_requirements"},
         ),
     ),
+    "data_resources": _spec(
+        "evidence/data_resources.tsv",
+        "resource_id",
+        (
+            "resource_id", "data_id", "name", "role", "uri",
+            "source_version", "checked_at", "verification", "local_name",
+            "bytes", "checksum", "fields_supplied", "identifier_field",
+            "notes",
+        ),
+        (
+            "data_id", "name", "role", "uri", "source_version",
+            "checked_at", "verification", "local_name", "fields_supplied",
+            "identifier_field",
+        ),
+        {
+            "verification": (
+                "not_checked", "metadata_checked", "sample_parsed",
+                "downloaded", "checksum_verified", "blocked",
+            ),
+        },
+        ({"field": "data_id", "target": "data_candidates"},),
+    ),
+    "cohort_usage": _spec(
+        "evidence/cohort_usage.tsv",
+        "usage_id",
+        (
+            "usage_id", "route_id", "data_id", "cohort_key",
+            "analysis_step", "role", "outcome_used", "features_influenced",
+            "parameters_influenced", "cutoff_influenced",
+            "claimed_external_validation", "acceptable", "notes",
+        ),
+        (
+            "route_id", "data_id", "cohort_key", "analysis_step", "role",
+            "outcome_used", "features_influenced", "parameters_influenced",
+            "cutoff_influenced", "claimed_external_validation", "acceptable",
+        ),
+        {
+            "role": (
+                "discovery", "feature_screening", "model_fitting",
+                "cutoff_selection", "internal_validation",
+                "external_validation", "reproduction", "sensitivity",
+                "localization", "exploratory", "other",
+            ),
+            "outcome_used": ("true", "false"),
+            "features_influenced": ("true", "false"),
+            "parameters_influenced": ("true", "false"),
+            "cutoff_influenced": ("true", "false"),
+            "claimed_external_validation": ("true", "false"),
+            "acceptable": ("true", "false"),
+        },
+        (
+            {"field": "route_id", "target": "routes"},
+            {"field": "data_id", "target": "data_candidates"},
+        ),
+    ),
     "code_requirements": _spec(
         "evidence/code_requirements.tsv",
         "module_id",
@@ -196,14 +259,15 @@ TABLES = {
             "code_id", "route_id", "module_id", "name", "source_type",
             "uri", "version", "license", "language", "environment",
             "entrypoint", "contract_match", "noninteractive",
-            "private_inputs", "hardcoded_paths", "verification", "decision",
-            "checked_at", "smoke_input", "smoke_output", "tests_passed",
-            "notes",
+            "private_inputs", "hardcoded_paths", "path_portability",
+            "path_test", "verification", "decision", "checked_at",
+            "smoke_input", "smoke_output", "tests_passed", "notes",
         ),
         (
             "route_id", "module_id", "name", "source_type", "uri",
             "language", "noninteractive", "private_inputs", "hardcoded_paths",
-            "contract_match", "verification", "decision", "checked_at",
+            "path_portability", "path_test", "contract_match", "verification",
+            "decision", "checked_at",
         ),
         {
             "source_type": (
@@ -214,6 +278,10 @@ TABLES = {
             "noninteractive": ("true", "false", "unknown"),
             "private_inputs": ("true", "false", "unknown"),
             "hardcoded_paths": ("true", "false", "unknown"),
+            "path_portability": (
+                "not_checked", "target_environment_passed",
+                "staged_workaround", "blocked",
+            ),
             "verification": (
                 "not_checked", "inspected", "install_passed",
                 "smoke_passed", "tested", "blocked",
@@ -224,6 +292,25 @@ TABLES = {
             {"field": "route_id", "target": "routes"},
             {"field": "module_id", "target": "code_requirements"},
         ),
+    ),
+    "model_specifications": _spec(
+        "evidence/model_specifications.tsv",
+        "model_id",
+        (
+            "model_id", "route_id", "name", "status", "feature_order",
+            "coefficients", "input_scale", "feature_mapping",
+            "duplicate_feature_policy", "missing_feature_policy",
+            "normalization_reference", "cutoff_rule", "output_definition",
+            "locked_at", "source", "notes",
+        ),
+        (
+            "route_id", "name", "status", "feature_order", "coefficients",
+            "input_scale", "feature_mapping", "duplicate_feature_policy",
+            "missing_feature_policy", "normalization_reference",
+            "cutoff_rule", "output_definition", "locked_at", "source",
+        ),
+        {"status": ("draft", "locked", "verified", "blocked")},
+        ({"field": "route_id", "target": "routes"},),
     ),
     "figures": _spec(
         "evidence/figures.tsv",
@@ -345,5 +432,34 @@ TABLES = {
             {"field": "run_id", "target": "runs"},
             {"field": "figure_id", "target": "figures"},
         ),
+    ),
+    "issues": _spec(
+        "evidence/issues.tsv",
+        "issue_id",
+        (
+            "issue_id", "route_id", "scope", "stage", "severity",
+            "observation", "evidence", "consequence", "proposed_action",
+            "disposition", "status", "blocking", "notes",
+        ),
+        (
+            "scope", "stage", "severity", "observation", "evidence",
+            "consequence", "proposed_action", "disposition", "status",
+            "blocking",
+        ),
+        {
+            "scope": ("anchor", "product", "both"),
+            "stage": STAGES,
+            "severity": ("low", "medium", "high", "critical"),
+            "disposition": (
+                "instance_only", "promote_to_core", "already_covered",
+                "defer", "not_applicable",
+            ),
+            "status": (
+                "open", "accepted", "resolved_in_pilot",
+                "partially_resolved_in_core", "verified_in_core", "wont_fix",
+            ),
+            "blocking": ("true", "false"),
+        },
+        ({"field": "route_id", "target": "routes", "optional": True},),
     ),
 }

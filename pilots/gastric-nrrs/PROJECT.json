@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
   "project_id": "P2P-GASTRIC-NRRS",
   "title": "Gastric NRRS pilot",
   "stage": "anchor_audit",

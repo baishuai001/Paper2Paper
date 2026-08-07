@@ -87,7 +87,11 @@ def main(argv: list[str] | None = None) -> int:
                     print(f"WARNING: {warning}")
                 for error in report.errors:
                     print(f"ERROR: {error}")
-                print("validation passed" if report.ok else "validation failed")
+                print(
+                    "structural and contract validation passed"
+                    if report.ok
+                    else "structural and contract validation failed"
+                )
             return 0 if report.ok else 1
 
         if args.command == "status":
@@ -105,9 +109,11 @@ def main(argv: list[str] | None = None) -> int:
                     print("routes: none")
                 for route in summary["routes"]:
                     print(
-                        f"{route['route_id']}\tready="
-                        f"{str(route['ready']).lower()}\t"
-                        f"gaps={len(route['gaps'])}"
+                        f"{route['route_id']}\texecution_ready="
+                        f"{str(route['execution_ready']).lower()}\t"
+                        f"manuscript_eligible="
+                        f"{str(route['manuscript_eligible']).lower()}\t"
+                        f"execution_gaps={len(route['execution_gaps'])}"
                     )
                 print(f"validation errors: {len(summary['validation_errors'])}")
             return 0 if not summary["validation_errors"] else 1
