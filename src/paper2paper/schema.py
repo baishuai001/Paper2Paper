@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 
-SCHEMA_VERSION = "2.0.0"
+SCHEMA_VERSION = "3.0.0"
 
 PILOT_STAGES = (
     "anchor_audit",
@@ -24,18 +24,6 @@ MANUSCRIPT_STAGES = (
 )
 
 STAGES = tuple(dict.fromkeys((*PILOT_STAGES, *MANUSCRIPT_STAGES)))
-
-ROUTE_MODES = (
-    "reproduction",
-    "marker",
-    "gene_set",
-    "cell_type",
-    "cancer_type",
-    "pan_cancer",
-    "signature",
-    "combined",
-    "custom",
-)
 
 ROUTE_ROLES = (
     "manuscript_candidate",
@@ -89,7 +77,7 @@ TABLES = {
         "route_id",
         (
             "route_id", "decision_status", "evidence_stage", "route_role",
-            "mode", "capability_ids", "title", "question", "target_disease",
+            "mode", "title", "question", "target_disease",
             "target_object", "biological_unit", "comparison",
             "primary_outcome", "claim_ceiling", "falsifier",
             "anchor_reuse", "changed_axes", "scientific_review",
@@ -99,7 +87,7 @@ TABLES = {
         ),
         (
             "decision_status", "evidence_stage", "route_role", "mode",
-            "capability_ids", "title", "question", "target_disease",
+            "title", "question", "target_disease",
             "target_object", "biological_unit", "comparison",
             "primary_outcome", "claim_ceiling", "falsifier", "anchor_reuse",
             "changed_axes", "scientific_review", "science_basis",
@@ -117,7 +105,6 @@ TABLES = {
                 "minimal_real_run", "figure_loop_closed",
             ),
             "route_role": ROUTE_ROLES,
-            "mode": ROUTE_MODES,
             "scientific_review": ("unreviewed", "conditional", "passed", "failed"),
             "data_burden": ("low", "medium", "high", "unknown"),
             "code_burden": ("low", "medium", "high", "unknown"),
@@ -258,12 +245,12 @@ TABLES = {
         "evidence/code_requirements.tsv",
         "module_id",
         (
-            "module_id", "route_id", "capability_id", "name", "purpose",
+            "module_id", "route_id", "name", "purpose",
             "input_contract", "output_contract", "required_tests", "required",
             "notes",
         ),
         (
-            "route_id", "capability_id", "name", "purpose", "input_contract",
+            "route_id", "name", "purpose", "input_contract",
             "output_contract", "required_tests", "required",
         ),
         {"required": ("true", "false")},
@@ -278,7 +265,7 @@ TABLES = {
             "entrypoint", "contract_match", "noninteractive",
             "private_inputs", "hardcoded_paths", "path_portability",
             "path_test", "verification", "decision", "checked_at",
-            "reusable_release_id", "smoke_input", "smoke_output",
+            "smoke_input", "smoke_output",
             "tests_passed", "notes",
         ),
         (
@@ -421,7 +408,7 @@ TABLES = {
         (
             "run_id", "route_id", "run_kind", "status", "command", "commit",
             "environment", "input_provenance", "data_manifest",
-            "module_release_ids", "started_at", "finished_at", "exit_code",
+            "started_at", "finished_at", "exit_code",
             "log", "artifacts", "notes",
         ),
         (
@@ -465,29 +452,27 @@ TABLES = {
         "evidence/issues.tsv",
         "issue_id",
         (
-            "issue_id", "route_id", "observed_layer", "candidate_scope",
-            "issue_type", "stage", "severity", "observation", "evidence",
-            "consequence", "proposed_action", "disposition", "status",
-            "blocking", "affected_capability_ids", "promotion_id", "notes",
+            "issue_id", "route_id", "source_scope", "issue_type", "stage",
+            "severity", "observation", "evidence", "consequence",
+            "proposed_action", "current_resolution", "workflow_action",
+            "status", "blocking", "notes",
         ),
         (
-            "observed_layer", "candidate_scope", "issue_type", "stage",
-            "severity", "observation", "evidence", "consequence",
-            "proposed_action", "disposition", "status", "blocking",
+            "source_scope", "issue_type", "stage", "severity",
+            "observation", "evidence", "consequence", "proposed_action",
+            "current_resolution", "workflow_action", "status", "blocking",
         ),
         {
-            "observed_layer": ("anchor", "pilot_execution", "both"),
-            "candidate_scope": ("pilot", "module", "core"),
+            "source_scope": (
+                "anchor", "pilot_execution", "both", "scientific_result",
+            ),
             "issue_type": (
                 "data_access", "data_identity", "code", "contract",
                 "statistical", "scientific_result", "license", "usability",
             ),
             "stage": STAGES,
             "severity": ("low", "medium", "high", "critical"),
-            "disposition": (
-                "instance_only", "promote_to_module", "promote_to_core",
-                "already_covered", "defer", "not_applicable",
-            ),
+            "workflow_action": ("none", "consider", "implemented", "deferred"),
             "status": (
                 "open", "resolved", "accepted_risk", "superseded", "wont_fix",
             ),

@@ -88,7 +88,7 @@ Because every cohort is standardized separately, a patient's NRRS depends on the
 | Fig. 9 | scRNA localization | HRA011727 eight-patient cohort | access restriction and undocumented single-cell pipeline choices |
 | Figs. S1-S12 | batch, extra cohorts, drugs and scRNA extensions | multiple public/private inputs | many are conceptually reproducible, but exact outputs require unavailable choices/code |
 
-## Module disposition
+## Analysis-step disposition
 
 - **Retain:** published eight-gene coefficients; Supplementary Table S4; exact public bulk accessions; patient-level survival as the statistical unit.
 - **Repair:** dataset-role leakage labels; probe/gene mapping; preprocessing contract; fixed cutoff; continuous-score evaluation; resampling; multiplicity; cohort-independent external validation; donor-aware single-cell inference.

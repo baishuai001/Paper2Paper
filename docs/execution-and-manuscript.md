@@ -39,24 +39,18 @@ result source table 缺失、指向目录或只是零字节占位文件时，`ex
 `reports/pilot-outcome.md` 同时交付：
 
 - 文献侧：锚点论文审计、候选路线、真实运行、科学限制和 continue/refine/reroute/stop 判断；
-- 产品侧：发现的问题、作用范围、局部处理，以及是否值得申请 module/core 晋升。
+- workflow 侧：发现的问题、当前论文修复、Paper2Paper 是否需要修改，以及修改后怎样用同一 Pilot 复验。
 
-问题先记录观察发生在哪一层（anchor、pilot execution 或 both），再判断候选作用范围
-（pilot、module 或 core）和问题类型。科学阴性结果不能被误写成 workflow 故障；一个 Pilot
-的局部修复也不能被写成跨论文通用规则已验证。
+问题记录来源范围（anchor、pilot execution、both 或 scientific result）、证据、后果、
+当前修复、workflow action 和状态。科学阴性结果不能被误写成 workflow 故障；一个 Pilot
+的局部修复也不能被写成所有论文都已验证。
 
-## 问题状态与晋升成熟度分开
+## 问题状态与 workflow 修改分开
 
-`issues.tsv.status` 只说明当前问题实例是 open、resolved、accepted risk、superseded 或
-wont fix。跨论文规则的成熟度由中央 `promotions.tsv` 单独记录：
-
-- `observed`：发现了候选规律，尚未形成可执行控制；
-- `provisional`：来源 Pilot 和合格测试支持临时采用，但没有独立迁移证据；
-- `confirmed`：不同 Pilot、锚点和数据的兼容真实案例支持；
-- `rejected/deprecated`：候选被否定或已被替代。
-
-Module 另用 `draft/unit_verified/reference_verified/transfer_verified` 描述实现证据。问题已在
-Pilot 中 resolved，不会自动提高 promotion 或 module 的成熟度。
+`issues.tsv.status` 说明当前问题实例是否 open、resolved、accepted risk、superseded 或
+wont fix；`workflow_action` 只说明 Paper2Paper 修改是 none、consider、implemented 或
+deferred。`implemented` 仍只证明这次修改已经落地并用当前案例复验，不证明对其他论文
+天然适用。以后在另一文献中使用时，重新核对输入、方法和科学边界即可，不建立中央成熟度体系。
 
 ## 从 Pilot 到正式稿件
 
@@ -75,8 +69,7 @@ Pilot 不包含正式 `manuscript/draft.md`。只有下列条件满足后，才�
 不能在 AI 后续补齐数据或结果后被自动消费。
 
 CLI 只允许把新项目创建为当前仓库 `manuscript-projects/` 的一级子目录；目标目录必须尚未
-存在，`project_id` 必须在 Pilot 和正式项目中全局唯一。这样创建出的项目才能进入中央索引和
-后续回归检查。
+存在，`project_id` 必须在 Pilot 和正式项目中全局唯一。
 
 晋升只复制可审查的方向与证据，不复制 Pilot 的运行和结果冒充正式分析。正式项目必须重新冻结
 `analysis/specification.md`、重新验证代码和环境、重新生成 source tables/Figures，之后才进入解释和写作。
@@ -89,4 +82,4 @@ Pilot 不允许记录 `approve_release`，晋升代码也会防御性地拒绝�
 ## 正式项目的停止条件
 
 当用户批准的路线已经具备真实数据、可靠代码、Figure 闭环、合理 claim 和可审查稿件时，停止为
-“以后也许有用”的通用化继续扩建 Paper2Paper。只有新的真实阻断问题才允许恢复产品侧工作。
+“以后也许有用”的通用化继续扩建 Paper2Paper。只有新的真实阻断问题才允许恢复 workflow 修改。

@@ -10,5 +10,5 @@ rerun its own formal analysis. Pilot outputs are evidence for the promotion
 decision; they are not automatically accepted as manuscript results.
 
 Formal projects prioritize the manuscript, Figures, source tables and review.
-They do not expand the reusable platform unless a new, concrete blocker makes a
-separate core or module change necessary.
+If a concrete blocker exposes a Paper2Paper problem, fix only what is needed,
+recheck the real project, and then return to manuscript production.

@@ -1156,40 +1156,6 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
                 "repository-relative artifacts"
             )
 
-    for row in tables.get("issues", []):
-        issue_id = row.get("issue_id", "")
-        disposition = row.get("disposition", "")
-        candidate_scope = row.get("candidate_scope", "")
-        promotion_id = row.get("promotion_id", "")
-        affected_capabilities = _split_ids(
-            row.get("affected_capability_ids", "")
-        )
-        if disposition == "promote_to_module":
-            if candidate_scope != "module":
-                report.errors.append(
-                    f"issue {issue_id} promotes to module but candidate_scope "
-                    "is not module"
-                )
-            if not promotion_id or not affected_capabilities:
-                report.errors.append(
-                    f"issue {issue_id} module promotion requires promotion_id "
-                    "and affected_capability_ids"
-                )
-        elif disposition == "promote_to_core":
-            if candidate_scope != "core":
-                report.errors.append(
-                    f"issue {issue_id} promotes to core but candidate_scope is not core"
-                )
-            if not promotion_id or not affected_capabilities:
-                report.errors.append(
-                    f"issue {issue_id} core promotion requires promotion_id and "
-                    "affected_capability_ids"
-                )
-        elif promotion_id:
-            report.errors.append(
-                f"issue {issue_id} records promotion_id without a promotion disposition"
-            )
-
     for route in tables.get("routes", []):
         if not _positive_integer(route.get("minimum_main_figures", "")):
             report.errors.append(
@@ -1294,7 +1260,7 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             if not _document_complete(project_dir / "reports/pilot-outcome.md", 500):
                 report.errors.append(
                     "reports/pilot-outcome.md must separate paper-side and "
-                    "product-side outcomes before pilot review"
+                    "workflow-side outcomes before pilot review"
                 )
         if stage == "pilot_complete":
             closing_decisions = [
@@ -1449,9 +1415,11 @@ the audit into a fixed substitution checklist.
 For every main and supplementary figure record its manuscript role, data,
 metadata, method, code, output, statistical unit and unavailable dependencies.
 
-## Module disposition
+## Analysis-step disposition
 
-Classify every module as retain, repair, substitute, extend, drop or blocked.
+Classify every analysis step as retain, repair, substitute, extend, drop or
+blocked. Preserve the anchor paper's useful framework even when one step needs
+repair.
 
 ## Defect-to-repair contracts
 
@@ -1494,7 +1462,7 @@ form the target paper. Predefined substitution examples are not a completeness t
 
 ## Signature formula, if applicable
 
-## Module input/output contracts and scientific invariants
+## Analysis input/output contracts and scientific invariants
 
 ## Figure and source-table outputs
 
@@ -1524,7 +1492,7 @@ Freeze this specification before the first full manuscript execution.
 
 ## Signature formula, if applicable
 
-## Module releases, input/output contracts and scientific invariants
+## Analysis code versions, input/output contracts and scientific invariants
 
 ## Figure and source-table outputs
 
@@ -1541,15 +1509,15 @@ PILOT_OUTCOME_TEMPLATE = f"""# Pilot outcome
 Record what was learned about the anchor, candidate routes, real-data runs,
 scientific limitations and the continue/refine/reroute/stop decision.
 
-## Product-side outcome
+## Workflow-side outcome
 
-List reusable findings separately. For each one record whether it remains
-pilot-specific, is a module/core promotion candidate, or was rejected.
+List workflow findings separately. Record the current paper impact, local
+repair, whether Paper2Paper itself changed, and whether this Pilot was rerun.
 
-## Capability and regression contribution
+## Reuse boundary
 
-State exactly which capability and test level this pilot exercised. Do not
-describe one pilot as validation of unrelated papers or the whole workflow.
+State exactly which data, code and analysis steps this Pilot exercised. Do not
+describe one Pilot as validation of unrelated papers or the whole workflow.
 
 ## Human decision and next boundary
 
@@ -1583,7 +1551,7 @@ MANUSCRIPT_TEMPLATE = f"""# Manuscript draft
 PILOT_README = """# Paper2Paper pilot workspace
 
 This directory audits one real anchor paper, tests candidate directions and
-produces separate paper-side and product-side outcomes. It is not itself a
+produces separate paper-side and workflow-side outcomes. It is not itself a
 manuscript project. Large data, credentials and copyrighted PDFs stay outside
 Git.
 """
@@ -1651,7 +1619,7 @@ def init_workspace(
             "target_audience": "beginner-led project with AI assistance",
             "success_definition": (
                 "A reviewed pilot outcome with traceable direction, data, code, "
-                "minimal real execution and scoped product findings"
+                "minimal real execution and recorded workflow feedback"
                 if workspace_kind == "pilot"
                 else "A scientifically defensible, non-duplicate manuscript with "
                 "traceable data, code, figures, results and limitations"
@@ -1664,8 +1632,8 @@ def init_workspace(
             "skills": "",
         },
         "stop_rule": (
-            "Stop product work when the pilot can support a route decision and "
-            "record its scoped reusable findings"
+            "Stop workflow expansion when the Pilot can support a route decision "
+            "and its concrete findings have been handled"
             if workspace_kind == "pilot"
             else "Freeze non-blocking workflow work when the selected route can be "
             "executed, reviewed and written reliably"
@@ -1855,7 +1823,7 @@ def next_actions(project_dir: Path) -> list[str]:
         if not tables.get("routes"):
             actions.append(
                 "Generate the bounded route portfolio and record each route's "
-                "capabilities and direction-audit evidence."
+                "scientific question, evidence needs and direction-audit basis."
             )
             return actions
 
@@ -1885,7 +1853,7 @@ def next_actions(project_dir: Path) -> list[str]:
         if not _document_complete(project_dir / "reports/pilot-outcome.md", 500):
             actions.append(
                 "Complete reports/pilot-outcome.md with separate paper-side and "
-                "product-side conclusions."
+                "workflow-side conclusions."
             )
         if not actions and stage != "pilot_complete":
             actions.append(

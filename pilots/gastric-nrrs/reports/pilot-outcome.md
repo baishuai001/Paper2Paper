@@ -2,49 +2,20 @@
 
 ## Paper-side outcome
 
-The anchor publishes an eight-gene formula but omits enough preprocessing,
-probe aggregation, missing-feature and cutoff detail that its reported figure
-cannot be reproduced exactly from the paper alone. A bounded reconstruction was
-nevertheless possible with public GSE62254 expression, GPL570 annotation and
-the ACRG clinical supplement. GN-RUN05 passed on 300 patients and reproduced the
-reported adverse survival direction. The association is modest and the cohort
-participated in the anchor's feature-screening pool; therefore it is not
-untouched external validation, not a deployable predictor and not a new paper
-direction by itself.
+The anchor publishes an eight-gene formula but omits preprocessing, probe aggregation, missing-feature and cutoff detail needed for exact reconstruction. A bounded public-data reconstruction was possible with GSE62254 expression, GPL570 annotation and the ACRG clinical supplement. GN-RUN05 passed on 300 patients and reproduced the reported adverse survival direction.
 
-The AI recommendation is to retain GN-R01 as a training/reference Pilot for a
-fixed bulk-signature reconstruction. No route is promoted, no manuscript
-workspace has been created, and no user close-Pilot decision is inferred.
+The association is modest, and GSE62254 participated in the anchor's feature-screening pool. This is therefore not untouched external validation, a deployable predictor or a new paper direction. GN-R01 remains a training Pilot; no manuscript project was created.
 
-## Product-side outcome
+## Workflow-side outcome
 
-The Pilot exposed four kinds of product work. Patient/resource integrity and
-cross-source identity findings produced provisional safety promotions; the
-computable fixed-signature contract produced a reference-verified module; the
-cohort-role ledger and Pilot/manuscript separation are already represented in
-core; path/permission and mutable-service automation remain deferred. The
-paper's missing code, development-cohort reuse and cohort-relative transform
-remain anchor/Pilot limitations rather than generic workflow defects.
+The real run exposed useful controls: field-level resource provenance, cross-source patient-ID checks, cohort-role recording, a computable signature specification, checksum pinning, noninteractive Figure testing and separation of execution evidence from user approval of a target-paper route.
 
-Each local finding retains its own status in `evidence/issues.tsv`. Promotion
-maturity is recorded separately in `registries/promotions.tsv`; resolving the
-gastric instance does not mean a core rule or module has been confirmed across
-papers.
+These controls were implemented where they directly prevented an observed error and rechecked with this Pilot. Path preflight, mutable online-service capture and broader environment automation remain open or deferred. The anchor's missing code, development-cohort reuse and cohort-relative transform remain paper limitations rather than reasons to expand Paper2Paper indefinitely.
 
-## Capability and regression contribution
+## Reuse boundary
 
-GN-R01 exercises three capabilities on one anchor and one composite public
-resource set: pinned resource integrity, cross-source patient-ID linkage and
-fixed bulk-signature reconstruction. The first two have one real-data reference
-case. The signature implementation is `reference_verified`, not
-`transfer_verified`. The frozen gastric values detect changes for this exact
-input and implementation only; they cannot test other modalities, other papers
-or Paper2Paper as a whole.
+The frozen gastric values detect changes for this exact input and implementation. They do not validate another signature, modality, disease, paper or the whole workflow. Any later reuse must recheck the new data, preprocessing, statistical unit and claim.
 
 ## Human decision and next boundary
 
-The evidence is ready for user review. A future user decision may retain the
-Pilot as training, close it, or open a distinct non-duplicate candidate route.
-Only an explicitly promoted `manuscript_candidate` may create a separate
-`manuscript-project`; this training reproduction cannot be promoted merely
-because its code ran successfully.
+The AI recommendation is to retain this as a training example. A future user may close it or use its reliable code as a donor after compatibility review, but this training reproduction cannot become a target paper merely because it ran successfully.
