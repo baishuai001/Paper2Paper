@@ -16,11 +16,13 @@ secrets*
 *.key
 
 source_materials/
+/WorkSpace/
 private_data/
 controlled_data/
 raw_data/
 downloads/
 cache/
+/tmp/
 *.fastq
 *.fastq.gz
 *.bam
@@ -34,3 +36,4 @@ cache/
 
 execution/artifacts/
 outputs/intermediate/
+pilots/gastric-nrrs/outputs/gse62254_spike/GSE62254_nrrs_source_table.tsv

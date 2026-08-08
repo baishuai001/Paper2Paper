@@ -1,0 +1,14 @@
+test_expected_result_contract_passes_and_fails_closed (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_expected_result_contract_passes_and_fails_closed) ... ok
+test_geo_metadata_requires_complete_unique_identifiers (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_geo_metadata_requires_complete_unique_identifiers) ... ok
+test_kaplan_meier_plot_is_noninteractive_and_written (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_kaplan_meier_plot_is_noninteractive_and_written) ... ok
+test_median_grouping_is_balanced_with_ties (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_median_grouping_is_balanced_with_ties) ... ok
+test_metadata_path_never_exposes_an_absolute_directory (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_metadata_path_never_exposes_an_absolute_directory) ... ok
+test_nrrs_uses_sample_sd_and_published_coefficient_order (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_nrrs_uses_sample_sd_and_published_coefficient_order) ... ok
+test_patient_source_table_contract_fails_closed (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_patient_source_table_contract_fails_closed) ... ok
+test_probe_aggregation_is_outcome_blind_and_deterministic (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_probe_aggregation_is_outcome_blind_and_deterministic) ... ok
+test_resource_verification_fails_closed_on_change (pilots.gastric-nrrs.code.test_gse62254_nrrs_spike.GSE62254SpikeTests.test_resource_verification_fails_closed_on_change) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.187s
+
+OK

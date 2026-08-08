@@ -1,8 +1,9 @@
-# Analysis specification
+# Pilot minimal-run specification
 
 <!-- TODO -->
 
-Complete this only after a route is selected.
+Complete the relevant sections before a minimal real-data run. This does not
+freeze a future manuscript analysis.
 
 ## Cohorts and exclusions
 

@@ -1,1 +1,1 @@
-module_id	route_id	name	purpose	input_contract	output_contract	required_tests	required	notes
+module_id	route_id	capability_id	name	purpose	input_contract	output_contract	required_tests	required	notes

@@ -1,0 +1,24 @@
+{
+  "mean_probes": {
+    "subjects": 300.0,
+    "events": 152.0,
+    "continuous_hr_per_sd": 1.4557087847209513,
+    "high_vs_low_hr": 1.5285637714892835,
+    "logrank_p": 0.009058547007380267,
+    "c_index": 0.5961232634200498,
+    "risk_direction_matches_anchor": true
+  },
+  "max_variance_probe": {
+    "subjects": 300.0,
+    "events": 152.0,
+    "continuous_hr_per_sd": 1.4680972139224848,
+    "high_vs_low_hr": 1.4669266665196787,
+    "logrank_p": 0.01833439505957495,
+    "c_index": 0.5914423740510697,
+    "risk_direction_matches_anchor": true
+  },
+  "mapping_sensitivity": {
+    "spearman_score_correlation": 0.971646796075512,
+    "high_low_agreement": 0.9533333333333334
+  }
+}

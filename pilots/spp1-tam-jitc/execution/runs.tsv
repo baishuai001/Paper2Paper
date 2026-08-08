@@ -1,1 +1,1 @@
-run_id	route_id	status	command	commit	environment	data_manifest	started_at	finished_at	log	artifacts	notes
+run_id	route_id	run_kind	status	command	commit	environment	input_provenance	data_manifest	module_release_ids	started_at	finished_at	exit_code	log	artifacts	notes

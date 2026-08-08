@@ -1,12 +1,80 @@
-# Pilot projects
+# 真实文献 Pilot
 
-These workspaces test the generic Paper2Paper workflow against real anchor papers.
-They are deliberately isolated from the product core: evidence, decisions, code,
-data, and results from one paper must not become defaults for another paper.
+`pilots/` 中的每个目录对应一篇真实锚点文献。Pilot 的作用是把 Paper2Paper 放到真实数据、真实代码和真实方法缺口中运行，同时把该文献分析推进到可以继续、修正、晋升或停止的明确决定。
 
-- `spp1-tam-jitc/`: colorectal cancer liver-metastasis and SPP1+ TAM anchor.
-- `gastric-nrrs/`: gastric-cancer nerve-related risk-signature anchor.
+Pilot 不是正式论文项目，也不是 Paper2Paper 的全局训练基准。
 
-Both pilots begin at `anchor_audit`. Previous route recommendations were not
-imported. They must be reconstructed from traceable evidence under the current
-workflow.
+## Pilot 的主要任务
+
+每个 Pilot 按成本从低到高完成：
+
+1. 审计锚点论文的科学问题、Figure、数据、方法、代码和 claim ceiling；
+2. 形成不过度扩张的候选路线组合；
+3. 对候选路线完成数据、代码和最近发表预检；
+4. 对最有判断价值的路线运行最小真实数据试验；
+5. 根据成功、失败或阴性结果作出 `continue`、`refine`、`reroute` 或 `stop` 决定；
+6. 判断是否存在值得用户批准并晋升为正式论文项目的路线。
+
+Pilot 可以在任何有充分证据的停止点结束。它不需要为了“显得完整”而把所有分析和 Figure 都跑完。
+
+## 每个 Pilot 的双重产出
+
+### 1. 文献侧产出（主产出）
+
+- 锚点审计和可公开复现边界；
+- 路线组合及各自保留/改变的轴；
+- 数据、代码、统计单位和最近发表证据；
+- 最小真实运行、失败记录、结果和限制；
+- 对当前文献路线的继续、修正、晋升或停止判断。
+
+### 2. 产品侧产出（副产出）
+
+- 运行中发现的问题及其类别；
+- 当前实例如何处理；
+- 是否值得晋升为 module/core 变更；
+- 支持晋升的证据、成熟度和仍需哪个独立案例；
+- 变更后应重跑哪些既有回归案例。
+
+不是每个 Pilot 都必须修改 core。文献分析得到可靠结论，但没有发现新的通用缺陷，也属于成功完成。
+
+## 隔离规则
+
+- 一个 Pilot 的数据、公式、cutoff、预期结果和科学结论不能成为另一个 Pilot 的默认值。
+- 一个 Pilot 的代码只有提取成有明确合同和测试范围的 module 后，才可被其他 Pilot 候选复用。
+- 跨 Pilot 复用前必须重新核对输入、预处理、统计单位、疾病场景、输出和 claim 的兼容性。
+- 来源 Pilot 可以提出并初步测试规则，但不能单独证明规则已经跨论文通用。
+- Pilot 中的训练复现可以 `execution_ready`，但不能因此成为新论文，也不能证明整个 workflow 可靠。
+
+## 能力登记
+
+Pilot 的价值通过能力矩阵表达，而不是通过一个总分或“基准通过”表达。每次真实运行应登记它实际覆盖的能力，例如：
+
+- 数据模态与平台；
+- 统计/生物学单位；
+- 预处理或数据连接能力；
+- 分析模块；
+- 输出和 claim 范围；
+- 它是参考案例、独立迁移案例还是失败案例；
+- 当前成熟度。
+
+仅通过空目录和 schema 校验的 Pilot 不构成任何真实能力证据。
+
+## Pilot 与正式论文项目的接口
+
+当 Pilot 中某条路线满足以下条件时，AI 可以提交“晋升选择包”供用户审查：
+
+- 科学问题、统计单位和 falsifier 清楚；
+- 必需数据已经解析到字段级；
+- 必需代码在目标环境通过真实输入试验；
+- 至少一个代表性 Figure/source table 已生成；
+- 最近发表和实质重复风险已核查；
+- 时间、计算量、初学者负担和剩余风险明确。
+
+用户批准后，在 `manuscript-projects/` 建立独立正式项目，并记录来源 `pilot_id`、`route_id`、关键 `run_id` 和分析资产版本。Pilot 本身继续保留为审计和学习证据。
+
+## 当前 Pilot
+
+- `gastric-nrrs/`：胃癌神经相关八基因 NRRS 锚点。GN-R01 已完成限定的公开 bulk signature 重建，只覆盖固定 signature、微阵列探针映射和患者级生存分析；它是训练/参考案例，不是新论文路线，也不验证其他模态。
+- `spp1-tam-jitc/`：结直肠癌肝转移与 SPP1+ TAM 锚点。目前仍应从独立锚点审计开始；单细胞、空间、髓系状态和跨尺度证据必须用它自己的数据与模块验证。
+
+Pilot 的发现晋升和回归规则见 [真实文献学习循环](../docs/learning-loop.md)，代码复用边界见 [模块复用](../docs/module-reuse.md)。

@@ -1,3 +1,3 @@
 """Paper2Paper workflow tools."""
 
-__version__ = "0.4.0a1"
+__version__ = "0.5.0a1"
