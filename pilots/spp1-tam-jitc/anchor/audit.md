@@ -1,35 +1,152 @@
-# Anchor audit
+# 锚点文献审计
 
-<!-- TODO -->
+本文件回答三个问题：这篇论文真正搭建了什么分析框架；现有公开材料允许复现到什么程度；哪些问题必须在目标论文中修复。指出问题的目的不是否定锚点文献，而是保护其中仍然有价值的框架，避免目标论文重复同样的错误。
 
-## Paper identity
+详细的逐 Figure 框架资产见 [`framework-assets.md`](framework-assets.md)，逐项硬伤与修复合同见 [`repair-contracts.md`](repair-contracts.md)。
 
-- Full citation:
-- DOI:
-- Local source-material location:
-- Public data and code statements:
+## 1. 论文身份与审计范围
 
-## Scientific grammar
+- 完整引文：Lin Y, Chen Z, Zhao S, et al. Targeting *SPP1*+TAMs associated with liver metastasis reverses immunosuppression and synergizes with immunotherapy in colorectal cancer. *Journal for ImmunoTherapy of Cancer*. 2026;14:e014128.
+- DOI：[`10.1136/jitc-2025-014128`](https://doi.org/10.1136/jitc-2025-014128)
+- 在线全文：[JITC/PMC 全文](https://pmc.ncbi.nlm.nih.gov/articles/PMC13034337/)
+- 本地材料：原文 PDF、23 页原文页面图、Supplementary Material 1（3 页）和 Supplementary Material 2（1 页），均位于 Git 之外的 `WorkSpace/SPP1 TAMs JITC原文与补充材料/`。
+- 审计日期：2026-08-07。
+- 审计状态：全文、Figure、Methods、Discussion、Data availability 和现有补充材料已检查；公共 accession 的网页元数据已核对；尚未把所有大型矩阵下载并逐文件解析，因此“网页可见”与“已经能够运行”严格区分。
 
-- Population and disease:
-- Biological unit:
-- Exposure or focal object:
-- Comparison:
-- Primary outcome:
-- Central claim:
-- Claim ceiling:
-- Result that would falsify the central claim:
+## 2. 用普通语言还原论文
 
-## Figure-to-evidence map
+作者整合多个来源的 CRC 单细胞数据，宣称得到 420 个样本和 998,204 个细胞，覆盖原发 CRC、癌旁结直肠、结直肠癌肝转移、癌旁肝、淋巴结和外周血。作者先建立全细胞图谱，再聚焦髓系细胞，将 TAM 主要概括为 `SPP1+` 和论文所称的 `SEPP1+` 两种状态；现行基因符号应写作 `SELENOP`，`SEPP1` 只能作为历史别名保留。
 
-For every main and supplementary figure record its manuscript role, data,
-metadata, method, code, output, statistical unit and unavailable dependencies.
+论文随后把这两类 TAM 再按 `ATP5F1E` 或线粒体基因 `MT-CO1` 分成四个亚群，用差异表达、GO/GSVA、拟时序、RNA velocity 和空间转录组解释其功能与组织分布；用 bulk 队列把 SPP1+TAM 得分与肝转移、预后和免疫指标关联；再用 T 细胞构成、CellChat、空间邻近和多重免疫荧光支持“SPP1+TAM 与 CD8 T 细胞排斥/耗竭共存”。最后通过小鼠皮下瘤和肝转移模型比较 CSF1R、PD-1、regorafenib 及联合治疗，提出 regorafenib 可降低 SPP1+TAM，并与抗 PD-1 联用。
 
-## Module disposition
+这不是一篇单纯的“单细胞找 marker”论文。它真正的结构是：
 
-Classify every module as retain, repair, substitute, extend, drop or blocked.
+```text
+跨解剖部位细胞图谱
+  -> 髓系细胞聚焦和状态对照
+  -> 发育/代谢/空间解释
+  -> bulk 临床关联
+  -> T 细胞免疫生态关联
+  -> 药物干预和联合治疗
+```
 
-## Reproduction boundary
+这条证据顺序是最应珍惜和利用的框架资产，但每一级证据能够支持的主张强度不同，不能由相关性分析自动升级为机制或疗效因果。
 
-List private data, wet-lab evidence, unavailable code and undocumented author
-choices that prevent exact reproduction.
+## 3. 科学语法
+
+- 人群与疾病：结直肠癌患者，包括原发肿瘤、癌旁结直肠、肝转移、癌旁肝、淋巴结和血液；另有机构人组织队列和小鼠 MC38 模型。
+- 主要生物学单位：临床和组织比较应以患者/供体为单位；空间研究应以患者为重复单位、切片/ROI 为嵌套单位；细胞只是测量单位，不能替代独立患者数。
+- 核心对象：SPP1 表达的肿瘤相关巨噬细胞状态，而不是游离的 `SPP1` 单基因表达。
+- 主要比较：SPP1+TAM 与 SELENOP+TAM；原发 CRC 与癌旁；肝转移与癌旁肝；高与低 SPP1+TAM；不同治疗组。
+- 主要结局：TAM 状态在组织中的患者级丰度/程序活性，以及其与肝转移和 CD8 T 细胞生态的关联。
+- 次要结局：总生存、肝转移分类、细胞通信、空间邻近和小鼠肿瘤负荷。
+- 发表主张：SPP1+TAM 是肝转移相关、免疫抑制性 TAM；regorafenib 可靶向该状态，并与抗 PD-1 协同。
+- 公共数据能支持的主张上限：在明确患者身份、治疗和数据来源后，可以检验某些 SPP1+巨噬细胞转录程序是否在 CRC/CRLM 中富集，并是否与 T 细胞状态或临床结局相关。公开计算数据不能单独证明巨噬细胞来源、分化方向、代谢通量、空间缺氧、SPP1 因果作用、regorafenib 特异靶向或治疗协同。
+- 中心主张的可证伪条件：在供体级、队列分层、治疗分层并校正 QC/组织背景后，SPP1+巨噬细胞程序不再在肝转移中稳定富集，或其与 CD8 排斥的方向不能在独立空间/单细胞数据中复现。
+
+## 4. 作者如何筛选到 SPP1+TAM，以及为什么选择它
+
+作者并非从所有细胞和所有 marker 中进行一个预先定义、完全无偏的竞争性筛选。更准确的还原是“已有生物学先验 + 数据内优先级证据 + 可干预性”的假设驱动选择：
+
+1. **强先验**：作者团队此前的 CRC 髓系研究 `GSE146771/HRA000056` 已经识别 SPP1+TAM；在这篇锚点文献发表前，SPP1+TAM、SPP1–CAF 网络及 CXCL9:SPP1 巨噬细胞极性也已有多篇研究。
+2. **数据内可见性**：髓系重聚类后，C4 以 `SPP1` 标记，C0 以 `SEPP1/SELENOP` 标记，形成容易叙述的对照。
+3. **解剖富集**：作者报告 SPP1+TAM 在 CRC 和肝转移中较高，而 SELENOP+TAM 在相应正常组织中相对较高。
+4. **功能一致性**：差异表达和富集把 SPP1+TAM 指向血管生成、ECM 重塑、ERK 和免疫抑制，把 SELENOP+TAM 指向抗原呈递/免疫过程。
+5. **跨尺度关联**：bulk 得分、T 细胞构成、CellChat、空间距离和 mIF 都能被组织成“SPP1+TAM—CD8 功能低下”的同向故事。
+6. **临床转化入口**：已有 CSF1R/多激酶药物和抗 PD-1 组合，使作者能够把观察性图谱接到小鼠干预。
+
+因此，选择 SPP1 有合理依据，但不能写成“数据无偏发现了唯一关键细胞”。目标论文应公开一个优先级规则，例如组织富集稳定性、供体效应、独立队列复现、细胞来源特异性、空间一致性、已有文献拥挤度和可干预性，并同时报告竞争状态为何没有被选择。
+
+## 5. 样本与数据来源审计
+
+### 5.1 单细胞数据
+
+| 来源 | 公开页面所示内容 | 当前可得性 | 对锚点复现的限制 |
+| --- | --- | --- | --- |
+| [`GSE146771`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE146771) / `HRA000056` | 作者团队既往 CRC 研究；GEO 有处理后表达/metadata，原始序列在 GSA-Human | 处理后公开；raw 受控 | 可作为原发 CRC 数据和方法供体，不能替代 420 样本映射表 |
+| `syn26844071` | Joanito 等 Nat Genet 2022 的 CRC 单细胞矩阵 | Synapse 账户/条款下可取 | 需核对 donor、组织、平台和是否与其他来源重复 |
+| [`GSE205506`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE205506) | 19 名 dMMR/MSI-H 患者、40 个样本；含 untreated、anti-PD-1 及 anti-PD-1+celecoxib | 1.5 GB 处理后矩阵公开；raw 因隐私需申请 | 它是新辅助免疫治疗队列，不能当作未经治疗的普通 CRC 样本池 |
+| [`GSE225857`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE225857) | 6 名肝转移 CRC 患者、27 个组织样本；GEO 以聚合对象呈现；所有患者术前接受化疗和/或放疗 | 607 MB 处理后文件公开；raw 在 CNSA `CNP0002540/CNP0003321` | `LN` 在该来源的设计语境中是离肝转移灶至少 2 cm 的正常肝，而不是淋巴结；必须按原始样本表解释 |
+| [`GSE164522`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE164522) | 17 名 CRLM 患者、101 个样本，包括血、肠系膜淋巴结、匹配原发/转移瘤及邻近组织 | 约 3.8 GB 分组织处理后表达矩阵和 metadata 公开；raw 不在 GEO | 最适合重建解剖比较，但需从 metadata 恢复患者—样本—组织映射 |
+| [`GSE178341`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE178341) | 62 名治疗初治 CRC 患者，371,223 个肿瘤/癌旁细胞，181 个 library 记录 | raw 在 dbGaP `phs002407` 受控；处理后资源需从原门户核实 | 平台和 MMR 构成与其他队列不同，且主要是原发 CRC |
+
+论文给出的 420 个样本构成为 CRC 248、ANCT 103、CLM 18、ANLT 18、LN 18、PBMC 15，总数算术上相符；但正文和补充材料没有给出每个样本对应哪个 accession、患者、组织、治疗、平台和 library 的清单，也没有解释患者/样本是否跨来源重复。998,204 个细胞的合并矩阵同样没有公开对象或 checksum。因而“大规模”成立不等于“来源可追溯”。
+
+### 5.2 空间数据
+
+- 锚点使用 [`GSE280315`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE280315) 的 3 个原发 CRC Visium HD 样本；它是论文总系列 `GSE280318` 下的 Visium HD 子系列。该数据及配套代码可从 [10x Genomics 官方仓库](https://github.com/10XGenomics/HumanColonCancer_VisiumHD) 获取。两种编号所处层级不同，后续下载和引用时不得混用。
+- 这 3 个样本不是 CRLM，因此不能直接验证“肝转移中的空间分布”或“肝转移特异缺氧/富氧位置”。
+- 可作为后续 CRLM 空间候选的数据包括 [`GSE217414`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE217414)：4 名接受新辅助化疗的 CRLM 患者，Visium 处理后文件和 raw/SRA 可得。它没有未治疗或原发 CRC 配对，适合独立空间定位，不适合单独估计治疗效应。
+
+### 5.3 bulk 数据
+
+| accession | 官方内容 | 审计结论 |
+| --- | --- | --- |
+| [`GSE39582`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE39582) | 大型结肠癌 GPL570 队列，raw CEL 和处理后表达可得 | 可用于患者级预后关联，但必须恢复临床终点、探针映射和独立 cutoff |
+| [`GSE41568`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41568) | 133 个原发和转移 CRC 样本，GPL570；raw 和处理后文件可得 | 可检验组织类型关联；需要确认患者重复、转移部位、标签和批次，不能直接称“无创指标” |
+| `GSE17356` | 官方记录是非洲裔/欧洲裔男性的前列腺癌上皮细胞表达数据 | **确定的 accession—疾病错误，不能用于 CRC 分析** |
+| [`GSE17536`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE17536) | 177 名 CRC 患者的表达与随访队列 | 很可能是作者原本想写的 accession，但无代码/源表时不能擅自把它当作已确认更正 |
+| [`GSE72968`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE72968) | 转移性 CRC 原发瘤表达队列 | 需逐文件核对结局、转移部位和患者数后才能确定角色 |
+| [`GSE41258`](https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE41258) | 390 张数组，含原发 CRC、肝/肺转移及相应正常组织 | 锚点未使用，但可作为目标论文的组织对照候选；同一患者可能有多个样本，不能把数组数当患者数 |
+
+Methods 还把 `GSE41568` 列了两次。`GSE17356` 的疾病错误和重复 accession 说明目标论文必须把 accession 身份核验设为硬门，而不能从论文表格直接复制数据编号。
+
+### 5.4 机构和动物数据
+
+- 人 mIF：正文描述 108 个未治疗原发 CRC 与 92 个匹配癌旁样本（2020–2024），另有 32 个伴同步肝转移的原发灶子集。没有患者级源表、图像、ROI、批次、盲法和样本映射公开。
+- 小鼠皮下模型：6 组、每组 4 只，包括 NC、anti-CSF1R、anti-PD-1、二者联合、regorafenib、regorafenib+anti-PD-1。
+- 小鼠肝转移模型：正文可还原为 PBS、regorafenib、regorafenib+anti-PD-1，每组 4 只；缺少 anti-PD-1 单药，不能进行完整联合效应交互检验。
+- 小鼠流式、组织图像、单细胞矩阵和逐只动物数据均没有公共 accession 或源表。
+
+### 5.5 代码与模型对象
+
+- 论文没有 Code availability 声明，也没有作者代码仓库。
+- 以 DOI、完整题名、作者+SPP1/CRC 为关键词进行 GitHub 公开搜索，未发现作者仓库（检查日期 2026-08-07）。
+- Methods 给出了 Scanpy 1.9.0、Scrublet 0.2.3、Harmony 0.1.0、CellChat 1.6.1 等名称和部分参数，但没有环境锁、随机种子、完整函数参数、样本清单、签名基因、分组 cutoff、源表和执行顺序。
+- 因此锚点代码当前判定为“不可得”，而不是“代码存在但尚未下载”。可以重建模块，但不能声称恢复了作者原始 pipeline。
+
+## 6. 可复现边界
+
+### 6.1 可以尝试的分析性复现
+
+- 在明确来源的公开单细胞队列内，重新识别巨噬细胞并检验 SPP1/SELENOP 程序的患者级组织差异。
+- 在独立公开队列中检验 SPP1 程序、代谢程序和 T 细胞状态的方向一致性。
+- 在 `GSE280315` 原发 CRC 和 `GSE217414` CRLM 中进行有边界的空间定位/邻近分析。
+- 在 `GSE39582/GSE41568/GSE41258` 中进行重新定义、锁定的 bulk 得分和临床关联分析。
+- 使用官方/方法论文实现重建 QC、供体级差异、程序评分、参考映射、空间去卷积和可重复 Figure。
+
+### 6.2 不能精确复现的结果
+
+- 420 个样本/998,204 个细胞的精确整合对象、全套聚类和细胞比例，因为没有样本来源清单与合并对象。
+- Fig. 1G、Fig. 5B/F、Fig. 7D、Fig. 8E 等机构 mIF 结果，因为没有原图、ROI 和患者级数据。
+- Fig. 9–10 的全部动物、流式、小鼠单细胞和功能结果，因为没有逐只动物数据、门控文件、矩阵或完整源表。
+- 锚点的 SPP1+TAM bulk signature、阈值 1.23、肝转移 AUC 0.847 和部分高低组，因为签名基因、计算尺度、cutoff 选择和样本标签未公开。
+- 任何像素级 Figure 复现，因为原始代码、随机种子、完整参数和源表均缺失。
+- “regorafenib 直接靶向 SPP1+TAM”“SPP1+TAM 导致 CD8 耗竭”“联合治疗协同”等因果结论，不能由公开计算数据重建。
+
+## 7. 模块处置总表
+
+- **保留（retain）**：跨组织比较问题；先全景后聚焦髓系；对照两类 TAM 状态；从细胞状态到空间、临床、免疫生态的证据顺序；Figure 逐级推进的叙事结构。
+- **修复（repair）**：样本来源、治疗和患者映射；患者级统计；线粒体 QC 与代谢定义；轨迹解释；空间去卷积；签名锁定；临床模型验证；多重检验；干预设计和协同检验。
+- **替换（substitute）**：用公开 CRLM 空间数据替换“用原发 CRC 空间代指肝转移”；用官方/高质量方法实现替换不可得作者代码；用直接 SPP1 扰动替换 regorafenib 作为特异机制证明。
+- **扩展（extend）**：加入患者—样本—文件 manifest、治疗分层、leave-one-study-out、供体 pseudobulk、竞争细胞来源、负结果、敏感性分析和可执行 source-table 合同。
+- **删除（drop）**：不能支撑中心问题的装饰性 UMAP、未锁定 cutoff 的二分图、没有独立验证的 AUC、仅凭单 marker 命名的“代谢亚型”。
+- **阻断（blocked）**：机构 mIF、动物原始数据、作者私有整合对象和原 pipeline 的精确复现；除非作者提供数据/代码，否则只能用等价公开证据替代或降低主张。
+
+## 8. 对目标论文的直接约束
+
+1. 目标论文可以借用锚点的证据骨架，但不能把锚点的预期结果当验收标准。
+2. 每个组织比较必须以患者为推断单位，并显式记录患者、样本、组织、治疗、平台和来源论文。
+3. 不能把 `MT-CO1` 单基因或高线粒体比例直接解释为氧化磷酸化功能；不能把 `ATP5F1E` 单基因直接命名为糖酵解状态。
+4. 轨迹和 CellChat 只允许作为生成假设的证据；若没有扰动、受体依赖、救援或谱系追踪，不得写因果动词。
+5. SPP1 必须做细胞来源拆分，至少区分巨噬细胞、肿瘤细胞和成纤维细胞来源。
+6. 任何 signature 必须在看结局前锁定基因、方向、尺度、缺失处理和 cutoff；用于开发的患者不能再被称为外部验证。
+7. 空间结果必须以患者为重复，区分 spot/bin 与细胞，并保存 ROI/坐标/源表。
+8. “协同”必须有完整析因设计和交互项；组合优于单组不自动等于协同。
+9. 目标论文首轮应选择一个能在 1–2 周内用公开小样本推翻的核心模块，先验证数据身份和方向，再扩大到百万细胞整合。
+
+## 9. 当前审计结论
+
+这篇锚点文献值得模仿的核心，是它把“一个髓系状态”放进了解剖部位、代谢、空间、临床、免疫生态和治疗的连续证据链，而不是某个具体 marker 或某套 Scanpy 命令。它的主要风险恰好也来自证据链跨得太快：来源和统计单位没有充分固定，单基因代谢命名与 QC 相互纠缠，原发 CRC 空间数据被用于支持转移解释，观察性通信被升级为机制，多靶点药物被升级为 SPP1+TAM 靶向，缺少完整析因组却使用了协同语言。
+
+因此，目标论文不应“嫌弃并抛弃”这套框架，也不应照抄其结论。正确做法是保留跨尺度证据顺序，选择一个能够用公开数据、可靠代码和供体级统计真正闭环的中心问题，并把未能得到的湿实验因果证据留在 claim ceiling 之外。

@@ -3,12 +3,12 @@
   "workspace_kind": "pilot",
   "project_id": "P2P-SPP1-TAM-JITC",
   "title": "SPP1+TAM JITC pilot",
-  "stage": "anchor_audit",
+  "stage": "route_generation",
   "selected_route_id": "",
   "anchor": {
     "title": "Targeting SPP1+TAMs associated with liver metastasis reverses immunosuppression and synergizes with immunotherapy in colorectal cancer",
     "doi": "10.1136/jitc-2025-014128",
-    "citation": "",
+    "citation": "Lin Y, Chen Z, Zhao S, et al. J Immunother Cancer. 2026;14:e014128.",
     "source_location": "outside Git"
   },
   "provenance": {
