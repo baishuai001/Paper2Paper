@@ -1,6 +1,6 @@
 # Paper2Paper current state
 
-Updated: 2026-08-07
+Updated: 2026-08-08
 
 ## Product boundary
 
@@ -36,11 +36,8 @@ available or a new environment release is rerun and reviewed.
 
 - `P2P-GASTRIC-NRRS`: a bounded training/reference reconstruction. GN-R01 has
   a passed 300-patient real-data run and a separate focused-test run. It is not
-  a manuscript candidate and does not test SPP1+TAM, single-cell, spatial or the
-  whole workflow. It is awaiting a user retain/close decision; none is inferred.
-- `P2P-SPP1-TAM-JITC`: an independent SPP1+TAM JITC anchor Pilot. It remains at
-  anchor audit and must develop and verify its own route, datasets, code modules
-  and cross-scale claims.
+  a manuscript candidate and does not test other modalities, other papers or
+  the whole workflow. It is awaiting a user retain/close decision; none is inferred.
 
 ## Reusable evidence
 
@@ -75,14 +72,13 @@ accepting transfer evidence.
 ## Immediate boundary
 
 The schema/registry migration is complete. Keep the automated checks green and
-use the canonical server directory for continued work. The next scientific task
-is the SPP1+TAM Pilot's candidate-route and availability work; no additional
-generic feature should be built unless that or another real paper exposes a
-concrete blocker.
+use the canonical server directory for continued work. No active target-paper
+Pilot or formal manuscript project currently exists. Do not add generic
+features until a newly approved real-paper Pilot exposes a concrete blocker.
 
 # Paper2Paper 当前状态
 
-更新日期：2026-08-07
+更新日期：2026-08-08
 
 ## 产品边界
 
@@ -108,9 +104,7 @@ Paper2Paper 是一个处于 Alpha 阶段的工作流，面向初学者并由 AI 
 
 ## 真实论文 Pilot
 
-- `P2P-GASTRIC-NRRS`：一个范围受限的训练/参考重建项目。GN-R01 已完成一次包含300名患者的真实数据运行，并且另有一次独立记录的聚焦测试运行。它不是正式论文候选路线，也没有检验 SPP1+TAM、单细胞、空间分析或整个 Paper2Paper 工作流。目前仍在等待用户决定将其保留为训练案例还是关闭；系统没有擅自推断用户决定。
-
-- `P2P-SPP1-TAM-JITC`：一个独立的 SPP1+TAM JITC 锚点论文 Pilot。目前仍处于锚点审计阶段，必须独立形成并验证自己的研究路线、数据集、代码模块和跨尺度主张。
+- `P2P-GASTRIC-NRRS`：一个范围受限的训练/参考重建项目。GN-R01 已完成一次包含300名患者的真实数据运行，并且另有一次独立记录的聚焦测试运行。它不是正式论文候选路线，也没有检验其他模态、其他论文或整个 Paper2Paper 工作流。目前仍在等待用户决定将其保留为训练案例还是关闭；系统没有擅自推断用户决定。
 
 ## 可复用证据
 
@@ -148,6 +142,4 @@ Paper2Paper 是一个处于 Alpha 阶段的工作流，面向初学者并由 AI 
 
 Schema 和 registry 迁移已经完成。后续工作应保持所有自动化检查持续通过，并使用规范服务器目录继续推进。
 
-下一项科学任务是开展 SPP1+TAM Pilot 的候选路线生成与数据、代码可获得性分析。
-
-除非 SPP1+TAM Pilot 或另一篇真实论文暴露出具体阻断问题，否则不应继续增加新的通用功能。
+目前没有活动中的目标论文 Pilot，也没有正式论文项目。在用户批准新的真实论文 Pilot 并由其暴露出具体阻断问题之前，不应继续增加通用功能。

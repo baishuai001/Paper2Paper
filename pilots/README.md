@@ -75,6 +75,5 @@ Pilot 的价值通过能力矩阵表达，而不是通过一个总分或“基�
 ## 当前 Pilot
 
 - `gastric-nrrs/`：胃癌神经相关八基因 NRRS 锚点。GN-R01 已完成限定的公开 bulk signature 重建，只覆盖固定 signature、微阵列探针映射和患者级生存分析；它是训练/参考案例，不是新论文路线，也不验证其他模态。
-- `spp1-tam-jitc/`：结直肠癌肝转移与 SPP1+ TAM 锚点。目前仍应从独立锚点审计开始；单细胞、空间、髓系状态和跨尺度证据必须用它自己的数据与模块验证。
 
 Pilot 的发现晋升和回归规则见 [真实文献学习循环](../docs/learning-loop.md)，代码复用边界见 [模块复用](../docs/module-reuse.md)。

@@ -1168,10 +1168,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             self.assertTrue(any("do not start a manuscript draft" in action for action in actions))
 
     def test_repository_pilots_validate(self) -> None:
-        for project in (
-            ROOT / "pilots/spp1-tam-jitc",
-            ROOT / "pilots/gastric-nrrs",
-        ):
+        for project in (ROOT / "pilots/gastric-nrrs",):
             report = validate_workspace(project)
             self.assertTrue(report.ok, f"{project}: {report.errors}")
 

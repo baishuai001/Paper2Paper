@@ -38,8 +38,8 @@ resource set: pinned resource integrity, cross-source patient-ID linkage and
 fixed bulk-signature reconstruction. The first two have one real-data reference
 case. The signature implementation is `reference_verified`, not
 `transfer_verified`. The frozen gastric values detect changes for this exact
-input and implementation only; they cannot test SPP1+TAM, single-cell, spatial
-analysis or Paper2Paper as a whole.
+input and implementation only; they cannot test other modalities, other papers
+or Paper2Paper as a whole.
 
 ## Human decision and next boundary
 
