@@ -17,6 +17,7 @@ anchor_audit → route_generation → verification → pilot_review → pilot_co
 
 - 文献身份、科学问题、中心关系、主要结局和 falsifier；
 - 每幅主图/补图的数据、metadata、方法、代码、统计单位、输出和 claim；
+- 多面板 Figure 必须继续拆到 A、B、C 等子图：逐子图判断目标数据能否承担同一证据角色、只能借用哪个模块、是否必须修复或当前阻断，并记录作者代码、官方实现和同类论文代码各自能补到哪里；不得用一个整图的“可替代/部分可替代”结论掩盖子图差异；
 - 数据和队列在发现、拟合、验证、定位、机制等环节的角色；
 - 分析步骤与 Figure 叙事；
 - 可保留、修复、替换、扩展、删除和无法复现的部分；
@@ -54,10 +55,17 @@ anchor_audit → route_generation → verification → pilot_review → pilot_co
 
 - 必需数据文件已访问并解析代表性内容；
 - 必需字段、患者/样本 ID、队列用途和独立性已核对；
+- 每个拟使用的数据候选已在 `data_use_checks.tsv` 写清它在目标论文中的具体用途，并核对决定性组、设计混杂、测量空间、运行资源和治疗兼容性；受限用途已明确降低 Figure/claim；
 - 必需代码有合格实现、可靠 donor 组合或有依据的重建方案；
 - 许可、版本、环境、入口和输入输出合同明确；
 - 固定 signature/模型具有可计算规范；
 - 最近发表和最接近论文已登记。
+
+当路线依赖会影响全部后续 Figure 的基础分析（例如单细胞 QC/整合/注释、恶性识别、
+程序发现，或其他组学的上游处理）时，还必须建立“论文方法—作者/数据论文代码—官方方法/
+同类可靠实现”的补建表，明确哪些直接复用、修复复用、参考重写或不采用，并冻结输入、
+统计单位、失败条件、source table 和稳定性验收。不能因为锚点或数据论文已经展示过结果图，
+就把基础层视为通过。通用处理见 [基础分析的方法与代码怎样补齐](foundation-analysis-reconstruction.md)。
 
 #### `minimal_real_run`
 
@@ -66,6 +74,9 @@ anchor_audit → route_generation → verification → pilot_review → pilot_co
 - 至少生成一个代表性 source table 或 Figure 片段；
 - `results.tsv` 说明结果支持、削弱、矛盾还是无法判断；
 - 失败、阴性结果和限制保留。
+
+若存在上述基础层，最小真实运行应先执行最可能推翻路线的基础环节；基础层未通过时，后续
+Figure 只能作诊断运行，不能用下游结果反向挑选 QC、标签、K 或程序合并参数。
 
 单元、合成和环境 smoke 运行不能冒充 `real_data`。
 
@@ -97,6 +108,8 @@ Pilot 以明确决定结束：
 - `stop`：记录明确阻断。
 
 每个 Pilot 还要记录运行中发现的 workflow 问题、当前实例修复、是否修改 Paper2Paper 以及修改后的复验。没有 workflow 新问题也是正常结果。
+
+阶段检查点运行 `paper2paper learn . --write-report`，把本 Pilot 的 workflow 候选与其他已合并 Pilot 汇集。原始候选不自动成为产品缺口；分类、最小核心修复和来源复验遵循 [真实文献驱动的双循环](learning-loop.md)。
 
 ## Manuscript-project workflow
 

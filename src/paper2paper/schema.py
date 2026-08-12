@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any
 
 
-SCHEMA_VERSION = "3.0.0"
+SCHEMA_VERSION = "3.1.0"
 
 PILOT_STAGES = (
     "anchor_audit",
@@ -207,6 +207,48 @@ TABLES = {
             ),
         },
         ({"field": "data_id", "target": "data_candidates"},),
+    ),
+    "data_use_checks": _spec(
+        "evidence/data_use_checks.tsv",
+        "use_check_id",
+        (
+            "use_check_id", "route_id", "requirement_id", "data_id",
+            "paper_use", "use_decision", "decisive_group_check",
+            "independent_units_by_group", "design_confounding_check",
+            "measurement_fit_check", "resource_fit_check",
+            "treatment_compatibility_check", "evidence", "checked_at",
+            "notes",
+        ),
+        (
+            "route_id", "requirement_id", "data_id", "paper_use",
+            "use_decision", "decisive_group_check",
+            "independent_units_by_group", "design_confounding_check",
+            "measurement_fit_check", "resource_fit_check",
+            "treatment_compatibility_check", "evidence", "checked_at",
+        ),
+        {
+            "use_decision": ("use", "limit", "reject", "pending"),
+            "decisive_group_check": (
+                "passed", "limited", "not_applicable", "failed", "pending",
+            ),
+            "design_confounding_check": (
+                "passed", "limited", "not_applicable", "failed", "pending",
+            ),
+            "measurement_fit_check": (
+                "passed", "limited", "not_applicable", "failed", "pending",
+            ),
+            "resource_fit_check": (
+                "passed", "limited", "not_applicable", "failed", "pending",
+            ),
+            "treatment_compatibility_check": (
+                "passed", "limited", "not_applicable", "failed", "pending",
+            ),
+        },
+        (
+            {"field": "route_id", "target": "routes"},
+            {"field": "requirement_id", "target": "data_requirements"},
+            {"field": "data_id", "target": "data_candidates"},
+        ),
     ),
     "cohort_usage": _spec(
         "evidence/cohort_usage.tsv",

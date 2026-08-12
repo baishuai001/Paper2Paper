@@ -35,6 +35,8 @@ Paper2Paper 保留两个互相促进、但有明确主次的循环。
 
 次循环只服务主循环。一个改动若不能减少真实论文的错误、时间或审查负担，就不进入产品核心；次循环也不能因为“还可继续优化”而延迟已经能够推进的目标论文。
 
+不同对话不依赖 AI 记住旧聊天：每个 Pilot 的 `issues.tsv` 保存现场事实，`learning/findings.tsv` 保存经过归类的产品发现，`reports/workflow-learning.md` 汇总全部 Pilot。课题执行缺口、产品缺口和“尚未有这种论文类型的验收案例”必须分开，不能见到一个具体困难就扩建核心。
+
 详见 [真实文献驱动的双循环](docs/learning-loop.md)。
 
 ## 怎样从锚点文献产生目标论文
@@ -62,7 +64,7 @@ marker、基因集、细胞、癌种、泛癌、signature 等只能作为例子�
 
 Pilot 不能通过改一个状态直接冒充目标论文。晋升会建立独立 manuscript project，并记录来源 Pilot、路线和真实运行；正式项目必须重新冻结并运行完整分析。
 
-支持代码位于 `src/paper2paper/`，只负责创建、校验、查看和晋升 workspace。它不是第三种研究层。
+支持代码位于 `src/paper2paper/`，只负责创建、校验、查看、晋升 workspace 和汇总真实 Pilot 暴露的 workflow 候选。它不是第三种研究层。
 
 ## 证据不能混写
 
@@ -85,6 +87,8 @@ Paper2Paper/
 ├─ tests/                 # 防止关键误判的必要测试
 ├─ pilots/                # 相互隔离的真实锚点文献 Pilot
 ├─ manuscript-projects/   # 用户批准后的目标论文
+├─ learning/              # 已归类的跨 Pilot 产品发现及复验引用
+├─ reports/               # 可再生的跨 Pilot 学习报告
 └─ docs/                  # 数据、代码、执行、审查和双循环说明
 ```
 
@@ -103,6 +107,7 @@ paper2paper validate pilots/my-project
 paper2paper status pilots/my-project
 paper2paper next pilots/my-project
 paper2paper report pilots/my-project
+paper2paper learn . --write-report
 ```
 
 用户在 Pilot 中审查并批准一条 `manuscript_candidate` 后：
@@ -113,7 +118,7 @@ paper2paper promote pilots/my-project ROUTE-1 manuscript-projects/my-paper \
   --title "My manuscript project"
 ```
 
-当前真实案例和未决事项见 [PROJECT_STATE.md](PROJECT_STATE.md)。数据寻找见 [docs/data-discovery.md](docs/data-discovery.md)，代码补足见 [docs/code-recovery.md](docs/code-recovery.md)，完整操作见 [docs/workflow.md](docs/workflow.md)，用户审查边界见 [docs/review-guide.md](docs/review-guide.md)。
+进入新对话或开始模仿另一篇文献时，先读 [PROJECT_STATE.md](PROJECT_STATE.md) 和相应 Pilot 的 README/审查报告；本机路径、服务器位置和未提交操作提示可另存于被 Git 忽略的 `HANDOFF.md`。跨对话问题汇总见 [reports/workflow-learning.md](reports/workflow-learning.md)，分类与修复规则见 [docs/learning-loop.md](docs/learning-loop.md)。数据寻找见 [docs/data-discovery.md](docs/data-discovery.md)，代码补足见 [docs/code-recovery.md](docs/code-recovery.md)，锚点/数据论文/官方方法怎样共同补齐基础分析见 [docs/foundation-analysis-reconstruction.md](docs/foundation-analysis-reconstruction.md)，完整操作见 [docs/workflow.md](docs/workflow.md)，用户审查边界见 [docs/review-guide.md](docs/review-guide.md)。
 
 ## 数据与安全边界
 

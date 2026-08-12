@@ -96,7 +96,7 @@ def complete_pilot_outcome(project: Path) -> None:
 
 The minimal real-data run answered the bounded execution question and retained
 the route's scientific limitations. It did not establish publication value or
-turn the Pilot into a manuscript. The data roles, code contract, result and
+turn the Pilot into a manuscript. The intended data uses, code contract, result and
 claim ceiling can be reviewed independently.
 
 ## Workflow-side outcome
@@ -235,6 +235,25 @@ def make_executable_route(project: Path) -> None:
             "local_name": "data.tsv",
             "fields_supplied": "patient_id;outcome;expression",
             "identifier_field": "patient_id",
+        },
+    )
+    add_row(
+        evidence / "data_use_checks.tsv",
+        {
+            "use_check_id": "USE-CHECK-1",
+            "route_id": "ROUTE-1",
+            "requirement_id": "DATAREQ-1",
+            "data_id": "DATA-1",
+            "paper_use": "primary patient-level association",
+            "use_decision": "use",
+            "decisive_group_check": "passed",
+            "independent_units_by_group": "30 marker-high;30 marker-low;patient unit",
+            "design_confounding_check": "passed",
+            "measurement_fit_check": "passed",
+            "resource_fit_check": "passed",
+            "treatment_compatibility_check": "not_applicable",
+            "evidence": "config/data.tsv;outputs/fig1.tsv",
+            "checked_at": "2026-08-07",
         },
     )
     add_row(
@@ -1011,6 +1030,61 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                     lambda rows, changes=changes: rows[0].update(changes),
                 )
                 self.assertFalse(validate_workspace(project).ok)
+
+    def test_used_data_requires_an_intended_use_check(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "pilot"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_executable_route(project)
+            rewrite_rows(
+                project / "evidence/data_use_checks.tsv",
+                lambda rows: rows.clear(),
+            )
+
+            report = validate_workspace(project)
+
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("intended-use" in error for error in report.errors)
+            )
+            self.assertFalse(route_readiness(project)[0]["execution_ready"])
+
+    def test_limited_paper_use_cannot_be_recorded_as_unrestricted_use(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "pilot"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_executable_route(project)
+            rewrite_rows(
+                project / "evidence/data_use_checks.tsv",
+                lambda rows: rows[0].update(
+                    {
+                        "design_confounding_check": "limited",
+                        "use_decision": "use",
+                    }
+                ),
+            )
+
+            report = validate_workspace(project)
+
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("must use use_decision=limit" in error for error in report.errors)
+            )
+
+            rewrite_rows(
+                project / "evidence/data_use_checks.tsv",
+                lambda rows: rows[0].update(
+                    {
+                        "use_decision": "limit",
+                        "notes": "",
+                    }
+                ),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("must explain the use boundary" in error for error in report.errors)
+            )
 
     def test_development_exposed_cohort_cannot_be_external_validation(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:

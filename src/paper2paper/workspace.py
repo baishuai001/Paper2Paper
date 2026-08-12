@@ -21,6 +21,14 @@ from .schema import (
 
 TODO = "<!-- TODO -->"
 DATA_READY = {"sample_parsed", "downloaded", "checksum_verified"}
+USE_CHECK_READY = {"passed", "limited", "not_applicable"}
+USE_CHECK_FIELDS = (
+    "decisive_group_check",
+    "design_confounding_check",
+    "measurement_fit_check",
+    "resource_fit_check",
+    "treatment_compatibility_check",
+)
 CODE_READY = {"smoke_passed", "tested"}
 PATH_READY = {"target_environment_passed", "staged_workaround"}
 MODEL_READY = {"locked", "verified"}
@@ -428,6 +436,28 @@ def _validate_route_alignment(
                 f"data candidate {row.get('data_id')} route does not match "
                 "its requirement"
             )
+    for row in tables.get("data_use_checks", []):
+        route_id = row.get("route_id")
+        requirement = data_requirements.get(row.get("requirement_id", ""), {})
+        candidate = data_candidates.get(row.get("data_id", ""), {})
+        if requirement and requirement.get("route_id") != route_id:
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} route does not "
+                "match its requirement"
+            )
+        if candidate and candidate.get("route_id") != route_id:
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} route does not "
+                "match its data candidate"
+            )
+        if (
+            candidate
+            and candidate.get("requirement_id") != row.get("requirement_id")
+        ):
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} requirement does "
+                "not match its data candidate"
+            )
     for row in tables.get("cohort_usage", []):
         parent = data_candidates.get(row.get("data_id", ""), {})
         if parent and parent.get("route_id") != row.get("route_id"):
@@ -569,6 +599,32 @@ def _data_resources_meet_contract(
     return required.issubset(supplied)
 
 
+def _data_use_checks_meet_contract(
+    route_id: str,
+    requirement_id: str,
+    data_id: str,
+    tables: dict[str, list[dict[str, str]]],
+) -> bool:
+    checks = [
+        row for row in tables.get("data_use_checks", [])
+        if row.get("route_id") == route_id
+        and row.get("requirement_id") == requirement_id
+        and row.get("data_id") == data_id
+        and row.get("use_decision") in {"use", "limit"}
+    ]
+    for check in checks:
+        states = [check.get(field_name, "") for field_name in USE_CHECK_FIELDS]
+        if not all(state in USE_CHECK_READY for state in states):
+            continue
+        has_limit = "limited" in states
+        if has_limit and check.get("use_decision") != "limit":
+            continue
+        if check.get("use_decision") == "limit" and not check.get("notes"):
+            continue
+        return True
+    return False
+
+
 def _cohort_usage_gaps(
     route_id: str, tables: dict[str, list[dict[str, str]]]
 ) -> list[str]:
@@ -655,6 +711,9 @@ def _execution_gaps_from_tables(
             and row.get("access") not in {"unavailable", "unknown"}
             and _data_candidate_meets_contract(requirement, row)
             and _data_resources_meet_contract(requirement, row, tables)
+            and _data_use_checks_meet_contract(
+                route_id, requirement_id, row.get("data_id", ""), tables
+            )
         ]
         if requirement.get("independence_required") == "true":
             usable = [
@@ -664,7 +723,7 @@ def _execution_gaps_from_tables(
             gaps.append(
                 f"data requirement {requirement_id} lacks a parsed usable "
                 "candidate meeting its contract, field-level resource "
-                "provenance and minimum subject count"
+                "provenance, minimum subject count and intended-use checks"
             )
 
     used_data_ids = {
@@ -1064,6 +1123,12 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             or not requirement
             or not _data_candidate_meets_contract(requirement, row)
             or not _data_resources_meet_contract(requirement, row, tables)
+            or not _data_use_checks_meet_contract(
+                row.get("route_id", ""),
+                row.get("requirement_id", ""),
+                row.get("data_id", ""),
+                tables,
+            )
             or (
                 requirement.get("independence_required") == "true"
                 and row.get("independence") != "independent"
@@ -1072,7 +1137,8 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             report.errors.append(
                 f"data candidate {row.get('data_id')} is marked use but does "
                 "not satisfy access, parsing, contract, field-level resource "
-                "provenance, sample-size and independence requirements"
+                "provenance, sample-size, intended-use and independence "
+                "requirements"
             )
     for row in tables.get("data_resources", []):
         verification = row.get("verification")
@@ -1085,6 +1151,19 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
         if verification == "checksum_verified" and not row.get("checksum"):
             report.errors.append(
                 f"data resource {row.get('resource_id')} must record a checksum"
+            )
+    for row in tables.get("data_use_checks", []):
+        states = [row.get(field_name, "") for field_name in USE_CHECK_FIELDS]
+        has_limit = "limited" in states
+        if has_limit and row.get("use_decision") == "use":
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} contains a limited "
+                "check and must use use_decision=limit"
+            )
+        if row.get("use_decision") == "limit" and not row.get("notes"):
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} with decision=limit "
+                "must explain the use boundary in notes"
             )
     for row in tables.get("cohort_usage", []):
         if (

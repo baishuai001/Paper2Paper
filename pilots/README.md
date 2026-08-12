@@ -17,5 +17,6 @@
 当前保留案例：
 
 - `gastric-nrrs/`：胃癌神经相关八基因 NRRS 的限定公开数据重建。它是训练案例，不是新论文路线，也不代表其他论文类型。
+- `hcc-sc-spatial-npj-2026/`：NPJ HCC 单细胞、空间与 in silico perturbation 锚点的换癌种审计；当前重点是 CRC 及其他癌种的数据替代与最小真实运行，尚未形成正式目标论文。
 
-双循环规则见 [docs/learning-loop.md](../docs/learning-loop.md)。
+双循环规则见 [docs/learning-loop.md](../docs/learning-loop.md)。不同 Pilot 的 workflow 候选用 `paper2paper learn . --write-report` 汇总；汇总候选不自动等于产品缺口。

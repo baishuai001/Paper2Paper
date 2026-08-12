@@ -6,6 +6,7 @@ import re
 import sys
 from pathlib import Path
 
+from .learning import learning_summary, write_learning_report
 from .workspace import (
     init_workspace,
     load_manifest,
@@ -171,6 +172,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     report_parser.add_argument("project_dir", type=Path)
 
+    learn_parser = commands.add_parser(
+        "learn",
+        help=(
+            "aggregate workflow findings across Pilots without treating every "
+            "paper-specific issue as a product gap"
+        ),
+    )
+    learn_parser.add_argument("repo_root", type=Path)
+    learn_parser.add_argument("--json", action="store_true")
+    learn_parser.add_argument(
+        "--write-report",
+        action="store_true",
+        help="write reports/workflow-learning.md from the source records",
+    )
+
     return parser
 
 
@@ -272,6 +288,36 @@ def main(argv: list[str] | None = None) -> int:
             path = write_readiness_report(args.project_dir)
             print(f"wrote: {path}")
             return 0
+
+        if args.command == "learn":
+            summary = learning_summary(args.repo_root)
+            if args.write_report:
+                report_path = write_learning_report(args.repo_root)
+            else:
+                report_path = None
+            if args.json:
+                payload = dict(summary)
+                payload["report_path"] = str(report_path) if report_path else ""
+                print(json.dumps(payload, indent=2, ensure_ascii=False))
+            else:
+                for warning in summary["validation_warnings"]:
+                    print(f"WARNING: {warning}")
+                for error in summary["validation_errors"]:
+                    print(f"ERROR: {error}")
+                print(f"pilots scanned: {summary['pilots_scanned']}")
+                print(f"issues scanned: {summary['issues_scanned']}")
+                print(f"workflow candidates: {summary['workflow_candidates']}")
+                print(
+                    "classified source issues: "
+                    f"{summary['classified_source_issues']}"
+                )
+                print(
+                    "untriaged candidates: "
+                    f"{len(summary['untriaged_candidates'])}"
+                )
+                if report_path:
+                    print(f"wrote: {report_path}")
+            return 0 if summary["ok"] else 1
 
 
     except (OSError, ValueError, json.JSONDecodeError) as exc:
