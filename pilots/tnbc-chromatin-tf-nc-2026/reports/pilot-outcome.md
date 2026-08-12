@@ -1,6 +1,7 @@
 # Pilot outcome
 
-<!-- TODO -->
+一级闸门于 2026-08-12 完成并判为 **FAIL**。完整证据和停止边界见
+[`gate1-final-report.md`](gate1-final-report.md)。
 
 ## Paper-side outcome
 

@@ -1,1 +1,2 @@
-decision_id	route_id	stage	decision	authority	reviewer	rationale	decided_at
+﻿decision_id	route_id	stage	decision	authority	reviewer	rationale	decided_at
+G1-STOP	crc-immune-tf-gate1	gate1	STOP_FAIL	frozen_protocol_and_receipts	Codex	Data minimums passed, but independent four-class reconstruction failed both ARI thresholds; automatic decision returned FAIL and stop_now=true	2026-08-12
