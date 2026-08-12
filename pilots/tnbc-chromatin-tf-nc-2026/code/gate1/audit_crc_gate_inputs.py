@@ -11,6 +11,7 @@ import h5py
 import numpy as np
 import pandas as pd
 
+from crc_cohort import eligible_patient_table
 from gate1_common import clean_text, join_unique, read_obs_column, sha256_file, unique_count, write_json
 
 
@@ -124,26 +125,40 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
     patient_path = output_dir / "G1_patient_metadata_audit.tsv"
     patient.to_csv(patient_path, sep="\t", index=False, lineterminator="\n")
 
-    typed = patient[patient["immune_infiltration_type"].ne("") & patient["immune_label_unique"]].copy()
+    scoped_patient, eligible_mask = eligible_patient_table(cells)
+    typed = scoped_patient[scoped_patient["immune_label_n"].eq(1)].copy()
     coverage = (
-        typed.groupby(["immune_infiltration_type", "dataset"], observed=True, sort=True)
+        typed.groupby(["immune_label", "dataset"], observed=True, sort=True)
         .agg(
             patients=("donor_id", "nunique"),
-            patients_ge20_cancer=("primary_cancer_cells", lambda x: int((x >= 20).sum())),
-            patients_ge50_cancer=("primary_cancer_cells", lambda x: int((x >= 50).sum())),
-            patients_ge100_cancer=("primary_cancer_cells", lambda x: int((x >= 100).sum())),
-            primary_cancer_cells=("primary_cancer_cells", "sum"),
+            patients_ge20_cancer=("cancer_cells", lambda x: int((x >= 20).sum())),
+            patients_ge50_cancer=("cancer_cells", lambda x: int((x >= 50).sum())),
+            patients_ge100_cancer=("cancer_cells", lambda x: int((x >= 100).sum())),
+            primary_cancer_cells=("cancer_cells", "sum"),
         )
         .reset_index()
     )
     coverage_path = output_dir / "G1_label_dataset_coverage.tsv"
     coverage.to_csv(coverage_path, sep="\t", index=False, lineterminator="\n")
 
-    contradictions = patient[
-        patient["immune_infiltration_type"].ne("") & ~patient["immune_label_unique"]
-    ]
+    contradictions = scoped_patient[scoped_patient["immune_label_n"].ne(1)]
+    main = typed[typed["cancer_cells"].ge(50)].copy()
+    m_counts = main.loc[main["immune_label"].eq("M"), "dataset"].value_counts()
+    cross = pd.crosstab(main["dataset"], main["immune_label"])
+    cross["nonM"] = cross.drop(columns=["M"], errors="ignore").sum(axis=1)
+    informative = cross[(cross.get("M", 0) >= 3) & (cross["nonM"] >= 3)]
+    n_m = int(main["immune_label"].eq("M").sum())
+    n_nonm = int(main["immune_label"].ne("M").sum())
+    max_m_share = float(m_counts.max() / n_m) if n_m else 1.0
+    minimums = {
+        "unique_labels": bool(contradictions.empty),
+        "M_ge_15": n_m >= 15,
+        "nonM_ge_30": n_nonm >= 30,
+        "informative_datasets_ge_3": int(len(informative)) >= 3,
+        "max_M_dataset_share_le_0_60": max_m_share <= 0.60,
+    }
     receipt = {
-        "status": "passed" if contradictions.empty else "failed",
+        "status": "passed" if all(minimums.values()) else "failed",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "h5ad": str(h5ad.resolve()),
         "h5ad_bytes": h5ad.stat().st_size,
@@ -152,7 +167,13 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
         "samples": int(cells["sample_id"].nunique()),
         "datasets": int(cells["dataset"].nunique()),
         "typed_patients": int(typed["donor_id"].nunique()),
-        "typed_patients_ge50_primary_cancer": int((typed["primary_cancer_cells"] >= 50).sum()),
+        "eligible_cells": int(eligible_mask.sum()),
+        "typed_patients_ge50_primary_cancer": int(len(main)),
+        "M_patients_ge50": n_m,
+        "nonM_patients_ge50": n_nonm,
+        "informative_datasets_ge3_each": int(len(informative)),
+        "max_M_dataset_share": max_m_share,
+        "minimum_conditions": minimums,
         "contradictory_patient_labels": int(len(contradictions)),
         "outputs": {},
     }
@@ -176,4 +197,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
