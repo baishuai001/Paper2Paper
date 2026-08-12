@@ -1,6 +1,7 @@
 # Pilot minimal-run specification
 
-<!-- TODO -->
+本Pilot的首个最小真实运行已冻结在 `gate1-protocol.md`。该闸门只检验CRC作者M型是否对应
+恶性上皮患者级、跨数据集可复现的TF活性程序；判定后停止，不提前运行ATAC或药物分析。
 
 Complete the relevant sections before a minimal real-data run. This document
 does not freeze a future manuscript analysis.
