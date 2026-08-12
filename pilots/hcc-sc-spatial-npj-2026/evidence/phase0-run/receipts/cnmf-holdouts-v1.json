@@ -1,0 +1,45 @@
+{
+  "status": "diagnostic_patient_dataset_disjoint_holdouts_prepared",
+  "generated_at": "2026-08-10T13:50:37.730653+00:00",
+  "implementation_sha256": "44BF20F73F2F04ABF42EAC0E12D846D443FA9C9B948F492ED06C943666E59F14",
+  "input_sha256": "9D097FD9D36AFCB3A71AEED174BF1AA418DCBE57D9F73263A979C070ED292370",
+  "seed": 20260810,
+  "assignment_rule": "within each state, shuffle independent units using the frozen seed and alternate them between folds; do not read genes, program usage or outcomes",
+  "folds": {
+    "A": {
+      "cells": 900,
+      "patients": 6,
+      "datasets": 6,
+      "states": [
+        "metastasis",
+        "polyp",
+        "tumor"
+      ]
+    },
+    "B": {
+      "cells": 661,
+      "patients": 5,
+      "datasets": 5,
+      "states": [
+        "metastasis",
+        "polyp",
+        "tumor"
+      ]
+    }
+  },
+  "claim_boundary": "The folds test replication across disjoint selected patients and datasets. They are not randomized disease cohorts, and state remains partly confounded with source datasets.",
+  "outputs": {
+    "crc_two_method_cna_supported_holdout_A.h5ad": {
+      "bytes": 7972294,
+      "sha256": "0396BC590C72EDE66CCDC56A4F26BF51B1B6E12FE863F3ED66A203427C3A0141"
+    },
+    "crc_two_method_cna_supported_holdout_B.h5ad": {
+      "bytes": 5489542,
+      "sha256": "D14457ADEE7E4CE8B1A3E1990B76BBD13A0D0CEB560102C701C084C1C5AE6BEE"
+    },
+    "P0_cnmf_holdout_manifest.tsv": {
+      "bytes": 1084,
+      "sha256": "C472E211D5396606B147A0AF69592D3856FB228C47BD150C8ADDB64D8F0F6704"
+    }
+  }
+}

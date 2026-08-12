@@ -1,0 +1,19 @@
+{
+  "status": "diagnostic_noninteractive_figure_written",
+  "generated_at": "2026-08-10T13:49:55.722029+00:00",
+  "implementation_sha256": "33282442E1D6A5AEA9DCDC973BD4F0BDCADEF6718A61C36362982476CE84A7A0",
+  "unit_summary_sha256": "E27CAECB74B85B34D4A00AA27432F6BB36281269412973277FE8337D9298C1F9",
+  "samples": 12,
+  "scientific_gate": "not_assessed_by_plot",
+  "claim_boundary": "The figure visualizes inferred CNA support and calibration warnings. It does not establish DNA truth, disease evolution, or statistical differences between cross-sectional states.",
+  "outputs": {
+    "P0_cna_panel_plot_source.tsv": {
+      "bytes": 3607,
+      "sha256": "A39CDC31FA5066E6B606382707BEFE6E850AAEE48A0700A246F7B367C9F9193A"
+    },
+    "P0_cna_panel_diagnostic.png": {
+      "bytes": 118258,
+      "sha256": "F45B5931DAADFA7F83B781476FD92851D29793A213990985CE2C8EF2D69CDD96"
+    }
+  }
+}

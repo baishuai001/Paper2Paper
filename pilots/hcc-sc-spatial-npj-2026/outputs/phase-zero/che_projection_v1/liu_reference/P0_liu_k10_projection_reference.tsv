@@ -1,0 +1,11 @@
+program_id	che_eligibility	eligibility_use	own_usage_spearman_rho	own_usage_rank_among_10	projection_calibration_pass	calibration_rule	liu_median_delta_lm_minus_primary	liu_frozen_direction	pairs_in_frozen_direction	pairs_opposite_frozen_direction	paired_patients
+1	eligible_for_confirmatory_che	core_candidate	0.5746144636641555	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.0071081599999999745	lower_in_liver_metastasis	7	4	11
+2	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.711727406024185	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	0.010936674397394125	higher_in_liver_metastasis	6	5	11
+3	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.69559809637333	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.02069257841924399	lower_in_liver_metastasis	8	3	11
+4	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.6154083795878756	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.014331759999999999	lower_in_liver_metastasis	6	5	11
+5	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.5968692869524954	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.018119666666666645	lower_in_liver_metastasis	8	3	11
+6	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.5184910635384293	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.018851373333333366	lower_in_liver_metastasis	9	2	11
+7	eligible_for_confirmatory_che	core_candidate	0.6825166995548319	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	0.0009970666666666572	higher_in_liver_metastasis	6	5	11
+8	eligible_for_confirmatory_che	eligible_control_or_review	0.7716331758295937	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.021510746666666664	lower_in_liver_metastasis	9	2	11
+9	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.5600113604380383	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	0.0013859221762271001	higher_in_liver_metastasis	6	5	11
+10	not_eligible_for_confirmatory_che	negative_or_exploratory_only	0.6578121500214541	1	True	own rho >= 0.30 and own usage is the highest-correlated K10 usage	-0.000554102513804125	lower_in_liver_metastasis	6	5	11

@@ -1,0 +1,21 @@
+dataset	analysis_patient_id	selected_cells	samples	states	tissues
+Lee_2020_SMC	Lee_2020_Nat_Genet.SMC01	100	1	tumor	rectum
+Lee_2020_SMC	Lee_2020_Nat_Genet.SMC22	100	1	tumor	sigmoid colon
+Lee_2020_SMC	Lee_2020_Nat_Genet.SMC23	100	1	tumor	ascending colon
+Lee_2020_SMC	Lee_2020_Nat_Genet.SMC25	100	1	tumor	sigmoid colon
+Pelka_2021_10Xv2	Pelka_2021_Cell.C110	100	1	tumor	colorectum
+Pelka_2021_10Xv2	Pelka_2021_Cell.C119	100	1	tumor	colorectum
+Pelka_2021_10Xv2	Pelka_2021_Cell.C140	100	1	tumor	colorectum
+Pelka_2021_10Xv2	Pelka_2021_Cell.C146	100	1	tumor	colorectum
+Pelka_2021_10Xv2_CD45Pos	Pelka_2021_Cell.C103	76	1	tumor	colorectum
+Pelka_2021_10Xv2_CD45Pos	Pelka_2021_Cell.C110	100	1	tumor	colorectum
+Pelka_2021_10Xv2_CD45Pos	Pelka_2021_Cell.C132	100	1	tumor	colorectum
+Pelka_2021_10Xv2_CD45Pos	Pelka_2021_Cell.C146	100	1	tumor	colorectum
+Tian_2023	Tian_2023_Nat_Med.P20	100	4	metastasis	liver
+Tian_2023	Tian_2023_Nat_Med.P25	100	3	metastasis	liver
+Tian_2023	Tian_2023_Nat_Med.P27	100	3	metastasis	lymph node
+Tian_2023	Tian_2023_Nat_Med.P35	100	3	metastasis	liver
+VUMC_HTAN_cohort3	Chen_2021_Cell.HTA11_14015	100	1	polyp	descending colon
+VUMC_HTAN_cohort3	Chen_2021_Cell.HTA11_6436	100	2	polyp	caecum|hepatic flexure of colon
+VUMC_HTAN_cohort3	Chen_2021_Cell.HTA11_9531	100	2	polyp	colon
+VUMC_HTAN_cohort3	Chen_2021_Cell.HTA11_9998	100	1	polyp	caecum

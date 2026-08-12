@@ -1,0 +1,37 @@
+{
+  "status": "diagnostic_seed_and_adjacent_k_comparison_only",
+  "generated_at": "2026-08-10T12:25:19.311408+00:00",
+  "runs": [
+    {
+      "label": "seed_20260810",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_runs/seed_20260810",
+      "name": "crc_cnmf"
+    },
+    {
+      "label": "seed_20260811",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_runs/seed_20260811",
+      "name": "crc_cnmf"
+    }
+  ],
+  "top_n": 50,
+  "permutations": 100,
+  "seed": 20260810,
+  "comparisons": 7,
+  "matched_program_pairs": 40,
+  "pairs_exceeding_both_nulls": 40,
+  "claim_boundary": "These are same-input seed and adjacent-K diagnostics. Patient holdout, dataset holdout, balanced resampling and P0.5 malignant-set sensitivity have not been tested; program families are provisional and K is not frozen.",
+  "outputs": {
+    "P0_cnmf_stability.tsv": {
+      "bytes": 5582,
+      "sha256": "81F56392F62629851CEA5ED46265AA75D6FA14B80B38252595404938D32B2E58"
+    },
+    "P0_cnmf_null_thresholds.tsv": {
+      "bytes": 771,
+      "sha256": "C77ECC6CF3EB97706CCE0ED7916A5D9C34458B50CACB24BD9D1A8C98EA387B12"
+    },
+    "P0_cnmf_program_membership.tsv": {
+      "bytes": 1870,
+      "sha256": "D7A884757ED2BB0CBF4437FA6E5FF81FEA77101DD522E5EE07F517CCAD50BDDD"
+    }
+  }
+}

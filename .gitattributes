@@ -1,8 +1,6 @@
-* text=auto eol=lf
+# TSV terminal tabs preserve explicit empty final fields and are data, not style.
+*.tsv whitespace=-trailing-space
 
-*.gz binary
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.xlsx binary
-*.pdf binary
+# Frozen Pilot contracts/reports use Markdown two-space hard breaks. Their bytes
+# are also bound by execution hashes, so whitespace cleanup would falsify provenance.
+pilots/hcc-sc-spatial-npj-2026/**/*.md whitespace=-trailing-space

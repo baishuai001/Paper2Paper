@@ -1,0 +1,54 @@
+{
+  "status": "diagnostic_seed_and_adjacent_k_comparison_only",
+  "generated_at": "2026-08-12T04:28:49.507342+00:00",
+  "implementation_sha256": "1AC59D8E6E78A193C954762CFC5D5984E4D5E4463DE959D8AF1BB49B36C6CEC1",
+  "runs": [
+    {
+      "label": "primary_seed_20260812",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812",
+      "name": "crc_liu_formal_cnmf"
+    },
+    {
+      "label": "exclude_high_unresolved",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_sensitivity_v1/runs/exclude_high_unresolved",
+      "name": "crc_liu_sensitivity_cnmf"
+    },
+    {
+      "label": "include_one_method",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_sensitivity_v1/runs/include_one_method",
+      "name": "crc_liu_sensitivity_cnmf"
+    }
+  ],
+  "top_n": 50,
+  "permutations": 100,
+  "seed": 20260812,
+  "comparisons": 28,
+  "matched_program_pairs": 308,
+  "pairs_exceeding_both_nulls": 298,
+  "independent_holdout_matched_pairs": 0,
+  "independent_holdout_pairs_exceeding_both_nulls": 0,
+  "independent_holdout_k_values_with_at_least_one_pass": 0,
+  "patient_only_holdout": false,
+  "patient_and_dataset_holdout": false,
+  "cell_resample_comparison": false,
+  "program_family_freeze_status": "not_assessed_until_k_is_frozen",
+  "claim_boundary": "These are same-input seed and adjacent-K diagnostics. Patient holdout, dataset holdout, balanced resampling and P0.5 malignant-set sensitivity have not been tested; program families are provisional and K is not frozen.",
+  "outputs": {
+    "P0_cnmf_stability.tsv": {
+      "bytes": 48000,
+      "sha256": "9FE585608E8D294C78FEFC8EF797DB3EC287E8769E1E2D48E28956679EC581B5"
+    },
+    "P0_cnmf_null_thresholds.tsv": {
+      "bytes": 3294,
+      "sha256": "33B3D011DBE3CDF451DBCE6845464F5B7AC14619C4CDA51BB4AC44530B3580F8"
+    },
+    "P0_cnmf_holdout_replication_pairs.tsv": {
+      "bytes": 153,
+      "sha256": "D1FE2FD368572EB6F0C45DE6D241131AB7796FD48B45842552C91550C9B277B6"
+    },
+    "P0_cnmf_holdout_replication_by_k.tsv": {
+      "bytes": 135,
+      "sha256": "78C26019FE288F1BA0ACEE23612A0D8A29F27C7BB9EEB0BD0AC6F341906F8083"
+    }
+  }
+}

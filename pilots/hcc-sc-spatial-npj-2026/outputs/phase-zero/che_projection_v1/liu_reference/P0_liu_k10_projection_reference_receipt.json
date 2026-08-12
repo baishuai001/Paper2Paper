@@ -1,0 +1,32 @@
+{
+  "status": "LIU_K10_PROJECTION_REFERENCE_FROZEN_BEFORE_CHE",
+  "k": 10,
+  "top_n": 50,
+  "rank_score_max_rank": 1500,
+  "sample_summary": "mean cell rank score within patient-state",
+  "paired_effect": "liver metastasis minus primary",
+  "eligible_programs": [
+    1,
+    7,
+    8
+  ],
+  "eligible_program_directions": {
+    "1": "lower_in_liver_metastasis",
+    "7": "higher_in_liver_metastasis",
+    "8": "lower_in_liver_metastasis"
+  },
+  "che_data_read_or_scored": false,
+  "inputs_sha256": {
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/input_main/crc_liu_dual_cna_patient_state_balanced_counts.h5ad": "1bf8c436f492a48a7a3fcafcebd2d47a4906aeb0a2ca1d37c992cb12f7aacca0",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/crc_liu_formal_cnmf/crc_liu_formal_cnmf.usages.k_10.dt_0_1.consensus.txt": "85f2d6d12491679d16927b2642dbe59d8a154f9c121f673d4ebe4ff7202ca810",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_top_genes.tsv": "a176c318fa690e7a4567e62999e87fedab59ace17497fbf1e138c974af09f2b1",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/k10_program_review_v1/P0_k10_program_joint_stability_technical_screen.tsv": "02f2f2e34f0ec989251d9d42d93a6e6b2781ee6ae108ab777d8e4daaa29991ee"
+  },
+  "outputs": [
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/che_projection_v1/liu_reference/P0_liu_k10_rank_projection_cell_scores.tsv.gz",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/che_projection_v1/liu_reference/P0_liu_k10_rank_projection_cross_correlation.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/che_projection_v1/liu_reference/P0_liu_k10_rank_projection_pair_differences.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/che_projection_v1/liu_reference/P0_liu_k10_projection_reference.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/che_projection_v1/liu_reference/P0_liu_k10_projection_gene_coverage.tsv"
+  ]
+}

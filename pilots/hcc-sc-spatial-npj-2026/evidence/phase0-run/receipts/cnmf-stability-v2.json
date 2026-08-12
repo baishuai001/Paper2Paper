@@ -1,0 +1,56 @@
+{
+  "status": "diagnostic_seed_adjacent_k_and_independent_holdout_comparison",
+  "generated_at": "2026-08-10T14:10:20.150204+00:00",
+  "implementation_sha256": "C7C4127D29BC36A5F0BFE20ECE9AB0962207592918596E0B1765291FF482F3B7",
+  "runs": [
+    {
+      "label": "seed_20260810",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/seed_20260810",
+      "name": "crc_cna_cnmf"
+    },
+    {
+      "label": "seed_20260811",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/seed_20260811",
+      "name": "crc_cna_cnmf"
+    },
+    {
+      "label": "holdout_A",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/holdout_A",
+      "name": "crc_cna_cnmf"
+    },
+    {
+      "label": "holdout_B",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/holdout_B",
+      "name": "crc_cna_cnmf"
+    }
+  ],
+  "top_n": 50,
+  "permutations": 100,
+  "seed": 20260810,
+  "comparisons": 56,
+  "matched_program_pairs": 410,
+  "pairs_exceeding_both_nulls": 344,
+  "independent_holdout_matched_pairs": 45,
+  "independent_holdout_pairs_exceeding_both_nulls": 30,
+  "independent_holdout_k_values_with_at_least_one_pass": 6,
+  "program_family_freeze_status": "not_assessed_until_k_is_frozen",
+  "claim_boundary": "The run includes patient- and dataset-disjoint state-stratified A/B folds, but the folds remain selected observational CRC samples and are not randomized cohorts. Evidence is reported as direct one-to-one A/B pairs separately at each K. No cross-K program family is counted until K is frozen; sufficient initializations, balanced resampling, CNA-set sensitivity and technical-program review are also still required.",
+  "outputs": {
+    "P0_cnmf_stability.tsv": {
+      "bytes": 55677,
+      "sha256": "B26C47144EB676D0723C90A071CCC5C18270DFF8CA4A8F405E9D06693EF7F44F"
+    },
+    "P0_cnmf_null_thresholds.tsv": {
+      "bytes": 5442,
+      "sha256": "8CB3DDA3056FA9126B21C41B0921C845587CA9DECA9E29B3937F908643B01EF4"
+    },
+    "P0_cnmf_holdout_replication_pairs.tsv": {
+      "bytes": 7581,
+      "sha256": "B7374E93A80E0AE9C31FE135B77A0FA8EEBEC37A83B01BD0F6E318E44923F3CA"
+    },
+    "P0_cnmf_holdout_replication_by_k.tsv": {
+      "bytes": 733,
+      "sha256": "6714A0F96B61CEEE56B4FAC4746670E71D4028C5F9E2683EF183C54C08361082"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "status": "passed",
+  "generated_at": "2026-08-10T09:41:00.536621+00:00",
+  "workbook": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_table_s1.xlsx",
+  "workbook_bytes": 818641,
+  "workbook_sha256": "EF58CFC7C00ED9826B8E421767A71D45271F4847155A5E5DDD1620089EE7D920",
+  "patient_rows": 650,
+  "patient_ids_unique": true,
+  "sample_rows": 1670,
+  "sample_ids_unique": true,
+  "unique_sample_patient_ids": 641,
+  "orphan_sample_patient_ids": [],
+  "patients_without_samples_count": 9,
+  "patients_without_samples": [
+    "Zhang_2018_Nature.P0215",
+    "Zhang_2018_Nature.P0309",
+    "Zhang_2018_Nature.P0411",
+    "Zhang_2018_Nature.P0413",
+    "Zhang_2018_Nature.P0701",
+    "Zhang_2018_Nature.P1012",
+    "Zhang_2018_Nature.P1207",
+    "Zhang_2018_Nature.P1212",
+    "Zhang_2018_Nature.P1228"
+  ],
+  "outputs": {
+    "P0_table_s1_patients.tsv": {
+      "bytes": 167905,
+      "sha256": "745D6327B8A948E86B3D7E605214AC96428B4993783B32A70BE62C0CFC3F95B3"
+    },
+    "P0_table_s1_samples.tsv": {
+      "bytes": 704426,
+      "sha256": "94C1CBF33A25062E7B933A4808812FA954A7F5FC3C0FB1EC3A276D04AF58E7FA"
+    },
+    "P0_patient_sample_design_table_s1.tsv": {
+      "bytes": 840223,
+      "sha256": "52E29C8A0E6B910DCE67580D45ED464A056308114F8E531B00EC02BDBA67715A"
+    },
+    "P0_table_s1_summary.tsv": {
+      "bytes": 1016,
+      "sha256": "FFD7FEF2065260365044BC6EBF5E22C3EE45F37B02BBD00C727A80F82D01B918"
+    }
+  }
+}

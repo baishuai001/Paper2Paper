@@ -1,0 +1,97 @@
+{
+  "status": "full_cna_allowed_shards_frozen",
+  "panel": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/paired_cna_v1/P0_paired_cna_panel.tsv",
+  "panel_sha256": "CADC55A2A7C79DDA6E34BBFD736D29FCB70052800AC24805F52364004FE67B7C",
+  "screen_review": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_screen_v1/review/P0_paired_cna_sample_review.tsv",
+  "screen_review_sha256": "E05553E0F4721E9F948368C7C202737D5EB8858A8307209EB17E98637B1670DC",
+  "allowed_reference_reviews": [
+    "pass_le_5pct",
+    "warning_gt_5pct_le_10pct"
+  ],
+  "samples_total": 43,
+  "samples_allowed": 43,
+  "samples_excluded": 0,
+  "author_cancer_cells_allowed": 73154,
+  "shards": [
+    {
+      "shard": 1,
+      "samples": 11,
+      "author_cancer_cells": 18340,
+      "panel_orders": [
+        3,
+        9,
+        11,
+        18,
+        25,
+        27,
+        33,
+        34,
+        38,
+        39,
+        42
+      ],
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/paired_cna_full_v1/P0_paired_cna_full_shard_01.tsv",
+      "sha256": "87111A4C7D6D0382F940B82438D003A0F52BCB8831FB1BBCDC8F261188CDC80C"
+    },
+    {
+      "shard": 2,
+      "samples": 11,
+      "author_cancer_cells": 18360,
+      "panel_orders": [
+        4,
+        5,
+        16,
+        17,
+        23,
+        28,
+        30,
+        31,
+        37,
+        41,
+        43
+      ],
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/paired_cna_full_v1/P0_paired_cna_full_shard_02.tsv",
+      "sha256": "FB4617FB6D4E4EFB68B57D9713FE7F649F68C67BF0CF96C895FF4C0FFCA7E7B2"
+    },
+    {
+      "shard": 3,
+      "samples": 10,
+      "author_cancer_cells": 18177,
+      "panel_orders": [
+        1,
+        2,
+        6,
+        7,
+        8,
+        13,
+        15,
+        21,
+        26,
+        29
+      ],
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/paired_cna_full_v1/P0_paired_cna_full_shard_03.tsv",
+      "sha256": "AB1DCEBD9AE77EDD985C1848D85A34C574D8C50E5A8925414FF58C204CC2AA56"
+    },
+    {
+      "shard": 4,
+      "samples": 11,
+      "author_cancer_cells": 18277,
+      "panel_orders": [
+        10,
+        12,
+        14,
+        19,
+        20,
+        22,
+        24,
+        32,
+        35,
+        36,
+        40
+      ],
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/paired_cna_full_v1/P0_paired_cna_full_shard_04.tsv",
+      "sha256": "E261AEEA14C866B9140E74D4AFD070EF80AC5FA1134AFE1D1C5A57147B39A8F8"
+    }
+  ],
+  "formal_cnmf_started": false
+}

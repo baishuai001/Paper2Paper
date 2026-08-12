@@ -1,0 +1,9 @@
+test_cell_cycle_alone_is_not_automatic_technical_failure (test_k10_program_che_eligibility.K10ProgramEligibilityUnitTests) ... ok
+test_library_size_correlation_requires_technical_top_genes (test_k10_program_che_eligibility.K10ProgramEligibilityUnitTests) ... ok
+test_patient_bridge_must_connect_the_two_anchor_mapped_programs (test_k10_program_che_eligibility.K10ProgramEligibilityUnitTests) ... ok
+test_stress_program_is_technical_dominant_at_frozen_threshold (test_k10_program_che_eligibility.K10ProgramEligibilityUnitTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.001s
+
+OK

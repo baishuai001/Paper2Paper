@@ -1,0 +1,62 @@
+{
+  "status": "formal_liu_sensitivity_run_completed_pending_k_review",
+  "generated_at": "2026-08-12T04:26:15.874528+00:00",
+  "implementation_sha256": "628AB5250B446E66F2BFC2E94CCF9D851F4BAD3F99D0E190ED8F620C96E9D5E7",
+  "cnmf_version": "1.7.1",
+  "counts_h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_sensitivity_v1/input_exclude_high_unresolved/crc_liu_exclude_high_unresolved_counts.h5ad",
+  "input": {
+    "cells": 8067,
+    "genes": 28088,
+    "patients": 11,
+    "datasets": 1,
+    "states": [
+      "metastasis",
+      "tumor"
+    ],
+    "selection_basis": "copykat_aneuploid_and_scevan_tumor_intersection",
+    "selection_classes": [
+      "author_cancer_two_method_malignancy_support"
+    ],
+    "formal_analysis_roles": [
+      "liu_reference_qc_exclusion_sensitivity"
+    ],
+    "cell_sampling_seeds": [
+      20260812
+    ],
+    "sha256": "F6C6972B8D9D2EE7DDCCE8E1A6F5966E495C58F22BE4EBFAFB15F2CF4EA28CA9"
+  },
+  "run_name": "crc_liu_sensitivity_cnmf",
+  "run_role": "liu_reference_qc_exclusion_sensitivity",
+  "components": [
+    9,
+    10,
+    11
+  ],
+  "n_iter": 100,
+  "seed": 20260812,
+  "density_threshold": 0.1,
+  "num_highvar_genes": 2000,
+  "max_nmf_iter": 1000,
+  "total_workers": 8,
+  "factorization_execution": "official cNMF task partition across isolated worker processes",
+  "input_processing": "official cNMF TPM normalization, HVG selection and nonnegative variance scaling; no cross-dataset batch correction in this diagnostic run",
+  "claim_boundary": "This run is one predeclared Liu sensitivity at K=9-11 with 100 initializations. It can only be compared with the frozen primary solution before K review; it does not freeze K, name programs, or authorize Che or downstream analyses.",
+  "outputs": {
+    "P0_cnmf_k_selection.tsv": {
+      "bytes": 494,
+      "sha256": "1A9DAC20D6A36A83DE5B0E4346B2311EFB20ECEEF3A05353B7D5F0960AB7F0D3"
+    },
+    "P0_cnmf_patient_dataset_mixing.tsv": {
+      "bytes": 7112,
+      "sha256": "045A4B1064FD618A659D75DB6292C510B93EA50DBD0C94A0010AA8D6E9F96C1C"
+    },
+    "P0_cnmf_top_genes.tsv": {
+      "bytes": 41992,
+      "sha256": "52D639CA9992599FE0986BDAE3ACD12E1856FB3CD2F08747118FE25167F20AA0"
+    },
+    "crc_liu_sensitivity_cnmf/crc_liu_sensitivity_cnmf.k_selection.png": {
+      "bytes": 92770,
+      "sha256": "A650EA6ED25EBEC387A4865726E83A91B575F265A0280955C6F81AC9A0125366"
+    }
+  }
+}

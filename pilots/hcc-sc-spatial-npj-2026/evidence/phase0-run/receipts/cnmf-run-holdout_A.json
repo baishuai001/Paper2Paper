@@ -1,0 +1,57 @@
+{
+  "status": "diagnostic_real_data_smoke_not_scientific_acceptance",
+  "generated_at": "2026-08-10T13:56:16.827005+00:00",
+  "implementation_sha256": "B5655BB66EC3D6AB78CB380409FC9B39CF3AF49AC50FDD6285AD3A856225C93B",
+  "cnmf_version": "1.7.1",
+  "counts_h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_holdouts_v1/crc_two_method_cna_supported_holdout_A.h5ad",
+  "input": {
+    "cells": 900,
+    "genes": 28088,
+    "patients": 6,
+    "datasets": 6,
+    "states": [
+      "metastasis",
+      "polyp",
+      "tumor"
+    ],
+    "selection_basis": "copykat_aneuploid_and_scevan_tumor_intersection",
+    "selection_classes": [
+      "author_cancer_two_method_malignancy_support"
+    ],
+    "sha256": "0396BC590C72EDE66CCDC56A4F26BF51B1B6E12FE863F3ED66A203427C3A0141"
+  },
+  "run_name": "crc_cna_cnmf",
+  "components": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "n_iter": 50,
+  "seed": 20260810,
+  "density_threshold": 0.1,
+  "num_highvar_genes": 2000,
+  "max_nmf_iter": 1000,
+  "input_processing": "official cNMF TPM normalization, HVG selection and nonnegative variance scaling; no cross-dataset batch correction in this diagnostic run",
+  "claim_boundary": "The input is a sampled two-method CNA-supported candidate set, not DNA-validated malignancy truth or an atlas-wide census. Patient/dataset holdouts, balanced resampling and 100-200 initializations are still required before freezing K or malignant meta-programs.",
+  "outputs": {
+    "P0_cnmf_k_selection.tsv": {
+      "bytes": 478,
+      "sha256": "C961CC8D80A39C83F31C6C1EAC382C84597AA4983A386DE3C361D98BA54A19A4"
+    },
+    "P0_cnmf_patient_dataset_mixing.tsv": {
+      "bytes": 11889,
+      "sha256": "1586E74D029F3FF4700107ED016CC608977FE3C822227C5B3C46A9B26B9AB755"
+    },
+    "P0_cnmf_top_genes.tsv": {
+      "bytes": 62946,
+      "sha256": "EC80B8B6063E8FB599174323DD9F441115CD50F37742DF3028202C57F32ABB17"
+    },
+    "crc_cna_cnmf/crc_cna_cnmf.k_selection.png": {
+      "bytes": 85514,
+      "sha256": "5FE909D3FBB386FEF75F9FE6B6953E71E3203D02FD44024BB99E824F92ABC236"
+    }
+  }
+}

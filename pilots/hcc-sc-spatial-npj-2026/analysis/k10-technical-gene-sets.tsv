@@ -1,0 +1,223 @@
+category	gene	use	provenance
+stress_dissociation	FOS	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	FOSB	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	FOSL1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	FOSL2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	JUN	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	JUNB	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	JUND	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	EGR1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	EGR2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	EGR3	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	IER2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	IER3	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	ATF3	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DUSP1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DUSP2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DUSP4	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DUSP5	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DUSP6	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	HSPA1A	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	HSPA1B	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	HSPA6	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	HSPB1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DNAJB1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	DDIT3	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	GADD45A	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	GADD45B	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	GADD45G	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	NR4A1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	NR4A2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	NR4A3	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	ARC	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	RHOB	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	KLF2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	KLF4	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	ZFP36	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	ZFP36L1	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	BTG2	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	TXNIP	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+stress_dissociation	NFKBIA	automatic_technical_screen	Canonical immediate-early/dissociation-response panel
+cell_cycle	MCM5	review_flag	Seurat canonical S-phase marker set
+cell_cycle	PCNA	review_flag	Seurat canonical S-phase marker set
+cell_cycle	TYMS	review_flag	Seurat canonical S-phase marker set
+cell_cycle	FEN1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	MCM2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	MCM4	review_flag	Seurat canonical S-phase marker set
+cell_cycle	RRM1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	UNG	review_flag	Seurat canonical S-phase marker set
+cell_cycle	GINS2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	MCM6	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CDCA7	review_flag	Seurat canonical S-phase marker set
+cell_cycle	DTL	review_flag	Seurat canonical S-phase marker set
+cell_cycle	PRIM1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	UHRF1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CENPU	review_flag	Seurat canonical S-phase marker set
+cell_cycle	HELLS	review_flag	Seurat canonical S-phase marker set
+cell_cycle	RFC2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	RPA2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	NASP	review_flag	Seurat canonical S-phase marker set
+cell_cycle	RAD51AP1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	GMNN	review_flag	Seurat canonical S-phase marker set
+cell_cycle	WDR76	review_flag	Seurat canonical S-phase marker set
+cell_cycle	SLBP	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CCNE2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	UBR7	review_flag	Seurat canonical S-phase marker set
+cell_cycle	POLD3	review_flag	Seurat canonical S-phase marker set
+cell_cycle	MSH2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	ATAD2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	RAD51	review_flag	Seurat canonical S-phase marker set
+cell_cycle	RRM2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CDC45	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CDC6	review_flag	Seurat canonical S-phase marker set
+cell_cycle	EXO1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	TIPIN	review_flag	Seurat canonical S-phase marker set
+cell_cycle	DSCC1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	BLM	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CASP8AP2	review_flag	Seurat canonical S-phase marker set
+cell_cycle	USP1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CLSPN	review_flag	Seurat canonical S-phase marker set
+cell_cycle	POLA1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	CHAF1B	review_flag	Seurat canonical S-phase marker set
+cell_cycle	BRIP1	review_flag	Seurat canonical S-phase marker set
+cell_cycle	E2F8	review_flag	Seurat canonical S-phase marker set
+cell_cycle	HMGB2	review_flag	Seurat canonical G2M marker set
+cell_cycle	CDK1	review_flag	Seurat canonical G2M marker set
+cell_cycle	NUSAP1	review_flag	Seurat canonical G2M marker set
+cell_cycle	UBE2C	review_flag	Seurat canonical G2M marker set
+cell_cycle	BIRC5	review_flag	Seurat canonical G2M marker set
+cell_cycle	TPX2	review_flag	Seurat canonical G2M marker set
+cell_cycle	TOP2A	review_flag	Seurat canonical G2M marker set
+cell_cycle	NDC80	review_flag	Seurat canonical G2M marker set
+cell_cycle	CKS2	review_flag	Seurat canonical G2M marker set
+cell_cycle	NUF2	review_flag	Seurat canonical G2M marker set
+cell_cycle	CKS1B	review_flag	Seurat canonical G2M marker set
+cell_cycle	MKI67	review_flag	Seurat canonical G2M marker set
+cell_cycle	TMPO	review_flag	Seurat canonical G2M marker set
+cell_cycle	CENPF	review_flag	Seurat canonical G2M marker set
+cell_cycle	TACC3	review_flag	Seurat canonical G2M marker set
+cell_cycle	FAM64A	review_flag	Seurat canonical G2M marker set
+cell_cycle	SMC4	review_flag	Seurat canonical G2M marker set
+cell_cycle	CCNB2	review_flag	Seurat canonical G2M marker set
+cell_cycle	CKAP2L	review_flag	Seurat canonical G2M marker set
+cell_cycle	CKAP2	review_flag	Seurat canonical G2M marker set
+cell_cycle	AURKB	review_flag	Seurat canonical G2M marker set
+cell_cycle	BUB1	review_flag	Seurat canonical G2M marker set
+cell_cycle	KIF11	review_flag	Seurat canonical G2M marker set
+cell_cycle	ANP32E	review_flag	Seurat canonical G2M marker set
+cell_cycle	TUBB4B	review_flag	Seurat canonical G2M marker set
+cell_cycle	GTSE1	review_flag	Seurat canonical G2M marker set
+cell_cycle	KIF20B	review_flag	Seurat canonical G2M marker set
+cell_cycle	HJURP	review_flag	Seurat canonical G2M marker set
+cell_cycle	CDCA3	review_flag	Seurat canonical G2M marker set
+cell_cycle	HN1	review_flag	Seurat canonical G2M marker set
+cell_cycle	CDC20	review_flag	Seurat canonical G2M marker set
+cell_cycle	TTK	review_flag	Seurat canonical G2M marker set
+cell_cycle	CDC25C	review_flag	Seurat canonical G2M marker set
+cell_cycle	KIF2C	review_flag	Seurat canonical G2M marker set
+cell_cycle	RANGAP1	review_flag	Seurat canonical G2M marker set
+cell_cycle	NCAPD2	review_flag	Seurat canonical G2M marker set
+cell_cycle	DLGAP5	review_flag	Seurat canonical G2M marker set
+cell_cycle	CDCA2	review_flag	Seurat canonical G2M marker set
+cell_cycle	CDCA8	review_flag	Seurat canonical G2M marker set
+cell_cycle	ECT2	review_flag	Seurat canonical G2M marker set
+cell_cycle	KIF23	review_flag	Seurat canonical G2M marker set
+cell_cycle	HMMR	review_flag	Seurat canonical G2M marker set
+cell_cycle	AURKA	review_flag	Seurat canonical G2M marker set
+cell_cycle	PSRC1	review_flag	Seurat canonical G2M marker set
+cell_cycle	ANLN	review_flag	Seurat canonical G2M marker set
+cell_cycle	LBR	review_flag	Seurat canonical G2M marker set
+cell_cycle	CKAP5	review_flag	Seurat canonical G2M marker set
+cell_cycle	CENPE	review_flag	Seurat canonical G2M marker set
+cell_cycle	CTCF	review_flag	Seurat canonical G2M marker set
+cell_cycle	NEK2	review_flag	Seurat canonical G2M marker set
+cell_cycle	G2E3	review_flag	Seurat canonical G2M marker set
+cell_cycle	GAS2L3	review_flag	Seurat canonical G2M marker set
+cell_cycle	CBX5	review_flag	Seurat canonical G2M marker set
+cell_cycle	CENPA	review_flag	Seurat canonical G2M marker set
+immune_lineage	PTPRC	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD3D	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD3E	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	TRAC	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD247	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	MS4A1	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD79A	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD37	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	LST1	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	TYROBP	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	FCER1G	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	AIF1	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CTSS	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	LYZ	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	C1QA	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	C1QB	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	C1QC	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD68	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	FCGR3A	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	NKG7	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	GNLY	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	KLRD1	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	FCGR2A	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	HLA-DRA	review_flag	Canonical pan-immune and major leukocyte lineage markers
+immune_lineage	CD74	review_flag	Canonical pan-immune and major leukocyte lineage markers
+fibroblast_lineage	COL1A1	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL1A2	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL3A1	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	DCN	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	LUM	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	C7	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL6A1	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL6A2	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL6A3	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	PDGFRA	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	PDGFRB	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	THY1	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	FAP	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	POSTN	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	ACTA2	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	TAGLN	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	CXCL12	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL5A1	review_flag	Canonical fibroblast/myofibroblast markers
+fibroblast_lineage	COL5A2	review_flag	Canonical fibroblast/myofibroblast markers
+endothelial_lineage	PECAM1	review_flag	Canonical endothelial markers
+endothelial_lineage	VWF	review_flag	Canonical endothelial markers
+endothelial_lineage	KDR	review_flag	Canonical endothelial markers
+endothelial_lineage	ESAM	review_flag	Canonical endothelial markers
+endothelial_lineage	EMCN	review_flag	Canonical endothelial markers
+endothelial_lineage	ENG	review_flag	Canonical endothelial markers
+endothelial_lineage	RAMP2	review_flag	Canonical endothelial markers
+endothelial_lineage	PLVAP	review_flag	Canonical endothelial markers
+endothelial_lineage	EPAS1	review_flag	Canonical endothelial markers
+endothelial_lineage	RGCC	review_flag	Canonical endothelial markers
+endothelial_lineage	CA4	review_flag	Canonical endothelial markers
+endothelial_lineage	CDH5	review_flag	Canonical endothelial markers
+endothelial_lineage	CLDN5	review_flag	Canonical endothelial markers
+endothelial_lineage	FLT1	review_flag	Canonical endothelial markers
+endothelial_lineage	ACKR1	review_flag	Canonical endothelial markers
+liver_plasma_abundance	ALB	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOA1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOA2	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOB	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOC1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOC2	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOC3	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	HP	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	HPX	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	TF	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	TTR	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	FGA	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	FGB	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	FGG	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	AHSG	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	ORM1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	ORM2	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	SERPINA1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	SERPINA3	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	CRP	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	CPS1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	ARG1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	ASGR1	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	ASGR2	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	APOH	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	GC	review_flag	Canonical liver/plasma high-abundance genes
+liver_plasma_abundance	FABP1	review_flag	Canonical liver/plasma high-abundance genes

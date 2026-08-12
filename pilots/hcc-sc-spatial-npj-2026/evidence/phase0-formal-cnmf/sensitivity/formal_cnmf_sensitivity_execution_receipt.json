@@ -1,0 +1,13 @@
+{
+  "status": "formal_liu_cnmf_sensitivities_ready_for_human_review",
+  "generated_at": "2026-08-12T04:28:50.716336+00:00",
+  "contract_sha256": "671892A6A7DC0342C8A7EA4A12A4912F591734D2A5E870D9EF274A1846E997F3",
+  "program_names_frozen": false,
+  "che_projection_started": false,
+  "run_receipts": {
+    "runs/exclude_high_unresolved/P0_cnmf_run_receipt.json": "E49442F9BBB4EB31862073CDDB921A1A2AF06847D3E03873EF344F2676958FC2",
+    "runs/include_one_method/P0_cnmf_run_receipt.json": "EBD75DC6919A495B492AFF1FA7F8BDE08C961CE8AF9D3A703EB716EA7EB66F3D"
+  },
+  "summary_sha256": "53C60A878F6A8B16EAEE708B6BCA18EF14DCFF613369494582BBA2CC26B29D4A",
+  "claim_boundary": "Both predeclared malignant-set sensitivities completed at K=9-11. Their direct same-K matches are ready for human review; K and program names remain unfrozen."
+}

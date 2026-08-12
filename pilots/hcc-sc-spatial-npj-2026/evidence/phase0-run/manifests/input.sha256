@@ -1,0 +1,6 @@
+91a36ae6e40009fcc380f81f9c48d4bab31dfaf32c21d359d8f0aaa02680ee12  pilots/hcc-sc-spatial-npj-2026/code/phase_zero/README.md
+def6d3f8fe79306bc5b95de6fd9b0c5eb1db0e048a458a898d9b06405974bef1  pilots/hcc-sc-spatial-npj-2026/code/phase_zero/requirements-bootstrap.txt
+524206552073fe46339bee163066612db3073a6eb884b12f00494e979c75e301  pilots/hcc-sc-spatial-npj-2026/code/phase_zero/build_crc_table_s1_design.py
+df1a404f764f2be5895534d32325889cdadce25f55e0df6b1320e3a49b8e57ab  pilots/hcc-sc-spatial-npj-2026/code/phase_zero/inspect_crc_h5ad.py
+9df6554f327e6bb044a6bcd70c04d7bba064bfba81e849f804fd1ca612b36e7b  pilots/hcc-sc-spatial-npj-2026/code/phase_zero/test_phase_zero_bootstrap.py
+ef58cfc7c00ed9826b8e421767a71d45271f4847155a5e5ddd1620089ee7d920  tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_table_s1.xlsx

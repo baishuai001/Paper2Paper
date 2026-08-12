@@ -1,0 +1,88 @@
+{
+  "status": "formal_liu_sensitivity_input_frozen_pending_cnmf",
+  "generated_at": "2026-08-12T04:06:53.980390+00:00",
+  "implementation_sha256": "8A9D9C89C60B46E68E3DEB15038272276FFF9FD4B1EB71777706BB67FE7A0ADC",
+  "design_helper_sha256": "EA86E5BBCD8602BF01E7F5E229E3D954FC153E3A47A968208BAF554DCC590C6D",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+  "h5ad_sha256_verification": "verified once by the execution supervisor immediately before both deterministic inputs",
+  "evidence": [
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_01/P0_cna_panel_cell_evidence.tsv",
+      "sha256": "E65671361B0EBCCAB1E78D22D7488D2202965D4F557EA9B02CF93ABF9ACEACAB"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_02/P0_cna_panel_cell_evidence.tsv",
+      "sha256": "6848D5BF8463999C34DCFE780B7E25B2C884B4ABA097B3CFAED4249B94FF76FC"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_03/P0_cna_panel_cell_evidence.tsv",
+      "sha256": "BB842ED2143B77036986DFADDF348179FC8AB236C1948460EFE02408530E3ED2"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_04/P0_cna_panel_cell_evidence.tsv",
+      "sha256": "BD179C386674828E766442B8DFB7064DADB3097DB146269A8C5D56C019BB1860"
+    }
+  ],
+  "cohort_dataset": "Liu_2024_mixCD45PosCD45Neg",
+  "analysis_role": "liu_reference_qc_exclusion_sensitivity",
+  "selection_classes": [
+    "author_cancer_two_method_malignancy_support"
+  ],
+  "selection_mode": "dual_only",
+  "available_selected_cells": 22338,
+  "available_dual_supported_cells": 22338,
+  "available_one_method_supported_cells": 0,
+  "selected_cells": 8067,
+  "genes": 28088,
+  "patients": 11,
+  "samples": 22,
+  "states": [
+    "metastasis",
+    "tumor"
+  ],
+  "patient_state_units": 19,
+  "excluded_sample_ids": [
+    "Liu_2024_mixCD45PosCD45Neg.Pt05_T1",
+    "Liu_2024_mixCD45PosCD45Neg.Pt07_T2",
+    "Liu_2024_mixCD45PosCD45Neg.Pt15_T1"
+  ],
+  "paired_states_required": false,
+  "balance_unit": "patient_state",
+  "max_cells_per_patient_state": 500,
+  "cell_sampling_seed": 20260812,
+  "high_reference_unresolved_samples_gt_0_5": [
+    "Liu_2024_mixCD45PosCD45Neg.Pt05_T1",
+    "Liu_2024_mixCD45PosCD45Neg.Pt07_T2",
+    "Liu_2024_mixCD45PosCD45Neg.Pt15_T1"
+  ],
+  "retained_high_reference_unresolved_samples_gt_0_5": [],
+  "selection_rule": "within the frozen Liu cohort, retain dual_only author Cancer candidates; exclude only the predeclared samples ['Liu_2024_mixCD45PosCD45Neg.Pt05_T1', 'Liu_2024_mixCD45PosCD45Neg.Pt07_T2', 'Liu_2024_mixCD45PosCD45Neg.Pt15_T1']; pool replicate samples inside each patient-state and cap that patient-state without reading expression values or downstream outcomes",
+  "claim_boundary": "This is one frozen Liu sensitivity input at candidate K=9-11 only. It may test whether the primary program solution changes, but cannot freeze K by itself, name programs, support a primary-to-metastasis contrast when patient states are incomplete, or replace Che external replication.",
+  "outputs": {
+    "crc_liu_exclude_high_unresolved_counts.h5ad": {
+      "bytes": 82985453,
+      "sha256": "F6C6972B8D9D2EE7DDCCE8E1A6F5966E495C58F22BE4EBFAFB15F2CF4EA28CA9"
+    },
+    "P0_formal_cnmf_patient_state_units.tsv": {
+      "bytes": 1150,
+      "sha256": "88A6A21E4860981C762DA028696BB7A9ECE4465D013689148A956FC449BE465D"
+    },
+    "P0_formal_cnmf_sample_composition.tsv": {
+      "bytes": 1792,
+      "sha256": "37CD37E0410E74ECB27E8160442677182957ADC5AF8D06B76FAB445031F95EB1"
+    },
+    "P0_formal_cnmf_selected_cells.tsv": {
+      "bytes": 3774773,
+      "sha256": "9D1139FB7004B0BDD75004F578EDB5F1567AED9D21F3F70D3485B612E45B3A8B"
+    },
+    "P0_formal_cnmf_reference_qc.tsv": {
+      "bytes": 2817,
+      "sha256": "047C289E495C2D562C7BF1DC996B4409586FBA3FC20F19EC72217574904F8C2A"
+    },
+    "P0_formal_cnmf_gene_feature_map.tsv": {
+      "bytes": 2356094,
+      "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+    }
+  }
+}

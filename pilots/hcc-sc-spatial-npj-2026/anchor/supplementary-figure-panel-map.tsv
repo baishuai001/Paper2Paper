@@ -1,0 +1,64 @@
+panel_id	anchor_panel_role	crc_replacement_data	replacement_level	data_reason	code_source	code_reuse_level	required_repair	verification_gate
+S1A	各样本nCount_RNA质控	CRC-atlas处理后对象或原始分数据对象	完整模仿（待真实运行）	同一QC字段可获得或重算	CRC-atlas作者QC代码+Scanpy/Seurat官方实现	改造	按样本/队列展示并冻结过滤前后对象	每个纳入样本有计数分布、阈值和保留细胞数
+S1B	各样本nFeature_RNA质控	同S1A	完整模仿（待真实运行）	同S1A	同S1A	改造	同S1A	同S1A
+S1C	各样本线粒体比例质控	同S1A	完整模仿（待真实运行）	同S1A	同S1A	改造	不同研究测量特性可不同，不用单一阈值机械裁剪	逐队列阈值和敏感性记录完整
+S1D	不同组织组QC分布	CRC正常/息肉/原发/肝转移样本	完整模仿（待真实运行）	可比较组织组技术指标	CRC-atlas作者代码+目标项目统计脚本	改造	QC差异不得解释为生物差异；组织与队列混杂分开报告	组别和队列分层图均输出
+S1E	33个细胞cluster UMAP	CRC-atlas细粒度聚类	完整模仿（待真实运行）	处理后对象含细粒度标签/嵌入	CRC-atlas作者图谱代码	改造	CRC cluster数由数据决定，不固定为33	固定对象版本并输出每cluster患者覆盖
+S1F	批次校正前后UMAP	CRC-atlas构建数据或供者平衡子集	完整模仿（待真实运行）	可在目标CRC数据上评估整合	CRC-atlas scANVI/集成代码或Harmony官方实现	改造	方法可换但必须说明；不能只凭视觉判断	预设定量指标与生物保留指标同时通过
+S1G	kBET校正前后比较	CRC集成对象	完整模仿（待真实运行）	同一批次混合指标可计算	kBET官方实现	补建	同时报告过度校正风险和队列/状态保留	kBET及至少一个互补指标在固定子集通过
+S1H	各样本cluster比例	CRC-atlas样本/cluster标签	完整模仿（待真实运行）	可承担样本覆盖诊断	目标项目汇总绘图	重建	此图是诊断，不把细胞堆叠柱当推断统计	全部样本显示，异常样本有审计记录
+S1I	回归RNA counts前后主要群UMAP	CRC主要细胞群	完整模仿（待真实运行）	可检验技术协变量敏感性	Scanpy/Seurat官方实现	补建	不因相似UMAP就宣称所有技术影响消失	聚类、marker及组成敏感性均报告
+S1J	主要细胞群差异marker点图	CRC主要细胞标签	完整模仿（待真实运行）	同一注释验证角色可完成	Scanpy/Seurat+伪bulk差异	补建	marker需跨患者并避免细胞级伪重复	患者覆盖和完整marker表输出
+S2A	样本级CopyKAT CNA谱	CRC恶性上皮及正常参考细胞	完整模仿（待真实运行）	可从单细胞表达推断CNA	CopyKAT或SCEVAN官方实现	补建	固定正常参考和参数；CNA是推断而非测序真值	已知正常细胞负对照、患者覆盖和替代算法一致性
+S2B	按CNA聚类患者	S2A患者级CNA谱	完整模仿（待真实运行）	可承担患者异质性诊断	目标项目聚类脚本	重建	聚类不作为未验证分型；检查队列效应	留一患者/队列稳定且队列标签不过度分离
+S2C	按meta-program分层CNA	CRC CNA谱与冻结恶性程序	完整模仿（待真实运行）	同一关联角色可计算	目标项目连接/热图脚本	重建	患者为单位并控制程序与患者混杂	多患者支持且置换基线通过
+S3A	cNMF K值稳定性与重构误差	CRC恶性细胞非负计数	完整模仿（待真实运行）	官方cNMF直接产生该诊断	官方cNMF	补建	K范围、迭代数、种子和选择规则预先规定	多种子曲线和选K收据完整
+S3B	GEP欧氏距离矩阵	CRC cNMF GEP	完整模仿（待真实运行）	可直接从程序矩阵计算	官方cNMF输出+目标项目热图	补建	统一缩放并与余弦/相关距离做敏感性	距离定义冻结且程序不由技术基因主导
+S3C	15个GEP在样本中比例	CRC GEP usage与样本标签	完整模仿（待真实运行）	同一跨样本覆盖诊断可完成	目标项目汇总绘图	重建	GEP数由CRC选K决定，不固定15	全部样本显示并标出患者/队列覆盖
+S3D	每个GEP患者混合熵	CRC GEP usage与患者ID	完整模仿（待真实运行）	患者ID可支持	目标项目熵/置换脚本	重建	熵受患者细胞数影响，需下采样或置换校正	平衡下采样和空模型后仍显示跨患者性
+S3E	GEP层次聚类成meta-program	CRC稳定GEP	完整模仿（待真实运行）	可承担程序合并角色	目标项目聚类+共识脚本	重建	聚类阈值/合并规则预设并做bootstrap	多种子/供者留出下合并结构稳定
+S3F	meta-program在样本中比例	CRC meta-program usage	完整模仿（待真实运行）	可完成	目标项目汇总绘图	重建	患者为审计单位	跨患者/队列覆盖满足预设门槛
+S3G	GEP与meta-program混合熵比较	CRC GEP/MP及患者ID	完整模仿（待真实运行）	可检验合并是否改善跨患者共享	目标项目配对/置换统计	重建	比较需考虑程序数和细胞数，不只报一个p值	平衡下采样、效应量和置信区间通过
+S4A	MP1功能富集	CRC程序1或相应CRC meta-program	完整模仿（待真实运行）	每个冻结程序可做同角色富集	fgsea/clusterProfiler/decoupler官方实现	补建	CRC程序数和功能由数据决定，不预设肝代谢标签	背景、版本、多重校正和留出队列复现
+S4B	MP2功能富集	CRC程序2或相应CRC meta-program	完整模仿（待真实运行）	同S4A	同S4A	补建	同S4A	同S4A
+S4C	MP3功能富集	CRC程序3或相应CRC meta-program	完整模仿（待真实运行）	同S4A	同S4A	补建	同S4A	同S4A
+S4D	MP4功能富集	CRC程序4或相应CRC meta-program	完整模仿（待真实运行）	同S4A	同S4A	补建	程序数不固定为4；按实际稳定程序增删子图	同S4A
+S5A	MP1 Hallmark GSEA	CRC程序1	完整模仿（待真实运行）	同一GSEA角色可完成	fgsea/decoupler+MSigDB	补建	冻结MSigDB版本和基因排序方法	NES/FDR/leading-edge完整输出并外部复现
+S5B	MP2 Hallmark GSEA	CRC程序2	完整模仿（待真实运行）	同S5A	同S5A	补建	同S5A	同S5A
+S5C	MP3 Hallmark GSEA	CRC程序3	完整模仿（待真实运行）	同S5A	同S5A	补建	同S5A	同S5A
+S5D	MP4 Hallmark GSEA	CRC程序4	完整模仿（待真实运行）	同S5A	同S5A	补建	按实际稳定程序数量调整	同S5A
+S6A	主要髓系类型marker	CRC-atlas髓系细胞	完整模仿（待真实运行）	作者数据/注释/代码可支撑	CRC-atlas作者myeloid代码	改造	作为注释核查而非新中心结论	marker跨患者且与完整细胞清单一致
+S6B	巨噬亚群marker	CRC巨噬亚群	完整模仿（待真实运行）	可支撑数据驱动亚群标注	CRC-atlas作者代码+目标项目伪bulk	改造	不预设HCC亚群名	跨患者marker和留一队列稳定
+S6C	Macro-CLEC10A富集	CRC数据驱动的相应巨噬状态	模块化模仿	可借“单亚群GO”结构，具体CLEC10A状态不保证存在	官方富集实现	补建	先无偏冻结CRC状态	状态跨队列出现且不重复已发表中心结论
+S6D	Macro-C1QC富集	CRC数据驱动巨噬状态	模块化模仿	同S6C	同S6C	补建	同S6C	同S6C
+S6E	Macro-FN1富集	CRC数据驱动巨噬状态	模块化模仿	同S6C	同S6C	补建	同S6C	同S6C
+S6F	Macro-AREG富集	CRC数据驱动巨噬状态	模块化模仿	同S6C	同S6C	补建	同S6C	同S6C
+S7A	Endo-PTTG1生存KM	CRC数据驱动候选内皮状态	模块化模仿	可借生存投影，不能预设PTTG1状态或结局	CRC-atlas TCGA脚本+survival官方包	补建	连续多变量Cox为主，状态/cutoff先冻结	独立CRC队列复现并校正多签名
+S7B	Endo-CXCL2生存KM	CRC数据驱动候选内皮状态	模块化模仿	同S7A	同S7A	补建	同S7A	同S7A
+S7C	Endo-FCN2生存KM	CRC数据驱动候选内皮状态	模块化模仿	同S7A	同S7A	补建	同S7A	同S7A
+S7D	Endo-PTTG1功能富集	CRC候选内皮状态	模块化模仿	具体状态未知	官方富集实现	补建	先冻结状态再富集	伪bulk和外部队列一致
+S7E	Endo-CXCL2功能富集	CRC候选内皮状态	模块化模仿	同S7D	同S7D	补建	同S7D	同S7D
+S7F	Endo-FCN2功能富集	CRC候选内皮状态	模块化模仿	同S7D	同S7D	补建	同S7D	同S7D
+S8A	成纤维亚群marker	CRC-atlas/GSE225857成纤维细胞	完整模仿（待真实运行）	可完成数据驱动标注	CRC-atlas代码+GSE225857脚本参考	改造	与已发表F3/MCAM结果分开	跨患者marker和重复性审计通过
+S8B	Fib-CXCL12 HLA/CD74表达	CRC数据驱动的抗原呈递样成纤维状态	模块化模仿	可检验但不能预设同名状态	目标项目表达/伪bulk脚本	补建	全面比较所有稳定状态，避免单基因挑选	状态跨患者且HLA信号非环境RNA/双细胞驱动
+S8C	Fib-CXCL12通路	同S8B候选状态	模块化模仿	只有S8B成立后才有意义	官方富集实现	补建	多重校正和背景冻结	独立队列方向一致
+S8D	所有成纤维亚群Hallmark热图	CRC冻结成纤维状态	完整模仿（待真实运行）	可承担全景功能比较	decoupler/GSVA官方实现	补建	所有状态同一基因集/缩放，患者伪bulk复核	跨患者和队列稳定
+S9A	原发/进展部位全局通信数量	CRC原发/肝转移单细胞	完整模仿（待真实运行）	同一全局通信角色可完成	CellChat官方实现	补建	逐患者计算再汇总	患者级效应、配对和置换通过
+S9B	原发/进展部位全局通信权重	CRC原发/肝转移单细胞	完整模仿（待真实运行）	同S9A	同S9A	补建	同S9A	同S9A
+S9C	亚群层通信数量热图	CRC冻结亚群	完整模仿（待真实运行）	可完成	CellChat官方实现	补建	低覆盖亚群不进入；LR对不作独立重复	发送/接收患者覆盖和完整矩阵输出
+S9D	亚群层通信权重热图	CRC冻结亚群	完整模仿（待真实运行）	同S9C	同S9C	补建	同S9C	同S9C
+S10A	第三个HCC样本各状态空间分布	GSE225857第三个合格CRC/CRLM切片	完整模仿（待真实运行）	公开空间切片足够补充主文重复	cell2location官方实现+LianLab文件解析参考	补建	全部合格切片运行，不挑图	实际解包后切片、坐标、图像和reference通过
+S10B	第三个样本状态复合空间图	同S10A	完整模仿（待真实运行）	可完成	同S10A	补建	组合颜色和阈值冻结	source table可重建复合图
+S10C	第四个HCC样本各状态空间分布	GSE225857第四个合格CRC/CRLM切片	完整模仿（待真实运行）	可完成	同S10A	补建	同S10A	同S10A
+S10D	第四个样本状态复合空间图	同S10C	完整模仿（待真实运行）	可完成	同S10A	补建	同S10B	同S10B
+S10E	样本一ANGPTL/配体空间表达	CRC预先指定候选通路及配体	模块化模仿	可借空间配体展示，具体ANGPTL不应预设	COMMOT官方实现	补建	通路来自单细胞通信或外部假设	多切片复现和空间空模型
+S10F	样本二ANGPTL/配体空间表达	CRC预先指定候选通路及配体	模块化模仿	同S10E	同S10E	补建	同S10E	同S10E
+S10G	样本三ANGPTL/配体空间表达	CRC预先指定候选通路及配体	模块化模仿	同S10E	同S10E	补建	同S10E	同S10E
+S10H	COMMOT发送强度通路排名	CRC空间切片的全部可测通路	完整模仿（待真实运行）	可承担无偏通路排名角色	COMMOT官方实现	补建	报告全部通路和多切片汇总，不只展示预期通路	排名在多个患者/距离参数下稳定
+S10I	单个样本spot级通路—基质相关	CRC多个空间切片	不可原样模仿（需修复）	单切片spot相关会把空间相关spot当独立重复并存在挑样本风险	目标项目分层空间模型/置换脚本	重建	每切片估计后跨患者汇总，做空间置换和预设通路	至少多个患者方向一致且空间空模型通过
+S11A	治疗响应样本一的三个候选空间表达	当前无合格CRC治疗响应空间队列	当前阻断	GSE225857虽经术前治疗但无同一响应合同	暂无；找到数据后用官方空间工具重建	阻断	不得用无响应标签样本替代	取得同一疗法/响应定义/患者空间数据或删除
+S11B	治疗响应样本二的三个候选空间表达	同S11A	当前阻断	同S11A	同S11A	阻断	同S11A	同S11A
+S11C	治疗非响应样本的三个候选空间表达	同S11A	当前阻断	同S11A	同S11A	阻断	同S11A	同S11A
+S11D	候选一在治疗响应者/非响应者差异	CRC-atlas中待锁定的单一治疗子队列或独立CRC治疗bulk队列	模块化模仿	治疗字段存在但队列尚未形成一致合同	目标项目患者ID连接/差异模型	补建	先冻结药物、时点、响应和协变量	实际解析合格队列并患者级运行
+S11E	候选二在治疗响应者/非响应者差异	同S11D	模块化模仿	同S11D	同S11D	补建	同S11D	同S11D
+S11F	候选三在治疗响应者/非响应者差异	同S11D	模块化模仿	同S11D	同S11D	补建	同S11D	同S11D

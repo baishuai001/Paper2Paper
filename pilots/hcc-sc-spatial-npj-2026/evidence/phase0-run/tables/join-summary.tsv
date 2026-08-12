@@ -1,0 +1,15 @@
+metric	value
+h5ad_cells	3790266
+h5ad_samples	1553
+h5ad_analysis_units	1639
+pooled_sample_ids	14
+table_samples	1670
+samples_in_both	1553
+table_only_samples	117
+h5ad_only_samples	0
+h5ad_internal_conflict_samples	0
+patient_id_mismatch_samples	0
+dataset_mismatch_samples	0
+study_id_mismatch_samples	0
+sample_type_mismatch_samples	0
+sample_tissue_mismatch_samples	13

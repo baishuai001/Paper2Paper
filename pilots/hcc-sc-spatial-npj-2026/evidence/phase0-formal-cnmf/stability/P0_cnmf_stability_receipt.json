@@ -1,0 +1,64 @@
+{
+  "status": "candidate_seed_cell_resample_and_patient_holdout_comparison",
+  "generated_at": "2026-08-12T02:41:46.002698+00:00",
+  "implementation_sha256": "1AC59D8E6E78A193C954762CFC5D5984E4D5E4463DE959D8AF1BB49B36C6CEC1",
+  "runs": [
+    {
+      "label": "seed_20260812",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812",
+      "name": "crc_liu_formal_cnmf"
+    },
+    {
+      "label": "seed_20260813",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260813",
+      "name": "crc_liu_formal_cnmf"
+    },
+    {
+      "label": "cell_resample_20260813",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/cell_resample_20260813",
+      "name": "crc_liu_formal_cnmf"
+    },
+    {
+      "label": "patient_holdout_A",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_A",
+      "name": "crc_liu_formal_cnmf"
+    },
+    {
+      "label": "patient_holdout_B",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_B",
+      "name": "crc_liu_formal_cnmf"
+    }
+  ],
+  "top_n": 50,
+  "permutations": 100,
+  "seed": 20260812,
+  "comparisons": 235,
+  "matched_program_pairs": 2900,
+  "pairs_exceeding_both_nulls": 2513,
+  "independent_holdout_matched_pairs": 200,
+  "independent_holdout_pairs_exceeding_both_nulls": 133,
+  "independent_holdout_k_values_with_at_least_one_pass": 16,
+  "patient_only_holdout": true,
+  "patient_and_dataset_holdout": false,
+  "cell_resample_comparison": true,
+  "program_family_freeze_status": "not_assessed_until_k_is_frozen",
+  "claim_boundary": "The formal Liu comparison includes paired-patient-disjoint A/B folds and a separately sampled cell input. Both folds share the Liu dataset, so they test patient replication, not external cohort transport. Evidence is reported as direct one-to-one pairs at each K. No cross-K family or program name is accepted until K review; Che external projection, CNA-set sensitivity and technical-program review remain required.",
+  "outputs": {
+    "P0_cnmf_stability.tsv": {
+      "bytes": 426598,
+      "sha256": "89F3B2DBBF2C438A2EF80FAFCA962C8B1A4A092D6DCC755D3C229223F6C22D78"
+    },
+    "P0_cnmf_null_thresholds.tsv": {
+      "bytes": 24990,
+      "sha256": "62D5568983FD0A7DFB5293E65306CCD3949E482AF1D9F096C16E0D3842D784A0"
+    },
+    "P0_cnmf_holdout_replication_pairs.tsv": {
+      "bytes": 35073,
+      "sha256": "548AB51215D513E5D202082429B29DD5A62A9B173B43A41BF3311002381CEC7A"
+    },
+    "P0_cnmf_holdout_replication_by_k.tsv": {
+      "bytes": 1757,
+      "sha256": "44DD9D2E382E404590DDB77DE9D09B44888359BB72D4B389A451E29DD9983051"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "status": "READY_FOR_CHE_ELIGIBILITY_REVIEW",
+  "anchor_run": "seed_20260812",
+  "k": 10,
+  "density_threshold": 0.1,
+  "programs_screened": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "eligible_for_confirmatory_che": [
+    1,
+    7,
+    8
+  ],
+  "not_eligible_for_confirmatory_che": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    9,
+    10
+  ],
+  "che_executed": false,
+  "biological_naming_executed": false,
+  "technical_metric_availability": {
+    "mitochondrial_genes_in_input": 37,
+    "mito_fraction_metric_available": false,
+    "mito_fraction_unavailable_reason": "No varying mitochondrial fraction can be calculated from the frozen cNMF input"
+  },
+  "input_sha256": {
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/stability/P0_cnmf_stability.tsv": "89f3b2dbbf2c438a2ef80fafca962c8b1a4a092d6dcc755d3c229223f6c22d78",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_sensitivity_v1/P0_cnmf_sensitivity_same_k_pairs.tsv": "843508c8449c04cff7bf8369aa94f029b55e55fa814bb11f4adac5b1d19c1f91",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_top_genes.tsv": "a176c318fa690e7a4567e62999e87fedab59ace17497fbf1e138c974af09f2b1",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/input_main/crc_liu_dual_cna_patient_state_balanced_counts.h5ad": "1bf8c436f492a48a7a3fcafcebd2d47a4906aeb0a2ca1d37c992cb12f7aacca0",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/crc_liu_formal_cnmf/crc_liu_formal_cnmf.usages.k_10.dt_0_1.consensus.txt": "85f2d6d12491679d16927b2642dbe59d8a154f9c121f673d4ebe4ff7202ca810",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/k10_program_review_v1/k10-technical-gene-sets.tsv": "faca0892566c1d6370e1c02c457b5246f85db026c7df9a19eb62c2f9ebb09719",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/k10_program_review_v1/k10-program-che-eligibility-contract.md": "a313ebbbcef1366459c7b29cd165a1bdcd0b54c1c1a6902ccb08aea2624613ee",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_patient_dataset_mixing.tsv": "cae8d0c58ca11b31ee07384d209043b523e94d58d73da6774a2fc803d160f6fc",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260813/P0_cnmf_patient_dataset_mixing.tsv": "db16aa5c3f78cffd0f89d443e942d8794500ec6c7eb5133980cbdb0e453531c4",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/cell_resample_20260813/P0_cnmf_patient_dataset_mixing.tsv": "5070e14da63dd67008869fae1b4c16db87e685b6c7e09c8b139b58945c71d2ba"
+  },
+  "outputs": [
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/k10_program_review_v1/P0_k10_program_joint_stability_technical_screen.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/k10_program_review_v1/P0_k10_program_match_evidence.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/k10_program_review_v1/P0_k10_program_top50_technical_annotations.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/k10_program_review_v1/P0_k10_program_che_eligibility_human_review.md"
+  ],
+  "row_counts": {
+    "joint_screen": 10,
+    "match_evidence": 90,
+    "top50_annotations": 500
+  }
+}

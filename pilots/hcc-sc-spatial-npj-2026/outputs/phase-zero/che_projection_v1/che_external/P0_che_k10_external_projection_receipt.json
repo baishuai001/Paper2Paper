@@ -1,0 +1,92 @@
+{
+  "status": "READY_FOR_CHE_EXTERNAL_REVIEW",
+  "frozen_eligible_programs": [
+    1,
+    7,
+    8
+  ],
+  "programs_scored_blind": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "liu_directions": {
+    "1": "lower_in_liver_metastasis",
+    "7": "higher_in_liver_metastasis",
+    "8": "lower_in_liver_metastasis"
+  },
+  "analysis_receipts": [
+    {
+      "analysis": "primary_dual_balanced",
+      "selection_classes": [
+        "author_cancer_two_method_malignancy_support"
+      ],
+      "patient_state_cap": 500,
+      "seed": 20260812,
+      "selected_cells": 3234,
+      "patients": 5,
+      "samples": 10,
+      "genes": 28088,
+      "minimum_signature_coverage": 50
+    },
+    {
+      "analysis": "sensitivity_dual_all_cells",
+      "selection_classes": [
+        "author_cancer_two_method_malignancy_support"
+      ],
+      "patient_state_cap": null,
+      "seed": 20260812,
+      "selected_cells": 6115,
+      "patients": 5,
+      "samples": 10,
+      "genes": 28088,
+      "minimum_signature_coverage": 50
+    },
+    {
+      "analysis": "sensitivity_dual_plus_one_method_balanced",
+      "selection_classes": [
+        "author_cancer_two_method_malignancy_support",
+        "author_cancer_one_method_malignancy_support"
+      ],
+      "patient_state_cap": 500,
+      "seed": 20260812,
+      "selected_cells": 3313,
+      "patients": 5,
+      "samples": 10,
+      "genes": 28088,
+      "minimum_signature_coverage": 50
+    }
+  ],
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+  "input_sha256": {
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad": "718774363933b57c6a4661e8aaf0ee7d86b717b047442afe6457c01986789ac6",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_top_genes.tsv": "a176c318fa690e7a4567e62999e87fedab59ace17497fbf1e138c974af09f2b1",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/che_projection_v1/liu_reference/P0_liu_k10_projection_reference.tsv": "97e1e762b7bc2f2a4365a8e0c852dca09068a6a137fca8c8e17fc1898075d1a9",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/manifests/che_projection_v1/che-external-projection-contract.md": "f2af54faa174970303e302c8babbc1ef1e52dc9cb8d48801ed3a98d7fb714fee",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_01/P0_cna_panel_cell_evidence.tsv": "e65671361b0ebccab1e78d22d7488d2202965d4f557ea9b02cf93abf9aceacab",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_02/P0_cna_panel_cell_evidence.tsv": "6848d5bf8463999c34dcfe780b7e25b2c884b4aba097b3cfaed4249b94ff76fc",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_03/P0_cna_panel_cell_evidence.tsv": "bb842ed2143b77036986dfaddf348179fc8ab236c1948460efe02408530e3ed2",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_paired_full_v1/summary_04/P0_cna_panel_cell_evidence.tsv": "bd179c386674828e766442b8dfb7064dadb3097db146269a8c5d56c019bb1860"
+  },
+  "che_results_used_to_change_k_or_eligibility": false,
+  "biological_naming_executed": false,
+  "final_confirmatory_status": {
+    "1": "sensitivity_unstable",
+    "7": "not_replicated_or_opposite",
+    "8": "not_replicated_or_opposite"
+  },
+  "status_label_fix": {
+    "reason": "primary non-replication must not be hidden by sensitivity_unstable",
+    "script_sha256": "9ab6d7a8c0d1c9eddc0d95b35d908e0aa32a13bb3795f95e3ae832b90c87f266",
+    "raw_scores_or_statistics_recomputed": false,
+    "unit_tests": "8/8 passed"
+  }
+}

@@ -1,0 +1,5 @@
+dataset	analysis_role	contrast	paired_patients	selected_samples	primary_or_carcinoma_samples	comparison_samples	author_cancer_cells	known_normal_reference_cells
+Liu_2024_mixCD45PosCD45Neg	primary_discovery	primary_vs_liver_metastasis	11	25	12	13	44195	70255
+Che_2021	independent_replication	primary_vs_liver_metastasis	5	10	5	5	11327	68690
+Ji_2024_scopeV2	supporting_case	primary_vs_liver_metastasis	1	2	1	1	7773	6141
+Zheng_2022	early_stage_exploration	adenoma_vs_carcinoma	3	6	3	3	9859	13930

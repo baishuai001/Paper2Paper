@@ -1,0 +1,9 @@
+cna_input_role	copykat.pred	scevan_class	evidence_class	cells	fraction_within_input_role
+author_cancer	aneuploid	normal	discordant_aneuploid_vs_scevan_normal	1	0.0033333333333333335
+author_cancer	aneuploid	tumor	concordant_malignancy_support	132	0.44
+author_cancer	diploid	normal	concordant_nonaneuploid_classification_not_nonmalignancy_proof	96	0.32
+author_cancer	not.defined	filtered	unresolved_both_methods	70	0.23333333333333334
+author_cancer	not.defined	tumor	scevan_only_support_copykat_unresolved	1	0.0033333333333333335
+known_normal_reference	diploid	normal	concordant_nonaneuploid_classification_not_nonmalignancy_proof	108	0.36
+known_normal_reference	not.defined	filtered	unresolved_both_methods	174	0.58
+known_normal_reference	not.defined	normal	unresolved_copykat_not_defined	18	0.06

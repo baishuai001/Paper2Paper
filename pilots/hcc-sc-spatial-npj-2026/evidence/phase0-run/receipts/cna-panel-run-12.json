@@ -1,0 +1,1867 @@
+{
+  "status": "completed",
+  "started_at": "2026-08-10T12:52:05.783204+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "panel": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_selection_v2/P0_cna_selected_panel.tsv",
+  "panel_sha256": "587EF5977BB03F8E595EA317B739AA8296E3577BB046593A50DFCA89796DBBAE",
+  "cna_runner": "/media/desk16/iy13202/projects/Paper2Paper/pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+  "cna_runner_sha256": "616D965901C357FAD9571B039DC15DF3CED4D4E1589A8272DD7BAAD6C87104BE",
+  "scevan_r_lib": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/env/R-scevan-lib",
+  "rscript": "Rscript",
+  "cores": 4,
+  "seed": 20260810,
+  "units": [
+    {
+      "panel_order": 1,
+      "dataset": "VUMC_HTAN_cohort3",
+      "sample_id": "VUMC_HTAN_cohort3.HTA11_12542_2000001011",
+      "patient_id": "Chen_2021_Cell.HTA11_12542",
+      "sample_type": "polyp",
+      "tissue": "ascending colon",
+      "status": "completed",
+      "started_at": "2026-08-10T12:52:05.786799+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T12:53:16.224745+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "VUMC_HTAN_cohort3.HTA11_12542_2000001011",
+        "patient_id": "Chen_2021_Cell.HTA11_12542",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 568,
+        "nonzero_counts": 758118,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 168,
+          "other_epithelial": 100
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260811,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 2328309,
+            "sha256": "52EE9260A3FCD1D7E036BDD4B5D715F9533A4181D588FBCC1BADEC29A3815796"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 40131,
+            "sha256": "516D05A9EC095F379FD87C529E42668E5BD8ED48728610961B2364D6941DD1AE"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 114141,
+            "sha256": "20D9B52AAC396F9DDDCE0E3F236C500A8FD808B0DE951886222EFA1C4C8CDD73"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_01",
+          "--cores",
+          "4",
+          "--seed",
+          "20260811"
+        ],
+        "started_at": "2026-08-10T12:53:17.053926+00:00",
+        "finished_at": "2026-08-10T12:55:27.508024+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01/copykat.log",
+        "log_bytes": 706,
+        "log_sha256": "F1C9CE4756496DB5E44BDF14A4BEF0EE3FC6DEE3E18F12FC32E17EF87D123332"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_01",
+          "--cores",
+          "4",
+          "--seed",
+          "20260811"
+        ],
+        "started_at": "2026-08-10T12:55:27.508707+00:00",
+        "finished_at": "2026-08-10T12:56:34.105319+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_01/scevan.log",
+        "log_bytes": 966,
+        "log_sha256": "B6B6E83490E71054D2D3B75CC99A54389836CF2E59D71D929C3F537C4D772D09"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T12:56:34.149824+00:00",
+        "metadata_sha256": "20D9B52AAC396F9DDDCE0E3F236C500A8FD808B0DE951886222EFA1C4C8CDD73",
+        "prediction_sha256": "35DC6DA0B39B269EAFE095307D8BB3AC70C546FBD6DB379FA00CA94D497885BF",
+        "cells": 568,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 165,
+        "author_cancer_diploid": 93,
+        "author_cancer_unresolved": 42,
+        "known_normal_cells": 168,
+        "known_normal_aneuploid": 0,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 595,
+            "sha256": "EDEC4557573A399CBE7AFF4F21664D822087CAD9F017DAE1EFC6CF690126670F"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T12:56:34.246351+00:00",
+        "metadata_sha256": "20D9B52AAC396F9DDDCE0E3F236C500A8FD808B0DE951886222EFA1C4C8CDD73",
+        "copykat_prediction_sha256": "35DC6DA0B39B269EAFE095307D8BB3AC70C546FBD6DB379FA00CA94D497885BF",
+        "scevan_prediction_sha256": "41132A10D728C0BA2CAD5794995956829D5870315D60C24ACA3A49FA0E9A2F69",
+        "cells": 568,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 84,
+        "author_cancer_either_malignancy_support": 167,
+        "author_cancer_method_unresolved": 42,
+        "known_normal_reference_either_malignancy_support": 0,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1325,
+            "sha256": "A09656A6CE30C39559F7DDDB6045D16683FB6CE3FBE6A5488091A35AB22BCA39"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 392,
+            "sha256": "6685C08B96032DE554459E466CD920F394B372233F8D519187AF73E8CD8427D7"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T12:56:34.249584+00:00"
+    },
+    {
+      "panel_order": 2,
+      "dataset": "VUMC_HTAN_validation",
+      "sample_id": "VUMC_HTAN_validation.HTA11_8622_2000001011",
+      "patient_id": "Chen_2021_Cell.HTA11_8622",
+      "sample_type": "polyp",
+      "tissue": "ascending colon",
+      "status": "completed",
+      "started_at": "2026-08-10T12:56:34.250889+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T12:57:46.153669+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "VUMC_HTAN_validation.HTA11_8622_2000001011",
+        "patient_id": "Chen_2021_Cell.HTA11_8622",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 700,
+        "nonzero_counts": 1146270,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 100
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260812,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 3501306,
+            "sha256": "B70F9143E15395066DAEDC84A95302309D633B5135B8543A91CD0E0CDDDDBAEE"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 43059,
+            "sha256": "A6E31D00DEE8EC6740D03B491685217C1C3651E3D8F6E4BAEE786B6E79DD32E0"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 134362,
+            "sha256": "A6648BC880876C72CC2329FD2D27BA0EB5A536E8116E94FC862137697272D9C7"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_02",
+          "--cores",
+          "4",
+          "--seed",
+          "20260812"
+        ],
+        "started_at": "2026-08-10T12:57:47.016380+00:00",
+        "finished_at": "2026-08-10T13:00:55.655627+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "5E6BDF6292B219938A5C37820BFA4C75E5282E91DB18A65E98F74BE956F44CBF"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_02",
+          "--cores",
+          "4",
+          "--seed",
+          "20260812"
+        ],
+        "started_at": "2026-08-10T13:00:55.656435+00:00",
+        "finished_at": "2026-08-10T13:02:32.701764+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_02/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "9F6BF49776AF867598373F4DD0FBB424DF8B35142E12371592CE072F255CF66D"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:02:32.746262+00:00",
+        "metadata_sha256": "A6648BC880876C72CC2329FD2D27BA0EB5A536E8116E94FC862137697272D9C7",
+        "prediction_sha256": "EAEAE087346D25258FE52940E6161F5A75407827B58AE25BA52C42416606DC41",
+        "cells": 700,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 269,
+        "author_cancer_diploid": 17,
+        "author_cancer_unresolved": 14,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 1,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 712,
+            "sha256": "144AC0F747951764B58BB411E5CB5C1C8137B2386FBB5C41800F5868ACB693F1"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:02:32.829232+00:00",
+        "metadata_sha256": "A6648BC880876C72CC2329FD2D27BA0EB5A536E8116E94FC862137697272D9C7",
+        "copykat_prediction_sha256": "EAEAE087346D25258FE52940E6161F5A75407827B58AE25BA52C42416606DC41",
+        "scevan_prediction_sha256": "5C64F5DAE75F370674F7BF27C3A49D0E3A566794AE347CE3C2301D8AB1825FA8",
+        "cells": 700,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 269,
+        "author_cancer_either_malignancy_support": 287,
+        "author_cancer_method_unresolved": 14,
+        "known_normal_reference_either_malignancy_support": 16,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1794,
+            "sha256": "61C6F95B2BC673714E76EA5901E170E335778F085CD0DE991D2B1362E6A1E6CA"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 413,
+            "sha256": "6279AF661966531A0F944E55B189600A40246DFEDF0624DAC858CD8C96372547"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:02:32.832792+00:00"
+    },
+    {
+      "panel_order": 3,
+      "dataset": "VUMC_HTAN_discovery",
+      "sample_id": "VUMC_HTAN_discovery.HTA11_5994_2000001011",
+      "patient_id": "Chen_2021_Cell.HTA11_5994",
+      "sample_type": "polyp",
+      "tissue": "ascending colon",
+      "status": "completed",
+      "started_at": "2026-08-10T13:02:32.834528+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:03:48.387808+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "VUMC_HTAN_discovery.HTA11_5994_2000001011",
+        "patient_id": "Chen_2021_Cell.HTA11_5994",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 686,
+        "nonzero_counts": 1480889,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 286,
+          "other_epithelial": 100
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260813,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 4483493,
+            "sha256": "71239F6B53E8EE9AE4EABB49C4876F249F3B066F9CCEC62F7C9D625C06A7E640"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 41438,
+            "sha256": "8B5F8E1222B2FCB9CB1A3470DECAFD79FC440B79F0C6450FF48A4D0025018F4D"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 129976,
+            "sha256": "07A04F3898AA0653D783B6E38FBE5CFB0BA16B0EBA6027751902A060D03328C3"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_03",
+          "--cores",
+          "4",
+          "--seed",
+          "20260813"
+        ],
+        "started_at": "2026-08-10T13:03:48.942857+00:00",
+        "finished_at": "2026-08-10T13:07:58.142631+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "BDFBE16042AE72CD9170C054FAE69E3EA35CA30D120EF3921DE2F96CF56E1A84"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_03",
+          "--cores",
+          "4",
+          "--seed",
+          "20260813"
+        ],
+        "started_at": "2026-08-10T13:07:58.143455+00:00",
+        "finished_at": "2026-08-10T13:09:54.011775+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_03/scevan.log",
+        "log_bytes": 966,
+        "log_sha256": "4EE46E5D2AA6E2FB4E4695A885CD40311A352A9C03D2B1D01786ED7BFDEE7C66"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:09:54.051979+00:00",
+        "metadata_sha256": "07A04F3898AA0653D783B6E38FBE5CFB0BA16B0EBA6027751902A060D03328C3",
+        "prediction_sha256": "ABF0315BE1B4C8AAED0A383CAFB2D64B95D8F2FA1721319D69E1E6E8CCF515EA",
+        "cells": 686,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 196,
+        "author_cancer_diploid": 104,
+        "author_cancer_unresolved": 0,
+        "known_normal_cells": 286,
+        "known_normal_aneuploid": 9,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 662,
+            "sha256": "C110F9ACA9B0A260DB4EED94D0D066DB14AB656CF75A145A1D18DFA9E421C015"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:09:54.139676+00:00",
+        "metadata_sha256": "07A04F3898AA0653D783B6E38FBE5CFB0BA16B0EBA6027751902A060D03328C3",
+        "copykat_prediction_sha256": "ABF0315BE1B4C8AAED0A383CAFB2D64B95D8F2FA1721319D69E1E6E8CCF515EA",
+        "scevan_prediction_sha256": "42818C9784C4B157B9EF8F9628AB6378FEB21ACB9C9BF535A21F4A79A7604585",
+        "cells": 686,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 195,
+        "author_cancer_either_malignancy_support": 248,
+        "author_cancer_method_unresolved": 0,
+        "known_normal_reference_either_malignancy_support": 21,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1608,
+            "sha256": "43B559DF9BE54335E3CB8B700A518BF90B7FEF8BCC97754C5F9E1395550FC285"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 412,
+            "sha256": "80C2B0AA3670B10EF510A2A6C447F8741AD0B1303AB9D6B6340BB7775DA3F68B"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:09:54.145146+00:00"
+    },
+    {
+      "panel_order": 4,
+      "dataset": "Zheng_2022",
+      "sample_id": "Zheng_2022.P1_adenoma",
+      "patient_id": "Zheng_2022_Signal_Transduct_Target_Ther.P1",
+      "sample_type": "polyp",
+      "tissue": "colon",
+      "status": "completed",
+      "started_at": "2026-08-10T13:09:54.148872+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:11:22.197184+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Zheng_2022.P1_adenoma",
+        "patient_id": "Zheng_2022_Signal_Transduct_Target_Ther.P1",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 700,
+        "nonzero_counts": 1756091,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 100
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260814,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 5416343,
+            "sha256": "BA7677C1258202F95A8071E8B464AC2941E187BFF1524736B029960E859F4E2C"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 27300,
+            "sha256": "26C796725584A672F9C22C5C92F1D91371141F6930BA87065520B217AB59CB2B"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 127144,
+            "sha256": "33ADA2B8E37E85B66A85BB0287702A6738176B86C043DFBA06B0C777F0003FB6"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_04",
+          "--cores",
+          "4",
+          "--seed",
+          "20260814"
+        ],
+        "started_at": "2026-08-10T13:11:22.659483+00:00",
+        "finished_at": "2026-08-10T13:14:59.092921+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "EDB814F6B65F6A895245508CD9D0EDB42C3C21B611D2AD19900354896B5256BB"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_04",
+          "--cores",
+          "4",
+          "--seed",
+          "20260814"
+        ],
+        "started_at": "2026-08-10T13:14:59.093666+00:00",
+        "finished_at": "2026-08-10T13:16:26.533520+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_04/scevan.log",
+        "log_bytes": 945,
+        "log_sha256": "A6AE4CE327D985B82B2A3FC10371666DAB0E352A87FDF80E23404EA16CC6FABD"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:16:26.557313+00:00",
+        "metadata_sha256": "33ADA2B8E37E85B66A85BB0287702A6738176B86C043DFBA06B0C777F0003FB6",
+        "prediction_sha256": "D6D5B551232FB0A1516E73570C1B79F16DF2DA076F7B81CC425B8FCA3168EEA9",
+        "cells": 700,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 276,
+        "author_cancer_diploid": 21,
+        "author_cancer_unresolved": 3,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 0,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 563,
+            "sha256": "1687230DEE9ACB3EC88FA718BE5977CCB76A061F5D9AD817D243A5A9BFC5C474"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:16:26.618871+00:00",
+        "metadata_sha256": "33ADA2B8E37E85B66A85BB0287702A6738176B86C043DFBA06B0C777F0003FB6",
+        "copykat_prediction_sha256": "D6D5B551232FB0A1516E73570C1B79F16DF2DA076F7B81CC425B8FCA3168EEA9",
+        "scevan_prediction_sha256": "069046C595BBE615A3EA0F1207FC7AFE51CE6397011E3906572FD1050FD55C63",
+        "cells": 700,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 260,
+        "author_cancer_either_malignancy_support": 276,
+        "author_cancer_method_unresolved": 3,
+        "known_normal_reference_either_malignancy_support": 0,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1315,
+            "sha256": "481990FCAF31A8443E4F38F51FE6A72BFA4FDAF937BE7F3B5FEC98616B8C5212"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 393,
+            "sha256": "5D7A4FFB3DE0726C68193425A6240678E052FEA2451E40BF47025C068DC16C80"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:16:26.620888+00:00"
+    },
+    {
+      "panel_order": 5,
+      "dataset": "Pelka_2021_10Xv2",
+      "sample_id": "Pelka_2021_10Xv2.C123_T_1_1_0_c1_v2",
+      "patient_id": "Pelka_2021_Cell.C123",
+      "sample_type": "tumor",
+      "tissue": "colorectum",
+      "status": "completed",
+      "started_at": "2026-08-10T13:16:26.622449+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:17:18.922276+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Pelka_2021_10Xv2.C123_T_1_1_0_c1_v2",
+        "patient_id": "Pelka_2021_Cell.C123",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 642,
+        "nonzero_counts": 1144110,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 42
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260815,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 3601543,
+            "sha256": "15060ADA258B71A3341A97CD402655916FF72547A89826A2906BE71668EFDD69"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 28890,
+            "sha256": "1AEC12C8339B886E5EEC7BDF509A186D1FD44DC6131453385EC3E62B13CEC867"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 101144,
+            "sha256": "525A47C65AFA5F59AB7072D8A8B10FAD351E9A8D8F7095037ABAC20342B33DD2"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_05",
+          "--cores",
+          "4",
+          "--seed",
+          "20260815"
+        ],
+        "started_at": "2026-08-10T13:17:19.619836+00:00",
+        "finished_at": "2026-08-10T13:19:25.047538+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "3B771003F365E25C3F467A24F6655A24AA4123FA7A4C377ADD0F6B2F8FBFF6B6"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_05",
+          "--cores",
+          "4",
+          "--seed",
+          "20260815"
+        ],
+        "started_at": "2026-08-10T13:19:25.048199+00:00",
+        "finished_at": "2026-08-10T13:20:32.109984+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_05/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "C72D1F8E45867E20E279DB8A054BFF5F135C852CEE77F852BF8C4FE4B4EC3258"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:20:32.137572+00:00",
+        "metadata_sha256": "525A47C65AFA5F59AB7072D8A8B10FAD351E9A8D8F7095037ABAC20342B33DD2",
+        "prediction_sha256": "D1459F221B13ADD3F9EF51ACD266BF622B4E787B7CF6655F133E41A52AAE7743",
+        "cells": 642,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 189,
+        "author_cancer_diploid": 63,
+        "author_cancer_unresolved": 48,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 1,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 628,
+            "sha256": "0294609B4FD1436E4714CC7ED924CC9320A1C8610EE5A556611B2F0EC3716BC2"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:20:32.215641+00:00",
+        "metadata_sha256": "525A47C65AFA5F59AB7072D8A8B10FAD351E9A8D8F7095037ABAC20342B33DD2",
+        "copykat_prediction_sha256": "D1459F221B13ADD3F9EF51ACD266BF622B4E787B7CF6655F133E41A52AAE7743",
+        "scevan_prediction_sha256": "4F45869A83D3367153A6D443584CF87C4FF92495FFBB890ABB516367EAAFCDF5",
+        "cells": 642,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 155,
+        "author_cancer_either_malignancy_support": 194,
+        "author_cancer_method_unresolved": 49,
+        "known_normal_reference_either_malignancy_support": 3,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1587,
+            "sha256": "0A0FAD93B3F24E3B6FC6603479073FBC339C7B9F99944F41031D02E9BCAE4647"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 409,
+            "sha256": "AE9F85EAA61FB1C566F20E566534D60D183F08B063EB1320FBD7D1E724381108"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:20:32.217731+00:00"
+    },
+    {
+      "panel_order": 6,
+      "dataset": "Pelka_2021_10Xv2_CD45Pos",
+      "sample_id": "Pelka_2021_10Xv2_CD45Pos.C162_T_0_0_1_c2_v2",
+      "patient_id": "Pelka_2021_Cell.C162",
+      "sample_type": "tumor",
+      "tissue": "colorectum",
+      "status": "completed",
+      "started_at": "2026-08-10T13:20:32.219885+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:21:24.389229+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Pelka_2021_10Xv2_CD45Pos.C162_T_0_0_1_c2_v2",
+        "patient_id": "Pelka_2021_Cell.C162",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 653,
+        "nonzero_counts": 1343837,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 53
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260816,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 4215168,
+            "sha256": "0E6FF813C33D058FA9CE23B2F96E5BC21CB5336D63C4F88B6825BF8CAD8CA499"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 34609,
+            "sha256": "79D6E98E12C191BFAD9332B856A9308FA9665F0CD21BF1402138659AD1E34220"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 114213,
+            "sha256": "9D9C91E5D9355607748FB8B8C6E1A0D006C3253A3E4E00DAD41098E2F30049AA"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_06",
+          "--cores",
+          "4",
+          "--seed",
+          "20260816"
+        ],
+        "started_at": "2026-08-10T13:21:24.694154+00:00",
+        "finished_at": "2026-08-10T13:23:47.787442+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "7B7E92E28AD62505CAD65CCF0E6C7B44F752DD78E91A0A874C92B72EDEE20DC1"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_06",
+          "--cores",
+          "4",
+          "--seed",
+          "20260816"
+        ],
+        "started_at": "2026-08-10T13:23:47.788199+00:00",
+        "finished_at": "2026-08-10T13:24:46.130728+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_06/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "DE7711792221BB147EFF3322E4E3352DE92074BFB545D614A93F5D534502DFA1"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:24:46.162431+00:00",
+        "metadata_sha256": "9D9C91E5D9355607748FB8B8C6E1A0D006C3253A3E4E00DAD41098E2F30049AA",
+        "prediction_sha256": "A2E0B6629FF75E19970224B19AB561FB9397ECC17D567A5CF2DDCEFC5837239F",
+        "cells": 653,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 244,
+        "author_cancer_diploid": 36,
+        "author_cancer_unresolved": 20,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 0,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 555,
+            "sha256": "DBC1FBF608C9C8BB0AD69C9F7B3137CDA4B37AE46D3DDBEFDC09EBE97427932D"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:24:48.150523+00:00",
+        "metadata_sha256": "9D9C91E5D9355607748FB8B8C6E1A0D006C3253A3E4E00DAD41098E2F30049AA",
+        "copykat_prediction_sha256": "A2E0B6629FF75E19970224B19AB561FB9397ECC17D567A5CF2DDCEFC5837239F",
+        "scevan_prediction_sha256": "2F119D04CCBDC31858C8C05CF7D65AE9CA7FD6A48C394610D9DFB43954CA1953",
+        "cells": 653,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 223,
+        "author_cancer_either_malignancy_support": 244,
+        "author_cancer_method_unresolved": 20,
+        "known_normal_reference_either_malignancy_support": 0,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1197,
+            "sha256": "ADA4B728CFBC71E63740952D953FB41E6CF2E3E2854B686BF4561ACD3F70AD3E"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 370,
+            "sha256": "C96526837A1A06CFC78DC5306FEC5F3F02E0B82DEB0F8C51F667C7325BDF32B4"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:24:48.153149+00:00"
+    },
+    {
+      "panel_order": 7,
+      "dataset": "Lee_2020_SMC",
+      "sample_id": "Lee_2020_SMC.SMC09_T",
+      "patient_id": "Lee_2020_Nat_Genet.SMC09",
+      "sample_type": "tumor",
+      "tissue": "sigmoid colon",
+      "status": "completed",
+      "started_at": "2026-08-10T13:24:48.155307+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:25:36.333201+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Lee_2020_SMC.SMC09_T",
+        "patient_id": "Lee_2020_Nat_Genet.SMC09",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 610,
+        "nonzero_counts": 1246255,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 10
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260817,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 3911035,
+            "sha256": "EEF0797F1A4A4F5EC77A088DEEA34CC7717A70B36C85B4E4935396FA3520F12A"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 25010,
+            "sha256": "3F44608967F28DB862D46A4393E0F7B5AC1AD7F31BD4BA0E853F791E22AAA3D3"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 89363,
+            "sha256": "E1833990C98F94EC04673EF4EB538FA91C8945E022EEB75F21754F888303019C"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_07",
+          "--cores",
+          "4",
+          "--seed",
+          "20260817"
+        ],
+        "started_at": "2026-08-10T13:25:36.762481+00:00",
+        "finished_at": "2026-08-10T13:27:28.454175+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "A9FBC288138C5CC5908641530906EF126F42CC71AFC9CADEA86AAB404B58EFB5"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_07",
+          "--cores",
+          "4",
+          "--seed",
+          "20260817"
+        ],
+        "started_at": "2026-08-10T13:27:28.454991+00:00",
+        "finished_at": "2026-08-10T13:28:48.849200+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_07/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "81696781DF6E2430FA31B1606024DD02B6F210A81365608421B3FCA0D74C1642"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:28:48.883398+00:00",
+        "metadata_sha256": "E1833990C98F94EC04673EF4EB538FA91C8945E022EEB75F21754F888303019C",
+        "prediction_sha256": "471E746E721CCE3A517831FE015DFC6E827C6FCE7F69E74189572C4EA85D93F7",
+        "cells": 610,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 282,
+        "author_cancer_diploid": 3,
+        "author_cancer_unresolved": 15,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 1,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 594,
+            "sha256": "9C67F6E0E6B880DEA72ADFD151ED4117346C92F25D3163780C719E9FD569820B"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:28:48.958581+00:00",
+        "metadata_sha256": "E1833990C98F94EC04673EF4EB538FA91C8945E022EEB75F21754F888303019C",
+        "copykat_prediction_sha256": "471E746E721CCE3A517831FE015DFC6E827C6FCE7F69E74189572C4EA85D93F7",
+        "scevan_prediction_sha256": "A0C93675B09F0B91FE21C29A3C248513CE696A1D053ADFACB5A078A911A60507",
+        "cells": 610,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 282,
+        "author_cancer_either_malignancy_support": 286,
+        "author_cancer_method_unresolved": 15,
+        "known_normal_reference_either_malignancy_support": 2,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1176,
+            "sha256": "38FBCAF4E653B7146BC2DCA866C94DB7FFEEA13F4494FB77158F25F646D4C0F2"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 387,
+            "sha256": "160274A0DAABBF674166F735A68B4CEA77E48710F3BA651FE310F8E298BDFD49"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:28:48.961230+00:00"
+    },
+    {
+      "panel_order": 8,
+      "dataset": "Chen_2024",
+      "sample_id": "Chen_2024.CRC03_T_I",
+      "patient_id": "Chen_2024_Cancer_Cell.P03",
+      "sample_type": "tumor",
+      "tissue": "rectum",
+      "status": "completed",
+      "started_at": "2026-08-10T13:28:48.965091+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:29:54.089747+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Chen_2024.CRC03_T_I",
+        "patient_id": "Chen_2024_Cancer_Cell.P03",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 605,
+        "nonzero_counts": 951675,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 5
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260818,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 2960537,
+            "sha256": "689F7ABC47CA259CF7F70D418014EA6FDBA057DA86DA1CA800CCED51DC2EF4D9"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 22990,
+            "sha256": "60F34CAEC44EF663F3892CFE29CE7F77234F2154EE6DFB4A89AB3CBD9EED1B99"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 87139,
+            "sha256": "D2EF30177F656C140184F1C66C4326A6A33F2D39734179FFBD560F1BCF85A76A"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_08",
+          "--cores",
+          "4",
+          "--seed",
+          "20260818"
+        ],
+        "started_at": "2026-08-10T13:29:54.389277+00:00",
+        "finished_at": "2026-08-10T13:32:08.672278+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "B8E83B26B4EB76DD8DF583802AC4718AC77BA52E766A4DDA72C76032CA31F7E6"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_08",
+          "--cores",
+          "4",
+          "--seed",
+          "20260818"
+        ],
+        "started_at": "2026-08-10T13:32:08.672934+00:00",
+        "finished_at": "2026-08-10T13:33:06.150696+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_08/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "32C7E7159E1350E513034AC86BBE8C14E111CDF3ACE64F4495479B2A740ECBA5"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:33:06.182896+00:00",
+        "metadata_sha256": "D2EF30177F656C140184F1C66C4326A6A33F2D39734179FFBD560F1BCF85A76A",
+        "prediction_sha256": "03B464D5E91AE97C5248E24D8E75441D23E23565A6734B04A0E670FBD3C494E0",
+        "cells": 605,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 201,
+        "author_cancer_diploid": 21,
+        "author_cancer_unresolved": 78,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 0,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 525,
+            "sha256": "36C77CECBD5C1E4D1728EF1284FC780844D3C64B9ADB06625EBA46FD1AB960C3"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:33:06.251624+00:00",
+        "metadata_sha256": "D2EF30177F656C140184F1C66C4326A6A33F2D39734179FFBD560F1BCF85A76A",
+        "copykat_prediction_sha256": "03B464D5E91AE97C5248E24D8E75441D23E23565A6734B04A0E670FBD3C494E0",
+        "scevan_prediction_sha256": "C91E077F02F1060B2AF74C9943383601C04FFC32A22FDFB13EF198F6927BDB93",
+        "cells": 605,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 200,
+        "author_cancer_either_malignancy_support": 229,
+        "author_cancer_method_unresolved": 78,
+        "known_normal_reference_either_malignancy_support": 0,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1167,
+            "sha256": "FD914E42A74B881C4B15A2D4A34A286CF232F451D5E5C30B337A55D5B8AC8596"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 371,
+            "sha256": "3B469D8103D940ABA3818AC44555E66D7E2540975B5EF9D25B6C799B5E3B4E40"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:33:06.254150+00:00"
+    },
+    {
+      "panel_order": 9,
+      "dataset": "Liu_2024_mixCD45PosCD45Neg",
+      "sample_id": "Liu_2024_mixCD45PosCD45Neg.Pt01_T2",
+      "patient_id": "Liu_2024_Cancer_Res.Pt01",
+      "sample_type": "metastasis",
+      "tissue": "liver",
+      "status": "completed",
+      "started_at": "2026-08-10T13:33:06.258346+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:33:58.146193+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Liu_2024_mixCD45PosCD45Neg.Pt01_T2",
+        "patient_id": "Liu_2024_Cancer_Res.Pt01",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 603,
+        "nonzero_counts": 1630447,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 3
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260819,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 4968856,
+            "sha256": "F7D4565F007988C5145472347B75705460B2206FAA6C4F0E9CE55DA3FB26153C"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 33165,
+            "sha256": "4E025AC39E4F96CFCDF42EEB914354CAF93BAE713443E484B10FCF8907114521"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 105565,
+            "sha256": "431FD77ADB4D9736411BBBDA1FBA19314DB5CC67A25E3987BF266CE494D30894"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_09",
+          "--cores",
+          "4",
+          "--seed",
+          "20260819"
+        ],
+        "started_at": "2026-08-10T13:33:58.890841+00:00",
+        "finished_at": "2026-08-10T13:36:57.565085+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "4AB0D77DD03FD4C820B39E8C87BC4EC713E9A1F6C5F282A99D6444480F4B833B"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_09",
+          "--cores",
+          "4",
+          "--seed",
+          "20260819"
+        ],
+        "started_at": "2026-08-10T13:36:57.565737+00:00",
+        "finished_at": "2026-08-10T13:38:06.054185+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_09/scevan.log",
+        "log_bytes": 945,
+        "log_sha256": "9A3622EA795E40AC97C345F40FE185B220C1283CE0E60AC28394B960E0DC4F7C"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:38:06.089762+00:00",
+        "metadata_sha256": "431FD77ADB4D9736411BBBDA1FBA19314DB5CC67A25E3987BF266CE494D30894",
+        "prediction_sha256": "3C0C631F8FEF80930DE725E6E482A5FEA01E38DAD19CF8A928686FBB11D6A248",
+        "cells": 603,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 163,
+        "author_cancer_diploid": 114,
+        "author_cancer_unresolved": 23,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 0,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 586,
+            "sha256": "1E5C9EF4CA4A519EB8D509E7867901F3A47B67B3981143C65D602AD3FD862879"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:38:06.164896+00:00",
+        "metadata_sha256": "431FD77ADB4D9736411BBBDA1FBA19314DB5CC67A25E3987BF266CE494D30894",
+        "copykat_prediction_sha256": "3C0C631F8FEF80930DE725E6E482A5FEA01E38DAD19CF8A928686FBB11D6A248",
+        "scevan_prediction_sha256": "C91ECA45B22C4BEE6C7C36EE846FEA1E7ACED73AA9E4CA4002DBBF6D83C67B53",
+        "cells": 603,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 163,
+        "author_cancer_either_malignancy_support": 277,
+        "author_cancer_method_unresolved": 25,
+        "known_normal_reference_either_malignancy_support": 0,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1145,
+            "sha256": "0B5AE66D70858561FC300EDC88852FC825EA6AB96583CFC6278197714B3DED6D"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 373,
+            "sha256": "36E27D5FC97F988F83A18F3A6915DB6A74C4CE5D06D02629701B71735F308C22"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:38:06.167565+00:00"
+    },
+    {
+      "panel_order": 10,
+      "dataset": "Che_2021",
+      "sample_id": "Che_2021.COL07_LM",
+      "patient_id": "Che_2021_Cell_Discov.COL07",
+      "sample_type": "metastasis",
+      "tissue": "liver",
+      "status": "completed",
+      "started_at": "2026-08-10T13:38:06.172473+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:38:53.428577+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Che_2021.COL07_LM",
+        "patient_id": "Che_2021_Cell_Discov.COL07",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 601,
+        "nonzero_counts": 1077095,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 1
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260820,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 3199028,
+            "sha256": "36B6D8B0730E2A673F09334300E511598F4509022F3A331C64D043F96A680194"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 22838,
+            "sha256": "4FD222B33030D1E75DF4B21FF984F1ABBCD77642C7AF754D2EA0C06CAF4218F2"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 86645,
+            "sha256": "66B79EC9CC6E2247026AF351E9FAB0692F6465FD740FB18CAC017BAAD26B567A"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_10",
+          "--cores",
+          "4",
+          "--seed",
+          "20260820"
+        ],
+        "started_at": "2026-08-10T13:38:53.769741+00:00",
+        "finished_at": "2026-08-10T13:40:37.959527+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10/copykat.log",
+        "log_bytes": 707,
+        "log_sha256": "F56F7458004F8558C99CDAFCF9D7F23D461E54F5B614D414E00AA93C907F03C8"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_10",
+          "--cores",
+          "4",
+          "--seed",
+          "20260820"
+        ],
+        "started_at": "2026-08-10T13:40:37.960141+00:00",
+        "finished_at": "2026-08-10T13:41:33.357020+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_10/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "E8CF545A714FB6771EFB6B3FE0E8C142B4B6F530D9890A347576C7D0A66FF6EA"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:41:33.395723+00:00",
+        "metadata_sha256": "66B79EC9CC6E2247026AF351E9FAB0692F6465FD740FB18CAC017BAAD26B567A",
+        "prediction_sha256": "306E4D6386678B755A61E59D9CDE0A23EB454B3C2FC700D88F480C4923587B03",
+        "cells": 601,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 193,
+        "author_cancer_diploid": 0,
+        "author_cancer_unresolved": 107,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 0,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 393,
+            "sha256": "99D5A1FB61FF62027B4F6CA9E284DE2C509A4B6D08DAFAC5170CCD6B47EBDD79"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:41:33.467784+00:00",
+        "metadata_sha256": "66B79EC9CC6E2247026AF351E9FAB0692F6465FD740FB18CAC017BAAD26B567A",
+        "copykat_prediction_sha256": "306E4D6386678B755A61E59D9CDE0A23EB454B3C2FC700D88F480C4923587B03",
+        "scevan_prediction_sha256": "77016346030857D944FBAEDD474D7AB8AA63375BD7AC0E71F3FFE803008E442D",
+        "cells": 601,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 193,
+        "author_cancer_either_malignancy_support": 200,
+        "author_cancer_method_unresolved": 107,
+        "known_normal_reference_either_malignancy_support": 0,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 714,
+            "sha256": "C3CAE5B1C6A4EC524F173A4E504B4C39A84405F6CC5C1C35D95449AB0D69BF33"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 354,
+            "sha256": "21819CD78BBD397187553A3F1B3CCE819C1C6D1A8A68C2644116C8886F4FC8DE"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:41:33.469528+00:00"
+    },
+    {
+      "panel_order": 11,
+      "dataset": "Sathe_2023",
+      "sample_id": "Sathe_2023.5915_mCRC",
+      "patient_id": "Sathe_2023_Clin_Cancer_Res.P5915",
+      "sample_type": "metastasis",
+      "tissue": "liver",
+      "status": "completed",
+      "started_at": "2026-08-10T13:41:33.472780+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:42:18.520685+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Sathe_2023.5915_mCRC",
+        "patient_id": "Sathe_2023_Clin_Cancer_Res.P5915",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 600,
+        "nonzero_counts": 437642,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260821,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 1374204,
+            "sha256": "A790DF74BFE780AFD47F050B9935CA2050628808863BC20E40C669C017DFCEC5"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 25200,
+            "sha256": "18A5512D0A575418D3DA9C19EEEBC9BF9941B6EABD457F0CB5F774C5D23D8383"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 98565,
+            "sha256": "2D3F75EA86885512514D44F22AF6E44F558D13A2A271D440550842AAFF3568FC"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_11",
+          "--cores",
+          "4",
+          "--seed",
+          "20260821"
+        ],
+        "started_at": "2026-08-10T13:42:18.808284+00:00",
+        "finished_at": "2026-08-10T13:43:05.017497+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11/copykat.log",
+        "log_bytes": 768,
+        "log_sha256": "77E22AE3B5CF4D7524039CDEE8CE965E393137082984A892D65732EA8F0F88EF"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_11",
+          "--cores",
+          "4",
+          "--seed",
+          "20260821"
+        ],
+        "started_at": "2026-08-10T13:43:05.018294+00:00",
+        "finished_at": "2026-08-10T13:43:33.793849+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_11/scevan.log",
+        "log_bytes": 967,
+        "log_sha256": "BF2CAC45AF4899144FDD4FB36472B6D3AFA17856AEB72015BF6B779EDADECFC6"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:43:33.826955+00:00",
+        "metadata_sha256": "2D3F75EA86885512514D44F22AF6E44F558D13A2A271D440550842AAFF3568FC",
+        "prediction_sha256": "402E2415F93BA2C7E257773357425E5EA315679DAB80CBD5510EEB1FCD52804F",
+        "cells": 600,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 6,
+        "author_cancer_diploid": 0,
+        "author_cancer_unresolved": 294,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 84,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 418,
+            "sha256": "3274C72585F26B0AC762430921C8941F84BD147DE5E656A4DFDD57F1184F4764"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:43:33.889382+00:00",
+        "metadata_sha256": "2D3F75EA86885512514D44F22AF6E44F558D13A2A271D440550842AAFF3568FC",
+        "copykat_prediction_sha256": "402E2415F93BA2C7E257773357425E5EA315679DAB80CBD5510EEB1FCD52804F",
+        "scevan_prediction_sha256": "705FA3A29A965F43FA5196C1AB33A8F451BAD2A070D454F5CD7195BE87452684",
+        "cells": 600,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 6,
+        "author_cancer_either_malignancy_support": 9,
+        "author_cancer_method_unresolved": 294,
+        "known_normal_reference_either_malignancy_support": 96,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 765,
+            "sha256": "E68934AC91304742378278C11FD3FE4332F3F5B29622796EF5F0CD5437D67C85"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 313,
+            "sha256": "A38DC90A6FF0F25F8B76AE653953C3B8D44E6E9346AF5361105E73FF84FEF46E"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:43:33.891442+00:00"
+    },
+    {
+      "panel_order": 12,
+      "dataset": "Ji_2024_scopeV2",
+      "sample_id": "Ji_2024_scopeV2.metastasis",
+      "patient_id": "Ji_2024_Cancer_Lett.rectum_03",
+      "sample_type": "metastasis",
+      "tissue": "liver",
+      "status": "completed",
+      "started_at": "2026-08-10T13:43:33.895444+00:00",
+      "unit_dir": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12",
+      "prepare": {
+        "status": "prepared_real_sample_input",
+        "generated_at": "2026-08-10T13:44:20.075717+00:00",
+        "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+        "sample_id": "Ji_2024_scopeV2.metastasis",
+        "patient_id": "Ji_2024_Cancer_Lett.rectum_03",
+        "raw_matrix": "raw/X",
+        "genes": 28088,
+        "cells": 700,
+        "nonzero_counts": 836200,
+        "role_counts": {
+          "author_cancer": 300,
+          "known_normal_reference": 300,
+          "other_epithelial": 100
+        },
+        "reference_labels": [
+          "T cell",
+          "B cell",
+          "Plasma cell",
+          "Myeloid cell",
+          "Neutrophil",
+          "NK",
+          "Mast cell",
+          "ILC"
+        ],
+        "seed": 20260822,
+        "duplicate_gene_symbols_resolved": 31,
+        "outputs": {
+          "counts_genes_by_cells.mtx.gz": {
+            "bytes": 2464270,
+            "sha256": "81B92EA997C3B5E70830FADDD135CC7860087FDB75EFFAD936A11E293A2F5C2C"
+          },
+          "genes.tsv": {
+            "bytes": 230209,
+            "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+          },
+          "cells.tsv": {
+            "bytes": 38500,
+            "sha256": "FCA191672441F5DA8088A2EC928136BAE381C08EC5479BCAA335A8D1721D50D9"
+          },
+          "cell_metadata.tsv": {
+            "bytes": 124240,
+            "sha256": "30021C064C922CA234B4341A9FC00FBAF8FAD8848719BF50991BE1FE7F0FB73F"
+          },
+          "gene_feature_map.tsv": {
+            "bytes": 2356094,
+            "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+          }
+        }
+      },
+      "copykat_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12/copykat",
+          "--method",
+          "copykat",
+          "--sample-name",
+          "panel_12",
+          "--cores",
+          "4",
+          "--seed",
+          "20260822"
+        ],
+        "started_at": "2026-08-10T13:44:20.549681+00:00",
+        "finished_at": "2026-08-10T13:45:50.402829+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12/copykat.log",
+        "log_bytes": 768,
+        "log_sha256": "01FFF02D4B00FC7CF0B2F6B3C0802184C00CA97BE836F0F776499CC2995B8F5E"
+      },
+      "scevan_run": {
+        "command": [
+          "Rscript",
+          "pilots/hcc-sc-spatial-npj-2026/code/phase_zero/run_crc_cna.R",
+          "--input-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12/input",
+          "--output-dir",
+          "tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12/scevan",
+          "--method",
+          "scevan",
+          "--sample-name",
+          "panel_12",
+          "--cores",
+          "4",
+          "--seed",
+          "20260822"
+        ],
+        "started_at": "2026-08-10T13:45:50.403571+00:00",
+        "finished_at": "2026-08-10T13:46:37.000279+00:00",
+        "exit_code": 0,
+        "log": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cna_panel_run_12/unit_12/scevan.log",
+        "log_bytes": 966,
+        "log_sha256": "0370127CA11AE5D334045C8A489C8E102349FAC55AEFAB00681B6B90DD5CD8ED"
+      },
+      "copykat_summary": {
+        "status": "diagnostic_one_sample_copykat_completed",
+        "generated_at": "2026-08-10T13:46:37.037231+00:00",
+        "metadata_sha256": "30021C064C922CA234B4341A9FC00FBAF8FAD8848719BF50991BE1FE7F0FB73F",
+        "prediction_sha256": "39009022D980DF01D1C1455FB00052C6A4DE83A39DEDD927E56E131242C5179F",
+        "cells": 700,
+        "author_cancer_cells": 300,
+        "author_cancer_aneuploid": 142,
+        "author_cancer_diploid": 33,
+        "author_cancer_unresolved": 125,
+        "known_normal_cells": 300,
+        "known_normal_aneuploid": 20,
+        "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+        "outputs": {
+          "P0_copykat_role_prediction.tsv": {
+            "bytes": 629,
+            "sha256": "E257138E378A1E73E20631100038265F52C72EEC67C4CF3F31AFB59E3D84EF3A"
+          }
+        }
+      },
+      "concordance": {
+        "status": "diagnostic_one_sample_two_method_cna_completed",
+        "generated_at": "2026-08-10T13:46:37.108225+00:00",
+        "metadata_sha256": "30021C064C922CA234B4341A9FC00FBAF8FAD8848719BF50991BE1FE7F0FB73F",
+        "copykat_prediction_sha256": "39009022D980DF01D1C1455FB00052C6A4DE83A39DEDD927E56E131242C5179F",
+        "scevan_prediction_sha256": "37EFAF0EA98215B48B39DEB4F9917A5F52C472C1B8AB6508A44C53FCEBB7278C",
+        "cells": 700,
+        "author_cancer_cells": 300,
+        "author_cancer_both_malignancy_support": 127,
+        "author_cancer_either_malignancy_support": 151,
+        "author_cancer_method_unresolved": 127,
+        "known_normal_reference_either_malignancy_support": 24,
+        "claim_boundary": "This is a one-sample diagnostic comparison using author labels and predefined normal references, not DNA truth. Aneuploid/tumor calls support malignancy; diploid/normal calls do not prove nonmalignancy; filtered/not.defined remain unresolved. The result cannot qualify malignant cells across the CRC atlas or freeze the cNMF discovery set.",
+        "outputs": {
+          "P0_cna_method_pair_by_role.tsv": {
+            "bytes": 1780,
+            "sha256": "9483890983F2ECCFAE920A47B392AA2119BFF9CFC45E560B1DC720E79E30C030"
+          },
+          "P0_cna_role_summary.tsv": {
+            "bytes": 388,
+            "sha256": "9E87320D419FE3EAD6CD6C72471F22B642F6AFD6599FD951592DE671C573E121"
+          }
+        }
+      },
+      "finished_at": "2026-08-10T13:46:37.111055+00:00"
+    }
+  ],
+  "finished_at": "2026-08-10T13:46:37.116716+00:00",
+  "units_total": 12,
+  "units_completed": 12,
+  "units_failed": 0,
+  "claim_boundary": "Panel execution qualifies the selected diagnostic samples only. Calls use author Cancer cell candidates and predefined normal references; neither algorithm is DNA truth, and state comparisons remain observational and potentially dataset-confounded."
+}

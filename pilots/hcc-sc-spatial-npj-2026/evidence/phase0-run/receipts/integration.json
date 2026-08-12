@@ -1,0 +1,25 @@
+{
+  "status": "diagnostic_only_no_preintegration_comparator",
+  "generated_at": "2026-08-10T10:32:52.041079+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+  "n_obs": 3790266,
+  "sampled_cells": 37481,
+  "embedding_key": "X_scANVI",
+  "batch_key": "dataset",
+  "label_key": "cell_type_coarse_crc_atlas",
+  "patient_key": "donor_id",
+  "neighbors": 30,
+  "seed": 20260810,
+  "claim_boundary": "Metrics describe the released integrated embedding only; they do not prove improvement over unintegrated counts or successful target-project retraining.",
+  "outputs": {
+    "P0_integration_metrics.tsv": {
+      "bytes": 370,
+      "sha256": "26CBBD73E4DA8BA99B28DAD03E3E7BB362DBE96DEA3BACCCC45CEFE159DD9115"
+    },
+    "P0_integration_sampled_coverage.tsv": {
+      "bytes": 23894,
+      "sha256": "4BED3940B8883093BC07AA6D3D45AC077E986BB505985A1D45CE54E0C4A05533"
+    }
+  }
+}

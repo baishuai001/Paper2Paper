@@ -1,0 +1,44 @@
+{
+  "status": "diagnostic_real_data_smoke_not_scientific_acceptance",
+  "generated_at": "2026-08-10T11:38:49.730837+00:00",
+  "cnmf_version": "1.7.1",
+  "counts_h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_input/crc_author_cancer_balanced_counts.h5ad",
+  "input": {
+    "cells": 1976,
+    "genes": 28088,
+    "patients": 18,
+    "datasets": 5,
+    "sha256": "DB6B8BACDC6FA5AC57A56251BD464494C3BF5F2A0B97598F4F58618153483418"
+  },
+  "run_name": "crc_cnmf",
+  "components": [
+    5,
+    6,
+    7
+  ],
+  "n_iter": 10,
+  "seed": 20260810,
+  "density_threshold": 0.1,
+  "num_highvar_genes": 2000,
+  "max_nmf_iter": 1000,
+  "input_processing": "official cNMF TPM normalization, HVG selection and nonnegative variance scaling; no cross-dataset batch correction in this diagnostic run",
+  "claim_boundary": "The input uses author Cancer cell labels, not the final P0.5 high-confidence malignant set. This run lacks patient/dataset holdouts and 100-200 initializations, so it tests executability and produces diagnostics but cannot freeze K or malignant meta-programs.",
+  "outputs": {
+    "P0_cnmf_k_selection.tsv": {
+      "bytes": 280,
+      "sha256": "6B9C5AF155596B9AAB6DCD63FC806DD5D3B53DC648ABE4D0AF7B275DB9561A7D"
+    },
+    "P0_cnmf_patient_dataset_mixing.tsv": {
+      "bytes": 4815,
+      "sha256": "2C104F5A4F6585C3217A6A1A7D75930517C25D96DDE06F9C6099C731A406F707"
+    },
+    "P0_cnmf_top_genes.tsv": {
+      "bytes": 25908,
+      "sha256": "30919FDC4A3813462A034E68C219632A82C6D0274FF7013877AA5B6C37DEEF07"
+    },
+    "crc_cnmf/crc_cnmf.k_selection.png": {
+      "bytes": 98513,
+      "sha256": "58071B8B110C9B0BFC80721B72580565290E947CFBADABB3123EAEA68B97A78B"
+    }
+  }
+}

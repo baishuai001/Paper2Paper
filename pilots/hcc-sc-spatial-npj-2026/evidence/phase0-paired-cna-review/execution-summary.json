@@ -1,0 +1,33 @@
+{
+  "status": "paired_cna_human_review_checkpoint_reached",
+  "date": "2026-08-11",
+  "screen": {
+    "samples_total": 43,
+    "samples_completed": 43,
+    "samples_failed": 0,
+    "reference_sensitivity_required": 0
+  },
+  "full_identification": {
+    "samples_total": 43,
+    "samples_completed": 43,
+    "samples_failed": 0,
+    "paired_patients": 20,
+    "author_cancer_candidates": 73154,
+    "two_method_support": 38136,
+    "one_method_support": 6287,
+    "unresolved_without_support": 15140,
+    "defined_without_support": 13591,
+    "normal_reference_cells": 12858,
+    "normal_reference_unexpected_support": 53
+  },
+  "versions": {
+    "copykat": "1.1.0",
+    "scevan": "1.0.3"
+  },
+  "formal_cnmf_started": false,
+  "server_output_sizes": {
+    "screen": "7.4G",
+    "full": "25G"
+  },
+  "claim_boundary": "Expression-derived CNA support is not DNA or pathology truth. The checkpoint permits human review of a conservative cNMF input design; it does not freeze K, programs, figures or a manuscript route."
+}

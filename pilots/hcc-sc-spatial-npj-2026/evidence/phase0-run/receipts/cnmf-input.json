@@ -1,0 +1,28 @@
+{
+  "status": "diagnostic_author_cancer_input_pending_cna",
+  "generated_at": "2026-08-10T11:24:18.105228+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "raw_matrix": "raw/X",
+  "cells": 1976,
+  "genes": 28088,
+  "datasets": 5,
+  "patients": 18,
+  "selected_units": 20,
+  "seed": 20260810,
+  "selection_rule": "datasets ranked by eligible-patient coverage; patients sampled outcome-blind; equal cell cap per dataset-patient unit",
+  "claim_boundary": "This diagnostic input uses the atlas author Cancer cell label. It must be replaced by P0.5 high-confidence malignant calls before scientific P0.6 acceptance.",
+  "outputs": {
+    "crc_author_cancer_balanced_counts.h5ad": {
+      "bytes": 14350769,
+      "sha256": "DB6B8BACDC6FA5AC57A56251BD464494C3BF5F2A0B97598F4F58618153483418"
+    },
+    "P0_cnmf_selected_units.tsv": {
+      "bytes": 1348,
+      "sha256": "792A33552B0385C59D202FCE8D13306EB38179E46D1D1DEB370F53EF48535300"
+    },
+    "P0_cnmf_gene_feature_map.tsv": {
+      "bytes": 2356094,
+      "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+    }
+  }
+}

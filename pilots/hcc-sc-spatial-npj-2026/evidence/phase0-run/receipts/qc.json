@@ -1,0 +1,43 @@
+{
+  "status": "passed_with_limitations",
+  "generated_at": "2026-08-10T10:28:41.654777+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+  "n_obs": 3790266,
+  "samples": 1553,
+  "sample_patient_analysis_units": 1639,
+  "datasets": 71,
+  "selected_fields": {
+    "counts": "n_counts",
+    "genes": "n_genes_by_counts",
+    "mitochondrial": "pct_counts_mito"
+  },
+  "identity_field_map": {
+    "sample_id": "sample_id",
+    "patient_id": "donor_id",
+    "dataset": "dataset",
+    "sample_type": "sample_type",
+    "sample_tissue": "tissue"
+  },
+  "published_threshold_violations": {
+    "count_below_or_equal_400": 2618,
+    "genes_below_or_equal_100": 49,
+    "mito_greater_or_equal_50": 8
+  },
+  "samples_without_probability_evidence": 228,
+  "claim_boundary": "Post-QC audit only; it cannot reconstruct removed cells or prove ambient-RNA/doublet processing for inputs that were not retained.",
+  "outputs": {
+    "P0_qc_by_sample.tsv": {
+      "bytes": 426155,
+      "sha256": "1F992D0239E9679052963F0523474DBBE10EBABBFF13501935EF5620C9D6F612"
+    },
+    "P0_qc_by_dataset.tsv": {
+      "bytes": 3025,
+      "sha256": "C760D65DA479FC4FA2277BFE3CB9BC4028017C699541B145718F2D31E06FAE3F"
+    },
+    "P0_doublet_receipt.tsv": {
+      "bytes": 228992,
+      "sha256": "84E5551D2FFB0186F92196A1E5232F96525686ACAE80CD383C223DA7272D57D2"
+    }
+  }
+}

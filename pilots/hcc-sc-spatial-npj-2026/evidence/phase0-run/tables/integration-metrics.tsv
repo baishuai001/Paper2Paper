@@ -1,0 +1,7 @@
+scope	metric	value	n
+global	batch_different_neighbor_fraction	0.7982640093202779	37481
+global	batch_neighbor_entropy	0.6237046119981028	37481
+global	label_same_neighbor_fraction	0.8661899807013331	37481
+global	patient_different_neighbor_fraction	0.8777798529032489	37481
+global	batch_silhouette	-0.2426864504814148	37481
+global	label_silhouette	0.1678522527217865	37481
