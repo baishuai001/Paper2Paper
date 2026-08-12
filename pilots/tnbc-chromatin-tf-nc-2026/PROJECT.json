@@ -1,0 +1,31 @@
+{
+  "schema_version": "3.1.0",
+  "workspace_kind": "pilot",
+  "project_id": "P2P-TNBC-CHROMATIN-TF-NC-2026",
+  "title": "TNBC chromatin-informed regulatory framework transfer pilot",
+  "stage": "anchor_audit",
+  "selected_route_id": "",
+  "anchor": {
+    "title": "A chromatin-informed transcriptional regulatory framework to stratify patients and guide therapy selection in triple-negative breast cancer",
+    "doi": "10.1038/s41467-026-76385-8",
+    "citation": "",
+    "source_location": "outside Git"
+  },
+  "provenance": {
+    "source_pilot_id": "",
+    "source_route_id": "",
+    "source_run_ids": ""
+  },
+  "goal": {
+    "paper_type": "anchor-paper pilot",
+    "target_audience": "beginner-led project with AI assistance",
+    "success_definition": "A reviewed pilot outcome with traceable direction, data, code, minimal real execution and recorded workflow feedback"
+  },
+  "constraints": {
+    "beginner_led": true,
+    "deadline": "",
+    "compute": "All real data processing and analysis must run on the project cloud server under /media/desk16/iy13202/projects/Paper2Paper; the local checkout is limited to source materials, Git-tracked specifications, code, compact results and reports.",
+    "skills": ""
+  },
+  "stop_rule": "Stop workflow expansion when the Pilot can support a route decision and its concrete findings have been handled"
+}
