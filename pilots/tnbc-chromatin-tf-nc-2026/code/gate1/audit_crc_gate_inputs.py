@@ -82,8 +82,8 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
     level_frames: list[pd.DataFrame] = []
     for field in FIELDS:
         cell_n = cells[field].value_counts(dropna=False, sort=False).rename("cells")
-        patient_n = cells[[field, "donor_id"]].drop_duplicates().groupby(field, dropna=False).size().rename("patients")
-        sample_n = cells[[field, "sample_id"]].drop_duplicates().groupby(field, dropna=False).size().rename("samples")
+        patient_n = cells.groupby(field, dropna=False)["donor_id"].nunique().rename("patients")
+        sample_n = cells.groupby(field, dropna=False)["sample_id"].nunique().rename("samples")
         summary = pd.concat([cell_n, patient_n, sample_n], axis=1).fillna(0).astype(int).rename_axis("value").reset_index()
         summary.insert(0, "field", field)
         level_frames.append(summary)
