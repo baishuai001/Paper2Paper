@@ -1,0 +1,29 @@
+{
+  "status": "failed",
+  "generated_at": "2026-08-12T15:42:52.657908+00:00",
+  "patients": 213,
+  "M_patients": 47,
+  "nonM_patients": 166,
+  "datasets": 22,
+  "M_myeloid_fraction_median": 0.206424747174301,
+  "nonM_myeloid_fraction_median": 0.06480472764645426,
+  "mann_whitney_p_two_sided": 1.5333146042830347e-20,
+  "cliffs_delta_M_minus_nonM": 0.8884901307357088,
+  "hierarchical_ARI": 0.17348066002687915,
+  "kmeans_ARI_median": 0.23165391077501474,
+  "kmeans_ARI_range": [0.19726564718256479, 0.24128891598601893],
+  "LODO_M_AUROC": 0.9054088695206358,
+  "conditions": {
+    "M_myeloid_fraction_p_lt_0_01": true,
+    "M_myeloid_fraction_delta_ge_0_33": true,
+    "hierarchical_ARI_ge_0_50": false,
+    "median_kmeans_ARI_ge_0_40": false,
+    "LODO_M_AUROC_ge_0_70": true
+  },
+  "implementation_note": "Independent reconstruction from frozen H5AD annotations; no author cluster labels were used during clustering.",
+  "outputs": {
+    "G2_kmeans_seed_ARI.tsv": {"bytes": 1123, "sha256": "C6BF6CFBD938FECCC92CB4367E161CEF29613996A6ACB28BBC7696D0D5C0ADCB"},
+    "G2_patient_immune_fractions.tsv": {"bytes": 51111, "sha256": "F4C5229EF1CD98E80A2F03821D10E7233CC56CB5AF1D57379448A0CEC444F64F"},
+    "G2_phenotype_lodo_folds.tsv": {"bytes": 598, "sha256": "9E89DFBE33B56D3081FC3889867D84CC7C7213F95E08D64CC7FBB9A7E9E8D921"}
+  }
+}

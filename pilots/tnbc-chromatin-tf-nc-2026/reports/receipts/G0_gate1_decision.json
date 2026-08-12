@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-12T15:53:38.477112+00:00",
+  "git_commit": "eeac0e70f321fdd17746bcf5dff048cb045de08c",
+  "verdict": "FAIL",
+  "stop_now": true,
+  "reason": "Data were sufficient, but at least one pre-specified phenotype-reconstruction criterion failed.",
+  "data_audit_status": "passed",
+  "phenotype_reconstruction_status": "failed",
+  "failed_phenotype_conditions": [
+    "hierarchical_ARI_ge_0_50",
+    "median_kmeans_ARI_ge_0_40"
+  ],
+  "downstream_status": "NOT_RUN_DUE_TO_PRE_SPECIFIED_STOP",
+  "prohibited_after_stop": [
+    "Cancer-cell pseudobulk",
+    "TF activity",
+    "TCGA context network",
+    "drug",
+    "ATAC",
+    "spatial",
+    "wet-lab inference"
+  ],
+  "inputs": {
+    "G1_input_audit_receipt.json": {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/outputs/01_input_audit_v2_retry/G1_input_audit_receipt.json",
+      "sha256": "DE0867762036929A627B75172F4BFFB203BB97FC78D325425335130655F5DACA"
+    },
+    "G2_phenotype_gate_receipt.json": {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/outputs/02_phenotype/G2_phenotype_gate_receipt.json",
+      "sha256": "824C900A47F9237A07B4F4788BDCD13DD6DF1202342AFA1E8E3F5DC9815C099E"
+    }
+  }
+}

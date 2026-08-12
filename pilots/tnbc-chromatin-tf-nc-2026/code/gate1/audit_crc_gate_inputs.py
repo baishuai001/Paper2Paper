@@ -11,7 +11,8 @@ import h5py
 import numpy as np
 import pandas as pd
 
-from gate1_common import clean_text, join_unique, read_obs_column, sha256_file, unique_count, write_json
+from crc_cohort import eligible_patient_table
+from gate1_common import clean_text, read_obs_column, sha256_file, write_json
 
 
 FIELDS = [
@@ -78,22 +79,19 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
     cells["has_immune_type"] = cells["immune_infiltration_type"].ne("")
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    level_rows: list[dict[str, object]] = []
+    level_frames: list[pd.DataFrame] = []
     for field in FIELDS:
-        grouped = (
-            cells.groupby(field, observed=True, dropna=False, sort=True)
-            .agg(cells=("donor_id", "size"), patients=("donor_id", "nunique"), samples=("sample_id", "nunique"))
-            .reset_index()
-            .rename(columns={field: "value"})
-        )
-        grouped.insert(0, "field", field)
-        level_rows.extend(grouped.to_dict("records"))
-    levels = pd.DataFrame(level_rows)
+        cell_n = cells[field].value_counts(dropna=False, sort=False).rename("cells")
+        patient_n = cells.groupby(field, dropna=False)["donor_id"].nunique().rename("patients")
+        sample_n = cells.groupby(field, dropna=False)["sample_id"].nunique().rename("samples")
+        summary = pd.concat([cell_n, patient_n, sample_n], axis=1).fillna(0).astype(int).rename_axis("value").reset_index()
+        summary.insert(0, "field", field)
+        level_frames.append(summary)
+    levels = pd.concat(level_frames, ignore_index=True)
     levels_path = output_dir / "G1_metadata_levels.tsv"
     levels.to_csv(levels_path, sep="\t", index=False, lineterminator="\n")
 
-    grouped = cells.groupby("donor_id", observed=True, sort=True)
-    patient = grouped.size().rename("all_cells").to_frame()
+    patient = cells.groupby("donor_id", observed=True, sort=True).size().rename("all_cells").to_frame()
     for field in [
         "immune_infiltration_type",
         "dataset",
@@ -111,39 +109,54 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
         "age",
         "sex",
     ]:
-        patient[field] = grouped[field].agg(join_unique)
-        patient[f"{field}_n"] = grouped[field].agg(unique_count)
+        pairs = cells[["donor_id", field]].drop_duplicates()
+        pairs = pairs[pairs[field].ne("")]
+        patient[field] = pairs.groupby("donor_id", observed=True)[field].agg(lambda x: "|".join(sorted(x))).reindex(patient.index).fillna("")
+        patient[f"{field}_n"] = pairs.groupby("donor_id", observed=True).size().reindex(patient.index).fillna(0).astype(int)
+    grouped = cells.groupby("donor_id", observed=True, sort=True)
     patient["primary_cells"] = grouped["candidate_primary_tumor"].sum().astype(int)
-    patient["primary_cancer_cells"] = grouped.apply(
-        lambda frame: int((frame["candidate_primary_tumor"] & frame["is_author_cancer"]).sum()),
-        include_groups=False,
-    )
+    cells["candidate_primary_cancer"] = cells["candidate_primary_tumor"] & cells["is_author_cancer"]
+    patient["primary_cancer_cells"] = grouped["candidate_primary_cancer"].sum().astype(int)
     patient["immune_type_cells"] = grouped["has_immune_type"].sum().astype(int)
     patient = patient.reset_index()
     patient["immune_label_unique"] = patient["immune_infiltration_type_n"].eq(1)
     patient_path = output_dir / "G1_patient_metadata_audit.tsv"
     patient.to_csv(patient_path, sep="\t", index=False, lineterminator="\n")
 
-    typed = patient[patient["immune_infiltration_type"].ne("") & patient["immune_label_unique"]].copy()
+    scoped_patient, eligible_mask = eligible_patient_table(cells)
+    typed = scoped_patient[scoped_patient["immune_label_n"].eq(1)].copy()
     coverage = (
-        typed.groupby(["immune_infiltration_type", "dataset"], observed=True, sort=True)
+        typed.groupby(["immune_label", "dataset"], observed=True, sort=True)
         .agg(
             patients=("donor_id", "nunique"),
-            patients_ge20_cancer=("primary_cancer_cells", lambda x: int((x >= 20).sum())),
-            patients_ge50_cancer=("primary_cancer_cells", lambda x: int((x >= 50).sum())),
-            patients_ge100_cancer=("primary_cancer_cells", lambda x: int((x >= 100).sum())),
-            primary_cancer_cells=("primary_cancer_cells", "sum"),
+            patients_ge20_cancer=("cancer_cells", lambda x: int((x >= 20).sum())),
+            patients_ge50_cancer=("cancer_cells", lambda x: int((x >= 50).sum())),
+            patients_ge100_cancer=("cancer_cells", lambda x: int((x >= 100).sum())),
+            primary_cancer_cells=("cancer_cells", "sum"),
         )
         .reset_index()
     )
     coverage_path = output_dir / "G1_label_dataset_coverage.tsv"
     coverage.to_csv(coverage_path, sep="\t", index=False, lineterminator="\n")
 
-    contradictions = patient[
-        patient["immune_infiltration_type"].ne("") & ~patient["immune_label_unique"]
-    ]
+    contradictions = scoped_patient[scoped_patient["immune_label_n"].ne(1)]
+    main = typed[typed["cancer_cells"].ge(50)].copy()
+    m_counts = main.loc[main["immune_label"].eq("M"), "dataset"].value_counts()
+    cross = pd.crosstab(main["dataset"], main["immune_label"])
+    cross["nonM"] = cross.drop(columns=["M"], errors="ignore").sum(axis=1)
+    informative = cross[(cross.get("M", 0) >= 3) & (cross["nonM"] >= 3)]
+    n_m = int(main["immune_label"].eq("M").sum())
+    n_nonm = int(main["immune_label"].ne("M").sum())
+    max_m_share = float(m_counts.max() / n_m) if n_m else 1.0
+    minimums = {
+        "unique_labels": bool(contradictions.empty),
+        "M_ge_15": n_m >= 15,
+        "nonM_ge_30": n_nonm >= 30,
+        "informative_datasets_ge_3": int(len(informative)) >= 3,
+        "max_M_dataset_share_le_0_60": max_m_share <= 0.60,
+    }
     receipt = {
-        "status": "passed" if contradictions.empty else "failed",
+        "status": "passed" if all(minimums.values()) else "failed",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "h5ad": str(h5ad.resolve()),
         "h5ad_bytes": h5ad.stat().st_size,
@@ -152,7 +165,13 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
         "samples": int(cells["sample_id"].nunique()),
         "datasets": int(cells["dataset"].nunique()),
         "typed_patients": int(typed["donor_id"].nunique()),
-        "typed_patients_ge50_primary_cancer": int((typed["primary_cancer_cells"] >= 50).sum()),
+        "eligible_cells": int(eligible_mask.sum()),
+        "typed_patients_ge50_primary_cancer": int(len(main)),
+        "M_patients_ge50": n_m,
+        "nonM_patients_ge50": n_nonm,
+        "informative_datasets_ge3_each": int(len(informative)),
+        "max_M_dataset_share": max_m_share,
+        "minimum_conditions": minimums,
         "contradictory_patient_labels": int(len(contradictions)),
         "outputs": {},
     }
@@ -176,4 +195,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

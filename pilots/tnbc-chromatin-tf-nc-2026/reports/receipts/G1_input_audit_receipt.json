@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "generated_at": "2026-08-12T15:52:33.422451+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_bytes": 30875155333,
+  "n_obs": 3790266,
+  "patients": 588,
+  "samples": 1553,
+  "datasets": 71,
+  "typed_patients": 213,
+  "eligible_cells": 845306,
+  "typed_patients_ge50_primary_cancer": 206,
+  "M_patients_ge50": 46,
+  "nonM_patients_ge50": 160,
+  "informative_datasets_ge3_each": 4,
+  "max_M_dataset_share": 0.21739130434782608,
+  "minimum_conditions": {
+    "unique_labels": true,
+    "M_ge_15": true,
+    "nonM_ge_30": true,
+    "informative_datasets_ge_3": true,
+    "max_M_dataset_share_le_0_60": true
+  },
+  "contradictory_patient_labels": 0,
+  "outputs": {
+    "G1_metadata_levels.tsv": {"bytes": 116676, "sha256": "CD0668D146EF082535FA957C5E6E836800787B76BA1DE34D6A541C4EBB854E5D"},
+    "G1_patient_metadata_audit.tsv": {"bytes": 157034, "sha256": "4D6C2D86AF8C69FE00FA9A8DACAC9B1DFA196A6847E12614A7E422E9E128648A"},
+    "G1_label_dataset_coverage.tsv": {"bytes": 2211, "sha256": "4EDBE5AEB9C8813AF23100A75C1726BBC101A0030EE576E8C649822402839BB1"}
+  }
+}
