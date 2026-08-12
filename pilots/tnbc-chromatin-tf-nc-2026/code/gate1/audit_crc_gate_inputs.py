@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 
 from crc_cohort import eligible_patient_table
-from gate1_common import clean_text, join_unique, read_obs_column, sha256_file, unique_count, write_json
+from gate1_common import clean_text, read_obs_column, sha256_file, write_json
 
 
 FIELDS = [
@@ -79,22 +79,19 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
     cells["has_immune_type"] = cells["immune_infiltration_type"].ne("")
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    level_rows: list[dict[str, object]] = []
+    level_frames: list[pd.DataFrame] = []
     for field in FIELDS:
-        grouped = (
-            cells.groupby(field, observed=True, dropna=False, sort=True)
-            .agg(cells=("donor_id", "size"), patients=("donor_id", "nunique"), samples=("sample_id", "nunique"))
-            .reset_index()
-            .rename(columns={field: "value"})
-        )
-        grouped.insert(0, "field", field)
-        level_rows.extend(grouped.to_dict("records"))
-    levels = pd.DataFrame(level_rows)
+        cell_n = cells[field].value_counts(dropna=False, sort=False).rename("cells")
+        patient_n = cells[[field, "donor_id"]].drop_duplicates().groupby(field, dropna=False).size().rename("patients")
+        sample_n = cells[[field, "sample_id"]].drop_duplicates().groupby(field, dropna=False).size().rename("samples")
+        summary = pd.concat([cell_n, patient_n, sample_n], axis=1).fillna(0).astype(int).rename_axis("value").reset_index()
+        summary.insert(0, "field", field)
+        level_frames.append(summary)
+    levels = pd.concat(level_frames, ignore_index=True)
     levels_path = output_dir / "G1_metadata_levels.tsv"
     levels.to_csv(levels_path, sep="\t", index=False, lineterminator="\n")
 
-    grouped = cells.groupby("donor_id", observed=True, sort=True)
-    patient = grouped.size().rename("all_cells").to_frame()
+    patient = cells.groupby("donor_id", observed=True, sort=True).size().rename("all_cells").to_frame()
     for field in [
         "immune_infiltration_type",
         "dataset",
@@ -112,13 +109,14 @@ def run(h5ad: Path, output_dir: Path, expected_bytes: int) -> dict[str, object]:
         "age",
         "sex",
     ]:
-        patient[field] = grouped[field].agg(join_unique)
-        patient[f"{field}_n"] = grouped[field].agg(unique_count)
+        pairs = cells[["donor_id", field]].drop_duplicates()
+        pairs = pairs[pairs[field].ne("")]
+        patient[field] = pairs.groupby("donor_id", observed=True)[field].agg(lambda x: "|".join(sorted(x))).reindex(patient.index).fillna("")
+        patient[f"{field}_n"] = pairs.groupby("donor_id", observed=True).size().reindex(patient.index).fillna(0).astype(int)
+    grouped = cells.groupby("donor_id", observed=True, sort=True)
     patient["primary_cells"] = grouped["candidate_primary_tumor"].sum().astype(int)
-    patient["primary_cancer_cells"] = grouped.apply(
-        lambda frame: int((frame["candidate_primary_tumor"] & frame["is_author_cancer"]).sum()),
-        include_groups=False,
-    )
+    cells["candidate_primary_cancer"] = cells["candidate_primary_tumor"] & cells["is_author_cancer"]
+    patient["primary_cancer_cells"] = grouped["candidate_primary_cancer"].sum().astype(int)
     patient["immune_type_cells"] = grouped["has_immune_type"].sum().astype(int)
     patient = patient.reset_index()
     patient["immune_label_unique"] = patient["immune_infiltration_type_n"].eq(1)
