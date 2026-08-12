@@ -1,0 +1,110 @@
+{
+  "status": "ready_for_human_k_review",
+  "generated_at": "2026-08-12T02:46:45.834722+00:00",
+  "k_frozen": false,
+  "program_names_assessed": false,
+  "ai_candidate_window": [
+    9,
+    10,
+    11
+  ],
+  "ai_provisional_preferred_k": 10,
+  "decision_boundary": "AI recommendation only; K remains unfrozen until human approval and the two frozen finite sensitivities are reviewed. No program naming, Che projection, enrichment, spatial, clinical or perturbation analysis has run.",
+  "sources": [
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/stability/P0_cnmf_stability.tsv",
+      "bytes": 426598,
+      "sha256": "89F3B2DBBF2C438A2EF80FAFCA962C8B1A4A092D6DCC755D3C229223F6C22D78"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/stability/P0_cnmf_holdout_replication_by_k.tsv",
+      "bytes": 1757,
+      "sha256": "44DD9D2E382E404590DDB77DE9D09B44888359BB72D4B389A451E29DD9983051"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/stability/P0_cnmf_stability_receipt.json",
+      "bytes": 2944,
+      "sha256": "79D796C1D82A7FBE863D4DABDEC2791B3E013F85C253C1DE0B29849F25AFC861"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_run_receipt.json",
+      "bytes": 2493,
+      "sha256": "56A3EE1E9552F0765A8698E9EC8C5D5FD45671DE3E5810F46C82154DC72881A9"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_k_selection.tsv",
+      "bytes": 1142,
+      "sha256": "777386C7B1F8DF8970781DAF87E5703F602F3C82D38178E675EF1028802AE0E9"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260812/P0_cnmf_patient_dataset_mixing.tsv",
+      "bytes": 46977,
+      "sha256": "CAE8D0C58CA11B31EE07384D209043B523E94D58D73DA6774A2FC803D160F6FC"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260813/P0_cnmf_run_receipt.json",
+      "bytes": 2493,
+      "sha256": "355FC090AE6D9244A1419A608AFDF67112D3865DA0A229967770961DE53AE49D"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260813/P0_cnmf_k_selection.tsv",
+      "bytes": 1146,
+      "sha256": "56D186ED67530C59B5005873A6178ED3C9A942076C594CEFF14DF6E7E9D1BFA6"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/seed_20260813/P0_cnmf_patient_dataset_mixing.tsv",
+      "bytes": 46971,
+      "sha256": "DB16AA5C3F78CFFD0F89D443E942D8794500EC6C7EB5133980CBDB0E453531C4"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/cell_resample_20260813/P0_cnmf_run_receipt.json",
+      "bytes": 2498,
+      "sha256": "D4F313F0198A3FB30AE101D4FE70E00FFF8478DDFC011CFA465270356E576C7A"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/cell_resample_20260813/P0_cnmf_k_selection.tsv",
+      "bytes": 1146,
+      "sha256": "AA40CA59603A2CAC2344F49E0FFFA89CEB0B3419D8E241CDE28149B174BE4EEF"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/cell_resample_20260813/P0_cnmf_patient_dataset_mixing.tsv",
+      "bytes": 46976,
+      "sha256": "5070E14DA63DD67008869FAE1B4C16DB87E685B6C7E09C8B139B58945C71D2BA"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_A/P0_cnmf_run_receipt.json",
+      "bytes": 2486,
+      "sha256": "8928B0D31C227777B75D69CC56A2C84727B6657CCF1200651462594F17A826CB"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_A/P0_cnmf_k_selection.tsv",
+      "bytes": 1124,
+      "sha256": "C49505EA6C7E9EB1341BEEC4D12240B262BAA008A76E46B5FC2F56B357354315"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_A/P0_cnmf_patient_dataset_mixing.tsv",
+      "bytes": 46820,
+      "sha256": "3EC3A30EB5548B7C1935BBDA54C3BF0C47F6BDA65A1A3B68A6A7B61F66EBC083"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_B/P0_cnmf_run_receipt.json",
+      "bytes": 2486,
+      "sha256": "DC602692686B07BF0785E8FF1E1DE9350ED5C95197A1F5FECCCB03E2D9A80E9B"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_B/P0_cnmf_k_selection.tsv",
+      "bytes": 1131,
+      "sha256": "E60819F92993734FD46B500866D29BB79740E5694C030DFF17B4DE6A33B9DE4D"
+    },
+    {
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/runs/patient_holdout_B/P0_cnmf_patient_dataset_mixing.tsv",
+      "bytes": 46859,
+      "sha256": "472DF96AA37F94A872D56C86F1D52325812AE2F77E5DB2A49529ABCC4491ED6E"
+    }
+  ],
+  "output": {
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/review/P0_cnmf_k_review_summary.tsv",
+    "bytes": 2465,
+    "sha256": "E2D01EA8DD8B1727C165FF8C528CFE6104DECAD6DD6AA7CE277DB78C8BA92CFF"
+  }
+}

@@ -1,0 +1,11 @@
+panel_order	panel_sample_id	panel_patient_id	panel_sample_type	normal_reference_cells	normal_reference_unexpected_support	normal_reference_method_unresolved	normal_reference_unexpected_support_fraction	normal_reference_method_unresolved_fraction
+26	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07	tumor	300	0	207	0.0	0.69
+27	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07	metastasis	300	0	68	0.0	0.22666666666666666
+28	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12	tumor	300	0	114	0.0	0.38
+29	Che_2021.COL12_LM	Che_2021_Cell_Discov.COL12	metastasis	300	0	36	0.0	0.12
+30	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15	tumor	300	0	60	0.0	0.2
+31	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15	metastasis	300	0	63	0.0	0.21
+32	Che_2021.COL16_CRC	Che_2021_Cell_Discov.COL16	tumor	300	0	36	0.0	0.12
+33	Che_2021.COL16_LM	Che_2021_Cell_Discov.COL16	metastasis	300	0	79	0.0	0.2633333333333333
+34	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18	tumor	300	0	64	0.0	0.21333333333333335
+35	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18	metastasis	300	1	99	0.0033333333333333335	0.33

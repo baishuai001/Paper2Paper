@@ -1,0 +1,12 @@
+panel_order	panel_dataset	panel_sample_id	panel_patient_id	panel_sample_type	panel_tissue	selected_cells	supported_cells	unit_normal_reference_cells	unit_normal_reference_unexpected_support	unit_normal_reference_unexpected_support_fraction
+1	VUMC_HTAN_cohort3	VUMC_HTAN_cohort3.HTA11_12542_2000001011	Chen_2021_Cell.HTA11_12542	polyp	ascending colon	84	84	168	0	0.0
+2	VUMC_HTAN_validation	VUMC_HTAN_validation.HTA11_8622_2000001011	Chen_2021_Cell.HTA11_8622	polyp	ascending colon	150	269	300	16	0.05333333333333334
+3	VUMC_HTAN_discovery	VUMC_HTAN_discovery.HTA11_5994_2000001011	Chen_2021_Cell.HTA11_5994	polyp	ascending colon	150	195	286	21	0.07342657342657342
+4	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1	polyp	colon	150	260	300	0	0.0
+5	Pelka_2021_10Xv2	Pelka_2021_10Xv2.C123_T_1_1_0_c1_v2	Pelka_2021_Cell.C123	tumor	colorectum	150	155	300	3	0.01
+6	Pelka_2021_10Xv2_CD45Pos	Pelka_2021_10Xv2_CD45Pos.C162_T_0_0_1_c2_v2	Pelka_2021_Cell.C162	tumor	colorectum	150	223	300	0	0.0
+7	Lee_2020_SMC	Lee_2020_SMC.SMC09_T	Lee_2020_Nat_Genet.SMC09	tumor	sigmoid colon	150	282	300	2	0.006666666666666667
+8	Chen_2024	Chen_2024.CRC03_T_I	Chen_2024_Cancer_Cell.P03	tumor	rectum	150	200	300	0	0.0
+9	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01	metastasis	liver	150	163	300	0	0.0
+10	Che_2021	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07	metastasis	liver	150	193	300	0	0.0
+12	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03	metastasis	liver	127	127	300	24	0.08

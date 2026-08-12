@@ -1,0 +1,13 @@
+{
+  "status": "paired_crc_cna_panel_built",
+  "selected_samples": 43,
+  "paired_patients": 20,
+  "cohorts": 4,
+  "contrasts": [
+    "adenoma_vs_carcinoma",
+    "primary_vs_liver_metastasis"
+  ],
+  "panel": "C:\\Users\\bai\\OneDrive\\Documents\\Codex\\2026_07_09 Literature_Reproduction\\2026_07_27 SPP1 TAMs JITC\\tmp\\p2p_pair_work\\generated\\P0_paired_cna_panel.tsv",
+  "summary": "C:\\Users\\bai\\OneDrive\\Documents\\Codex\\2026_07_09 Literature_Reproduction\\2026_07_27 SPP1 TAMs JITC\\tmp\\p2p_pair_work\\generated\\P0_paired_cna_panel_summary.tsv",
+  "claim_boundary": "This manifest defines within-dataset paired comparisons. It does not redesign the full CRC atlas, and unpaired cohorts remain available for later program recurrence or external validation rather than primary stage-effect estimation."
+}

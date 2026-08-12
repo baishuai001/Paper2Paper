@@ -1,0 +1,4 @@
+k	cnmf_reported_default_threshold_no_filter	k_selection_filtering	final_consensus_density_threshold	silhouette	prediction_error	maximum_within_k_program_cosine
+9.0	0.5	disabled_by_cnmf_skip_density_stats_path	0.1	0.8853761551887036	13614002.94959348	0.20521198691119713
+10.0	0.5	disabled_by_cnmf_skip_density_stats_path	0.1	0.8693806932331745	13534070.206276266	0.19872118237041697
+11.0	0.5	disabled_by_cnmf_skip_density_stats_path	0.1	0.8171494486979677	13409217.388294408	0.20764786526494453

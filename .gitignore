@@ -37,3 +37,12 @@ cache/
 execution/artifacts/
 outputs/intermediate/
 pilots/gastric-nrrs/outputs/gse62254_spike/GSE62254_nrrs_source_table.tsv
+
+# Runtime-only Phase 0 artifacts stay on the analysis server/local workspace.
+# Git keeps code, contracts, receipts, compact summaries and human review reports.
+/HANDOFF.md
+pilots/*/evidence/**/logs/
+pilots/*/outputs/**/*cell_scores.tsv.gz
+pilots/*/outputs/**/*selected_cells.tsv.gz
+pilots/*/outputs/**/*gene_feature_map.tsv
+pilots/*/evidence/phase0-run/tables/P0_cna_eligible_samples.tsv

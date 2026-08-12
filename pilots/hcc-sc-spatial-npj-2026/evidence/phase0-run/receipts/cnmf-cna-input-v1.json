@@ -1,0 +1,41 @@
+{
+  "status": "diagnostic_two_method_cna_supported_cnmf_input",
+  "scientific_gate": "not_passed_unexpected_normal_reference_support",
+  "generated_at": "2026-08-10T13:50:34.565086+00:00",
+  "implementation_sha256": "ABA714933AB4DBB0D88A93405DBC768890C299EB70D07232AF8B492F98AD0BDC",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "cna_evidence_sha256": "FC1ED91DA7B9AFA70ACC45B0502FA1BBBF444349CEFD5EE1A624F56D3ED9933E",
+  "raw_matrix": "raw/X",
+  "selection_class": "author_cancer_two_method_malignancy_support",
+  "cells": 1561,
+  "genes": 28088,
+  "units": 11,
+  "datasets": 11,
+  "patients": 11,
+  "states": [
+    "metastasis",
+    "polyp",
+    "tumor"
+  ],
+  "units_with_unexpected_normal_reference_support": 5,
+  "maximum_unit_normal_reference_unexpected_support_fraction": 0.08,
+  "min_cells_per_unit": 30,
+  "max_cells_per_unit": 150,
+  "seed": 20260810,
+  "selection_rule": "retain author Cancer candidates supported as aneuploid by CopyKAT and tumor by SCEVAN; exclude units below the frozen minimum; sample cells within unit without reading genes or outcomes",
+  "claim_boundary": "The input is more conservative than the author Cancer label but remains an inferred, sampled CNA-supported candidate set rather than DNA-validated malignancy truth. It represents selected panel units only; sample-level unexpected malignant calls among predefined normal references are retained in obs rather than hidden. It is suitable for diagnostic cNMF sensitivity analysis, not yet atlas-wide program freezing.",
+  "outputs": {
+    "crc_two_method_cna_supported_counts.h5ad": {
+      "bytes": 12468716,
+      "sha256": "9D097FD9D36AFCB3A71AEED174BF1AA418DCBE57D9F73263A979C070ED292370"
+    },
+    "P0_cnmf_cna_selected_units.tsv": {
+      "bytes": 1543,
+      "sha256": "7FFE4B719E6ADD6AF534B4037EF8580159B7E2CAA826827BB7F946707A10F2A2"
+    },
+    "P0_cnmf_cna_gene_feature_map.tsv": {
+      "bytes": 2356094,
+      "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+    }
+  }
+}

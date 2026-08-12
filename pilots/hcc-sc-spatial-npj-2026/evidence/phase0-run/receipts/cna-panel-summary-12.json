@@ -1,0 +1,36 @@
+{
+  "status": "diagnostic_panel_completed_cna_supported_cell_set_available",
+  "scientific_gate": "not_passed_diagnostic_panel_without_dna_truth",
+  "generated_at": "2026-08-10T13:49:52.949504+00:00",
+  "implementation_sha256": "7D6883FB5D16544240A5AC0F1464EFEEE9BAC370DDDCF4D4FDE2008D6838A516",
+  "panel_sha256": "587EF5977BB03F8E595EA317B739AA8296E3577BB046593A50DFCA89796DBBAE",
+  "run_receipt_sha256": "BA2ADC29A522C6A829D88D2E88766DFA9FD140E9D946B70DE13E6188BDECD340",
+  "samples": 12,
+  "datasets": 12,
+  "patients": 12,
+  "states": 3,
+  "cells_evaluated": 7668,
+  "author_cancer_two_method_support": 2157,
+  "units_with_at_least_30_two_method_supported_cells": 11,
+  "normal_reference_unexpected_malignancy_support": 162,
+  "normal_reference_copykat_aneuploid": 116,
+  "normal_reference_scevan_tumor": 155,
+  "units_with_unexpected_normal_reference_support": 6,
+  "maximum_unit_normal_reference_unexpected_support_fraction": 0.32,
+  "selection_for_cnmf": "author Cancer candidates supported as aneuploid by CopyKAT and tumor by SCEVAN",
+  "claim_boundary": "The two-method intersection is a conservative CNA-supported candidate set, not DNA-validated malignancy truth. The panel covers selected samples across states and datasets, not every atlas sample; absence of a CNA call is not evidence of nonmalignancy. State comparisons remain observational and dataset-confounded.",
+  "outputs": {
+    "P0_cna_panel_cell_evidence.tsv": {
+      "bytes": 3076400,
+      "sha256": "FC1ED91DA7B9AFA70ACC45B0502FA1BBBF444349CEFD5EE1A624F56D3ED9933E"
+    },
+    "P0_cna_panel_unit_summary.tsv": {
+      "bytes": 2537,
+      "sha256": "E27CAECB74B85B34D4A00AA27432F6BB36281269412973277FE8337D9298C1F9"
+    },
+    "P0_cna_panel_state_summary.tsv": {
+      "bytes": 777,
+      "sha256": "AC95BEC81F7AE014C0FF14063A976B6EA3A36A06CDA5FD66F041127E3CCAD920"
+    }
+  }
+}

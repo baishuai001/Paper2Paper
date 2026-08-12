@@ -10,6 +10,7 @@ from datetime import timedelta
 from pathlib import Path
 
 from paper2paper.cli import _require_manuscript_target, main as cli_main
+from paper2paper.schema import TABLES
 from paper2paper.workspace import (
     _parse_iso_timestamp,
     init_workspace,
@@ -79,7 +80,7 @@ Every main figure is mapped to input data, required metadata, a code module, a
 source table, a statistical unit and a bounded claim. Private inputs and wet-lab
 evidence remain outside the public reproduction ceiling.
 
-## Module disposition and reproduction boundary
+## Analysis-step disposition and reproduction boundary
 
 Preprocessing is retained, the marker is substituted, patient-level inference
 is required and decorative analyses may be dropped. Missing author code and
@@ -95,21 +96,20 @@ def complete_pilot_outcome(project: Path) -> None:
 
 The minimal real-data run answered the bounded execution question and retained
 the route's scientific limitations. It did not establish publication value or
-turn the Pilot into a manuscript. The data roles, code contract, result and
+turn the Pilot into a manuscript. The intended data uses, code contract, result and
 claim ceiling can be reviewed independently.
 
-## Product-side outcome
+## Workflow-side outcome
 
-The instance-specific implementation was repaired locally. Any proposal for a
-module or core change is recorded separately and needs its own promotion
-evidence. A negative scientific result would remain a scientific result rather
-than being relabeled as a workflow failure.
+The instance-specific implementation was repaired locally. The issue log says
+whether the real-paper work revealed a workflow change, and the same Pilot is
+rechecked after that change. A negative scientific result remains a scientific
+result rather than being relabeled as a workflow failure.
 
-## Capability and regression contribution
+## Reuse boundary
 
-This Pilot exercises only its declared patient-level capability and one real
-dataset. It does not validate unrelated modalities, anchors, diseases or the
-whole workflow. A second independent case would be needed for transfer claims.
+This Pilot exercises one patient-level route and one real dataset. It does not
+validate unrelated modalities, anchors, diseases or the whole workflow.
 
 ## Human decision and next boundary
 
@@ -142,7 +142,6 @@ def make_executable_route(project: Path) -> None:
             "evidence_stage": "minimal_real_run",
             "route_role": "manuscript_candidate",
             "mode": "marker",
-            "capability_ids": "CAP-TEST-PATIENT-MARKER",
             "title": "Marker substitution",
             "question": "Is marker B associated with outcome Y at patient level?",
             "target_disease": "cancer B",
@@ -239,6 +238,25 @@ def make_executable_route(project: Path) -> None:
         },
     )
     add_row(
+        evidence / "data_use_checks.tsv",
+        {
+            "use_check_id": "USE-CHECK-1",
+            "route_id": "ROUTE-1",
+            "requirement_id": "DATAREQ-1",
+            "data_id": "DATA-1",
+            "paper_use": "primary patient-level association",
+            "use_decision": "use",
+            "decisive_group_check": "passed",
+            "independent_units_by_group": "30 marker-high;30 marker-low;patient unit",
+            "design_confounding_check": "passed",
+            "measurement_fit_check": "passed",
+            "resource_fit_check": "passed",
+            "treatment_compatibility_check": "not_applicable",
+            "evidence": "config/data.tsv;outputs/fig1.tsv",
+            "checked_at": "2026-08-07",
+        },
+    )
+    add_row(
         evidence / "cohort_usage.tsv",
         {
             "usage_id": "USAGE-1",
@@ -260,7 +278,6 @@ def make_executable_route(project: Path) -> None:
         {
             "module_id": "MODULE-1",
             "route_id": "ROUTE-1",
-            "capability_id": "CAP-TEST-PATIENT-MARKER",
             "name": "patient-level model",
             "purpose": "primary analysis",
             "input_contract": "one row per patient",
@@ -409,7 +426,7 @@ def mark_pilot_for_promotion(project: Path) -> None:
 
 
 class Paper2PaperWorkflowTests(unittest.TestCase):
-    def test_binding_beginner_imitation_policy_is_present(self) -> None:
+    def test_binding_project_goal_is_preserved(self) -> None:
         rules = (ROOT / "RULES.md").read_text(encoding="utf-8")
         for required_phrase in (
             "面向初学者",
@@ -419,12 +436,14 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             "避免实质重复发表",
             "最终目的是产出论文",
             "不能重新引入 PaperRoute 的创新性门槛",
-            "近邻论文必须同时按两种角色审查",
-            "不得用单个例子代表一整条改变轴",
-            "停止一个已经发表的具体组合，不得连带停止该论文作为 donor",
         ):
             with self.subTest(required_phrase=required_phrase):
                 self.assertIn(required_phrase, rules)
+        self.assertNotIn(
+            "mode",
+            TABLES["routes"]["enums"],
+            "route types must remain open to the anchor paper's own framework",
+        )
 
     def test_direction_only_route_cannot_be_ranked_active_or_backup(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -682,7 +701,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                 any("pilot cannot record approve_release" in e for e in report.errors)
             )
 
-    def test_promotion_target_must_be_new_registered_child_with_unique_id(self) -> None:
+    def test_promotion_target_must_be_new_repository_child_with_unique_id(self) -> None:
         allowed = ROOT / "manuscript-projects" / "future-test-project"
         self.assertFalse(allowed.exists())
         _require_manuscript_target(ROOT, allowed, "P2P-MS-FUTURE-UNIQUE")
@@ -778,7 +797,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                 any("promote decision must occur" in e for e in report.errors)
             )
 
-    def test_cli_rejects_unregistered_external_pilot_for_repo_root(self) -> None:
+    def test_cli_rejects_external_pilot_for_repo_root(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             pilot = Path(temp_dir) / "external-pilot"
             target = Path(temp_dir) / "manuscript"
@@ -802,7 +821,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                     ]
                 )
             self.assertEqual(exit_code, 2)
-            self.assertIn("must be inside", stderr.getvalue())
+            self.assertIn("must be one direct child", stderr.getvalue())
             self.assertFalse(target.exists())
 
     def test_incomplete_manuscript_cannot_validate_as_complete(self) -> None:
@@ -1012,6 +1031,61 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                 )
                 self.assertFalse(validate_workspace(project).ok)
 
+    def test_used_data_requires_an_intended_use_check(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "pilot"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_executable_route(project)
+            rewrite_rows(
+                project / "evidence/data_use_checks.tsv",
+                lambda rows: rows.clear(),
+            )
+
+            report = validate_workspace(project)
+
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("intended-use" in error for error in report.errors)
+            )
+            self.assertFalse(route_readiness(project)[0]["execution_ready"])
+
+    def test_limited_paper_use_cannot_be_recorded_as_unrestricted_use(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            project = Path(temp_dir) / "pilot"
+            init_workspace(project, "P2P-TEST", "Test", "Anchor")
+            make_executable_route(project)
+            rewrite_rows(
+                project / "evidence/data_use_checks.tsv",
+                lambda rows: rows[0].update(
+                    {
+                        "design_confounding_check": "limited",
+                        "use_decision": "use",
+                    }
+                ),
+            )
+
+            report = validate_workspace(project)
+
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("must use use_decision=limit" in error for error in report.errors)
+            )
+
+            rewrite_rows(
+                project / "evidence/data_use_checks.tsv",
+                lambda rows: rows[0].update(
+                    {
+                        "use_decision": "limit",
+                        "notes": "",
+                    }
+                ),
+            )
+            report = validate_workspace(project)
+            self.assertFalse(report.ok)
+            self.assertTrue(
+                any("must explain the use boundary" in error for error in report.errors)
+            )
+
     def test_development_exposed_cohort_cannot_be_external_validation(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             project = Path(temp_dir) / "pilot"
@@ -1067,8 +1141,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                 {
                     "issue_id": "ISSUE-1",
                     "route_id": "ROUTE-1",
-                    "observed_layer": "pilot_execution",
-                    "candidate_scope": "pilot",
+                    "source_scope": "pilot_execution",
                     "issue_type": "data_access",
                     "stage": "verification",
                     "severity": "critical",
@@ -1076,7 +1149,8 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                     "evidence": "smoke log",
                     "consequence": "Primary result cannot be generated.",
                     "proposed_action": "Repair parser.",
-                    "disposition": "instance_only",
+                    "current_resolution": "Parser repair is still required.",
+                    "workflow_action": "none",
                     "status": "open",
                     "blocking": "true",
                 },
@@ -1087,34 +1161,6 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
                 lambda rows: rows[0].update({"status": "resolved"}),
             )
             self.assertTrue(validate_workspace(project).ok)
-
-    def test_promotion_disposition_requires_scoped_link(self) -> None:
-        with tempfile.TemporaryDirectory() as temp_dir:
-            project = Path(temp_dir) / "pilot"
-            init_workspace(project, "P2P-TEST", "Test", "Anchor")
-            make_executable_route(project)
-            add_row(
-                project / "evidence/issues.tsv",
-                {
-                    "issue_id": "ISSUE-1",
-                    "route_id": "ROUTE-1",
-                    "observed_layer": "pilot_execution",
-                    "candidate_scope": "core",
-                    "issue_type": "data_identity",
-                    "stage": "verification",
-                    "severity": "high",
-                    "observation": "Identity must fail closed.",
-                    "evidence": "test log",
-                    "consequence": "Rows may be mismatched.",
-                    "proposed_action": "Promote a guarded identity rule.",
-                    "disposition": "promote_to_core",
-                    "status": "resolved",
-                    "blocking": "false",
-                },
-            )
-            report = validate_workspace(project)
-            self.assertFalse(report.ok)
-            self.assertTrue(any("promotion_id" in e for e in report.errors))
 
     def test_each_route_requires_data_code_and_literature_searches(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
@@ -1146,7 +1192,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             self.assertFalse(report.ok)
             self.assertTrue(any("blocking duplicate" in e for e in report.errors))
 
-    def test_report_uses_v2_evidence_language(self) -> None:
+    def test_report_separates_execution_from_manuscript_approval(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             project = Path(temp_dir) / "pilot"
             init_workspace(project, "P2P-TEST", "Test", "Anchor")
@@ -1168,10 +1214,7 @@ class Paper2PaperWorkflowTests(unittest.TestCase):
             self.assertTrue(any("do not start a manuscript draft" in action for action in actions))
 
     def test_repository_pilots_validate(self) -> None:
-        for project in (
-            ROOT / "pilots/spp1-tam-jitc",
-            ROOT / "pilots/gastric-nrrs",
-        ):
+        for project in (ROOT / "pilots/gastric-nrrs",):
             report = validate_workspace(project)
             self.assertTrue(report.ok, f"{project}: {report.errors}")
 

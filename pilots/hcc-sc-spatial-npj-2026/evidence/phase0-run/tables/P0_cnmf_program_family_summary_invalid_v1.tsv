@@ -1,0 +1,7 @@
+provisional_program_family	members	runs	k_values	contains_holdout_A	contains_holdout_B	pooled_seed_members	replicates_across_independent_holdouts	contains_both_holdouts
+PF001	1	1	1	False	True	0	False	False
+PF002	89	4	6	True	True	39	True	True
+PF003	3	1	3	False	True	0	False	False
+PF004	33	4	6	True	True	21	True	True
+PF005	53	4	6	True	True	29	True	True
+PF006	1	1	1	False	False	1	False	False

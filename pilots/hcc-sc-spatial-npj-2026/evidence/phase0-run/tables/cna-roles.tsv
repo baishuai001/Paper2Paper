@@ -1,0 +1,3 @@
+cna_input_role	cells	copykat_aneuploid	scevan_tumor	both_malignancy_support	either_malignancy_support	method_unresolved	both_defined	defined_binary_agreement_fraction	aneuploid_vs_scevan_normal	diploid_vs_scevan_tumor
+author_cancer	300	133	133	132	134	71	229	0.9956331877729258	1	0
+known_normal_reference	300	0	0	0	0	192	108	1.0	0	0

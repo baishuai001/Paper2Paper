@@ -1,0 +1,271 @@
+panel_order	cell_type_coarse_crc_atlas	reference_cells	unexpected_support	unexpected_support_fraction	dataset	sample_id	analysis_patient_id
+1	B cell	19	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+1	Mast cell	15	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+1	Myeloid cell	37	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+1	NK	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+1	Neutrophil	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+1	Plasma cell	96	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+1	T cell	126	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T1	Liu_2024_Cancer_Res.Pt01
+2	B cell	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+2	Mast cell	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+2	Myeloid cell	88	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+2	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+2	Neutrophil	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+2	Plasma cell	82	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+2	T cell	117	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	Liu_2024_Cancer_Res.Pt01
+3	B cell	9	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T1	Liu_2024_Cancer_Res.Pt02
+3	Mast cell	36	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T1	Liu_2024_Cancer_Res.Pt02
+3	Myeloid cell	38	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T1	Liu_2024_Cancer_Res.Pt02
+3	Neutrophil	41	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T1	Liu_2024_Cancer_Res.Pt02
+3	Plasma cell	109	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T1	Liu_2024_Cancer_Res.Pt02
+3	T cell	67	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T1	Liu_2024_Cancer_Res.Pt02
+4	B cell	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T2	Liu_2024_Cancer_Res.Pt02
+4	Mast cell	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T2	Liu_2024_Cancer_Res.Pt02
+4	Myeloid cell	65	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T2	Liu_2024_Cancer_Res.Pt02
+4	NK	6	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T2	Liu_2024_Cancer_Res.Pt02
+4	Neutrophil	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T2	Liu_2024_Cancer_Res.Pt02
+4	T cell	223	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt02_T2	Liu_2024_Cancer_Res.Pt02
+5	B cell	17	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T1	Liu_2024_Cancer_Res.Pt03
+5	Mast cell	11	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T1	Liu_2024_Cancer_Res.Pt03
+5	Myeloid cell	78	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T1	Liu_2024_Cancer_Res.Pt03
+5	NK	5	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T1	Liu_2024_Cancer_Res.Pt03
+5	Plasma cell	56	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T1	Liu_2024_Cancer_Res.Pt03
+5	T cell	133	2	0.015037593984962405	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T1	Liu_2024_Cancer_Res.Pt03
+6	Mast cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T2	Liu_2024_Cancer_Res.Pt03
+6	Myeloid cell	174	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T2	Liu_2024_Cancer_Res.Pt03
+6	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T2	Liu_2024_Cancer_Res.Pt03
+6	Plasma cell	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T2	Liu_2024_Cancer_Res.Pt03
+6	T cell	121	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt03_T2	Liu_2024_Cancer_Res.Pt03
+7	B cell	26	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T1	Liu_2024_Cancer_Res.Pt04
+7	Mast cell	18	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T1	Liu_2024_Cancer_Res.Pt04
+7	Myeloid cell	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T1	Liu_2024_Cancer_Res.Pt04
+7	Neutrophil	101	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T1	Liu_2024_Cancer_Res.Pt04
+7	Plasma cell	80	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T1	Liu_2024_Cancer_Res.Pt04
+7	T cell	72	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T1	Liu_2024_Cancer_Res.Pt04
+8	B cell	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+8	Mast cell	9	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+8	Myeloid cell	130	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+8	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+8	Neutrophil	60	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+8	Plasma cell	10	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+8	T cell	86	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt04_T2	Liu_2024_Cancer_Res.Pt04
+9	B cell	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T1	Liu_2024_Cancer_Res.Pt05
+9	Myeloid cell	20	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T1	Liu_2024_Cancer_Res.Pt05
+9	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T1	Liu_2024_Cancer_Res.Pt05
+9	Neutrophil	247	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T1	Liu_2024_Cancer_Res.Pt05
+9	Plasma cell	10	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T1	Liu_2024_Cancer_Res.Pt05
+9	T cell	17	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T1	Liu_2024_Cancer_Res.Pt05
+10	B cell	22	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+10	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+10	Myeloid cell	21	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+10	NK	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+10	Neutrophil	116	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+10	Plasma cell	9	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+10	T cell	128	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt05_T2	Liu_2024_Cancer_Res.Pt05
+11	B cell	26	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+11	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+11	Mast cell	8	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+11	Myeloid cell	17	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+11	NK	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+11	Plasma cell	58	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+11	T cell	147	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T1	Liu_2024_Cancer_Res.Pt06
+12	B cell	6	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+12	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+12	Mast cell	6	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+12	Myeloid cell	138	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+12	Neutrophil	24	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+12	Plasma cell	14	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+12	T cell	111	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T2	Liu_2024_Cancer_Res.Pt06
+13	B cell	6	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	Mast cell	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	Myeloid cell	179	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	NK	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	Neutrophil	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	Plasma cell	10	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+13	T cell	93	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt06_T3	Liu_2024_Cancer_Res.Pt06
+14	B cell	49	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+14	Mast cell	8	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+14	Myeloid cell	24	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+14	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+14	Neutrophil	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+14	Plasma cell	105	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+14	T cell	109	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T1	Liu_2024_Cancer_Res.Pt07
+15	Mast cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T2	Liu_2024_Cancer_Res.Pt07
+15	Myeloid cell	73	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T2	Liu_2024_Cancer_Res.Pt07
+15	Neutrophil	170	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T2	Liu_2024_Cancer_Res.Pt07
+15	Plasma cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T2	Liu_2024_Cancer_Res.Pt07
+15	T cell	55	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt07_T2	Liu_2024_Cancer_Res.Pt07
+16	B cell	11	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+16	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+16	Mast cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+16	Myeloid cell	19	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+16	Neutrophil	7	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+16	Plasma cell	65	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+16	T cell	196	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T1	Liu_2024_Cancer_Res.Pt08
+17	Mast cell	9	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T2	Liu_2024_Cancer_Res.Pt08
+17	Myeloid cell	24	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T2	Liu_2024_Cancer_Res.Pt08
+17	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T2	Liu_2024_Cancer_Res.Pt08
+17	Neutrophil	42	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T2	Liu_2024_Cancer_Res.Pt08
+17	Plasma cell	52	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T2	Liu_2024_Cancer_Res.Pt08
+17	T cell	171	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T2	Liu_2024_Cancer_Res.Pt08
+18	B cell	5	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T3	Liu_2024_Cancer_Res.Pt08
+18	Mast cell	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T3	Liu_2024_Cancer_Res.Pt08
+18	Myeloid cell	143	1	0.006993006993006993	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T3	Liu_2024_Cancer_Res.Pt08
+18	NK	4	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T3	Liu_2024_Cancer_Res.Pt08
+18	Plasma cell	19	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T3	Liu_2024_Cancer_Res.Pt08
+18	T cell	126	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T3	Liu_2024_Cancer_Res.Pt08
+19	B cell	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+19	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+19	Mast cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+19	Myeloid cell	114	2	0.017543859649122806	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+19	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+19	Plasma cell	40	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+19	T cell	140	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt08_T4	Liu_2024_Cancer_Res.Pt08
+20	B cell	20	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+20	Mast cell	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+20	Myeloid cell	65	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+20	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+20	Neutrophil	36	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+20	Plasma cell	87	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+20	T cell	87	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T1	Liu_2024_Cancer_Res.Pt11
+21	B cell	5	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T2	Liu_2024_Cancer_Res.Pt11
+21	Mast cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T2	Liu_2024_Cancer_Res.Pt11
+21	Myeloid cell	42	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T2	Liu_2024_Cancer_Res.Pt11
+21	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T2	Liu_2024_Cancer_Res.Pt11
+21	Plasma cell	12	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T2	Liu_2024_Cancer_Res.Pt11
+21	T cell	238	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt11_T2	Liu_2024_Cancer_Res.Pt11
+22	B cell	62	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+22	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+22	Mast cell	18	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+22	Myeloid cell	13	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+22	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+22	Plasma cell	11	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+22	T cell	193	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T1	Liu_2024_Cancer_Res.Pt15
+23	B cell	3	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T2	Liu_2024_Cancer_Res.Pt15
+23	Mast cell	16	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T2	Liu_2024_Cancer_Res.Pt15
+23	Myeloid cell	126	1	0.007936507936507936	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T2	Liu_2024_Cancer_Res.Pt15
+23	NK	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T2	Liu_2024_Cancer_Res.Pt15
+23	Plasma cell	54	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T2	Liu_2024_Cancer_Res.Pt15
+23	T cell	100	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt15_T2	Liu_2024_Cancer_Res.Pt15
+24	B cell	16	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+24	Mast cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+24	Myeloid cell	139	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+24	NK	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+24	Neutrophil	41	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+24	Plasma cell	12	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+24	T cell	89	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T1	Liu_2024_Cancer_Res.Pt18
+25	B cell	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	ILC	1	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	Mast cell	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	Myeloid cell	90	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	NK	5	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	Neutrophil	6	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	Plasma cell	2	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+25	T cell	193	0	0.0	Liu_2024_mixCD45PosCD45Neg	Liu_2024_mixCD45PosCD45Neg.Pt18_T2	Liu_2024_Cancer_Res.Pt18
+26	B cell	14	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+26	ILC	1	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+26	Mast cell	3	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+26	Myeloid cell	39	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+26	NK	5	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+26	Plasma cell	2	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+26	T cell	236	0	0.0	Che_2021	Che_2021.COL07_CRC	Che_2021_Cell_Discov.COL07
+27	B cell	4	0	0.0	Che_2021	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07
+27	Myeloid cell	40	0	0.0	Che_2021	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07
+27	NK	1	0	0.0	Che_2021	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07
+27	Plasma cell	2	0	0.0	Che_2021	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07
+27	T cell	253	0	0.0	Che_2021	Che_2021.COL07_LM	Che_2021_Cell_Discov.COL07
+28	B cell	31	0	0.0	Che_2021	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12
+28	ILC	1	0	0.0	Che_2021	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12
+28	Mast cell	5	0	0.0	Che_2021	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12
+28	Myeloid cell	24	0	0.0	Che_2021	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12
+28	NK	30	0	0.0	Che_2021	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12
+28	T cell	209	0	0.0	Che_2021	Che_2021.COL12_CRC	Che_2021_Cell_Discov.COL12
+29	B cell	1	0	0.0	Che_2021	Che_2021.COL12_LM	Che_2021_Cell_Discov.COL12
+29	Myeloid cell	26	0	0.0	Che_2021	Che_2021.COL12_LM	Che_2021_Cell_Discov.COL12
+29	NK	9	0	0.0	Che_2021	Che_2021.COL12_LM	Che_2021_Cell_Discov.COL12
+29	T cell	264	0	0.0	Che_2021	Che_2021.COL12_LM	Che_2021_Cell_Discov.COL12
+30	B cell	8	0	0.0	Che_2021	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15
+30	ILC	1	0	0.0	Che_2021	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15
+30	Mast cell	4	0	0.0	Che_2021	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15
+30	Myeloid cell	81	0	0.0	Che_2021	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15
+30	NK	5	0	0.0	Che_2021	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15
+30	T cell	201	0	0.0	Che_2021	Che_2021.COL15_CRC	Che_2021_Cell_Discov.COL15
+31	B cell	6	0	0.0	Che_2021	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15
+31	Mast cell	1	0	0.0	Che_2021	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15
+31	Myeloid cell	126	0	0.0	Che_2021	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15
+31	NK	2	0	0.0	Che_2021	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15
+31	Neutrophil	2	0	0.0	Che_2021	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15
+31	T cell	163	0	0.0	Che_2021	Che_2021.COL15_LM	Che_2021_Cell_Discov.COL15
+32	B cell	13	0	0.0	Che_2021	Che_2021.COL16_CRC	Che_2021_Cell_Discov.COL16
+32	Myeloid cell	120	0	0.0	Che_2021	Che_2021.COL16_CRC	Che_2021_Cell_Discov.COL16
+32	NK	2	0	0.0	Che_2021	Che_2021.COL16_CRC	Che_2021_Cell_Discov.COL16
+32	T cell	165	0	0.0	Che_2021	Che_2021.COL16_CRC	Che_2021_Cell_Discov.COL16
+33	ILC	1	0	0.0	Che_2021	Che_2021.COL16_LM	Che_2021_Cell_Discov.COL16
+33	Myeloid cell	35	0	0.0	Che_2021	Che_2021.COL16_LM	Che_2021_Cell_Discov.COL16
+33	NK	9	0	0.0	Che_2021	Che_2021.COL16_LM	Che_2021_Cell_Discov.COL16
+33	Neutrophil	2	0	0.0	Che_2021	Che_2021.COL16_LM	Che_2021_Cell_Discov.COL16
+33	T cell	253	0	0.0	Che_2021	Che_2021.COL16_LM	Che_2021_Cell_Discov.COL16
+34	B cell	67	0	0.0	Che_2021	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18
+34	Mast cell	10	0	0.0	Che_2021	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18
+34	Myeloid cell	42	0	0.0	Che_2021	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18
+34	NK	4	0	0.0	Che_2021	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18
+34	Plasma cell	28	0	0.0	Che_2021	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18
+34	T cell	149	0	0.0	Che_2021	Che_2021.COL18_CRC	Che_2021_Cell_Discov.COL18
+35	B cell	8	0	0.0	Che_2021	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18
+35	ILC	1	0	0.0	Che_2021	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18
+35	Myeloid cell	25	0	0.0	Che_2021	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18
+35	NK	6	0	0.0	Che_2021	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18
+35	Plasma cell	1	0	0.0	Che_2021	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18
+35	T cell	259	1	0.003861003861003861	Che_2021	Che_2021.COL18_LM	Che_2021_Cell_Discov.COL18
+36	B cell	5	0	0.0	Ji_2024_scopeV2	Ji_2024_scopeV2.rectum_03T	Ji_2024_Cancer_Lett.rectum_03
+36	Mast cell	1	0	0.0	Ji_2024_scopeV2	Ji_2024_scopeV2.rectum_03T	Ji_2024_Cancer_Lett.rectum_03
+36	Myeloid cell	25	7	0.28	Ji_2024_scopeV2	Ji_2024_scopeV2.rectum_03T	Ji_2024_Cancer_Lett.rectum_03
+36	NK	8	1	0.125	Ji_2024_scopeV2	Ji_2024_scopeV2.rectum_03T	Ji_2024_Cancer_Lett.rectum_03
+36	Plasma cell	3	0	0.0	Ji_2024_scopeV2	Ji_2024_scopeV2.rectum_03T	Ji_2024_Cancer_Lett.rectum_03
+36	T cell	258	9	0.03488372093023256	Ji_2024_scopeV2	Ji_2024_scopeV2.rectum_03T	Ji_2024_Cancer_Lett.rectum_03
+37	B cell	8	0	0.0	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03
+37	Myeloid cell	91	17	0.18681318681318682	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03
+37	NK	4	0	0.0	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03
+37	Neutrophil	37	2	0.05405405405405406	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03
+37	Plasma cell	5	0	0.0	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03
+37	T cell	155	1	0.0064516129032258064	Ji_2024_scopeV2	Ji_2024_scopeV2.metastasis	Ji_2024_Cancer_Lett.rectum_03
+38	B cell	19	0	0.0	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+38	Mast cell	1	0	0.0	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+38	Myeloid cell	9	0	0.0	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+38	NK	2	0	0.0	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+38	Plasma cell	22	0	0.0	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+38	T cell	247	0	0.0	Zheng_2022	Zheng_2022.P1_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	B cell	30	0	0.0	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	ILC	1	0	0.0	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	Myeloid cell	47	1	0.02127659574468085	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	NK	4	0	0.0	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	Neutrophil	3	0	0.0	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	Plasma cell	22	0	0.0	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+39	T cell	193	0	0.0	Zheng_2022	Zheng_2022.P1_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P1
+40	B cell	40	0	0.0	Zheng_2022	Zheng_2022.P2_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+40	Mast cell	4	0	0.0	Zheng_2022	Zheng_2022.P2_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+40	Myeloid cell	74	1	0.013513513513513514	Zheng_2022	Zheng_2022.P2_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+40	Neutrophil	11	0	0.0	Zheng_2022	Zheng_2022.P2_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+40	Plasma cell	4	2	0.5	Zheng_2022	Zheng_2022.P2_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+40	T cell	167	3	0.017964071856287425	Zheng_2022	Zheng_2022.P2_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+41	B cell	64	0	0.0	Zheng_2022	Zheng_2022.P2_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+41	Mast cell	6	0	0.0	Zheng_2022	Zheng_2022.P2_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+41	Myeloid cell	30	0	0.0	Zheng_2022	Zheng_2022.P2_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+41	NK	3	0	0.0	Zheng_2022	Zheng_2022.P2_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+41	Plasma cell	36	0	0.0	Zheng_2022	Zheng_2022.P2_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+41	T cell	161	1	0.006211180124223602	Zheng_2022	Zheng_2022.P2_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P2
+42	B cell	129	0	0.0	Zheng_2022	Zheng_2022.P3_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+42	Mast cell	1	0	0.0	Zheng_2022	Zheng_2022.P3_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+42	Myeloid cell	12	1	0.08333333333333333	Zheng_2022	Zheng_2022.P3_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+42	Neutrophil	1	0	0.0	Zheng_2022	Zheng_2022.P3_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+42	Plasma cell	34	0	0.0	Zheng_2022	Zheng_2022.P3_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+42	T cell	123	0	0.0	Zheng_2022	Zheng_2022.P3_adenoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	B cell	43	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	ILC	1	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	Mast cell	5	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	Myeloid cell	66	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	NK	9	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	Neutrophil	5	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	Plasma cell	28	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3
+43	T cell	143	0	0.0	Zheng_2022	Zheng_2022.P3_carcinoma	Zheng_2022_Signal_Transduct_Target_Ther.P3

@@ -1,0 +1,55 @@
+{
+  "status": "diagnostic_seed_adjacent_k_and_independent_holdout_comparison",
+  "generated_at": "2026-08-10T14:03:19.953773+00:00",
+  "implementation_sha256": "8B0C33FD6CDA693BA02A15266582F1E5E17FF9073226CA120845ACB7EB2E6815",
+  "runs": [
+    {
+      "label": "seed_20260810",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/seed_20260810",
+      "name": "crc_cna_cnmf"
+    },
+    {
+      "label": "seed_20260811",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/seed_20260811",
+      "name": "crc_cna_cnmf"
+    },
+    {
+      "label": "holdout_A",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/holdout_A",
+      "name": "crc_cna_cnmf"
+    },
+    {
+      "label": "holdout_B",
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/cnmf_cna_runs_v1/holdout_B",
+      "name": "crc_cna_cnmf"
+    }
+  ],
+  "top_n": 50,
+  "permutations": 100,
+  "seed": 20260810,
+  "comparisons": 56,
+  "matched_program_pairs": 410,
+  "pairs_exceeding_both_nulls": 344,
+  "independent_holdout_matched_pairs": 45,
+  "independent_holdout_pairs_exceeding_both_nulls": 30,
+  "program_families_replicating_across_independent_holdouts": 3,
+  "claim_boundary": "The run includes patient- and dataset-disjoint state-stratified A/B folds, but the folds remain selected observational CRC samples and are not randomized cohorts. Program families are still provisional until K, sufficient initializations, balanced resampling, CNA-set sensitivity and technical-program review are completed.",
+  "outputs": {
+    "P0_cnmf_stability.tsv": {
+      "bytes": 55677,
+      "sha256": "B26C47144EB676D0723C90A071CCC5C18270DFF8CA4A8F405E9D06693EF7F44F"
+    },
+    "P0_cnmf_null_thresholds.tsv": {
+      "bytes": 5442,
+      "sha256": "8CB3DDA3056FA9126B21C41B0921C845587CA9DECA9E29B3937F908643B01EF4"
+    },
+    "P0_cnmf_program_membership.tsv": {
+      "bytes": 13822,
+      "sha256": "B48993A80078CA993F33608BFC0BB7C2D12C7A3DA91FA66581E51A2A98258598"
+    },
+    "P0_cnmf_program_family_summary.tsv": {
+      "bytes": 389,
+      "sha256": "4B730EF1B96B7540A78B1F3D36AEC2316B654316EF6E6371844B8C0D4BB3865F"
+    }
+  }
+}

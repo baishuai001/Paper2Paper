@@ -2,16 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
-from .registry import (
-    SAFE_ID,
-    capability_coverage,
-    load_workspace_index,
-    validate_registries,
-)
-from .regression import build_regression_plan
+from .learning import learning_summary, write_learning_report
 from .workspace import (
     init_workspace,
     load_manifest,
@@ -23,34 +18,70 @@ from .workspace import (
 )
 
 
+SAFE_ID = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._@-]*$")
+
+
+def _load_repository_workspaces(repo_root: Path) -> dict[str, Path]:
+    """Index the repository's direct Pilot and manuscript workspaces.
+
+    This is deliberately local and small. Paper2Paper needs to prevent an
+    accidental duplicate project ID or an out-of-repository promotion; it does
+    not need a cross-paper platform to do so.
+    """
+
+    root = Path(repo_root).resolve()
+    index: dict[str, Path] = {}
+    for parent_name in ("pilots", "manuscript-projects"):
+        parent = root / parent_name
+        if not parent.is_dir():
+            continue
+        for manifest_path in sorted(parent.glob("*/PROJECT.json")):
+            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+            project_id = manifest.get("project_id")
+            if not isinstance(project_id, str) or not SAFE_ID.fullmatch(project_id):
+                raise ValueError(
+                    f"invalid project_id in {manifest_path.relative_to(root)}"
+                )
+            workspace = manifest_path.parent.resolve()
+            if project_id in index:
+                raise ValueError(
+                    f"duplicate project_id in repository workspaces: {project_id}"
+                )
+            index[project_id] = workspace
+    return index
+
+
 def _find_repo_root(path: Path) -> Path | None:
     start = Path(path).resolve()
     if start.is_file():
         start = start.parent
     for candidate in (start, *start.parents):
-        if (candidate / "pyproject.toml").is_file() and (
-            candidate / "registries"
-        ).is_dir():
+        if (
+            (candidate / "pyproject.toml").is_file()
+            and (candidate / "pilots").is_dir()
+            and (candidate / "manuscript-projects").is_dir()
+        ):
             return candidate
     return None
 
 
-def _require_registered_pilot(repo_root: Path, pilot_dir: Path) -> None:
-    """Reject promotion when the Pilot is not owned by this registry root."""
+def _require_repository_pilot(repo_root: Path, pilot_dir: Path) -> None:
+    """Reject promotion when the Pilot is not owned by this repository."""
 
     root = Path(repo_root).resolve()
     pilot = Path(pilot_dir).resolve()
     pilots_root = (root / "pilots").resolve()
-    if not pilot.is_relative_to(pilots_root):
+    if pilot.parent != pilots_root:
         raise ValueError(
-            "promotion Pilot must be inside the selected repository's pilots directory"
+            "promotion Pilot must be one direct child of the selected "
+            "repository's pilots directory"
         )
     manifest = load_manifest(pilot)
     project_id = manifest.get("project_id", "")
-    record = load_workspace_index(root).get(str(project_id))
-    if record is None or record.path.resolve() != pilot:
+    record = _load_repository_workspaces(root).get(str(project_id))
+    if record is None or record != pilot:
         raise ValueError(
-            "promotion Pilot is not registered by project_id and path in this repository"
+            "promotion Pilot project_id and path do not match this repository"
         )
 
 
@@ -76,12 +107,12 @@ def _require_manuscript_target(
         raise ValueError(
             "promotion target must not already exist; choose a new manuscript directory"
         )
-    workspace_index = load_workspace_index(root)
+    workspace_index = _load_repository_workspaces(root)
     if project_id in workspace_index:
         raise ValueError(
             f"promotion project_id already exists in this repository: {project_id}"
         )
-    if any(record.path.resolve() == target for record in workspace_index.values()):
+    if target in workspace_index.values():
         raise ValueError(
             "promotion target is already registered by another project_id"
         )
@@ -91,8 +122,8 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="paper2paper",
         description=(
-            "Audit real anchor papers, learn only scoped reusable controls, and "
-            "promote user-approved routes into manuscript projects."
+            "Turn real anchor-paper frameworks into evidence-backed manuscript "
+            "projects while recording workflow improvements discovered in use."
         ),
     )
     commands = parser.add_subparsers(dest="command", required=True)
@@ -141,27 +172,20 @@ def build_parser() -> argparse.ArgumentParser:
     )
     report_parser.add_argument("project_dir", type=Path)
 
-    registry_parser = commands.add_parser(
-        "validate-registry", help="validate cross-paper capabilities and regression evidence"
+    learn_parser = commands.add_parser(
+        "learn",
+        help=(
+            "aggregate workflow findings across Pilots without treating every "
+            "paper-specific issue as a product gap"
+        ),
     )
-    registry_parser.add_argument("repo_root", type=Path)
-    registry_parser.add_argument("--json", action="store_true")
-
-    coverage_parser = commands.add_parser(
-        "coverage", help="show evidence-derived capability coverage"
+    learn_parser.add_argument("repo_root", type=Path)
+    learn_parser.add_argument("--json", action="store_true")
+    learn_parser.add_argument(
+        "--write-report",
+        action="store_true",
+        help="write reports/workflow-learning.md from the source records",
     )
-    coverage_parser.add_argument("repo_root", type=Path)
-    coverage_parser.add_argument("--json", action="store_true")
-
-    regression_parser = commands.add_parser(
-        "regression-plan", help="select scoped regression cases for changed paths"
-    )
-    regression_parser.add_argument("repo_root", type=Path)
-    regression_parser.add_argument(
-        "--changed-path", action="append", required=True,
-        help="repository-relative changed path; repeat for multiple paths",
-    )
-    regression_parser.add_argument("--json", action="store_true")
 
     return parser
 
@@ -184,18 +208,12 @@ def main(argv: list[str] | None = None) -> int:
             repo_root = args.repo_root or _find_repo_root(args.pilot_dir)
             if repo_root is None:
                 raise ValueError(
-                    "promotion requires a Paper2Paper repository root with registries"
+                    "promotion requires a Paper2Paper repository root"
                 )
-            _require_registered_pilot(repo_root, args.pilot_dir)
+            _require_repository_pilot(repo_root, args.pilot_dir)
             _require_manuscript_target(
                 repo_root, args.project_dir, args.project_id
             )
-            registry_report = validate_registries(repo_root)
-            if not registry_report.ok:
-                raise ValueError(
-                    "repository registries and workspace links must validate before "
-                    "promotion: " + "; ".join(registry_report.errors)
-                )
             path = promote_workspace(
                 args.pilot_dir,
                 args.route_id,
@@ -271,55 +289,37 @@ def main(argv: list[str] | None = None) -> int:
             print(f"wrote: {path}")
             return 0
 
-
-        if args.command == "validate-registry":
-            report = validate_registries(args.repo_root)
-            payload = {
-                "ok": report.ok,
-                "errors": report.errors,
-                "warnings": report.warnings,
-            }
+        if args.command == "learn":
+            summary = learning_summary(args.repo_root)
+            if args.write_report:
+                report_path = write_learning_report(args.repo_root)
+            else:
+                report_path = None
             if args.json:
+                payload = dict(summary)
+                payload["report_path"] = str(report_path) if report_path else ""
                 print(json.dumps(payload, indent=2, ensure_ascii=False))
             else:
-                for warning in report.warnings:
+                for warning in summary["validation_warnings"]:
                     print(f"WARNING: {warning}")
-                for error in report.errors:
+                for error in summary["validation_errors"]:
                     print(f"ERROR: {error}")
+                print(f"pilots scanned: {summary['pilots_scanned']}")
+                print(f"issues scanned: {summary['issues_scanned']}")
+                print(f"workflow candidates: {summary['workflow_candidates']}")
                 print(
-                    "cross-paper registry validation passed"
-                    if report.ok
-                    else "cross-paper registry validation failed"
+                    "classified source issues: "
+                    f"{summary['classified_source_issues']}"
                 )
-            return 0 if report.ok else 1
+                print(
+                    "untriaged candidates: "
+                    f"{len(summary['untriaged_candidates'])}"
+                )
+                if report_path:
+                    print(f"wrote: {report_path}")
+            return 0 if summary["ok"] else 1
 
-        if args.command == "coverage":
-            coverage = capability_coverage(args.repo_root)
-            if args.json:
-                print(json.dumps(coverage, indent=2, ensure_ascii=False))
-            else:
-                for capability_id, status in sorted(coverage.items()):
-                    print(f"{capability_id}\t{status}")
-            return 0
 
-        if args.command == "regression-plan":
-            plan = build_regression_plan(args.repo_root, args.changed_path)
-            payload = {
-                "changed_paths": plan.changed_paths,
-                "selected": [
-                    {"case_id": item.case_id, "reasons": item.reasons}
-                    for item in plan.selected
-                ],
-                "unmatched_paths": plan.unmatched_paths,
-            }
-            if args.json:
-                print(json.dumps(payload, indent=2, ensure_ascii=False))
-            else:
-                for item in plan.selected:
-                    print(f"{item.case_id}\t{' | '.join(item.reasons)}")
-                for path in plan.unmatched_paths:
-                    print(f"UNMATCHED\t{path}")
-            return 0
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2

@@ -1,0 +1,31 @@
+metric	group	value
+patient_rows	all	650
+sample_rows	all	1670
+unique_sample_patient_ids	all	641
+patients_without_samples	all	9
+orphan_sample_patient_ids	all	0
+response_nonmissing_patients	all	106
+RECIST_nonmissing_patients	all	78
+sample_type_samples	tumor	674
+sample_type_samples	normal	560
+sample_type_samples	metastasis	175
+sample_type_samples	polyp	116
+sample_type_samples	blood	103
+sample_type_samples	lymph node	42
+sample_tissue_samples	colon	1349
+sample_tissue_samples	liver	175
+sample_tissue_samples	blood	104
+sample_tissue_samples	mesenteric lymph nodes	42
+treatment_status_patients	naive	487
+treatment_status_patients	treated	103
+treatment_status_patients	<missing>	60
+sample_type_patients	tumor	429
+sample_type_patients	normal	348
+sample_type_patients	polyp	97
+sample_type_patients	metastasis	91
+sample_type_patients	blood	67
+sample_type_patients	lymph node	36
+sample_tissue_patients	colon	597
+sample_tissue_patients	liver	91
+sample_tissue_patients	blood	68
+sample_tissue_patients	mesenteric lymph nodes	36

@@ -1,0 +1,49 @@
+{
+  "status": "prepared_real_sample_input",
+  "generated_at": "2026-08-10T10:49:55.026256+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "sample_id": "Lee_2020_KUL3.KUL30_B",
+  "patient_id": "Lee_2020_Nat_Genet.SC030",
+  "raw_matrix": "raw/X",
+  "genes": 28088,
+  "cells": 600,
+  "nonzero_counts": 1118835,
+  "role_counts": {
+    "author_cancer": 300,
+    "known_normal_reference": 300
+  },
+  "reference_labels": [
+    "T cell",
+    "B cell",
+    "Plasma cell",
+    "Myeloid cell",
+    "Neutrophil",
+    "NK",
+    "Mast cell",
+    "ILC"
+  ],
+  "seed": 20260810,
+  "duplicate_gene_symbols_resolved": 31,
+  "outputs": {
+    "counts_genes_by_cells.mtx.gz": {
+      "bytes": 3334018,
+      "sha256": "BF7DAFCB04E982A67E409915E79B2D74799308326AE9D8AC72224C4608DD2F32"
+    },
+    "genes.tsv": {
+      "bytes": 230209,
+      "sha256": "AE4C8E40D8A6431501ABEFD87F1A9E2259D311DA2C6EFF5DF4709C0CAF5232A1"
+    },
+    "cells.tsv": {
+      "bytes": 25800,
+      "sha256": "5E52E2AD2E6149B32CF33F4CDEA9E54B7BFD7829B4F5D80340154828D25342DC"
+    },
+    "cell_metadata.tsv": {
+      "bytes": 90149,
+      "sha256": "9D9E4B1F7147A9B76E30DAC75A3323D6744A7A323C91B36D2B23C8632176E61A"
+    },
+    "gene_feature_map.tsv": {
+      "bytes": 2356094,
+      "sha256": "06FEA1455B3F3BFBF8E1EF2DBE5894CB4713AB7F4354F92A78A88AC7E5489A12"
+    }
+  }
+}

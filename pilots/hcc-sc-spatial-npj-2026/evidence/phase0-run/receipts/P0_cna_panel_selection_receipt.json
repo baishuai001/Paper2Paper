@@ -1,0 +1,37 @@
+{
+  "status": "real_data_cna_panel_selected_not_yet_executed",
+  "generated_at": "2026-08-10T12:45:12.819939+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_resource": {
+    "receipt": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/h5ad/P0_h5ad_receipt.json",
+    "bytes": 30875155333,
+    "sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+    "verification": "content SHA256 inherited from passed P0.0 receipt; downstream step rechecked resolved path and byte size without rehashing the 31 GB object"
+  },
+  "min_cancer": 50,
+  "min_reference": 50,
+  "states": [
+    "polyp",
+    "tumor",
+    "metastasis"
+  ],
+  "max_datasets_per_state": 4,
+  "eligible_samples": 500,
+  "eligible_datasets": 36,
+  "eligible_patients": 295,
+  "selected_samples": 12,
+  "selected_datasets": 12,
+  "selected_patients": 12,
+  "selection_is_outcome_blind": true,
+  "claim_boundary": "This table selects a diagnostic CNA panel from author labels and cell-count coverage. It does not establish malignancy or make state comparisons exchangeable across datasets.",
+  "outputs": {
+    "P0_cna_eligible_samples.tsv": {
+      "bytes": 276816,
+      "sha256": "345BD50A4C4E7475A8E1DAFAD562B420507066BCC5D5DC96F868736B45B15258"
+    },
+    "P0_cna_selected_panel.tsv": {
+      "bytes": 4436,
+      "sha256": "587EF5977BB03F8E595EA317B739AA8296E3577BB046593A50DFCA89796DBBAE"
+    }
+  }
+}

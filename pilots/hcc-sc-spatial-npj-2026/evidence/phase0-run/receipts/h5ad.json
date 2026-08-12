@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "generated_at": "2026-08-10T10:08:40.025900+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "bytes": 30875155333,
+  "sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+  "n_obs": 3790266,
+  "n_vars": 28127,
+  "root_keys": [
+    "X",
+    "layers",
+    "obs",
+    "obsm",
+    "obsp",
+    "raw",
+    "uns",
+    "var",
+    "varm",
+    "varp"
+  ],
+  "root_attrs": {
+    "encoding-type": "anndata",
+    "encoding-version": "0.1.0"
+  },
+  "obs_columns": 105,
+  "var_columns": 23,
+  "matrix_locations": [
+    "X",
+    "raw/X"
+  ],
+  "outputs": {
+    "P0_h5ad_obs_columns.tsv": {
+      "bytes": 5292,
+      "sha256": "CB5C766052736A5F58A47AC06ECF76437B18556012CD53A8EA94710000EB5F13"
+    },
+    "P0_h5ad_var_columns.tsv": {
+      "bytes": 1019,
+      "sha256": "8A4569CE37439A11FDFD0BB6CEEB726959C10DE7801B501701FA196D3B0376FD"
+    },
+    "P0_h5ad_matrices.tsv": {
+      "bytes": 265,
+      "sha256": "908D7396430E70C20C86B46706A5638897909B593911EBF6390829EE5611C6FA"
+    }
+  }
+}

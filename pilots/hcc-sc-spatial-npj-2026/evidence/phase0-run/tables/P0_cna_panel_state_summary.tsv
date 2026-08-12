@@ -1,0 +1,4 @@
+sample_type	samples	datasets	patients	author_cancer_cells	author_cancer_two_method_support	author_cancer_one_method_support	author_cancer_unresolved_without_support	author_cancer_defined_without_support_not_nonmalignancy_proof	author_cancer_one_or_two_method_support	author_cancer_method_unresolved	normal_reference_cells	normal_reference_copykat_aneuploid	normal_reference_scevan_tumor	normal_reference_unexpected_malignancy_support	author_cancer_two_method_support_fraction	normal_reference_unexpected_support_fraction
+metastasis	4	4	4	1200	489	148	530	33	637	553	1200	104	119	120	0.4075	0.1
+polyp	4	4	4	1200	808	170	57	165	978	59	1054	10	32	37	0.6733333333333333	0.03510436432637571
+tumor	4	4	4	1200	860	93	133	114	953	162	1200	2	4	5	0.7166666666666667	0.004166666666666667

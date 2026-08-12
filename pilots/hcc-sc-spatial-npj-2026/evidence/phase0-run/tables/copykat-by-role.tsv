@@ -1,0 +1,6 @@
+cna_input_role	copykat.pred	cna_evidence_class	cells	fraction_within_input_role
+author_cancer	aneuploid	aneuploid_supports_malignancy	133	0.44333333333333336
+author_cancer	diploid	diploid_does_not_exclude_malignancy	96	0.32
+author_cancer	not.defined	unresolved	71	0.23666666666666666
+known_normal_reference	diploid	diploid_does_not_exclude_malignancy	108	0.36
+known_normal_reference	not.defined	unresolved	192	0.64

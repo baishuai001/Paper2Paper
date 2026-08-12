@@ -1,0 +1,20 @@
+{
+  "status": "diagnostic_one_sample_copykat_completed",
+  "generated_at": "2026-08-10T11:26:24.356181+00:00",
+  "metadata_sha256": "9D9E4B1F7147A9B76E30DAC75A3323D6744A7A323C91B36D2B23C8632176E61A",
+  "prediction_sha256": "329363526093527E4DD9F8A1D46C843C65A6D3CB15A1CD3195BB082216050701",
+  "cells": 600,
+  "author_cancer_cells": 300,
+  "author_cancer_aneuploid": 133,
+  "author_cancer_diploid": 96,
+  "author_cancer_unresolved": 71,
+  "known_normal_cells": 300,
+  "known_normal_aneuploid": 0,
+  "claim_boundary": "Aneuploid calls support malignancy, but diploid calls do not prove nonmalignancy. This is one-sample CopyKAT evidence without SCEVAN sensitivity or DNA truth and cannot qualify the full atlas malignant set.",
+  "outputs": {
+    "P0_copykat_role_prediction.tsv": {
+      "bytes": 415,
+      "sha256": "C0587888E17E41BD9A151CFB0991C1ADBF516C102092A05E48346DA3CF33F57E"
+    }
+  }
+}

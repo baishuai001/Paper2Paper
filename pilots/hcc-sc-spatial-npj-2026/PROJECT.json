@@ -1,0 +1,31 @@
+{
+  "schema_version": "3.1.0",
+  "workspace_kind": "pilot",
+  "project_id": "P2P-HCC-SC-SPATIAL-NPJ-2026",
+  "title": "HCC single-cell/spatial cancer-switch pilot",
+  "stage": "route_generation",
+  "selected_route_id": "",
+  "anchor": {
+    "title": "Large-scale single-cell analysis and in silico perturbation reveal dynamic evolution of HCC: from initiation to therapeutic targeting",
+    "doi": "10.1038/s41698-026-01307-2",
+    "citation": "Xia P, Shuang S, Fu D, et al. npj Precision Oncology. 2026;10:100.",
+    "source_location": "WorkSpace/HCC_sc_spatial_npj_2026/PDF与图片; source PDFs and supplements remain outside Git"
+  },
+  "provenance": {
+    "source_pilot_id": "",
+    "source_route_id": "",
+    "source_run_ids": ""
+  },
+  "goal": {
+    "paper_type": "anchor-paper pilot",
+    "target_audience": "beginner-led project with AI assistance",
+    "success_definition": "Determine honestly whether the anchor's full evidence chain can be transferred to another cancer, identify candidate diseases and blockers, and expose Paper2Paper gaps before any route is promoted"
+  },
+  "constraints": {
+    "beginner_led": true,
+    "deadline": "",
+    "compute": "Phase 0 real execution on the project cloud server with frozen Python/R environments; later spatial and Geneformer GPU environments remain unqualified",
+    "skills": "single-cell RNA-seq, spatial transcriptomics, donor-aware statistics, Python/R, foundation-model audit"
+  },
+  "stop_rule": "Do not call a cancer-switch route executable until representative target files are parsed, all required comparison groups are adequately represented, the critical code path is smoke-tested, and nearest-paper overlap is resolved"
+}

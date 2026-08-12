@@ -37,17 +37,16 @@ implementation detail.
 - It is not a deployable single-patient model because the reconstructed score
   uses cohort-specific standardization and cutoff.
 - It is not a new manuscript direction by itself. It is a worked example for a
-  fixed bulk-signature and survival-analysis module, not a benchmark for other
+  fixed bulk-signature and survival-analysis implementation, not a benchmark for other
   paper types or for Paper2Paper as a whole.
 
 ## Controls exercised and their limits
 
-The pilot exercised field-level resource provenance, cross-source identity
+The Pilot exercised field-level resource provenance, cross-source identity
 checks, a cohort analysis-role ledger, a computable signature contract,
 target-environment path evidence, structured issue recording, checksum pinning,
-and separate execution/promotion decisions. Their exact coverage and maturity
-are recorded in the central capability, module, promotion and regression
-registries. One gastric reference plus focused tests does not establish an
-independent transfer. The gastric data, formula, expected results and scientific
-conclusions do not become defaults for another Pilot. Details and paper-specific
-defects are separated in `pilot-findings.md` and `evidence/issues.tsv`.
+and separate execution/user-approval decisions. One gastric run plus focused
+tests does not establish compatibility with another paper. The gastric data,
+formula, expected results and scientific conclusions do not become defaults for
+another Pilot. Details are recorded in `pilot-findings.md` and
+`evidence/issues.tsv`.

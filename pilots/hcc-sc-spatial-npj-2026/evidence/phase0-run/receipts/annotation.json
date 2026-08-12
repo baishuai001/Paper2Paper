@@ -1,0 +1,35 @@
+{
+  "status": "diagnostic_only_author_labels_not_overwritten",
+  "generated_at": "2026-08-10T10:39:36.853041+00:00",
+  "h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+  "h5ad_sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+  "marker_table": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/colon_atlas_cell_type_marker_genes.csv",
+  "marker_table_sha256": "CCC7302165072307DE087155D053DB48AD3BCAF1CCDB3DE33CED099B57086834",
+  "n_obs": 3790266,
+  "sampled_cells": 132937,
+  "sampled_patients": 588,
+  "sampled_datasets": 71,
+  "available_marker_genes": 186,
+  "missing_marker_genes": 0,
+  "duplicate_marker_symbols_resolved": 0,
+  "seed": 20260810,
+  "claim_boundary": "This cross-patient marker audit supports or challenges author labels; it does not independently establish malignancy and does not replace author_label with reviewed_label.",
+  "outputs": {
+    "P0_annotation_evidence.tsv": {
+      "bytes": 20773,
+      "sha256": "6A63E305D611EE0FA962F54E56DB95327D21BAEA8EAB71054B6DC6E3F6BB09AA"
+    },
+    "P0_annotation_sampled_coverage.tsv": {
+      "bytes": 2127,
+      "sha256": "50820AACE3733314E1B9B3B86C9C41BF1E1ADCCEDEE39B8EA6442C04A99F54DB"
+    },
+    "P0_annotation_missing_markers.tsv": {
+      "bytes": 20,
+      "sha256": "02A07F5482A7319BB517E301D1C79F627CEFE47FEF506AD9A4F58B8DC4E479D4"
+    },
+    "P0_annotation_gene_map.tsv": {
+      "bytes": 15741,
+      "sha256": "E683D764842E487E52D3884B8E9A9F82BE41D9B286DB139E7E5D146CCE79F163"
+    }
+  }
+}

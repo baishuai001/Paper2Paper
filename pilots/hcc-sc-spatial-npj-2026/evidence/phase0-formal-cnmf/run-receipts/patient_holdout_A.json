@@ -1,0 +1,75 @@
+{
+  "status": "formal_liu_candidate_run_completed_pending_k_and_replication_review",
+  "generated_at": "2026-08-12T01:55:41.700906+00:00",
+  "implementation_sha256": "E8AC3E7558861F8EE51705EFDCFAE0B2773534CE9C73C48E4B6670572AA934B0",
+  "cnmf_version": "1.7.1",
+  "counts_h5ad": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/outputs/formal_cnmf_v1/patient_holdouts/crc_liu_patient_holdout_A_counts.h5ad",
+  "input": {
+    "cells": 5116,
+    "genes": 28088,
+    "patients": 6,
+    "datasets": 1,
+    "states": [
+      "metastasis",
+      "tumor"
+    ],
+    "selection_basis": "copykat_aneuploid_and_scevan_tumor_intersection",
+    "selection_classes": [
+      "author_cancer_two_method_malignancy_support"
+    ],
+    "formal_analysis_roles": [
+      "liu_primary_discovery"
+    ],
+    "cell_sampling_seeds": [
+      20260812
+    ],
+    "sha256": "8667FD22BF8D9E0B7AAEE886CD5E17E86AA59136D91EAC1272E7B5AEEB53ABB8"
+  },
+  "run_name": "crc_liu_formal_cnmf",
+  "run_role": "liu_patient_holdout",
+  "components": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "n_iter": 100,
+  "seed": 20260812,
+  "density_threshold": 0.1,
+  "num_highvar_genes": 2000,
+  "max_nmf_iter": 1000,
+  "total_workers": 8,
+  "factorization_execution": "official cNMF task partition across isolated worker processes",
+  "input_processing": "official cNMF TPM normalization, HVG selection and nonnegative variance scaling; no cross-dataset batch correction in this diagnostic run",
+  "claim_boundary": "This run satisfies the frozen Liu K=5-20 and >=100-initialization candidate contract. It does not itself freeze K or name a program. Cross-NMF-seed, cell-resampling and paired-patient-holdout comparisons must agree, followed by Che external projection.",
+  "outputs": {
+    "P0_cnmf_k_selection.tsv": {
+      "bytes": 1124,
+      "sha256": "C49505EA6C7E9EB1341BEEC4D12240B262BAA008A76E46B5FC2F56B357354315"
+    },
+    "P0_cnmf_patient_dataset_mixing.tsv": {
+      "bytes": 46820,
+      "sha256": "3EC3A30EB5548B7C1935BBDA54C3BF0C47F6BDA65A1A3B68A6A7B61F66EBC083"
+    },
+    "P0_cnmf_top_genes.tsv": {
+      "bytes": 288974,
+      "sha256": "076283DD959C59FF1B2FB6F29843336A00A6799B9A3C4ED8D0F5F7A1D9AD611D"
+    },
+    "crc_liu_formal_cnmf/crc_liu_formal_cnmf.k_selection.png": {
+      "bytes": 95195,
+      "sha256": "BD9184CEEC03B3C25F91614C33B0C0B57D626E77BA89499F1199E633A0295580"
+    }
+  }
+}

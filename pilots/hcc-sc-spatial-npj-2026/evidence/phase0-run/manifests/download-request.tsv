@@ -1,0 +1,2 @@
+resource_id	url	expected_bytes	started_at	output_part	output_final
+CRC-RES04	https://datasets.cellxgene.cziscience.com/4a8b9568-965e-46b8-a427-baab6bf018e5.h5ad	30875155333	2026-08-10T17:34:42+08:00	raw/crc_atlas_cellxgene.h5ad.part	raw/crc_atlas_cellxgene.h5ad

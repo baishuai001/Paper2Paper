@@ -1,0 +1,3 @@
+matrix	storage	encoding	shape	dtype	sample_n	sample_min	sample_max	nonnegative	fraction_noninteger
+X	group	csr_matrix	3790266x28127	float32	100000	0.14645668864250183	6.048690319061279	True	1.0
+raw/X	group	csr_matrix	3790266x28127	float32	100000	1.0	403.0	True	0.0

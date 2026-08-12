@@ -1,0 +1,11 @@
+panel_patient_id	panel_sample_type	available_dual_supported_cells	selected_cells	cap	cell_sampling_seed
+Che_2021_Cell_Discov.COL07	metastasis	649	500	500	20260812
+Che_2021_Cell_Discov.COL07	tumor	2081	500	500	20260812
+Che_2021_Cell_Discov.COL12	metastasis	261	261	500	20260812
+Che_2021_Cell_Discov.COL12	tumor	177	177	500	20260812
+Che_2021_Cell_Discov.COL15	metastasis	1128	500	500	20260812
+Che_2021_Cell_Discov.COL15	tumor	405	405	500	20260812
+Che_2021_Cell_Discov.COL16	metastasis	105	105	500	20260812
+Che_2021_Cell_Discov.COL16	tumor	1023	500	500	20260812
+Che_2021_Cell_Discov.COL18	metastasis	187	187	500	20260812
+Che_2021_Cell_Discov.COL18	tumor	99	99	500	20260812

@@ -21,6 +21,14 @@ from .schema import (
 
 TODO = "<!-- TODO -->"
 DATA_READY = {"sample_parsed", "downloaded", "checksum_verified"}
+USE_CHECK_READY = {"passed", "limited", "not_applicable"}
+USE_CHECK_FIELDS = (
+    "decisive_group_check",
+    "design_confounding_check",
+    "measurement_fit_check",
+    "resource_fit_check",
+    "treatment_compatibility_check",
+)
 CODE_READY = {"smoke_passed", "tested"}
 PATH_READY = {"target_environment_passed", "staged_workaround"}
 MODEL_READY = {"locked", "verified"}
@@ -428,6 +436,28 @@ def _validate_route_alignment(
                 f"data candidate {row.get('data_id')} route does not match "
                 "its requirement"
             )
+    for row in tables.get("data_use_checks", []):
+        route_id = row.get("route_id")
+        requirement = data_requirements.get(row.get("requirement_id", ""), {})
+        candidate = data_candidates.get(row.get("data_id", ""), {})
+        if requirement and requirement.get("route_id") != route_id:
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} route does not "
+                "match its requirement"
+            )
+        if candidate and candidate.get("route_id") != route_id:
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} route does not "
+                "match its data candidate"
+            )
+        if (
+            candidate
+            and candidate.get("requirement_id") != row.get("requirement_id")
+        ):
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} requirement does "
+                "not match its data candidate"
+            )
     for row in tables.get("cohort_usage", []):
         parent = data_candidates.get(row.get("data_id", ""), {})
         if parent and parent.get("route_id") != row.get("route_id"):
@@ -569,6 +599,32 @@ def _data_resources_meet_contract(
     return required.issubset(supplied)
 
 
+def _data_use_checks_meet_contract(
+    route_id: str,
+    requirement_id: str,
+    data_id: str,
+    tables: dict[str, list[dict[str, str]]],
+) -> bool:
+    checks = [
+        row for row in tables.get("data_use_checks", [])
+        if row.get("route_id") == route_id
+        and row.get("requirement_id") == requirement_id
+        and row.get("data_id") == data_id
+        and row.get("use_decision") in {"use", "limit"}
+    ]
+    for check in checks:
+        states = [check.get(field_name, "") for field_name in USE_CHECK_FIELDS]
+        if not all(state in USE_CHECK_READY for state in states):
+            continue
+        has_limit = "limited" in states
+        if has_limit and check.get("use_decision") != "limit":
+            continue
+        if check.get("use_decision") == "limit" and not check.get("notes"):
+            continue
+        return True
+    return False
+
+
 def _cohort_usage_gaps(
     route_id: str, tables: dict[str, list[dict[str, str]]]
 ) -> list[str]:
@@ -655,6 +711,9 @@ def _execution_gaps_from_tables(
             and row.get("access") not in {"unavailable", "unknown"}
             and _data_candidate_meets_contract(requirement, row)
             and _data_resources_meet_contract(requirement, row, tables)
+            and _data_use_checks_meet_contract(
+                route_id, requirement_id, row.get("data_id", ""), tables
+            )
         ]
         if requirement.get("independence_required") == "true":
             usable = [
@@ -664,7 +723,7 @@ def _execution_gaps_from_tables(
             gaps.append(
                 f"data requirement {requirement_id} lacks a parsed usable "
                 "candidate meeting its contract, field-level resource "
-                "provenance and minimum subject count"
+                "provenance, minimum subject count and intended-use checks"
             )
 
     used_data_ids = {
@@ -1064,6 +1123,12 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             or not requirement
             or not _data_candidate_meets_contract(requirement, row)
             or not _data_resources_meet_contract(requirement, row, tables)
+            or not _data_use_checks_meet_contract(
+                row.get("route_id", ""),
+                row.get("requirement_id", ""),
+                row.get("data_id", ""),
+                tables,
+            )
             or (
                 requirement.get("independence_required") == "true"
                 and row.get("independence") != "independent"
@@ -1072,7 +1137,8 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             report.errors.append(
                 f"data candidate {row.get('data_id')} is marked use but does "
                 "not satisfy access, parsing, contract, field-level resource "
-                "provenance, sample-size and independence requirements"
+                "provenance, sample-size, intended-use and independence "
+                "requirements"
             )
     for row in tables.get("data_resources", []):
         verification = row.get("verification")
@@ -1085,6 +1151,19 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
         if verification == "checksum_verified" and not row.get("checksum"):
             report.errors.append(
                 f"data resource {row.get('resource_id')} must record a checksum"
+            )
+    for row in tables.get("data_use_checks", []):
+        states = [row.get(field_name, "") for field_name in USE_CHECK_FIELDS]
+        has_limit = "limited" in states
+        if has_limit and row.get("use_decision") == "use":
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} contains a limited "
+                "check and must use use_decision=limit"
+            )
+        if row.get("use_decision") == "limit" and not row.get("notes"):
+            report.errors.append(
+                f"data use check {row.get('use_check_id')} with decision=limit "
+                "must explain the use boundary in notes"
             )
     for row in tables.get("cohort_usage", []):
         if (
@@ -1154,40 +1233,6 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             report.errors.append(
                 f"result {result_id} source_table must reference existing, safe "
                 "repository-relative artifacts"
-            )
-
-    for row in tables.get("issues", []):
-        issue_id = row.get("issue_id", "")
-        disposition = row.get("disposition", "")
-        candidate_scope = row.get("candidate_scope", "")
-        promotion_id = row.get("promotion_id", "")
-        affected_capabilities = _split_ids(
-            row.get("affected_capability_ids", "")
-        )
-        if disposition == "promote_to_module":
-            if candidate_scope != "module":
-                report.errors.append(
-                    f"issue {issue_id} promotes to module but candidate_scope "
-                    "is not module"
-                )
-            if not promotion_id or not affected_capabilities:
-                report.errors.append(
-                    f"issue {issue_id} module promotion requires promotion_id "
-                    "and affected_capability_ids"
-                )
-        elif disposition == "promote_to_core":
-            if candidate_scope != "core":
-                report.errors.append(
-                    f"issue {issue_id} promotes to core but candidate_scope is not core"
-                )
-            if not promotion_id or not affected_capabilities:
-                report.errors.append(
-                    f"issue {issue_id} core promotion requires promotion_id and "
-                    "affected_capability_ids"
-                )
-        elif promotion_id:
-            report.errors.append(
-                f"issue {issue_id} records promotion_id without a promotion disposition"
             )
 
     for route in tables.get("routes", []):
@@ -1294,7 +1339,7 @@ def validate_workspace(project_dir: Path) -> ValidationReport:
             if not _document_complete(project_dir / "reports/pilot-outcome.md", 500):
                 report.errors.append(
                     "reports/pilot-outcome.md must separate paper-side and "
-                    "product-side outcomes before pilot review"
+                    "workflow-side outcomes before pilot review"
                 )
         if stage == "pilot_complete":
             closing_decisions = [
@@ -1449,9 +1494,11 @@ the audit into a fixed substitution checklist.
 For every main and supplementary figure record its manuscript role, data,
 metadata, method, code, output, statistical unit and unavailable dependencies.
 
-## Module disposition
+## Analysis-step disposition
 
-Classify every module as retain, repair, substitute, extend, drop or blocked.
+Classify every analysis step as retain, repair, substitute, extend, drop or
+blocked. Preserve the anchor paper's useful framework even when one step needs
+repair.
 
 ## Defect-to-repair contracts
 
@@ -1494,7 +1541,7 @@ form the target paper. Predefined substitution examples are not a completeness t
 
 ## Signature formula, if applicable
 
-## Module input/output contracts and scientific invariants
+## Analysis input/output contracts and scientific invariants
 
 ## Figure and source-table outputs
 
@@ -1524,7 +1571,7 @@ Freeze this specification before the first full manuscript execution.
 
 ## Signature formula, if applicable
 
-## Module releases, input/output contracts and scientific invariants
+## Analysis code versions, input/output contracts and scientific invariants
 
 ## Figure and source-table outputs
 
@@ -1541,15 +1588,15 @@ PILOT_OUTCOME_TEMPLATE = f"""# Pilot outcome
 Record what was learned about the anchor, candidate routes, real-data runs,
 scientific limitations and the continue/refine/reroute/stop decision.
 
-## Product-side outcome
+## Workflow-side outcome
 
-List reusable findings separately. For each one record whether it remains
-pilot-specific, is a module/core promotion candidate, or was rejected.
+List workflow findings separately. Record the current paper impact, local
+repair, whether Paper2Paper itself changed, and whether this Pilot was rerun.
 
-## Capability and regression contribution
+## Reuse boundary
 
-State exactly which capability and test level this pilot exercised. Do not
-describe one pilot as validation of unrelated papers or the whole workflow.
+State exactly which data, code and analysis steps this Pilot exercised. Do not
+describe one Pilot as validation of unrelated papers or the whole workflow.
 
 ## Human decision and next boundary
 
@@ -1583,7 +1630,7 @@ MANUSCRIPT_TEMPLATE = f"""# Manuscript draft
 PILOT_README = """# Paper2Paper pilot workspace
 
 This directory audits one real anchor paper, tests candidate directions and
-produces separate paper-side and product-side outcomes. It is not itself a
+produces separate paper-side and workflow-side outcomes. It is not itself a
 manuscript project. Large data, credentials and copyrighted PDFs stay outside
 Git.
 """
@@ -1651,7 +1698,7 @@ def init_workspace(
             "target_audience": "beginner-led project with AI assistance",
             "success_definition": (
                 "A reviewed pilot outcome with traceable direction, data, code, "
-                "minimal real execution and scoped product findings"
+                "minimal real execution and recorded workflow feedback"
                 if workspace_kind == "pilot"
                 else "A scientifically defensible, non-duplicate manuscript with "
                 "traceable data, code, figures, results and limitations"
@@ -1664,8 +1711,8 @@ def init_workspace(
             "skills": "",
         },
         "stop_rule": (
-            "Stop product work when the pilot can support a route decision and "
-            "record its scoped reusable findings"
+            "Stop workflow expansion when the Pilot can support a route decision "
+            "and its concrete findings have been handled"
             if workspace_kind == "pilot"
             else "Freeze non-blocking workflow work when the selected route can be "
             "executed, reviewed and written reliably"
@@ -1855,7 +1902,7 @@ def next_actions(project_dir: Path) -> list[str]:
         if not tables.get("routes"):
             actions.append(
                 "Generate the bounded route portfolio and record each route's "
-                "capabilities and direction-audit evidence."
+                "scientific question, evidence needs and direction-audit basis."
             )
             return actions
 
@@ -1885,7 +1932,7 @@ def next_actions(project_dir: Path) -> list[str]:
         if not _document_complete(project_dir / "reports/pilot-outcome.md", 500):
             actions.append(
                 "Complete reports/pilot-outcome.md with separate paper-side and "
-                "product-side conclusions."
+                "workflow-side conclusions."
             )
         if not actions and stage != "pilot_complete":
             actions.append(

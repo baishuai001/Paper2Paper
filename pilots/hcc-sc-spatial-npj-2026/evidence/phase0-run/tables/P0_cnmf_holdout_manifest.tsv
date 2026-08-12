@@ -1,0 +1,12 @@
+panel_order	dataset	analysis_patient_id	sample_id	sample_type	cells	holdout_fold
+9	Liu_2024_mixCD45PosCD45Neg	Liu_2024_Cancer_Res.Pt01	Liu_2024_mixCD45PosCD45Neg.Pt01_T2	metastasis	150	A
+10	Che_2021	Che_2021_Cell_Discov.COL07	Che_2021.COL07_LM	metastasis	150	A
+12	Ji_2024_scopeV2	Ji_2024_Cancer_Lett.rectum_03	Ji_2024_scopeV2.metastasis	metastasis	127	B
+2	VUMC_HTAN_validation	Chen_2021_Cell.HTA11_8622	VUMC_HTAN_validation.HTA11_8622_2000001011	polyp	150	A
+3	VUMC_HTAN_discovery	Chen_2021_Cell.HTA11_5994	VUMC_HTAN_discovery.HTA11_5994_2000001011	polyp	150	A
+1	VUMC_HTAN_cohort3	Chen_2021_Cell.HTA11_12542	VUMC_HTAN_cohort3.HTA11_12542_2000001011	polyp	84	B
+4	Zheng_2022	Zheng_2022_Signal_Transduct_Target_Ther.P1	Zheng_2022.P1_adenoma	polyp	150	B
+6	Pelka_2021_10Xv2_CD45Pos	Pelka_2021_Cell.C162	Pelka_2021_10Xv2_CD45Pos.C162_T_0_0_1_c2_v2	tumor	150	A
+7	Lee_2020_SMC	Lee_2020_Nat_Genet.SMC09	Lee_2020_SMC.SMC09_T	tumor	150	A
+5	Pelka_2021_10Xv2	Pelka_2021_Cell.C123	Pelka_2021_10Xv2.C123_T_1_1_0_c1_v2	tumor	150	B
+8	Chen_2024	Chen_2024_Cancer_Cell.P03	Chen_2024.CRC03_T_I	tumor	150	B

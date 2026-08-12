@@ -1,0 +1,41 @@
+{
+  "status": "INDEPENDENT_VERIFICATION_PASSED",
+  "source_code_path": "independent inline verifier; did not import run_che_external_projection.py",
+  "analyses_checked": 3,
+  "program_analysis_rows_checked": 30,
+  "pair_rows_checked": 150,
+  "all_recomputed_statistics_match": true,
+  "selected_cell_identity_checks_passed": true,
+  "signature_coverage_50_of_50_all_programs_all_analyses": true,
+  "final_confirmatory_status": {
+    "1": "sensitivity_unstable",
+    "7": "not_replicated_or_opposite",
+    "8": "not_replicated_or_opposite"
+  },
+  "eligible_main_results": [
+    {
+      "analysis": "primary_dual_balanced",
+      "program_id": 1,
+      "median": -0.008994632600515,
+      "hodges_lehmann": 0.004917984501776549,
+      "exact_p": 0.75,
+      "paired_patients": 5
+    },
+    {
+      "analysis": "primary_dual_balanced",
+      "program_id": 7,
+      "median": -0.0526079993650794,
+      "hodges_lehmann": -0.0444506188477366,
+      "exact_p": 0.125,
+      "paired_patients": 5
+    },
+    {
+      "analysis": "primary_dual_balanced",
+      "program_id": 8,
+      "median": 0.0044605455144032,
+      "hodges_lehmann": 0.0044605455144032,
+      "exact_p": 0.6875,
+      "paired_patients": 5
+    }
+  ]
+}
