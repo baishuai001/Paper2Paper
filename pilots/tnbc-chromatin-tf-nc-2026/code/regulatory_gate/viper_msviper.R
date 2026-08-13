@@ -7,10 +7,10 @@ suppressPackageStartupMessages({
 })
 
 args <- commandArgs(trailingOnly = TRUE)
-if (length(args) != 7) {
+if (length(args) != 8) {
   stop(paste(
-    "Usage: viper_msviper.R BULK_TPM_RDS CONSOLIDATED_NETWORK",
-    "ATLAS_LOG2CPM PATIENT_METADATA OUTPUT_DIR THREADS PERMUTATIONS"
+    "Usage: viper_msviper.R BULK_TPM_RDS AUTHOR_SUBNETWORK",
+    "ATLAS_LOG2CPM PATIENT_METADATA OUTPUT_DIR THREADS PERMUTATIONS MANIFEST"
   ))
 }
 bulk_path <- args[[1]]
@@ -20,6 +20,12 @@ metadata_path <- args[[4]]
 output_dir <- normalizePath(args[[5]], mustWork = FALSE)
 threads <- as.integer(args[[6]])
 permutations <- as.integer(args[[7]])
+manifest_path <- args[[8]]
+manifest <- fromJSON(manifest_path, simplifyVector = TRUE)
+primary_threshold <- as.integer(manifest$primary_min_cells)
+if (!is.finite(primary_threshold) || primary_threshold < 1) {
+  stop("Manifest primary_min_cells must be a positive integer")
+}
 if (!is.finite(permutations) || permutations < 50) {
   stop("PERMUTATIONS must be >=50: viper::aecdf requires a sufficiently diverse empirical null")
 }
@@ -110,7 +116,7 @@ if (is.null(dim(activity))) {
 activity_tab <- data.table(TF = rownames(activity), activity, keep.rownames = FALSE)
 fwrite(activity_tab, file.path(output_dir, "viper_activity.tsv.gz"), sep = "\t", quote = FALSE, compress = "gzip")
 
-primary <- metadata$analysis_cells_aggregated >= 50
+primary <- metadata$analysis_cells_aggregated >= primary_threshold
 primary_metadata <- metadata[primary, , drop = FALSE]
 primary_expression <- atlas[, primary, drop = FALSE]
 groups <- primary_metadata$group == "case"
@@ -121,7 +127,7 @@ informative <- dataset_names[vapply(dataset_names, function(dataset) {
   sum(groups[index]) >= 3 && sum(!groups[index]) >= 3
 }, logical(1))]
 if (length(informative) < 3) {
-  stop(sprintf("Only %d informative independent studies at the frozen 50-cell threshold", length(informative)))
+  stop(sprintf("Only %d informative independent studies at the frozen %d-cell threshold", length(informative), primary_threshold))
 }
 
 welch_t <- function(matrix, label) {
@@ -222,11 +228,12 @@ receipt <- list(
     threads = threads
   ),
   msviper = list(
+    primary_min_cells = primary_threshold,
     primary_patients = sum(primary),
     case_patients = sum(groups),
     control_patients = sum(!groups),
     informative_datasets = informative,
-    validation_unit = "study_id (stored in the generic dataset field)",
+    validation_unit = sprintf("%s (stored in the generic dataset field)", manifest$dataset_column),
     permutations = permutations,
     seed = 1729,
     TFs_tested = nrow(ms_table),

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Dataset-stratified TF meta-analysis and leakage-safe LODO validation."""
+"""Study-stratified TF meta-analysis and leakage-safe LOSO validation."""
 
 from __future__ import annotations
 
@@ -213,7 +213,7 @@ def select_training_features(
     return order[: min(top_n, len(order))]
 
 
-def lodo_predictions(
+def loso_predictions(
     activity: np.ndarray,
     labels: np.ndarray,
     datasets: np.ndarray,
@@ -268,7 +268,7 @@ def stratified_auc(labels: np.ndarray, predictions: np.ndarray, datasets: np.nda
     return float(numerator / denominator) if denominator > 0 else np.nan
 
 
-def validate_lodo(
+def validate_loso(
     activity: np.ndarray,
     labels: np.ndarray,
     datasets: np.ndarray,
@@ -277,7 +277,7 @@ def validate_lodo(
     bootstraps: int,
     seed: int = 1729,
 ) -> tuple[dict[str, object], pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-    predictions, folds = lodo_predictions(activity, labels, datasets, held_datasets)
+    predictions, folds = loso_predictions(activity, labels, datasets, held_datasets)
     observed = stratified_auc(labels, predictions, datasets)
     rng = np.random.default_rng(seed)
     strata = [
@@ -298,7 +298,7 @@ def validate_lodo(
         for dataset in held_datasets:
             index = np.flatnonzero(datasets == dataset)
             permuted[index] = rng.permutation(permuted[index])
-        null_predictions, _ = lodo_predictions(activity, permuted, datasets, held_datasets)
+        null_predictions, _ = loso_predictions(activity, permuted, datasets, held_datasets)
         value = stratified_auc(permuted, null_predictions, datasets)
         permutation_rows.append({"permutation": permutation + 1, "stratified_AUROC": value})
     permutation_frame = pd.DataFrame(permutation_rows)
@@ -380,7 +380,7 @@ def run(
     reproducible_path = output_dir / "reproducible_TF_program.tsv"
     merged.to_csv(reproducible_path, sep="\t", index=False, lineterminator="\n")
 
-    lodo, predictions, folds, permutation_frame, bootstrap_frame = validate_lodo(
+    loso, predictions, folds, permutation_frame, bootstrap_frame = validate_loso(
         primary_activity,
         labels,
         datasets,
@@ -389,10 +389,10 @@ def run(
         bootstraps=bootstraps,
     )
     predictions.insert(0, "donor_id", primary_metadata["donor_id"].to_numpy())
-    predictions.to_csv(output_dir / "lodo_predictions.tsv", sep="\t", index=False, lineterminator="\n")
-    folds.to_csv(output_dir / "lodo_folds.tsv", sep="\t", index=False, lineterminator="\n")
-    permutation_frame.to_csv(output_dir / "lodo_permutations.tsv.gz", sep="\t", index=False, compression="gzip", lineterminator="\n")
-    bootstrap_frame.to_csv(output_dir / "lodo_bootstrap.tsv.gz", sep="\t", index=False, compression="gzip", lineterminator="\n")
+    predictions.to_csv(output_dir / "loso_predictions.tsv", sep="\t", index=False, lineterminator="\n")
+    folds.to_csv(output_dir / "loso_folds.tsv", sep="\t", index=False, lineterminator="\n")
+    permutation_frame.to_csv(output_dir / "loso_permutations.tsv.gz", sep="\t", index=False, compression="gzip", lineterminator="\n")
+    bootstrap_frame.to_csv(output_dir / "loso_bootstrap.tsv.gz", sep="\t", index=False, compression="gzip", lineterminator="\n")
 
     sensitivity_rows: list[dict[str, object]] = []
     for threshold in sorted(set(int(x) for x in manifest.raw.get("sensitivity_min_cells", []))):
@@ -408,7 +408,7 @@ def run(
         if len(local_info) >= 2:
             local_labels = local_metadata["group"].eq("case").to_numpy()
             local_datasets = local_metadata["dataset"].astype(str).to_numpy()
-            local_predictions, _ = lodo_predictions(local_activity, local_labels, local_datasets, local_info)
+            local_predictions, _ = loso_predictions(local_activity, local_labels, local_datasets, local_info)
             local_auc = stratified_auc(local_labels, local_predictions, local_datasets)
         else:
             local_auc = np.nan
@@ -423,7 +423,7 @@ def run(
                 "informative_datasets": len(local_info),
                 "reproducible_TFs": len(local_repro),
                 "primary_program_overlap": len(local_repro & primary_repro),
-                "observed_stratified_LODO_AUROC": local_auc,
+                "observed_stratified_LOSO_AUROC": local_auc,
             }
         )
     sensitivity = pd.DataFrame(sensitivity_rows)
@@ -434,9 +434,9 @@ def run(
         "msviper_confirmed_TFs_ge_5": int(merged["msviper_confirmed"].sum()) >= 5,
     }
     validation_conditions = {
-        "LODO_AUROC_ge_0_65": lodo["stratified_AUROC"] >= 0.65,
-        "LODO_bootstrap_lower_gt_0_55": lodo["bootstrap_95_CI"][0] > 0.55,
-        "LODO_permutation_p_le_0_05": lodo["permutation_empirical_p"] <= 0.05,
+        "LOSO_AUROC_ge_0_65": loso["stratified_AUROC"] >= 0.65,
+        "LOSO_bootstrap_lower_gt_0_55": loso["bootstrap_95_CI"][0] > 0.55,
+        "LOSO_permutation_p_le_0_05": loso["permutation_empirical_p"] <= 0.05,
     }
     output_paths = [path for path in output_dir.iterdir() if path.is_file() and path.name != "statistics_receipt.json"]
     receipt = {
@@ -455,7 +455,7 @@ def run(
         "cohort_conditions": cohort_conditions,
         "scientific_conditions": scientific_conditions,
         "secondary_validation_conditions": validation_conditions,
-        "lodo": lodo,
+        "loso": loso,
         "outputs": output_manifest(output_paths),
     }
     write_json(output_dir / "statistics_receipt.json", receipt)

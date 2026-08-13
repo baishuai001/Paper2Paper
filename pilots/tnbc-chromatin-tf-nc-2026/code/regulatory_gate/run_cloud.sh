@@ -71,9 +71,11 @@ if [[ ! -s "$outputs/pseudobulk/pseudobulk_receipt.json" ]]; then
     --h5ad "$h5ad" --manifest "$manifest" --output-dir "$outputs/pseudobulk"
 fi
 
-run_logged 05_aracne "$code/run_aracne3.sh" \
-  "$aracne_repo" "$network_outputs/tcga/tcga_crc_tpm.tsv" \
-  "$network_outputs/aracne_inputs/aracne_regulators.txt" "$network_outputs/aracne3" "$threads" 1
+if [[ ! -s "$network_outputs/aracne3_receipt.json" || ! -s "$network_outputs/aracne3/subnets/subnet1_crc.tsv" ]]; then
+  run_logged 05_aracne "$code/run_aracne3.sh" \
+    "$aracne_repo" "$network_outputs/tcga/tcga_crc_tpm.tsv" \
+    "$network_outputs/aracne_inputs/aracne_regulators.txt" "$network_outputs/aracne3" "$threads" 1
+fi
 
 run_logged 06_aracne_audit "$python_bin" "$code/audit_aracne_run.py" \
   --repo "$aracne_repo" --expression "$network_outputs/tcga/tcga_crc_tpm.tsv" \
@@ -85,7 +87,7 @@ run_logged 06_aracne_audit "$python_bin" "$code/audit_aracne_run.py" \
 run_logged 07_viper Rscript "$code/viper_msviper.R" \
   "$network_outputs/tcga/tcga_crc_tpm.rds" "$network_outputs/aracne3/subnets/subnet1_crc.tsv" \
   "$outputs/pseudobulk/log2cpm.tsv.gz" "$outputs/pseudobulk/patient_metadata.tsv" \
-  "$outputs/viper" "$threads" 1000
+  "$outputs/viper" "$threads" 1000 "$manifest"
 
 run_logged 08_statistics "$python_bin" "$code/statistics.py" \
   --activity "$outputs/viper/viper_activity.tsv.gz" \
