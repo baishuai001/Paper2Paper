@@ -58,7 +58,7 @@ fwrite(
 )
 regulon <- aracne2regulon(
   network_3col,
-  log2(bulk_tpm + 1),
+  bulk_tpm,
   format = "3col",
   verbose = TRUE
 )

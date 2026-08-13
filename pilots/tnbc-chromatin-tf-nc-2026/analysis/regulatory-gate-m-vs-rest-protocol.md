@@ -37,7 +37,7 @@ CRC-atlas 作者预先定义的 M 型相对 B、T、desert 三型，是否在原
 - 保留 TPM >=1 的患者比例至少 10%且跨患者方差大于 0 的基因。
 - PAN-GO：Methods 称 2,139 genes；补充表实际为 2,138 条非空 symbol 记录，含 79 条重复，得到 2,059 个唯一符号。使用可审计的 2,059 个唯一符号。
 - ARACNe3：官方 commit `3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14`；1 个 subnetwork；subsample 0.63212；子网络内 FDR alpha 0.05；Maximum-Entropy pruning；seed 1729；24 threads。
-- regulon：完整 `subnets/subnet1_crc.tsv` 三列边进入 `viper::aracne2regulon(..., format="3col")`；TF-target mode 由 TCGA CRC `log2(TPM+1)`估计。
+- regulon：完整 `subnets/subnet1_crc.tsv` 三列边进入 `viper::aracne2regulon(..., format="3col")`；TF-target mode 由 TCGA CRC TPM 估计，与作者对 TCGA 的调用一致。
 
 ### 3.2 CRC-atlas 癌细胞表达
 
