@@ -15,7 +15,7 @@
 
 ## 2. 与 TNBC 原文一致及新增的部分
 
-主方法保持：大样本肿瘤组织 RNA 表达构建癌种特异 ARACNe3 网络，`viper` 包将网络转为 regulon，VIPER/aREA 计算逐样本 TF 活性，msVIPER 检验组间差异活性。调控因子使用 TNBC Supplementary Data 2 中 PAN-GO “regulators of transcription”清单。该表含 2,139 个原始注释条目；因多个条目共享 gene symbol，ARACNe3 输入去重为 2,059 个唯一非空 gene symbols，原始条目数和去重数同时进入收据。
+主方法保持：大样本肿瘤组织 RNA 表达构建癌种特异 ARACNe3 网络，`viper` 包将网络转为 regulon，VIPER/aREA 计算逐样本 TF 活性，msVIPER 检验组间差异活性。调控因子使用 TNBC Supplementary Data 2 中 PAN-GO “regulators of transcription”清单。论文 Methods 称 2,139 genes，但实际 sheet 为 1 行表头加 2,138 行非空 gene-symbol 数据；其中 79 行为重复 symbol，去重后是 2,059 个唯一符号。ARACNe3 输入采用可审计补充表的 2,059 个唯一符号，并将论文计数、sheet 行数和去重数同时写入收据。
 
 CRC 迁移新增但不替代原方法的部分是：患者级 Cancer-cell pseudobulk、按原始数据集分层的效应量、随机效应 meta 分析和无泄漏 leave-one-dataset-out（LODO）验证。这些步骤用于处理 CRC-atlas 汇总多个研究造成的批次和重复性问题。
 
@@ -48,7 +48,7 @@ CollecTRI、DoRothEA、ULM 或其他先验网络均不是主分析；若以后�
 必须全部满足，否则结论为 `INDETERMINATE`，不能写成生物学阴性：
 
 1. TCGA CRC 独立 participant >= 550，过滤后基因 >= 10,000，表达矩阵无重复样本或重复基因符号；
-2. PAN-GO 清单成功提取 2,139 个原始注释条目和 2,059 个唯一非空 gene symbols，且其中至少 1,500 个唯一符号进入 ARACNe3；
+2. PAN-GO 清单审计明确记录论文称 2,139 genes、sheet 实有 2,138 个非空记录和 2,059 个唯一 gene symbols，且其中至少 1,500 个唯一符号进入 ARACNe3；
 3. 共识网络至少 500 个 regulator；在 CRC-atlas 可测基因上，至少 400 个 regulon 具有 >=25 个 targets；
 4. 主阈值下 M >=30、non-M >=80；
 5. 至少 4 个数据集各含 >=3 M 和 >=3 non-M；
