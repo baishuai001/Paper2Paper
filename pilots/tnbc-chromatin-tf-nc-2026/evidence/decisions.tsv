@@ -1,3 +1,4 @@
 ﻿decision_id	route_id	stage	decision	authority	reviewer	rationale	decided_at
 G1-STOP	crc-immune-tf-gate1	gate1	STOP_FAIL	frozen_protocol_and_receipts	Codex	Data minimums passed, but independent four-class reconstruction failed both ARI thresholds; automatic decision returned FAIL and stop_now=true	2026-08-12
 G1R-REOPEN	crc-M-vs-rest-aracne3-viper	gate1-regulatory	REOPEN_WITH_CORRECTED_ENTRY	user_direction_and_anchor_methods	Codex	The prior four-class reconstruction was an added QC layer, not a required TNBC anchor step; preserve its FAIL as auxiliary evidence and test the predefined author M-vs-rest label with CRC-specific ARACNe3 plus VIPER/msVIPER	2026-08-13
+G1R-PANGO-ERRATUM	crc-M-vs-rest-aracne3-viper	gate1-regulatory	PRE_RESULT_PROTOCOL_ERRATUM	supplementary_data_2_audit	Codex	Supplementary Data 2 contains 2,139 PAN-GO annotation records but 2,059 unique nonempty gene symbols; retain both counts and use the deduplicated symbols required by ARACNe3	2026-08-13
