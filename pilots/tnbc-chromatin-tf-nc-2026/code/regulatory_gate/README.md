@@ -22,6 +22,8 @@ The anchor Code Ocean v1.0 code (commit `edf5314ce5b9ee0e2f88b2310e7c2df5619ad88
 
 The anchor TCGA helper averages expression rows mapping to a duplicate gene symbol and applies no low-expression filter. The CRC implementation does the same, averages repeat aliquots at participant level, and uses the `viper` default method (`"none"`) because the anchor call omits `method`.
 
+The complete TCGA matrix is serialized with lossless gzip rather than xz. This changes only file compression, not values or analysis behavior, and keeps the unfiltered anchor-style matrix practical to rebuild.
+
 `viper_msviper.R` rejects fewer than 50 permutations. In `viper` 1.38.0, the empirical-tail helper used by msVIPER can fail to terminate when the null has too few distinct values; the frozen real run uses the anchor's 1,000 permutations.
 
 Within-study Welch signatures use an algebraically equivalent vectorized sample-variance formula. This avoids thousands of slow row-wise `apply(var)` calls during the 1,000 frozen label permutations without changing the statistic.

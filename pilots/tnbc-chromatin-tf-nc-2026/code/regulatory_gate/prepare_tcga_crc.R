@@ -95,7 +95,9 @@ fwrite(
   data.frame(gene = rownames(participant_tpm), retained = keep, stringsAsFactors = FALSE),
   file.path(output_dir, "tcga_gene_filter.tsv"), sep = "\t", quote = FALSE
 )
-saveRDS(filtered_tpm, file.path(output_dir, "tcga_crc_tpm.rds"), compress = "xz")
+# Serialization is storage-only. Gzip is lossless and avoids hours of xz CPU time
+# for the complete, unfiltered gene-by-participant matrix.
+saveRDS(filtered_tpm, file.path(output_dir, "tcga_crc_tpm.rds"), compress = "gzip")
 fwrite(
   data.table(gene = rownames(filtered_tpm), filtered_tpm, keep.rownames = FALSE),
   file.path(output_dir, "tcga_crc_tpm.tsv"), sep = "\t", quote = FALSE
@@ -117,7 +119,8 @@ receipt <- list(
     duplicate_symbol_aggregation = "mean (anchor-code behavior)",
     duplicate_aliquot_aggregation = "participant mean",
     low_expression_filter = "none (anchor-code behavior)",
-    removed_nonfinite_gene_rows = sum(!keep)
+    removed_nonfinite_gene_rows = sum(!keep),
+    rds_lossless_compression = "gzip"
   ),
   package_versions = list(
     R = as.character(getRversion()),
