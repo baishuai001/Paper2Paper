@@ -17,7 +17,7 @@
 
 主方法保持：大样本肿瘤组织 RNA 表达构建癌种特异 ARACNe3 网络，`viper` 包将网络转为 regulon，VIPER/aREA 计算逐样本 TF 活性，msVIPER 检验组间差异活性。调控因子使用 TNBC Supplementary Data 2 中 PAN-GO “regulators of transcription”清单。论文 Methods 称 2,139 genes，但实际 sheet 为 1 行表头加 2,138 行非空 gene-symbol 数据；其中 79 行为重复 symbol，去重后是 2,059 个唯一符号。ARACNe3 输入采用可审计补充表的 2,059 个唯一符号，并将论文计数、sheet 行数和去重数同时写入收据。
 
-CRC 迁移新增但不替代原方法的部分是：患者级 Cancer-cell pseudobulk、按原始数据集分层的效应量、随机效应 meta 分析和无泄漏 leave-one-dataset-out（LODO）验证。这些步骤用于处理 CRC-atlas 汇总多个研究造成的批次和重复性问题。
+CRC 迁移新增但不替代原方法的部分是：患者级 Cancer-cell pseudobulk、按独立研究分层的效应量、随机效应 meta 分析和无泄漏 leave-one-study-out（LOSO；代码沿用通用 LODO 命名）验证。这些步骤用于处理 CRC-atlas 汇总多个研究造成的批次和重复性问题。独立分层字段固定为 `study_id`；同一研究内的 fresh/frozen 或 10x v2/v3 属于技术数据集，不能伪装成独立验证队列，在患者 pseudobulk 内合并。
 
 CollecTRI、DoRothEA、ULM 或其他先验网络均不是主分析；若以后运行，只能标记为敏感性分析，不能替代 ARACNe3/VIPER 判定。
 
@@ -51,9 +51,9 @@ CollecTRI、DoRothEA、ULM 或其他先验网络均不是主分析；若以后�
 2. PAN-GO 清单审计明确记录论文称 2,139 genes、sheet 实有 2,138 个非空记录和 2,059 个唯一 gene symbols，且其中至少 1,500 个唯一符号进入 ARACNe3；
 3. 共识网络至少 500 个 regulator；在 CRC-atlas 可测基因上，至少 400 个 regulon 具有 >=25 个 targets；
 4. 主阈值下 M >=30、non-M >=80；
-5. 至少 4 个数据集各含 >=3 M 和 >=3 non-M；
-6. 任一数据集贡献的 M 患者不超过全部 M 的 60%；
-7. 患者标签、数据集归属、Cancer-cell 数量和 pseudobulk 列顺序均通过一一对应检查。
+5. 至少 3 个独立 `study_id` 各含 >=3 M 和 >=3 non-M；
+6. 任一独立研究贡献的 M 患者不超过全部 M 的 60%；
+7. 患者标签、独立研究归属、Cancer-cell 数量和 pseudobulk 列顺序均通过一一对应检查；同一患者的技术数据集可合并，但患者不得跨 `study_id`。
 
 ## 5. VIPER 与 msVIPER
 
@@ -64,19 +64,19 @@ CollecTRI、DoRothEA、ULM 或其他先验网络均不是主分析；若以后�
 
 ## 6. 跨数据集 TF 程序
 
-对每个 VIPER TF，在每个同时有 >=3 M 和 >=3 non-M 的数据集计算 Hedges g（正值表示 M 活性更高），再作 REML 随机效应 meta 分析。一个“可重复 TF”必须同时满足：
+对每个 VIPER TF，在每个同时有 >=3 M 和 >=3 non-M 的独立研究计算 Hedges g（正值表示 M 活性更高），再作 REML 随机效应 meta 分析；因信息性研究仅 3 个，推断使用 modified Knapp-Hartung 标准误与 t 检验，避免小研究数下普通 z 检验过度乐观。一个“可重复 TF”必须同时满足：
 
-- 至少 4 个信息性数据集；
+- 至少 3 个信息性研究；
 - meta BH-FDR <= 0.05；
 - |meta Hedges g| >= 0.50；
-- 至少 75%信息性数据集与 meta 同方向；
+- 至少 75%信息性研究与 meta 同方向；在 3 个研究时等价于 3/3 全部同方向；
 - I2 <= 75%。
 
 “可重复 TF 程序”预先定义为至少 10 个可重复 TF，其中至少 5 个同时满足 msVIPER FDR <=0.01 且方向一致。
 
 ## 7. 无泄漏 LODO 验证
 
-- 每折留出一个完整数据集；测试集标签在特征选择、标准化和拟合中不可见。
+- 每折留出一个完整 `study_id`；测试集标签在特征选择、标准化和拟合中不可见。
 - 仅在训练数据集计算 TF 效应并选择绝对训练 meta 效应最大的 20 个 TF；所有转换仅由训练数据拟合。
 - 分类器：class-weight balanced、L2 logistic regression，固定 seed 1729。
 - 主性能：把各留出数据集内部的 M-vs-rest concordance 合并为 stratified AUROC，避免数据集构成差异造成虚假 pooled AUROC。

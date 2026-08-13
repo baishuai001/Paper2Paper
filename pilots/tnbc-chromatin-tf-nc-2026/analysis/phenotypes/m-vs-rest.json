@@ -8,7 +8,7 @@
   "analysis_cell_column": "cell_type_coarse_crc_atlas",
   "analysis_cell_values": ["Cancer cell"],
   "patient_column": "donor_id",
-  "dataset_column": "dataset",
+  "dataset_column": "study_id",
   "scope": {
     "sample_type_equals": "Tumor",
     "exclude_tumor_source_contains": ["normal", "metasta"],
@@ -20,7 +20,7 @@
   "sensitivity_min_cells": [20, 100, 200],
   "minimum_case_patients": 30,
   "minimum_control_patients": 80,
-  "minimum_informative_datasets": 4,
+  "minimum_informative_datasets": 3,
   "minimum_group_per_dataset": 3,
   "maximum_case_fraction_from_one_dataset": 0.6
 }
