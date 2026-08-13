@@ -8,12 +8,13 @@ supplement=${TNBC_SUPPLEMENT_DATA2:-$repo/tmp/tnbc-chromatin-tf-nc-2026/external
 aracne_repo=${ARACNE3_REPO:-$repo/tmp/tnbc-chromatin-tf-nc-2026/external/code/ARACNe3}
 anchor_code_repo=${TNBC_ANCHOR_CODE_REPO:-$repo/tmp/tnbc-chromatin-tf-nc-2026/external/code/TNBC_CodeOcean_7227095_v1}
 code=$repo/pilots/tnbc-chromatin-tf-nc-2026/code/regulatory_gate
-manifest=$repo/pilots/tnbc-chromatin-tf-nc-2026/analysis/phenotypes/m-vs-rest.json
+manifest=${REGULATORY_GATE_MANIFEST:-$repo/pilots/tnbc-chromatin-tf-nc-2026/analysis/phenotypes/m-vs-rest.json}
 outputs=$work/outputs
+network_outputs=${REGULATORY_GATE_SHARED_NETWORK_OUTPUTS:-$outputs}
 logs=$work/logs
 threads=${REGULATORY_GATE_THREADS:-24}
 python_bin=${REGULATORY_GATE_PYTHON:-$repo/tmp/hcc-sc-spatial-npj-2026/phase-zero/env/bootstrap/bin/python}
-mkdir -p "$outputs" "$logs"
+mkdir -p "$outputs" "$network_outputs" "$logs"
 lock_file=$work/.regulatory-gate.lock
 exec 9>"$lock_file"
 if ! flock -n 9; then
@@ -21,6 +22,12 @@ if ! flock -n 9; then
   exit 73
 fi
 printf 'pid=%s started=%s\n' "$$" "$(date --iso-8601=seconds)" 1>&9
+network_lock_file=$network_outputs/.regulatory-network.lock
+exec 8>"$network_lock_file"
+if ! flock -n 8; then
+  echo "Another regulatory-gate pipeline holds $network_lock_file; refusing concurrent network reads/writes." >&2
+  exit 73
+fi
 export PYTHONPATH=$code
 if [[ ! -x "$python_bin" ]]; then
   echo "Configured analysis Python is not executable: $python_bin" >&2
@@ -48,16 +55,16 @@ run_logged 00_input_audit "$python_bin" "$code/audit_inputs.py" \
   --output "$outputs/input_audit.json"
 
 run_logged 01_pango "$python_bin" "$code/extract_pango_regulators.py" \
-  --xlsx "$supplement" --output-dir "$outputs/pango"
+  --xlsx "$supplement" --output-dir "$network_outputs/pango"
 
-if [[ ! -s "$outputs/tcga/tcga_receipt.json" ]]; then
-  run_logged 02_tcga Rscript "$code/prepare_tcga_crc.R" "$outputs/tcga"
+if [[ ! -s "$network_outputs/tcga/tcga_receipt.json" ]]; then
+  run_logged 02_tcga Rscript "$code/prepare_tcga_crc.R" "$network_outputs/tcga"
 fi
 
 run_logged 03_aracne_inputs "$python_bin" "$code/prepare_aracne_inputs.py" \
-  --expression "$outputs/tcga/tcga_crc_tpm.tsv" \
-  --pango "$outputs/pango/pango_regulators.txt" \
-  --output-dir "$outputs/aracne_inputs"
+  --expression "$network_outputs/tcga/tcga_crc_tpm.tsv" \
+  --pango "$network_outputs/pango/pango_regulators.txt" \
+  --output-dir "$network_outputs/aracne_inputs"
 
 if [[ ! -s "$outputs/pseudobulk/pseudobulk_receipt.json" ]]; then
   run_logged 04_pseudobulk "$python_bin" "$code/build_pseudobulk.py" \
@@ -65,18 +72,18 @@ if [[ ! -s "$outputs/pseudobulk/pseudobulk_receipt.json" ]]; then
 fi
 
 run_logged 05_aracne "$code/run_aracne3.sh" \
-  "$aracne_repo" "$outputs/tcga/tcga_crc_tpm.tsv" \
-  "$outputs/aracne_inputs/aracne_regulators.txt" "$outputs/aracne3" "$threads" 1
+  "$aracne_repo" "$network_outputs/tcga/tcga_crc_tpm.tsv" \
+  "$network_outputs/aracne_inputs/aracne_regulators.txt" "$network_outputs/aracne3" "$threads" 1
 
 run_logged 06_aracne_audit "$python_bin" "$code/audit_aracne_run.py" \
-  --repo "$aracne_repo" --expression "$outputs/tcga/tcga_crc_tpm.tsv" \
-  --regulators "$outputs/aracne_inputs/aracne_regulators.txt" \
-  --run-dir "$outputs/aracne3" --expected-subnetworks 1 \
+  --repo "$aracne_repo" --expression "$network_outputs/tcga/tcga_crc_tpm.tsv" \
+  --regulators "$network_outputs/aracne_inputs/aracne_regulators.txt" \
+  --run-dir "$network_outputs/aracne3" --expected-subnetworks 1 \
   --threads "$threads" \
-  --output "$outputs/aracne3_receipt.json"
+  --output "$network_outputs/aracne3_receipt.json"
 
 run_logged 07_viper Rscript "$code/viper_msviper.R" \
-  "$outputs/tcga/tcga_crc_tpm.rds" "$outputs/aracne3/subnets/subnet1_crc.tsv" \
+  "$network_outputs/tcga/tcga_crc_tpm.rds" "$network_outputs/aracne3/subnets/subnet1_crc.tsv" \
   "$outputs/pseudobulk/log2cpm.tsv.gz" "$outputs/pseudobulk/patient_metadata.tsv" \
   "$outputs/viper" "$threads" 1000
 
@@ -88,11 +95,12 @@ run_logged 08_statistics "$python_bin" "$code/statistics.py" \
   --permutations 500 --bootstraps 1000
 
 run_logged 09_decision "$python_bin" "$code/decide_gate.py" \
+  --manifest "$manifest" \
   --input-audit "$outputs/input_audit.json" \
-  --pango "$outputs/pango/pango_receipt.json" \
-  --tcga "$outputs/tcga/tcga_receipt.json" \
-  --aracne-input "$outputs/aracne_inputs/aracne_input_receipt.json" \
-  --aracne-run "$outputs/aracne3_receipt.json" \
+  --pango "$network_outputs/pango/pango_receipt.json" \
+  --tcga "$network_outputs/tcga/tcga_receipt.json" \
+  --aracne-input "$network_outputs/aracne_inputs/aracne_input_receipt.json" \
+  --aracne-run "$network_outputs/aracne3_receipt.json" \
   --pseudobulk "$outputs/pseudobulk/pseudobulk_receipt.json" \
   --viper "$outputs/viper/viper_receipt.json" \
   --statistics "$outputs/statistics/statistics_receipt.json" \

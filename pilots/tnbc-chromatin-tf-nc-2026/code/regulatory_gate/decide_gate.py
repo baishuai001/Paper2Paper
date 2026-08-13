@@ -18,6 +18,7 @@ def load(path: Path) -> dict[str, object]:
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--input-audit", required=True, type=Path)
     parser.add_argument("--pango", required=True, type=Path)
     parser.add_argument("--tcga", required=True, type=Path)
@@ -29,6 +30,7 @@ def main() -> int:
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
 
+    manifest = load(args.manifest)
     audit = load(args.input_audit)
     pango = load(args.pango)
     tcga = load(args.tcga)
@@ -94,14 +96,15 @@ def main() -> int:
         "verdict": verdict,
         "stop_now": True,
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "route": "crc_atlas_M_vs_rest__TCGA_CRC_ARACNe3__VIPER_msVIPER",
+        "phenotype_id": manifest["phenotype_id"],
+        "route": f"{manifest['phenotype_id']}__TCGA_CRC_ARACNe3__VIPER_msVIPER",
         "data_conditions": data_conditions,
         "scientific_conditions": scientific_conditions,
         "secondary_validation_conditions": secondary_validation_conditions,
         "failed_conditions": failed,
         "interpretation": interpretation,
         "next_action": (
-            "Freeze a different CRC subtype manifest and reuse the CRC ARACNe3 regulon plus patient VIPER matrix."
+            "Freeze a different CRC subtype manifest and reuse the phenotype-independent CRC network artifacts."
             if verdict == "FAIL"
             else "Stop this gate and review the report before any downstream chromatin or therapy work."
         ),
