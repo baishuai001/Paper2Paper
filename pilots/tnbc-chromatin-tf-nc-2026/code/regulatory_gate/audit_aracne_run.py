@@ -25,6 +25,7 @@ def main() -> int:
     args = parser.parse_args()
     log = args.run_dir / "log_crc.txt"
     network = args.run_dir / "consolidated-net_crc.tsv"
+    author_network = args.run_dir / "subnets" / "subnet1_crc.tsv"
     binary = args.repo / "build-system" / "ARACNe3_app_release"
     subnetworks = sorted((args.run_dir / "subnets").glob("subnet*_crc.tsv"))
     commit = subprocess.check_output(
@@ -35,12 +36,17 @@ def main() -> int:
     reported = int(match.group(1)) if match else None
     with network.open(encoding="utf-8", errors="strict") as stream:
         edge_count = sum(1 for _ in stream) - 1 if network.is_file() else -1
+    with author_network.open(encoding="utf-8", errors="strict") as stream:
+        author_edge_count = (
+            sum(1 for _ in stream) - 1 if author_network.is_file() else -1
+        )
     conditions = {
         "official_commit": commit == "3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14",
         "log_success": "SUCCESS!" in log_text,
         "subnetwork_files": len(subnetworks) == args.expected_subnetworks,
         "reported_subnetworks": reported == args.expected_subnetworks,
         "network_nonempty": edge_count > 0,
+        "author_subnetwork_nonempty": author_edge_count > 0,
     }
     receipt = {
         "status": "passed" if all(conditions.values()) else "failed",
@@ -58,13 +64,15 @@ def main() -> int:
         },
         "subnetwork_files": len(subnetworks),
         "consolidated_edges": edge_count,
+        "author_subnetwork_edges": author_edge_count,
+        "regulon_source": "subnets/subnet1_crc.tsv",
         "input": {
             "expression_bytes": args.expression.stat().st_size,
             "expression_sha256": sha256_file(args.expression),
             "regulator_count": len(args.regulators.read_text(encoding="utf-8").splitlines()),
             "regulators_sha256": sha256_file(args.regulators),
         },
-        "outputs": output_manifest([binary, log, network]),
+        "outputs": output_manifest([binary, log, author_network, network]),
     }
     write_json(args.output, receipt)
     print(json.dumps(receipt, ensure_ascii=False))

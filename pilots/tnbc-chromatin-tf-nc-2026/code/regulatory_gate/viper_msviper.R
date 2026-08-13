@@ -38,28 +38,22 @@ read_expression <- function(path) {
 }
 
 network <- fread(network_path, data.table = FALSE)
-required_network <- c(
-  "regulator.values", "target.values", "mi.values", "scc.values",
-  "count.values", "log.p.values"
-)
+required_network <- c("regulator.values", "target.values", "mi.values")
 if (!all(required_network %in% colnames(network))) {
-  stop(sprintf("ARACNe3 network missing columns: %s", paste(setdiff(required_network, colnames(network)), collapse = ", ")))
+  stop(sprintf("ARACNe3 author-style subnetwork missing columns: %s", paste(setdiff(required_network, colnames(network)), collapse = ", ")))
 }
-network$p.value <- exp(pmin(as.numeric(network$log.p.values), 0))
-network$FDR <- p.adjust(network$p.value, method = "BH")
-consensus <- network[is.finite(network$FDR) & network$FDR <= 0.05, , drop = FALSE]
-if (nrow(consensus) == 0) {
-  stop("No ARACNe3 consensus edges at BH-FDR <=0.05")
+if (nrow(network) == 0 || anyDuplicated(network[, required_network])) {
+  stop("ARACNe3 author-style subnetwork is empty or has duplicate edge records")
 }
-fwrite(consensus, file.path(output_dir, "aracne3_consensus_edges.tsv.gz"), sep = "\t", quote = FALSE, compress = "gzip")
+fwrite(network, file.path(output_dir, "aracne3_author_subnetwork_edges.tsv.gz"), sep = "\t", quote = FALSE, compress = "gzip")
 
 bulk_tpm <- readRDS(bulk_path)
 if (anyDuplicated(rownames(bulk_tpm)) || anyDuplicated(colnames(bulk_tpm))) {
   stop("Bulk TPM matrix contains duplicate genes or participants")
 }
-network_3col <- tempfile(pattern = "aracne3_consensus_", fileext = ".tsv")
+network_3col <- tempfile(pattern = "aracne3_author_subnetwork_", fileext = ".tsv")
 fwrite(
-  consensus[, c("regulator.values", "target.values", "mi.values")],
+  network[, required_network],
   network_3col, sep = "\t", quote = FALSE, col.names = FALSE
 )
 regulon <- aracne2regulon(
@@ -96,16 +90,16 @@ if (!identical(as.character(metadata$donor_id), colnames(atlas))) {
 }
 
 measured_targets <- vapply(regulon, function(x) sum(names(x$tfmode) %in% rownames(atlas)), numeric(1))
-eligible_regulons <- names(measured_targets)[measured_targets >= 25]
+eligible_regulons <- names(measured_targets)[measured_targets >= 1]
 if (length(eligible_regulons) < 400) {
-  stop(sprintf("Only %d regulons have >=25 measured atlas targets", length(eligible_regulons)))
+  stop(sprintf("Only %d regulons have >=1 measured atlas target", length(eligible_regulons)))
 }
 
 activity <- viper(
   atlas,
   regulon,
-  method = "scale",
-  minsize = 25,
+  method = "auto",
+  minsize = 1,
   nes = TRUE,
   eset.filter = TRUE,
   cores = threads,
@@ -185,7 +179,7 @@ ms <- msviper(
   observed_signature,
   regulon,
   nullmodel = null_signatures,
-  minsize = 25,
+  minsize = 1,
   adaptive.size = FALSE,
   ges.filter = TRUE,
   cores = threads,
@@ -206,17 +200,18 @@ receipt <- list(
   status = "passed",
   generated_at = format(Sys.time(), tz = "UTC", usetz = TRUE),
   network = list(
-    consolidated_edges = nrow(network),
-    consensus_edges_FDR_0_05 = nrow(consensus),
-    consensus_regulators = length(unique(consensus$regulator.values)),
+    author_subnetwork_edges = nrow(network),
+    author_subnetwork_regulators = length(unique(network$regulator.values)),
+    ARACNe3_subnetwork_FDR_alpha = 0.05,
+    second_consensus_BH = FALSE,
     regulons_after_conversion = length(regulon),
-    regulons_ge25_measured_targets = length(eligible_regulons)
+    regulons_ge1_measured_target = length(eligible_regulons)
   ),
   viper = list(
     patients_scored = ncol(activity),
     TFs_scored = nrow(activity),
-    method = "scale",
-    minsize = 25,
+    method = "auto",
+    minsize = 1,
     threads = threads
   ),
   msviper = list(

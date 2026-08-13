@@ -1,98 +1,102 @@
 # CRC M-vs-rest 调控程序一级闸门：预先冻结协议
 
-冻结日期：2026-08-13  
-冻结状态：任何真实 M-vs-rest TF 活性结果产生前锁定  
-真实数据执行位置：仅限云服务器 `/media/desk16/iy13202/projects/Paper2Paper`  
+冻结日期：2026-08-13
+
+修订冻结：2026-08-13，在任何正式 ARACNe3 或 TF 活性结果产生前，根据 TNBC Code Ocean v1.0 作者代码审计纠正网络参数
+
+真实数据执行位置：仅限云服务器 `/media/desk16/iy13202/projects/Paper2Paper`
+
 表型清单：`analysis/phenotypes/m-vs-rest.json`
 
-## 1. 闸门回答什么
+## 1. 闸门问题
 
-将 TNBC 锚点论文的入口方法迁移到 CRC，回答：CRC-atlas 作者预先定义的 M 型相对 B、T、desert 三型，是否在原发、未治疗、未富集样本的患者级 Cancer-cell pseudobulk 中对应一个跨数据集可重复的 CRC 特异 TF 活性程序？
+CRC-atlas 作者预先定义的 M 型相对 B、T、desert 三型，是否在原发、未治疗、未富集样本的患者级 Cancer-cell pseudobulk 中，对应一个跨独立研究可重复的 CRC 特异 TF 活性程序？
 
-本闸门只检验关联和跨数据集可重复性，不声称免疫细胞驱动癌细胞、TF 具有因果作用或已经能够指导治疗。
+本闸门只检验关联和跨研究可重复性，不声称免疫细胞驱动癌细胞、TF 有因果作用或可指导治疗。此前“四类表型能否由无监督聚类重建”的 FAIL 是额外 QC，不是 TNBC 原文进入 ARACNe3/VIPER 的条件，因此保留为辅助证据但不再硬停止本路线。M-vs-rest 标签不重新聚类、优化或调阈值。
 
-此前执行的“四种免疫表型能否被独立聚类完整重建”是额外的质量控制，不是 TNBC 原文进入 ARACNe3/VIPER 的必要步骤。其 FAIL 收据永久保留，但不再作为本闸门的硬停止条件。M-vs-rest 标签不在本次分析中重新聚类或优化。
+## 2. TNBC 锚点代码审计与主方法选择
 
-## 2. 与 TNBC 原文一致及新增的部分
+主方法保持为：大样本肿瘤 bulk RNA 构建癌种特异 ARACNe3 网络，`viper` 将网络转为 regulon，VIPER/aREA 计算逐患者 TF 活性，msVIPER 检验组间差异活性。
 
-主方法保持：大样本肿瘤组织 RNA 表达构建癌种特异 ARACNe3 网络，`viper` 包将网络转为 regulon，VIPER/aREA 计算逐样本 TF 活性，msVIPER 检验组间差异活性。调控因子使用 TNBC Supplementary Data 2 中 PAN-GO “regulators of transcription”清单。论文 Methods 称 2,139 genes，但实际 sheet 为 1 行表头加 2,138 行非空 gene-symbol 数据；其中 79 行为重复 symbol，去重后是 2,059 个唯一符号。ARACNe3 输入采用可审计补充表的 2,059 个唯一符号，并将论文计数、sheet 行数和去重数同时写入收据。
+作者公开 Code Ocean 胶囊固定为 tag `v1.0`、commit `edf5314ce5b9ee0e2f88b2310e7c2df5619ad888`。审计结果如下：
 
-CRC 迁移新增但不替代原方法的部分是：患者级 Cancer-cell pseudobulk、按独立研究分层的效应量、随机效应 meta 分析和无泄漏 leave-one-study-out（LOSO；代码沿用通用 LODO 命名）验证。这些步骤用于处理 CRC-atlas 汇总多个研究造成的批次和重复性问题。独立分层字段固定为 `study_id`；同一研究内的 fresh/frozen 或 10x v2/v3 属于技术数据集，不能伪装成独立验证队列，在患者 pseudobulk 内合并。
+- 论文 Methods 说明 ARACNe3、VIPER/aREA 和 TF FDR 0.01，但未规定 ARACNe3 子网络数或 VIPER `minsize`。
+- 作者 `Figure1/05B-Run_ARACNe.sh` 不传 `-x`；固定 ARACNe3 版本的默认值是 1 个子网络、subsample 0.63212、子网络内 BH-FDR alpha 0.05、Maximum-Entropy pruning。
+- 作者 `Figure1/06-VIPER_TNBC_NonTNBC.R` 明确使用 `subnets/subnet1_defaultid.tsv`，而不是 consolidated network；`viper` 与 `msviper` 均用 `minsize=1`，`ttestNull` 用 1,000 次置换。
+- 作者脚本在 `header=TRUE` 后又删除第一行，实际会误删第一条真实边。本实现保留全部数据边，不复制该明显 bug。
+- 作者 regulon 构建和 msVIPER 代码被注释，并直接载入预计算 RDS；因此胶囊提供算法意图但不是从原始输入可直接端到端执行的实现。本项目补齐这些步骤。
 
-CollecTRI、DoRothEA、ULM 或其他先验网络均不是主分析；若以后运行，只能标记为敏感性分析，不能替代 ARACNe3/VIPER 判定。
+据此，本闸门的主网络固定为 1 个 ARACNe3 子网络并直接转 regulon；不使用 consolidated network，也不对 consolidated binomial p 值增加第二次 BH。固定 seed 1729 和 24 threads 仅用于确定性与性能，不改变作者算法。CollecTRI、DoRothEA、ULM 等先验网络不得替代本判定。
 
 ## 3. 输入与分析单位
 
 ### 3.1 CRC 特异网络
 
-- 数据：GDC 的 TCGA-COAD 与 TCGA-READ `STAR - Counts`、`Primary Tumor` 文件；使用其中 `tpm_unstranded`。
-- 重复 aliquot：按 TCGA participant 合并，逐基因取 TPM 均值，避免同一患者重复计权。
-- 基因符号：同一符号的 Ensembl 行求和；空符号删除。
-- 预过滤：TPM >= 1 的患者比例至少 10%，且跨患者方差大于 0。
-- ARACNe3：Califano Lab 官方仓库，固定提交 `3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14`。
-- 参数：100 个 subnetworks、默认 0.63212 subsampling、每个 subnetwork FDR alpha 0.05、默认 Maximum-Entropy pruning、seed 1729、24 threads。
-- 共识边：将 `log.p.values` 还原为 binomial p 值，对全部合并边作 BH 校正，保留 FDR <= 0.05。
-- regulon：`viper::aracne2regulon(..., format="3col")`；TF-target mode 由 TCGA CRC `log2(TPM+1)`估计。
+- GDC TCGA-COAD/READ `STAR - Counts`、`Primary Tumor`，使用唯一 TPM assay。
+- 重复 aliquot 按 TCGA participant 对每个基因取均值；同符号 Ensembl 行先求和；删除空符号。
+- 保留 TPM >=1 的患者比例至少 10%且跨患者方差大于 0 的基因。
+- PAN-GO：Methods 称 2,139 genes；补充表实际为 2,138 条非空 symbol 记录，含 79 条重复，得到 2,059 个唯一符号。使用可审计的 2,059 个唯一符号。
+- ARACNe3：官方 commit `3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14`；1 个 subnetwork；subsample 0.63212；子网络内 FDR alpha 0.05；Maximum-Entropy pruning；seed 1729；24 threads。
+- regulon：完整 `subnets/subnet1_crc.tsv` 三列边进入 `viper::aracne2regulon(..., format="3col")`；TF-target mode 由 TCGA CRC `log2(TPM+1)`估计。
 
 ### 3.2 CRC-atlas 癌细胞表达
 
-- 输入：已审计 CRC-atlas H5AD；必须匹配 30,875,155,333 bytes 和 SHA256 `718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6`。
-- 单位：患者 `donor_id`，不是细胞或样本。
-- 范围和分组完全来自表型清单；同一患者范围内标签必须唯一。
-- 只汇总作者标注 `Cancer cell` 的 `raw/X` 非负整数 counts；每位患者所有合规原发样本合并。
-- 主阈值：至少 50 个 Cancer cells；20、100、200 仅作预设敏感性分析。
-- 表达：患者内求和，转为 `log2(CPM+1)`；保留至少 10%患者 CPM >= 1 的基因。
+- H5AD 必须匹配 30,875,155,333 bytes 和 SHA256 `718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6`。
+- 分析单位为患者 `donor_id`；只汇总作者标注 `Cancer cell` 的 `raw/X` 非负整数 counts。
+- 范围与 M-vs-rest 分组完全来自冻结 manifest。同一患者的技术数据集可合并，但患者不得跨独立 `study_id`。
+- 主阈值为至少 50 个 Cancer cells；20、100、200 为预设敏感性阈值。
+- 患者内 counts 求和后转 `log2(CPM+1)`；保留至少 10%患者 CPM >=1 的基因。
 
-## 4. 数据与网络可判定条件
+## 4. 可判定条件
 
-必须全部满足，否则结论为 `INDETERMINATE`，不能写成生物学阴性：
+以下必须全部满足，否则为 `INDETERMINATE`，不能解释为生物学阴性：
 
-1. TCGA CRC 独立 participant >= 550，过滤后基因 >= 10,000，表达矩阵无重复样本或重复基因符号；
-2. PAN-GO 清单审计明确记录论文称 2,139 genes、sheet 实有 2,138 个非空记录和 2,059 个唯一 gene symbols，且其中至少 1,500 个唯一符号进入 ARACNe3；
-3. 共识网络至少 500 个 regulator；在 CRC-atlas 可测基因上，至少 400 个 regulon 具有 >=25 个 targets；
-4. 主阈值下 M >=30、non-M >=80；
-5. 至少 3 个独立 `study_id` 各含 >=3 M 和 >=3 non-M；
-6. 任一独立研究贡献的 M 患者不超过全部 M 的 60%；
-7. 患者标签、独立研究归属、Cancer-cell 数量和 pseudobulk 列顺序均通过一一对应检查；同一患者的技术数据集可合并，但患者不得跨 `study_id`。
+1. TCGA CRC participant >=550，过滤后基因 >=10,000，基因与患者标识唯一；
+2. PAN-GO 三种计数均记录，且至少 1,500 个唯一符号进入 ARACNe3；
+3. H5AD、ARACNe3 commit、TNBC Code Ocean commit 和补充表身份均通过审计；
+4. ARACNe3 成功生成恰好 1 个非空子网络，且该子网络至少含 500 个 regulator；
+5. 至少 400 个转换后 regulon 在 CRC-atlas 中有至少 1 个可测 target；
+6. 50 细胞阈值下 M >=30、non-M >=80；
+7. 至少 3 个独立 `study_id` 各含 >=3 M 和 >=3 non-M；任一研究贡献的 M 不超过全部 M 的 60%；
+8. 患者标签、研究归属、细胞数和 pseudobulk 列顺序一一对应，无跨研究患者泄漏。
 
 ## 5. VIPER 与 msVIPER
 
-- 单样本活动：对全部合规患者的 gene-by-patient `log2(CPM+1)`矩阵运行 `viper(..., method="scale", minsize=25, nes=TRUE)`，得到逐患者 NES。
-- 组间 signature：每个信息性数据集内计算 M-vs-rest 基因 Welch t statistic，再以有效样本量平方根加权 Stouffer 合并。
-- null：在每个数据集内部置换 M 标签 500 次，重新计算完整 gene signature；该矩阵传给 `msviper`。
-- msVIPER 显著性阈值沿用锚点论文：BH-FDR <= 0.01。
+- 单患者活动：对全部合规 pseudobulk 运行 `viper(..., method="auto", minsize=1, nes=TRUE)`。`auto` 与作者未显式指定 method 的调用一致。
+- 组间 signature：在每个信息性独立研究内计算 M-vs-rest 基因 Welch t statistic，再按有效样本量平方根加权合并。这是用户明确要求的跨研究迁移层。
+- null：每个独立研究内置换 M 标签 1,000 次，每次重算完整 signature，并传给 `msviper(..., minsize=1)`。
+- msVIPER 显著阈值：BH-FDR <=0.01，沿用锚点论文。
 
-## 6. 跨数据集 TF 程序
+## 6. 跨研究 TF 程序
 
-对每个 VIPER TF，在每个同时有 >=3 M 和 >=3 non-M 的独立研究计算 Hedges g（正值表示 M 活性更高），再作 REML 随机效应 meta 分析；因信息性研究仅 3 个，推断使用 modified Knapp-Hartung 标准误与 t 检验，避免小研究数下普通 z 检验过度乐观。一个“可重复 TF”必须同时满足：
+每个 VIPER TF 在各信息性研究计算 Hedges g（正值表示 M 更高），再作 REML 随机效应 meta。因仅 3 个信息性研究，使用 modified Knapp-Hartung 标准误和 t 检验。一个“可重复 TF”须同时满足：
 
 - 至少 3 个信息性研究；
-- meta BH-FDR <= 0.05；
-- |meta Hedges g| >= 0.50；
-- 至少 75%信息性研究与 meta 同方向；在 3 个研究时等价于 3/3 全部同方向；
-- I2 <= 75%。
+- meta BH-FDR <=0.05；
+- |meta Hedges g| >=0.50；
+- 至少 75%研究同向；3 个研究时即 3/3 同向；
+- I² <=75%。
 
-“可重复 TF 程序”预先定义为至少 10 个可重复 TF，其中至少 5 个同时满足 msVIPER FDR <=0.01 且方向一致。
+“可重复 TF 程序”定义为至少 10 个可重复 TF，其中至少 5 个同时满足 msVIPER FDR <=0.01 且方向一致。
 
-## 7. 无泄漏 LODO 验证
+## 7. 无泄漏 LOSO 验证
 
-- 每折留出一个完整 `study_id`；测试集标签在特征选择、标准化和拟合中不可见。
-- 仅在训练数据集计算 TF 效应并选择绝对训练 meta 效应最大的 20 个 TF；所有转换仅由训练数据拟合。
-- 分类器：class-weight balanced、L2 logistic regression，固定 seed 1729。
-- 主性能：把各留出数据集内部的 M-vs-rest concordance 合并为 stratified AUROC，避免数据集构成差异造成虚假 pooled AUROC。
-- 区间：按“数据集×类别”分层患者 bootstrap 1,000 次。
-- null：数据集内部置换标签 500 次；每次重跑训练内特征选择和整个 LODO。
+- 每折留出一个完整 `study_id`；测试标签不参与特征选择、标准化或拟合。
+- 每折仅用训练研究选择绝对训练 meta 效应最大的 20 个 TF；分类器为 class-balanced L2 logistic regression，seed 1729。
+- 主性能为按研究内 M-vs-rest concordance 加权的 stratified AUROC。
+- 95% CI：按“研究×类别”分层患者 bootstrap 1,000 次。
+- null：研究内置换标签 500 次；每次重跑训练内特征选择和完整 LOSO。
 
-LODO 必须同时满足 AUROC >=0.65、bootstrap 95% CI 下限 >0.55、置换经验 p <=0.05。
+LOSO 必须同时满足 AUROC >=0.65、bootstrap 95% CI 下限 >0.55、置换经验 p <=0.05。
 
 ## 8. 最终停止规则
 
-- `PASS`：第4节全部可判定条件、至少10个可重复 TF、至少5个 msVIPER 同向确认 TF、以及第7节三项 LODO 条件全部通过。
-- `FAIL`：数据与网络可判定，但任一预设调控程序或 LODO 条件失败。结论仅为“M-vs-rest 不能支持当前 TNBC 式入口”；随后应冻结另一个 CRC 亚型协议，复用 TCGA 网络和患者 VIPER 活性，不在本结果上调阈值。
-- `INDETERMINATE`：数据身份、样本量、网络或运行完整性不足。
+- `PASS`：全部可判定条件、至少 10 个可重复 TF、至少 5 个 msVIPER 同向确认 TF以及三项 LOSO 条件全部通过。
+- `FAIL`：数据与网络可判定，但任一预设 TF 程序或 LOSO 条件失败。只表示 M-vs-rest 不支持当前入口；随后应另行冻结其他 CRC 亚型，复用 TCGA 网络和患者 VIPER 矩阵，不能在本结果上调阈值。
+- `INDETERMINATE`：数据身份、样本量、网络或执行完整性不足。
 
-判定生成后立即停止：本轮不运行 ATAC、药物敏感性、治疗推荐、空间验证或湿实验推断，也不自动尝试其他亚型。
+判定生成后立即停止：本轮不运行 ATAC、药敏、治疗推荐、空间验证、湿实验推断，也不自动尝试其他亚型。
 
-## 9. 可复现性合同
+## 9. 可复现性
 
-云端保留原始下载、GDC manifest、TCGA 表达、ARACNe3 100 个 subnetworks、合并网络、regulon、患者 pseudobulk、VIPER/msVIPER 矩阵、meta/LODO 明细、日志和 SHA256。Git 仅保留协议、表型清单、代码、小型汇总表、收据和最终报告。任何失败和重试不得覆盖旧日志。
+云端保留原始下载、GDC manifest、TCGA 表达、单个 ARACNe3 子网络与合并输出、regulon、pseudobulk、VIPER/msVIPER、meta/LOSO 明细、日志和 SHA256。Git 只保留协议、表型 manifest、代码、小型结果、收据和报告。失败与重试日志不得覆盖。

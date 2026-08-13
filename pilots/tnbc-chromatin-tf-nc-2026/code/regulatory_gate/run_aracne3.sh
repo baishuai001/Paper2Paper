@@ -66,4 +66,4 @@ if [[ "$actual_subnets" -ne "$subnetworks" ]]; then
   echo "Expected $subnetworks subnetworks, found $actual_subnets" >&2
   exit 6
 fi
-sha256sum "$binary" "$network" "$output/log_crc.txt"
+sha256sum "$binary" "$output/subnets/subnet1_crc.tsv" "$network" "$output/log_crc.txt"

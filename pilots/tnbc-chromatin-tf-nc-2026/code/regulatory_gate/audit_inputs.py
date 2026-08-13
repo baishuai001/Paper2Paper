@@ -27,6 +27,8 @@ def main() -> int:
     parser.add_argument("--expected-h5ad-sha256", required=True)
     parser.add_argument("--aracne-repo", required=True, type=Path)
     parser.add_argument("--expected-aracne-commit", required=True)
+    parser.add_argument("--anchor-code-repo", required=True, type=Path)
+    parser.add_argument("--expected-anchor-code-commit", required=True)
     parser.add_argument("--supplement", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--skip-h5ad-hash", action="store_true")
@@ -37,6 +39,9 @@ def main() -> int:
     actual_bytes = args.h5ad.stat().st_size
     actual_hash = None if args.skip_h5ad_hash else sha256_file(args.h5ad)
     commit = command_output(["git", "rev-parse", "HEAD"], cwd=args.aracne_repo)
+    anchor_code_commit = command_output(
+        ["git", "rev-parse", "HEAD"], cwd=args.anchor_code_repo
+    )
     with h5py.File(args.h5ad, "r") as handle:
         shape = [int(handle["X"].attrs.get("shape", [len(handle["obs/_index"]), len(handle["var/_index"])])[0]),
                  int(handle["X"].attrs.get("shape", [len(handle["obs/_index"]), len(handle["var/_index"])])[1])]
@@ -46,6 +51,9 @@ def main() -> int:
         "h5ad_size_matches": actual_bytes == args.expected_h5ad_bytes,
         "h5ad_sha256_matches": args.skip_h5ad_hash or actual_hash == args.expected_h5ad_sha256.upper(),
         "aracne_commit_matches": commit == args.expected_aracne_commit,
+        "anchor_code_commit_matches": (
+            anchor_code_commit == args.expected_anchor_code_commit
+        ),
         "supplement_nonempty": args.supplement.stat().st_size > 0,
     }
     receipt = {
@@ -55,6 +63,12 @@ def main() -> int:
         "h5ad": {"path": str(args.h5ad), "bytes": actual_bytes, "sha256": actual_hash, "shape": shape},
         "h5ad_obs_field_count": len(obs_fields),
         "aracne3": {"path": str(args.aracne_repo), "commit": commit},
+        "anchor_code": {
+            "path": str(args.anchor_code_repo),
+            "commit": anchor_code_commit,
+            "tag": "v1.0",
+            "source": "https://git.codeocean.com/capsule-7227095.git",
+        },
         "supplement": {
             "path": str(args.supplement),
             "bytes": args.supplement.stat().st_size,

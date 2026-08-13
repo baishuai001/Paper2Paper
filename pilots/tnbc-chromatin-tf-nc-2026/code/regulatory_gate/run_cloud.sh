@@ -6,6 +6,7 @@ work=${REGULATORY_GATE_WORK:-$repo/tmp/tnbc-chromatin-tf-nc-2026/regulatory-gate
 h5ad=${CRC_ATLAS_H5AD:-$repo/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad}
 supplement=${TNBC_SUPPLEMENT_DATA2:-$repo/tmp/tnbc-chromatin-tf-nc-2026/external/source/41467_2026_76385_MOESM4_ESM.xlsx}
 aracne_repo=${ARACNE3_REPO:-$repo/tmp/tnbc-chromatin-tf-nc-2026/external/code/ARACNe3}
+anchor_code_repo=${TNBC_ANCHOR_CODE_REPO:-$repo/tmp/tnbc-chromatin-tf-nc-2026/external/code/TNBC_CodeOcean_7227095_v1}
 code=$repo/pilots/tnbc-chromatin-tf-nc-2026/code/regulatory_gate
 manifest=$repo/pilots/tnbc-chromatin-tf-nc-2026/analysis/phenotypes/m-vs-rest.json
 outputs=$work/outputs
@@ -34,6 +35,8 @@ run_logged 00_input_audit "$python_bin" "$code/audit_inputs.py" \
   --expected-h5ad-sha256 718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6 \
   --aracne-repo "$aracne_repo" \
   --expected-aracne-commit 3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14 \
+  --anchor-code-repo "$anchor_code_repo" \
+  --expected-anchor-code-commit edf5314ce5b9ee0e2f88b2310e7c2df5619ad888 \
   --supplement "$supplement" \
   --output "$outputs/input_audit.json"
 
@@ -56,19 +59,19 @@ fi
 
 run_logged 05_aracne "$code/run_aracne3.sh" \
   "$aracne_repo" "$outputs/tcga/tcga_crc_tpm.tsv" \
-  "$outputs/aracne_inputs/aracne_regulators.txt" "$outputs/aracne3" "$threads" 100
+  "$outputs/aracne_inputs/aracne_regulators.txt" "$outputs/aracne3" "$threads" 1
 
 run_logged 06_aracne_audit "$python_bin" "$code/audit_aracne_run.py" \
   --repo "$aracne_repo" --expression "$outputs/tcga/tcga_crc_tpm.tsv" \
   --regulators "$outputs/aracne_inputs/aracne_regulators.txt" \
-  --run-dir "$outputs/aracne3" --expected-subnetworks 100 \
+  --run-dir "$outputs/aracne3" --expected-subnetworks 1 \
   --threads "$threads" \
   --output "$outputs/aracne3_receipt.json"
 
 run_logged 07_viper Rscript "$code/viper_msviper.R" \
-  "$outputs/tcga/tcga_crc_tpm.rds" "$outputs/aracne3/consolidated-net_crc.tsv" \
+  "$outputs/tcga/tcga_crc_tpm.rds" "$outputs/aracne3/subnets/subnet1_crc.tsv" \
   "$outputs/pseudobulk/log2cpm.tsv.gz" "$outputs/pseudobulk/patient_metadata.tsv" \
-  "$outputs/viper" "$threads" 500
+  "$outputs/viper" "$threads" 1000
 
 run_logged 08_statistics "$python_bin" "$code/statistics.py" \
   --activity "$outputs/viper/viper_activity.tsv.gz" \

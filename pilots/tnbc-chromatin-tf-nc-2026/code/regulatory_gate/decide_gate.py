@@ -49,9 +49,17 @@ def main() -> int:
         "tcga_participants_ge_550": tcga["participants"] >= 550,
         "tcga_genes_ge_10000": tcga["retained_genes"] >= 10_000,
         "aracne_regulators_ge_1500": aracne_input["aracne_regulators"] >= 1_500,
-        "aracne_100_subnetworks_passed": aracne_run["status"] == "passed",
-        "consensus_regulators_ge_500": viper["network"]["consensus_regulators"] >= 500,
-        "measured_regulons_ge25_targets_ge_400": viper["network"]["regulons_ge25_measured_targets"] >= 400,
+        "anchor_code_style_aracne_single_subnetwork_passed": (
+            aracne_run["status"] == "passed"
+            and aracne_run["subnetwork_files"] == 1
+            and aracne_run["regulon_source"] == "subnets/subnet1_crc.tsv"
+        ),
+        "author_subnetwork_regulators_ge_500": (
+            viper["network"]["author_subnetwork_regulators"] >= 500
+        ),
+        "measured_regulons_ge1_target_ge_400": (
+            viper["network"]["regulons_ge1_measured_target"] >= 400
+        ),
         "primary_case_ge_30": primary_counts["case"] >= 30,
         "primary_control_ge_80": primary_counts["control"] >= 80,
         **statistics["cohort_conditions"],
