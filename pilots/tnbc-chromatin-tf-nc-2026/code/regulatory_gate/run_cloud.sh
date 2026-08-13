@@ -62,6 +62,7 @@ run_logged 06_aracne_audit "$python_bin" "$code/audit_aracne_run.py" \
   --repo "$aracne_repo" --expression "$outputs/tcga/tcga_crc_tpm.tsv" \
   --regulators "$outputs/aracne_inputs/aracne_regulators.txt" \
   --run-dir "$outputs/aracne3" --expected-subnetworks 100 \
+  --threads "$threads" \
   --output "$outputs/aracne3_receipt.json"
 
 run_logged 07_viper Rscript "$code/viper_msviper.R" \

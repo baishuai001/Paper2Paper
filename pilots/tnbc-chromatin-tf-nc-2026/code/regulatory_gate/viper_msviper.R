@@ -216,7 +216,8 @@ receipt <- list(
     patients_scored = ncol(activity),
     TFs_scored = nrow(activity),
     method = "scale",
-    minsize = 25
+    minsize = 25,
+    threads = threads
   ),
   msviper = list(
     primary_patients = sum(primary),
@@ -225,6 +226,7 @@ receipt <- list(
     informative_datasets = informative,
     validation_unit = "study_id (stored in the generic dataset field)",
     permutations = permutations,
+    seed = 1729,
     TFs_tested = nrow(ms_table),
     TFs_FDR_0_01 = sum(ms_table$FDR <= 0.01)
   ),

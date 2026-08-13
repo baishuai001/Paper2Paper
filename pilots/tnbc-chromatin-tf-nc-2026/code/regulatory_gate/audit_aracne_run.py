@@ -20,6 +20,7 @@ def main() -> int:
     parser.add_argument("--regulators", required=True, type=Path)
     parser.add_argument("--run-dir", required=True, type=Path)
     parser.add_argument("--expected-subnetworks", type=int, default=100)
+    parser.add_argument("--threads", type=int, default=24)
     parser.add_argument("--output", required=True, type=Path)
     args = parser.parse_args()
     log = args.run_dir / "log_crc.txt"
@@ -53,6 +54,7 @@ def main() -> int:
             "multiple_testing": "FDR",
             "maximum_entropy_pruning": True,
             "seed": 1729,
+            "threads": args.threads,
         },
         "subnetwork_files": len(subnetworks),
         "consolidated_edges": edge_count,
