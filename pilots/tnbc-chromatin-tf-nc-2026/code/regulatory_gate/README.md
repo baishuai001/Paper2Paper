@@ -16,6 +16,8 @@ All real data and full outputs stay on the cloud server. Git contains source, pr
 
 The anchor Code Ocean v1.0 code (commit `edf5314ce5b9ee0e2f88b2310e7c2df5619ad888`) explicitly converts `subnet1`, not the consolidated network, and uses `minsize=1` plus 1,000 null permutations. This implementation follows those choices, retains the first real edge that the author script accidentally deletes after `header=TRUE`, and adds no second consensus BH filter.
 
+The anchor TCGA helper averages expression rows mapping to a duplicate gene symbol and applies no low-expression filter. The CRC implementation does the same, averages repeat aliquots at participant level, and uses the `viper` default method (`"none"`) because the anchor call omits `method`.
+
 `viper_msviper.R` rejects fewer than 50 permutations. In `viper` 1.38.0, the empirical-tail helper used by msVIPER can fail to terminate when the null has too few distinct values; the frozen real run uses the anchor's 1,000 permutations.
 
 To switch phenotype after a failed route, add a new JSON manifest with the same schema. The TCGA expression, ARACNe3 network, converted regulon and patient-level VIPER matrix are reusable; only cohort selection, msVIPER contrast, meta-analysis, LODO and decision must be rerun under a newly frozen route-specific protocol.

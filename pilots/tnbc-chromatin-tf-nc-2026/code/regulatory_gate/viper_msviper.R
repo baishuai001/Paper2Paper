@@ -98,7 +98,6 @@ if (length(eligible_regulons) < 400) {
 activity <- viper(
   atlas,
   regulon,
-  method = "auto",
   minsize = 1,
   nes = TRUE,
   eset.filter = TRUE,
@@ -210,7 +209,7 @@ receipt <- list(
   viper = list(
     patients_scored = ncol(activity),
     TFs_scored = nrow(activity),
-    method = "auto",
+    method = "none (viper default; anchor code omits method)",
     minsize = 1,
     threads = threads
   ),

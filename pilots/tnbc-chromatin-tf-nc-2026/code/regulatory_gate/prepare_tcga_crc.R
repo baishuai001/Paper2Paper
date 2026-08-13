@@ -56,9 +56,16 @@ valid <- !is.na(symbols) & nzchar(symbols) & symbols != "NA"
 tpm <- tpm[valid, , drop = FALSE]
 symbols <- symbols[valid]
 
-# GDC annotations occasionally contain multiple Ensembl rows for one symbol.
-# Sum them before any filtering so every output row has one unique gene symbol.
-tpm_by_symbol <- rowsum(tpm, group = symbols, reorder = TRUE, na.rm = TRUE)
+# The anchor helper averages Ensembl rows that map to the same symbol.
+# Preserve that behavior while ensuring every output row is one unique symbol.
+symbol_sums <- rowsum(tpm, group = symbols, reorder = TRUE, na.rm = TRUE)
+symbol_n <- table(symbols)
+tpm_by_symbol <- sweep(
+  symbol_sums,
+  1,
+  as.numeric(symbol_n[rownames(symbol_sums)]),
+  "/"
+)
 sample_barcodes <- colnames(tpm_by_symbol)
 if (is.null(sample_barcodes) || any(nchar(sample_barcodes) < 12)) {
   stop("Invalid or missing TCGA sample barcodes")
@@ -68,9 +75,7 @@ participant_sums <- t(rowsum(t(tpm_by_symbol), group = participants, reorder = T
 participant_n <- table(participants)
 participant_tpm <- sweep(participant_sums, 2, as.numeric(participant_n[colnames(participant_sums)]), "/")
 
-prevalent <- rowMeans(participant_tpm >= 1) >= 0.10
-variable <- apply(participant_tpm, 1, var) > 0
-keep <- prevalent & variable & is.finite(rowMeans(participant_tpm))
+keep <- is.finite(rowMeans(participant_tpm))
 filtered_tpm <- participant_tpm[keep, , drop = FALSE]
 if (ncol(filtered_tpm) < 550 || nrow(filtered_tpm) < 10000) {
   stop(sprintf("Frozen data minimum failed: %d participants, %d genes", ncol(filtered_tpm), nrow(filtered_tpm)))
@@ -108,7 +113,12 @@ receipt <- list(
   aliquots = length(sample_barcodes),
   participants = ncol(filtered_tpm),
   participants_with_multiple_aliquots = sum(participant_n > 1),
-  filter = list(tpm_ge_1_fraction = 0.10, variance_gt = 0),
+  processing = list(
+    duplicate_symbol_aggregation = "mean (anchor-code behavior)",
+    duplicate_aliquot_aggregation = "participant mean",
+    low_expression_filter = "none (anchor-code behavior)",
+    removed_nonfinite_gene_rows = sum(!keep)
+  ),
   package_versions = list(
     R = as.character(getRversion()),
     TCGAbiolinks = as.character(packageVersion("TCGAbiolinks")),

@@ -33,8 +33,8 @@ CRC-atlas 作者预先定义的 M 型相对 B、T、desert 三型，是否在原
 ### 3.1 CRC 特异网络
 
 - GDC TCGA-COAD/READ `STAR - Counts`、`Primary Tumor`，使用唯一 TPM assay。
-- 重复 aliquot 按 TCGA participant 对每个基因取均值；同符号 Ensembl 行先求和；删除空符号。
-- 保留 TPM >=1 的患者比例至少 10%且跨患者方差大于 0 的基因。
+- 重复 aliquot 按 TCGA participant 对每个基因取均值；映射到同一 gene symbol 的 Ensembl 行取均值，与作者 helper 一致；删除空符号和非有限行。
+- 不增加低表达或方差过滤；作者预处理代码没有这些步骤。
 - PAN-GO：Methods 称 2,139 genes；补充表实际为 2,138 条非空 symbol 记录，含 79 条重复，得到 2,059 个唯一符号。使用可审计的 2,059 个唯一符号。
 - ARACNe3：官方 commit `3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14`；1 个 subnetwork；subsample 0.63212；子网络内 FDR alpha 0.05；Maximum-Entropy pruning；seed 1729；24 threads。
 - regulon：完整 `subnets/subnet1_crc.tsv` 三列边进入 `viper::aracne2regulon(..., format="3col")`；TF-target mode 由 TCGA CRC TPM 估计，与作者对 TCGA 的调用一致。
@@ -62,7 +62,7 @@ CRC-atlas 作者预先定义的 M 型相对 B、T、desert 三型，是否在原
 
 ## 5. VIPER 与 msVIPER
 
-- 单患者活动：对全部合规 pseudobulk 运行 `viper(..., method="auto", minsize=1, nes=TRUE)`。`auto` 与作者未显式指定 method 的调用一致。
+- 单患者活动：对全部合规 pseudobulk 运行 `viper(..., minsize=1, nes=TRUE)`；不显式传 `method`，因此使用 `viper` 默认的 `"none"`，与作者调用一致。
 - 组间 signature：在每个信息性独立研究内计算 M-vs-rest 基因 Welch t statistic，再按有效样本量平方根加权合并。这是用户明确要求的跨研究迁移层。
 - null：每个独立研究内置换 M 标签 1,000 次，每次重算完整 signature，并传给 `msviper(..., minsize=1)`。
 - msVIPER 显著阈值：BH-FDR <=0.01，沿用锚点论文。
