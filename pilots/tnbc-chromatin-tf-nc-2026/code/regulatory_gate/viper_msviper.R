@@ -1,0 +1,234 @@
+#!/usr/bin/env Rscript
+
+suppressPackageStartupMessages({
+  library(viper)
+  library(data.table)
+  library(jsonlite)
+})
+
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 7) {
+  stop(paste(
+    "Usage: viper_msviper.R BULK_TPM_RDS CONSOLIDATED_NETWORK",
+    "ATLAS_LOG2CPM PATIENT_METADATA OUTPUT_DIR THREADS PERMUTATIONS"
+  ))
+}
+bulk_path <- args[[1]]
+network_path <- args[[2]]
+atlas_path <- args[[3]]
+metadata_path <- args[[4]]
+output_dir <- normalizePath(args[[5]], mustWork = FALSE)
+threads <- as.integer(args[[6]])
+permutations <- as.integer(args[[7]])
+dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
+
+read_expression <- function(path) {
+  tab <- fread(path, data.table = FALSE, check.names = FALSE)
+  genes <- as.character(tab[[1]])
+  values <- as.matrix(tab[, -1, drop = FALSE])
+  storage.mode(values) <- "double"
+  rownames(values) <- genes
+  if (anyDuplicated(rownames(values)) || anyDuplicated(colnames(values))) {
+    stop(sprintf("Duplicate rows or columns in %s", path))
+  }
+  values
+}
+
+network <- fread(network_path, data.table = FALSE)
+required_network <- c(
+  "regulator.values", "target.values", "mi.values", "scc.values",
+  "count.values", "log.p.values"
+)
+if (!all(required_network %in% colnames(network))) {
+  stop(sprintf("ARACNe3 network missing columns: %s", paste(setdiff(required_network, colnames(network)), collapse = ", ")))
+}
+network$p.value <- exp(pmin(as.numeric(network$log.p.values), 0))
+network$FDR <- p.adjust(network$p.value, method = "BH")
+consensus <- network[is.finite(network$FDR) & network$FDR <= 0.05, , drop = FALSE]
+if (nrow(consensus) == 0) {
+  stop("No ARACNe3 consensus edges at BH-FDR <=0.05")
+}
+fwrite(consensus, file.path(output_dir, "aracne3_consensus_edges.tsv.gz"), sep = "\t", quote = FALSE, compress = "gzip")
+
+bulk_tpm <- readRDS(bulk_path)
+if (anyDuplicated(rownames(bulk_tpm)) || anyDuplicated(colnames(bulk_tpm))) {
+  stop("Bulk TPM matrix contains duplicate genes or participants")
+}
+network_3col <- tempfile(pattern = "aracne3_consensus_", fileext = ".tsv")
+fwrite(
+  consensus[, c("regulator.values", "target.values", "mi.values")],
+  network_3col, sep = "\t", quote = FALSE, col.names = FALSE
+)
+regulon <- aracne2regulon(
+  network_3col,
+  log2(bulk_tpm + 1),
+  format = "3col",
+  verbose = TRUE
+)
+unlink(network_3col)
+saveRDS(regulon, file.path(output_dir, "crc_aracne3_regulon.rds"), compress = "xz")
+
+regulon_edges <- rbindlist(lapply(names(regulon), function(tf) {
+  data.table(
+    TF = tf,
+    target = names(regulon[[tf]]$tfmode),
+    tfmode = as.numeric(regulon[[tf]]$tfmode),
+    likelihood = as.numeric(regulon[[tf]]$likelihood)
+  )
+}))
+fwrite(regulon_edges, file.path(output_dir, "crc_aracne3_regulon_edges.tsv.gz"), sep = "\t", quote = FALSE, compress = "gzip")
+
+atlas <- read_expression(atlas_path)
+metadata <- fread(metadata_path, data.table = FALSE)
+if (!all(c("donor_id", "dataset", "group", "analysis_cells_aggregated") %in% colnames(metadata))) {
+  stop("Patient metadata lacks required columns")
+}
+position <- match(colnames(atlas), metadata$donor_id)
+if (anyNA(position) || anyDuplicated(position)) {
+  stop("Atlas expression columns do not map one-to-one to metadata")
+}
+metadata <- metadata[position, , drop = FALSE]
+if (!identical(as.character(metadata$donor_id), colnames(atlas))) {
+  stop("Atlas expression/metadata order mismatch")
+}
+
+measured_targets <- vapply(regulon, function(x) sum(names(x$tfmode) %in% rownames(atlas)), numeric(1))
+eligible_regulons <- names(measured_targets)[measured_targets >= 25]
+if (length(eligible_regulons) < 400) {
+  stop(sprintf("Only %d regulons have >=25 measured atlas targets", length(eligible_regulons)))
+}
+
+activity <- viper(
+  atlas,
+  regulon,
+  method = "scale",
+  minsize = 25,
+  nes = TRUE,
+  eset.filter = TRUE,
+  cores = threads,
+  verbose = TRUE
+)
+if (is.null(dim(activity))) {
+  stop("VIPER returned a non-matrix activity object")
+}
+activity_tab <- data.table(TF = rownames(activity), activity, keep.rownames = FALSE)
+fwrite(activity_tab, file.path(output_dir, "viper_activity.tsv.gz"), sep = "\t", quote = FALSE, compress = "gzip")
+
+primary <- metadata$analysis_cells_aggregated >= 50
+primary_metadata <- metadata[primary, , drop = FALSE]
+primary_expression <- atlas[, primary, drop = FALSE]
+groups <- primary_metadata$group == "case"
+datasets <- as.character(primary_metadata$dataset)
+dataset_names <- sort(unique(datasets))
+informative <- dataset_names[vapply(dataset_names, function(dataset) {
+  index <- datasets == dataset
+  sum(groups[index]) >= 3 && sum(!groups[index]) >= 3
+}, logical(1))]
+if (length(informative) < 4) {
+  stop(sprintf("Only %d informative datasets at the frozen 50-cell threshold", length(informative)))
+}
+
+welch_t <- function(matrix, label) {
+  case <- matrix[, label, drop = FALSE]
+  control <- matrix[, !label, drop = FALSE]
+  mean_difference <- rowMeans(case) - rowMeans(control)
+  denominator <- sqrt(
+    apply(case, 1, var) / ncol(case) +
+      apply(control, 1, var) / ncol(control)
+  )
+  statistic <- mean_difference / denominator
+  statistic[!is.finite(statistic)] <- 0
+  statistic
+}
+
+meta_signature <- function(label) {
+  numer <- rep(0, nrow(primary_expression))
+  denominator <- 0
+  for (dataset in informative) {
+    index <- datasets == dataset
+    local <- label[index]
+    weight <- sqrt(sum(local) * sum(!local) / length(local))
+    numer <- numer + weight * welch_t(primary_expression[, index, drop = FALSE], local)
+    denominator <- denominator + weight^2
+  }
+  result <- numer / sqrt(denominator)
+  names(result) <- rownames(primary_expression)
+  result
+}
+
+observed_signature <- meta_signature(groups)
+set.seed(1729)
+null_signatures <- matrix(
+  0,
+  nrow = length(observed_signature),
+  ncol = permutations,
+  dimnames = list(names(observed_signature), sprintf("perm_%04d", seq_len(permutations)))
+)
+for (permutation in seq_len(permutations)) {
+  permuted <- groups
+  for (dataset in informative) {
+    index <- which(datasets == dataset)
+    permuted[index] <- sample(permuted[index], length(index), replace = FALSE)
+  }
+  null_signatures[, permutation] <- meta_signature(permuted)
+}
+saveRDS(
+  list(observed = observed_signature, null = null_signatures, informative_datasets = informative),
+  file.path(output_dir, "msviper_gene_signatures.rds"),
+  compress = "xz"
+)
+
+ms <- msviper(
+  observed_signature,
+  regulon,
+  nullmodel = null_signatures,
+  minsize = 25,
+  adaptive.size = FALSE,
+  ges.filter = TRUE,
+  cores = threads,
+  verbose = TRUE
+)
+ms_table <- data.frame(
+  TF = names(ms$es$nes),
+  NES = as.numeric(ms$es$nes),
+  size = as.numeric(ms$es$size),
+  p.value = as.numeric(ms$es$p.value),
+  stringsAsFactors = FALSE
+)
+ms_table$FDR <- p.adjust(ms_table$p.value, method = "BH")
+ms_table <- ms_table[order(ms_table$FDR, -abs(ms_table$NES)), , drop = FALSE]
+fwrite(ms_table, file.path(output_dir, "msviper_results.tsv"), sep = "\t", quote = FALSE)
+
+receipt <- list(
+  status = "passed",
+  generated_at = format(Sys.time(), tz = "UTC", usetz = TRUE),
+  network = list(
+    consolidated_edges = nrow(network),
+    consensus_edges_FDR_0_05 = nrow(consensus),
+    consensus_regulators = length(unique(consensus$regulator.values)),
+    regulons_after_conversion = length(regulon),
+    regulons_ge25_measured_targets = length(eligible_regulons)
+  ),
+  viper = list(
+    patients_scored = ncol(activity),
+    TFs_scored = nrow(activity),
+    method = "scale",
+    minsize = 25
+  ),
+  msviper = list(
+    primary_patients = sum(primary),
+    case_patients = sum(groups),
+    control_patients = sum(!groups),
+    informative_datasets = informative,
+    permutations = permutations,
+    TFs_tested = nrow(ms_table),
+    TFs_FDR_0_01 = sum(ms_table$FDR <= 0.01)
+  ),
+  package_versions = list(
+    R = as.character(getRversion()),
+    viper = as.character(packageVersion("viper")),
+    data.table = as.character(packageVersion("data.table"))
+  )
+)
+write_json(receipt, file.path(output_dir, "viper_receipt.json"), pretty = TRUE, auto_unbox = TRUE)
+cat(toJSON(receipt, auto_unbox = TRUE), "\n")
