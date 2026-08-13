@@ -67,6 +67,8 @@ class RegulatoryGateTests(unittest.TestCase):
         meta = reml_meta(np.array([0.7, 0.8, 0.6, 0.9]), np.array([0.1, 0.1, 0.1, 0.1]))
         self.assertTrue(0.6 < meta["effect"] < 0.9)
         self.assertEqual(meta["I2"], 0)
+        self.assertEqual(meta["df"], 3)
+        self.assertGreaterEqual(meta["mKH_scale"], 1)
         labels = np.array([False, False, True, True, False, False, True, True])
         predictions = np.array([0.1, 0.2, 0.8, 0.9, 0.2, 0.3, 0.7, 0.8])
         datasets = np.array(["d1"] * 4 + ["d2"] * 4)

@@ -12,7 +12,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize_scalar
-from scipy.stats import norm
+from scipy.stats import t
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import roc_auc_score
 from sklearn.preprocessing import StandardScaler
@@ -51,7 +51,7 @@ def reml_meta(effects: np.ndarray, variances: np.ndarray) -> dict[str, float]:
     valid = np.isfinite(effects) & np.isfinite(variances) & (variances > 0)
     effects, variances = effects[valid], variances[valid]
     if len(effects) < 2:
-        return {key: np.nan for key in ("effect", "SE", "p", "tau2", "I2")}
+        return {key: np.nan for key in ("effect", "SE", "p", "tau2", "I2", "mKH_scale", "df")}
 
     fixed_weights = 1.0 / variances
     fixed = np.sum(fixed_weights * effects) / np.sum(fixed_weights)
@@ -76,9 +76,20 @@ def reml_meta(effects: np.ndarray, variances: np.ndarray) -> dict[str, float]:
     tau2 = max(0.0, float(optimization.x)) if optimization.success else 0.0
     weights = 1.0 / (variances + tau2)
     pooled = float(np.sum(weights * effects) / np.sum(weights))
-    se = float(np.sqrt(1.0 / np.sum(weights)))
-    p_value = float(2.0 * norm.sf(abs(pooled / se)))
-    return {"effect": pooled, "SE": se, "p": p_value, "tau2": tau2, "I2": i2}
+    raw_hk_scale = float(np.sum(weights * (effects - pooled) ** 2) / (len(effects) - 1))
+    modified_hk_scale = max(1.0, raw_hk_scale)
+    se = float(np.sqrt(modified_hk_scale / np.sum(weights)))
+    meta_df = float(len(effects) - 1)
+    p_value = float(2.0 * t.sf(abs(pooled / se), df=meta_df))
+    return {
+        "effect": pooled,
+        "SE": se,
+        "p": p_value,
+        "tau2": tau2,
+        "I2": i2,
+        "mKH_scale": modified_hk_scale,
+        "df": meta_df,
+    }
 
 
 def informative_datasets(metadata: pd.DataFrame, min_group: int) -> list[str]:
@@ -96,6 +107,7 @@ def meta_table(
     tfs: np.ndarray,
     metadata: pd.DataFrame,
     min_group: int,
+    min_datasets: int,
 ) -> tuple[pd.DataFrame, pd.DataFrame]:
     datasets = informative_datasets(metadata, min_group)
     per_dataset_rows: list[dict[str, object]] = []
@@ -140,6 +152,8 @@ def meta_table(
                 "meta_p": meta["p"],
                 "tau2_REML": meta["tau2"],
                 "I2": meta["I2"],
+                "modified_Knapp_Hartung_scale": meta["mKH_scale"],
+                "meta_df": meta["df"],
                 "informative_datasets": len(effects),
                 "same_direction_fraction": direction_fraction,
             }
@@ -148,7 +162,7 @@ def meta_table(
     if not meta_frame.empty:
         meta_frame["meta_FDR"] = bh_fdr(meta_frame["meta_p"].to_numpy())
         meta_frame["reproducible"] = (
-            meta_frame["informative_datasets"].ge(4)
+            meta_frame["informative_datasets"].ge(min_datasets)
             & meta_frame["meta_FDR"].le(0.05)
             & meta_frame["meta_effect"].abs().ge(0.50)
             & meta_frame["same_direction_fraction"].ge(0.75)
@@ -349,7 +363,10 @@ def run(
     }
 
     output_dir.mkdir(parents=True, exist_ok=True)
-    meta, per_dataset = meta_table(primary_activity, tfs, primary_metadata, min_group)
+    minimum_informative = int(manifest.raw["minimum_informative_datasets"])
+    meta, per_dataset = meta_table(
+        primary_activity, tfs, primary_metadata, min_group, minimum_informative
+    )
     meta_path = output_dir / "primary_random_effects_meta.tsv.gz"
     effects_path = output_dir / "primary_dataset_effects.tsv.gz"
     meta.to_csv(meta_path, sep="\t", index=False, compression="gzip", lineterminator="\n")
@@ -383,7 +400,9 @@ def run(
         local_metadata = metadata.loc[mask].reset_index(drop=True)
         local_activity = all_activity[mask]
         local_info = informative_datasets(local_metadata, min_group)
-        local_meta, _ = meta_table(local_activity, tfs, local_metadata, min_group)
+        local_meta, _ = meta_table(
+            local_activity, tfs, local_metadata, min_group, minimum_informative
+        )
         local_path = output_dir / f"sensitivity_meta_cells_{threshold}.tsv.gz"
         local_meta.to_csv(local_path, sep="\t", index=False, compression="gzip", lineterminator="\n")
         if len(local_info) >= 2:
