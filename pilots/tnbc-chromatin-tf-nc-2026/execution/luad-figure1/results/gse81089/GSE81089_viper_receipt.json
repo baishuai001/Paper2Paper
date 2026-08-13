@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "cohort": "GSE81089",
+  "mode": "discover",
+  "samples": 173,
+  "genes": 50886,
+  "group_counts": {
+    "LUAD": 106,
+    "LUSC": 67
+  },
+  "subnetwork_input_edges": 77615,
+  "subnetwork_edges_after_anchor_first_row_drop": 77614,
+  "anchor_first_row_drop_reproduced": true,
+  "regulons": 2008,
+  "viper_TFs": 2008,
+  "permutations": 1000,
+  "msviper_TFs": 2008,
+  "viper_script_seed": 2025,
+  "ttestNull_seed": 1,
+  "ttestNull_cores": 32,
+  "ttestNull_rng_kind": "L'Ecuyer-CMRG",
+  "minsize": 1,
+  "single_target_regulons": 2,
+  "area_single_target_dimension_patch": true,
+  "area_patch_effect": "shape restoration only; minsize and numeric definition unchanged",
+  "package_versions": {
+    "R": "4.4.1",
+    "viper": "1.38.0"
+  }
+}

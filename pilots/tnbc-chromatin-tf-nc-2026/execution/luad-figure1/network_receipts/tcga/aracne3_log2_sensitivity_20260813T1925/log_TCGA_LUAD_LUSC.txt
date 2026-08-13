@@ -1,0 +1,10 @@
+/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/external/code/ARACNe3/build-system/ARACNe3_app_release -e /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/processed/tcga_aracne_expression.tsv -r /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/processed/aracne_regulators.txt -o /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/tcga/aracne3 --seed 2025 --threads 32 --runid TCGA_LUAD_LUSC
+
+---------Thu Aug 13 19:01:35 2026 CST---------
+Beginning ARACNe3 instance...
+
+Gene expression matrix & regulators list read time: 49s
+
+Mutual Information null model calculation time: 18s
+
+Creating subnetwork(s) time:

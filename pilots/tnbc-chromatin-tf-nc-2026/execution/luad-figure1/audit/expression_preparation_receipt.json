@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "tcga": {
+    "samples": 1017,
+    "genes": 59427,
+    "groups": {
+      "LUAD": 516,
+      "LUSC": 501
+    }
+  },
+  "gse81089": {
+    "samples": 173,
+    "genes": 50886,
+    "groups": {
+      "LUAD": 106,
+      "LUSC": 67
+    }
+  },
+  "pdmr": {
+    "samples": 56,
+    "genes": 28109,
+    "expression_scale": "RSEM_TPM"
+  },
+  "depmap": {
+    "metadata_eligible_samples": 118,
+    "samples_with_TPM": 103,
+    "genes": 19221,
+    "expression_scale": "TPM_inverted_from_EH7556_log2_TPM_plus_1",
+    "groups": {
+      "LUAD": 76,
+      "LUSC": 27
+    },
+    "missing_TPM_sample_ids": ["ACH-001078", "ACH-001079", "ACH-001088", "ACH-001234", "ACH-000309", "ACH-001137", "ACH-001233", "ACH-001489", "ACH-002089", "ACH-002122", "ACH-002156", "ACH-002157", "ACH-002172", "ACH-002184", "ACH-002337"]
+  },
+  "pango_symbols": 2059,
+  "aracne_regulators": 2051,
+  "package_versions": {
+    "R": "4.4.1",
+    "data.table": "1.16.2"
+  }
+}

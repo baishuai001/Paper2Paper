@@ -1,0 +1,22 @@
+---------Thu Aug 13 19:02:46 2026 CST---------
+
+Subnetwork #: 1
+Total # regulators (defined in gexp mat): 2051
+Total # targets: 59427
+Total # samples: 1017
+Subsampled quantity: 643
+Total possible edges: 121882726
+Method of first pruning step: FDR
+Alpha: 0.050000
+MaxEnt Pruning: true
+
+-----------Begin Network Generation-----------
+
+Raw subnetwork computation time: 144s
+Size of subnetwork: 121882726 edges.
+
+Threshold pruning time (FDR): 87s
+Edges removed: 95000904 edges.
+Size of subnetwork: 26881822 edges.
+
+MaxEnt pruning time:

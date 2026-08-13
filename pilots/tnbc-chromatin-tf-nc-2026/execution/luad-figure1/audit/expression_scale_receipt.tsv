@@ -1,0 +1,5 @@
+cohort	file	genes	samples	scale
+TCGA_LUAD_LUSC	tcga_aracne_expression.tsv	59427	1017	raw_TPM
+GSE81089	gse81089_aracne_expression.tsv	50886	173	log2_FPKM_plus_1
+PDMR_PDX	pdmr_viper_expression.tsv.gz	28109	56	RSEM_TPM
+DepMap_22Q2	depmap_viper_expression.tsv.gz	19221	103	TPM_inverted_from_EH7556_log2_TPM_plus_1

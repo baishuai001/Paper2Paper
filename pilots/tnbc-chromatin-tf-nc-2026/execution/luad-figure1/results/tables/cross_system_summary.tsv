@@ -1,0 +1,5 @@
+cohort	TFs	sign_concordant	FDR_0_05_and_sign	sign_concordance_fraction
+TCGA	250	250	250	1
+GSE81089	250	250	249	1
+PDMR_PDX	250	240	218	0.96
+DepMap_22Q2	249	239	134	0.959839357429719

@@ -1,0 +1,21 @@
+
+Loading the dataset...
+Generating the regulon objects...
+WARNING! NOT CONVERGENT!
+number of iterations= 1000
+number of iterations= 214
+mu: -0.394471950548572, 0, 0.492082836698472. sigma: 0.111380493320565, 0.180609428818382, 0.155858822787794
+警告信息:
+In cor(t(expset[rownames(expset) %in% tf, ]), t(expset[rownames(expset) %in%  :
+  标准差为零
+
+Computing the association scores
+Thu Aug 13 23:09:31 2026
+Computing the null model distribution by 1000 permutations.
+
+Thu Aug 13 23:18:21 2026
+Computing regulon enrichment with aREA algorithm
+错误于colSums(apply(tmp, 2, function(x) x/max(x))^2):
+  'x'必需是阵列，而且至少得有两个维度
+Calls: msviper -> aREA -> sapply -> lapply -> FUN -> colSums
+停止执行

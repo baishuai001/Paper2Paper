@@ -1,0 +1,4 @@
+cohort	samples	TFs	fisher_p_value	best_two_cluster_accuracy	contingency	FDR
+TCGA	1017	351	8.26126628684336e-208	0.938053097345133	            column_group | two_clusters LUAD LUSC |            1  501   48 |            2   15  453	2.47837988605301e-207
+PDMR_PDX	56	351	1.84100267144546e-10	0.910714285714286	            column_group | two_clusters LUAD LUSC |            1    1   30 |            2   21    4	2.7615040071682e-10
+DepMap_22Q2	103	350	7.02501869239919e-05	0.805825242718447	            column_group | two_clusters LUAD LUSC |            1   74   18 |            2    2    9	7.02501869239919e-05

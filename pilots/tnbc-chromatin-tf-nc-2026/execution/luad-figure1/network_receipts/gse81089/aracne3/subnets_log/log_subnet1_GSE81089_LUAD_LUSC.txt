@@ -1,0 +1,26 @@
+---------Thu Aug 13 19:01:44 2026 CST---------
+
+Subnetwork #: 1
+Total # regulators (defined in gexp mat): 2024
+Total # targets: 50886
+Total # samples: 173
+Subsampled quantity: 110
+Total possible edges: 102991240
+Method of first pruning step: FDR
+Alpha: 0.050000
+MaxEnt Pruning: true
+
+-----------Begin Network Generation-----------
+
+Raw subnetwork computation time: 56s
+Size of subnetwork: 102991240 edges.
+
+Threshold pruning time (FDR): 44s
+Edges removed: 102706844 edges.
+Size of subnetwork: 284396 edges.
+
+MaxEnt pruning time: 1s
+Edges removed: 206781 edges.
+Size of subnetwork: 77615 edges.
+
+Printing subnetwork in directory "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/gse81089/aracne3/subnets/"...0s

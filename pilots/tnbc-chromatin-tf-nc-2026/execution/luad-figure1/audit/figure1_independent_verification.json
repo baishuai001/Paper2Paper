@@ -1,0 +1,141 @@
+{
+  "verification_status": "passed",
+  "biological_gate": "PASS",
+  "checks": [
+    {
+      "check": "TCGA frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "TCGA unique sample IDs",
+      "passed": true
+    },
+    {
+      "check": "GSE81089 frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "GSE81089 unique sample IDs",
+      "passed": true
+    },
+    {
+      "check": "PDMR_PDX frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "PDMR_PDX unique sample IDs",
+      "passed": true
+    },
+    {
+      "check": "DepMap_22Q2 frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "DepMap_22Q2 unique sample IDs",
+      "passed": true
+    },
+    {
+      "check": "TCGA one primary tumor per patient",
+      "passed": true
+    },
+    {
+      "check": "PDMR one PDX per donor",
+      "passed": true
+    },
+    {
+      "check": "replicated TF file equals flagged discovery TFs",
+      "passed": true
+    },
+    {
+      "check": "independent-patient TF intersection",
+      "passed": true
+    },
+    {
+      "check": "TCGA msVIPER values finite",
+      "passed": true
+    },
+    {
+      "check": "GSE81089 msVIPER values finite",
+      "passed": true
+    },
+    {
+      "check": "program BH adjustment independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "parallel null adaptation fully disclosed",
+      "passed": true
+    },
+    {
+      "check": "TCGA viper 1.38.0 compatibility patch disclosed",
+      "passed": true
+    },
+    {
+      "check": "GSE81089 viper 1.38.0 compatibility patch disclosed",
+      "passed": true
+    },
+    {
+      "check": "hard verdict independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "Figure1A_ PDF exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1A_ PNG exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1B_ PDF exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1B_ PNG exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1C_ PDF exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1C_ PNG exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1D_ PDF exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1D_ PNG exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1E_ PDF exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1E_ PNG exists",
+      "passed": true
+    }
+  ],
+  "manifest_counts": {
+    "TCGA": {
+      "LUAD": 516,
+      "LUSC": 501
+    },
+    "GSE81089": {
+      "LUAD": 106,
+      "LUSC": 67
+    },
+    "PDMR_PDX": {
+      "LUAD": 22,
+      "LUSC": 34
+    },
+    "DepMap_22Q2": {
+      "LUAD": 76,
+      "LUSC": 27
+    }
+  },
+  "replicated_LUAD_TFs": 97
+}

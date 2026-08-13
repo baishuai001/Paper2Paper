@@ -1,0 +1,10 @@
+Loading checkpointed regulon: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/gse81089/GSE81089_regulon.rds
+Preserving checkpointed VIPER activity: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/gse81089/GSE81089_viper_activity.tsv.gz
+Thu Aug 13 23:27:37 2026
+Computing the null model distribution by 1000 permutations.
+
+Thu Aug 13 23:33:24 2026
+Computing regulon enrichment with aREA algorithm
+
+Estimating the normalized enrichment scores
+{"status":"passed","cohort":"GSE81089","mode":"discover","samples":173,"genes":50886,"group_counts":{"LUAD":106,"LUSC":67},"subnetwork_input_edges":77615,"subnetwork_edges_after_anchor_first_row_drop":77614,"anchor_first_row_drop_reproduced":true,"regulons":2008,"viper_TFs":2008,"permutations":1000,"msviper_TFs":2008,"viper_script_seed":2025,"ttestNull_seed":1,"ttestNull_cores":32,"ttestNull_rng_kind":"L'Ecuyer-CMRG","minsize":1,"single_target_regulons":2,"area_single_target_dimension_patch":true,"area_patch_effect":"shape restoration only; minsize and numeric definition unchanged","package_versions":{"R":"4.4.1","viper":"1.38.0"}}

@@ -3,8 +3,8 @@
   "workspace_kind": "pilot",
   "project_id": "P2P-TNBC-CHROMATIN-TF-NC-2026",
   "title": "TNBC chromatin-informed regulatory framework transfer pilot",
-  "stage": "gate1_regulatory_stopped_fail",
-  "selected_route_id": "crc-M-vs-rest-aracne3-viper",
+  "stage": "luad_figure1_completed_pass",
+  "selected_route_id": "luad-vs-lusc-figure1",
   "anchor": {
     "title": "A chromatin-informed transcriptional regulatory framework to stratify patients and guide therapy selection in triple-negative breast cancer",
     "doi": "10.1038/s41467-026-76385-8",
@@ -27,5 +27,5 @@
     "compute": "All real data processing and analysis must run on the project cloud server under /media/desk16/iy13202/projects/Paper2Paper; the local checkout is limited to source materials, Git-tracked specifications, code, compact results and reports.",
     "skills": ""
   },
-  "stop_rule": "Triggered on 2026-08-13 for the corrected regulatory entry: all data and network conditions passed, but M-vs-rest produced 0 reproducible TFs and 0 msVIPER-confirmed TFs; stop before chromatin, drug, treatment or spatial analyses. The earlier four-phenotype reconstruction FAIL remains auxiliary evidence only."
+  "stop_rule": "LUAD Figure 1 PASS on 2026-08-14: 97 LUAD-specific TFs replicated in GSE81089; the replicated program passed positive direction, BH FDR<=0.05 and Hedges g>=0.5 in both PDMR PDX and DepMap. Stop after Figure 1 for this task; Figure 2 requires a separately frozen three-system chromatin gate. The prior CRC M-vs-rest FAIL remains preserved in its reports."
 }

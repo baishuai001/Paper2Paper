@@ -1,0 +1,401 @@
+{
+  "samples": 56,
+  "shared_gene_symbols": 28109,
+  "matrix_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/processed/pdmr_tpm_symbols.tsv",
+  "matrix_sha256": "e42743be5edd54f7fb0cc26937dee45cc9bdc15741851faaaf6fb9df70dc5de5",
+  "download_workers": 6,
+  "files": [
+    {
+      "sample_id": "PDMR_119387",
+      "url": "https://pdmdb.cancer.gov/pdm/119387~122-R~XYJ~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_119387.RSEM.genes.results",
+      "size": 1720844,
+      "sha256": "b78ca3c860fd7b01e22ed4a539874e3c40a0bb249ed949f88a7fc0e271c6ef35"
+    },
+    {
+      "sample_id": "PDMR_121662",
+      "url": "https://pdmdb.cancer.gov/pdm/121662~129-R~K6J~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_121662.RSEM.genes.results",
+      "size": 1763476,
+      "sha256": "ecd1387ee2c5fb26e8dc0ec5184906a43ccab872ffceb64f7626a7d74705ed9a"
+    },
+    {
+      "sample_id": "PDMR_145666",
+      "url": "https://pdmdb.cancer.gov/pdm/145666~245-R~AJA~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_145666.RSEM.genes.results",
+      "size": 1752931,
+      "sha256": "d9f6c68915163e466778ac3856cf75dd0c8eb35e40c79037f04b566fb16bf673"
+    },
+    {
+      "sample_id": "PDMR_152527",
+      "url": "https://pdmdb.cancer.gov/pdm/152527~244-T~KNX~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_152527.RSEM.genes.results",
+      "size": 1749339,
+      "sha256": "4a18aa372e0a2ac242649e8b529db670c64506364d25d43e3e0d7b646be78214"
+    },
+    {
+      "sample_id": "PDMR_176374",
+      "url": "https://pdmdb.cancer.gov/pdm/176374~079-R~UPY~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_176374.RSEM.genes.results",
+      "size": 1749081,
+      "sha256": "51240583bb260f6254e731510c1937c956a602f86cae0a4ad0cc6d1462c5d81a"
+    },
+    {
+      "sample_id": "PDMR_237688",
+      "url": "https://pdmdb.cancer.gov/pdm/237688~112-R~N6H~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_237688.RSEM.genes.results",
+      "size": 1742049,
+      "sha256": "09d646ccaa1c0f30042e58384f221318c0d75fc82df938d19984488ab02afea1"
+    },
+    {
+      "sample_id": "PDMR_258747",
+      "url": "https://pdmdb.cancer.gov/pdm/258747~076-R~XB9~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_258747.RSEM.genes.results",
+      "size": 1726352,
+      "sha256": "3ddcd7047c85296da7dbcf93d6b52a58eeef134c92c33333a85f84a272d068dc"
+    },
+    {
+      "sample_id": "PDMR_269647",
+      "url": "https://pdmdb.cancer.gov/pdm/269647~328-T~X98~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_269647.RSEM.genes.results",
+      "size": 1767029,
+      "sha256": "5212f58c8388351557a45a57b7857a5cd157aeae49d1c1afff46156f7669a9d2"
+    },
+    {
+      "sample_id": "PDMR_283833",
+      "url": "https://pdmdb.cancer.gov/pdm/283833~183-T~P16E03~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_283833.RSEM.genes.results",
+      "size": 1753969,
+      "sha256": "d82441e3c13cfd5c660349ed4af288f639faff0b2f6a49e2d6b15b37d151d39f"
+    },
+    {
+      "sample_id": "PDMR_283983",
+      "url": "https://pdmdb.cancer.gov/pdm/283983~103-R~AL-N23~v2.0.4.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_283983.RSEM.genes.results",
+      "size": 1778470,
+      "sha256": "4019b27d76d220adc754e1373ec205d8d5b9a9097daef01ef4c48dcc5e58d5db"
+    },
+    {
+      "sample_id": "PDMR_284588",
+      "url": "https://pdmdb.cancer.gov/pdm/284588~233-R~YKA~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_284588.RSEM.genes.results",
+      "size": 1732275,
+      "sha256": "4146364e2667603a368bcbf9bfb3a86f6d770e56f7bc4622354ba4cd9a9d05d9"
+    },
+    {
+      "sample_id": "PDMR_287614",
+      "url": "https://pdmdb.cancer.gov/pdm/287614~091-R~VD6~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_287614.RSEM.genes.results",
+      "size": 1731051,
+      "sha256": "af2ddd6ff931036c5190075e8ad66d25b2579cdb9696bef8c975571e94dc3556"
+    },
+    {
+      "sample_id": "PDMR_349418",
+      "url": "https://pdmdb.cancer.gov/pdm/349418~098-R~JS4~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_349418.RSEM.genes.results",
+      "size": 1740816,
+      "sha256": "ae762c7933984cba7dc32a26375752e952974f6aa874294a0563796eecd8af7a"
+    },
+    {
+      "sample_id": "PDMR_413552",
+      "url": "https://pdmdb.cancer.gov/pdm/413552~270-R~G5A~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_413552.RSEM.genes.results",
+      "size": 1744647,
+      "sha256": "62406f175f4081486fa8bf7a4b8b40a4c221900801939a1dfd76065e176b94b6"
+    },
+    {
+      "sample_id": "PDMR_417612",
+      "url": "https://pdmdb.cancer.gov/pdm/417612~090-R~P80K57M822F19~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_417612.RSEM.genes.results",
+      "size": 1758697,
+      "sha256": "dd434c47163118bd587f48c3388dc5a8fec2f9395adecb74ec49d5aa93cf723d"
+    },
+    {
+      "sample_id": "PDMR_417821",
+      "url": "https://pdmdb.cancer.gov/pdm/417821~307-R~TO3~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_417821.RSEM.genes.results",
+      "size": 1716014,
+      "sha256": "ec3899187eb1c4cf32c7837e2861f23b67394488c5e1f633488f8612aa5a2da7"
+    },
+    {
+      "sample_id": "PDMR_429463",
+      "url": "https://pdmdb.cancer.gov/pdm/429463~259-R~C2K~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_429463.RSEM.genes.results",
+      "size": 1739469,
+      "sha256": "b9174ab921e7532a8faff938fe79e871136cf54096366e1402d7540ef5d26788"
+    },
+    {
+      "sample_id": "PDMR_436779",
+      "url": "https://pdmdb.cancer.gov/pdm/436779~168-T~NW2~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_436779.RSEM.genes.results",
+      "size": 1753057,
+      "sha256": "40bd9e43038a065fb7994257862a99233088ab88d799e96e738d573e0de66774"
+    },
+    {
+      "sample_id": "PDMR_477875",
+      "url": "https://pdmdb.cancer.gov/pdm/477875~180-R~X4Q~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_477875.RSEM.genes.results",
+      "size": 1720070,
+      "sha256": "2b4510dc9da2e007b4d84d2061a23a98fb3a1f9334f073ad15ffae87e9d0e969"
+    },
+    {
+      "sample_id": "PDMR_481146",
+      "url": "https://pdmdb.cancer.gov/pdm/481146~293-R~PKC~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_481146.RSEM.genes.results",
+      "size": 1748529,
+      "sha256": "a275005c48181c304247fe2f58efc6cd278e6c99feb55639a3d4bc6ca410ca18"
+    },
+    {
+      "sample_id": "PDMR_538559",
+      "url": "https://pdmdb.cancer.gov/pdm/538559~288-R~A29~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_538559.RSEM.genes.results",
+      "size": 1764982,
+      "sha256": "b56bd21ea2dab40380ba1243c8deb4004a5cbb62efeb6270b20167d4aefc130a"
+    },
+    {
+      "sample_id": "PDMR_567486",
+      "url": "https://pdmdb.cancer.gov/pdm/567486~219-R~GPE~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_567486.RSEM.genes.results",
+      "size": 1753651,
+      "sha256": "460d94027e6a92b3872898795704119530dbad97eb0fdfba86f471d7a55316ab"
+    },
+    {
+      "sample_id": "PDMR_576588",
+      "url": "https://pdmdb.cancer.gov/pdm/576588~073-R~CVG~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_576588.RSEM.genes.results",
+      "size": 1761832,
+      "sha256": "d3415665d2da3b7102adfe12618a6856118db8a57a651a473df82ae420615008"
+    },
+    {
+      "sample_id": "PDMR_595498",
+      "url": "https://pdmdb.cancer.gov/pdm/595498~313-R~AFH~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_595498.RSEM.genes.results",
+      "size": 1750979,
+      "sha256": "9d3453fe8ceee29d3b96732d0d651f1f08d801f498f9e27dbcd0c2f75ad5b47e"
+    },
+    {
+      "sample_id": "PDMR_618468",
+      "url": "https://pdmdb.cancer.gov/pdm/618468~307-R~PTQ~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_618468.RSEM.genes.results",
+      "size": 1724347,
+      "sha256": "596dec837d404bb7dec586fde2631256a8e4caf100c86844367c2b3f18b1bd39"
+    },
+    {
+      "sample_id": "PDMR_628479",
+      "url": "https://pdmdb.cancer.gov/pdm/628479~137-R9~K21~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_628479.RSEM.genes.results",
+      "size": 1740392,
+      "sha256": "e2c88c8620f7b40b4c8def93a12c20eb56201173a126a0bf5ec5b781e14d16d6"
+    },
+    {
+      "sample_id": "PDMR_649139",
+      "url": "https://pdmdb.cancer.gov/pdm/649139~167-T~HXYC56J85~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_649139.RSEM.genes.results",
+      "size": 1731077,
+      "sha256": "2807c5f0f2bef481ac3e970976ae74f3b4d5a76968912cfbcd3ed221f0830008"
+    },
+    {
+      "sample_id": "PDMR_653999",
+      "url": "https://pdmdb.cancer.gov/pdm/653999~131-R~HEA~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_653999.RSEM.genes.results",
+      "size": 1728362,
+      "sha256": "3e461d7acd192f9d39fadb642a4654d672af0a0d76be6895334723943faa1762"
+    },
+    {
+      "sample_id": "PDMR_656117",
+      "url": "https://pdmdb.cancer.gov/pdm/656117~040-R~CJ3~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_656117.RSEM.genes.results",
+      "size": 1745732,
+      "sha256": "eddefdf89cddb6eb1749f033006be88495c6bbcf4157027cd5afb22141221975"
+    },
+    {
+      "sample_id": "PDMR_672682",
+      "url": "https://pdmdb.cancer.gov/pdm/672682~312-R~KNE~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_672682.RSEM.genes.results",
+      "size": 1761663,
+      "sha256": "1bce117877009c82d732d55f95de9825508d180355c6e1b12a6567662cc2dd00"
+    },
+    {
+      "sample_id": "PDMR_683892",
+      "url": "https://pdmdb.cancer.gov/pdm/683892~313-R~H15~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_683892.RSEM.genes.results",
+      "size": 1777892,
+      "sha256": "8b6ec3b6b9d712f641037ef8a2df1531ac7eca30c32a8612a8df9c969be3a242"
+    },
+    {
+      "sample_id": "PDMR_686756",
+      "url": "https://pdmdb.cancer.gov/pdm/686756~172-R~F02WN2~v2.0.2.14.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_686756.RSEM.genes.results",
+      "size": 1737282,
+      "sha256": "c7b70ed5e7e12071268b1f83c381bef95fc20a857d9773938faee86a002e1ec6"
+    },
+    {
+      "sample_id": "PDMR_692585",
+      "url": "https://pdmdb.cancer.gov/pdm/692585~246-R~AB7IJ0~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_692585.RSEM.genes.results",
+      "size": 1725038,
+      "sha256": "fff52f981885663b90452a5aae160d6544afb6e05feccfb3fe0a37bdb8301b9e"
+    },
+    {
+      "sample_id": "PDMR_695912",
+      "url": "https://pdmdb.cancer.gov/pdm/695912~313-R~PWE~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_695912.RSEM.genes.results",
+      "size": 1726931,
+      "sha256": "05ef184a0be86b533ca648ca6a7c64b21c5db88ab5ecb8649f5d2f0cdc83e551"
+    },
+    {
+      "sample_id": "PDMR_717593",
+      "url": "https://pdmdb.cancer.gov/pdm/717593~335-R~UTG~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_717593.RSEM.genes.results",
+      "size": 1759757,
+      "sha256": "948bc91c85dd4d50e3779bf7ac4d1ec13e3836bd3e0601e0fe923d7c23e421da"
+    },
+    {
+      "sample_id": "PDMR_729321",
+      "url": "https://pdmdb.cancer.gov/pdm/729321~352-R~YK2~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_729321.RSEM.genes.results",
+      "size": 1733628,
+      "sha256": "0e2b038b5047a625f32e267e3a10830eb25d97e0e41c9df3e3bdf6fc44a1661f"
+    },
+    {
+      "sample_id": "PDMR_732878",
+      "url": "https://pdmdb.cancer.gov/pdm/732878~109-T~C3T~v2.0.2.14.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_732878.RSEM.genes.results",
+      "size": 1738525,
+      "sha256": "14f8f6c1e73b6d9d68da1a644a801cb54350c218e9232c668b1f68c9252a7680"
+    },
+    {
+      "sample_id": "PDMR_738386",
+      "url": "https://pdmdb.cancer.gov/pdm/738386~334-R~J21KP4FU9~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_738386.RSEM.genes.results",
+      "size": 1744267,
+      "sha256": "22210f42d43630bbc6b3eab7b027470373c6173789840598852dab92a9c9c459"
+    },
+    {
+      "sample_id": "PDMR_765638",
+      "url": "https://pdmdb.cancer.gov/pdm/765638~272-R~AG1~v2.0.1.13.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_765638.RSEM.genes.results",
+      "size": 1744084,
+      "sha256": "b3ed1cd451b5b3fe8ce1f2eb737c1ba27cb64a70158a7dc1a2434728cb10f1de"
+    },
+    {
+      "sample_id": "PDMR_827478",
+      "url": "https://pdmdb.cancer.gov/pdm/827478~307-R~AO2~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_827478.RSEM.genes.results",
+      "size": 1751495,
+      "sha256": "2f95e5ba0700f72cfbbb17c3537c09a64f62f3c6b0fc13b756662f9415ced8dd"
+    },
+    {
+      "sample_id": "PDMR_827998",
+      "url": "https://pdmdb.cancer.gov/pdm/827998~364-R~FQC~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_827998.RSEM.genes.results",
+      "size": 1757795,
+      "sha256": "5d5cae8fba30af25050acac664e3ea4c97f8d50b5c9a9a9ce1718090098e1ebe"
+    },
+    {
+      "sample_id": "PDMR_864244",
+      "url": "https://pdmdb.cancer.gov/pdm/864244~320-R~K2V~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_864244.RSEM.genes.results",
+      "size": 1749613,
+      "sha256": "da65f4b9e3305ec2e3086a1c49616c45522cea0ae67462f3af7914da657e30a5"
+    },
+    {
+      "sample_id": "PDMR_872464",
+      "url": "https://pdmdb.cancer.gov/pdm/872464~203-R~YTC~v2.0.2.21.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_872464.RSEM.genes.results",
+      "size": 1763826,
+      "sha256": "b373fc63f9324fbab6ad36b98e57132a3f503f3b648f026820fb0c840647ea4b"
+    },
+    {
+      "sample_id": "PDMR_886529",
+      "url": "https://pdmdb.cancer.gov/pdm/886529~316-R~PFUU75V39~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_886529.RSEM.genes.results",
+      "size": 1763599,
+      "sha256": "905060fd857b71f6ad201a8dce62b2cec5719d367a00efab453792be327d1c53"
+    },
+    {
+      "sample_id": "PDMR_914883",
+      "url": "https://pdmdb.cancer.gov/pdm/914883~182-B~N81~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_914883.RSEM.genes.results",
+      "size": 1756771,
+      "sha256": "208aade5bfd6d7f03c6248bdeca0e9da450cd64cd240ce770eb12597340586bc"
+    },
+    {
+      "sample_id": "PDMR_921179",
+      "url": "https://pdmdb.cancer.gov/pdm/921179~137-R~FF3~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_921179.RSEM.genes.results",
+      "size": 1750912,
+      "sha256": "47fb42e1d560b6c27281d002e0a11fe32b6ad5836ba3fa51d56fc523c46f1c9e"
+    },
+    {
+      "sample_id": "PDMR_941728",
+      "url": "https://pdmdb.cancer.gov/pdm/941728~121-R~NVC~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_941728.RSEM.genes.results",
+      "size": 1745389,
+      "sha256": "7db02ce385bedae8b436c46122ce1e251d1c7894cb5b3c04d0c875f933bacf1b"
+    },
+    {
+      "sample_id": "PDMR_952719",
+      "url": "https://pdmdb.cancer.gov/pdm/952719~076-R~P53~v2.0.1.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_952719.RSEM.genes.results",
+      "size": 1753009,
+      "sha256": "5c17f5864a7c1d2a481ef560ef7531f2baa9962cca1de6760ea69b28af64b340"
+    },
+    {
+      "sample_id": "PDMR_996942",
+      "url": "https://pdmdb.cancer.gov/pdm/996942~123-R~EKV~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_996942.RSEM.genes.results",
+      "size": 1742656,
+      "sha256": "f441add9a50c1fd5e39b5d665d7e12b6b9767dd2794d94d0809aa68e5e5229fa"
+    },
+    {
+      "sample_id": "PDMR_997726",
+      "url": "https://pdmdb.cancer.gov/pdm/997726~040-R~X16~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_997726.RSEM.genes.results",
+      "size": 1734861,
+      "sha256": "77ef4569d8987bad63bd669f2a47ad63805ee4999ace4d72d8a02a4fa94329db"
+    },
+    {
+      "sample_id": "PDMR_K00052",
+      "url": "https://pdmdb.cancer.gov/pdm/K00052~001-T~CTY~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_K00052.RSEM.genes.results",
+      "size": 1739344,
+      "sha256": "7e061ecfb89280f138a63eb910554cc79d359b88f3545273a3471321535466d6"
+    },
+    {
+      "sample_id": "PDMR_K08837",
+      "url": "https://pdmdb.cancer.gov/pdm/K08837~004-R~KXC~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_K08837.RSEM.genes.results",
+      "size": 1735272,
+      "sha256": "39087cb62f9032aa591c7278f644a4f70a362fbc1eae190e520ff0f71ef61192"
+    },
+    {
+      "sample_id": "PDMR_K12877",
+      "url": "https://pdmdb.cancer.gov/pdm/K12877~001-R~CK8~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_K12877.RSEM.genes.results",
+      "size": 1739108,
+      "sha256": "aa7a4be67cbc7b266dcaac721264621314d56604c225323ddd3f14e17b1e4174"
+    },
+    {
+      "sample_id": "PDMR_K16732",
+      "url": "https://pdmdb.cancer.gov/pdm/K16732~211-R~K0A~v2.0.2.16.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_K16732.RSEM.genes.results",
+      "size": 1721329,
+      "sha256": "f5b07b7cd256f9917bbd410ccf5b1c64093ca67edd289361963e2760250250f6"
+    },
+    {
+      "sample_id": "PDMR_K22795",
+      "url": "https://pdmdb.cancer.gov/pdm/K22795~001-R~CW8~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_K22795.RSEM.genes.results",
+      "size": 1731594,
+      "sha256": "ccaa2b9d1aa19e6e32e41b2b83a712b3deecbb30d82c4117c91115bb90d6c539"
+    },
+    {
+      "sample_id": "PDMR_K86415",
+      "url": "https://pdmdb.cancer.gov/pdm/K86415~001-R~C15~v2.0.2.4.0~RNASeq.RSEM.genes.results",
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/raw/pdmr/rsem/PDMR_K86415.RSEM.genes.results",
+      "size": 1735617,
+      "sha256": "750a86ce7176495665cf92d375ee5dba4bec44e8d5b790437ed90fe35f6438dd"
+    }
+  ]
+}

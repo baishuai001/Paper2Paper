@@ -1,0 +1,3 @@
+file	genes	samples	scale
+tcga_aracne_expression.tsv	59427	1017	raw_TPM_or_FPKM
+gse81089_aracne_expression.tsv	50886	173	raw_TPM_or_FPKM

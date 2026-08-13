@@ -1,0 +1,1 @@
+{"samples": 56, "shared_ensembl_genes": 28107, "matrix_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/processed/pdmr_tpm_ensembl.tsv", "matrix_sha256": "a1753c23299948be57c0ae70693e30b1372c9c70839585876c01c22ba0287ddf", "download_workers": 6}

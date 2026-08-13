@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "cohort": "PDMR",
+  "samples": 56,
+  "genes": 28109,
+  "group_counts": {
+    "LUAD": 22,
+    "LUSC": 34
+  },
+  "regulons": 2046,
+  "TFs": 2041,
+  "seed": 2025,
+  "minsize": 1,
+  "package_versions": {
+    "R": "4.4.1",
+    "viper": "1.38.0"
+  }
+}

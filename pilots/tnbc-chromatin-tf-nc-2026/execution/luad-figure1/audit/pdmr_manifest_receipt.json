@@ -1,0 +1,11 @@
+{
+  "input_rows": 332,
+  "eligible_pdx_rsem_rows": 332,
+  "unique_selected_donors": 56,
+  "group_counts": {
+    "LUAD": 22,
+    "LUSC": 34
+  },
+  "selection_unit": "unique NCI PDMR patient donor",
+  "selection_rule": "one earliest unqualified PDX sample per donor; no originator, organoid, culture, or repeat mouse"
+}

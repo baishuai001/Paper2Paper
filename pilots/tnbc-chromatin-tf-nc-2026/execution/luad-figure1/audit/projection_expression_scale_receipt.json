@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "PDMR": {
+    "samples": 56,
+    "genes": 28109,
+    "scale": "RSEM_TPM"
+  },
+  "DepMap": {
+    "samples": 103,
+    "genes": 19221,
+    "scale": "TPM_inverted_from_EH7556_log2_TPM_plus_1"
+  }
+}

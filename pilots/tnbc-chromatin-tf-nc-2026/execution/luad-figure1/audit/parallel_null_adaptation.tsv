@@ -1,0 +1,5 @@
+serial_null_stopped_at_percent	2
+performance_reason	measured projection exceeded 12 hours
+parallel_null_definition	viper::ttestNull per=1000 repos=TRUE seed=1 cores=32 L_Ecuyer_CMRG
+restarted_at_utc	2026-08-13T13:13:31Z
+master_pid	2971349
