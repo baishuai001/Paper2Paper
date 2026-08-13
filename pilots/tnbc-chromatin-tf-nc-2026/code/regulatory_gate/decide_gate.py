@@ -73,6 +73,9 @@ def main() -> int:
         **statistics["cohort_conditions"],
     }
     scientific_conditions = dict(statistics["scientific_conditions"])
+    secondary_validation_conditions = dict(
+        statistics["secondary_validation_conditions"]
+    )
 
     if not all(data_conditions.values()):
         verdict = "INDETERMINATE"
@@ -81,11 +84,11 @@ def main() -> int:
     elif all(scientific_conditions.values()):
         verdict = "PASS"
         failed = []
-        interpretation = "The predefined M-vs-rest contrast has a reproducible CRC Cancer-cell TF program and passes LODO validation."
+        interpretation = "The predefined M-vs-rest contrast has a reproducible CRC Cancer-cell TF program; LOSO classification is reported separately and cannot override the user-defined program gate."
     else:
         verdict = "FAIL"
         failed = [name for name, passed in scientific_conditions.items() if not passed]
-        interpretation = "The data were adequate, but M-vs-rest did not satisfy every frozen TF-program and LODO requirement."
+        interpretation = "The data were adequate, but M-vs-rest did not satisfy the frozen reproducible TF-program requirements."
 
     receipt = {
         "verdict": verdict,
@@ -94,6 +97,7 @@ def main() -> int:
         "route": "crc_atlas_M_vs_rest__TCGA_CRC_ARACNe3__VIPER_msVIPER",
         "data_conditions": data_conditions,
         "scientific_conditions": scientific_conditions,
+        "secondary_validation_conditions": secondary_validation_conditions,
         "failed_conditions": failed,
         "interpretation": interpretation,
         "next_action": (

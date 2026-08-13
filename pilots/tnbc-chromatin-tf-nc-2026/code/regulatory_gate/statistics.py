@@ -432,6 +432,8 @@ def run(
     scientific_conditions = {
         "reproducible_TFs_ge_10": len(reproducible) >= 10,
         "msviper_confirmed_TFs_ge_5": int(merged["msviper_confirmed"].sum()) >= 5,
+    }
+    validation_conditions = {
         "LODO_AUROC_ge_0_65": lodo["stratified_AUROC"] >= 0.65,
         "LODO_bootstrap_lower_gt_0_55": lodo["bootstrap_95_CI"][0] > 0.55,
         "LODO_permutation_p_le_0_05": lodo["permutation_empirical_p"] <= 0.05,
@@ -452,6 +454,7 @@ def run(
         "msviper_confirmed_reproducible_TFs": int(merged["msviper_confirmed"].sum()),
         "cohort_conditions": cohort_conditions,
         "scientific_conditions": scientific_conditions,
+        "secondary_validation_conditions": validation_conditions,
         "lodo": lodo,
         "outputs": output_manifest(output_paths),
     }

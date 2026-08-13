@@ -12,6 +12,8 @@ The architecture deliberately separates reusable, phenotype-independent artifact
 6. `statistics.py` performs independent-study effects, REML meta-analysis, leakage-safe leave-one-study-out validation, bootstrap and within-study permutation. For phenotype portability, the selected validation column is normalized to the generic internal field `dataset`; the frozen M-vs-rest manifest maps that field from `study_id`.
 7. `decide_gate.py` produces the fail-closed verdict.
 
+Per the user-defined stop rule, the hard scientific verdict is based on the cross-study reproducible TF program (at least 10 reproducible TFs, at least 5 directionally confirmed by msVIPER). Leave-one-study-out classification is always run and reported as a secondary generalization diagnostic, but is not allowed to veto an otherwise present TF program.
+
 All real data and full outputs stay on the cloud server. Git contains source, protocol, compact receipts and reports only. Run the complete cloud workflow with `bash run_cloud.sh`; paths may be overridden through the environment variables documented at the top of that script.
 
 `run_cloud.sh` takes a non-blocking filesystem lock and exits with code 73 if another full pipeline is writing the same work directory. This prevents two background launchers from corrupting shared ARACNe3 or VIPER outputs.
