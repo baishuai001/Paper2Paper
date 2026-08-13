@@ -16,6 +16,8 @@ Per the user-defined stop rule, the hard scientific verdict is based on the cros
 
 All real data and full outputs stay on the cloud server. Git contains source, protocol, compact receipts and reports only. Run the complete cloud workflow with `bash run_cloud.sh`. `REGULATORY_GATE_MANIFEST` and `REGULATORY_GATE_WORK` select a frozen phenotype and its isolated result directory; `REGULATORY_GATE_SHARED_NETWORK_OUTPUTS` can point later phenotypes at the already-built TCGA/PAN-GO/ARACNe3 artifacts.
 
+The input audit records SHA256 identities for the immutable H5AD, supplement, phenotype manifest, ARACNe3 and anchor-code commits, and every executable pipeline source file actually present on the cloud server.
+
 `run_cloud.sh` takes non-blocking locks for both the route work directory and the shared network directory, and exits with code 73 on contention. This prevents two launchers from corrupting ARACNe3 or route-specific outputs.
 
 The anchor Code Ocean v1.0 code (commit `edf5314ce5b9ee0e2f88b2310e7c2df5619ad888`) explicitly converts `subnet1`, not the consolidated network, and uses `minsize=1` plus 1,000 null permutations. This implementation follows those choices, retains the first real edge that the author script accidentally deletes after `header=TRUE`, and adds no second consensus BH filter.

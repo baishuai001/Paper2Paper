@@ -13,7 +13,24 @@ from pathlib import Path
 
 import h5py
 
-from common import sha256_file, write_json
+from common import output_manifest, sha256_file, write_json
+
+
+REQUIRED_PIPELINE_FILES = [
+    "audit_inputs.py",
+    "audit_aracne_run.py",
+    "build_pseudobulk.py",
+    "common.py",
+    "decide_gate.py",
+    "extract_pango_regulators.py",
+    "phenotype.py",
+    "prepare_aracne_inputs.py",
+    "prepare_tcga_crc.R",
+    "run_aracne3.sh",
+    "run_cloud.sh",
+    "statistics.py",
+    "viper_msviper.R",
+]
 
 
 def command_output(command: list[str], cwd: Path | None = None) -> str:
@@ -30,12 +47,18 @@ def main() -> int:
     parser.add_argument("--anchor-code-repo", required=True, type=Path)
     parser.add_argument("--expected-anchor-code-commit", required=True)
     parser.add_argument("--supplement", required=True, type=Path)
+    parser.add_argument("--manifest", required=True, type=Path)
+    parser.add_argument("--pipeline-code-dir", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--skip-h5ad-hash", action="store_true")
     args = parser.parse_args()
 
-    if not args.h5ad.is_file() or not args.supplement.is_file():
-        raise FileNotFoundError("Required H5AD or supplement is absent")
+    if not args.h5ad.is_file() or not args.supplement.is_file() or not args.manifest.is_file():
+        raise FileNotFoundError("Required H5AD, supplement or phenotype manifest is absent")
+    pipeline_paths = [args.pipeline_code_dir / name for name in REQUIRED_PIPELINE_FILES]
+    missing_pipeline_files = [path.name for path in pipeline_paths if not path.is_file()]
+    if missing_pipeline_files:
+        raise FileNotFoundError(f"Missing pipeline files: {missing_pipeline_files}")
     actual_bytes = args.h5ad.stat().st_size
     actual_hash = None if args.skip_h5ad_hash else sha256_file(args.h5ad)
     commit = command_output(["git", "rev-parse", "HEAD"], cwd=args.aracne_repo)
@@ -55,6 +78,8 @@ def main() -> int:
             anchor_code_commit == args.expected_anchor_code_commit
         ),
         "supplement_nonempty": args.supplement.stat().st_size > 0,
+        "phenotype_manifest_nonempty": args.manifest.stat().st_size > 0,
+        "pipeline_code_complete": not missing_pipeline_files,
     }
     receipt = {
         "status": "passed" if all(conditions.values()) else "failed",
@@ -73,6 +98,15 @@ def main() -> int:
             "path": str(args.supplement),
             "bytes": args.supplement.stat().st_size,
             "sha256": sha256_file(args.supplement),
+        },
+        "phenotype_manifest": {
+            "path": str(args.manifest),
+            "bytes": args.manifest.stat().st_size,
+            "sha256": sha256_file(args.manifest),
+        },
+        "pipeline_code": {
+            "path": str(args.pipeline_code_dir),
+            "files": output_manifest(pipeline_paths),
         },
         "environment": {
             "python_executable": sys.executable,

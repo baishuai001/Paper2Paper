@@ -52,6 +52,8 @@ run_logged 00_input_audit "$python_bin" "$code/audit_inputs.py" \
   --anchor-code-repo "$anchor_code_repo" \
   --expected-anchor-code-commit edf5314ce5b9ee0e2f88b2310e7c2df5619ad888 \
   --supplement "$supplement" \
+  --manifest "$manifest" \
+  --pipeline-code-dir "$code" \
   --output "$outputs/input_audit.json"
 
 run_logged 01_pango "$python_bin" "$code/extract_pango_regulators.py" \
