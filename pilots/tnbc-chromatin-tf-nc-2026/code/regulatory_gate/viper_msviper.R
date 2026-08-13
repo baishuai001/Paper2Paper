@@ -127,10 +127,18 @@ if (length(informative) < 3) {
 welch_t <- function(matrix, label) {
   case <- matrix[, label, drop = FALSE]
   control <- matrix[, !label, drop = FALSE]
+  if (ncol(case) < 2 || ncol(control) < 2) {
+    stop("Welch t statistic requires at least two patients per group")
+  }
   mean_difference <- rowMeans(case) - rowMeans(control)
+  row_variance <- function(x) {
+    n <- ncol(x)
+    means <- rowMeans(x)
+    pmax((rowSums(x * x) - n * means * means) / (n - 1), 0)
+  }
   denominator <- sqrt(
-    apply(case, 1, var) / ncol(case) +
-      apply(control, 1, var) / ncol(control)
+    row_variance(case) / ncol(case) +
+      row_variance(control) / ncol(control)
   )
   statistic <- mean_difference / denominator
   statistic[!is.finite(statistic)] <- 0

@@ -22,4 +22,6 @@ The anchor TCGA helper averages expression rows mapping to a duplicate gene symb
 
 `viper_msviper.R` rejects fewer than 50 permutations. In `viper` 1.38.0, the empirical-tail helper used by msVIPER can fail to terminate when the null has too few distinct values; the frozen real run uses the anchor's 1,000 permutations.
 
+Within-study Welch signatures use an algebraically equivalent vectorized sample-variance formula. This avoids thousands of slow row-wise `apply(var)` calls during the 1,000 frozen label permutations without changing the statistic.
+
 To switch phenotype after a failed route, add a new JSON manifest with the same schema. The TCGA expression, ARACNe3 network, converted regulon and patient-level VIPER matrix are reusable; only cohort selection, msVIPER contrast, meta-analysis, LODO and decision must be rerun under a newly frozen route-specific protocol.
