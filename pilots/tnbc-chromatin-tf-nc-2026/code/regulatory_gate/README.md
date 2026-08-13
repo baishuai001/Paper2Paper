@@ -9,7 +9,7 @@ The architecture deliberately separates reusable, phenotype-independent artifact
 3. `run_aracne3.sh` runs the fixed official ARACNe3 commit with 100 subnetworks.
 4. `build_pseudobulk.py` applies any compatible phenotype manifest and creates patient Cancer-cell pseudobulks.
 5. `viper_msviper.R` builds the CRC regulon, computes patient VIPER NES and permutation-based msVIPER results.
-6. `statistics.py` performs dataset effects, REML meta-analysis, leakage-safe LODO, bootstrap and within-dataset permutation.
+6. `statistics.py` performs independent-study effects, REML meta-analysis, leakage-safe leave-one-study-out validation, bootstrap and within-study permutation. For phenotype portability, the selected validation column is normalized to the generic internal field `dataset`; the frozen M-vs-rest manifest maps that field from `study_id`.
 7. `decide_gate.py` produces the fail-closed verdict.
 
 All real data and full outputs stay on the cloud server. Git contains source, protocol, compact receipts and reports only. Run the complete cloud workflow with `bash run_cloud.sh`; paths may be overridden through the environment variables documented at the top of that script.

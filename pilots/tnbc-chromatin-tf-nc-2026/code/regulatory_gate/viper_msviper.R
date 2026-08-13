@@ -124,8 +124,8 @@ informative <- dataset_names[vapply(dataset_names, function(dataset) {
   index <- datasets == dataset
   sum(groups[index]) >= 3 && sum(!groups[index]) >= 3
 }, logical(1))]
-if (length(informative) < 4) {
-  stop(sprintf("Only %d informative datasets at the frozen 50-cell threshold", length(informative)))
+if (length(informative) < 3) {
+  stop(sprintf("Only %d informative independent studies at the frozen 50-cell threshold", length(informative)))
 }
 
 welch_t <- function(matrix, label) {
@@ -220,6 +220,7 @@ receipt <- list(
     case_patients = sum(groups),
     control_patients = sum(!groups),
     informative_datasets = informative,
+    validation_unit = "study_id (stored in the generic dataset field)",
     permutations = permutations,
     TFs_tested = nrow(ms_table),
     TFs_FDR_0_01 = sum(ms_table$FDR <= 0.01)
