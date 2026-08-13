@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "phenotype_id": "crc_atlas_M_vs_rest",
+  "description": "CRC-atlas author-defined M immune phenotype versus B, T and desert phenotypes",
+  "label_column": "immune_infiltration_type",
+  "case_values": ["M"],
+  "control_values": ["B", "T", "desert"],
+  "analysis_cell_column": "cell_type_coarse_crc_atlas",
+  "analysis_cell_values": ["Cancer cell"],
+  "patient_column": "donor_id",
+  "dataset_column": "dataset",
+  "scope": {
+    "sample_type_equals": "Tumor",
+    "exclude_tumor_source_contains": ["normal", "metasta"],
+    "exclude_medical_condition_contains": ["normal", "polyp"],
+    "treatment_status_before_resection_equals": "naive",
+    "enrichment_cell_types_equals": "naive"
+  },
+  "primary_min_cells": 50,
+  "sensitivity_min_cells": [20, 100, 200],
+  "minimum_case_patients": 30,
+  "minimum_control_patients": 80,
+  "minimum_informative_datasets": 4,
+  "minimum_group_per_dataset": 3,
+  "maximum_case_fraction_from_one_dataset": 0.6
+}
