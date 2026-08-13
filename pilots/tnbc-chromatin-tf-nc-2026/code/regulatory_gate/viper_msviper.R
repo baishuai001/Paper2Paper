@@ -20,6 +20,9 @@ metadata_path <- args[[4]]
 output_dir <- normalizePath(args[[5]], mustWork = FALSE)
 threads <- as.integer(args[[6]])
 permutations <- as.integer(args[[7]])
+if (!is.finite(permutations) || permutations < 50) {
+  stop("PERMUTATIONS must be >=50: viper::aecdf requires a sufficiently diverse empirical null")
+}
 dir.create(output_dir, recursive = TRUE, showWarnings = FALSE)
 
 read_expression <- function(path) {

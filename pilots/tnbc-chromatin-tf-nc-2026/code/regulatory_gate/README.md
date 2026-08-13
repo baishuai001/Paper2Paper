@@ -14,4 +14,6 @@ The architecture deliberately separates reusable, phenotype-independent artifact
 
 All real data and full outputs stay on the cloud server. Git contains source, protocol, compact receipts and reports only. Run the complete cloud workflow with `bash run_cloud.sh`; paths may be overridden through the environment variables documented at the top of that script.
 
+`viper_msviper.R` rejects fewer than 50 permutations. In `viper` 1.38.0, the empirical-tail helper used by msVIPER can fail to terminate when the null has too few distinct values; the frozen real run uses 500 permutations.
+
 To switch phenotype after a failed route, add a new JSON manifest with the same schema. The TCGA expression, ARACNe3 network, converted regulon and patient-level VIPER matrix are reusable; only cohort selection, msVIPER contrast, meta-analysis, LODO and decision must be rerun under a newly frozen route-specific protocol.
