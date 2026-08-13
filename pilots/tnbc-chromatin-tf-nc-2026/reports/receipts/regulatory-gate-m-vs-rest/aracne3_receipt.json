@@ -1,0 +1,50 @@
+{
+  "author_subnetwork_edges": 268758,
+  "commit": "3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14",
+  "conditions": {
+    "author_subnetwork_nonempty": true,
+    "log_success": true,
+    "network_nonempty": true,
+    "official_commit": true,
+    "reported_subnetworks": true,
+    "subnetwork_files": true
+  },
+  "consolidated_edges": 268758,
+  "generated_at": "2026-08-13T05:14:11.554064+00:00",
+  "input": {
+    "expression_bytes": 174517781,
+    "expression_sha256": "7E57D929A3A66B97C485114C8EA96F644D28C5DFDE8A83BB93C0D9BACC389B43",
+    "regulator_count": 2051,
+    "regulators_sha256": "47AC703909EA09968A8AA53F2B3CC661D8B0E702E998995226B6E404CB85F053"
+  },
+  "outputs": {
+    "ARACNe3_app_release": {
+      "bytes": 221456,
+      "sha256": "0D4472EEE6D412EED10A47FFD16A4965BD138D7C750856D404FF59E99B25DFA7"
+    },
+    "consolidated-net_crc.tsv": {
+      "bytes": 12420323,
+      "sha256": "604F0630050B8CF25C41583E8A8EA166D6FA0D5A233F4260E2F8EC7B2ACF1D74"
+    },
+    "log_crc.txt": {
+      "bytes": 955,
+      "sha256": "1FF9BE430F25C8AB183BAE69BF4CC509A90BB4337FCEAC50E71584FFC97D06C9"
+    },
+    "subnet1_crc.tsv": {
+      "bytes": 6660838,
+      "sha256": "6E4F95A81348B3B8B4C67AEC1F4685B70C391A8E113ADB6A51D7D1C474DFD6B6"
+    }
+  },
+  "parameters": {
+    "alpha": 0.05,
+    "maximum_entropy_pruning": true,
+    "multiple_testing": "FDR",
+    "seed": 1729,
+    "subnetworks": 1,
+    "subsample": 0.63212,
+    "threads": 24
+  },
+  "regulon_source": "subnets/subnet1_crc.tsv",
+  "status": "passed",
+  "subnetwork_files": 1
+}

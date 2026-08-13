@@ -1,0 +1,41 @@
+{
+  "claim_ceiling": "Cross-dataset association; no causal, treatment-selection or clinical-utility claim.",
+  "data_conditions": {
+    "anchor_code_style_aracne_single_subnetwork_passed": true,
+    "aracne_regulators_ge_1500": true,
+    "author_subnetwork_regulators_ge_500": true,
+    "case_patients_ge_minimum": true,
+    "control_patients_ge_minimum": true,
+    "immutable_inputs_passed": true,
+    "informative_datasets_ge_minimum": true,
+    "max_case_dataset_fraction_le_limit": true,
+    "measured_regulons_ge1_target_ge_400": true,
+    "pango_discrepancy_audited_and_2059_unique_symbols": true,
+    "primary_case_ge_30": true,
+    "primary_control_ge_80": true,
+    "tcga_duplicate_symbols_use_anchor_mean": true,
+    "tcga_genes_ge_10000": true,
+    "tcga_has_no_added_low_expression_filter": true,
+    "tcga_participants_ge_550": true
+  },
+  "failed_conditions": [
+    "msviper_confirmed_TFs_ge_5",
+    "reproducible_TFs_ge_10"
+  ],
+  "generated_at": "2026-08-13T05:30:35.179417+00:00",
+  "interpretation": "The data were adequate, but M-vs-rest did not satisfy the frozen reproducible TF-program requirements.",
+  "next_action": "Freeze a different CRC subtype manifest and reuse the phenotype-independent CRC network artifacts.",
+  "phenotype_id": "crc_atlas_M_vs_rest",
+  "route": "crc_atlas_M_vs_rest__TCGA_CRC_ARACNe3__VIPER_msVIPER",
+  "scientific_conditions": {
+    "msviper_confirmed_TFs_ge_5": false,
+    "reproducible_TFs_ge_10": false
+  },
+  "secondary_validation_conditions": {
+    "LOSO_AUROC_ge_0_65": true,
+    "LOSO_bootstrap_lower_gt_0_55": false,
+    "LOSO_permutation_p_le_0_05": true
+  },
+  "stop_now": true,
+  "verdict": "FAIL"
+}

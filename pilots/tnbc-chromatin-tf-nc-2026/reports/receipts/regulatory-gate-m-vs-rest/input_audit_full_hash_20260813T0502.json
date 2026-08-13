@@ -1,0 +1,106 @@
+{
+  "anchor_code": {
+    "commit": "edf5314ce5b9ee0e2f88b2310e7c2df5619ad888",
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/external/code/TNBC_CodeOcean_7227095_v1",
+    "source": "https://git.codeocean.com/capsule-7227095.git",
+    "tag": "v1.0"
+  },
+  "aracne3": {
+    "commit": "3d8791a23e3bd8fd0d74f3b8d48f912e81d00f14",
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/external/code/ARACNe3"
+  },
+  "conditions": {
+    "anchor_code_commit_matches": true,
+    "aracne_commit_matches": true,
+    "h5ad_sha256_matches": true,
+    "h5ad_size_matches": true,
+    "phenotype_manifest_nonempty": true,
+    "pipeline_code_complete": true,
+    "supplement_nonempty": true
+  },
+  "environment": {
+    "git": "git version 2.34.1",
+    "platform": "Linux-6.8.0-106-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12",
+    "python_executable": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/env/bootstrap/bin/python"
+  },
+  "generated_at": "2026-08-13T05:02:02.845668+00:00",
+  "h5ad": {
+    "bytes": 30875155333,
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/hcc-sc-spatial-npj-2026/phase-zero/raw/crc_atlas_cellxgene.h5ad",
+    "sha256": "718774363933B57C6A4661E8AAF0EE7D86B717B047442AFE6457C01986789AC6",
+    "shape": [
+      3790266,
+      28127
+    ]
+  },
+  "h5ad_obs_field_count": 106,
+  "phenotype_manifest": {
+    "bytes": 978,
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/pilots/tnbc-chromatin-tf-nc-2026/analysis/phenotypes/m-vs-rest.json",
+    "sha256": "C02D6BFB06654F69A050B988687CC3538CB7FC3F6C0717490412ED65674D6E76"
+  },
+  "pipeline_code": {
+    "files": {
+      "audit_aracne_run.py": {
+        "bytes": 3525,
+        "sha256": "DB7E25CE4E2F2A04C38D078B96C1166B76C08B9F6A97175223AFDFF4578D0F06"
+      },
+      "audit_inputs.py": {
+        "bytes": 5054,
+        "sha256": "8F3BAAAC2071CD56FE772C0F2F883488368E344ED9CDD88C09C5927CBADC7D02"
+      },
+      "build_pseudobulk.py": {
+        "bytes": 7932,
+        "sha256": "E393C4FC642A878ECF4E4FAE8F6221A36C03F845D3224E824163644BEC648D34"
+      },
+      "common.py": {
+        "bytes": 2755,
+        "sha256": "9ADF558D7ACCB4ECA96092E8BBBD54778FA010D5996211336BA70EF920FDF95E"
+      },
+      "decide_gate.py": {
+        "bytes": 5148,
+        "sha256": "2B0346D5F01E49854853541E5234049A647D48B3CFAED2567A91E075B23E3209"
+      },
+      "extract_pango_regulators.py": {
+        "bytes": 5573,
+        "sha256": "54DD47ADF35F8709456CD193FF175DA36BD92BCD00DC79ED7B1D0D27961FCE68"
+      },
+      "phenotype.py": {
+        "bytes": 5129,
+        "sha256": "F2617252348D8E807895D71D96F0A19F0881627BDA1EFA96227812AF9D65C66D"
+      },
+      "prepare_aracne_inputs.py": {
+        "bytes": 2990,
+        "sha256": "92CCD76DDDF56B63DBC50277D69DC216DB7357C1BE2AA478C20D62352A9215BB"
+      },
+      "prepare_tcga_crc.R": {
+        "bytes": 5467,
+        "sha256": "A8CA846E1ABC7355A26AF0F7C5B694CB7779FAEE482F14A4F27DCBD07F825ACC"
+      },
+      "run_aracne3.sh": {
+        "bytes": 2126,
+        "sha256": "C5A450AF43E54C4C352038B22BD498C4887738D1A7719106C9AB2243BBCB96DA"
+      },
+      "run_cloud.sh": {
+        "bytes": 5236,
+        "sha256": "AC3D9742CEF14636E4A21306AE9875957EB0A7770009380B4552658DD3D4A9F3"
+      },
+      "statistics.py": {
+        "bytes": 21236,
+        "sha256": "AFE23C859B3EF31316FE8BD7295F2328F9C16FBC4D081D8633B629F711F78D41"
+      },
+      "viper_msviper.R": {
+        "bytes": 8764,
+        "sha256": "93BC4E87620413A17BA766921109C2A65F4684A205BE75B865615CEA3B611392"
+      }
+    },
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/pilots/tnbc-chromatin-tf-nc-2026/code/regulatory_gate"
+  },
+  "status": "passed",
+  "supplement": {
+    "bytes": 25906587,
+    "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/external/source/41467_2026_76385_MOESM4_ESM.xlsx",
+    "sha256": "D43C305BAA7E316AF1A0227708DC5C177E20A9107C3872AFA5E0BF4B379227DD"
+  }
+}

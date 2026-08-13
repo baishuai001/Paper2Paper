@@ -3,8 +3,8 @@
   "workspace_kind": "pilot",
   "project_id": "P2P-TNBC-CHROMATIN-TF-NC-2026",
   "title": "TNBC chromatin-informed regulatory framework transfer pilot",
-  "stage": "gate1_stopped_fail",
-  "selected_route_id": "",
+  "stage": "gate1_regulatory_stopped_fail",
+  "selected_route_id": "crc-M-vs-rest-aracne3-viper",
   "anchor": {
     "title": "A chromatin-informed transcriptional regulatory framework to stratify patients and guide therapy selection in triple-negative breast cancer",
     "doi": "10.1038/s41467-026-76385-8",
@@ -27,5 +27,5 @@
     "compute": "All real data processing and analysis must run on the project cloud server under /media/desk16/iy13202/projects/Paper2Paper; the local checkout is limited to source materials, Git-tracked specifications, code, compact results and reports.",
     "skills": ""
   },
-  "stop_rule": "Triggered on 2026-08-12: data sufficient but independent four-phenotype reconstruction failed frozen ARI criteria; downstream TF/ATAC/drug/spatial analyses stopped."
+  "stop_rule": "Triggered on 2026-08-13 for the corrected regulatory entry: all data and network conditions passed, but M-vs-rest produced 0 reproducible TFs and 0 msVIPER-confirmed TFs; stop before chromatin, drug, treatment or spatial analyses. The earlier four-phenotype reconstruction FAIL remains auxiliary evidence only."
 }

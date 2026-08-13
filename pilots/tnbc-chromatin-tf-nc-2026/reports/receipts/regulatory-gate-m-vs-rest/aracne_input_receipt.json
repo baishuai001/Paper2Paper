@@ -1,0 +1,19 @@
+{
+  "aracne_regulators": 2051,
+  "generated_at": "2026-08-13T05:07:23.742112+00:00",
+  "outputs": {
+    "aracne_regulators.txt": {
+      "bytes": 12714,
+      "sha256": "47AC703909EA09968A8AA53F2B3CC661D8B0E702E998995226B6E404CB85F053"
+    },
+    "pango_missing_from_tcga.txt": {
+      "bytes": 58,
+      "sha256": "50DC57D2544AF1DF870A1547F4CBEA36D58B7939FEB0D5C23C45B76DB3601B11"
+    }
+  },
+  "pango_missing_from_tcga": 8,
+  "pango_symbols": 2059,
+  "status": "passed",
+  "tcga_genes": 59427,
+  "tcga_participants": 624
+}

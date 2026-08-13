@@ -1,0 +1,4 @@
+min_cells	patients	case	control	informative_datasets	reproducible_TFs	primary_program_overlap	observed_stratified_LOSO_AUROC
+20	210	47	163	3	0	0	0.651012891344383
+100	204	45	159	3	0	0	0.651012891344383
+200	196	44	152	3	0	0	0.6412729026036644

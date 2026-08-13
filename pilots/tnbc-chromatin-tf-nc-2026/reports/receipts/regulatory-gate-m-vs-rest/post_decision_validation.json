@@ -1,0 +1,260 @@
+{
+  "LOSO": {
+    "bootstrap_95_CI": [
+      0.5276243093922652,
+      0.7624539594843462
+    ],
+    "permutation_empirical_p": 0.01996007984031936,
+    "stratified_AUROC": 0.651012891344383
+  },
+  "checks": {
+    "LOSO_AUROC_matches": true,
+    "LOSO_bootstrap_CI_matches": true,
+    "LOSO_fold_AUCs_match": true,
+    "LOSO_permutation_p_matches": true,
+    "all_data_conditions_pass": true,
+    "all_meta_TFs_have_three_studies": true,
+    "all_sensitivities_have_zero_reproducible_TFs": true,
+    "decision_is_FAIL_and_stop": true,
+    "informative_studies_match": true,
+    "max_case_fraction_matches": true,
+    "meta_BH_exact": true,
+    "meta_has_2028_unique_TFs": true,
+    "msVIPER_BH_exact": true,
+    "msVIPER_FDR_0_01_count_matches": true,
+    "primary_patient_counts_match": true,
+    "program_table_count_matches": true,
+    "scientific_conditions_fail": true,
+    "stored_reproducible_flags_exact": true
+  },
+  "criterion_counts": {
+    "I2_le_75": 1999,
+    "absolute_meta_effect_ge_0_50": 285,
+    "all_nonmultiplicity_criteria": 239,
+    "all_reproducibility_criteria": 0,
+    "meta_FDR_le_0_05": 0,
+    "meta_nominal_p_le_0_05": 7,
+    "msVIPER_FDR_le_0_01": 0,
+    "msVIPER_nominal_p_le_0_05": 134,
+    "three_of_three_same_direction": 823
+  },
+  "generated_at": "2026-08-13T05:37:27.030062+00:00",
+  "maximum_absolute_BH_difference": {
+    "meta": 2.220446049250313e-16,
+    "msVIPER": 8.881784197001252e-15
+  },
+  "primary_cohort": {
+    "case": 46,
+    "control": 160,
+    "informative_studies": [
+      {
+        "LOSO_AUROC": 0.509090909090909,
+        "case": 5,
+        "control": 22,
+        "study": "Joanito_2022_Nat_Genet"
+      },
+      {
+        "LOSO_AUROC": 0.6727272727272727,
+        "case": 10,
+        "control": 22,
+        "study": "Lee_2020_Nat_Genet"
+      },
+      {
+        "LOSO_AUROC": 0.6653439153439153,
+        "case": 18,
+        "control": 42,
+        "study": "Pelka_2021_Cell"
+      }
+    ],
+    "max_case_fraction_from_one_study": 0.391304347826087,
+    "patients": 206
+  },
+  "role": "post-decision independent arithmetic audit; does not alter the frozen verdict",
+  "sensitivity": [
+    {
+      "case": 47,
+      "control": 163,
+      "informative_datasets": 3,
+      "min_cells": 20,
+      "observed_stratified_LOSO_AUROC": 0.6510128913,
+      "patients": 210,
+      "primary_program_overlap": 0,
+      "reproducible_TFs": 0
+    },
+    {
+      "case": 45,
+      "control": 159,
+      "informative_datasets": 3,
+      "min_cells": 100,
+      "observed_stratified_LOSO_AUROC": 0.6510128913,
+      "patients": 204,
+      "primary_program_overlap": 0,
+      "reproducible_TFs": 0
+    },
+    {
+      "case": 44,
+      "control": 152,
+      "informative_datasets": 3,
+      "min_cells": 200,
+      "observed_stratified_LOSO_AUROC": 0.6412729026,
+      "patients": 196,
+      "primary_program_overlap": 0,
+      "reproducible_TFs": 0
+    }
+  ],
+  "status": "passed",
+  "top_meta_by_p": [
+    {
+      "I2": 0.0,
+      "TF": "PRRX1",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 1.1033171146794298,
+      "meta_p": 0.0376703057357252,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "GLI3",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 1.046044928143009,
+      "meta_p": 0.0410191948856513,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "AEBP1",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 1.0049831095445394,
+      "meta_p": 0.0439128040089732,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "RAX",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.9977792991542452,
+      "meta_p": 0.0443400262794291,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "HOPX",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.9919586511654024,
+      "meta_p": 0.0449843230269722,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "TBX18",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.9684004070738088,
+      "meta_p": 0.0468962565215113,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "MEOX2",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.9402775790019138,
+      "meta_p": 0.0489147756875671,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "ANKRD2",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.9124461985186928,
+      "meta_p": 0.0513066498325204,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "TWIST1",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.9021818579009644,
+      "meta_p": 0.0527665309184691,
+      "same_direction_fraction": 1.0
+    },
+    {
+      "I2": 0.0,
+      "TF": "CDK14",
+      "meta_FDR": 0.865548820245788,
+      "meta_effect": 0.8985872464036423,
+      "meta_p": 0.0528936167945358,
+      "same_direction_fraction": 1.0
+    }
+  ],
+  "top_msVIPER_by_p": [
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.46328410490281,
+      "TF": "MEF2D",
+      "p.value": 0.0005336246339959,
+      "size": 39
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.21121051630519,
+      "TF": "SMAD3",
+      "p.value": 0.0013217706734997,
+      "size": 10
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.17398164319272,
+      "TF": "GRHL1",
+      "p.value": 0.0015036320007765,
+      "size": 19
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.15531264089411,
+      "TF": "SOX8",
+      "p.value": 0.0016032620270867,
+      "size": 49
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.13664696624947,
+      "TF": "SOX13",
+      "p.value": 0.0017089176405485,
+      "size": 47
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.11817533708428,
+      "TF": "SRF",
+      "p.value": 0.0018197450913135,
+      "size": 5
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.10409416270052,
+      "TF": "ZNF697",
+      "p.value": 0.0019086257599205,
+      "size": 22
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": -3.0451201956964,
+      "TF": "BSX",
+      "p.value": 0.0023258733733988,
+      "size": 37
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": -3.03558006590147,
+      "TF": "ATOH7",
+      "p.value": 0.002400734729695,
+      "size": 42
+    },
+    {
+      "FDR": 0.438312945784872,
+      "NES": 3.01749605708508,
+      "TF": "NCOR2",
+      "p.value": 0.0025487235673704,
+      "size": 31
+    }
+  ]
+}

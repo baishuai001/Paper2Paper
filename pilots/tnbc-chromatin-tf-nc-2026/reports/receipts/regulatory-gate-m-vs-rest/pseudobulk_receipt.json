@@ -1,0 +1,55 @@
+{
+  "analysis_cells": 244196,
+  "generated_at": "2026-08-13T03:32:29.653382+00:00",
+  "group_counts_by_cell_threshold": {
+    "100": {
+      "case": 45,
+      "control": 159,
+      "datasets": 15,
+      "patients": 204
+    },
+    "20": {
+      "case": 47,
+      "control": 163,
+      "datasets": 16,
+      "patients": 210
+    },
+    "200": {
+      "case": 44,
+      "control": 152,
+      "datasets": 15,
+      "patients": 196
+    },
+    "50": {
+      "case": 46,
+      "control": 160,
+      "datasets": 16,
+      "patients": 206
+    }
+  },
+  "manifest_sha256": "C02D6BFB06654F69A050B988687CC3538CB7FC3F6C0717490412ED65674D6E76",
+  "outputs": {
+    "gene_filter.tsv.gz": {
+      "bytes": 112573,
+      "sha256": "AF3AB148106B83FC7B60D1F67F64CC7FE7D0E9AEFDD789C8A11382D56D7D5C35"
+    },
+    "log2cpm.tsv.gz": {
+      "bytes": 14482719,
+      "sha256": "352D13656D084E678B87C2D0AC178303CE9C97571B07DE6E8EC3E06E1C0A0677"
+    },
+    "patient_metadata.tsv": {
+      "bytes": 23553,
+      "sha256": "3B6868F7FDE0013BA6E90DD15D002C6F221008355F9372F523AF79FE20C689EF"
+    },
+    "pseudobulk_counts.tsv.gz": {
+      "bytes": 5021423,
+      "sha256": "8C401F85210C5E331D90D43D13D333B7266EA859CA5099AD9C4FABED6982187F"
+    }
+  },
+  "patients_all": 213,
+  "phenotype_id": "crc_atlas_M_vs_rest",
+  "raw_integer_validation": true,
+  "retained_genes": 16306,
+  "status": "passed",
+  "unique_gene_symbols": 28088
+}

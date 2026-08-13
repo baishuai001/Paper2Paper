@@ -1,0 +1,23 @@
+{
+  "annotation_records": 2138,
+  "duplicate_symbol_records": 79,
+  "expected_annotation_records": 2138,
+  "expected_unique_symbols": 2059,
+  "generated_at": "2026-08-13T05:07:13.656175+00:00",
+  "methods_claimed_symbols": 2139,
+  "methods_minus_observed_records": 1,
+  "output": {
+    "pango_regulators.txt": {
+      "bytes": 12772,
+      "sha256": "671E016FE97EF3F325D4B92A543D3636381BF6655828E8316621AEA3A90F6C0E"
+    }
+  },
+  "sheet": "PANGO_TR_RegulationOfTranscript",
+  "source": {
+    "bytes": 25906587,
+    "name": "41467_2026_76385_MOESM4_ESM.xlsx",
+    "sha256": "D43C305BAA7E316AF1A0227708DC5C177E20A9107C3872AFA5E0BF4B379227DD"
+  },
+  "status": "passed",
+  "unique_nonempty_symbols": 2059
+}

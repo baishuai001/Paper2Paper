@@ -1,0 +1,89 @@
+{
+  "activity_TFs": 2028,
+  "case_patients": 46,
+  "cohort_conditions": {
+    "case_patients_ge_minimum": true,
+    "control_patients_ge_minimum": true,
+    "informative_datasets_ge_minimum": true,
+    "max_case_dataset_fraction_le_limit": true
+  },
+  "control_patients": 160,
+  "generated_at": "2026-08-13T05:30:33.340638+00:00",
+  "informative_datasets": [
+    "Joanito_2022_Nat_Genet",
+    "Lee_2020_Nat_Genet",
+    "Pelka_2021_Cell"
+  ],
+  "loso": {
+    "bootstrap_95_CI": [
+      0.5276243093922652,
+      0.7624539594843462
+    ],
+    "bootstrap_replicates": 1000,
+    "permutation_empirical_p": 0.01996007984031936,
+    "permutations": 500,
+    "stratified_AUROC": 0.651012891344383
+  },
+  "max_case_fraction_from_one_dataset": 0.391304347826087,
+  "meta_TFs_tested": 2028,
+  "msviper_confirmed_reproducible_TFs": 0,
+  "outputs": {
+    "loso_bootstrap.tsv.gz": {
+      "bytes": 5481,
+      "sha256": "D22D85EE89041C8DDC875A0069BFBFDA522598C502F74B43D6D154FBBB9EC199"
+    },
+    "loso_folds.tsv": {
+      "bytes": 227,
+      "sha256": "372ACDD7BB362E327364DBC800567ADACCF03D6BE6E528D4CF9E14C58DFA9651"
+    },
+    "loso_permutations.tsv.gz": {
+      "bytes": 3089,
+      "sha256": "DABE1D906C177191AC3DCE120B375A2179C1A534ACEB3677B0E9AF9E551AB3A6"
+    },
+    "loso_predictions.tsv": {
+      "bytes": 12157,
+      "sha256": "1D0F616AF4E45E7188A077BD1CA4B084BA86763000CBEAC4699F192A17E2C1D7"
+    },
+    "primary_dataset_effects.tsv.gz": {
+      "bytes": 141047,
+      "sha256": "C4F4DFAF305B3CE6E75A2763068229C5D1DCDA2D6189E851B3923D19C3ECD0A6"
+    },
+    "primary_random_effects_meta.tsv.gz": {
+      "bytes": 92445,
+      "sha256": "D7D1655B024CB40A70F8DA38BF317ADE07DB9D306CAAE1D5243B4D37F68DB03B"
+    },
+    "reproducible_TF_program.tsv": {
+      "bytes": 198,
+      "sha256": "C63D1E0BC54C5F62625F17DD2017DDD20C11E4F25A1C3595884F7414D2C21369"
+    },
+    "sensitivity_meta_cells_100.tsv.gz": {
+      "bytes": 92444,
+      "sha256": "889E3B27B8E975B00E637325242BD9BA8062D79F5DDA305C473F5AD9A73DBDA1"
+    },
+    "sensitivity_meta_cells_20.tsv.gz": {
+      "bytes": 92443,
+      "sha256": "2AC7631E0389590804BDD67CDB606DFDAC0DE70DE3F9976A7FFF48B30071EAC8"
+    },
+    "sensitivity_meta_cells_200.tsv.gz": {
+      "bytes": 91317,
+      "sha256": "6AF0E224E8D2A4CC016C18070AF9C50DF48D8F7B1B1300FE478923E72A92B2DA"
+    },
+    "sensitivity_summary.tsv": {
+      "bytes": 242,
+      "sha256": "463B59249F3F2827AE29354A1464E1746E66682F158FD10774EBB8B1DDD205C0"
+    }
+  },
+  "patients": 206,
+  "primary_threshold": 50,
+  "reproducible_TFs": 0,
+  "scientific_conditions": {
+    "msviper_confirmed_TFs_ge_5": false,
+    "reproducible_TFs_ge_10": false
+  },
+  "secondary_validation_conditions": {
+    "LOSO_AUROC_ge_0_65": true,
+    "LOSO_bootstrap_lower_gt_0_55": false,
+    "LOSO_permutation_p_le_0_05": true
+  },
+  "status": "completed"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "generated_at": "2026-08-13 05:26:46 UTC",
+  "network": {
+    "author_subnetwork_edges": 268758,
+    "author_subnetwork_regulators": 2051,
+    "ARACNe3_subnetwork_FDR_alpha": 0.05,
+    "second_consensus_BH": false,
+    "regulons_after_conversion": 2045,
+    "regulons_ge1_measured_target": 2028
+  },
+  "viper": {
+    "patients_scored": 213,
+    "TFs_scored": 2028,
+    "method": "none (viper default; anchor code omits method)",
+    "minsize": 1,
+    "threads": 24
+  },
+  "msviper": {
+    "primary_min_cells": 50,
+    "primary_patients": 206,
+    "case_patients": 46,
+    "control_patients": 160,
+    "informative_datasets": ["Joanito_2022_Nat_Genet", "Lee_2020_Nat_Genet", "Pelka_2021_Cell"],
+    "validation_unit": "study_id (stored in the generic dataset field)",
+    "permutations": 1000,
+    "seed": 1729,
+    "TFs_tested": 2028,
+    "TFs_FDR_0_01": 0
+  },
+  "package_versions": {
+    "R": "4.4.1",
+    "viper": "1.38.0",
+    "data.table": "1.16.2"
+  }
+}

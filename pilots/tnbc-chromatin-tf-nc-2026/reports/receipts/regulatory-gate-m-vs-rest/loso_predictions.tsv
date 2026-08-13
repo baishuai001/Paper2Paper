@@ -1,0 +1,207 @@
+donor_id	dataset	case	prediction
+Che_2021_Cell_Discov.COL07	Che_2021_Cell_Discov	0	
+Che_2021_Cell_Discov.COL16	Che_2021_Cell_Discov	1	
+Chen_2021_Cell.HTA11_99999965062	Chen_2021_Cell	0	
+Chen_2021_Cell.HTA11_99999973458	Chen_2021_Cell	1	
+Chen_2021_Cell.HTA11_99999973899	Chen_2021_Cell	0	
+Chen_2024_Cancer_Cell.P02	Chen_2024_Cancer_Cell	1	
+Chen_2024_Cancer_Cell.P03	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P04	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P05	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P08	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P09	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P12	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P14	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P15	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P16	Chen_2024_Cancer_Cell	1	
+Chen_2024_Cancer_Cell.P17	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P18	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P19	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P20	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P21	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P22	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P23	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P25	Chen_2024_Cancer_Cell	0	
+Chen_2024_Cancer_Cell.P26	Chen_2024_Cancer_Cell	0	
+Guo_2022_JCI_Insight.Left_CRC1	Guo_2022_JCI_Insight	0	
+Guo_2022_JCI_Insight.Left_CRC2	Guo_2022_JCI_Insight	0	
+Guo_2022_JCI_Insight.Right_CRC2	Guo_2022_JCI_Insight	0	
+Guo_2022_JCI_Insight.Right_CRC3	Guo_2022_JCI_Insight	0	
+Joanito_2022_Nat_Genet.CRC2783	Joanito_2022_Nat_Genet	0	0.8663655140138136
+Joanito_2022_Nat_Genet.CRC2786	Joanito_2022_Nat_Genet	0	0.6695157541056767
+Joanito_2022_Nat_Genet.CRC2787	Joanito_2022_Nat_Genet	0	0.38631482395036665
+Joanito_2022_Nat_Genet.CRC2795	Joanito_2022_Nat_Genet	0	0.20997931260150338
+Joanito_2022_Nat_Genet.CRC2803	Joanito_2022_Nat_Genet	1	0.24843955650148886
+Joanito_2022_Nat_Genet.CRC2810	Joanito_2022_Nat_Genet	0	0.5325385657976108
+Joanito_2022_Nat_Genet.CRC2811	Joanito_2022_Nat_Genet	0	0.35733778429441315
+Joanito_2022_Nat_Genet.CRC2816	Joanito_2022_Nat_Genet	0	0.5931238881643826
+Joanito_2022_Nat_Genet.CRC2817	Joanito_2022_Nat_Genet	1	0.9925727826086662
+Joanito_2022_Nat_Genet.CRC2821	Joanito_2022_Nat_Genet	0	0.7262392578615384
+Joanito_2022_Nat_Genet.CRC2841	Joanito_2022_Nat_Genet	0	0.36807189679727303
+Joanito_2022_Nat_Genet.CRC2899	Joanito_2022_Nat_Genet	0	0.3947358926393606
+Joanito_2022_Nat_Genet.CRC_JSC_S02	Joanito_2022_Nat_Genet	0	0.33788978644300255
+Joanito_2022_Nat_Genet.CRC_JSC_S04	Joanito_2022_Nat_Genet	0	0.5046044399824038
+Joanito_2022_Nat_Genet.CRC_JSC_S05	Joanito_2022_Nat_Genet	0	0.49675154096826785
+Joanito_2022_Nat_Genet.CRC_JSC_S06	Joanito_2022_Nat_Genet	1	0.3471306048426906
+Joanito_2022_Nat_Genet.CRC_JSC_S07	Joanito_2022_Nat_Genet	0	0.28201088510721745
+Joanito_2022_Nat_Genet.CRC_JSC_S08	Joanito_2022_Nat_Genet	0	0.1324789976539526
+Joanito_2022_Nat_Genet.CRC_JSC_S10	Joanito_2022_Nat_Genet	0	0.39049138763608143
+Joanito_2022_Nat_Genet.CRC_JSC_S12	Joanito_2022_Nat_Genet	0	0.8544744679526735
+Joanito_2022_Nat_Genet.CRC_JSC_S13	Joanito_2022_Nat_Genet	0	0.3649763562362897
+Joanito_2022_Nat_Genet.CRC_JSC_S14	Joanito_2022_Nat_Genet	0	0.4130653468646612
+Joanito_2022_Nat_Genet.SC035	Joanito_2022_Nat_Genet	0	0.07201695443152166
+Joanito_2022_Nat_Genet.SC040	Joanito_2022_Nat_Genet	0	0.18076003948591773
+Joanito_2022_Nat_Genet.SC041	Joanito_2022_Nat_Genet	1	0.2647410367013262
+Joanito_2022_Nat_Genet.SC043	Joanito_2022_Nat_Genet	1	0.7996688265667403
+Joanito_2022_Nat_Genet.SC044	Joanito_2022_Nat_Genet	0	0.4576431814093849
+Khaliq_2022_Genome_Biol.CAC1	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC11	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC12	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC14	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC2	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC3	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC7	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC8	Khaliq_2022_Genome_Biol	0	
+Khaliq_2022_Genome_Biol.CAC9	Khaliq_2022_Genome_Biol	0	
+Lee_2020_Nat_Genet.SC001	Lee_2020_Nat_Genet	1	0.9933516210899644
+Lee_2020_Nat_Genet.SC019	Lee_2020_Nat_Genet	0	0.8587894424039704
+Lee_2020_Nat_Genet.SC021	Lee_2020_Nat_Genet	1	0.9999696270198758
+Lee_2020_Nat_Genet.SC024	Lee_2020_Nat_Genet	0	0.9928503441159873
+Lee_2020_Nat_Genet.SC027	Lee_2020_Nat_Genet	0	0.9780747685354595
+Lee_2020_Nat_Genet.SC028	Lee_2020_Nat_Genet	1	0.9788726211436286
+Lee_2020_Nat_Genet.SC029	Lee_2020_Nat_Genet	0	0.9997158092697938
+Lee_2020_Nat_Genet.SC030	Lee_2020_Nat_Genet	0	0.9965167797643667
+Lee_2020_Nat_Genet.SC031	Lee_2020_Nat_Genet	0	0.988134294816939
+Lee_2020_Nat_Genet.SMC01	Lee_2020_Nat_Genet	0	0.8025670616549221
+Lee_2020_Nat_Genet.SMC02	Lee_2020_Nat_Genet	1	0.8008118021079178
+Lee_2020_Nat_Genet.SMC03	Lee_2020_Nat_Genet	0	0.9838109723939051
+Lee_2020_Nat_Genet.SMC04	Lee_2020_Nat_Genet	1	0.5774993242747427
+Lee_2020_Nat_Genet.SMC06	Lee_2020_Nat_Genet	0	0.9081811878492776
+Lee_2020_Nat_Genet.SMC07	Lee_2020_Nat_Genet	0	0.7637801897269253
+Lee_2020_Nat_Genet.SMC08	Lee_2020_Nat_Genet	0	0.6839885889805394
+Lee_2020_Nat_Genet.SMC09	Lee_2020_Nat_Genet	0	0.6064321162926892
+Lee_2020_Nat_Genet.SMC10	Lee_2020_Nat_Genet	1	0.843682544534403
+Lee_2020_Nat_Genet.SMC11	Lee_2020_Nat_Genet	0	0.9397608339536492
+Lee_2020_Nat_Genet.SMC13	Lee_2020_Nat_Genet	0	0.43924961509399846
+Lee_2020_Nat_Genet.SMC14	Lee_2020_Nat_Genet	1	0.99812815405145
+Lee_2020_Nat_Genet.SMC15	Lee_2020_Nat_Genet	0	0.7077699503629606
+Lee_2020_Nat_Genet.SMC17	Lee_2020_Nat_Genet	1	0.9979396482259428
+Lee_2020_Nat_Genet.SMC171	Lee_2020_Nat_Genet	0	0.12696654478650718
+Lee_2020_Nat_Genet.SMC18	Lee_2020_Nat_Genet	0	0.7540917775498798
+Lee_2020_Nat_Genet.SMC19	Lee_2020_Nat_Genet	0	0.8843072351662186
+Lee_2020_Nat_Genet.SMC20	Lee_2020_Nat_Genet	1	0.9961370992627558
+Lee_2020_Nat_Genet.SMC21	Lee_2020_Nat_Genet	0	0.3454961955369385
+Lee_2020_Nat_Genet.SMC22	Lee_2020_Nat_Genet	0	0.6619955745238634
+Lee_2020_Nat_Genet.SMC23	Lee_2020_Nat_Genet	0	0.7984796797753279
+Lee_2020_Nat_Genet.SMC24	Lee_2020_Nat_Genet	1	0.10743476482776032
+Lee_2020_Nat_Genet.SMC25	Lee_2020_Nat_Genet	0	0.42810942411385844
+Li_2023_Cancer_Cell.P21	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P23	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P24	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P25	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P27	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P28	Li_2023_Cancer_Cell	1	
+Li_2023_Cancer_Cell.P30	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P31	Li_2023_Cancer_Cell	0	
+Li_2023_Cancer_Cell.P33	Li_2023_Cancer_Cell	0	
+MUI_Innsbruck.P11	MUI_Innsbruck	0	
+MUI_Innsbruck.P13	MUI_Innsbruck	0	
+MUI_Innsbruck.P14	MUI_Innsbruck	0	
+MUI_Innsbruck.P15	MUI_Innsbruck	1	
+MUI_Innsbruck.P16	MUI_Innsbruck	0	
+MUI_Innsbruck.P3	MUI_Innsbruck	1	
+MUI_Innsbruck.P4	MUI_Innsbruck	0	
+MUI_Innsbruck.P5	MUI_Innsbruck	0	
+MUI_Innsbruck.P7	MUI_Innsbruck	0	
+MUI_Innsbruck.P8	MUI_Innsbruck	0	
+MUI_Innsbruck.P9	MUI_Innsbruck	0	
+Pelka_2021_Cell.C103	Pelka_2021_Cell	0	0.004551829558504752
+Pelka_2021_Cell.C104	Pelka_2021_Cell	0	0.0028820682850847195
+Pelka_2021_Cell.C105	Pelka_2021_Cell	0	0.00029905185670160104
+Pelka_2021_Cell.C106	Pelka_2021_Cell	0	0.10987808011358807
+Pelka_2021_Cell.C107	Pelka_2021_Cell	0	0.015446397204355995
+Pelka_2021_Cell.C109	Pelka_2021_Cell	0	0.01616842172520371
+Pelka_2021_Cell.C110	Pelka_2021_Cell	1	0.9095695856814623
+Pelka_2021_Cell.C111	Pelka_2021_Cell	1	0.8253398582911112
+Pelka_2021_Cell.C112	Pelka_2021_Cell	1	0.031534858567032004
+Pelka_2021_Cell.C113	Pelka_2021_Cell	0	0.04639986481188479
+Pelka_2021_Cell.C114	Pelka_2021_Cell	0	0.013004586068031669
+Pelka_2021_Cell.C116	Pelka_2021_Cell	0	0.01699731748297892
+Pelka_2021_Cell.C119	Pelka_2021_Cell	0	0.0007381295721649621
+Pelka_2021_Cell.C122	Pelka_2021_Cell	0	0.005646274213972071
+Pelka_2021_Cell.C123	Pelka_2021_Cell	0	0.6015652181841935
+Pelka_2021_Cell.C124	Pelka_2021_Cell	1	0.6849404450771731
+Pelka_2021_Cell.C125	Pelka_2021_Cell	0	3.8415479582989895e-05
+Pelka_2021_Cell.C126	Pelka_2021_Cell	1	0.12061827475612705
+Pelka_2021_Cell.C129	Pelka_2021_Cell	0	0.9233602324131812
+Pelka_2021_Cell.C130	Pelka_2021_Cell	0	0.5650787471638323
+Pelka_2021_Cell.C132	Pelka_2021_Cell	0	0.003577536247629016
+Pelka_2021_Cell.C133	Pelka_2021_Cell	1	0.26023475121274375
+Pelka_2021_Cell.C134	Pelka_2021_Cell	1	0.018481625653281316
+Pelka_2021_Cell.C135	Pelka_2021_Cell	0	0.24550052884236387
+Pelka_2021_Cell.C136	Pelka_2021_Cell	0	0.0029718401683732896
+Pelka_2021_Cell.C137	Pelka_2021_Cell	1	0.270853237191265
+Pelka_2021_Cell.C138	Pelka_2021_Cell	1	0.05006094179348849
+Pelka_2021_Cell.C139	Pelka_2021_Cell	0	0.0022054604019489782
+Pelka_2021_Cell.C140	Pelka_2021_Cell	0	0.000695634930373786
+Pelka_2021_Cell.C142	Pelka_2021_Cell	0	0.045478890854942486
+Pelka_2021_Cell.C143	Pelka_2021_Cell	0	0.020178334980514467
+Pelka_2021_Cell.C144	Pelka_2021_Cell	0	0.040938060705026244
+Pelka_2021_Cell.C145	Pelka_2021_Cell	0	0.4995804336864932
+Pelka_2021_Cell.C146	Pelka_2021_Cell	0	0.025932770115971747
+Pelka_2021_Cell.C147	Pelka_2021_Cell	0	0.3708714927266062
+Pelka_2021_Cell.C149	Pelka_2021_Cell	0	0.0004647866967815541
+Pelka_2021_Cell.C150	Pelka_2021_Cell	0	0.01884686988895386
+Pelka_2021_Cell.C151	Pelka_2021_Cell	0	0.08593936089638352
+Pelka_2021_Cell.C152	Pelka_2021_Cell	0	0.018566323267416304
+Pelka_2021_Cell.C153	Pelka_2021_Cell	1	0.008990231265891494
+Pelka_2021_Cell.C154	Pelka_2021_Cell	0	0.03402198728708564
+Pelka_2021_Cell.C155	Pelka_2021_Cell	0	0.16968500982220236
+Pelka_2021_Cell.C156	Pelka_2021_Cell	0	0.07925706327113412
+Pelka_2021_Cell.C157	Pelka_2021_Cell	1	0.556616916130054
+Pelka_2021_Cell.C158	Pelka_2021_Cell	1	0.3542100840212076
+Pelka_2021_Cell.C159	Pelka_2021_Cell	0	0.010423353660459588
+Pelka_2021_Cell.C160	Pelka_2021_Cell	1	0.21343234662738275
+Pelka_2021_Cell.C161	Pelka_2021_Cell	0	0.20586855439231064
+Pelka_2021_Cell.C162	Pelka_2021_Cell	1	0.06467451690935125
+Pelka_2021_Cell.C163	Pelka_2021_Cell	0	0.3298085136530493
+Pelka_2021_Cell.C164	Pelka_2021_Cell	0	0.1235351141332328
+Pelka_2021_Cell.C165	Pelka_2021_Cell	1	0.019848779522396123
+Pelka_2021_Cell.C166	Pelka_2021_Cell	0	0.002048535174139842
+Pelka_2021_Cell.C167	Pelka_2021_Cell	0	0.9804384542090704
+Pelka_2021_Cell.C168	Pelka_2021_Cell	1	0.8365694004520969
+Pelka_2021_Cell.C169	Pelka_2021_Cell	1	0.10778579433258223
+Pelka_2021_Cell.C170	Pelka_2021_Cell	0	0.2953310292790047
+Pelka_2021_Cell.C171	Pelka_2021_Cell	0	0.3005299576078714
+Pelka_2021_Cell.C172	Pelka_2021_Cell	1	0.0006517546739741261
+Pelka_2021_Cell.C173	Pelka_2021_Cell	0	0.6997343770291305
+Qi_2022_Nat_Commun.P1	Qi_2022_Nat_Commun	1	
+Qi_2022_Nat_Commun.P2	Qi_2022_Nat_Commun	1	
+Qi_2022_Nat_Commun.P3	Qi_2022_Nat_Commun	0	
+Qi_2022_Nat_Commun.P4	Qi_2022_Nat_Commun	0	
+Qi_2022_Nat_Commun.P5	Qi_2022_Nat_Commun	0	
+Qian_2020_Cell_Res.P31	Qian_2020_Cell_Res	1	
+Qian_2020_Cell_Res.P32	Qian_2020_Cell_Res	0	
+Qian_2020_Cell_Res.P33	Qian_2020_Cell_Res	1	
+Qian_2020_Cell_Res.P35	Qian_2020_Cell_Res	0	
+Qian_2020_Cell_Res.P36	Qian_2020_Cell_Res	0	
+Qian_2020_Cell_Res.P37	Qian_2020_Cell_Res	0	
+Qian_2020_Cell_Res.P38	Qian_2020_Cell_Res	0	
+Uhlitz_2021_EMBO_Mol_Med.P007	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P008	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P009	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P012	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P013	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P014	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P016	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P017	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P020	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P021	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P025	Uhlitz_2021_EMBO_Mol_Med	0	
+Uhlitz_2021_EMBO_Mol_Med.P026	Uhlitz_2021_EMBO_Mol_Med	0	
+Wang_2021_Adv_Sci.col39-smartseq-smartseq	Wang_2021_Adv_Sci	0	
+Wang_2021_Adv_Sci.col44-smartseq-smartseq	Wang_2021_Adv_Sci	1	
+Yang_2023_Front_Oncol.JCML	Yang_2023_Front_Oncol	0	
+Zheng_2022_Signal_Transduct_Target_Ther.P1	Zheng_2022_Signal_Transduct_Target_Ther	0	
+Zheng_2022_Signal_Transduct_Target_Ther.P2	Zheng_2022_Signal_Transduct_Target_Ther	0	
+Zheng_2022_Signal_Transduct_Target_Ther.P3	Zheng_2022_Signal_Transduct_Target_Ther	1	

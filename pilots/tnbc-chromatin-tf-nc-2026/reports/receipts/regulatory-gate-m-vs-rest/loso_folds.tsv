@@ -1,0 +1,4 @@
+held_dataset	train_n	test_n	case_n	control_n	selected_features	AUROC
+Joanito_2022_Nat_Genet	92	27	5	22	20	0.509090909090909
+Lee_2020_Nat_Genet	87	32	10	22	20	0.6727272727272726
+Pelka_2021_Cell	59	60	18	42	20	0.6653439153439153
