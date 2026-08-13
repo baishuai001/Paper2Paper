@@ -18,6 +18,8 @@ All real data and full outputs stay on the cloud server. Git contains source, pr
 
 The input audit records SHA256 identities for the immutable H5AD, supplement, phenotype manifest, ARACNe3 and anchor-code commits, and every executable pipeline source file actually present on the cloud server.
 
+If a run fails after a completed full H5AD hash for a demonstrably non-data reason, `REGULATORY_GATE_VERIFIED_H5AD_RECEIPT` may point to that preserved receipt. The retry accepts it only when the prior status and hash conditions passed, bytes still match, the expected SHA256 is identical, and the H5AD modification time predates the prior receipt; provenance and receipt SHA256 are recorded in the new audit.
+
 `run_cloud.sh` takes non-blocking locks for both the route work directory and the shared network directory, and exits with code 73 on contention. This prevents two launchers from corrupting ARACNe3 or route-specific outputs.
 
 The anchor Code Ocean v1.0 code (commit `edf5314ce5b9ee0e2f88b2310e7c2df5619ad888`) explicitly converts `subnet1`, not the consolidated network, and uses `minsize=1` plus 1,000 null permutations. This implementation follows those choices, retains the first real edge that the author script accidentally deletes after `header=TRUE`, and adds no second consensus BH filter.

@@ -51,7 +51,11 @@ def main() -> int:
     parser.add_argument("--pipeline-code-dir", required=True, type=Path)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--skip-h5ad-hash", action="store_true")
+    parser.add_argument("--verified-h5ad-receipt", type=Path)
     args = parser.parse_args()
+
+    if args.skip_h5ad_hash and args.verified_h5ad_receipt:
+        raise ValueError("--skip-h5ad-hash and --verified-h5ad-receipt are mutually exclusive")
 
     if not args.h5ad.is_file() or not args.supplement.is_file() or not args.manifest.is_file():
         raise FileNotFoundError("Required H5AD, supplement or phenotype manifest is absent")
@@ -60,7 +64,36 @@ def main() -> int:
     if missing_pipeline_files:
         raise FileNotFoundError(f"Missing pipeline files: {missing_pipeline_files}")
     actual_bytes = args.h5ad.stat().st_size
-    actual_hash = None if args.skip_h5ad_hash else sha256_file(args.h5ad)
+    h5ad_mtime = datetime.fromtimestamp(args.h5ad.stat().st_mtime, tz=timezone.utc)
+    if args.verified_h5ad_receipt:
+        with args.verified_h5ad_receipt.open(encoding="utf-8") as stream:
+            prior = json.load(stream)
+        prior_generated = datetime.fromisoformat(str(prior["generated_at"]).replace("Z", "+00:00"))
+        prior_hash = str(prior["h5ad"]["sha256"]).upper()
+        prior_valid = (
+            prior.get("status") == "passed"
+            and prior.get("conditions", {}).get("h5ad_size_matches") is True
+            and prior.get("conditions", {}).get("h5ad_sha256_matches") is True
+            and int(prior["h5ad"]["bytes"]) == actual_bytes
+            and prior_hash == args.expected_h5ad_sha256.upper()
+            and h5ad_mtime <= prior_generated
+        )
+        if not prior_valid:
+            raise ValueError("Prior H5AD hash receipt is not valid for the current unchanged file")
+        actual_hash = prior_hash
+        hash_source = {
+            "mode": "verified_full_hash_receipt_reuse",
+            "receipt": str(args.verified_h5ad_receipt),
+            "receipt_sha256": sha256_file(args.verified_h5ad_receipt),
+            "verified_at": prior["generated_at"],
+            "reason": "Retry after a non-data shell execute-bit failure",
+        }
+    elif args.skip_h5ad_hash:
+        actual_hash = None
+        hash_source = {"mode": "smoke_test_skip"}
+    else:
+        actual_hash = sha256_file(args.h5ad)
+        hash_source = {"mode": "full_hash_this_run"}
     commit = command_output(["git", "rev-parse", "HEAD"], cwd=args.aracne_repo)
     anchor_code_commit = command_output(
         ["git", "rev-parse", "HEAD"], cwd=args.anchor_code_repo
@@ -85,7 +118,14 @@ def main() -> int:
         "status": "passed" if all(conditions.values()) else "failed",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "conditions": conditions,
-        "h5ad": {"path": str(args.h5ad), "bytes": actual_bytes, "sha256": actual_hash, "shape": shape},
+        "h5ad": {
+            "path": str(args.h5ad),
+            "bytes": actual_bytes,
+            "sha256": actual_hash,
+            "mtime_utc": h5ad_mtime.isoformat(),
+            "hash_source": hash_source,
+            "shape": shape,
+        },
         "h5ad_obs_field_count": len(obs_fields),
         "aracne3": {"path": str(args.aracne_repo), "commit": commit},
         "anchor_code": {

@@ -43,6 +43,11 @@ run_logged() {
   echo "[$(date --iso-8601=seconds)] END $name" | tee -a "$log"
 }
 
+audit_hash_args=()
+if [[ -n "${REGULATORY_GATE_VERIFIED_H5AD_RECEIPT:-}" ]]; then
+  audit_hash_args=(--verified-h5ad-receipt "$REGULATORY_GATE_VERIFIED_H5AD_RECEIPT")
+fi
+
 run_logged 00_input_audit "$python_bin" "$code/audit_inputs.py" \
   --h5ad "$h5ad" \
   --expected-h5ad-bytes 30875155333 \
@@ -54,6 +59,7 @@ run_logged 00_input_audit "$python_bin" "$code/audit_inputs.py" \
   --supplement "$supplement" \
   --manifest "$manifest" \
   --pipeline-code-dir "$code" \
+  "${audit_hash_args[@]}" \
   --output "$outputs/input_audit.json"
 
 run_logged 01_pango "$python_bin" "$code/extract_pango_regulators.py" \
@@ -74,7 +80,7 @@ if [[ ! -s "$outputs/pseudobulk/pseudobulk_receipt.json" ]]; then
 fi
 
 if [[ ! -s "$network_outputs/aracne3_receipt.json" || ! -s "$network_outputs/aracne3/subnets/subnet1_crc.tsv" ]]; then
-  run_logged 05_aracne "$code/run_aracne3.sh" \
+  run_logged 05_aracne bash "$code/run_aracne3.sh" \
     "$aracne_repo" "$network_outputs/tcga/tcga_crc_tpm.tsv" \
     "$network_outputs/aracne_inputs/aracne_regulators.txt" "$network_outputs/aracne3" "$threads" 1
 fi
