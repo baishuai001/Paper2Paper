@@ -14,6 +14,13 @@ logs=$work/logs
 threads=${REGULATORY_GATE_THREADS:-24}
 python_bin=${REGULATORY_GATE_PYTHON:-$repo/tmp/hcc-sc-spatial-npj-2026/phase-zero/env/bootstrap/bin/python}
 mkdir -p "$outputs" "$logs"
+lock_file=$work/.regulatory-gate.lock
+exec 9>"$lock_file"
+if ! flock -n 9; then
+  echo "Another regulatory-gate pipeline holds $lock_file; refusing concurrent output writes." >&2
+  exit 73
+fi
+printf 'pid=%s started=%s\n' "$$" "$(date --iso-8601=seconds)" 1>&9
 export PYTHONPATH=$code
 if [[ ! -x "$python_bin" ]]; then
   echo "Configured analysis Python is not executable: $python_bin" >&2

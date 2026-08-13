@@ -48,6 +48,14 @@ def main() -> int:
         ),
         "tcga_participants_ge_550": tcga["participants"] >= 550,
         "tcga_genes_ge_10000": tcga["retained_genes"] >= 10_000,
+        "tcga_duplicate_symbols_use_anchor_mean": (
+            tcga["processing"]["duplicate_symbol_aggregation"]
+            == "mean (anchor-code behavior)"
+        ),
+        "tcga_has_no_added_low_expression_filter": (
+            tcga["processing"]["low_expression_filter"]
+            == "none (anchor-code behavior)"
+        ),
         "aracne_regulators_ge_1500": aracne_input["aracne_regulators"] >= 1_500,
         "anchor_code_style_aracne_single_subnetwork_passed": (
             aracne_run["status"] == "passed"

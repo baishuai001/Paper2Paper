@@ -14,6 +14,8 @@ The architecture deliberately separates reusable, phenotype-independent artifact
 
 All real data and full outputs stay on the cloud server. Git contains source, protocol, compact receipts and reports only. Run the complete cloud workflow with `bash run_cloud.sh`; paths may be overridden through the environment variables documented at the top of that script.
 
+`run_cloud.sh` takes a non-blocking filesystem lock and exits with code 73 if another full pipeline is writing the same work directory. This prevents two background launchers from corrupting shared ARACNe3 or VIPER outputs.
+
 The anchor Code Ocean v1.0 code (commit `edf5314ce5b9ee0e2f88b2310e7c2df5619ad888`) explicitly converts `subnet1`, not the consolidated network, and uses `minsize=1` plus 1,000 null permutations. This implementation follows those choices, retains the first real edge that the author script accidentally deletes after `header=TRUE`, and adds no second consensus BH filter.
 
 The anchor TCGA helper averages expression rows mapping to a duplicate gene symbol and applies no low-expression filter. The CRC implementation does the same, averages repeat aliquots at participant level, and uses the `viper` default method (`"none"`) because the anchor call omits `method`.
