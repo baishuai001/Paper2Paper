@@ -1,0 +1,104 @@
+depmap_id	sample_id	group	sex	age_at_diagnosis	primary_or_metastasis	sample_collection_site	lineage_molecular_subtype	growth_pattern	age_group	selected_mutations	oncogene_mutation	suppressor_pathway_mutation	annotation_sources
+ACH-000012	ACH-000012	LUAD	Female	39	Primary	lung		2D: adherent	<=60	EGFR;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000021	ACH-000021	LUAD	Female	55	Metastasis	lymph_node		2D: adherent	<=60	ALK;TP53	ALK	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000029	ACH-000029	LUAD	Female	39	Primary	lung			<=60	EGFR;RET;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000030	ACH-000030	LUAD	Male	45	Primary	lung		2D: adherent	<=60	CDKN2A;EGFR;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000033	ACH-000033	LUAD	Female	55	Metastasis	lymph_node			<=60	TP53	None detected	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000035	ACH-000035	LUAD	Male	27	Metastasis	pleural_effusion		2D: adherent	<=60	EGFR;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000062	ACH-000062	LUAD	Male		Primary	lung		2D: adherent		KEAP1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000066	ACH-000066	LUAD	Male		Metastasis	pleural_effusion		2D: adherent		EGFR;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000109	ACH-000109	LUAD	Female	52	Primary	lung		2D: adherent	<=60	EGFR;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000121	ACH-000121	LUAD	Male	47	Metastasis	ascites		2D: mixed adherent and suspension	<=60	BRAF;TP53	BRAF	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000150	ACH-000150	LUAD	Male	39	Primary	pleural_effusion		2D: adherent	<=60	EGFR;KEAP1;PTEN;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000161	ACH-000161	LUAD	Male		Metastasis	pleural_effusion		2D: adherent		None detected	None detected	None detected	DepMap 22Q2 model metadata and mutation calls
+ACH-000176	ACH-000176	LUSC	Female	64	Primary	lung		2D: adherent	61-70	EGFR;PIK3CA;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000261	ACH-000261	LUSC	Male		Metastasis	pleural_effusion		2D: adherent		ERBB2;NF1;TP53	ERBB2	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000282	ACH-000282	LUAD	Female	65	Metastasis	liver		2D: mixed adherent and suspension	61-70	ALK;BRAF;KEAP1;STK11;TP53	BRAF	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000311	ACH-000311	LUAD	Female	46	Metastasis	pleural_effusion		2D: suspension	<=60	KEAP1;KRAS;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000314	ACH-000314	LUAD	Male	59	Primary	lung		2D: adherent	<=60	KRAS;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000327	ACH-000327	LUAD	Female	55	Primary	lung		2D: adherent	<=60	BRAF;STK11	BRAF	STK11	DepMap 22Q2 model metadata and mutation calls
+ACH-000337	ACH-000337	LUAD	Male			lung				NF1;ROS1;TP53	ROS1	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000339	ACH-000339	LUAD	Male	69		lung			61-70	EGFR;KRAS;PTEN;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000343	ACH-000343	LUAD	Male	58	Primary	lung			<=60	RET;TP53	RET	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000367	ACH-000367	LUSC	Male		Metastasis	pleural_effusion				EGFR	EGFR	None detected	DepMap 22Q2 model metadata and mutation calls
+ACH-000379	ACH-000379	LUAD	Female	66	Metastasis	pleural_effusion		2D: adherent	61-70	ERBB2;PTEN;TP53	ERBB2	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000390	ACH-000390	LUSC	Male	72	Primary	lung		2D: adherent	>70	KEAP1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000392	ACH-000392	LUAD	Male	25	Metastasis	pleural_effusion		2D: adherent	<=60	CDKN2A;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000395	ACH-000395	LUSC	Male		Primary	lung		2D: adherent		CDKN2A;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000414	ACH-000414	LUAD	Female	62	Metastasis	soft_tissue		2D: adherent	61-70	KEAP1;KRAS;STK11	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000416	ACH-000416	LUAD	Male	59	Metastasis	lymph_node		2D: adherent	<=60	KEAP1;MET;STK11;TP53	MET	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000442	ACH-000442	LUSC	Female	74	Primary	lung		2D: adherent	>70	NF1;NFE2L2;PIK3CA	PIK3CA	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000447	ACH-000447	LUAD	Female		Primary	lung				NFE2L2;RET;TP53	RET	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000448	ACH-000448	LUAD	Female	50	Metastasis	pleural_effusion		2D: adherent	<=60	BRAF;RET;STK11	BRAF	STK11	DepMap 22Q2 model metadata and mutation calls
+ACH-000451	ACH-000451	LUAD	Male	45	Primary	lung			<=60	TP53	None detected	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000454	ACH-000454	LUSC	Male	65	Metastasis	pleural_effusion			61-70	TP53	None detected	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000481	ACH-000481	LUSC	Male		Primary	lung		2D: mixed adherent and suspension		KEAP1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000482	ACH-000482	LUAD	Male	78	Primary	lung		2D: adherent	>70	TP53	None detected	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000496	ACH-000496	LUAD	Male	50	Metastasis	pleural_effusion		2D: adherent	<=60	CDKN2A;KEAP1;KRAS;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000511	ACH-000511	LUSC	Male	47	Metastasis	pleura		2D: adherent	<=60	KRAS;NFE2L2;ROS1	KRAS	NFE2L2	DepMap 22Q2 model metadata and mutation calls
+ACH-000521	ACH-000521	LUAD	Male		Metastasis	lymph_node		2D: adherent		KEAP1;KRAS;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000528	ACH-000528	LUAD	Male	47	Metastasis	pleural_effusion		2D: adherent	<=60	ALK;NF1;TP53	ALK	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000553	ACH-000553	LUSC	Male		Primary	lung				NF1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000562	ACH-000562	LUAD	Male	65	Metastasis	pleural_effusion			61-70	ALK;CDKN2A;TP53	ALK	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000563	ACH-000563	LUSC	Male	69	Metastasis	skin		2D: adherent	61-70	NFE2L2;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000575	ACH-000575	LUAD	Male	76		lung			>70	BRAF;TP53	BRAF	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000578	ACH-000578	LUAD	Male	58	Primary	lung			<=60	KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000585	ACH-000585	LUSC	Male	57	Primary	lung		2D: adherent	<=60	NF1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000587	ACH-000587	LUAD	Female		Primary	lung		2D: adherent		CDKN2A;EGFR;PIK3CA;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000589	ACH-000589	LUAD	Male	60	Metastasis	pleural_effusion		2D: adherent	<=60	TP53	None detected	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000590	ACH-000590	LUAD	Female	47	Primary	lung		2D: adherent	<=60	ROS1;STK11;TP53	ROS1	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000638	ACH-000638	LUAD	Male	33	Metastasis	pericardial_effusion		2D: adherent	<=60	DDR2;KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000665	ACH-000665	LUSC	Male	65	Metastasis	pleural_effusion		2D: adherent	61-70	EGFR;RET;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000666	ACH-000666	LUAD	Male	53	Metastasis	pleural_effusion		2D: adherent	<=60	ALK;EGFR;KEAP1;KRAS;RET;STK11;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000667	ACH-000667	LUAD	Female	54	Primary	lung			<=60	KEAP1;KRAS;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000669	ACH-000669	LUSC	Male	53	Primary	lung		2D: adherent	<=60	ALK;KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000675	ACH-000675	LUAD	Female	56	Primary	lung		2D: adherent	<=60	KRAS;NF1;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000677	ACH-000677	LUAD	Female	44	Primary	lung		2D: adherent	<=60	KRAS;PIK3CA	KRAS	None detected	DepMap 22Q2 model metadata and mutation calls
+ACH-000681	ACH-000681	LUAD	Male	58	Primary	lung		2D: adherent	<=60	KEAP1;KRAS;STK11	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000690	ACH-000690	LUSC	Male	55		lung			<=60	NFE2L2;PTEN;ROS1;TP53	ROS1	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000700	ACH-000700	LUSC	Female	61		lung			61-70	NF1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000705	ACH-000705	LUSC	Male	69	Primary	lung		2D: mixed adherent and suspension	61-70	TP53	None detected	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000706	ACH-000706	LUAD	Male		Primary	lung		2D: adherent		FGFR3;ROS1;STK11;TP53	ROS1	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000710	ACH-000710	LUAD	Male	75	Primary	lung		2D: suspension	>70	BRAF;TP53	BRAF	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000712	ACH-000712	LUAD	Female	69	Primary	lung			61-70	NF1;STK11;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000718	ACH-000718	LUAD	Male		Metastasis	lymph_node		2D: adherent		EGFR;KRAS;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000731	ACH-000731	LUAD	Female	52	Primary	lung			<=60	EGFR;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000733	ACH-000733	LUAD	Female		Primary	lung		2D: adherent		MET;NF1;TP53	MET	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000737	ACH-000737	LUSC	Female	49	Metastasis	lymph_node		2D: mixed adherent and suspension	<=60	KEAP1;KRAS;STK11	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000744	ACH-000744	LUAD	Male	58	Metastasis	lymph_node		2D: adherent	<=60	KEAP1;STK11;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000747	ACH-000747	LUSC	Male	54	Primary	lung		2D: adherent	<=60	CDKN2A;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000757	ACH-000757	LUAD	Male	52		lung			<=60	KRAS	KRAS	None detected	DepMap 22Q2 model metadata and mutation calls
+ACH-000766	ACH-000766	LUAD	Male	39	Metastasis	lymph_node		2D: mixed adherent and suspension	<=60	KEAP1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000769	ACH-000769	LUSC	Male	74	Primary	lung		2D: adherent	>70	CDKN2A;NFE2L2;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000774	ACH-000774	LUAD	Male		Primary	lung		2D: adherent		KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000779	ACH-000779	LUAD	Male	45		lung			<=60	ALK;CDKN2A;EGFR;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000781	ACH-000781	LUAD	Male	26	Metastasis	lymph_node		2D: adherent	<=60	KEAP1;PTEN;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000785	ACH-000785	LUAD	Male	65	Metastasis	haematopoietic_and_lymphoid_tissue		2D: adherent	61-70	KEAP1;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000787	ACH-000787	LUAD	Male	62	Primary	lung		2D: adherent	61-70	CDKN2A;DDR2;KEAP1;NF1;TP53	DDR2	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000791	ACH-000791	LUAD	Male	70	Primary	lung		2D: adherent	61-70	BRAF;KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000837	ACH-000837	LUAD	Male	52	Primary	lung		2D: adherent	<=60	ALK;KEAP1;NF1;TP53	ALK	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000841	ACH-000841	LUAD	Male	69	Metastasis	lymph_node			61-70	ALK;BRAF;TP53	BRAF	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000843	ACH-000843	LUSC	Male	57	Metastasis	pleural_effusion		2D: adherent	<=60	CDKN2A;RET;TP53	RET	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000845	ACH-000845	LUAD	Male	56	Primary	lung		2D: adherent	<=60	ALK;CDKN2A;KRAS;NF1;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000851	ACH-000851	LUAD			Primary	lung		2D: suspension		DDR2;KEAP1;KRAS;MET;PIK3CA;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000852	ACH-000852	LUAD	Female	35	Primary	lung		2D: adherent	<=60	ALK;KEAP1;NF1;STK11;TP53	ALK	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000858	ACH-000858	LUSC	Male	49	Metastasis	central_nervous_system		2D: adherent	<=60	CDKN2A;TP53	None detected	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000860	ACH-000860	LUAD	Male		Primary	lung		2D: adherent		KRAS	KRAS	None detected	DepMap 22Q2 model metadata and mutation calls
+ACH-000861	ACH-000861	LUAD	Female	60	Primary	lung		2D: adherent	<=60	KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000869	ACH-000869	LUAD	Female	48	Metastasis	lymph_node		2D: adherent	<=60	EGFR;NFE2L2;TP53	EGFR	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000872	ACH-000872	LUAD	Female	39		lung			<=60	CDKN2A;DDR2;KRAS;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000875	ACH-000875	LUAD	Female	54	Primary	lung		2D: mixed adherent and suspension	<=60	KRAS;NF1;RET;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000878	ACH-000878	LUSC	Male	47	Primary	lung		2D: mixed adherent and suspension	<=60	KEAP1;MET;TP53	MET	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000886	ACH-000886	LUAD	Female	68	Metastasis	lymph_node			61-70	FGFR3;KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000888	ACH-000888	LUAD	Female	52	Primary	lung		2D: adherent	<=60	ALK;EGFR;ERBB2;TP53	EGFR	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000892	ACH-000892	LUAD	Male		Primary	lung		2D: adherent		ERBB2;PIK3CA;RET;STK11	ERBB2	STK11	DepMap 22Q2 model metadata and mutation calls
+ACH-000893	ACH-000893	LUAD	Male	71	Primary	lung		2D: adherent	>70	ALK;BRAF;NF1;TP53	BRAF	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000894	ACH-000894	LUSC	Male	58	Metastasis	pleural_effusion		2D: adherent	<=60	MET;TP53	MET	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000900	ACH-000900	LUAD	Male	51	Primary	lung		2D: adherent	<=60	ALK;DDR2;KEAP1;KRAS;RET;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000916	ACH-000916	LUAD	Female	35	Metastasis	soft_tissue		2D: adherent	<=60	KEAP1;KRAS;STK11;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000921	ACH-000921	LUSC	Male	59	Metastasis	pleural_effusion		2D: adherent	<=60	CDKN2A;KEAP1;KRAS;MET;PTEN;RET;TP53	KRAS	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000925	ACH-000925	LUAD	Male	50	Metastasis	pleural_effusion		2D: adherent	<=60	ALK;ERBB2;KRAS	KRAS	None detected	DepMap 22Q2 model metadata and mutation calls
+ACH-000945	ACH-000945	LUAD	Male		Metastasis	lung		2D: mixed adherent and suspension		ALK;KRAS;TP53	KRAS	TP53	DepMap 22Q2 model metadata and mutation calls
+ACH-000951	ACH-000951	LUAD	Male	55	Primary	lung		2D: mixed adherent and suspension	<=60	DDR2;ERBB2;MET;NF1;TP53	ERBB2	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-000975	ACH-000975	LUSC	Male	52		lung			<=60	NFE2L2;PIK3CA;TP53	PIK3CA	Multiple	DepMap 22Q2 model metadata and mutation calls
+ACH-001113	ACH-001113	LUSC	Male	69	Primary	lung		2D: adherent	61-70	NFE2L2;ROS1;TP53	ROS1	Multiple	DepMap 22Q2 model metadata and mutation calls

@@ -1,0 +1,7 @@
+bowtie2=/usr/bin/bowtie2-align-s version 2.4.4
+samtools=samtools 1.13
+bedtools=bedtools v2.30.0
+macs2=macs2 2.2.9.1
+cutadapt=4.9
+gencode=47 basic annotation
+reference_downloaded_utc=2026-08-14T02:17:15Z

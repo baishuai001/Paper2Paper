@@ -1,0 +1,2 @@
+system	sample_id	sample_slug	run	library_layout	filtered_human_reads	filtered_human_units	peak_count	frip	hard_qc_status
+cell_line	PC-14	PC-14	DRR137573	SINGLE	1424761	1424761	8270	0.09329635	FAIL

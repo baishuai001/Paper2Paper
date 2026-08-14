@@ -1,0 +1,2 @@
+system	sample_id	sample_slug	run	library_layout	filtered_human_reads	filtered_human_units	peak_count	frip	hard_qc_status
+cell_line	H1650	H1650	DRR136679	SINGLE	781150	781150	4494	0.05638098	FAIL

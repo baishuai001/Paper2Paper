@@ -1,0 +1,144 @@
+
+	Position file = /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/target.pos
+	Genome = /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa
+	Output Directory = /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/CIS-BP2.00
+	Using actual sizes of regions (-size given)
+	Fragment size set to given
+	background position file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/background.pos
+	Will not run homer for de novo motifs
+	Will search for known motifs in file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/CIS-BP2.00.homer
+	Using 1 CPUs
+	Using Custom Genome
+	Peak/BED file conversion summary:
+		BED/Header formatted lines: 0
+		peakfile formatted lines: 1000
+
+	Peak File Statistics:
+		Total Peaks: 1000
+		Redundant Peak IDs: 0
+		Peaks lacking information: 0 (need at least 5 columns per peak)
+		Peaks with misformatted coordinates: 0 (should be integer)
+		Peaks with misformatted strand: 0 (should be either +/- or 0/1)
+
+	Peak file looks good!
+
+	Peak/BED file conversion summary:
+		BED/Header formatted lines: 0
+		peakfile formatted lines: 2000
+	Max distance to merge: direct overlap required (-d given)
+	Calculating co-bound peaks relative to reference: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/CIS-BP2.00/bg.clean.pos
+
+	Comparing peaks: (peakfile, overlapping peaks, logRatio(obs/expected), logP)
+		/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/CIS-BP2.00/target.clean..pos	0	-4.17	0.26
+
+	Co-bound by 0 peaks: 2000
+	Co-bound by 1 peaks: 0 (max: 0 effective total)
+	Custom genome sequence file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa
+
+	Extracting sequences from file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa
+	Looking for peak sequences in a single file (/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa)
+	Extracting 1000 sequences from chr1
+	Extracting 26 sequences from chr7
+	Extracting 796 sequences from chr8
+	Extracting 653 sequences from chr9
+	Extracting 525 sequences from chrX
+
+	Not removing redundant sequences
+
+
+	Sequences processed:
+		Auto detected maximum sequence length of 286 bp
+		3000 total
+
+	Frequency Bins: 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.6 0.7 0.8
+	Freq	Bin	Count
+	0.3	2	3
+	0.35	3	8
+	0.4	4	37
+	0.45	5	153
+	0.5	6	251
+	0.6	7	688
+	0.7	8	1055
+	0.8	9	728
+	10	10	77
+	Bin	# Targets	# Background	Background Weight
+	3	1	7	0.285
+	4	8	29	0.551
+	5	31	122	0.507
+	6	62	189	0.655
+	7	209	479	0.871
+	8	409	646	1.264
+	9	247	481	1.025
+	10	33	44	1.498
+	Normalizing lower order oligos using homer2
+
+	Reading input files...
+	2997 total sequences read
+	Autonormalization: 1-mers (4 total)
+		A	18.06%	18.11%	0.998
+		C	31.94%	31.89%	1.001
+		G	31.94%	31.89%	1.001
+		T	18.06%	18.11%	0.998
+	Autonormalization: 2-mers (16 total)
+		AA	4.08%	3.91%	1.042
+		CA	5.84%	6.22%	0.938
+		GA	5.79%	5.77%	1.003
+		TA	2.34%	2.19%	1.069
+		AC	4.37%	4.37%	1.002
+		CC	11.01%	10.88%	1.012
+		GC	10.76%	10.87%	0.990
+		TC	5.79%	5.77%	1.003
+		AG	7.08%	7.27%	0.974
+		CG	8.02%	7.52%	1.066
+		GG	11.01%	10.88%	1.012
+		TG	5.84%	6.22%	0.938
+		AT	2.53%	2.55%	0.994
+		CT	7.08%	7.27%	0.974
+		GT	4.37%	4.37%	1.002
+		TT	4.08%	3.91%	1.042
+	Autonormalization: 3-mers (64 total)
+	Normalization weights can be found in file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke2/CIS-BP2.00/seq.autonorm.tsv
+	Converging on autonormalization solution:
+	...............................................................................
+	Final normalization:	Autonormalization: 1-mers (4 total)
+		A	18.06%	18.06%	1.000
+		C	31.94%	31.94%	1.000
+		G	31.94%	31.94%	1.000
+		T	18.06%	18.06%	1.000
+	Autonormalization: 2-mers (16 total)
+		AA	4.08%	4.07%	1.003
+		CA	5.84%	5.88%	0.993
+		GA	5.79%	5.79%	1.000
+		TA	2.34%	2.32%	1.008
+		AC	4.37%	4.37%	1.002
+		CC	11.01%	10.99%	1.002
+		GC	10.76%	10.79%	0.997
+		TC	5.79%	5.79%	1.000
+		AG	7.08%	7.09%	1.000
+		CG	8.02%	7.99%	1.003
+		GG	11.01%	10.99%	1.002
+		TG	5.84%	5.88%	0.993
+		AT	2.53%	2.54%	0.996
+		CT	7.08%	7.09%	1.000
+		GT	4.37%	4.37%	1.002
+		TT	4.08%	4.07%	1.003
+	Autonormalization: 3-mers (64 total)
+	Finished preparing sequence/group files
+
+	----------------------------------------------------------
+	Known motif enrichment
+
+	Reading input files...
+	2997 total sequences read
+	1 motifs loaded
+	Cache length = 11180
+	Using binomial scoring
+	Checking enrichment of 1 motif(s)
+	|0%                                    50%                                  100%|
+	=================================================================================
+	Preparing HTML output with sequence logos...
+	Skipping...
+	Job finished - if results look good, please send beer to ..
+
+	Cleaning up tmp files...
+

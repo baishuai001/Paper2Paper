@@ -1,0 +1,14 @@
+{
+  "author_panel_unique_models": 23,
+  "broad_nsclc_sensitivity_models": 21,
+  "decision_counts": {
+    "exclude_LUSC": 1,
+    "exclude_misidentified": 1,
+    "exclude_primary_include_broad_NSCLC_sensitivity": 2,
+    "include_strict_LUAD": 19
+  },
+  "output": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/manifests/dra/ddbj_cell_line_histology_audit.tsv",
+  "precedence_rule": "Cellosaurus disease/identity issue overrides broader legacy subtype labels",
+  "strict_luad_primary_models": 19,
+  "strict_rule": "Cellosaurus disease contains Lung adenocarcinoma and model is not misidentified"
+}

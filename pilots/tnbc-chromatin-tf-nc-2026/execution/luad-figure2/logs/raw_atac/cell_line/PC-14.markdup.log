@@ -1,0 +1,17 @@
+[markdup] warning: unable to calculate estimated library size. Read pairs 0 should be greater than duplicate pairs 0, which should both be non zero.
+COMMAND: samtools markdup -r -s -@ 4 /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tmp_processing/cell_line/PC-14/coordinate_sorted.bam /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tmp_processing/cell_line/PC-14/deduplicated.bam
+READ: 21457401
+WRITTEN: 2827064
+EXCLUDED: 1030407
+EXAMINED: 20426994
+PAIRED: 0
+SINGLE: 20426994
+DUPLICATE PAIR: 0
+DUPLICATE SINGLE: 18630337
+DUPLICATE PAIR OPTICAL: 0
+DUPLICATE SINGLE OPTICAL: 0
+DUPLICATE NON PRIMARY: 0
+DUPLICATE NON PRIMARY OPTICAL: 0
+DUPLICATE PRIMARY TOTAL: 18630337
+DUPLICATE TOTAL: 18630337
+ESTIMATED_LIBRARY_SIZE: 0

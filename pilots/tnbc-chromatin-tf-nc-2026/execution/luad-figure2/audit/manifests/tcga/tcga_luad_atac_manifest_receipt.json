@@ -1,0 +1,14 @@
+{
+  "technical_replicates": 44,
+  "independent_primary_tumors": 22,
+  "technical_replicates_per_tumor": 22,
+  "published_qc_pass": 22,
+  "published_rna_seq_available": 21,
+  "matched_frozen_figure1_activity": 21,
+  "median_tss_enrichment": 7.9448,
+  "median_frip": 0.3213,
+  "count_matrix": "TCGA-ATAC_Cancer_Type-specific_Count_Matrices_raw_counts.zip::LUAD_raw_counts.txt",
+  "count_matrix_genome": "hg38",
+  "independence_rule": "one Stanford tissue UUID / TCGA donor; two ATAC reactions are technical replicates",
+  "primary_inclusion_rule": "published QC pass; Primary Solid Tumor; exactly two technical replicates"
+}

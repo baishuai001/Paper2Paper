@@ -1,0 +1,43 @@
+INFO  @ Fri, 14 Aug 2026 10:32:06: 
+# Command line: callpeak -t /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/data/processed/raw_atac/cell_line/A549/A549.tn5_shifted.bed -f BED -g hs --keep-dup all -B --shift -75 --extsize 150 --nomodel --SPMR -q 0.01 -n A549 --outdir /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/data/processed/raw_atac/cell_line/A549/peaks
+# ARGUMENTS LIST:
+# name = A549
+# format = BED
+# ChIP-seq file = ['/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/data/processed/raw_atac/cell_line/A549/A549.tn5_shifted.bed']
+# control file = None
+# effective genome size = 2.70e+09
+# band width = 300
+# model fold = [5, 50]
+# qvalue cutoff = 1.00e-02
+# The maximum gap between significant sites is assigned as the read length/tag size.
+# The minimum length of peaks is assigned as the predicted fragment length "d".
+# Larger dataset will be scaled towards smaller dataset.
+# Range for calculating regional lambda is: 10000 bps
+# Broad region calling is off
+# Paired-End mode is off
+# MACS will save fragment pileup signal per million reads
+ 
+INFO  @ Fri, 14 Aug 2026 10:32:06: #1 read tag files... 
+INFO  @ Fri, 14 Aug 2026 10:32:06: #1 read treatment tags... 
+INFO  @ Fri, 14 Aug 2026 10:32:08:  1000000 
+INFO  @ Fri, 14 Aug 2026 10:32:10:  2000000 
+INFO  @ Fri, 14 Aug 2026 10:32:12:  3000000 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #1 tag size is determined as 36 bps 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #1 tag size = 36.0 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #1  total tags in treatment: 3171284 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #1 finished! 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #2 Build Peak Model... 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #2 Skipped... 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #2 Use 150 as fragment length 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #2 Sequencing ends will be shifted towards 5' by 75 bp(s) 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #3 Call peaks... 
+INFO  @ Fri, 14 Aug 2026 10:32:13: #3 Pre-compute pvalue-qvalue table... 
+INFO  @ Fri, 14 Aug 2026 10:32:31: #3 In the peak calling step, the following will be performed simultaneously: 
+INFO  @ Fri, 14 Aug 2026 10:32:31: #3   Write bedGraph files for treatment pileup (after scaling if necessary)... A549_treat_pileup.bdg 
+INFO  @ Fri, 14 Aug 2026 10:32:31: #3   Write bedGraph files for control lambda (after scaling if necessary)... A549_control_lambda.bdg 
+INFO  @ Fri, 14 Aug 2026 10:32:31: #3   --SPMR is requested, so pileup will be normalized by sequencing depth in million reads. 
+INFO  @ Fri, 14 Aug 2026 10:32:31: #3 Call peaks for each chromosome... 
+INFO  @ Fri, 14 Aug 2026 10:32:59: #4 Write output xls file... /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/data/processed/raw_atac/cell_line/A549/peaks/A549_peaks.xls 
+INFO  @ Fri, 14 Aug 2026 10:32:59: #4 Write peak in narrowPeak format file... /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/data/processed/raw_atac/cell_line/A549/peaks/A549_peaks.narrowPeak 
+INFO  @ Fri, 14 Aug 2026 10:32:59: #4 Write summits bed file... /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/data/processed/raw_atac/cell_line/A549/peaks/A549_summits.bed 
+INFO  @ Fri, 14 Aug 2026 10:32:59: Done! 

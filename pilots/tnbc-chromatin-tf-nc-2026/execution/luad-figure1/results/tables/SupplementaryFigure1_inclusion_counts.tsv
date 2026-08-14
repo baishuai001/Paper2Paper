@@ -1,0 +1,4 @@
+cohort	downloaded_count_columns	downloaded_tpm_columns	count_tpm_intersection	primary_tumor_columns	unique_primary_patients	final_analysis_samples
+TCGA-LUAD	589	589	589	528	516	516
+TCGA-LUSC	552	552	552	501	501	501
+GSE81089	218			173	173	173

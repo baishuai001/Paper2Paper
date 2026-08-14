@@ -1,0 +1,61 @@
+This is cutadapt 4.9 with Python 3.10.12
+Command line parameters: -j 4 -a CTGTCTCTTATACACATCT -m 20 -o /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tmp_processing/cell_line/RERF-LC-KJ/trimmed_R1.fastq.gz /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tmp_processing/cell_line/RERF-LC-KJ/fastq/DRR137840.fastq
+Processing single-end reads on 4 cores ...
+Finished in 25.445 s (2.592 µs/read; 23.15 M reads/minute).
+
+=== Summary ===
+
+Total reads processed:               9,815,656
+Reads with adapters:                   182,474 (1.9%)
+
+== Read fate breakdown ==
+Reads that were too short:               3,003 (0.0%)
+Reads written (passing filters):     9,812,653 (100.0%)
+
+Total basepairs processed:   353,363,616 bp
+Total written (filtered):    352,586,145 bp (99.8%)
+
+=== Adapter 1 ===
+
+Sequence: CTGTCTCTTATACACATCT; Type: regular 3'; Length: 19; Trimmed: 182474 times
+
+Minimum overlap: 3
+No. of allowed errors:
+1-9 bp: 0; 10-19 bp: 1
+
+Bases preceding removed adapters:
+  A: 21.8%
+  C: 25.4%
+  G: 27.4%
+  T: 23.8%
+  none/other: 1.6%
+
+Overview of removed sequences
+length	count	expect	max.err	error counts
+3	125306	153369.6	0	125306
+4	32831	38342.4	0	32831
+5	7297	9585.6	0	7297
+6	2675	2396.4	0	2675
+7	1539	599.1	0	1539
+8	1127	149.8	0	1127
+9	1502	37.4	0	1222 280
+10	5365	9.4	1	4890 475
+11	425	2.3	1	228 197
+12	349	0.6	1	43 306
+13	1026	0.1	1	27 999
+14	12	0.0	1	9 3
+15	12	0.0	1	9 3
+16	5	0.0	1	4 1
+17	11	0.0	1	11
+18	7	0.0	1	5 2
+19	2	0.0	1	2
+20	9	0.0	1	7 2
+21	3	0.0	1	2 1
+22	5	0.0	1	5
+23	73	0.0	1	66 7
+26	2	0.0	1	0 2
+28	1	0.0	1	1
+33	4	0.0	1	4
+34	1	0.0	1	1
+35	5	0.0	1	5
+36	2880	0.0	1	2514 366

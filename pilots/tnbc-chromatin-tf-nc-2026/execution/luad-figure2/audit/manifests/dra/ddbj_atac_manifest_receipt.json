@@ -1,0 +1,19 @@
+{
+  "baseline_library_count": 19,
+  "baseline_unique_cell_line_count": 19,
+  "dataset1_controls_included": false,
+  "duplicate_cell_lines": [
+    "A549",
+    "H1299",
+    "H1648",
+    "H2347",
+    "II-18"
+  ],
+  "eligible_cell_line_filter": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/manifests/dra/ddbj_cell_line_histology_audit.tsv",
+  "selection_rule": "canonical Dataset 2 submission; library_name contains DMSO (case-insensitive); one biological model counted once; Dataset 1 duplicates are sensitivity-only",
+  "source_api": "https://ddbj.nig.ac.jp/search/api/entries",
+  "source_bulk_xml": "https://ddbj.nig.ac.jp/public/ddbj_database/dra/fastq",
+  "submission_count": 28,
+  "unique_cell_line_count": 23,
+  "unparsed_cell_line_submissions": []
+}

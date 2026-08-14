@@ -1,0 +1,13 @@
+{
+  "cell_line_layouts": [
+    "SINGLE"
+  ],
+  "one_run_per_independent_model": true,
+  "output": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/manifests/raw_atac/figure2_raw_atac_runs.tsv",
+  "pdx_layouts": [
+    "PAIRED"
+  ],
+  "pdx_luad_runs": 13,
+  "strict_luad_cell_line_runs": 19,
+  "total_raw_runs": 32
+}

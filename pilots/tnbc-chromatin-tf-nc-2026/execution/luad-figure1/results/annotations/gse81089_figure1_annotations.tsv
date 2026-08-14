@@ -1,0 +1,174 @@
+geo_accession	sample_id	histology_code	stage_code	age	gender	dead	smoking_code	group	system	source	sex	age_at_diagnosis	age_group	stage	smoking_status	vital_status	annotation_sources
+GSM2142443	L400T	2	3	78	male	1	3	LUAD	patient_validation	GSE81089	Male	78	>70	IIA	Never	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142444	L401T	2	5	74	male	1	2	LUAD	patient_validation	GSE81089	Male	74	>70	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142445	L404T	2	3	74	female	1	2	LUAD	patient_validation	GSE81089	Female	74	>70	IIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142446	L406T	1	1	64	male	0	1	LUSC	patient_validation	GSE81089	Male	64	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142447	L413T	2	5	72	female	1	2	LUAD	patient_validation	GSE81089	Female	72	>70	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142450	L420T	1	4	57	female	1	1	LUSC	patient_validation	GSE81089	Female	57	<=60	IIB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142451	L439T	2	4	80	male	0	2	LUAD	patient_validation	GSE81089	Male	80	>70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142452	L440T	2	4	80	male	1	2	LUAD	patient_validation	GSE81089	Male	80	>70	IIB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142454	L442T	1	2	75	female	0	1	LUSC	patient_validation	GSE81089	Female	75	>70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142455	L444T	1	4	74	female	0	2	LUSC	patient_validation	GSE81089	Female	74	>70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142456	L446T	2	4	71	female	1	2	LUAD	patient_validation	GSE81089	Female	71	>70	IIB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142457	L447T	1	4	67	male	0	2	LUSC	patient_validation	GSE81089	Male	67	61-70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142458	L452T	1	5	62	male	0	2	LUSC	patient_validation	GSE81089	Male	62	61-70	IIIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142459	L455T	2	1	52	female	0	1	LUAD	patient_validation	GSE81089	Female	52	<=60	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142460	L456T	1	3	48	male	1	1	LUSC	patient_validation	GSE81089	Male	48	<=60	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142461	L457T	1	3	46	female	0	1	LUSC	patient_validation	GSE81089	Female	46	<=60	IIA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142462	L458T	2	1	76	female	1	1	LUAD	patient_validation	GSE81089	Female	76	>70	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142463	L459T	1	3	75	male	0	3	LUSC	patient_validation	GSE81089	Male	75	>70	IIA	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142464	L462T	2	5	67	male	1	2	LUAD	patient_validation	GSE81089	Male	67	61-70	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142465	L464T	1	2	66	male	1	2	LUSC	patient_validation	GSE81089	Male	66	61-70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142466	L466T	1	5	65	female	1	1	LUSC	patient_validation	GSE81089	Female	65	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142467	L468T	1	2	53	male	0	1	LUSC	patient_validation	GSE81089	Male	53	<=60	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142468	L470T	1	2	78	female	1	1	LUSC	patient_validation	GSE81089	Female	78	>70	IB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142470	L472T	1	2	71	male	1	1	LUSC	patient_validation	GSE81089	Male	71	>70	IB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142471	L473T	2	1	66	female	0	1	LUAD	patient_validation	GSE81089	Female	66	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142473	L481T	2	1	70	female	0	1	LUAD	patient_validation	GSE81089	Female	70	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142474	L483T	1	2	65	male	1	1	LUSC	patient_validation	GSE81089	Male	65	61-70	IB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142475	L484T	2	1	64	female	0	2	LUAD	patient_validation	GSE81089	Female	64	61-70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142476	L488T	1	3	61	female	0	1	LUSC	patient_validation	GSE81089	Female	61	61-70	IIA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142477	L490T	1	1	58	male	1	1	LUSC	patient_validation	GSE81089	Male	58	<=60	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142478	L493T	2	4	56	female	0	1	LUAD	patient_validation	GSE81089	Female	56	<=60	IIB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142479	L496T	1	2	77	male	0	1	LUSC	patient_validation	GSE81089	Male	77	>70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142480	L504T	2	1	65	female	1	2	LUAD	patient_validation	GSE81089	Female	65	61-70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142481	L511T	2	5	56	female	0	3	LUAD	patient_validation	GSE81089	Female	56	<=60	IIIA	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142482	L529T	1	1	79	female	0	2	LUSC	patient_validation	GSE81089	Female	79	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142483	L530T	2	3	76	female	1	1	LUAD	patient_validation	GSE81089	Female	76	>70	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142484	L531T	2	2	74	male	1	2	LUAD	patient_validation	GSE81089	Male	74	>70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142486	L534T	1	3	66	male	0	2	LUSC	patient_validation	GSE81089	Male	66	61-70	IIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142489	L539T	1	2	78	male	1	2	LUSC	patient_validation	GSE81089	Male	78	>70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142490	L541T	2	5	70	female	1	3	LUAD	patient_validation	GSE81089	Female	70	61-70	IIIA	Never	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142491	L543T	2	1	65	male	0	1	LUAD	patient_validation	GSE81089	Male	65	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142492	L545T	2	1	60	female	0	3	LUAD	patient_validation	GSE81089	Female	60	<=60	IA	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142493	L546T	2	1	57	male	1	2	LUAD	patient_validation	GSE81089	Male	57	<=60	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142494	L551T	2	1	62	male	0	1	LUAD	patient_validation	GSE81089	Male	62	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142495	L557T	2	2	81	female	0	3	LUAD	patient_validation	GSE81089	Female	81	>70	IB	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142496	L559T	1	4	72	male	0	1	LUSC	patient_validation	GSE81089	Male	72	>70	IIB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142497	L561T	2	1	62	female	0	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142498	L563T	1	4	61	female	1	1	LUSC	patient_validation	GSE81089	Female	61	61-70	IIB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142499	L565T	2	2	59	female	1	2	LUAD	patient_validation	GSE81089	Female	59	<=60	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142500	L566T	2	2	58	male	0	2	LUAD	patient_validation	GSE81089	Male	58	<=60	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142501	L567T	2	5	83	female	1	3	LUAD	patient_validation	GSE81089	Female	83	>70	IIIA	Never	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142502	L568T	1	4	77	female	1	1	LUSC	patient_validation	GSE81089	Female	77	>70	IIB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142503	L569T	2	1	76	female	0	2	LUAD	patient_validation	GSE81089	Female	76	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142504	L572T	1	1	58	male	0	1	LUSC	patient_validation	GSE81089	Male	58	<=60	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142507	L584T	2	1	74	male	1	2	LUAD	patient_validation	GSE81089	Male	74	>70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142508	L585T	2	3	70	female	1	2	LUAD	patient_validation	GSE81089	Female	70	61-70	IIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142509	L586T	1	3	67	male	1	2	LUSC	patient_validation	GSE81089	Male	67	61-70	IIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142510	L592T	1	2	61	male	0	1	LUSC	patient_validation	GSE81089	Male	61	61-70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142511	L593T	2	1	78	male	0	1	LUAD	patient_validation	GSE81089	Male	78	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142512	L596T	2	1	74	female	0	2	LUAD	patient_validation	GSE81089	Female	74	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142514	L599T	2	2	80	male	0	2	LUAD	patient_validation	GSE81089	Male	80	>70	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142515	L601T	2	2	75	male	0	1	LUAD	patient_validation	GSE81089	Male	75	>70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142516	L602T	2	1	69	female	0	1	LUAD	patient_validation	GSE81089	Female	69	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142517	L603T	2	2	70	female	1	2	LUAD	patient_validation	GSE81089	Female	70	61-70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142518	L604T	1	3	67	male	1	1	LUSC	patient_validation	GSE81089	Male	67	61-70	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142519	L605T	2	1	74	female	0	1	LUAD	patient_validation	GSE81089	Female	74	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142520	L606T	2	1	55	male	0	2	LUAD	patient_validation	GSE81089	Male	55	<=60	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142521	L607T	2	2	59	male	0	2	LUAD	patient_validation	GSE81089	Male	59	<=60	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142523	L612T	2	5	80	female	0	2	LUAD	patient_validation	GSE81089	Female	80	>70	IIIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142524	L613T	2	5	72	male	1	1	LUAD	patient_validation	GSE81089	Male	72	>70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142525	L616T	2	1	54	male	1	1	LUAD	patient_validation	GSE81089	Male	54	<=60	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142526	L617T	2	5	68	male	1	2	LUAD	patient_validation	GSE81089	Male	68	61-70	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142527	L619T	2	5	68	female	0	2	LUAD	patient_validation	GSE81089	Female	68	61-70	IIIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142528	L620T	2	5	70	female	1	1	LUAD	patient_validation	GSE81089	Female	70	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142529	L621T	2	5	79	female	1	2	LUAD	patient_validation	GSE81089	Female	79	>70	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142530	L626T	2	1	76	female	0	1	LUAD	patient_validation	GSE81089	Female	76	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142532	L630T	2	1	65	female	0	1	LUAD	patient_validation	GSE81089	Female	65	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142533	L633T	1	1	77	female	0	1	LUSC	patient_validation	GSE81089	Female	77	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142535	L638T	2	1	65	male	0	2	LUAD	patient_validation	GSE81089	Male	65	61-70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142536	L642T	1	2	67	male	1	2	LUSC	patient_validation	GSE81089	Male	67	61-70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142537	L644T	1	1	67	male	1	1	LUSC	patient_validation	GSE81089	Male	67	61-70	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142538	L650T	1	2	69	female	1	3	LUSC	patient_validation	GSE81089	Female	69	61-70	IB	Never	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142539	L652T	1	1	82	male	1	2	LUSC	patient_validation	GSE81089	Male	82	>70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142540	L655T	1	3	62	male	0	2	LUSC	patient_validation	GSE81089	Male	62	61-70	IIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142541	L656T	2	1	58	male	0	1	LUAD	patient_validation	GSE81089	Male	58	<=60	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142542	L658T	1	4	65	female	0	2	LUSC	patient_validation	GSE81089	Female	65	61-70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142543	L661T	1	1	66	male	1	1	LUSC	patient_validation	GSE81089	Male	66	61-70	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142544	L662T	2	1	66	male	1	2	LUAD	patient_validation	GSE81089	Male	66	61-70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142545	L663T	2	2	62	female	0	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142547	L673T	2	1	74	female	1	2	LUAD	patient_validation	GSE81089	Female	74	>70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142548	L678T	2	2	65	female	1	2	LUAD	patient_validation	GSE81089	Female	65	61-70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142549	L682T	2	4	64	female	1	2	LUAD	patient_validation	GSE81089	Female	64	61-70	IIB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142550	L683T	2	3	77	female	1	1	LUAD	patient_validation	GSE81089	Female	77	>70	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142551	L685T	1	4	71	female	0	2	LUSC	patient_validation	GSE81089	Female	71	>70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142552	L688T	2	5	57	male	1	1	LUAD	patient_validation	GSE81089	Male	57	<=60	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142553	L689T	2	1	69	male	0	3	LUAD	patient_validation	GSE81089	Male	69	61-70	IA	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142554	L695T	2	2	68	female	0	3	LUAD	patient_validation	GSE81089	Female	68	61-70	IB	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142555	L703T	2	3	71	male	1	1	LUAD	patient_validation	GSE81089	Male	71	>70	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142556	L710T	2	3	72	female	0	2	LUAD	patient_validation	GSE81089	Female	72	>70	IIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142557	L712T	1	1	61	male	0	1	LUSC	patient_validation	GSE81089	Male	61	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142558	L715T	1	5	69	female	1	1	LUSC	patient_validation	GSE81089	Female	69	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142559	L719T	1	2	63	male	0	1	LUSC	patient_validation	GSE81089	Male	63	61-70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142560	L723T	1	3	67	male	1	1	LUSC	patient_validation	GSE81089	Male	67	61-70	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142562	L725T	2	1	64	female	0	1	LUAD	patient_validation	GSE81089	Female	64	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142563	L728T	2	4	77	male	0	2	LUAD	patient_validation	GSE81089	Male	77	>70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142564	L731T	2	1	59	female	1	2	LUAD	patient_validation	GSE81089	Female	59	<=60	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142565	L735T	2	1	75	female	0	1	LUAD	patient_validation	GSE81089	Female	75	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142566	L736T	1	1	67	male	0	1	LUSC	patient_validation	GSE81089	Male	67	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142567	L738T	2	2	74	female	0	2	LUAD	patient_validation	GSE81089	Female	74	>70	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142568	L739T	1	5	49	female	1	1	LUSC	patient_validation	GSE81089	Female	49	<=60	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142570	L744T	1	1	75	male	0	2	LUSC	patient_validation	GSE81089	Male	75	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142571	L746T	2	5	64	female	1	1	LUAD	patient_validation	GSE81089	Female	64	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142572	L747T	1	1	74	female	0	2	LUSC	patient_validation	GSE81089	Female	74	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142573	L749T	2	5	49	female	1	1	LUAD	patient_validation	GSE81089	Female	49	<=60	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142574	L751T	1	5	59	female	0	1	LUSC	patient_validation	GSE81089	Female	59	<=60	IIIA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142575	L752T	2	5	65	male	0	2	LUAD	patient_validation	GSE81089	Male	65	61-70	IIIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142576	L753T	1	3	61	male	0	2	LUSC	patient_validation	GSE81089	Male	61	61-70	IIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142577	L755T	1	3	82	male	1	1	LUSC	patient_validation	GSE81089	Male	82	>70	IIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142578	L756T	1	2	72	male	0	2	LUSC	patient_validation	GSE81089	Male	72	>70	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142579	L758T	1	1	84	male	0	2	LUSC	patient_validation	GSE81089	Male	84	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142580	L760T	1	3	80	male	0	2	LUSC	patient_validation	GSE81089	Male	80	>70	IIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142581	L764T	2	5	66	male	0	2	LUAD	patient_validation	GSE81089	Male	66	61-70	IIIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142582	L766T	2	2	59	male	0	2	LUAD	patient_validation	GSE81089	Male	59	<=60	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142583	L767T	1	1	67	male	0	2	LUSC	patient_validation	GSE81089	Male	67	61-70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142584	L768T	2	5	60	male	1	2	LUAD	patient_validation	GSE81089	Male	60	<=60	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142586	L773T	2	7	64	female	1	2	LUAD	patient_validation	GSE81089	Female	64	61-70	IV	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142587	L778T	2	1	65	female	0	2	LUAD	patient_validation	GSE81089	Female	65	61-70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142589	L782T	2	4	73	female	0	2	LUAD	patient_validation	GSE81089	Female	73	>70	IIB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142590	L788T	1	1	54	female	0	1	LUSC	patient_validation	GSE81089	Female	54	<=60	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142592	L791T	2	5	66	female	1	1	LUAD	patient_validation	GSE81089	Female	66	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142593	L800T	2	1	66	female	0	1	LUAD	patient_validation	GSE81089	Female	66	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142594	L802T	2	1	62	female	1	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142595	L808T	2	1	48	female	0	2	LUAD	patient_validation	GSE81089	Female	48	<=60	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142597	L810T	2	5	64	female	1	1	LUAD	patient_validation	GSE81089	Female	64	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142598	L814T	2	5	73	male	0	2	LUAD	patient_validation	GSE81089	Male	73	>70	IIIA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142600	L816T	2	3	73	female	1	2	LUAD	patient_validation	GSE81089	Female	73	>70	IIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142601	L817T	1	5	76	female	1	2	LUSC	patient_validation	GSE81089	Female	76	>70	IIIA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142602	L818T	1	2	67	male	0	2	LUSC	patient_validation	GSE81089	Male	67	61-70	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142603	L820T	1	1	73	female	0	2	LUSC	patient_validation	GSE81089	Female	73	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142604	L824T	1	1	70	male	1	1	LUSC	patient_validation	GSE81089	Male	70	61-70	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142605	L826T	2	7	45	female	1	3	LUAD	patient_validation	GSE81089	Female	45	<=60	IV	Never	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142606	L827T	2	4	70	male	1	2	LUAD	patient_validation	GSE81089	Male	70	61-70	IIB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142607	L828T	2	4	68	female	0	3	LUAD	patient_validation	GSE81089	Female	68	61-70	IIB	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142608	L829T	2	1	76	male	0	3	LUAD	patient_validation	GSE81089	Male	76	>70	IA	Never	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142609	L831T	2	2	62	female	0	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142610	L832T	2	1	65	female	0	2	LUAD	patient_validation	GSE81089	Female	65	61-70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142612	L838T	2	1	71	female	1	1	LUAD	patient_validation	GSE81089	Female	71	>70	IA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142613	L842T	2	2	62	female	0	2	LUAD	patient_validation	GSE81089	Female	62	61-70	IB	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142615	L850T	2	5	77	male	1	1	LUAD	patient_validation	GSE81089	Male	77	>70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142616	L851T	2	2	70	male	1	2	LUAD	patient_validation	GSE81089	Male	70	61-70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142617	L852T	1	2	64	male	1	1	LUSC	patient_validation	GSE81089	Male	64	61-70	IB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142618	L854T	1	2	62	female	0	1	LUSC	patient_validation	GSE81089	Female	62	61-70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142619	L856T	1	1	69	male	1	2	LUSC	patient_validation	GSE81089	Male	69	61-70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142620	L857T	1	2	69	male	1	2	LUSC	patient_validation	GSE81089	Male	69	61-70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142621	L858T	1	4	69	female	1	1	LUSC	patient_validation	GSE81089	Female	69	61-70	IIB	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142622	L860T	1	1	77	male	0	1	LUSC	patient_validation	GSE81089	Male	77	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142624	L864T	1	1	66	female	0	2	LUSC	patient_validation	GSE81089	Female	66	61-70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142625	L865T	2	4	75	female	0	1	LUAD	patient_validation	GSE81089	Female	75	>70	IIB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142626	L867T	2	5	62	female	1	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IIIA	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142627	L871T	2	2	74	male	1	2	LUAD	patient_validation	GSE81089	Male	74	>70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142628	L872T	2	1	71	female	0	2	LUAD	patient_validation	GSE81089	Female	71	>70	IA	Former >1 year	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142629	L873T	2	1	62	female	0	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142630	L874T	2	5	56	female	0	1	LUAD	patient_validation	GSE81089	Female	56	<=60	IIIA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142631	L875T	2	1	69	female	0	1	LUAD	patient_validation	GSE81089	Female	69	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142633	L877T	2	1	70	female	0	1	LUAD	patient_validation	GSE81089	Female	70	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142634	L879T	2	7	75	male	1	1	LUAD	patient_validation	GSE81089	Male	75	>70	IV	Current	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142635	L880T	2	1	75	female	0	1	LUAD	patient_validation	GSE81089	Female	75	>70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142636	L881T	1	2	70	male	0	1	LUSC	patient_validation	GSE81089	Male	70	61-70	IB	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142637	L884T	1	3	71	male	0	1	LUSC	patient_validation	GSE81089	Male	71	>70	IIA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142638	L885T	2	1	62	female	0	1	LUAD	patient_validation	GSE81089	Female	62	61-70	IA	Current	Alive	GSE81089 GEO sample metadata and study codebook
+GSM2142639	L886T	1	2	71	male	1	2	LUSC	patient_validation	GSE81089	Male	71	>70	IB	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142640	L887T	2	1	77	male	1	2	LUAD	patient_validation	GSE81089	Male	77	>70	IA	Former >1 year	Dead	GSE81089 GEO sample metadata and study codebook
+GSM2142641	L890T	2	4	56	female	1	1	LUAD	patient_validation	GSE81089	Female	56	<=60	IIB	Current	Dead	GSE81089 GEO sample metadata and study codebook

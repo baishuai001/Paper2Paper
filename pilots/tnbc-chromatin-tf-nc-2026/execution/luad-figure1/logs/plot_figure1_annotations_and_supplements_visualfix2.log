@@ -1,0 +1,28 @@
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+`geom_smooth()` using formula = 'y ~ x'
+警告信息:
+In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  for 'Supplementary Figure 2A — GSE81089' in 'mbcsToSbcs': - substituted for — (U+2014)
+`geom_smooth()` using formula = 'y ~ x'
+警告信息:
+In grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y,  :
+  for 'Supplementary Figure 2B — direction-concordant TF overlap' in 'mbcsToSbcs': - substituted for — (U+2014)
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 
+null device 
+          1 

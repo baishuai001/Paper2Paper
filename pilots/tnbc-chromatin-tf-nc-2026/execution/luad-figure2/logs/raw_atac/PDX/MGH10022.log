@@ -1,0 +1,8 @@
+START_UTC=2026-08-14T02:17:59Z system=PDX sample=MGH10022 run=SRR29662772 layout=PAIRED
+
+2026-08-14T02:18:03 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:18:04 prefetch.2.11.3: 1) 'SRR29662772' is found locally
+2026-08-14T02:18:04 prefetch.2.11.3: 'SRR29662772' has 0 unresolved dependencies
+spots read      : 23,290,122
+reads read      : 46,580,244
+reads written   : 46,580,244

@@ -1,0 +1,25 @@
+check	status	observed	expected
+raw_manifest_32	PASS	32	32
+raw_manifest_system_counts	PASS	{'PDX': 13, 'cell_line': 19}	{'PDX': 13, 'cell_line': 19}
+raw_gate_fail_data	PASS	FAIL_DATA	FAIL_DATA
+locked_system	PASS	cell_line	cell_line
+cell_line_evaluation_complete	PASS	COMPLETE	COMPLETE
+cell_line_all_19_attempted	PASS	19	19
+cell_line_actual_failure_count	PASS	5	>=4
+cell_line_failure_fraction	PASS	0.2631578947368421	>0.20
+cell_line_failure_reason	PASS	['cell_line:failure_fraction_above_0.20']	contains cell_line:failure_fraction_above_0.20
+PDX_explicit_early_stop_status	PASS	NOT_FULLY_EVALUATED_AFTER_EARLY_STOP	NOT_FULLY_EVALUATED_AFTER_EARLY_STOP
+PDX_accounting	PASS	{'completed': 0, 'aborted_after_locked_gate': 1, 'not_run': 12}	sum=13
+not_run_row_count	PASS	12	12
+not_run_not_mislabelled_as_observed_qc_failure	PASS	12	12
+aborted_after_lock_row_count	PASS	1	1
+aborted_after_lock_not_mislabelled_as_qc_failure	PASS	1	1
+final_verdict_fail_data	PASS	FAIL_DATA	FAIL_DATA
+explicit_stop	PASS	True	True
+no_figure3	PASS	False	False
+not_eligible_for_figure3	PASS	False	False
+atomic_bundle_status	PASS	NOT_GENERATED_DUE_FAIL_DATA	NOT_GENERATED_DUE_FAIL_DATA
+atomic_signal_artifacts_absent	PASS	[]	[]
+downstream_signal_tables_absent	PASS	[]	[]
+terminal_report_exists	PASS	553	>0 characters
+terminal_report_marks_atomic_non_generation	PASS	True	True

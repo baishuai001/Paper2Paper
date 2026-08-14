@@ -1,0 +1,2 @@
+system	sample_id	sample_slug	run	library_layout	filtered_human_reads	filtered_human_units	peak_count	frip	hard_qc_status
+cell_line	RERF-LC-MS	RERF-LC-MS	DRR137932	SINGLE	3173714	3173714	14675	0.09629570	PASS

@@ -1,0 +1,2 @@
+system	sample_id	sample_slug	run	library_layout	filtered_human_reads	filtered_human_units	peak_count	frip	hard_qc_status
+cell_line	LC2/ad	LC2_ad	DRR137402	SINGLE	2440050	2440050	18137	0.10406672	PASS

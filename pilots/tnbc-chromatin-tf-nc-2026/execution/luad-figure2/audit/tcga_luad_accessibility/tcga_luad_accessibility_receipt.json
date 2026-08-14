@@ -1,0 +1,13 @@
+{
+  "independent_tumors": 22,
+  "technical_replicates": 44,
+  "candidate_fixed_width_peaks": 139135,
+  "primary_definition": "CPM >= 1 independently in both technical replicates",
+  "sensitivity_definitions": ["CPM >= 0.5 independently in both technical replicates", "CPM >= 2 independently in both technical replicates", "merged-replicate CPM >= 1"],
+  "primary_peak_count_min": 102342,
+  "primary_peak_count_median": 114217,
+  "primary_peak_count_max": 132075,
+  "coordinate_interpretation": "GDC hg38 fixed-width intervals retained exactly as supplied",
+  "exact_fastq_reproduction": false,
+  "reason": "TCGA raw/aligned ATAC is controlled; open technical-replicate counts and published QC were used"
+}

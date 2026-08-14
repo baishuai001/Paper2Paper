@@ -1,0 +1,147 @@
+{
+  "created_utc": "2026-08-13T23:16:09.631845+00:00",
+  "status": "PASS",
+  "scope": "Figure 1 annotation-only replot plus Supplementary Figures 1-2 core",
+  "checks": [
+    {
+      "check": "row_count:tcga_figure1_annotations.tsv",
+      "passed": true,
+      "detail": {
+        "observed": 1017,
+        "expected": 1017
+      }
+    },
+    {
+      "check": "unique_sample_id:tcga_figure1_annotations.tsv",
+      "passed": true,
+      "detail": 1017
+    },
+    {
+      "check": "row_count:gse81089_figure1_annotations.tsv",
+      "passed": true,
+      "detail": {
+        "observed": 173,
+        "expected": 173
+      }
+    },
+    {
+      "check": "unique_sample_id:gse81089_figure1_annotations.tsv",
+      "passed": true,
+      "detail": 173
+    },
+    {
+      "check": "row_count:pdmr_figure1_annotations.tsv",
+      "passed": true,
+      "detail": {
+        "observed": 56,
+        "expected": 56
+      }
+    },
+    {
+      "check": "unique_sample_id:pdmr_figure1_annotations.tsv",
+      "passed": true,
+      "detail": 56
+    },
+    {
+      "check": "row_count:depmap_figure1_annotations.tsv",
+      "passed": true,
+      "detail": {
+        "observed": 103,
+        "expected": 103
+      }
+    },
+    {
+      "check": "unique_sample_id:depmap_figure1_annotations.tsv",
+      "passed": true,
+      "detail": 103
+    },
+    {
+      "check": "published_TCGA_expression_subtype_coverage",
+      "passed": true,
+      "detail": 408
+    },
+    {
+      "check": "PDMR_public_page_parse_coverage",
+      "passed": true,
+      "detail": {
+        "parsed_ok": 56,
+        "total": 56
+      }
+    },
+    {
+      "check": "frozen_Figure1_numeric_outputs_unchanged",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "figure_exists:Figure1C_TCGA_TF_activity_annotated.pdf",
+      "passed": true,
+      "detail": 581743
+    },
+    {
+      "check": "figure_exists:Figure1D_PDMR_PDX_TF_activity_annotated.pdf",
+      "passed": true,
+      "detail": 182137
+    },
+    {
+      "check": "figure_exists:Figure1E_DepMap_22Q2_TF_activity_annotated.pdf",
+      "passed": true,
+      "detail": 297704
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure1_inclusion_flow.pdf",
+      "passed": true,
+      "detail": 25242
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure2A_GSE81089_logFC_msviper.pdf",
+      "passed": true,
+      "detail": 126242
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure2B_TF_overlap.pdf",
+      "passed": true,
+      "detail": 4943
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure2C_TCGA_sample_correlations.pdf",
+      "passed": true,
+      "detail": 1517231
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure2D_PDMR_PDX_sample_correlations.pdf",
+      "passed": true,
+      "detail": 46395
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure2E_DepMap_22Q2_sample_correlations.pdf",
+      "passed": true,
+      "detail": 98006
+    },
+    {
+      "check": "figure_exists:SupplementaryFigure2F_replicated_LUAD_TF_effects.pdf",
+      "passed": true,
+      "detail": 25625
+    },
+    {
+      "check": "table_exists:SupplementaryFigure1_inclusion_counts.tsv",
+      "passed": true,
+      "detail": 242
+    },
+    {
+      "check": "table_exists:SupplementaryFigure2B_TF_overlap_counts.tsv",
+      "passed": true,
+      "detail": 137
+    },
+    {
+      "check": "table_exists:SupplementaryFigure2F_replicated_LUAD_TF_effect_zscores.tsv",
+      "passed": true,
+      "detail": 7612
+    },
+    {
+      "check": "table_exists:SupplementaryFigures1_2_core_index.tsv",
+      "passed": true,
+      "detail": 390
+    }
+  ]
+}

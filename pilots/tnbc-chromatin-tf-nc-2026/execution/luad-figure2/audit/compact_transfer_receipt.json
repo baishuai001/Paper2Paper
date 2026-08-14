@@ -1,0 +1,9 @@
+{
+  "archive": "luad-figure2-compact.tgz",
+  "archive_sha256": "f0515a937a1ee5d40bd163e73803d8eed00095ee99f3cabae67a107d6bb02a95",
+  "archive_bytes": 1086617,
+  "extracted_file_count": 199,
+  "large_data_synced_locally": false,
+  "cloud_run_root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2",
+  "local_scope": "manifests, compact QC, stopping receipts, verification, logs, reference/tool checksums, and HOMER parser smoke tests only"
+}

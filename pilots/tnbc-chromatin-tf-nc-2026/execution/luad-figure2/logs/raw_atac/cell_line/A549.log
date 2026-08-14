@@ -1,0 +1,11 @@
+START_UTC=2026-08-14T02:15:51Z system=cell_line sample=A549 run=DRR136218 layout=SINGLE
+
+2026-08-14T02:16:02 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:16:03 prefetch.2.11.3: 1) 'DRR136218' is found locally
+spots read      : 7,920,742
+reads read      : 7,920,742
+reads written   : 7,920,742
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=A549 units=3171284 peaks=11364 frip=0.05797305 qc=PASS

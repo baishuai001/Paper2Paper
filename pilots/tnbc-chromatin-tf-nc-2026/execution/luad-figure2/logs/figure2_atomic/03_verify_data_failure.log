@@ -1,0 +1,8 @@
+{
+  "atomic_bundle_status": "NOT_GENERATED_DUE_FAIL_DATA",
+  "checks_passed": 24,
+  "checks_total": 24,
+  "final_gate_verdict": "FAIL_DATA",
+  "generated_utc": "2026-08-14T04:22:24.134692+00:00",
+  "verification": "PASS"
+}

@@ -1,0 +1,2 @@
+system	sample_id	sample_slug	run	library_layout	filtered_human_reads	filtered_human_units	peak_count	frip	hard_qc_status
+cell_line	ABC-1	ABC-1	DRR136313	SINGLE	2132700	2132700	11453	0.08040512	PASS

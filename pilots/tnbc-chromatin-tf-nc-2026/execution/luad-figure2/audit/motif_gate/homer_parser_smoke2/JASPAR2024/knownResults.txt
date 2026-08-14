@@ -1,0 +1,2 @@
+Motif Name	Consensus	P-value	Log P-value	q-value (Benjamini)	# of Target Sequences with Motif(of 1000)	% of Target Sequences with Motif	# of Background Sequences with Motif(of 1993)	% of Background Sequences with Motif
+JASPAR2024|E2F1|SMOKE_JASPAR	CWGGCGGGAA	1e0	-8.425e-01	0.4306	837.0	83.70%	1662.9	83.45%

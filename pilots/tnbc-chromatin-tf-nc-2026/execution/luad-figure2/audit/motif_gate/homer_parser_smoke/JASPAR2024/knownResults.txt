@@ -1,0 +1,2 @@
+Motif Name	Consensus	P-value	Log P-value	q-value (Benjamini)	# of Target Sequences with Motif(of 1)	% of Target Sequences with Motif	# of Background Sequences with Motif(of 1)	% of Background Sequences with Motif
+			0.000e+00	0.0000				

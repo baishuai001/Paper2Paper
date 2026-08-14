@@ -1,0 +1,200 @@
+SKIP_COMPLETE cell_line A427 DRR136131
+START_UTC=2026-08-14T02:15:51Z system=cell_line sample=A549 run=DRR136218 layout=SINGLE
+START_UTC=2026-08-14T02:15:51Z system=cell_line sample=ABC-1 run=DRR136313 layout=SINGLE
+
+
+2026-08-14T02:16:02 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:16:02 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:16:03 prefetch.2.11.3: 1) 'DRR136218' is found locally
+2026-08-14T02:16:03 prefetch.2.11.3: 1) 'DRR136313' is found locally
+spots read      : 7,920,742
+reads read      : 7,920,742
+reads written   : 7,920,742
+spots read      : 25,593,718
+reads read      : 25,593,718
+reads written   : 25,593,718
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=A549 units=3171284 peaks=11364 frip=0.05797305 qc=PASS
+START_UTC=2026-08-14T02:33:18Z system=cell_line sample=H1648 run=DRR136585 layout=SINGLE
+
+2026-08-14T02:33:20 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:33:21 prefetch.2.11.3: 1) 'DRR136585' is found locally
+spots read      : 9,879,563
+reads read      : 9,879,563
+reads written   : 9,879,563
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=ABC-1 units=2132700 peaks=11453 frip=0.08040512 qc=PASS
+START_UTC=2026-08-14T02:39:46Z system=cell_line sample=H1650 run=DRR136679 layout=SINGLE
+
+2026-08-14T02:39:47 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:39:48 prefetch.2.11.3: 1) 'DRR136679' is found locally
+spots read      : 3,765,569
+reads read      : 3,765,569
+reads written   : 3,765,569
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=H1648 units=2088866 peaks=9413 frip=0.06757877 qc=FAIL
+START_UTC=2026-08-14T02:41:03Z system=cell_line sample=H1819 run=DRR136866 layout=SINGLE
+
+2026-08-14T02:41:05 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:41:06 prefetch.2.11.3: 1) 'DRR136866' is found locally
+spots read      : 3,670,632
+reads read      : 3,670,632
+reads written   : 3,670,632
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=H1650 units=781150 peaks=4494 frip=0.05638098 qc=FAIL
+START_UTC=2026-08-14T02:43:14Z system=cell_line sample=H1975 run=DRR136961 layout=SINGLE
+
+2026-08-14T02:43:16 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:43:17 prefetch.2.11.3: 1) 'DRR136961' is found locally
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+spots read      : 12,402,237
+reads read      : 12,402,237
+reads written   : 12,402,237
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=H1819 units=855212 peaks=6754 frip=0.10673845 qc=FAIL
+START_UTC=2026-08-14T02:45:05Z system=cell_line sample=H2228 run=DRR137137 layout=SINGLE
+
+2026-08-14T02:45:07 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:45:08 prefetch.2.11.3: 1) 'DRR137137' is found locally
+spots read      : 3,811,510
+reads read      : 3,811,510
+reads written   : 3,811,510
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=H2228 units=1378744 peaks=13551 frip=0.12431967 qc=PASS
+START_UTC=2026-08-14T02:51:54Z system=cell_line sample=H2347 run=DRR137226 layout=SINGLE
+
+2026-08-14T02:51:56 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T02:51:57 prefetch.2.11.3: 1) 'DRR137226' is found locally
+spots read      : 7,477,967
+reads read      : 7,477,967
+reads written   : 7,477,967
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=H1975 units=4245782 peaks=34781 frip=0.19331374 qc=PASS
+START_UTC=2026-08-14T03:00:56Z system=cell_line sample=H322 run=DRR136407 layout=SINGLE
+
+2026-08-14T03:00:58 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:00:59 prefetch.2.11.3: 1) 'DRR136407' is found locally
+COMPLETE system=cell_line sample=H2347 units=2653449 peaks=42017 frip=0.27422083 qc=PASS
+START_UTC=2026-08-14T03:01:17Z system=cell_line sample=II-18 run=DRR137312 layout=SINGLE
+
+2026-08-14T03:01:19 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:01:20 prefetch.2.11.3: 1) 'DRR137312' is found locally
+spots read      : 6,343,515
+reads read      : 6,343,515
+reads written   : 6,343,515
+spots read      : 10,440,675
+reads read      : 10,440,675
+reads written   : 10,440,675
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=II-18 units=1293013 peaks=15608 frip=0.19370958 qc=PASS
+START_UTC=2026-08-14T03:11:17Z system=cell_line sample=LC2/ad run=DRR137402 layout=SINGLE
+
+2026-08-14T03:11:19 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:11:20 prefetch.2.11.3: 1) 'DRR137402' is found locally
+COMPLETE system=cell_line sample=H322 units=2749205 peaks=23057 frip=0.12598333 qc=PASS
+START_UTC=2026-08-14T03:11:29Z system=cell_line sample=PC-14 run=DRR137573 layout=SINGLE
+
+2026-08-14T03:11:31 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:11:32 prefetch.2.11.3: 1) 'DRR137573' is found locally
+spots read      : 11,974,736
+reads read      : 11,974,736
+reads written   : 11,974,736
+spots read      : 21,468,119
+reads read      : 21,468,119
+reads written   : 21,468,119
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=LC2/ad units=2440050 peaks=18137 frip=0.10406672 qc=PASS
+START_UTC=2026-08-14T03:18:25Z system=cell_line sample=PC-9 run=DRR137490 layout=SINGLE
+
+2026-08-14T03:18:27 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:18:28 prefetch.2.11.3: 1) 'DRR137490' is found locally
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+spots read      : 27,366,468
+reads read      : 27,366,468
+reads written   : 27,366,468
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=PC-14 units=1424761 peaks=8270 frip=0.09329635 qc=FAIL
+START_UTC=2026-08-14T03:20:51Z system=cell_line sample=RERF-LC-Ad1 run=DRR137661 layout=SINGLE
+
+2026-08-14T03:20:53 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:20:54 prefetch.2.11.3: 1) 'DRR137661' is found locally
+spots read      : 3,440,413
+reads read      : 3,440,413
+reads written   : 3,440,413
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=RERF-LC-Ad1 units=2170014 peaks=14327 frip=0.08744045 qc=PASS
+START_UTC=2026-08-14T03:24:20Z system=cell_line sample=RERF-LC-Ad2 run=DRR137746 layout=SINGLE
+
+2026-08-14T03:24:22 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:24:23 prefetch.2.11.3: 1) 'DRR137746' is found locally
+spots read      : 9,419,482
+reads read      : 9,419,482
+reads written   : 9,419,482
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=RERF-LC-Ad2 units=3103697 peaks=15681 frip=0.08562466 qc=PASS
+START_UTC=2026-08-14T03:32:31Z system=cell_line sample=RERF-LC-KJ run=DRR137840 layout=SINGLE
+
+2026-08-14T03:32:33 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:32:34 prefetch.2.11.3: 1) 'DRR137840' is found locally
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+spots read      : 9,815,656
+reads read      : 9,815,656
+reads written   : 9,815,656
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=RERF-LC-KJ units=1076326 peaks=7253 frip=0.09102818 qc=FAIL
+START_UTC=2026-08-14T03:38:10Z system=cell_line sample=RERF-LC-MS run=DRR137932 layout=SINGLE
+
+2026-08-14T03:38:14 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:38:15 prefetch.2.11.3: 1) 'DRR137932' is found locally
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+spots read      : 14,517,138
+reads read      : 14,517,138
+reads written   : 14,517,138
+COMPLETE system=cell_line sample=PC-9 units=9496338 peaks=31736 frip=0.08671395 qc=PASS
+START_UTC=2026-08-14T03:41:45Z system=cell_line sample=VMRC-LCD run=DRR138116 layout=SINGLE
+
+2026-08-14T03:41:47 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:41:48 prefetch.2.11.3: 1) 'DRR138116' is found locally
+spots read      : 18,824,791
+reads read      : 18,824,791
+reads written   : 18,824,791
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=RERF-LC-MS units=3173714 peaks=14675 frip=0.09629570 qc=PASS
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+[bam_sort_core] merging from 4 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=VMRC-LCD units=2679617 peaks=10163 frip=0.07262195 qc=PASS
+RAW_ATAC_WORKERS_COMPLETE scope=cell_line

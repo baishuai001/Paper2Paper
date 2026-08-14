@@ -1,0 +1,14 @@
+{
+  "atac_independent_models": 24,
+  "atac_state_counts": {
+    "LUAD": 13,
+    "de_novo_SCLC": 7,
+    "transformed_SCLC": 4
+  },
+  "excluded_from_luad_primary": "transformed SCLC and de novo SCLC",
+  "figure2_luad_pdx_models": 13,
+  "primary_rule": "experiment title suffix adeno; one MGH model counted once",
+  "run_per_model": 1,
+  "series_reported_total_pdx": 26,
+  "source_xml": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/entrez/PRJNA1123604_ATAC_efetch.xml"
+}

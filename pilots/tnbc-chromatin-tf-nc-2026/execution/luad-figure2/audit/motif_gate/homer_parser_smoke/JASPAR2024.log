@@ -1,0 +1,187 @@
+
+	Position file = /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke/target.pos
+	Genome = /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa
+	Output Directory = /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke/JASPAR2024
+	Using actual sizes of regions (-size given)
+	Fragment size set to given
+	background position file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke/background.pos
+	Will not run homer for de novo motifs
+	Will search for known motifs in file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/motifs/selected_hc_tf_JASPAR2024.homer
+	Using 1 CPUs
+	Using Custom Genome
+	Peak/BED file conversion summary:
+		BED/Header formatted lines: 0
+		peakfile formatted lines: 12294
+
+	Peak File Statistics:
+		Total Peaks: 12294
+		Redundant Peak IDs: 0
+		Peaks lacking information: 0 (need at least 5 columns per peak)
+		Peaks with misformatted coordinates: 0 (should be integer)
+		Peaks with misformatted strand: 0 (should be either +/- or 0/1)
+
+	Peak file looks good!
+
+	Peak/BED file conversion summary:
+		BED/Header formatted lines: 0
+		peakfile formatted lines: 18373
+	Max distance to merge: direct overlap required (-d given)
+	Calculating co-bound peaks relative to reference: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke/JASPAR2024/bg.clean.pos
+
+	Comparing peaks: (peakfile, overlapping peaks, logRatio(obs/expected), logP)
+		/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke/JASPAR2024/target.clean..pos	12215	6.03	0.00
+
+	Co-bound by 0 peaks: 6158
+	Co-bound by 1 peaks: 12215 (max: 12215 effective total)
+	Custom genome sequence file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa
+
+	Extracting sequences from file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa
+	Looking for peak sequences in a single file (/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38.fa)
+	Extracting 1686 sequences from chr1
+	Extracting 918 sequences from chr10
+	Extracting 1020 sequences from chr11
+	Extracting 1048 sequences from chr12
+	Extracting 479 sequences from chr13
+	Extracting 568 sequences from chr14
+	Extracting 664 sequences from chr15
+	Extracting 612 sequences from chr16
+	Extracting 750 sequences from chr17
+	Extracting 391 sequences from chr18
+	Extracting 731 sequences from chr19
+	Extracting 1496 sequences from chr2
+	Extracting 512 sequences from chr20
+	Extracting 152 sequences from chr21
+	Extracting 232 sequences from chr22
+	Extracting 1315 sequences from chr3
+	Extracting 746 sequences from chr4
+	Extracting 1105 sequences from chr5
+	Extracting 975 sequences from chr6
+	Extracting 1073 sequences from chr7
+	Extracting 799 sequences from chr8
+	Extracting 655 sequences from chr9
+	Extracting 525 sequences from chrX
+
+	Not removing redundant sequences
+
+
+	Sequences processed:
+		Auto detected maximum sequence length of 151 bp
+		18452 total
+
+	Frequency Bins: 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.6 0.7 0.8
+	Freq	Bin	Count
+	0.3	2	9
+	0.35	3	43
+	0.4	4	347
+	0.45	5	1097
+	0.5	6	1824
+	0.6	7	4694
+	0.7	8	6025
+	0.8	9	3945
+	10	10	468
+	Bin	# Targets	# Background	Background Weight
+	2	2	7	0.143
+	3	22	21	0.525
+	4	151	196	0.386
+	5	531	566	0.470
+	6	896	928	0.484
+	7	2516	2178	0.579
+	8	4494	1531	1.470
+	9	3284	661	2.489
+	10	398	70	2.848
+	Normalizing lower order oligos using homer2
+
+	Reading input files...
+	18452 total sequences read
+	Autonormalization: 1-mers (4 total)
+		A	18.25%	18.53%	0.985
+		C	31.75%	31.47%	1.009
+		G	31.75%	31.47%	1.009
+		T	18.25%	18.53%	0.985
+	Autonormalization: 2-mers (16 total)
+		AA	4.16%	3.76%	1.106
+		CA	5.98%	6.84%	0.874
+		GA	5.74%	5.81%	0.988
+		TA	2.36%	2.11%	1.119
+		AC	4.36%	4.45%	0.979
+		CC	10.83%	10.69%	1.013
+		GC	10.82%	10.52%	1.029
+		TC	5.74%	5.81%	0.988
+		AG	7.09%	7.65%	0.926
+		CG	7.87%	6.30%	1.249
+		GG	10.83%	10.69%	1.013
+		TG	5.98%	6.84%	0.874
+		AT	2.64%	2.65%	0.996
+		CT	7.09%	7.65%	0.926
+		GT	4.36%	4.45%	0.979
+		TT	4.16%	3.76%	1.106
+	Autonormalization: 3-mers (64 total)
+	Normalization weights can be found in file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_gate/homer_parser_smoke/JASPAR2024/seq.autonorm.tsv
+	Converging on autonormalization solution:
+	...............................................................................
+	Final normalization:	Autonormalization: 1-mers (4 total)
+		A	18.25%	18.26%	0.999
+		C	31.75%	31.74%	1.000
+		G	31.75%	31.74%	1.000
+		T	18.25%	18.26%	0.999
+	Autonormalization: 2-mers (16 total)
+		AA	4.16%	4.05%	1.025
+		CA	5.98%	6.13%	0.975
+		GA	5.74%	5.74%	1.000
+		TA	2.36%	2.33%	1.013
+		AC	4.36%	4.36%	0.999
+		CC	10.83%	10.76%	1.007
+		GC	10.82%	10.87%	0.996
+		TC	5.74%	5.74%	1.000
+		AG	7.09%	7.17%	0.988
+		CG	7.87%	7.68%	1.024
+		GG	10.83%	10.76%	1.007
+		TG	5.98%	6.13%	0.975
+		AT	2.64%	2.66%	0.993
+		CT	7.09%	7.17%	0.988
+		GT	4.36%	4.36%	0.999
+		TT	4.16%	4.05%	1.025
+	Autonormalization: 3-mers (64 total)
+	Finished preparing sequence/group files
+
+	----------------------------------------------------------
+	Known motif enrichment
+
+	Reading input files...
+	18452 total sequences read
+!!! Couldn't open motif file: /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/motifs/selected_hc_tf_JASPAR2024.homer !!!
+	Cache length = 11180
+	Using binomial scoring
+	Checking enrichment of 0 motif(s)
+	|0%                                    50%                                  100%|
+	
+!!! No motifs to analyze !!!
+Use of uninitialized value in numeric gt (>) at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 478.
+Use of uninitialized value $str in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 276.
+Use of uninitialized value $str[0] in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 277.
+Use of uninitialized value $str[1] in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 280.
+Use of uninitialized value $str[2] in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 283.
+Use of uninitialized value $percentTargets in substitution (s///) at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 150.
+Use of uninitialized value $percentBackground in substitution (s///) at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 151.
+Use of uninitialized value $percentTargets in numeric gt (>) at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 154.
+Use of uninitialized value $percentBackground in numeric gt (>) at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 155.
+	Preparing HTML output with sequence logos...
+Use of uninitialized value in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 204.
+Use of uninitialized value in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 204.
+Use of uninitialized value in exp at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 207.
+Use of uninitialized value in sprintf at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 209.
+Use of uninitialized value in sprintf at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 210.
+Use of uninitialized value $str in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 276.
+Use of uninitialized value $str[0] in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 277.
+Use of uninitialized value $str[1] in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 280.
+Use of uninitialized value $str[2] in split at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 283.
+Use of uninitialized value $pvalue in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 215.
+Use of uninitialized value $numTargets in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 215.
+Use of uninitialized value $percentTargets in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 215.
+Use of uninitialized value $numBackground in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 216.
+Use of uninitialized value $percentBackground in concatenation (.) or string at /media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/tools/homer/bin/findKnownMotifs.pl line 216.
+	Skipping...
+	Job finished - if results look good, please send beer to ..
+
+	Cleaning up tmp files...
+

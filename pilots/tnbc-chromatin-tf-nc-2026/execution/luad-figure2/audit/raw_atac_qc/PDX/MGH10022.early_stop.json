@@ -1,0 +1,12 @@
+{
+  "sample_id": "MGH10022",
+  "run": "SRR29662772",
+  "status": "ABORTED_AFTER_LOCKED_DATA_GATE",
+  "counted_as_qc_failure": false,
+  "locked_system": "cell_line",
+  "locked_system_completed": 19,
+  "locked_system_qualified": 14,
+  "locked_system_failed": 5,
+  "reason": "cell_line failure fraction 5/19 exceeded frozen 0.20 threshold; no new PDX tasks were launched",
+  "stopped_utc": "2026-08-14T04:19:30Z"
+}

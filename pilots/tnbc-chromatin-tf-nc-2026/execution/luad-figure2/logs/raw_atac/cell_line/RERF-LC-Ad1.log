@@ -1,0 +1,11 @@
+START_UTC=2026-08-14T03:20:51Z system=cell_line sample=RERF-LC-Ad1 run=DRR137661 layout=SINGLE
+
+2026-08-14T03:20:53 prefetch.2.11.3: Current preference is set to retrieve SRA Normalized Format files with full base quality scores.
+2026-08-14T03:20:54 prefetch.2.11.3: 1) 'DRR137661' is found locally
+spots read      : 3,440,413
+reads read      : 3,440,413
+reads written   : 3,440,413
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+[bam_sort_core] merging from 0 files and 4 in-memory blocks...
+COMPLETE system=cell_line sample=RERF-LC-Ad1 units=2170014 peaks=14327 frip=0.08744045 qc=PASS
