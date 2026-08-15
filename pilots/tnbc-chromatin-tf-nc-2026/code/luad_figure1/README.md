@@ -29,3 +29,14 @@ the triggering failed attempt and the patch are both disclosed in the audit.
 
 `CollecTRI`, ULM, and ATAC are deliberately absent: they are not part of the
 anchor Figure 1 chain. ATAC begins at Figure 2.
+
+`render_academic_workflows.R` is the final publication-style rendering pass for
+the same three workflow panels. It replaces large enclosing frames and decision
+diamonds with an open evidence chain and a CONSORT-like cohort-selection spine.
+
+Design references used for this render-only layer:
+- BioRender scientific workflow templates: https://www.biorender.com/templates
+- Bioicons open SVG library: https://github.com/duerrsimon/bioicons
+- ggconsort cohort-flow grammar: https://github.com/tgerke/ggconsort
+
+No third-party icon file is embedded in the output, so the figures remain fully

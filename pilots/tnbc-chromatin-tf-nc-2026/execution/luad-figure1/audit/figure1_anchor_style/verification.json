@@ -20,13 +20,13 @@
     {
       "check": "output:Figure1A_workflow.pdf",
       "status": "passed",
-      "bytes": 20384,
-      "pdf_nonwhite_fraction": 0.10627876397107167
+      "bytes": 35572,
+      "pdf_nonwhite_fraction": 0.13963688946015423
     },
     {
       "check": "output:Figure1A_workflow.png",
       "status": "passed",
-      "bytes": 131761,
+      "bytes": 197849,
       "pdf_nonwhite_fraction": null
     },
     {
@@ -44,25 +44,25 @@
     {
       "check": "output:SupplementaryFigure1A_TCGA_inclusion.pdf",
       "status": "passed",
-      "bytes": 17427,
-      "pdf_nonwhite_fraction": 0.0828264395782644
+      "bytes": 26507,
+      "pdf_nonwhite_fraction": 0.14310122389204644
     },
     {
       "check": "output:SupplementaryFigure1A_TCGA_inclusion.png",
       "status": "passed",
-      "bytes": 113832,
+      "bytes": 122731,
       "pdf_nonwhite_fraction": null
     },
     {
       "check": "output:SupplementaryFigure1B_GSE81089_inclusion.pdf",
       "status": "passed",
-      "bytes": 17936,
-      "pdf_nonwhite_fraction": 0.07335476769783339
+      "bytes": 28337,
+      "pdf_nonwhite_fraction": 0.1519061203319502
     },
     {
       "check": "output:SupplementaryFigure1B_GSE81089_inclusion.png",
       "status": "passed",
-      "bytes": 126749,
+      "bytes": 152345,
       "pdf_nonwhite_fraction": null
     },
     {

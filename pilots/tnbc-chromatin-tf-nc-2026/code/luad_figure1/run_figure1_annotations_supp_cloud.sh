@@ -24,6 +24,8 @@ Rscript "$SCRIPT_DIR/plot_figure1_annotations_and_supplements.R" "$RUN_ROOT" \
   2>&1 | tee "$LOG_DIR/plot_figure1_annotations_and_supplements.log"
 Rscript "$SCRIPT_DIR/render_anchor_style_figure1.R" "$RUN_ROOT" \
   2>&1 | tee "$LOG_DIR/render_anchor_style_figure1.log"
+Rscript "$SCRIPT_DIR/render_academic_workflows.R" "$RUN_ROOT" \
+  2>&1 | tee "$LOG_DIR/render_academic_workflows.log"
 
 find "$RUN_ROOT/results/tables" -maxdepth 1 -type f \
   ! -name 'SupplementaryFigure*' -print0 \
