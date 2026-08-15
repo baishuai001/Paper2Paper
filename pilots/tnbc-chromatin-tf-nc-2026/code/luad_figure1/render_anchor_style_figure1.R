@@ -328,11 +328,15 @@ render_figure1c <- function(path) {
     c("#244B8A", "#74A9CF", "#F7F7F7", "#F4A582", "#B2182B")
   )
   column_tree <- hclust(dist(t(display_matrix)), method = "complete")
+  is_pdf <- grepl("[.]pdf$", path, ignore.case = TRUE)
   heatmap <- Heatmap(
     display_matrix, name = "TF activity", col = activity_colors,
     cluster_rows = FALSE, cluster_columns = column_tree,
     show_row_names = FALSE, show_column_names = FALSE,
-    use_raster = TRUE, raster_quality = 3,
+    # The server's cairo_pdf device produced a formally valid but visually
+    # blank page when ComplexHeatmap embedded its temporary PNG raster. Keep
+    # the PDF cells vector-native; rasterize only the companion PNG.
+    use_raster = !is_pdf, raster_quality = 3,
     top_annotation = top, left_annotation = left,
     column_title = sprintf("n = %s", fmt_n(ncol(display_matrix))),
     column_title_side = "bottom", column_title_gp = gpar(fontsize = 8.2),
@@ -439,16 +443,16 @@ render_supplementary_1a <- function(path) {
   draw_arrow(0.72, 0.455, 0.72, 0.405)
   draw_diamond(0.72, 0.34, 0.34, 0.13, "One primary tumor\nper patient", fontsize = 8.0)
   draw_poly_arrow(c(0.55, 0.33, 0.33), c(0.34, 0.28, 0.23))
-  draw_box(0.33, 0.16, 0.28, 0.12,
+  draw_box(0.33, 0.19, 0.28, 0.12,
            sprintf("Excluded duplicate\nprimary aliquots\nn = %s", fmt_n(flow_counts$tcga_duplicate)), fontsize = 8.0)
-  draw_arrow(0.72, 0.275, 0.72, 0.225)
-  draw_box(0.72, 0.16, 0.30, 0.12,
+  draw_arrow(0.72, 0.275, 0.72, 0.255)
+  draw_box(0.72, 0.19, 0.30, 0.12,
            sprintf("Final analysis cohort\nn = %s", fmt_n(nrow(tcga_manifest))), fontsize = 8.4)
-  draw_poly_arrow(c(0.67, 0.58, 0.58), c(0.10, 0.075, 0.055))
-  draw_poly_arrow(c(0.77, 0.86, 0.86), c(0.10, 0.075, 0.055))
-  draw_box(0.57, 0.035, 0.22, 0.07, sprintf("LUAD  n = %s", fmt_n(cohort_counts$tcga_luad)),
+  draw_poly_arrow(c(0.67, 0.58, 0.58), c(0.13, 0.105, 0.095))
+  draw_poly_arrow(c(0.77, 0.86, 0.86), c(0.13, 0.105, 0.095))
+  draw_box(0.57, 0.055, 0.22, 0.07, sprintf("LUAD  n = %s", fmt_n(cohort_counts$tcga_luad)),
            fill = "#455F7D", text_col = "white", fontsize = 8.0)
-  draw_box(0.86, 0.035, 0.22, 0.07, sprintf("LUSC  n = %s", fmt_n(cohort_counts$tcga_lusc)),
+  draw_box(0.86, 0.055, 0.22, 0.07, sprintf("LUSC  n = %s", fmt_n(cohort_counts$tcga_lusc)),
            fill = "#9EC3E6", fontsize = 8.0)
   dev.off()
 }
@@ -458,34 +462,34 @@ render_supplementary_1b <- function(path) {
   grid.newpage()
   grid.text("B", unit(0.02, "npc"), unit(0.98, "npc"), just = c("left", "top"),
             gp = gpar(fontsize = 18, fontface = "bold"))
-  draw_box(0.50, 0.92, 0.50, 0.105,
+  draw_box(0.50, 0.90, 0.50, 0.105,
            sprintf("Total GSE81089 RNA-seq samples\nwith featureCounts data\nn = %s", fmt_n(flow_counts$gse_all)), fontsize = 8.8)
-  draw_arrow(0.50, 0.865, 0.50, 0.815)
-  draw_diamond(0.50, 0.75, 0.34, 0.13, "Tumor versus\nmatched normal", fontsize = 8.2)
-  draw_poly_arrow(c(0.33, 0.20, 0.20), c(0.75, 0.68, 0.63))
-  draw_box(0.20, 0.56, 0.26, 0.12,
+  draw_arrow(0.50, 0.845, 0.50, 0.795)
+  draw_diamond(0.50, 0.73, 0.34, 0.13, "Tumor versus\nmatched normal", fontsize = 8.2)
+  draw_poly_arrow(c(0.33, 0.20, 0.20), c(0.73, 0.66, 0.61))
+  draw_box(0.20, 0.54, 0.26, 0.12,
            sprintf("Matched normal tissue\nn = %s", fmt_n(flow_counts$gse_normal)), fontsize = 8.1)
-  draw_poly_arrow(c(0.67, 0.70, 0.70), c(0.75, 0.68, 0.63))
-  draw_box(0.70, 0.56, 0.28, 0.12,
+  draw_poly_arrow(c(0.67, 0.70, 0.70), c(0.73, 0.66, 0.61))
+  draw_box(0.70, 0.54, 0.28, 0.12,
            sprintf("Tumor samples\nn = %s", fmt_n(flow_counts$gse_tumor)), fontsize = 8.2)
-  draw_arrow(0.70, 0.50, 0.70, 0.455)
-  draw_diamond(0.70, 0.39, 0.34, 0.13, "Histology filter\nLUAD or LUSC", fontsize = 8.1)
-  draw_poly_arrow(c(0.53, 0.31, 0.31), c(0.39, 0.33, 0.285))
-  draw_box(0.31, 0.22, 0.29, 0.115,
+  draw_arrow(0.70, 0.48, 0.70, 0.435)
+  draw_diamond(0.70, 0.37, 0.34, 0.13, "Histology filter\nLUAD or LUSC", fontsize = 8.1)
+  draw_poly_arrow(c(0.53, 0.31, 0.31), c(0.37, 0.31, 0.265))
+  draw_box(0.31, 0.215, 0.29, 0.105,
            sprintf("Excluded large-cell/NOS\ntumors\nn = %s", fmt_n(flow_counts$gse_non_target_histology)), fontsize = 7.9)
-  draw_arrow(0.70, 0.325, 0.70, 0.285)
-  draw_box(0.70, 0.22, 0.29, 0.115,
+  draw_arrow(0.70, 0.305, 0.70, 0.2675)
+  draw_box(0.70, 0.215, 0.29, 0.105,
            sprintf("LUAD/LUSC by metadata\nn = %s", fmt_n(flow_counts$gse_target_histology)), fontsize = 8.1)
-  draw_arrow(0.70, 0.16, 0.70, 0.13)
-  draw_diamond(0.70, 0.09, 0.32, 0.08, "Expression-column match", fontsize = 7.5)
-  draw_poly_arrow(c(0.54, 0.39, 0.39), c(0.09, 0.055, 0.035))
+  draw_arrow(0.70, 0.1625, 0.70, 0.137)
+  draw_diamond(0.70, 0.10, 0.32, 0.07, "Expression-column match", fontsize = 7.5)
+  draw_poly_arrow(c(0.54, 0.39, 0.39), c(0.10, 0.07, 0.055))
   grid.text(sprintf("Unmatched IDs\nn = %s", fmt_n(flow_counts$gse_unmatched)),
-            unit(0.34, "npc"), unit(0.025, "npc"), gp = gpar(fontsize = 7.2, lineheight = 1.0))
-  draw_poly_arrow(c(0.72, 0.72), c(0.05, 0.035))
-  draw_box(0.67, 0.025, 0.20, 0.05, sprintf("LUAD  n = %s", fmt_n(cohort_counts$gse_luad)),
+            unit(0.34, "npc"), unit(0.030, "npc"), gp = gpar(fontsize = 7.2, lineheight = 1.0))
+  draw_poly_arrow(c(0.66, 0.64), c(0.065, 0.060))
+  draw_box(0.64, 0.035, 0.20, 0.05, sprintf("LUAD  n = %s", fmt_n(cohort_counts$gse_luad)),
            fill = "#455F7D", text_col = "white", fontsize = 7.5)
-  draw_poly_arrow(c(0.80, 0.88, 0.88), c(0.09, 0.055, 0.035))
-  draw_box(0.88, 0.025, 0.20, 0.05, sprintf("LUSC  n = %s", fmt_n(cohort_counts$gse_lusc)),
+  draw_poly_arrow(c(0.80, 0.86, 0.86), c(0.10, 0.07, 0.060))
+  draw_box(0.86, 0.035, 0.20, 0.05, sprintf("LUSC  n = %s", fmt_n(cohort_counts$gse_lusc)),
            fill = "#9EC3E6", fontsize = 7.5)
   dev.off()
 }

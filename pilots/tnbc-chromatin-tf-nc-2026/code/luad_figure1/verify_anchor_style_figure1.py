@@ -4,7 +4,11 @@ import csv
 import gzip
 import json
 import math
+import re
+import shutil
+import subprocess
 import sys
+import tempfile
 from collections import Counter
 from pathlib import Path
 
@@ -12,6 +16,28 @@ from pathlib import Path
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+def pdf_nonwhite_fraction(path: Path) -> float | None:
+    pdftoppm = shutil.which("pdftoppm")
+    if pdftoppm is None:
+        return None
+    with tempfile.TemporaryDirectory() as directory:
+        prefix = Path(directory) / "page"
+        subprocess.run(
+            [pdftoppm, "-f", "1", "-singlefile", "-r", "36", "-ppm", str(path), str(prefix)],
+            check=True,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.PIPE,
+        )
+        payload = (prefix.with_suffix(".ppm")).read_bytes()
+    match = re.match(br"P6\s+(?:#[^\n]*\s+)*(\d+)\s+(\d+)\s+(\d+)\s", payload)
+    require(match is not None, f"Could not parse PDF preview for {path}")
+    pixels = payload[match.end():]
+    require(int(match.group(3)) == 255, f"Unsupported PDF preview depth for {path}")
+    total = len(pixels) // 3
+    nonwhite = sum(1 for index in range(0, len(pixels) - 2, 3) if min(pixels[index:index + 3]) < 245)
+    return nonwhite / total
 
 
 if len(sys.argv) != 2:
@@ -38,7 +64,15 @@ for stem in stems:
         require(path.stat().st_size > 10_000, f"Output is unexpectedly small: {path}")
         if suffix == ".pdf":
             require(path.read_bytes()[:4] == b"%PDF", f"Invalid PDF header: {path}")
-        checks.append({"check": f"output:{stem}{suffix}", "status": "passed", "bytes": path.stat().st_size})
+            nonwhite_fraction = pdf_nonwhite_fraction(path)
+            if nonwhite_fraction is not None:
+                require(nonwhite_fraction > 0.005, f"PDF rendered as an empty or nearly empty page: {path}")
+        else:
+            nonwhite_fraction = None
+        checks.append({
+            "check": f"output:{stem}{suffix}", "status": "passed",
+            "bytes": path.stat().st_size, "pdf_nonwhite_fraction": nonwhite_fraction,
+        })
 
 matrix_rows = 0
 matrix_columns = None
