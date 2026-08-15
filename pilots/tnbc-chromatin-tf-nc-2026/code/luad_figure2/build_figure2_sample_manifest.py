@@ -58,7 +58,7 @@ def main() -> None:
         raise RuntimeError(f"Figure 2 processing is incomplete: observed {counts}, expected {expected}")
     for row in rows:
         path = Path(row["peak_path"])
-        if not path.is_file() or path.stat().st_size == 0:
+        if not path.is_file():
             raise RuntimeError(f"Missing peak file: {path}")
 
     out_dir = root / "audit/manifests/figure2_atomic"
@@ -73,6 +73,9 @@ def main() -> None:
         "counts": counts,
         "predeclared_counts": expected,
         "post_sequencing_read_or_peak_threshold_used_for_exclusion": False,
+        "zero_peak_samples_retained": [
+            row["sample_id"] for row in rows if Path(row["peak_path"]).stat().st_size == 0
+        ],
         "one_row_per_independent_biological_sample": True,
         "manifest": str(output),
         "shared_by": ["Figure2", "SupplementaryFigure3", "SupplementaryFigure4A-C"],

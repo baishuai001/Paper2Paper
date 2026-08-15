@@ -33,7 +33,7 @@ def main() -> None:
 
     expected_rows = {
         "tcga_figure1_annotations.tsv": 1017,
-        "gse81089_figure1_annotations.tsv": 173,
+        "gse81089_figure1_annotations.tsv": 175,
         "pdmr_figure1_annotations.tsv": 56,
         "depmap_figure1_annotations.tsv": 103,
     }

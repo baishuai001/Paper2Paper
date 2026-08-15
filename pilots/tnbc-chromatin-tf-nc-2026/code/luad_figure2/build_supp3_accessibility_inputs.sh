@@ -24,7 +24,7 @@ build_system() {
   local combined="$OUT/${system}_all_sample_peaks.bed"
   : > "$combined"
   while IFS=$'\t' read -r sample slug peak bam; do
-    [[ -s "$peak" ]] || { echo "Missing $system peak file: $peak" >&2; exit 1; }
+    [[ -e "$peak" ]] || { echo "Missing $system peak file: $peak" >&2; exit 1; }
     if [[ "$peak" == *.gz ]]; then gzip -dc "$peak"; else cat "$peak"; fi \
       | awk 'BEGIN{OFS="\t"} $1 ~ /^chr([0-9]+|X)$/ {print $1,$2,$3}' >> "$combined"
   done < <(tail -n +2 "$manifest" | sed 's/\r$//')
@@ -41,7 +41,9 @@ build_system() {
     while IFS=$'\t' read -r sample slug peak bam; do
       presence_file="$OUT/.${system}.${slug}.presence"
       presence_files+=("$presence_file")
-      if [[ "$peak" == *.gz ]]; then
+      if [[ ! -s "$peak" ]]; then
+        awk '{print 0}' "$OUT/${system}_consensus_peaks.bed" > "$presence_file"
+      elif [[ "$peak" == *.gz ]]; then
         bedtools intersect -a "$OUT/${system}_consensus_peaks.bed" -b <(gzip -dc "$peak") -c | awk '{print ($NF>0)?1:0}' > "$presence_file"
       else
         bedtools intersect -a "$OUT/${system}_consensus_peaks.bed" -b "$peak" -c | awk '{print ($NF>0)?1:0}' > "$presence_file"

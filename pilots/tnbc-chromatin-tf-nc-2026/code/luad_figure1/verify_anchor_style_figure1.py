@@ -110,7 +110,7 @@ def group_counts(path: Path) -> dict[str, int]:
 
 
 require(group_counts(processed / "tcga_manifest.tsv") == {"LUAD": 516, "LUSC": 501}, "TCGA flow counts changed")
-require(group_counts(processed / "gse81089_manifest.tsv") == {"LUAD": 106, "LUSC": 67}, "GSE81089 flow counts changed")
+require(group_counts(processed / "gse81089_manifest.tsv") == {"LUAD": 108, "LUSC": 67}, "GSE81089 flow counts changed")
 checks.append({"check": "SupplementaryFigure1:manifest_counts", "status": "passed"})
 
 with (tables / "Figure1_anchor_style_render_receipt.tsv").open(newline="", encoding="utf-8") as handle:
@@ -126,8 +126,8 @@ required_flow = {
     "gse_normal": 19,
     "gse_target_histology": 175,
     "gse_non_target_histology": 24,
-    "gse_target_with_expression": 173,
-    "gse_unmatched": 2,
+    "gse_target_with_expression": 175,
+    "gse_unmatched": 0,
 }
 observed = {row["metric"]: float(row["value"]) for row in receipt}
 for key, expected in required_flow.items():

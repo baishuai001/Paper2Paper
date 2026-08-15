@@ -136,6 +136,14 @@ gse_manifest <- parse_soft(file.path(raw, "gse81089", "GSE81089_family.soft.gz")
 gse_manifest <- gse_manifest[grepl("T(_|$)", sample_id) & histology_code %in% c("1", "2")]
 gse_manifest[, group := ifelse(histology_code == "2", "LUAD", "LUSC")]
 gse_manifest[, `:=`(system = "patient_validation", source = "GSE81089")]
+gse_group_counts <- table(gse_manifest$group)
+stopifnot(
+  unname(gse_group_counts["LUAD"]) == 108L,
+  unname(gse_group_counts["LUSC"]) == 67L
+)
+# GEO explicitly documents these processed-column aliases. Canonicalize them
+# before matching expression columns to the sample-level SOFT manifest.
+gse_processed_column_aliases <- c(L608T_2122 = "L608T", L771T_1 = "L771T")
 
 tcga_map_base <- setNames(probemap$gene, sub("\\..*$", "", probemap$id))
 
@@ -143,6 +151,19 @@ read_gse <- function(filename) {
   tab <- fread(file.path(raw, "gse81089", filename), check.names = FALSE)
   ids <- sub("\\..*$", "", tab[[1]])
   tab[[1]] <- NULL
+  processed_names <- names(tab)
+  alias_index <- match(processed_names, names(gse_processed_column_aliases))
+  has_alias <- !is.na(alias_index)
+  processed_names[has_alias] <- unname(gse_processed_column_aliases[alias_index[has_alias]])
+  if (anyDuplicated(processed_names)) {
+    stop(sprintf("Duplicate GSE81089 sample names after alias canonicalization: %s", filename))
+  }
+  setnames(tab, processed_names)
+  missing_samples <- setdiff(gse_manifest$sample_id, names(tab))
+  if (length(missing_samples)) {
+    stop(sprintf("GSE81089 target samples missing from %s: %s",
+                 filename, paste(missing_samples, collapse = ", ")))
+  }
   samples <- intersect(gse_manifest$sample_id, names(tab))
   matrix <- as.matrix(tab[, ..samples])
   storage.mode(matrix) <- "double"

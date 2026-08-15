@@ -92,7 +92,14 @@ def merge_interval_map(values: dict[str, list[Interval]]) -> IntervalMap:
     return {chrom: merge_intervals(intervals) for chrom, intervals in values.items()}
 
 
-def parse_gencode(gtf_path: Path, frozen_tfs: set[str]) -> tuple[dict[str, dict[str, IntervalMap]], dict[str, IntervalMap]]:
+def parse_gencode(
+    gtf_path: Path,
+    frozen_tfs: set[str],
+) -> tuple[
+    dict[str, dict[str, IntervalMap]],
+    dict[str, IntervalMap],
+    dict[str, set[str]],
+]:
     promoters: dict[str, dict[str, dict[str, list[Interval]]]] = {
         "anchor_-2500_+1000": defaultdict(lambda: defaultdict(list)),
         "legend_-1000_+100": defaultdict(lambda: defaultdict(list)),
@@ -100,6 +107,7 @@ def parse_gencode(gtf_path: Path, frozen_tfs: set[str]) -> tuple[dict[str, dict[
     global_promoter: dict[str, list[Interval]] = defaultdict(list)
     exons: dict[str, list[Interval]] = defaultdict(list)
     genes: dict[str, list[Interval]] = defaultdict(list)
+    frozen_gene_types: dict[str, set[str]] = defaultdict(set)
 
     with gzip.open(gtf_path, "rt", encoding="utf-8") as handle:
         for line in handle:
@@ -113,11 +121,30 @@ def parse_gencode(gtf_path: Path, frozen_tfs: set[str]) -> tuple[dict[str, dict[
                 continue
             attrs = parse_attributes(attr_text)
             gene_type = attrs.get("gene_type") or attrs.get("gene_biotype")
-            if gene_type != "protein_coding":
-                continue
             start = int(start_text) - 1
             end = int(end_text)
             symbol = attrs.get("gene_name", "")
+
+            # The frozen Figure 1 regulator list is PAN-GO-derived and contains
+            # three explicitly named pseudogene regulators. The anchor's
+            # promoter-accessibility rule is a locus/TSS rule, not a
+            # protein-coding filter. Map every exact frozen symbol with a
+            # GENCODE transcript, while retaining protein-coding genes as the
+            # background feature universe used for peak annotation.
+            if feature == "transcript" and symbol in frozen_tfs:
+                frozen_gene_types[symbol].add(gene_type or "UNKNOWN")
+                tss = start if strand == "+" else end - 1
+                if strand == "+":
+                    anchor = (max(0, tss - 2500), tss + 1000)
+                    legend = (max(0, tss - 1000), tss + 100)
+                else:
+                    anchor = (max(0, tss - 1000), tss + 2500)
+                    legend = (max(0, tss - 100), tss + 1000)
+                promoters["anchor_-2500_+1000"][symbol][chrom].append(anchor)
+                promoters["legend_-1000_+100"][symbol][chrom].append(legend)
+
+            if gene_type != "protein_coding":
+                continue
             if feature == "gene":
                 genes[chrom].append((start, end))
             elif feature == "exon":
@@ -129,11 +156,7 @@ def parse_gencode(gtf_path: Path, frozen_tfs: set[str]) -> tuple[dict[str, dict[
                     legend = (max(0, tss - 1000), tss + 100)
                 else:
                     anchor = (max(0, tss - 1000), tss + 2500)
-                    legend = (max(0, tss - 100), tss + 1000)
                 global_promoter[chrom].append(anchor)
-                if symbol in frozen_tfs:
-                    promoters["anchor_-2500_+1000"][symbol][chrom].append(anchor)
-                    promoters["legend_-1000_+100"][symbol][chrom].append(legend)
 
     frozen: dict[str, dict[str, IntervalMap]] = {}
     for definition, by_tf in promoters.items():
@@ -145,7 +168,7 @@ def parse_gencode(gtf_path: Path, frozen_tfs: set[str]) -> tuple[dict[str, dict[
         "exon": merge_interval_map(exons),
         "gene": merge_interval_map(genes),
     }
-    return frozen, features
+    return frozen, features, frozen_gene_types
 
 
 class IntervalIndex:
@@ -260,18 +283,28 @@ def evaluate_definition(
     frozen_tfs: list[str],
     activity: dict[tuple[str, str], float | None],
 ) -> tuple[list[dict[str, object]], list[dict[str, object]], list[dict[str, object]]]:
-    samples: list[tuple[str, str, Path]] = [
-        ("patient", sample_id, path) for sample_id, path in sorted(patient_paths.items())
+    samples: list[tuple[str, str, Path, bool]] = [
+        ("patient", sample_id, path, False) for sample_id, path in sorted(patient_paths.items())
     ]
     samples.extend(
-        (row["system"], row["sample_id"], Path(row["narrowpeak"]))
+        (
+            row["system"],
+            row["sample_id"],
+            Path(row["narrowpeak"]),
+            row.get("peak_call_status") == "NO_SIGNIFICANT_PEAKS_AT_Q0.01",
+        )
         for row in raw_rows
     )
     accessibility_rows: list[dict[str, object]] = []
     sample_cache: dict[Path, list[tuple[str, int, int]]] = {}
-    for system, sample_id, peak_path in samples:
-        if not peak_path.is_file() or peak_path.stat().st_size == 0:
+    for system, sample_id, peak_path, allow_empty in samples:
+        if not peak_path.is_file():
             raise RuntimeError(f"Missing peak file for {system}/{sample_id}: {peak_path}")
+        if peak_path.stat().st_size == 0 and not allow_empty:
+            raise RuntimeError(
+                f"Unexpected empty peak file without a q=0.01 zero-peak receipt "
+                f"for {system}/{sample_id}: {peak_path}"
+            )
         peaks = sample_cache.setdefault(peak_path, read_peaks(peak_path))
         calls = promoter_accessibility(peaks, promoter_maps)
         for tf in frozen_tfs:
@@ -379,12 +412,14 @@ def main() -> None:
         raise RuntimeError(f"Expected 158 unique frozen TFs, observed {len(set(frozen_tfs))}")
 
     gtf_path = root / "reference/downloads/gencode.v47.basic.annotation.gtf.gz"
-    promoters, features = parse_gencode(gtf_path, set(frozen_tfs))
+    promoters, features, frozen_gene_types = parse_gencode(gtf_path, set(frozen_tfs))
     absent = [tf for tf in frozen_tfs if not promoters["anchor_-2500_+1000"].get(tf)]
     mapping_rows = [
         {
             "TF": tf,
-            "gencode_v47_protein_coding_transcript_present": str(tf not in absent).upper(),
+            "gencode_v47_transcript_present": str(tf not in absent).upper(),
+            "gencode_v47_gene_types": ";".join(sorted(frozen_gene_types.get(tf, set()))),
+            "protein_coding_only": str(frozen_gene_types.get(tf, set()) == {"protein_coding"}).upper(),
             "anchor_promoter_interval_count": sum(len(values) for values in promoters["anchor_-2500_+1000"].get(tf, {}).values()),
             "legend_promoter_interval_count": sum(len(values) for values in promoters["legend_-1000_+100"].get(tf, {}).values()),
         }
@@ -392,7 +427,29 @@ def main() -> None:
     ]
     write_tsv(audit_dir / "frozen_tf_gencode_mapping.tsv", mapping_rows)
     if absent:
-        raise RuntimeError(f"Cannot map frozen TFs to GENCODE v47 protein-coding transcripts: {absent}")
+        raise RuntimeError(f"Cannot map frozen regulators to any GENCODE v47 transcript: {absent}")
+    non_protein_coding = [row for row in mapping_rows if row["protein_coding_only"] != "TRUE"]
+    (audit_dir / "frozen_tf_gencode_mapping_receipt.json").write_text(
+        json.dumps(
+            {
+                "generated_utc": datetime.now(timezone.utc).isoformat(),
+                "frozen_regulators": len(frozen_tfs),
+                "mapped_to_gencode_v47_transcript": len(frozen_tfs) - len(absent),
+                "non_protein_coding_regulators": [
+                    {"TF": row["TF"], "gene_types": row["gencode_v47_gene_types"]}
+                    for row in non_protein_coding
+                ],
+                "rule": (
+                    "Use exact-symbol GENCODE transcripts for the anchor promoter locus rule; "
+                    "retain protein-coding transcripts as the genome-wide peak-annotation universe"
+                ),
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
 
     feature_dir = root / "reference/figure2_features"
     feature_dir.mkdir(parents=True, exist_ok=True)
@@ -480,7 +537,7 @@ def main() -> None:
         "frozen_tf_file": str(frozen_input_path),
         "frozen_tf_sha256": sha256(frozen_input_path),
         "frozen_tf_count": len(frozen_tfs),
-        "gencode": "v47 basic protein-coding transcripts",
+        "gencode": "v47 basic exact-symbol candidate transcripts; protein-coding genome-wide annotation universe",
         "gencode_sha256": sha256(gtf_path),
         "primary_definition": primary_name,
         "patient_n": SYSTEM_EXPECTED["patient"],

@@ -58,7 +58,7 @@ def main() -> int:
     }
     expected_counts = {
         "TCGA": {"LUAD": 516, "LUSC": 501},
-        "GSE81089": {"LUAD": 106, "LUSC": 67},
+        "GSE81089": {"LUAD": 108, "LUSC": 67},
         "PDMR_PDX": {"LUAD": 22, "LUSC": 34},
         "DepMap_22Q2": {"LUAD": 76, "LUSC": 27},
     }

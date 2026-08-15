@@ -46,7 +46,9 @@ prepare_target() {
   local pos="$INPUT/targets/${system}.${slug}.homer.pos"
   if [[ "$peak" == *.gz ]]; then gzip -dc "$peak"; else cat "$peak"; fi \
     | awk -v prefix="${system}_${slug}_" 'BEGIN{OFS="\t"} $1 ~ /^chr([0-9]+|X)$/ {print prefix NR,$1,$2,$3,"+"}' > "$pos"
-  [[ -s "$pos" ]] || { echo "Empty HOMER target for $system/$sample" >&2; return 1; }
+  if [[ ! -s "$pos" ]]; then
+    echo "EMPTY_HOMER_TARGET_NO_CANONICAL_PEAKS $system/$sample"
+  fi
 }
 
 run_sample() {
@@ -56,10 +58,18 @@ run_sample() {
   local motif_sha
   motif_sha=$(sha256sum "$motif_file" | cut -d' ' -f1)
   mkdir -p "$out"
-  if [[ -s "$out/knownResults.txt" && -s "$out/.complete" ]] \
+  if [[ -s "$out/.complete" && ( -s "$out/knownResults.txt" || -s "$out/.empty_target" ) ]] \
     && grep -qx "motif_sha256=$motif_sha" "$out/.complete" \
     && grep -qx "background_sha256=$BACKGROUND_SHA" "$out/.complete"; then
     echo "SKIP_HOMER_COMPLETE $database $system $sample"
+    return 0
+  fi
+  if [[ ! -s "$pos" ]]; then
+    printf 'system=%s\nsample_id=%s\nstatus=NO_CANONICAL_ACCESSIBLE_PEAKS_AT_MACS2_Q0.01\n' \
+      "$system" "$sample" > "$out/.empty_target"
+    printf 'completed_utc=%s\ndatabase=%s\nmotif_sha256=%s\nbackground_sha256=%s\nstatus=NO_TARGET_PEAKS\n' \
+      "$(date -u +%FT%TZ)" "$database" "$motif_sha" "$BACKGROUND_SHA" > "$out/.complete"
+    echo "HOMER_NOT_TESTABLE_ZERO_TARGETS $database $system $sample"
     return 0
   fi
   findMotifsGenome.pl "$pos" "$REF/hg38.fa" "$out" \

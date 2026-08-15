@@ -170,19 +170,42 @@ def main() -> None:
         target_path = root / f"data/processed/motif_inputs/targets/{system}.{slug}.homer.pos"
         if not target_path.is_file():
             raise RuntimeError(f"Missing HOMER output for {system}/{sample['sample_id']}")
+        target_total = line_count(target_path)
         parsed: list[dict[str, object]] = []
         known_paths: list[Path] = []
+        if target_total == 0:
+            for database in ("JASPAR2024", "CIS-BP2.00"):
+                out_dir = root / f"results/motif_gate/homer_per_sample/{database}/{system}/{slug}"
+                if not (out_dir / ".complete").is_file() or not (out_dir / ".empty_target").is_file():
+                    raise RuntimeError(f"Missing zero-target receipt for {database}/{system}/{sample['sample_id']}")
+            for tf in inventory:
+                best_rows.append(
+                    {
+                        "system": system,
+                        "sample_id": sample["sample_id"],
+                        "sample_slug": slug,
+                        "TF": tf,
+                        "database": inventory[tf]["primary_source"],
+                        "motif_id": "NOT_TESTABLE_ZERO_CANONICAL_ACCESSIBLE_PEAKS",
+                        "q_value": 1.0,
+                        "log2_odds_ratio": 0.0,
+                        "motif_enriched_q1e-5": "FALSE",
+                        "motif_test_status": "NOT_TESTABLE_ZERO_CANONICAL_ACCESSIBLE_PEAKS",
+                    }
+                )
+            continue
         for database in ("JASPAR2024", "CIS-BP2.00"):
             known_path = root / f"results/motif_gate/homer_per_sample/{database}/{system}/{slug}/knownResults.txt"
             known_paths.append(known_path)
             if not known_path.is_file():
                 raise RuntimeError(f"Missing independent {database} HOMER output for {system}/{sample['sample_id']}")
-            parsed.extend(parse_known_results(known_path, line_count(target_path), background_total, motif_mapping))
+            parsed.extend(parse_known_results(known_path, target_total, background_total, motif_mapping))
         if not parsed:
             raise RuntimeError(f"No selected HC-TF motifs parsed from {known_paths}")
         for row in parsed:
             row.update({"system": system, "sample_id": sample["sample_id"], "sample_slug": slug})
             row["motif_enriched_q1e-5"] = str(float(row["q_value"]) < Q_THRESHOLD).upper()
+            row["motif_test_status"] = "TESTED"
         all_motif_rows.extend(parsed)
         by_tf: dict[str, list[dict[str, object]]] = defaultdict(list)
         for row in parsed:
@@ -201,6 +224,7 @@ def main() -> None:
                         "q_value": 1.0,
                         "log2_odds_ratio": 0.0,
                         "motif_enriched_q1e-5": "FALSE",
+                        "motif_test_status": "TESTED_MOTIF_NOT_RETURNED",
                     }
                 )
                 continue
@@ -214,7 +238,7 @@ def main() -> None:
             selection_pool = enriched_candidates if enriched_candidates else candidates
             selected = sorted(selection_pool, key=lambda row: (float(row["q_value"]), -float(row["log2_odds_ratio"]), str(row["motif_id"])))[0]
             best_rows.append({key: selected[key] for key in (
-                "system", "sample_id", "sample_slug", "TF", "database", "motif_id", "q_value", "log2_odds_ratio", "motif_enriched_q1e-5"
+                "system", "sample_id", "sample_slug", "TF", "database", "motif_id", "q_value", "log2_odds_ratio", "motif_enriched_q1e-5", "motif_test_status"
             )})
 
     out = root / "results/motif_gate"
@@ -227,17 +251,19 @@ def main() -> None:
         for tf in sorted(inventory):
             rows = [row for row in best_rows if row["system"] == system and row["TF"] == tf]
             enriched = sum(row["motif_enriched_q1e-5"] == "TRUE" for row in rows)
-            lors = [float(row["log2_odds_ratio"]) for row in rows]
+            tested_rows = [row for row in rows if str(row["motif_test_status"]).startswith("TESTED")]
+            lors = [float(row["log2_odds_ratio"]) for row in tested_rows]
             system_rows.append(
                 {
                     "system": system,
                     "TF": tf,
                     "database": inventory[tf]["primary_source"],
                     "n_samples": len(sample_ids),
+                    "n_motif_testable_samples": len(tested_rows),
                     "half_sample_threshold": threshold,
                     "n_motif_enriched": enriched,
                     "fraction_motif_enriched": enriched / len(sample_ids),
-                    "mean_log2_odds_ratio": statistics.mean(lors),
+                    "mean_log2_odds_ratio": statistics.mean(lors) if lors else math.nan,
                     "sd_log2_odds_ratio": statistics.stdev(lors) if len(lors) > 1 else 0.0,
                     "system_motif_enriched": str(enriched >= threshold).upper(),
                 }

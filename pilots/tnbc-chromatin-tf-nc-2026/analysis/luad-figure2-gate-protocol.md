@@ -49,6 +49,8 @@ TNBC 原文由 150 → 128（患者启动子）→ 103（三端启动子）→ 9
 - Nextera adapter 由 cutadapt 去除；PDX 先去除 mouse reads，再比对 hg38；
 - 去除 duplicate、chrM、chrY、未比对、secondary/supplementary、MAPQ<30
   和 ENCODE blacklist reads；
+- 启动子与 motif 主分析限定常染色体和 chrX；alt/random/unplaced contig 峰保留在
+  原始 QC 中，但不伪装成 canonical promoter/motif 支持；
 - 细胞系单端 reads 做 Tn5 `+4/-5 bp` 校正，MACS2 参数为
   `--keep-dup all -B --shift -75 --extsize 150 --nomodel --SPMR -q 0.01`；
 - PDX 保留真实 paired-end fragment，MACS2 使用 `-f BAMPE ... -q 0.01`；
@@ -67,7 +69,10 @@ TCGA 原始/比对文件受控。主分析使用 GDC 开放固定峰计数：同
 
 ## 5. 启动子和 HC-TF
 
-- GENCODE hg38 v47 basic protein-coding transcripts；
+- 候选调控因子的启动子按 GENCODE hg38 v47 basic 中 exact-symbol transcript
+  定位；全基因组峰注释背景仍使用 protein-coding transcript；
+- PAN-GO 冻结输入中的非蛋白编码候选显式写入映射 receipt，不在启动子层暗中
+  删除；其已知 DNA-binding motif 可检验性在 motif 目录层单独判定；
 - 主定义按 Methods：TSS 上游 2.5 kb、下游 1 kb；
 - 图例 `-1 kb/+100 bp` 作为必须报告的敏感性定义；
 - 同一 TF 任一转录本启动子与样本峰相交即记为开放；

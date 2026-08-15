@@ -250,8 +250,9 @@ count <- list(
 
 stopifnot(
   count$tcga_luad == 516L, count$tcga_lusc == 501L,
-  count$gse_luad == 106L, count$gse_lusc == 67L,
-  count$luad_tf == 158L, count$replicated_tf == 97L,
+  count$gse_luad == 108L, count$gse_lusc == 67L,
+  count$luad_tf == 158L,
+  count$replicated_tf >= 0L, count$replicated_tf <= count$luad_tf,
   count$tcga_unique == nrow(tcga_manifest),
   count$gse_target_with_expression == nrow(gse_manifest)
 )

@@ -19,6 +19,7 @@ from pathlib import Path
 
 
 EXPECTED = {"PDX": 13, "cell_line": 19}
+CANONICAL_CHROMS = {f"chr{index}" for index in range(1, 23)} | {"chrX"}
 
 
 def read_tsv(path: Path) -> list[dict[str, str]]:
@@ -40,6 +41,16 @@ def write_tsv(path: Path, rows: list[dict[str, object]], columns: list[str]) -> 
         writer = csv.DictWriter(handle, fieldnames=columns, delimiter="\t", extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
+
+def count_canonical_peaks(path: Path) -> int:
+    if not path.is_file() or path.stat().st_size == 0:
+        return 0
+    count = 0
+    with path.open(encoding="utf-8", errors="replace") as handle:
+        for line in handle:
+            if line and not line.startswith("#") and line.split("\t", 1)[0] in CANONICAL_CHROMS:
+                count += 1
+    return count
 
 
 def main() -> None:
@@ -74,7 +85,26 @@ def main() -> None:
         else:
             parse_error = "missing_qc"
 
-        artifacts_ok = all(path.is_file() and path.stat().st_size > 0 for path in (bam_path, peak_path, complete_path))
+        # MACS2 may validly return an empty narrowPeak at the frozen q=0.01.
+        # The BAM and completion marker must be non-empty; the peak artifact
+        # must exist, but zero peaks are retained as a biological observation.
+        artifacts_ok = (
+            bam_path.is_file()
+            and bam_path.stat().st_size > 0
+            and peak_path.is_file()
+            and complete_path.is_file()
+            and complete_path.stat().st_size > 0
+        )
+        canonical_peak_count = count_canonical_peaks(peak_path)
+        reported_peak_count = qc_record.get("peak_count", "")
+        try:
+            total_peak_count = int(reported_peak_count)
+        except (TypeError, ValueError):
+            total_peak_count = -1
+        peak_call_status = qc_record.get("peak_call_status", "")
+        if artifacts_ok and total_peak_count > 0 and canonical_peak_count == 0:
+            peak_call_status = "NO_CANONICAL_SIGNIFICANT_PEAKS_AT_Q0.01"
+
         manifest_match = bool(qc_record) and all(
             qc_record.get(key, "") == row[manifest_key]
             for key, manifest_key in (
@@ -92,7 +122,7 @@ def main() -> None:
             if parse_error:
                 exclusion_reason = parse_error
             elif not artifacts_ok:
-                exclusion_reason = "missing_or_empty_final_artifact"
+                exclusion_reason = "missing_final_artifact"
             elif not manifest_match:
                 exclusion_reason = "qc_manifest_mismatch"
 
@@ -103,8 +133,10 @@ def main() -> None:
                 **row,
                 "filtered_human_reads": qc_record.get("filtered_human_reads", ""),
                 "filtered_human_units": qc_record.get("filtered_human_units", ""),
-                "peak_count": qc_record.get("peak_count", ""),
+                "peak_count": reported_peak_count,
+                "canonical_peak_count": canonical_peak_count,
                 "frip": qc_record.get("frip", ""),
+                "peak_call_status": peak_call_status,
                 "worker_diagnostic_qc_status": diagnostic_qc,
                 "processing_status": "COMPLETED" if analysis_included else "INCOMPLETE",
                 "final_artifacts_ok": str(artifacts_ok).upper(),
@@ -143,6 +175,15 @@ def main() -> None:
             "processed_with_complete_artifacts": len(included_rows),
             "analysis_included": len(included_rows),
             "diagnostic_reference_failures": len(diagnostic_failures),
+            "zero_peak_samples_at_MACS2_q0.01": sum(
+                row["peak_call_status"] == "NO_SIGNIFICANT_PEAKS_AT_Q0.01" for row in included_rows
+            ),
+            "zero_canonical_peak_samples_at_MACS2_q0.01": sum(
+                int(row["canonical_peak_count"]) == 0 for row in included_rows
+            ),
+            "zero_canonical_peak_sample_ids": [
+                row["sample_id"] for row in included_rows if int(row["canonical_peak_count"]) == 0
+            ],
             "evaluation_status": evaluation_status,
         }
         if len(system_rows) != EXPECTED[system]:
@@ -165,6 +206,8 @@ def main() -> None:
             "used_to_exclude_samples": False,
         },
         "cohort_failure_fraction_rule_removed": True,
+        "zero_canonical_peak_handling": "retain as all-closed and no-motif-support; count in frozen cohort denominator",
+        "canonical_peak_definition": "chr1-22 and chrX; alt/random/unplaced peaks remain in total peak QC only",
         "patient_open_matrix_gate_is_evaluated_separately": True,
     }
     receipt_path = audit_dir / "figure2_raw_atac_qc_receipt.json"

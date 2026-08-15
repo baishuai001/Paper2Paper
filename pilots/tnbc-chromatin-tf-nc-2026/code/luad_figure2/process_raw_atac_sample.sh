@@ -26,6 +26,8 @@ QC="$RUN_ROOT/audit/raw_atac_qc/$SYSTEM"
 CUTADAPT="$RUN_ROOT/tools/cutadapt-venv/bin/cutadapt"
 MACS2="$RUN_ROOT/tools/macs2-venv/bin/macs2"
 BLACKLIST="$REF/hg38-blacklist.v2.bed"
+FINAL_BAM="$OUT/${SLUG}.filtered.bam"
+PEAKS="$OUT/peaks/${SLUG}_peaks.narrowPeak"
 mkdir -p "$RAW" "$OUT" "$TMP" "$LOG" "$QC"
 
 for required in "$CUTADAPT" "$MACS2" "$BLACKLIST"; do
@@ -43,6 +45,54 @@ fi
 COMPLETE="$OUT/.complete"
 if [[ -s "$COMPLETE" ]]; then
   echo "SKIP_COMPLETE $SYSTEM $SAMPLE_ID $RUN"
+  exit 0
+fi
+
+finalize_from_artifacts() {
+  [[ -s "$FINAL_BAM" ]] || { echo "Missing final BAM for $SAMPLE_ID" >&2; return 1; }
+  [[ -s "$FINAL_BAM.bai" ]] || { echo "Missing final BAM index for $SAMPLE_ID" >&2; return 1; }
+  # A zero-byte narrowPeak is a valid q=0.01 result: MACS2 completed but found
+  # no significant accessible regions. It is not a missing artifact and must
+  # remain in the frozen cohort as an all-closed/no-motif-support observation.
+  [[ -e "$PEAKS" ]] || { echo "MACS2 narrowPeak artifact missing for $SAMPLE_ID" >&2; return 1; }
+
+  FILTERED_READS=$(samtools view -c "$FINAL_BAM")
+  if [[ "$LAYOUT" == "PAIRED" ]]; then
+    FILTERED_UNITS=$((FILTERED_READS / 2))
+  else
+    FILTERED_UNITS=$FILTERED_READS
+  fi
+  PEAK_COUNT=$(wc -l < "$PEAKS")
+  PEAK_CALL_STATUS=SIGNIFICANT_PEAKS_AT_Q0.01
+  if (( PEAK_COUNT > 0 )); then
+    IN_PEAK_READS=$(bedtools intersect -u -abam "$FINAL_BAM" -b "$PEAKS" | samtools view -c -)
+  else
+    IN_PEAK_READS=0
+    PEAK_CALL_STATUS=NO_SIGNIFICANT_PEAKS_AT_Q0.01
+  fi
+  FRIP=$(awk -v a="$IN_PEAK_READS" -v b="$FILTERED_READS" 'BEGIN{if(b>0) printf "%.8f",a/b; else print "NA"}')
+  DIAGNOSTIC_QC_STATUS=WITHIN_DIAGNOSTIC_REFERENCE
+  if (( FILTERED_UNITS < 1000000 || PEAK_COUNT < 10000 )); then
+    DIAGNOSTIC_QC_STATUS=BELOW_DIAGNOSTIC_REFERENCE
+  fi
+
+  printf 'system\tsample_id\tsample_slug\trun\tlibrary_layout\tfiltered_human_reads\tfiltered_human_units\tpeak_count\tfrip\tpeak_call_status\tdiagnostic_qc_status\n' \
+    > "$QC/${SLUG}.tsv"
+  printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
+    "$SYSTEM" "$SAMPLE_ID" "$SLUG" "$RUN" "$LAYOUT" "$FILTERED_READS" "$FILTERED_UNITS" "$PEAK_COUNT" "$FRIP" "$PEAK_CALL_STATUS" "$DIAGNOSTIC_QC_STATUS" \
+    >> "$QC/${SLUG}.tsv"
+
+  printf 'completed_utc=%s\npeak_call_status=%s\ndiagnostic_qc_status=%s\nanalysis_included_if_artifacts_complete=TRUE\n' \
+    "$(date -u +%FT%TZ)" "$PEAK_CALL_STATUS" "$DIAGNOSTIC_QC_STATUS" > "$COMPLETE"
+  echo "COMPLETE system=$SYSTEM sample=$SAMPLE_ID units=$FILTERED_UNITS peaks=$PEAK_COUNT frip=$FRIP peak_call=$PEAK_CALL_STATUS diagnostic_qc=$DIAGNOSTIC_QC_STATUS"
+}
+
+# Recover cleanly from a worker that finished MACS2 and BAM generation but
+# exited before writing QC/.complete (including a valid zero-peak result).
+if [[ -s "$FINAL_BAM" && -s "$FINAL_BAM.bai" && -e "$PEAKS" ]]; then
+  exec > >(tee -a "$LOG/${SLUG}.log") 2>&1
+  echo "RECOVER_FINAL_ARTIFACTS system=$SYSTEM sample=$SAMPLE_ID run=$RUN"
+  finalize_from_artifacts
   exit 0
 fi
 
@@ -121,46 +171,24 @@ else
   bedtools intersect -v -abam "$TMP/qc_preblacklist.bam" -b "$BLACKLIST" \
     > "$TMP/blacklist_filtered.bam"
 fi
-samtools sort -@ 4 -o "$OUT/${SLUG}.filtered.bam" "$TMP/blacklist_filtered.bam"
-samtools index "$OUT/${SLUG}.filtered.bam"
+samtools sort -@ 4 -o "$FINAL_BAM" "$TMP/blacklist_filtered.bam"
+samtools index "$FINAL_BAM"
 
 mkdir -p "$OUT/peaks"
 if [[ "$LAYOUT" == "PAIRED" ]]; then
-  "$MACS2" callpeak -t "$OUT/${SLUG}.filtered.bam" -f BAMPE -g hs \
+  "$MACS2" callpeak -t "$FINAL_BAM" -f BAMPE -g hs \
     --keep-dup all -B --nomodel --SPMR -q 0.01 \
     -n "$SLUG" --outdir "$OUT/peaks" > "$LOG/${SLUG}.macs2.log" 2>&1
-  FILTERED_READS=$(samtools view -c "$OUT/${SLUG}.filtered.bam")
-  FILTERED_UNITS=$((FILTERED_READS / 2))
 else
-  bedtools bamtobed -i "$OUT/${SLUG}.filtered.bam" \
+  bedtools bamtobed -i "$FINAL_BAM" \
     | awk 'BEGIN{OFS="\t"} {if($6=="+"){$2+=4;$3+=4}else{$2-=5;$3-=5;if($2<0){$2=0}} print}' \
     > "$OUT/${SLUG}.tn5_shifted.bed"
   "$MACS2" callpeak -t "$OUT/${SLUG}.tn5_shifted.bed" -f BED -g hs \
     --keep-dup all -B --shift -75 --extsize 150 --nomodel --SPMR -q 0.01 \
     -n "$SLUG" --outdir "$OUT/peaks" > "$LOG/${SLUG}.macs2.log" 2>&1
-  FILTERED_READS=$(samtools view -c "$OUT/${SLUG}.filtered.bam")
-  FILTERED_UNITS=$FILTERED_READS
 fi
 
-PEAKS="$OUT/peaks/${SLUG}_peaks.narrowPeak"
-[[ -s "$PEAKS" ]] || { echo "MACS2 produced no narrowPeak for $SAMPLE_ID" >&2; exit 1; }
-PEAK_COUNT=$(wc -l < "$PEAKS")
-IN_PEAK_READS=$(bedtools intersect -u -abam "$OUT/${SLUG}.filtered.bam" -b "$PEAKS" | samtools view -c -)
-FRIP=$(awk -v a="$IN_PEAK_READS" -v b="$FILTERED_READS" 'BEGIN{if(b>0) printf "%.8f",a/b; else print "NA"}')
-DIAGNOSTIC_QC_STATUS=WITHIN_DIAGNOSTIC_REFERENCE
-if (( FILTERED_UNITS < 1000000 || PEAK_COUNT < 10000 )); then
-  DIAGNOSTIC_QC_STATUS=BELOW_DIAGNOSTIC_REFERENCE
-fi
-
-printf 'system\tsample_id\tsample_slug\trun\tlibrary_layout\tfiltered_human_reads\tfiltered_human_units\tpeak_count\tfrip\tdiagnostic_qc_status\n' \
-  > "$QC/${SLUG}.tsv"
-printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
-  "$SYSTEM" "$SAMPLE_ID" "$SLUG" "$RUN" "$LAYOUT" "$FILTERED_READS" "$FILTERED_UNITS" "$PEAK_COUNT" "$FRIP" "$DIAGNOSTIC_QC_STATUS" \
-  >> "$QC/${SLUG}.tsv"
-
-printf 'completed_utc=%s\ndiagnostic_qc_status=%s\nanalysis_included_if_artifacts_complete=TRUE\n' \
-  "$(date -u +%FT%TZ)" "$DIAGNOSTIC_QC_STATUS" > "$COMPLETE"
-echo "COMPLETE system=$SYSTEM sample=$SAMPLE_ID units=$FILTERED_UNITS peaks=$PEAK_COUNT frip=$FRIP diagnostic_qc=$DIAGNOSTIC_QC_STATUS"
+finalize_from_artifacts
 
 # Raw .sra, final filtered BAM, shifted BED, peaks and all logs are retained.
 # Only mechanically regenerable per-sample scratch files are removed.

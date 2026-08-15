@@ -62,3 +62,17 @@ Figure 2、Supplementary Figure 3 与 Supplementary Figure 4A–C 必须共享�
 细胞系端出现第 4 个硬 QC 失败后，4/19 已不可逆超过 20% 上限，因此全局数据闸门至少为 `FAIL_DATA`。从这一时点起不再启动新的 PDX 计算任务；已下载的 13 个 PDX 原始数据、manifest 和已启动的 PDX 流程验证均保留。
 
 聚合器新增显式早停模式：锁定失败的系统必须全部完成且独立满足失败条件；另一系统未启动的样本记录为 `NOT_RUN_AFTER_LOCKED_DATA_GATE`，已经启动但按停止规则终止的样本记录为 `ABORTED_AFTER_LOCKED_DATA_GATE`，两者均不计入实际 QC 失败率。自动报告必须分别展示“已完成/通过/实际失败”“早停后中止”和“早停后未启动”，不得用缺失输出夸大 PDX 数据质量问题。该改动只影响失败审计的诚实表达，不允许绕过数据闸门进入 promoter、motif 或 Figure 3。
+
+## 11. 候选调控因子启动子定位不得擅自增加 protein-coding 过滤
+
+第一次原文式启动子计算在产生 HC-TF 结果前，因 `MEIS3P1`、`MEIS3P2`、
+`NANOGP1` 无法映射到“protein-coding transcript”而停止。核查确认三者并非
+拼写错误：它们均来自冻结的 PAN-GO 调控因子输入，GENCODE v47 也存在
+exact-symbol transcript，只是基因类型分别为 processed 或 transcribed
+pseudogene。TNBC 锚点的启动子规则是候选基因座/TSS 开放规则，并未声明
+“仅蛋白编码候选”这一额外过滤。
+
+修订后仍保留全部 158 个 Figure 1 候选：候选启动子按 exact-symbol GENCODE
+transcript 定位，三项非蛋白编码候选及类型写入独立 receipt；全基因组峰注释
+背景仍限制为 protein-coding transcript。该修订不改变样本、启动子窗口、半数
+样本、NES 或 motif 阈值，也没有查看任何 HC-TF 或 motif 正式结果。

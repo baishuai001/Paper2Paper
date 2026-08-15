@@ -164,7 +164,7 @@ cohort_counts <- list(
 )
 stopifnot(
   cohort_counts$tcga_luad == 516L, cohort_counts$tcga_lusc == 501L,
-  cohort_counts$gse_luad == 106L, cohort_counts$gse_lusc == 67L,
+  cohort_counts$gse_luad == 108L, cohort_counts$gse_lusc == 67L,
   cohort_counts$luad_tf == 158L, cohort_counts$lusc_tf == 193L
 )
 
@@ -396,6 +396,9 @@ parse_gse_soft_audit <- function(path) {
 
 gse_soft <- parse_gse_soft_audit(file.path(raw, "gse81089", "GSE81089_family.soft.gz"))
 gse_expression_samples <- matrix_samples(file.path(raw, "gse81089", "GSE81089_readcounts_featurecounts.tsv.gz"))
+gse_expression_samples[gse_expression_samples == "L608T_2122"] <- "L608T"
+gse_expression_samples[gse_expression_samples == "L771T_1"] <- "L771T"
+stopifnot(!anyDuplicated(gse_expression_samples))
 gse_soft[, tumor := grepl("T(_|$)", sample_id)]
 gse_soft[, target_histology := tumor & histology_code %in% c("1", "2")]
 gse_target <- gse_soft[target_histology == TRUE, sample_id]
@@ -422,7 +425,7 @@ stopifnot(
   flow_counts$gse_all == 218L, flow_counts$gse_tumor == 199L,
   flow_counts$gse_normal == 19L, flow_counts$gse_target_histology == 175L,
   flow_counts$gse_non_target_histology == 24L,
-  flow_counts$gse_target_with_expression == 173L, flow_counts$gse_unmatched == 2L
+  flow_counts$gse_target_with_expression == 175L, flow_counts$gse_unmatched == 0L
 )
 
 render_supplementary_1a <- function(path) {

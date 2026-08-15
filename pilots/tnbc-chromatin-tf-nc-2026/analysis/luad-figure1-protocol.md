@@ -24,7 +24,7 @@
 - signature 使用 `viper::rowTtest` 和双侧 p 值的正态分位数转换；null 使用 `ttestNull(per=1000, repos=TRUE, seed=1)`。由于本次 TCGA 比较有 1,017 位患者，作者隐式单核调用的实测预计耗时超过 12 小时；在尚未产生任何 msVIPER/TF 结果时，冻结为使用该函数官方 `cores=32` 参数分发相互独立的置换，并以 `L'Ecuyer-CMRG` 固定并行随机流。这是性能适配，不改变 1,000 次、有放回置换或后续检验定义。
 - `msviper` 与逐样本 `viper` 均使用 `minsize=1`。
 - 作者脚本在已正确读取表头后又执行 `[-1, ]`，实际额外删除第一条网络边；本实现将这个可执行代码行为原样保留，并在 receipt 中单列删除前后边数。
-- TCGA ARACNe3 输入为原始 TPM；计数只用于 limma-voom 表达效应。独立患者验证 GSE81089 使用 `log2(FPKM+1)`，对应锚点中 METABRIC 的 log2 标准化队列。PDMR 使用官方 RSEM TPM，DepMap 将固定 22Q2 的 `log2(TPM+1)` 还原成 TPM。
+- TCGA ARACNe3 输入为原始 TPM；计数只用于 limma-voom 表达效应。独立患者验证 GSE81089 使用 `log2(FPKM+1)`，但它仍是 RNA-seq 同平台验证；与 METABRIC 同为 log2 数值尺度不构成 microarray 跨平台等价。跨平台验证须另行加入 GSE41271 等经审计的微阵列队列。PDMR 使用官方 RSEM TPM，DepMap 将固定 22Q2 的 `log2(TPM+1)` 还原成 TPM。
 - Figure 1 的主筛选保持作者代码的逻辑结构；独立患者验证要求 msVIPER raw p<=0.05、表达 BH FDR<=0.05 且方向一致。
 - 不允许用 CollecTRI、ULM 或其他算法代替未通过的 ARACNe3/VIPER 结果。
 
