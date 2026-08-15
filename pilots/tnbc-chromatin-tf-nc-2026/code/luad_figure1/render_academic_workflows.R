@@ -351,6 +351,129 @@ render_figure1a <- function(path) {
             fontsize = 8.2, fontface = "plain", lwd = 0.9)
   dev.off()
 }
+render_figure1a_stacked <- function(path) {
+  # Original stacked composition. Evidence semantics are identical to Figure1A:
+  # TCGA defines the discovery set; single-sample analyses project it; GSE81089
+  # independently recapitulates it without reducing the Figure 2 input set.
+  open_device(path, 8.7, 7.2)
+  grid.newpage()
+  grid.text("A", unit(0.018, "npc"), unit(0.982, "npc"), just = c("left", "top"),
+            gp = gpar(fontsize = 17, fontface = "bold", col = COL$ink, fontfamily = "sans"))
+  grid.text("Transcriptional regulator discovery and cross-system validation",
+            unit(0.075, "npc"), unit(0.952, "npc"), just = "left",
+            gp = gpar(fontsize = 11.0, fontface = "bold", col = COL$ink,
+                      fontfamily = "sans"))
+  grid.text("LUAD versus LUSC", unit(0.075, "npc"), unit(0.920, "npc"), just = "left",
+            gp = gpar(fontsize = 7.1, col = COL$sub, fontfamily = "sans"))
+
+  lane <- function(x, y, width, height, fill, accent) {
+    grid.roundrect(unit(x, "npc"), unit(y, "npc"), unit(width, "npc"), unit(height, "npc"),
+                   r = unit(3.0, "mm"), gp = gpar(fill = fill, col = COL$border, lwd = 0.75))
+    grid.roundrect(unit(x - width / 2 + 0.012, "npc"), unit(y, "npc"),
+                   unit(0.010, "npc"), unit(height - 0.030, "npc"), r = unit(1.1, "mm"),
+                   gp = gpar(fill = accent, col = NA))
+  }
+  step_tag <- function(x, y, label, accent) {
+    grid.roundrect(unit(x, "npc"), unit(y, "npc"), unit(0.170, "npc"), unit(0.038, "npc"),
+                   r = unit(2.3, "mm"), gp = gpar(fill = accent, col = NA))
+    grid.text(label, unit(x, "npc"), unit(y, "npc"),
+              gp = gpar(fontsize = 6.7, fontface = "bold", col = "white",
+                        fontfamily = "sans"))
+  }
+  analysis_card <- function(x, y, title, body, accent, fill, height = 0.100) {
+    grid.roundrect(unit(x, "npc"), unit(y, "npc"), unit(0.215, "npc"), unit(height, "npc"),
+                   r = unit(2.2, "mm"), gp = gpar(fill = fill, col = accent, lwd = 0.75))
+    grid.text(title, unit(x, "npc"), unit(y + 0.020, "npc"),
+              gp = gpar(fontsize = 6.6, fontface = "bold", col = accent,
+                        fontfamily = "sans"))
+    grid.text(body, unit(x, "npc"), unit(y - 0.020, "npc"),
+              gp = gpar(fontsize = 6.4, col = COL$ink, lineheight = 1.03,
+                        fontfamily = "sans"))
+  }
+
+  # Upper lane: TCGA discovery and cross-system single-sample projection.
+  lane(0.515, 0.715, 0.900, 0.360, "#F6F9FB", COL$blue)
+  step_tag(0.160, 0.862, "01  DISCOVERY COHORT", COL$blue)
+  dataset_card(
+    0.180, 0.720, 0.180, 0.112,
+    "TCGA RNA-seq",
+    sprintf("%s tumors\n%s LUAD | %s LUSC", fmt_n(nrow(tcga_manifest)),
+            fmt_n(count$tcga_luad), fmt_n(count$tcga_lusc)),
+    COL$blue
+  )
+  arrow_line(0.275, 0.720, 0.320, 0.720, col = COL$line, lwd = 0.8)
+  network_mark(0.370, 0.720, 0.78, COL$blue)
+  grid.text("ARACNe3", unit(0.370, "npc"), unit(0.657, "npc"),
+            gp = gpar(fontsize = 7.2, fontface = "bold", col = COL$ink,
+                      fontfamily = "sans"))
+  grid.text("lung interactome", unit(0.370, "npc"), unit(0.633, "npc"),
+            gp = gpar(fontsize = 6.1, col = COL$sub, fontfamily = "sans"))
+  arrow_line(0.420, 0.720, 0.475, 0.720, col = COL$line, lwd = 0.8)
+  activity_mark(0.545, 0.724, 0.125, 0.024)
+  grid.text("VIPER / msVIPER", unit(0.545, "npc"), unit(0.772, "npc"),
+            gp = gpar(fontsize = 7.3, fontface = "bold", col = COL$ink,
+                      fontfamily = "sans"))
+  grid.text("TF activity", unit(0.545, "npc"), unit(0.682, "npc"),
+            gp = gpar(fontsize = 6.1, col = COL$sub, fontfamily = "sans"))
+  connector(c(0.610, 0.650, 0.650), c(0.720, 0.720, 0.775), col = COL$line)
+  connector(c(0.650, 0.650), c(0.720, 0.625), col = COL$line)
+  arrow_line(0.650, 0.775, 0.677, 0.775, col = COL$line, lwd = 0.75)
+  arrow_line(0.650, 0.625, 0.677, 0.625, col = COL$line, lwd = 0.75)
+  analysis_card(0.795, 0.775, "SINGLE-SAMPLE PROJECTION",
+                sprintf("%s tumors | %s PDXs | %s cell lines",
+                        fmt_n(nrow(tcga_manifest)), fmt_n(count$pdx), fmt_n(count$cell_line)),
+                "#657580", "white")
+  analysis_card(0.795, 0.625, "MULTI-SAMPLE CONTRAST",
+                sprintf("%s LUAD | %s LUSC TFs", fmt_n(count$luad_tf),
+                        fmt_n(sum(selected$discovery_category == "LUSC"))),
+                COL$blue_dark, COL$blue_light, height = 0.105)
+
+  # Lower lane: the independent cohort repeats network inference and TF analysis.
+  lane(0.515, 0.275, 0.900, 0.310, "#F5F9F8", COL$teal)
+  step_tag(0.185, 0.407, "02  INDEPENDENT REPLICATION", COL$teal)
+  dataset_card(
+    0.180, 0.275, 0.180, 0.108,
+    "GSE81089 RNA-seq",
+    sprintf("%s tumors\n%s LUAD | %s LUSC", fmt_n(nrow(gse_manifest)),
+            fmt_n(count$gse_luad), fmt_n(count$gse_lusc)),
+    COL$teal
+  )
+  arrow_line(0.275, 0.275, 0.320, 0.275, col = COL$line, lwd = 0.8)
+  network_mark(0.370, 0.275, 0.74, COL$teal)
+  grid.text("ARACNe3", unit(0.370, "npc"), unit(0.217, "npc"),
+            gp = gpar(fontsize = 7.2, fontface = "bold", col = COL$ink,
+                      fontfamily = "sans"))
+  grid.text("independent interactome", unit(0.370, "npc"), unit(0.193, "npc"),
+            gp = gpar(fontsize = 6.0, col = COL$sub, fontfamily = "sans"))
+  arrow_line(0.420, 0.275, 0.475, 0.275, col = COL$line, lwd = 0.8)
+  activity_mark(0.545, 0.279, 0.125, 0.024)
+  grid.text("VIPER / msVIPER", unit(0.545, "npc"), unit(0.327, "npc"),
+            gp = gpar(fontsize = 7.3, fontface = "bold", col = COL$ink,
+                      fontfamily = "sans"))
+  grid.text("TF activity", unit(0.545, "npc"), unit(0.237, "npc"),
+            gp = gpar(fontsize = 6.1, col = COL$sub, fontfamily = "sans"))
+  connector(c(0.610, 0.650, 0.650), c(0.275, 0.275, 0.340), col = COL$line)
+  connector(c(0.650, 0.650), c(0.275, 0.210), col = COL$line)
+  arrow_line(0.650, 0.340, 0.677, 0.340, col = COL$line, lwd = 0.75)
+  arrow_line(0.650, 0.210, 0.677, 0.210, col = COL$line, lwd = 0.75)
+  analysis_card(0.795, 0.340, "MULTI-SAMPLE REPLICATION",
+                sprintf("%s/%s LUAD TFs recapitulated", fmt_n(count$replicated_tf),
+                        fmt_n(count$luad_tf)),
+                "#315F5B", COL$teal_light, height = 0.100)
+  analysis_card(0.795, 0.210, "SINGLE-SAMPLE ANALYSIS",
+                sprintf("%s independent tumors", fmt_n(nrow(gse_manifest))),
+                "#657580", "white", height = 0.090)
+
+  # The central result is defined by discovery; solid and dashed arrows distinguish
+  # discovery output from independent support. Projection branches are not filters.
+  arrow_line(0.795, 0.570, 0.795, 0.523, col = COL$blue, lwd = 0.9)
+  arrow_line(0.795, 0.392, 0.795, 0.447, dashed = TRUE, col = COL$teal, lwd = 0.9)
+  round_box(0.795, 0.485, 0.255, 0.070,
+            sprintf("%s LUAD-specific TFs", fmt_n(count$luad_tf)),
+            fill = COL$blue_light, col = COL$blue, text_col = COL$blue_dark,
+            fontsize = 8.5, fontface = "plain", lwd = 0.9)
+  dev.off()
+}
 
 render_tcga_flow <- function(path) {
   open_device(path, 6.7, 6.6)
@@ -446,6 +569,8 @@ render_gse_flow <- function(path) {
 
 render_figure1a(file.path(figures, "Figure1A_workflow.pdf"))
 render_figure1a(file.path(figures, "Figure1A_workflow.png"))
+render_figure1a_stacked(file.path(figures, "Figure1A_workflow_stacked.pdf"))
+render_figure1a_stacked(file.path(figures, "Figure1A_workflow_stacked.png"))
 render_tcga_flow(file.path(figures, "SupplementaryFigure1A_TCGA_inclusion.pdf"))
 render_tcga_flow(file.path(figures, "SupplementaryFigure1A_TCGA_inclusion.png"))
 render_gse_flow(file.path(figures, "SupplementaryFigure1B_GSE81089_inclusion.pdf"))
@@ -453,12 +578,12 @@ render_gse_flow(file.path(figures, "SupplementaryFigure1B_GSE81089_inclusion.png
 
 fwrite(
   data.table(
-    artifact = c("Figure1A", "SupplementaryFigure1A", "SupplementaryFigure1B"),
-    style_version = "anchor-faithful-v3",
+    artifact = c("Figure1A", "Figure1A_stacked", "SupplementaryFigure1A", "SupplementaryFigure1B"),
+    style_version = c("anchor-faithful-v3", "stacked-original-v1", "academic-v2", "academic-v2"),
     numeric_source = "frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv"
   ),
   file.path(tables, "academic_workflow_render_receipt.tsv"),
   sep = "\t"
 )
 
-cat("Rendered anchor-faithful-v3 Figure 1A and unchanged Supplementary Figure 1A/B inputs.\n")
+cat("Rendered anchor-faithful-v3 and stacked-original-v1 Figure 1A layouts with unchanged numeric inputs.\n")

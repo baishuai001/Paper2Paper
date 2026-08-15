@@ -2,6 +2,7 @@
   "status": "passed",
   "outputs": [
     "Figure1A_workflow",
+    "Figure1A_workflow_stacked",
     "Figure1C_TCGA_TF_activity_annotated",
     "SupplementaryFigure1A_TCGA_inclusion",
     "SupplementaryFigure1B_GSE81089_inclusion"
@@ -20,13 +21,25 @@
     {
       "check": "output:Figure1A_workflow.pdf",
       "status": "passed",
-      "bytes": 35572,
-      "pdf_nonwhite_fraction": 0.13963688946015423
+      "bytes": 27656,
+      "pdf_nonwhite_fraction": 0.09347525536569978
     },
     {
       "check": "output:Figure1A_workflow.png",
       "status": "passed",
-      "bytes": 197849,
+      "bytes": 168346,
+      "pdf_nonwhite_fraction": null
+    },
+    {
+      "check": "output:Figure1A_workflow_stacked.pdf",
+      "status": "passed",
+      "bytes": 33797,
+      "pdf_nonwhite_fraction": 0.16008980226232622
+    },
+    {
+      "check": "output:Figure1A_workflow_stacked.png",
+      "status": "passed",
+      "bytes": 221722,
       "pdf_nonwhite_fraction": null
     },
     {

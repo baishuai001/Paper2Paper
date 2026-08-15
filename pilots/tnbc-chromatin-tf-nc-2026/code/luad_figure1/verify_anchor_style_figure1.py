@@ -52,6 +52,7 @@ audit.mkdir(parents=True, exist_ok=True)
 
 stems = [
     "Figure1A_workflow",
+    "Figure1A_workflow_stacked",
     "Figure1C_TCGA_TF_activity_annotated",
     "SupplementaryFigure1A_TCGA_inclusion",
     "SupplementaryFigure1B_GSE81089_inclusion",

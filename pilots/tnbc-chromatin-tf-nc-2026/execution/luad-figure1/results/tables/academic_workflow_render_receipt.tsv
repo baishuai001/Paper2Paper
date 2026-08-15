@@ -1,4 +1,5 @@
 artifact	style_version	numeric_source
 Figure1A	anchor-faithful-v3	frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv
-SupplementaryFigure1A	anchor-faithful-v3	frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv
-SupplementaryFigure1B	anchor-faithful-v3	frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv
+Figure1A_stacked	stacked-original-v1	frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv
+SupplementaryFigure1A	academic-v2	frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv
+SupplementaryFigure1B	academic-v2	frozen Figure1 manifests and Figure1_anchor_style_render_receipt.tsv
