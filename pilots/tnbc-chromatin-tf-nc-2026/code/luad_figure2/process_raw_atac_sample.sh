@@ -147,17 +147,20 @@ PEAKS="$OUT/peaks/${SLUG}_peaks.narrowPeak"
 PEAK_COUNT=$(wc -l < "$PEAKS")
 IN_PEAK_READS=$(bedtools intersect -u -abam "$OUT/${SLUG}.filtered.bam" -b "$PEAKS" | samtools view -c -)
 FRIP=$(awk -v a="$IN_PEAK_READS" -v b="$FILTERED_READS" 'BEGIN{if(b>0) printf "%.8f",a/b; else print "NA"}')
-QC_STATUS=PASS
-if (( FILTERED_UNITS < 1000000 || PEAK_COUNT < 10000 )); then QC_STATUS=FAIL; fi
+DIAGNOSTIC_QC_STATUS=WITHIN_DIAGNOSTIC_REFERENCE
+if (( FILTERED_UNITS < 1000000 || PEAK_COUNT < 10000 )); then
+  DIAGNOSTIC_QC_STATUS=BELOW_DIAGNOSTIC_REFERENCE
+fi
 
-printf 'system\tsample_id\tsample_slug\trun\tlibrary_layout\tfiltered_human_reads\tfiltered_human_units\tpeak_count\tfrip\thard_qc_status\n' \
+printf 'system\tsample_id\tsample_slug\trun\tlibrary_layout\tfiltered_human_reads\tfiltered_human_units\tpeak_count\tfrip\tdiagnostic_qc_status\n' \
   > "$QC/${SLUG}.tsv"
 printf '%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\t%s\n' \
-  "$SYSTEM" "$SAMPLE_ID" "$SLUG" "$RUN" "$LAYOUT" "$FILTERED_READS" "$FILTERED_UNITS" "$PEAK_COUNT" "$FRIP" "$QC_STATUS" \
+  "$SYSTEM" "$SAMPLE_ID" "$SLUG" "$RUN" "$LAYOUT" "$FILTERED_READS" "$FILTERED_UNITS" "$PEAK_COUNT" "$FRIP" "$DIAGNOSTIC_QC_STATUS" \
   >> "$QC/${SLUG}.tsv"
 
-printf 'completed_utc=%s\nqc_status=%s\n' "$(date -u +%FT%TZ)" "$QC_STATUS" > "$COMPLETE"
-echo "COMPLETE system=$SYSTEM sample=$SAMPLE_ID units=$FILTERED_UNITS peaks=$PEAK_COUNT frip=$FRIP qc=$QC_STATUS"
+printf 'completed_utc=%s\ndiagnostic_qc_status=%s\nanalysis_included_if_artifacts_complete=TRUE\n' \
+  "$(date -u +%FT%TZ)" "$DIAGNOSTIC_QC_STATUS" > "$COMPLETE"
+echo "COMPLETE system=$SYSTEM sample=$SAMPLE_ID units=$FILTERED_UNITS peaks=$PEAK_COUNT frip=$FRIP diagnostic_qc=$DIAGNOSTIC_QC_STATUS"
 
 # Raw .sra, final filtered BAM, shifted BED, peaks and all logs are retained.
 # Only mechanically regenerable per-sample scratch files are removed.

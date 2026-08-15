@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse one ataqv record per qualified raw ATAC sample into an audit table."""
+"""Parse one ataqv record per raw ATAC analysis sample into an audit table."""
 
 from __future__ import annotations
 
@@ -68,10 +68,10 @@ def main() -> None:
     parser.add_argument("run_root", type=Path)
     args = parser.parse_args()
     root = args.run_root.resolve()
-    manifest_path = root / "audit/raw_atac_qc/figure2_qualified_raw_atac_samples.tsv"
+    manifest_path = root / "audit/raw_atac_qc/figure2_analysis_raw_atac_samples.tsv"
     manifest = read_tsv(manifest_path)
     if not manifest:
-        raise RuntimeError("No qualified raw ATAC samples were available for ataqv parsing")
+        raise RuntimeError("No raw ATAC analysis samples were available for ataqv parsing")
     tn5_path = root / "audit/tn5_tss/figure2_tn5_tss_enrichment.tsv"
     tn5_rows = read_tsv(tn5_path)
     tn5_by_sample = {(row["system"], row["sample_id"]): row for row in tn5_rows}
@@ -170,11 +170,11 @@ def main() -> None:
     tss_reported = sum(row["tss_enrichment"] != "NA" for row in rows)
     receipt = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
-        "qualified_manifest": str(manifest_path),
-        "qualified_manifest_sha256": sha256(manifest_path),
+        "analysis_manifest": str(manifest_path),
+        "analysis_manifest_sha256": sha256(manifest_path),
         "metrics_table": str(table_path),
         "metrics_table_sha256": sha256(table_path),
-        "qualified_samples": len(manifest),
+        "analysis_samples": len(manifest),
         "parsed_samples": sum(row["parse_status"] == "PASS" for row in rows),
         "tss_enrichment_reported_samples": tss_reported,
         "layout_independent_tn5_tss_reported_samples": sum(

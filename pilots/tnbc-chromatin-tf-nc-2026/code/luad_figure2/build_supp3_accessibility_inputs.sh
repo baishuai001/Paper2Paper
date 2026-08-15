@@ -6,26 +6,20 @@ if [[ $# -ne 1 ]]; then
   exit 2
 fi
 RUN_ROOT=$(realpath "$1")
-RAW_QC="$RUN_ROOT/audit/raw_atac_qc/figure2_qualified_raw_atac_samples.tsv"
-PATIENT_MANIFEST="$RUN_ROOT/audit/tcga_luad_accessibility/tcga_luad_peak_file_manifest.tsv"
+MANIFEST="$RUN_ROOT/audit/manifests/figure2_atomic/figure2_atomic_sample_manifest.tsv"
 OUT="$RUN_ROOT/data/processed/supplementary_figure3"
 LOG="$RUN_ROOT/logs/supplementary_figure3"
 mkdir -p "$OUT" "$LOG"
-[[ -s "$RAW_QC" && -s "$PATIENT_MANIFEST" ]] || { echo "Missing frozen sample/QC input" >&2; exit 2; }
+[[ -s "$MANIFEST" ]] || { echo "Missing Figure 2 sample manifest" >&2; exit 2; }
 
 build_system() {
   local system=$1
   local manifest="$OUT/${system}_sample_files.tsv"
-  if [[ "$system" == "patient" ]]; then
-    awk -F '\t' 'BEGIN{OFS="\t"; print "sample_id","sample_slug","peak_path","bam_path"}
-      NR>1 && $3=="cpm1_both_reps" {print $2,$2,$5,"NA"}' "$PATIENT_MANIFEST" > "$manifest"
-  else
-    awk -F '\t' -v target="$system" 'BEGIN{OFS="\t"; print "sample_id","sample_slug","peak_path","bam_path"}
-      NR>1 && $1==target && $17=="TRUE" {print $2,$3,$20,$19}' "$RAW_QC" > "$manifest"
-  fi
+  awk -F '\t' -v target="$system" 'BEGIN{OFS="\t"; print "sample_id","sample_slug","peak_path","bam_path"}
+    NR>1 && $1==target {print $2,$3,$4,$5}' "$MANIFEST" > "$manifest"
   local n
   n=$(( $(wc -l < "$manifest") - 1 ))
-  if (( n < 1 )); then echo "No qualified samples for $system" >&2; exit 1; fi
+  if (( n < 1 )); then echo "No analysis samples for $system" >&2; exit 1; fi
 
   local combined="$OUT/${system}_all_sample_peaks.bed"
   : > "$combined"

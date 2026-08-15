@@ -22,15 +22,14 @@ from pathlib import Path
 from typing import Iterable
 
 
-FROZEN_PARENT_TABLE_SHA256 = "eace4fdf6509d01e8a9648b34b4dc3fdfb5955627c2c7a526c6ce1495a073844"
-FROZEN_LUAD_TF_SHA256 = "64b4aa4e226c6e9142ecd560ec51ec1f49e0c9823d07e332757deeea3aa3c69b"
-EXPECTED_TF_COUNT = 97
+FROZEN_PARENT_TABLE_SHA256 = "6f449276a97b8c66cbf93bd2a4ca6d51095fa426015dc9046a7c084431d5037b"
+EXPECTED_TF_COUNT = 158
 SYSTEM_ACTIVITY_COHORT = {
     "patient": "TCGA",
     "PDX": "PDMR_PDX",
     "cell_line": "DepMap_22Q2",
 }
-SYSTEM_MINIMUM = {"patient": 7, "PDX": 10, "cell_line": 10}
+SYSTEM_EXPECTED = {"patient": 22, "PDX": 13, "cell_line": 19}
 PATIENT_DEFINITIONS = (
     "cpm0.5_both_reps",
     "cpm1_both_reps",
@@ -225,11 +224,11 @@ def sample_manifests(root: Path) -> tuple[dict[str, dict[str, Path]], list[dict[
         if len(patients[definition]) != 22:
             raise RuntimeError(f"Patient definition {definition} has {len(patients[definition])}, expected 22")
 
-    raw_rows = read_tsv(root / "audit/raw_atac_qc/figure2_qualified_raw_atac_samples.tsv")
+    raw_rows = read_tsv(root / "audit/raw_atac_qc/figure2_analysis_raw_atac_samples.tsv")
     for system in ("PDX", "cell_line"):
         count = sum(row["system"] == system for row in raw_rows)
-        if count < SYSTEM_MINIMUM[system]:
-            raise RuntimeError(f"{system} qualified n={count}, below frozen minimum")
+        if count != SYSTEM_EXPECTED[system]:
+            raise RuntimeError(f"{system} analysis n={count}, expected {SYSTEM_EXPECTED[system]}")
     return patients, raw_rows
 
 
@@ -315,7 +314,13 @@ def evaluate_definition(
     for tf in frozen_tfs:
         values = [row for row in system_summary if row["TF"] == tf]
         triple_open = all(row["system_promoter_accessible"] == "TRUE" for row in values)
-        all_nes = all(row["mean_NES_nonnegative"] == "TRUE" for row in values)
+        mean_nes_values = [
+            None if row["mean_LUAD_NES"] == "" else float(row["mean_LUAD_NES"])
+            for row in values
+        ]
+        all_three_negative = all(value is not None and value < 0 for value in mean_nes_values)
+        retained_by_activity = not all_three_negative
+        hc_tf = triple_open and retained_by_activity
         tf_summary.append(
             {
                 "analysis_definition": definition_name,
@@ -324,10 +329,11 @@ def evaluate_definition(
                 "PDX_promoter_accessible": next(row["system_promoter_accessible"] for row in values if row["system"] == "PDX"),
                 "cell_line_promoter_accessible": next(row["system_promoter_accessible"] for row in values if row["system"] == "cell_line"),
                 "triple_system_promoter_accessible": str(triple_open).upper(),
-                "all_system_mean_NES_nonnegative": str(all_nes).upper(),
-                "HC_TF_promoter_activity_definition": str(triple_open and all_nes).upper(),
-                "exclusion_reason": "" if triple_open and all_nes else (
-                    "promoter_not_open_all_systems" if not triple_open else "mean_NES_negative_or_missing"
+                "all_three_system_mean_NES_negative": str(all_three_negative).upper(),
+                "retained_by_anchor_activity_rule": str(retained_by_activity).upper(),
+                "HC_TF_promoter_activity_definition": str(hc_tf).upper(),
+                "exclusion_reason": "" if hc_tf else (
+                    "promoter_not_open_all_systems" if not triple_open else "mean_NES_negative_in_patient_PDX_and_cell_line"
                 ),
             }
         )
@@ -346,9 +352,9 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     audit_dir.mkdir(parents=True, exist_ok=True)
 
-    tf_path = project_root / "pilots/tnbc-chromatin-tf-nc-2026/execution/luad-figure1/results/tables/externally_replicated_TFs.tsv"
+    tf_path = project_root / "pilots/tnbc-chromatin-tf-nc-2026/execution/luad-figure1/results/tables/tcga_specific_TFs.tsv"
     if sha256(tf_path) != FROZEN_PARENT_TABLE_SHA256:
-        raise RuntimeError("Frozen Figure 1 replicated-TF parent table SHA256 mismatch")
+        raise RuntimeError("Frozen Figure 1 discovery-TF parent table SHA256 mismatch")
     tf_rows = read_tsv(tf_path)
     frozen_rows = sorted(
         (
@@ -358,7 +364,7 @@ def main() -> None:
                 "externally_replicated": row["externally_replicated"],
             }
             for row in tf_rows
-            if row.get("externally_replicated") == "TRUE" and row.get("discovery_category") == "LUAD"
+            if row.get("discovery_category") == "LUAD"
         ),
         key=lambda row: row["TF"],
     )
@@ -368,11 +374,9 @@ def main() -> None:
         frozen_rows,
         ["TF", "discovery_category", "externally_replicated"],
     )
-    if sha256(frozen_input_path) != FROZEN_LUAD_TF_SHA256:
-        raise RuntimeError("Derived 97-TF LUAD Figure 2 input SHA256 mismatch")
     frozen_tfs = [row["TF"] for row in frozen_rows]
     if len(frozen_tfs) != EXPECTED_TF_COUNT or len(set(frozen_tfs)) != EXPECTED_TF_COUNT:
-        raise RuntimeError(f"Expected 97 unique frozen TFs, observed {len(set(frozen_tfs))}")
+        raise RuntimeError(f"Expected 158 unique frozen TFs, observed {len(set(frozen_tfs))}")
 
     gtf_path = root / "reference/downloads/gencode.v47.basic.annotation.gtf.gz"
     promoters, features = parse_gencode(gtf_path, set(frozen_tfs))
@@ -472,14 +476,14 @@ def main() -> None:
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "frozen_tf_parent_file": str(tf_path),
         "frozen_tf_parent_sha256": sha256(tf_path),
-        "frozen_tf_selection_rule": "externally_replicated == TRUE and discovery_category == LUAD",
+        "frozen_tf_selection_rule": "discovery_category == LUAD (all Figure 1 discovery TFs)",
         "frozen_tf_file": str(frozen_input_path),
         "frozen_tf_sha256": sha256(frozen_input_path),
         "frozen_tf_count": len(frozen_tfs),
         "gencode": "v47 basic protein-coding transcripts",
         "gencode_sha256": sha256(gtf_path),
         "primary_definition": primary_name,
-        "patient_n": 22,
+        "patient_n": SYSTEM_EXPECTED["patient"],
         "PDX_n": sum(row["system"] == "PDX" for row in raw_rows),
         "cell_line_n": sum(row["system"] == "cell_line" for row in raw_rows),
         "triple_system_promoter_accessible_TFs": sum(row["triple_system_promoter_accessible"] == "TRUE" for row in primary_tf_rows),

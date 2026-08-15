@@ -4,7 +4,8 @@
 ataqv defines HQAA using properly paired reads, so its TSS score is undefined
 for the public single-end DRA cell-line libraries.  This report-only metric
 uses the same filtered BAMs and the same Tn5 cut-site convention for both
-single- and paired-end samples.  It does not alter the frozen hard-QC gate.
+single- and paired-end samples.  It does not exclude an otherwise completely
+processed sample from the anchor-style analysis.
 """
 
 from __future__ import annotations
@@ -164,12 +165,12 @@ def main() -> None:
     parser.add_argument("run_root", type=Path)
     args = parser.parse_args()
     root = args.run_root.resolve()
-    manifest_path = root / "audit/raw_atac_qc/figure2_qualified_raw_atac_samples.tsv"
+    manifest_path = root / "audit/raw_atac_qc/figure2_analysis_raw_atac_samples.tsv"
     tss_path = root / "reference/figure2_features/gencode.v47.protein_coding.gene_tss.bed"
     blacklist_path = root / "reference/hg38-blacklist.v2.bed"
     manifest = read_tsv(manifest_path)
     if not manifest:
-        raise RuntimeError("No qualified samples available for Tn5 TSS enrichment")
+        raise RuntimeError("No analysis samples available for Tn5 TSS enrichment")
     tss_positions, tss_strands, tss_count = load_tss(tss_path, blacklist_path)
     if tss_count == 0:
         raise RuntimeError("No protein-coding TSS remained after blacklist exclusion")
@@ -209,8 +210,8 @@ def main() -> None:
         "this_layout_independent_metric_is_report_only_not_a_gate": True,
         "ataqv_source": "https://github.com/ParkerLab/ataqv/blob/master/src/cpp/Metrics.cpp",
         "bedtools_version": bedtools_version,
-        "qualified_manifest": str(manifest_path),
-        "qualified_manifest_sha256": sha256(manifest_path),
+        "analysis_manifest": str(manifest_path),
+        "analysis_manifest_sha256": sha256(manifest_path),
         "tss_bed": str(tss_path),
         "tss_bed_sha256": sha256(tss_path),
         "blacklist_bed": str(blacklist_path),

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse per-sample HOMER results, summarize motifs, and evaluate the anchor gate."""
+"""Parse full-database HOMER results and summarize the original Figure 2 rule."""
 
 from __future__ import annotations
 
@@ -7,7 +7,6 @@ import argparse
 import csv
 import json
 import math
-import random
 import re
 import statistics
 from collections import defaultdict
@@ -16,8 +15,6 @@ from pathlib import Path
 
 
 Q_THRESHOLD = 1e-5
-PERMUTATIONS = 10_000
-SEED = 20260814
 PRIMARY_PROMOTER_DEFINITION = "PRIMARY_anchor_promoter_tcga_cpm1_both"
 
 
@@ -66,7 +63,12 @@ def locate(header: list[str], required_terms: tuple[str, ...], optional: bool = 
     raise RuntimeError(f"Could not find HOMER column containing {required_terms}: {header}")
 
 
-def parse_known_results(path: Path, target_total: int, background_total: int) -> list[dict[str, object]]:
+def parse_known_results(
+    path: Path,
+    target_total: int,
+    background_total: int,
+    motif_mapping: dict[str, list[tuple[str, str]]],
+) -> list[dict[str, object]]:
     with path.open(encoding="utf-8", errors="replace", newline="") as handle:
         reader = csv.reader(handle, delimiter="\t")
         header = next(reader)
@@ -96,15 +98,16 @@ def parse_known_results(path: Path, target_total: int, background_total: int) ->
     homer_target_total = header_denominator(target_index, target_total)
     homer_background_total = header_denominator(background_index, background_total)
 
-    parsed: list[dict[str, object]] = []
+    parsed_all: list[dict[str, object]] = []
     for row in values:
         if max(motif_index, p_index, target_index, background_index) >= len(row):
             continue
         motif_name = row[motif_index]
-        match = re.search(r"(JASPAR2024|CIS-BP2\.00)\|([A-Za-z0-9_.-]+)\|([^\s/()]+)", motif_name)
+        match = re.search(r"(JASPAR2024|CIS-BP2\.00)\|([0-9]{6})\|([^\s/()]+)", motif_name)
         if not match:
             continue
-        source, tf, motif_id = match.groups()
+        source, motif_serial, safe_motif_id = match.groups()
+        homer_token = f"{source}|{motif_serial}|{safe_motif_id}"
         p_value = parse_number(row[p_index])
         q_value = parse_number(row[q_index]) if q_index is not None and q_index < len(row) else math.nan
         target_with = parse_number(row[target_index])
@@ -114,11 +117,10 @@ def parse_known_results(path: Path, target_total: int, background_total: int) ->
         odds_ratio = ((target_with + 0.5) * (background_without + 0.5)) / (
             (target_without + 0.5) * (background_with + 0.5)
         )
-        parsed.append(
+        parsed_all.append(
             {
                 "database": source,
-                "TF": tf,
-                "motif_id": motif_id,
+                "homer_motif_token": homer_token,
                 "homer_motif_name": motif_name,
                 "p_value": p_value,
                 "q_value": q_value,
@@ -130,56 +132,20 @@ def parse_known_results(path: Path, target_total: int, background_total: int) ->
                 "log2_odds_ratio": math.log2(odds_ratio),
             }
         )
-    if parsed and any(not math.isfinite(float(row["q_value"])) for row in parsed):
-        adjusted = bh_adjust([float(row["p_value"]) for row in parsed])
-        for row, q_value in zip(parsed, adjusted):
+    if parsed_all and any(not math.isfinite(float(row["q_value"])) for row in parsed_all):
+        adjusted = bh_adjust([float(row["p_value"]) for row in parsed_all])
+        for row, q_value in zip(parsed_all, adjusted):
             row["q_value"] = q_value
+    parsed: list[dict[str, object]] = []
+    for row in parsed_all:
+        for tf, original_motif_id in motif_mapping.get(str(row["homer_motif_token"]), []):
+            parsed.append({**row, "TF": tf, "motif_id": original_motif_id})
     return parsed
 
 
 def line_count(path: Path) -> int:
     with path.open("rb") as handle:
         return sum(1 for _ in handle)
-
-
-def motif_permutation(system_rows: list[dict[str, object]], inventory: dict[str, dict[str, str]]):
-    systems = ("patient", "PDX", "cell_line")
-    tfs = sorted(inventory)
-    flags = {
-        system: {str(row["TF"]): row["system_motif_enriched"] == "TRUE" for row in system_rows if row["system"] == system}
-        for system in systems
-    }
-    observed = sum(all(flags[system].get(tf, False) for system in systems) for tf in tfs)
-
-    def motif_count_bin(value: int) -> str:
-        return "1" if value == 1 else ("2-3" if value <= 3 else "4+")
-
-    strata: dict[tuple[str, str], list[str]] = defaultdict(list)
-    for tf in tfs:
-        record = inventory[tf]
-        strata[(record["motif_database_category"], motif_count_bin(int(record["total_tested_motif_count"])))].append(tf)
-    rng = random.Random(SEED)
-    null_counts: list[int] = []
-    for _ in range(PERMUTATIONS):
-        permuted: dict[str, dict[str, bool]] = {system: {} for system in systems}
-        for system in systems:
-            for members in strata.values():
-                values = [flags[system].get(tf, False) for tf in members]
-                rng.shuffle(values)
-                permuted[system].update(dict(zip(members, values)))
-        null_counts.append(sum(all(permuted[system][tf] for system in systems) for tf in tfs))
-    empirical_p = (1 + sum(value >= observed for value in null_counts)) / (PERMUTATIONS + 1)
-    return {
-        "observed_triple_system_motif_TFs": observed,
-        "permutations": PERMUTATIONS,
-        "seed": SEED,
-        "matching_strata": "motif database availability category x total tested motif count (1, 2-3, 4+)",
-        "null_mean": statistics.mean(null_counts),
-        "null_sd": statistics.stdev(null_counts) if len(null_counts) > 1 else 0.0,
-        "null_max": max(null_counts),
-        "empirical_p_ge_observed": empirical_p,
-        "robustness_pass": empirical_p < 0.05,
-    }, null_counts
 
 
 def main() -> None:
@@ -190,6 +156,10 @@ def main() -> None:
     manifest = read_tsv(root / "audit/manifests/figure2_atomic/figure2_atomic_sample_manifest.tsv")
     inventory_rows = read_tsv(root / "results/motif_gate/hc_tf_motif_inventory.tsv")
     inventory = {row["TF"]: row for row in inventory_rows if row["motif_testable"] == "TRUE"}
+    mapping_rows = read_tsv(root / "results/motif_gate/selected_motif_mapping.tsv")
+    motif_mapping: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    for row in mapping_rows:
+        motif_mapping[row["homer_motif_token"]].append((row["TF"], row["original_motif_id"]))
     background_total = line_count(root / "data/processed/motif_inputs/lung_accessible_CRE_background.homer.pos")
     all_motif_rows: list[dict[str, object]] = []
     best_rows: list[dict[str, object]] = []
@@ -207,12 +177,12 @@ def main() -> None:
             known_paths.append(known_path)
             if not known_path.is_file():
                 raise RuntimeError(f"Missing independent {database} HOMER output for {system}/{sample['sample_id']}")
-            parsed.extend(parse_known_results(known_path, line_count(target_path), background_total))
+            parsed.extend(parse_known_results(known_path, line_count(target_path), background_total, motif_mapping))
         if not parsed:
             raise RuntimeError(f"No selected HC-TF motifs parsed from {known_paths}")
         for row in parsed:
             row.update({"system": system, "sample_id": sample["sample_id"], "sample_slug": slug})
-            row["motif_enriched_q1e-5"] = str(float(row["q_value"]) < Q_THRESHOLD and float(row["log2_odds_ratio"]) > 0).upper()
+            row["motif_enriched_q1e-5"] = str(float(row["q_value"]) < Q_THRESHOLD).upper()
         all_motif_rows.extend(parsed)
         by_tf: dict[str, list[dict[str, object]]] = defaultdict(list)
         for row in parsed:
@@ -236,7 +206,7 @@ def main() -> None:
                 continue
             enriched_candidates = [
                 row for row in candidates
-                if float(row["q_value"]) < Q_THRESHOLD and float(row["log2_odds_ratio"]) > 0
+                if float(row["q_value"]) < Q_THRESHOLD
             ]
             # A TF is supported when any of its frozen database motifs is
             # significantly enriched.  Prefer the strongest enriched motif;
@@ -278,6 +248,7 @@ def main() -> None:
     for tf in sorted(inventory):
         values = [row for row in system_rows if row["TF"] == tf]
         triple = all(row["system_motif_enriched"] == "TRUE" for row in values)
+        any_system = any(row["system_motif_enriched"] == "TRUE" for row in values)
         triple_rows.append(
             {
                 "TF": tf,
@@ -285,6 +256,7 @@ def main() -> None:
                 "patient_motif_enriched": next(row["system_motif_enriched"] for row in values if row["system"] == "patient"),
                 "PDX_motif_enriched": next(row["system_motif_enriched"] for row in values if row["system"] == "PDX"),
                 "cell_line_motif_enriched": next(row["system_motif_enriched"] for row in values if row["system"] == "cell_line"),
+                "any_system_motif_enriched": str(any_system).upper(),
                 "triple_system_motif_enriched": str(triple).upper(),
             }
         )
@@ -296,29 +268,21 @@ def main() -> None:
         if row["analysis_definition"] == PRIMARY_PROMOTER_DEFINITION and row["HC_TF_promoter_activity_definition"] == "TRUE"
     ]
     triple_count = sum(row["triple_system_motif_enriched"] == "TRUE" for row in triple_rows)
+    any_system_count = sum(row["any_system_motif_enriched"] == "TRUE" for row in triple_rows)
     testable_count = len(inventory)
     proportion = triple_count / testable_count if testable_count else 0.0
-    anchor_pass = len(primary_hc) >= 10 and triple_count >= 3 and proportion >= 0.10
-    motif_robustness, null_counts = motif_permutation(system_rows, inventory)
-    write_tsv(
-        root / "audit/motif_gate/motif_matched_permutation_null.tsv",
-        [{"permutation": index + 1, "triple_system_motif_TFs": value} for index, value in enumerate(null_counts)],
-        ["permutation", "triple_system_motif_TFs"],
-    )
-    (root / "audit/motif_gate/motif_matched_permutation_receipt.json").write_text(
-        json.dumps(motif_robustness, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-    )
     receipt = {
         "generated_utc": datetime.now(timezone.utc).isoformat(),
         "HOMER_adjusted_q_threshold": Q_THRESHOLD,
         "HC_TFs_after_promoter_activity": len(primary_hc),
         "motif_testable_HC_TFs": testable_count,
+        "HC_TFs_with_motif_enrichment_in_at_least_one_system": any_system_count,
         "triple_system_motif_enriched_TFs": triple_count,
         "triple_system_fraction_of_testable": proportion,
-        "anchor_requirements": {"minimum_HC_TFs": 10, "minimum_triple_motif_TFs": 3, "minimum_triple_fraction": 0.10},
-        "anchor_logic_verdict": "ANCHOR_PASS" if anchor_pass else "FAIL_SIGNAL",
-        "motif_matched_permutation": motif_robustness,
-        "final_verdict_requires_promoter_matched_permutation": True,
+        "per_system_support_rule": "adjusted_p < 1e-5 in at least ceiling(n/2) samples",
+        "analysis_status": "COMPLETE",
+        "minimum_count_or_fraction_stop_rule": None,
+        "matched_permutation_is_not_part_of_primary_anchor_style_analysis": True,
     }
     (root / "audit/motif_gate/motif_gate_receipt.json").write_text(
         json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"

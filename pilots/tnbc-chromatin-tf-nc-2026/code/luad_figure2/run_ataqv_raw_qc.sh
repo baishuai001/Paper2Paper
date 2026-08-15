@@ -9,7 +9,7 @@ RUN_ROOT=$(realpath "$1")
 PROJECT_ROOT=$(realpath "$2")
 TOOLS="$RUN_ROOT/tools/ataqv"
 DOWNLOADS="$TOOLS/downloads"
-MANIFEST="$RUN_ROOT/audit/raw_atac_qc/figure2_qualified_raw_atac_samples.tsv"
+MANIFEST="$RUN_ROOT/audit/manifests/figure2_atomic/figure2_atomic_sample_manifest.tsv"
 TSS="$RUN_ROOT/reference/figure2_features/gencode.v47.protein_coding.gene_tss.bed"
 BLACKLIST="$RUN_ROOT/reference/hg38-blacklist.v2.bed"
 OUT="$RUN_ROOT/audit/ataqv"
@@ -53,8 +53,8 @@ run_one() {
 
 running=0
 failed=0
-while IFS=$'\t' read -r system sample slug run layout host source unit include reads units peaks frip worker artifacts match qualified failure bam peak qc; do
-  [[ "$qualified" == "TRUE" ]] || continue
+while IFS=$'\t' read -r system sample slug peak bam peak_definition idr; do
+  [[ "$system" != "patient" ]] || continue
   run_one "$system" "$sample" "$slug" "$bam" "$peak" &
   running=$((running + 1))
   if (( running >= PARALLEL_JOBS )); then

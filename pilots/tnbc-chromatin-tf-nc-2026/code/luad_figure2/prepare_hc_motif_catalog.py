@@ -116,16 +116,20 @@ def main() -> None:
     parsed: dict[str, tuple[list[str], list[tuple[str, str, list[str]]]]] = {
         name: parse_meme(path) for name, path in databases.items()
     }
-    matches: dict[str, dict[str, list[tuple[str, str, list[str]]]]] = {
+    matches: dict[str, dict[str, list[tuple[str, str, str, list[str]]]]] = {
         tf: defaultdict(list) for tf in hc_tfs
     }
+    full_entries: dict[str, list[tuple[str, str, str, list[str]]]] = defaultdict(list)
     for database, (_header, motifs) in parsed.items():
-        for motif_id, alternate_name, block in motifs:
+        for index, (motif_id, alternate_name, block) in enumerate(motifs, start=1):
+            safe_id = re.sub(r"[^A-Za-z0-9_.-]+", "_", motif_id)
+            homer_token = f"{database}|{index:06d}|{safe_id}"
+            full_entries[database].append((homer_token, motif_id, alternate_name, block))
             for tf in matched_tfs(motif_id, alternate_name, hc_tfs):
-                matches[tf][database].append((motif_id, alternate_name, block))
+                matches[tf][database].append((homer_token, motif_id, alternate_name, block))
 
     inventory_rows: list[dict[str, object]] = []
-    selected: list[tuple[str, str, str, str, list[str]]] = []
+    selected: list[tuple[str, str, str, str, str, list[str]]] = []
     for tf in hc_tfs:
         jaspar = matches[tf].get("JASPAR2024", [])
         cisbp = matches[tf].get("CIS-BP2.00", [])
@@ -152,10 +156,10 @@ def main() -> None:
         )
         # The anchor ran JASPAR and CIS-BP independently; a TF represented in
         # both databases therefore contributes motifs to both frozen tests.
-        for motif_id, alternate_name, block in jaspar:
-            selected.append(("JASPAR2024", tf, motif_id, alternate_name, block))
-        for motif_id, alternate_name, block in cisbp:
-            selected.append(("CIS-BP2.00", tf, motif_id, alternate_name, block))
+        for homer_token, motif_id, alternate_name, block in jaspar:
+            selected.append(("JASPAR2024", tf, homer_token, motif_id, alternate_name, block))
+        for homer_token, motif_id, alternate_name, block in cisbp:
+            selected.append(("CIS-BP2.00", tf, homer_token, motif_id, alternate_name, block))
 
     with (out / "hc_tf_motif_inventory.tsv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(inventory_rows[0]), delimiter="\t", lineterminator="\n")
@@ -169,7 +173,7 @@ def main() -> None:
         handle.writelines(header)
         if header and not header[-1].endswith("\n"):
             handle.write("\n")
-        for source, tf, motif_id, _alternate_name, block in selected:
+        for source, tf, _homer_token, motif_id, _alternate_name, block in selected:
             safe_id = re.sub(r"[^A-Za-z0-9_.-]+", "_", motif_id)
             handle.write(f"MOTIF {source}|{tf}|{safe_id} {tf}\n")
             handle.writelines(block[1:])
@@ -179,26 +183,25 @@ def main() -> None:
     # HOMER requires its own PWM format and a detection threshold.  HOMER's
     # bundled parseJasparMatrix.pl uses threshold 0 for imported JASPAR PWMs;
     # use that documented importer convention for both frozen reference sets.
-    selected_homer = motif_root / "selected_hc_tf_both_databases.homer"
+    full_homer = motif_root / "full_reference_both_databases.homer"
     homer_by_database = {
-        "JASPAR2024": motif_root / "selected_hc_tf_JASPAR2024.homer",
-        "CIS-BP2.00": motif_root / "selected_hc_tf_CIS-BP2.00.homer",
+        "JASPAR2024": motif_root / "full_reference_JASPAR2024.homer",
+        "CIS-BP2.00": motif_root / "full_reference_CIS-BP2.00.homer",
     }
     bases = "ACGT"
     homer_handles = {
         database: path.open("w", encoding="utf-8") for database, path in homer_by_database.items()
     }
     try:
-        with selected_homer.open("w", encoding="utf-8") as combined_handle:
-            for source, tf, motif_id, _alternate_name, block in selected:
-                safe_id = re.sub(r"[^A-Za-z0-9_.-]+", "_", motif_id)
-                name = f"{source}|{tf}|{safe_id}"
-                matrix = meme_matrix(block)
-                consensus = "".join(bases[max(range(4), key=lambda index: row[index])] for row in matrix)
-                rendered = [f">{consensus}\t{name}\t0\n"]
-                rendered.extend("\t".join(f"{value:.9g}" for value in row) + "\n" for row in matrix)
-                combined_handle.writelines(rendered)
-                homer_handles[source].writelines(rendered)
+        with full_homer.open("w", encoding="utf-8") as combined_handle:
+            for source in ("JASPAR2024", "CIS-BP2.00"):
+                for homer_token, _motif_id, _alternate_name, block in full_entries[source]:
+                    matrix = meme_matrix(block)
+                    consensus = "".join(bases[max(range(4), key=lambda index: row[index])] for row in matrix)
+                    rendered = [f">{consensus}\t{homer_token}\t0\n"]
+                    rendered.extend("\t".join(f"{value:.9g}" for value in row) + "\n" for row in matrix)
+                    combined_handle.writelines(rendered)
+                    homer_handles[source].writelines(rendered)
     finally:
         for handle in homer_handles.values():
             handle.close()
@@ -207,13 +210,14 @@ def main() -> None:
         {
             "database": source,
             "TF": tf,
+            "homer_motif_token": homer_token,
             "original_motif_id": motif_id,
             "original_alternate_name": alternate_name,
             "selected_meme_id": f"{source}|{tf}|{re.sub(r'[^A-Za-z0-9_.-]+', '_', motif_id)}",
         }
-        for source, tf, motif_id, alternate_name, _block in selected
+        for source, tf, homer_token, motif_id, alternate_name, _block in selected
     ]
-    mapping_columns = ["database", "TF", "original_motif_id", "original_alternate_name", "selected_meme_id"]
+    mapping_columns = ["database", "TF", "homer_motif_token", "original_motif_id", "original_alternate_name", "selected_meme_id"]
     with (out / "selected_motif_mapping.tsv").open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=mapping_columns, delimiter="\t", lineterminator="\n")
         writer.writeheader()
@@ -225,10 +229,13 @@ def main() -> None:
         "motif_testable_HC_TFs": sum(row["motif_testable"] == "TRUE" for row in inventory_rows),
         "selected_motif_records": len(selected),
         "selected_motif_records_by_database": {
-            database: sum(source == database for source, _tf, _motif_id, _alternate, _block in selected)
+            database: sum(source == database for source, _tf, _token, _motif_id, _alternate, _block in selected)
             for database in ("JASPAR2024", "CIS-BP2.00")
         },
-        "selection_rule": "all matching JASPAR2024 and all matching CIS-BP2.00 motifs; databases tested independently",
+        "full_reference_motif_records_by_database": {
+            database: len(full_entries[database]) for database in ("JASPAR2024", "CIS-BP2.00")
+        },
+        "selection_rule": "HC-TF support is mapped after HOMER tests each complete reference database independently",
         "homer_import_threshold": 0,
         "homer_import_threshold_basis": "HOMER bundled parseJasparMatrix.pl convention for external JASPAR matrices",
         "categories": {
@@ -236,8 +243,8 @@ def main() -> None:
             for category in ("JASPAR_only", "CIS-BP_only", "both", "none")
         },
         "selected_meme": str(selected_meme),
-        "selected_homer_combined_audit_copy": str(selected_homer),
-        "selected_homer_by_database": {database: str(path) for database, path in homer_by_database.items()},
+        "full_homer_combined_audit_copy": str(full_homer),
+        "full_homer_by_database": {database: str(path) for database, path in homer_by_database.items()},
     }
     (audit / "hc_tf_motif_catalog_receipt.json").write_text(
         json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8"

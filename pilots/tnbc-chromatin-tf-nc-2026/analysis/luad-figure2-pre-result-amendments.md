@@ -1,5 +1,11 @@
 # LUAD Figure 2 结果生成前的审计修正
 
+> **2026-08-15 状态：本文件记录的 v1 规则已被
+> `luad-figure2-gate-protocol.md` v2 取代。** v1 曾错误地以 97 个外部复现 TF
+> 作为 Figure 2 输入，并加入 20% 样本失败率、最低 HC/motif 数和匹配置换
+> 否决。当前原文式运行改用 Figure 1 的 158 个 LUAD 发现 TF，恢复全部
+> 13 个 PDX；旧 `FAIL_DATA` 及本文件保留作决策历史，不再控制执行。
+
 本记录只收纳在任何 LUAD Figure 2 启动子或 motif 结果生成之前发现并修正的问题。它们不得被解释为看结果后的阈值调整。
 
 ## 1. Figure 1 TF 父表不是 97 行

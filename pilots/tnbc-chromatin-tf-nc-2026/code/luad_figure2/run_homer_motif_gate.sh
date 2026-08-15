@@ -14,8 +14,8 @@ TCGA_ZIP="$RUN_ROOT/data/raw/tcga_atac_gdc/TCGA-ATAC_Cancer_Type-specific_Count_
 INPUT="$RUN_ROOT/data/processed/motif_inputs"
 RESULTS="$RUN_ROOT/results/motif_gate/homer_per_sample"
 LOG="$RUN_ROOT/logs/motif_gate"
-JASPAR_HOMER="$MOTIF_ROOT/selected_hc_tf_JASPAR2024.homer"
-CISBP_HOMER="$MOTIF_ROOT/selected_hc_tf_CIS-BP2.00.homer"
+JASPAR_HOMER="$MOTIF_ROOT/full_reference_JASPAR2024.homer"
+CISBP_HOMER="$MOTIF_ROOT/full_reference_CIS-BP2.00.homer"
 PARALLEL_JOBS=${PARALLEL_JOBS:-4}
 THREADS_PER_JOB=${THREADS_PER_JOB:-2}
 mkdir -p "$INPUT/targets" "$RESULTS" "$LOG"
@@ -25,30 +25,27 @@ done
 export PATH="$HOMER/bin:$PATH"
 
 BACKGROUND_BED="$INPUT/lung_accessible_CRE_background.bed"
-if [[ ! -s "$BACKGROUND_BED" ]]; then
-  temporary="$INPUT/.background_unsorted.bed"
-  : > "$temporary"
-  for cancer_type in LUAD LUSC; do
-    unzip -p "$TCGA_ZIP" "${cancer_type}_raw_counts.txt" \
-      | awk 'BEGIN{OFS="\t"} NR>1 && $1 ~ /^chr([0-9]+|X)$/ {print $1,$2,$3}' >> "$temporary"
-  done
-  while IFS=$'\t' read -r system sample sample_slug peak bam peak_definition idr; do
-    if [[ "$peak" == *.gz ]]; then gzip -dc "$peak"; else cat "$peak"; fi \
-      | awk 'BEGIN{OFS="\t"} $1 ~ /^chr([0-9]+|X)$/ {print $1,$2,$3}' >> "$temporary"
-  done < <(tail -n +2 "$MANIFEST" | sed 's/\r$//')
-  LC_ALL=C sort -k1,1 -k2,2n -k3,3n "$temporary" | bedtools merge -i - > "$BACKGROUND_BED"
-  rm -f "$temporary"
-fi
+temporary="$INPUT/.background_unsorted.bed"
+: > "$temporary"
+for cancer_type in LUAD LUSC; do
+  unzip -p "$TCGA_ZIP" "${cancer_type}_raw_counts.txt" \
+    | awk 'BEGIN{OFS="\t"} NR>1 && $1 ~ /^chr([0-9]+|X)$/ {print $1,$2,$3}' >> "$temporary"
+done
+while IFS=$'\t' read -r system sample sample_slug peak bam peak_definition idr; do
+  if [[ "$peak" == *.gz ]]; then gzip -dc "$peak"; else cat "$peak"; fi \
+    | awk 'BEGIN{OFS="\t"} $1 ~ /^chr([0-9]+|X)$/ {print $1,$2,$3}' >> "$temporary"
+done < <(tail -n +2 "$MANIFEST" | sed 's/\r$//')
+LC_ALL=C sort -k1,1 -k2,2n -k3,3n "$temporary" | bedtools merge -i - > "$BACKGROUND_BED"
+rm -f "$temporary"
 BACKGROUND_POS="$INPUT/lung_accessible_CRE_background.homer.pos"
 awk 'BEGIN{OFS="\t"} {print "background_"NR,$1,$2,$3,"+"}' "$BACKGROUND_BED" > "$BACKGROUND_POS"
+BACKGROUND_SHA=$(sha256sum "$BACKGROUND_POS" | cut -d' ' -f1)
 
 prepare_target() {
   local system=$1 sample=$2 slug=$3 peak=$4
   local pos="$INPUT/targets/${system}.${slug}.homer.pos"
-  if [[ ! -s "$pos" ]]; then
-    if [[ "$peak" == *.gz ]]; then gzip -dc "$peak"; else cat "$peak"; fi \
-      | awk -v prefix="${system}_${slug}_" 'BEGIN{OFS="\t"} $1 ~ /^chr([0-9]+|X)$/ {print prefix NR,$1,$2,$3,"+"}' > "$pos"
-  fi
+  if [[ "$peak" == *.gz ]]; then gzip -dc "$peak"; else cat "$peak"; fi \
+    | awk -v prefix="${system}_${slug}_" 'BEGIN{OFS="\t"} $1 ~ /^chr([0-9]+|X)$/ {print prefix NR,$1,$2,$3,"+"}' > "$pos"
   [[ -s "$pos" ]] || { echo "Empty HOMER target for $system/$sample" >&2; return 1; }
 }
 
@@ -56,8 +53,12 @@ run_sample() {
   local system=$1 sample=$2 slug=$3 database=$4 motif_file=$5
   local pos="$INPUT/targets/${system}.${slug}.homer.pos"
   local out="$RESULTS/${database}/${system}/${slug}"
+  local motif_sha
+  motif_sha=$(sha256sum "$motif_file" | cut -d' ' -f1)
   mkdir -p "$out"
-  if [[ -s "$out/knownResults.txt" && -s "$out/.complete" ]]; then
+  if [[ -s "$out/knownResults.txt" && -s "$out/.complete" ]] \
+    && grep -qx "motif_sha256=$motif_sha" "$out/.complete" \
+    && grep -qx "background_sha256=$BACKGROUND_SHA" "$out/.complete"; then
     echo "SKIP_HOMER_COMPLETE $database $system $sample"
     return 0
   fi
@@ -65,7 +66,8 @@ run_sample() {
     -size given -bg "$BACKGROUND_POS" -nomotif -mknown "$motif_file" -p "$THREADS_PER_JOB" \
     > "$LOG/${database}.${system}.${slug}.log" 2>&1
   [[ -s "$out/knownResults.txt" ]] || { echo "HOMER failed for $database/$system/$sample" >&2; return 1; }
-  printf 'completed_utc=%s\ndatabase=%s\n' "$(date -u +%FT%TZ)" "$database" > "$out/.complete"
+  printf 'completed_utc=%s\ndatabase=%s\nmotif_sha256=%s\nbackground_sha256=%s\n' \
+    "$(date -u +%FT%TZ)" "$database" "$motif_sha" "$BACKGROUND_SHA" > "$out/.complete"
   echo "HOMER_COMPLETE $database $system $sample"
 }
 

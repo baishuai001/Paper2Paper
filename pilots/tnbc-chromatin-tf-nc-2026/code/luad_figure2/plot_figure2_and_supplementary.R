@@ -102,13 +102,13 @@ p2a <- ggplot() +
   annotate("text", x = 1.55, y = 3.85, label = "ATAC-seq (LUAD)", fontface = "bold", size = 4.2) +
   annotate("text", x = 0.35, y = c(3.55, 3.25, 2.98), hjust = 0,
            label = c(sprintf("%d primary tumors", system_n[["patient"]]),
-                     sprintf("%d qualified PDX models", system_n[["PDX"]]),
-                     sprintf("%d qualified strict LUAD cell lines", system_n[["cell_line"]])),
+                     sprintf("%d LUAD PDX models", system_n[["PDX"]]),
+                     sprintf("%d strict LUAD cell lines", system_n[["cell_line"]])),
            color = c(system_colors[["patient"]], system_colors[["PDX"]], system_colors[["cell_line"]]), size = 3.6) +
   annotate("segment", x = 1.55, xend = 1.55, y = 2.85, yend = 2.35, arrow = arrow(length = unit(0.12, "in"))) +
   annotate("rect", xmin = 0.35, xmax = 2.75, ymin = 1.55, ymax = 2.3, fill = "#E7F1F5", color = "#333333") +
   annotate("text", x = 1.55, y = 1.93, label = "Accessible chromatin profiling", size = 3.9) +
-  annotate("text", x = 1.55, y = 1.15, label = "97 Figure-1 frozen LUAD TFs", fontface = "bold", size = 3.8) +
+  annotate("text", x = 1.55, y = 1.15, label = "158 Figure-1 LUAD-specific TFs", fontface = "bold", size = 3.8) +
   annotate("segment", x = 1.1, xend = 0.75, y = 0.95, yend = 0.45, arrow = arrow(length = unit(0.11, "in"))) +
   annotate("segment", x = 2.0, xend = 2.35, y = 0.95, yend = 0.45, arrow = arrow(length = unit(0.11, "in"))) +
   annotate("text", x = 0.7, y = 0.22, label = "Promoter\naccessibility", size = 3.5) +
@@ -116,7 +116,7 @@ p2a <- ggplot() +
   coord_cartesian(xlim = c(0, 3.1), ylim = c(0, 4.3), clip = "off") +
   labs(title = "A") + theme_void(base_size = 11) + theme(plot.title = element_text(face = "bold", size = 16))
 
-# Figure 2B: promoter accessibility combinations among all 97 frozen TFs.
+# Figure 2B: promoter accessibility combinations among all 158 Figure 1 TFs.
 promoter_combo <- promoter_tf[, .(
   TF,
   patient = patient_promoter_accessible == "TRUE",
@@ -182,17 +182,22 @@ save_heatmap(ht2c, "Figure2C_activity_promoter_matrix", 17, 10)
 g2c <- heatmap_grob(ht2c)
 
 # Figure 2D: motif combinations among motif-testable HC-TFs, stacked by database source.
-motif_combo <- merge(motif_tf, motif_inventory[, .(TF, motif_database_category)], by = "TF")
+motif_combo <- merge(motif_tf[any_system_motif_enriched == "TRUE"],
+                     motif_inventory[, .(TF, motif_database_category)], by = "TF")
 motif_combo[, `:=`(
   patient = patient_motif_enriched == "TRUE",
   PDX = PDX_motif_enriched == "TRUE",
   cell_line = cell_line_motif_enriched == "TRUE"
 )]
 p2d <- make_upset(motif_combo, c("PDX", "patient", "cell_line"), colors = "motif_database_category",
-                  title = "D", subtitle = sprintf("Motif-testable HC-TFs (n = %d)", nrow(motif_combo))) +
+                  title = "D", subtitle = sprintf("Motif-supported HC-TFs (n = %d/%d)",
+                                                   nrow(motif_combo), motif_inventory[motif_testable == "TRUE", .N])) +
   plot_annotation(theme = theme(legend.position = "right"))
 
 # Figure 2E: system LOR/SD/frequency and top motif distributions.
+supported_tfs <- motif_tf[any_system_motif_enriched == "TRUE", TF]
+motif_system <- motif_system[TF %in% supported_tfs]
+motif_sample <- motif_sample[TF %in% supported_tfs]
 motif_system[, system := factor(system, levels = system_levels)]
 motif_system[, overall_mean := mean(mean_log2_odds_ratio), by = TF]
 motif_system[, TF_order := factor(TF, levels = unique(TF[order(overall_mean)]))]
@@ -246,8 +251,8 @@ patient_peaks <- fread(file.path(run_root, "audit", "tcga_luad_accessibility", "
 patient_qc <- patient_peaks[, .(system = "patient", sample_id, peak_count = cpm1_both_reps,
                                idr_status = "Public fixed-peak matrix; IDR not rerun")]
 raw_qc <- fread(file.path(run_root, "audit", "raw_atac_qc", "figure2_raw_atac_qc.tsv"))
-raw_qc <- raw_qc[figure2_qualified == "TRUE", .(system, sample_id, peak_count,
-                                                idr_status = "Single public library; IDR N/A")]
+raw_qc <- raw_qc[analysis_included == "TRUE", .(system, sample_id, peak_count,
+                                                 idr_status = "Single public library; IDR N/A")]
 peak_qc <- rbind(patient_qc, raw_qc, fill = TRUE)
 peak_qc[, system := factor(system, levels = system_levels)]
 make_peak_plot <- function(system_name, letter) {
@@ -363,17 +368,21 @@ p4a <- ggplot(flow, aes(x, 1)) +
   coord_cartesian(xlim = c(0.55, 6.45), ylim = c(0.5, 1.5), clip = "off") +
   labs(title = "A — Frozen chromatin/TF filtering flow") + theme_void(base_size = 10) + theme(plot.title = element_text(face = "bold"))
 
-# Supplementary Figure 4B: six-way promoter/activity combination; all-positive is HC.
-wide_promoter <- dcast(promoter_system, TF ~ system, value.var = c("system_promoter_accessible", "mean_NES_nonnegative"))
-setnames(wide_promoter,
-         c("system_promoter_accessible_patient", "system_promoter_accessible_PDX", "system_promoter_accessible_cell_line",
-           "mean_NES_nonnegative_patient", "mean_NES_nonnegative_PDX", "mean_NES_nonnegative_cell_line"),
-         c("patient_promoter", "PDX_promoter", "cell_promoter", "patient_NES", "PDX_NES", "cell_NES"), skip_absent = TRUE)
-logical_cols <- setdiff(names(wide_promoter), "TF")
-for (column in logical_cols) set(wide_promoter, j = column, value = wide_promoter[[column]] == "TRUE")
-wide_promoter <- merge(wide_promoter, promoter_tf[, .(TF, TF_group = ifelse(HC_TF_promoter_activity_definition == "TRUE", "HC-TF", "Not HC-TF"))], by = "TF")
-p4b <- make_upset(wide_promoter, logical_cols, colors = "TF_group", title = "B",
-                  subtitle = "Promoter accessibility and non-negative mean NES combinations")
+# Supplementary Figure 4B: promoter combinations with the anchor's sole
+# activity exclusion (mean NES <0 in all three activity cohorts) highlighted.
+wide_promoter <- promoter_tf[, .(
+  TF,
+  patient_promoter = patient_promoter_accessible == "TRUE",
+  PDX_promoter = PDX_promoter_accessible == "TRUE",
+  cell_promoter = cell_line_promoter_accessible == "TRUE",
+  activity_filter_group = ifelse(
+    all_three_system_mean_NES_negative == "TRUE" & triple_system_promoter_accessible == "TRUE",
+    "Excluded: NES<0 in all three", ifelse(HC_TF_promoter_activity_definition == "TRUE", "HC-TF", "Other promoter pattern")
+  )
+)]
+logical_cols <- c("PDX_promoter", "patient_promoter", "cell_promoter")
+p4b <- make_upset(wide_promoter, logical_cols, colors = "activity_filter_group", title = "B",
+                  subtitle = "Promoter combinations; all-three-negative NES exclusion highlighted")
 
 # Supplementary Figure 4C: JASPAR/CIS-BP motif availability Venn.
 cat_counts <- motif_inventory[, .N, by = motif_database_category]

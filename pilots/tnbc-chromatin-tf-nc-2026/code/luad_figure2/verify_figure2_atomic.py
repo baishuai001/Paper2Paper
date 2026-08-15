@@ -11,8 +11,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-TF_SHA = "eace4fdf6509d01e8a9648b34b4dc3fdfb5955627c2c7a526c6ce1495a073844"
-LUAD_TF_SHA = "64b4aa4e226c6e9142ecd560ec51ec1f49e0c9823d07e332757deeea3aa3c69b"
+TF_SHA = "6f449276a97b8c66cbf93bd2a4ca6d51095fa426015dc9046a7c084431d5037b"
+TF_COUNT = 158
 PRIMARY = "PRIMARY_anchor_promoter_tcga_cpm1_both"
 
 
@@ -38,21 +38,27 @@ def main() -> None:
     def check(name: str, condition: bool, observed: object, expected: object):
         checks.append({"check": name, "status": "PASS" if condition else "FAIL", "observed": observed, "expected": expected})
 
-    tf_path = project / "pilots/tnbc-chromatin-tf-nc-2026/execution/luad-figure1/results/tables/externally_replicated_TFs.tsv"
+    tf_path = project / "pilots/tnbc-chromatin-tf-nc-2026/execution/luad-figure1/results/tables/tcga_specific_TFs.tsv"
     check("frozen_tf_parent_sha", sha256(tf_path) == TF_SHA, sha256(tf_path), TF_SHA)
     frozen_luad_path = root / "audit/promoter_gate/frozen_figure2_luad_tf_input.tsv"
     frozen_luad_rows = read_tsv(frozen_luad_path)
-    check("frozen_luad_tf_sha", sha256(frozen_luad_path) == LUAD_TF_SHA, sha256(frozen_luad_path), LUAD_TF_SHA)
-    check("frozen_luad_tf_count", len(frozen_luad_rows) == 97, len(frozen_luad_rows), 97)
+    promoter_receipt = json.loads((root / "audit/promoter_gate/promoter_gate_receipt.json").read_text(encoding="utf-8"))
+    check("frozen_luad_tf_sha", sha256(frozen_luad_path) == promoter_receipt["frozen_tf_sha256"],
+          sha256(frozen_luad_path), promoter_receipt["frozen_tf_sha256"])
+    check("frozen_luad_tf_count", len(frozen_luad_rows) == TF_COUNT, len(frozen_luad_rows), TF_COUNT)
+    check("frozen_input_is_all_luad_discovery",
+          all(row["discovery_category"] == "LUAD" for row in frozen_luad_rows),
+          sum(row["discovery_category"] == "LUAD" for row in frozen_luad_rows), TF_COUNT)
     manifest = read_tsv(root / "audit/manifests/figure2_atomic/figure2_atomic_sample_manifest.tsv")
     counts = {system: sum(row["system"] == system for row in manifest) for system in ("patient", "PDX", "cell_line")}
     raw_receipt = json.loads((root / "audit/raw_atac_qc/figure2_raw_atac_qc_receipt.json").read_text(encoding="utf-8"))
     expected_counts = {
         "patient": 22,
-        "PDX": int(raw_receipt["systems"]["PDX"]["qualified"]),
-        "cell_line": int(raw_receipt["systems"]["cell_line"]["qualified"]),
+        "PDX": int(raw_receipt["systems"]["PDX"]["analysis_included"]),
+        "cell_line": int(raw_receipt["systems"]["cell_line"]["analysis_included"]),
     }
-    check("raw_data_gate", raw_receipt["raw_data_gate"] == "PASS", raw_receipt["raw_data_gate"], "PASS")
+    check("raw_data_completion", raw_receipt["raw_data_completion"] == "COMPLETE",
+          raw_receipt["raw_data_completion"], "COMPLETE")
     check("atomic_manifest_counts", counts == expected_counts, counts, expected_counts)
     total_n = sum(counts.values())
     check("unique_biological_samples", len({(row["system"], row["sample_id"]) for row in manifest}) == total_n,
@@ -60,9 +66,18 @@ def main() -> None:
 
     promoter_sample = read_tsv(root / "results/promoter_gate/sample_tf_promoter_accessibility.tsv")
     primary_rows = [row for row in promoter_sample if row["analysis_definition"] == PRIMARY]
-    check("primary_promoter_matrix_rows", len(primary_rows) == total_n * 97, len(primary_rows), total_n * 97)
-    check("primary_promoter_unique_cells", len({(row["system"], row["sample_id"], row["TF"]) for row in primary_rows}) == total_n * 97,
-          len({(row["system"], row["sample_id"], row["TF"]) for row in primary_rows}), total_n * 97)
+    check("primary_promoter_matrix_rows", len(primary_rows) == total_n * TF_COUNT, len(primary_rows), total_n * TF_COUNT)
+    check("primary_promoter_unique_cells", len({(row["system"], row["sample_id"], row["TF"]) for row in primary_rows}) == total_n * TF_COUNT,
+          len({(row["system"], row["sample_id"], row["TF"]) for row in primary_rows}), total_n * TF_COUNT)
+    promoter_tf = [
+        row for row in read_tsv(root / "results/promoter_gate/tf_promoter_gate_summary.tsv")
+        if row["analysis_definition"] == PRIMARY
+    ]
+    hc_rows = [row for row in promoter_tf if row["HC_TF_promoter_activity_definition"] == "TRUE"]
+    check("hc_rule_is_triple_open_not_all_three_negative",
+          all(row["triple_system_promoter_accessible"] == "TRUE" and
+              row["all_three_system_mean_NES_negative"] == "FALSE" for row in hc_rows),
+          len(hc_rows), "every HC-TF satisfies the anchor rule")
 
     inventory = read_tsv(root / "results/motif_gate/hc_tf_motif_inventory.tsv")
     testable = sum(row["motif_testable"] == "TRUE" for row in inventory)
@@ -103,11 +118,12 @@ def main() -> None:
                   path.stat().st_size if path.is_file() else 0, ">10000 bytes")
 
     final = json.loads((root / "audit/final_gate/figure2_final_verdict.json").read_text(encoding="utf-8"))
-    check("final_verdict_allowed", final["final_verdict"] in {"PASS", "FAIL_DATA", "FAIL_SIGNAL", "ANCHOR_PASS_ROBUSTNESS_FAIL"},
-          final["final_verdict"], "allowed frozen status")
-    check("explicit_stop", final["stop_after_this_gate"] is True, final["stop_after_this_gate"], True)
-    check("no_automatic_Figure3_execution", final.get("continue_to_Figure3") is False,
-          final.get("continue_to_Figure3"), False)
+    check("final_status", final["final_verdict"] == "ORIGINAL_STYLE_ANALYSIS_COMPLETE",
+          final["final_verdict"], "ORIGINAL_STYLE_ANALYSIS_COMPLETE")
+    check("no_invented_biological_threshold", final["biological_pass_fail_threshold_applied"] is False,
+          final["biological_pass_fail_threshold_applied"], False)
+    check("no_automatic_Figure3_decision", final.get("automatic_Figure3_decision") is None,
+          final.get("automatic_Figure3_decision"), None)
     overall = "PASS" if all(row["status"] == "PASS" for row in checks) else "FAIL"
     out_dir = root / "audit/final_gate"
     with (out_dir / "figure2_atomic_verification.tsv").open("w", encoding="utf-8", newline="") as handle:

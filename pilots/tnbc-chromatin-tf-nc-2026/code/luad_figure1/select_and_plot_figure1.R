@@ -186,9 +186,10 @@ plot_heatmap <- function(activity_path, manifest_path, cohort, panel) {
   matrix <- activity[present, , drop = FALSE]
   keep <- apply(matrix, 1, sd, na.rm = TRUE) > 0
   matrix <- matrix[keep, , drop = FALSE]
-  # Anchor Figure 1C plots TCGA VIPER activity directly with fixed row order;
-  # Figure 1D/E row-standardize model activity and cluster rows.
-  if (panel != "C") matrix <- t(scale(t(matrix)))
+  # The anchor Figure 1 legend specifies row-scaled activity scores for C-E.
+  # Keep the anchor's fixed TF row order in panel C, but scale every row in all
+  # three panels before clustering samples or rendering the heatmap.
+  matrix <- t(scale(t(matrix)))
   row_group <- selected$discovery_category[match(rownames(matrix), selected$TF)]
   column_group <- factor(manifest$group, levels = c("LUAD", "LUSC"))
   column_tree <- hclust(dist(t(matrix)))
