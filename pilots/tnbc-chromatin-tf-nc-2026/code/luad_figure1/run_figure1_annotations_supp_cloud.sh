@@ -22,6 +22,8 @@ Rscript "$SCRIPT_DIR/build_figure1_annotations.R" "$RUN_ROOT" \
   2>&1 | tee "$LOG_DIR/build_figure1_annotations.log"
 Rscript "$SCRIPT_DIR/plot_figure1_annotations_and_supplements.R" "$RUN_ROOT" \
   2>&1 | tee "$LOG_DIR/plot_figure1_annotations_and_supplements.log"
+Rscript "$SCRIPT_DIR/render_anchor_style_figure1.R" "$RUN_ROOT" \
+  2>&1 | tee "$LOG_DIR/render_anchor_style_figure1.log"
 
 find "$RUN_ROOT/results/tables" -maxdepth 1 -type f \
   ! -name 'SupplementaryFigure*' -print0 \
@@ -40,3 +42,5 @@ fi
 
 python "$SCRIPT_DIR/verify_figure1_annotations.py" "$RUN_ROOT" \
   2>&1 | tee "$LOG_DIR/verify_figure1_annotations.log"
+python "$SCRIPT_DIR/verify_anchor_style_figure1.py" "$RUN_ROOT" \
+  2>&1 | tee "$LOG_DIR/verify_anchor_style_figure1.log"

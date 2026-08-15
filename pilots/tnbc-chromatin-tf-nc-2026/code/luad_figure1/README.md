@@ -12,6 +12,12 @@ pre-frozen **LUAD versus LUSC** comparison:
 5. Figure 1A-E panels, source tables, checksums, receipts, and a hard
    biological verdict.
 
+`render_anchor_style_figure1.R` is a render-only layer for the publication
+layout. It recreates Figure 1A and Figure 1C in the anchor paper's visual
+grammar and emits separate Supplementary Figure 1A/1B cohort-flow panels. It
+reads the frozen activity matrix and manifests, checks all displayed counts,
+and does not rewrite upstream numerical results.
+
 All large downloads and computation are designed to run on the project cloud
 server. The top-level entry point is `run_luad_figure1_cloud.sh`; it will stop
 if any frozen input is missing or any upstream command fails.
