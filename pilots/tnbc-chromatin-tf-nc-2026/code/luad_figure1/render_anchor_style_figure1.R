@@ -351,7 +351,7 @@ render_figure1c <- function(path) {
   draw(
     heatmap, merge_legends = FALSE,
     heatmap_legend_side = "right", annotation_legend_side = "right",
-    padding = unit(c(7, 6, 7, 7), "mm")
+    padding = unit(c(7, 6, 7, 7), "mm"), newpage = FALSE
   )
   grid.text("C", unit(1.5, "mm"), unit(1, "npc") - unit(1.5, "mm"),
             just = c("left", "top"), gp = gpar(fontsize = 18, fontface = "bold"))

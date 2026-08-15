@@ -25,7 +25,7 @@ def pdf_nonwhite_fraction(path: Path) -> float | None:
     with tempfile.TemporaryDirectory() as directory:
         prefix = Path(directory) / "page"
         subprocess.run(
-            [pdftoppm, "-f", "1", "-singlefile", "-r", "36", "-ppm", str(path), str(prefix)],
+            [pdftoppm, "-f", "1", "-singlefile", "-r", "36", str(path), str(prefix)],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.PIPE,
