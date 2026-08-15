@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
+import csv
 import gzip
 import json
+import math
 import sys
+from collections import Counter
 from pathlib import Path
-
-import numpy as np
-import pandas as pd
 
 
 def require(condition: bool, message: str) -> None:
@@ -40,27 +40,46 @@ for stem in stems:
             require(path.read_bytes()[:4] == b"%PDF", f"Invalid PDF header: {path}")
         checks.append({"check": f"output:{stem}{suffix}", "status": "passed", "bytes": path.stat().st_size})
 
-with gzip.open(tables / "Figure1C_TCGA_activity_matrix.tsv.gz", "rt") as handle:
-    matrix = pd.read_csv(handle, sep="\t", index_col=0)
-display = matrix.sub(matrix.mean(axis=1), axis=0).div(matrix.std(axis=1, ddof=1), axis=0)
-require(display.shape == (351, 1017), f"Unexpected Figure 1C dimensions: {display.shape}")
-require(np.isfinite(display.to_numpy()).all(), "Figure 1C display matrix contains non-finite values")
-require(float(display.mean(axis=1).abs().max()) < 1e-8, "Figure 1C rows are not centered")
-require(float((display.std(axis=1, ddof=1) - 1).abs().max()) < 1e-8, "Figure 1C rows are not unit scaled")
+matrix_rows = 0
+matrix_columns = None
+max_abs_row_mean = 0.0
+max_abs_row_sd_minus_1 = 0.0
+with gzip.open(tables / "Figure1C_TCGA_activity_matrix.tsv.gz", "rt", newline="") as handle:
+    reader = csv.reader(handle, delimiter="\t")
+    header = next(reader)
+    matrix_columns = len(header) - 1
+    for row in reader:
+        values = [float(value) for value in row[1:]]
+        require(len(values) == matrix_columns, f"Ragged Figure 1C matrix row: {row[0]}")
+        require(all(math.isfinite(value) for value in values), f"Non-finite Figure 1C row: {row[0]}")
+        mean = sum(values) / len(values)
+        variance = sum((value - mean) ** 2 for value in values) / (len(values) - 1)
+        sd = math.sqrt(variance)
+        max_abs_row_mean = max(max_abs_row_mean, abs(mean))
+        max_abs_row_sd_minus_1 = max(max_abs_row_sd_minus_1, abs(sd - 1.0))
+        matrix_rows += 1
+matrix_shape = (matrix_rows, matrix_columns)
+require(matrix_shape == (351, 1017), f"Unexpected Figure 1C dimensions: {matrix_shape}")
+require(max_abs_row_mean < 1e-8, "Figure 1C rows are not centered")
+require(max_abs_row_sd_minus_1 < 1e-8, "Figure 1C rows are not unit scaled")
 checks.append({"check": "Figure1C:row_scaled_351x1017", "status": "passed"})
 
-selected = pd.read_csv(tables / "tcga_specific_TFs.tsv", sep="\t")
-counts = selected.groupby("discovery_category").size().to_dict()
+with (tables / "tcga_specific_TFs.tsv").open(newline="", encoding="utf-8") as handle:
+    counts = dict(Counter(row["discovery_category"] for row in csv.DictReader(handle, delimiter="\t")))
 require(counts == {"LUAD": 158, "LUSC": 193}, f"Unexpected TF categories: {counts}")
 checks.append({"check": "Figure1C:158_LUAD_193_LUSC_TFs", "status": "passed"})
 
-tcga = pd.read_csv(processed / "tcga_manifest.tsv", sep="\t")
-gse = pd.read_csv(processed / "gse81089_manifest.tsv", sep="\t")
-require(tcga["group"].value_counts().to_dict() == {"LUAD": 516, "LUSC": 501}, "TCGA flow counts changed")
-require(gse["group"].value_counts().to_dict() == {"LUAD": 106, "LUSC": 67}, "GSE81089 flow counts changed")
+def group_counts(path: Path) -> dict[str, int]:
+    with path.open(newline="", encoding="utf-8") as handle:
+        return dict(Counter(row["group"] for row in csv.DictReader(handle, delimiter="\t")))
+
+
+require(group_counts(processed / "tcga_manifest.tsv") == {"LUAD": 516, "LUSC": 501}, "TCGA flow counts changed")
+require(group_counts(processed / "gse81089_manifest.tsv") == {"LUAD": 106, "LUSC": 67}, "GSE81089 flow counts changed")
 checks.append({"check": "SupplementaryFigure1:manifest_counts", "status": "passed"})
 
-receipt = pd.read_csv(tables / "Figure1_anchor_style_render_receipt.tsv", sep="\t")
+with (tables / "Figure1_anchor_style_render_receipt.tsv").open(newline="", encoding="utf-8") as handle:
+    receipt = list(csv.DictReader(handle, delimiter="\t"))
 required_flow = {
     "tcga_all": 1141,
     "tcga_primary": 1029,
@@ -75,7 +94,7 @@ required_flow = {
     "gse_target_with_expression": 173,
     "gse_unmatched": 2,
 }
-observed = dict(zip(receipt["metric"], receipt["value"]))
+observed = {row["metric"]: float(row["value"]) for row in receipt}
 for key, expected in required_flow.items():
     require(int(round(observed[key])) == expected, f"Flow count mismatch for {key}: {observed[key]}")
 checks.append({"check": "SupplementaryFigure1:flow_arithmetic", "status": "passed"})
@@ -83,7 +102,9 @@ checks.append({"check": "SupplementaryFigure1:flow_arithmetic", "status": "passe
 verification = {
     "status": "passed",
     "outputs": stems,
-    "figure1c_shape": list(display.shape),
+    "figure1c_shape": list(matrix_shape),
+    "max_abs_row_mean": max_abs_row_mean,
+    "max_abs_row_sd_minus_1": max_abs_row_sd_minus_1,
     "tf_categories": counts,
     "checks": checks,
 }

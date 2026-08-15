@@ -362,7 +362,7 @@ render_figure1c <- function(path) {
 }
 
 heatmap_receipt <- render_figure1c(file.path(figures, "Figure1C_TCGA_TF_activity_annotated.pdf"))
-render_figure1c(file.path(figures, "Figure1C_TCGA_TF_activity_annotated.png"))
+invisible(render_figure1c(file.path(figures, "Figure1C_TCGA_TF_activity_annotated.png")))
 
 matrix_samples <- function(path) names(fread(path, nrows = 0, check.names = FALSE))[-1]
 tcga_counts_samples <- unlist(lapply(c("LUAD", "LUSC"), function(histology) {
