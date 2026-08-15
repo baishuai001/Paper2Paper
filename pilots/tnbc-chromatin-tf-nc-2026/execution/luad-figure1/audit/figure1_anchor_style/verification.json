@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "outputs": [
+    "Figure1A_workflow",
+    "Figure1C_TCGA_TF_activity_annotated",
+    "SupplementaryFigure1A_TCGA_inclusion",
+    "SupplementaryFigure1B_GSE81089_inclusion"
+  ],
+  "figure1c_shape": [
+    351,
+    1017
+  ],
+  "max_abs_row_mean": 1.1162271806088717e-15,
+  "max_abs_row_sd_minus_1": 1.3322676295501878e-15,
+  "tf_categories": {
+    "LUAD": 158,
+    "LUSC": 193
+  },
+  "checks": [
+    {
+      "check": "output:Figure1A_workflow.pdf",
+      "status": "passed",
+      "bytes": 20384,
+      "pdf_nonwhite_fraction": 0.10627876397107167
+    },
+    {
+      "check": "output:Figure1A_workflow.png",
+      "status": "passed",
+      "bytes": 131761,
+      "pdf_nonwhite_fraction": null
+    },
+    {
+      "check": "output:Figure1C_TCGA_TF_activity_annotated.pdf",
+      "status": "passed",
+      "bytes": 2371428,
+      "pdf_nonwhite_fraction": 0.5850199975760514
+    },
+    {
+      "check": "output:Figure1C_TCGA_TF_activity_annotated.png",
+      "status": "passed",
+      "bytes": 1308613,
+      "pdf_nonwhite_fraction": null
+    },
+    {
+      "check": "output:SupplementaryFigure1A_TCGA_inclusion.pdf",
+      "status": "passed",
+      "bytes": 17427,
+      "pdf_nonwhite_fraction": 0.0828264395782644
+    },
+    {
+      "check": "output:SupplementaryFigure1A_TCGA_inclusion.png",
+      "status": "passed",
+      "bytes": 113832,
+      "pdf_nonwhite_fraction": null
+    },
+    {
+      "check": "output:SupplementaryFigure1B_GSE81089_inclusion.pdf",
+      "status": "passed",
+      "bytes": 17936,
+      "pdf_nonwhite_fraction": 0.07335476769783339
+    },
+    {
+      "check": "output:SupplementaryFigure1B_GSE81089_inclusion.png",
+      "status": "passed",
+      "bytes": 126749,
+      "pdf_nonwhite_fraction": null
+    },
+    {
+      "check": "Figure1C:row_scaled_351x1017",
+      "status": "passed"
+    },
+    {
+      "check": "Figure1C:158_LUAD_193_LUSC_TFs",
+      "status": "passed"
+    },
+    {
+      "check": "SupplementaryFigure1:manifest_counts",
+      "status": "passed"
+    },
+    {
+      "check": "SupplementaryFigure1:flow_arithmetic",
+      "status": "passed"
+    }
+  ]
+}
