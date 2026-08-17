@@ -1,0 +1,46 @@
+{
+  "candidate_database": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/motifs/candidate_luad_hc_and_lineage_controls.homer",
+  "candidate_database_sha256": "5872ca9e7ad708a393295a5ff499cb7b3ca7c4f50ae1dbf6515bda5be94b36f3",
+  "candidate_motif_model_count": 47,
+  "candidate_motif_models_by_source": {
+    "CIS-BP2.00": 26,
+    "JASPAR2024": 21
+  },
+  "full_database_sha256": "57f5140be71697d6495657a6add7af24c12465c2f6e6323bfffe6b627ed01e98",
+  "generated_utc": "2026-08-17T05:08:30.614035+00:00",
+  "lineage_controls_with_catalogued_motifs": [
+    "CEBPA",
+    "CEBPB",
+    "ELF3",
+    "FOXA1",
+    "FOXA2",
+    "GATA6",
+    "HNF4A",
+    "NKX2-1"
+  ],
+  "lineage_positive_controls": [
+    "NKX2-1",
+    "FOXA1",
+    "FOXA2",
+    "CEBPA",
+    "CEBPB",
+    "GATA6",
+    "HNF4A",
+    "ELF3"
+  ],
+  "motif_testable_hc_tf_count": 20,
+  "purpose": "candidate motif family frozen once and emitted both combined and source-split; source-split files reproduce the TNBC author's independent JASPAR/CIS-BP correction strategy",
+  "source_split_databases": {
+    "CIS-BP2.00": {
+      "motif_model_count": 26,
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/motifs/candidate_luad_hc_and_lineage_controls.CIS-BP2.00.homer",
+      "sha256": "35b2a693eb95bbc9847e03e9c49b4fa2747867229d54cdcd74c361146074f21e"
+    },
+    "JASPAR2024": {
+      "motif_model_count": 21,
+      "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/motifs/candidate_luad_hc_and_lineage_controls.JASPAR2024.homer",
+      "sha256": "e2e7599efa85b6a27e7a3dbc178898538df991b78681c778af98050c73c291c8"
+    }
+  },
+  "token_mapping_sha256": "407877b69e4fcf2f9db6e7b07871dcbd02bf717535f7abd0b4d674d5ec5e707d"
+}

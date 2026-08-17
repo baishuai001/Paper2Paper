@@ -1,0 +1,59 @@
+{
+  "analysis_label": "full JASPAR2024 plus CIS-BP2.00 database sensitivity analysis",
+  "completed_or_explicitly_not_testable_samples_by_system": {
+    "PDX": 13,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "generated_utc": "2026-08-17T06:08:23.320318+00:00",
+  "harmonized_manifest_sha256": "67d0856ca50b6f647015086b77ac474455294f66507b8342e84a20eb13a3ed8f",
+  "harmonized_triple_hc_tf_count_fixed_original_denominator": 1,
+  "harmonized_triple_hc_tf_count_matchable_denominator": 1,
+  "homer_effective_background_denominator_max": 27643.0,
+  "homer_effective_background_denominator_min": 25757.0,
+  "homer_effective_background_note": "the same input BED is reused; HOMER removes target-overlapping background regions and reports the resulting per-sample effective denominator",
+  "homer_result_roots": [
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/motif_equivalence/harmonized_homer"
+  ],
+  "homer_target_denominator_values": [
+    3583.0,
+    3584.0,
+    3585.0
+  ],
+  "interpretation_rule": "failure of known LUAD lineage controls in a model arm indicates an assay, pipeline, or motif-model-selection calibration problem before absence of LUAD HC-TF motifs can be interpreted as clean biology",
+  "lineage_controls_with_at_least_one_catalogued_motif": 8,
+  "lineage_positive_controls": [
+    "NKX2-1",
+    "FOXA1",
+    "FOXA2",
+    "CEBPA",
+    "CEBPB",
+    "GATA6",
+    "HNF4A",
+    "ELF3"
+  ],
+  "motif_testable_luad_hc_tf_count": 20,
+  "parsed_selected_motif_result_row_count": 2397,
+  "peak_count_matchable_samples_by_system": {
+    "PDX": 10,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "positive_control_support_by_system_fixed_denominator": {
+    "PDX": 2,
+    "cell_line": 1,
+    "patient": 1
+  },
+  "positive_control_support_by_system_matchable_denominator": {
+    "PDX": 2,
+    "cell_line": 1,
+    "patient": 1
+  },
+  "previous_variable_width_self_union_background_triple_hc_tf_count": 0,
+  "q_threshold": 1e-05,
+  "shared_background_sha256": "52132c6a35072dc372754a4a373225fd18c038c358043f91a3f8bc8746e7c680",
+  "tf_database_selection_rule": "all_catalogued_motifs_in_configured_database",
+  "unified_motif_database": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/motifs/full_reference_both_databases.homer",
+  "unified_motif_database_motif_count": 1944,
+  "unified_motif_database_sha256": "57f5140be71697d6495657a6add7af24c12465c2f6e6323bfffe6b627ed01e98"
+}

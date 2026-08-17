@@ -1,0 +1,87 @@
+{
+  "analysis_scope": "TNBC positive-control replay from per-sample published HOMER knownResults through author 06B plus an exact 07A/08 logic reimplementation",
+  "author_06B_combined_tables_byte_identical_to_published": {
+    "CISBP": true,
+    "JASPAR": true
+  },
+  "fixed_system_totals": {
+    "CellLines": 26,
+    "PDX": 38,
+    "TCGA": 7
+  },
+  "full_published_three_system_result_recovered": true,
+  "generated_utc": "2026-08-17T04:12:14.623079+00:00",
+  "half_sample_cutoffs": {
+    "CellLines": 13,
+    "PDX": 19,
+    "TCGA": 4
+  },
+  "input_sha256": {
+    "homer_zip": "a7c64909f4e1b372052d0f2d6ceca9ba5e9742b20d9ecc27786228b0689d9587",
+    "mapping": "47c20bfaf556823261076033283288cf42a9a95d4efd56bd6493acea3e00a7e6",
+    "published_cisbp_combined": "2dec9c8205568875b779fcb616a53446a92fc2647750c64d7c2ddcfe36b5f1de",
+    "published_intersection": "20e9a58b4457345609f54bb74b43eaefb0e352c00bd1d80e99aba4fed8ea5479",
+    "published_jaspar_combined": "5b0c054d6c79099e28ff2d40a6b28ef21fe067fd542519fec1a377d0e1f9aea1",
+    "published_lor_summary": "ca5d5d0e13c26c993f7a74f4bd91399b6734203685120ce7a352c4369c443a55"
+  },
+  "intersection_mismatch_count": 0,
+  "jaspar_sample_totals_match_author_constants": true,
+  "lor_summary_max_absolute_numeric_delta": {
+    "Mean_LOR": 4.718447854656915e-16,
+    "Pct_samples": 4.263256414560601e-14,
+    "SD_LOR": 4.85722573273506e-16
+  },
+  "lor_summary_mismatch_count_at_tolerance_1e-12": 0,
+  "mapped_tf_count": 56,
+  "not_claimed": "HOMER was not rerun from ATAC peak BEDs because the Code Ocean capsule exposes per-sample HOMER outputs but not all raw/query peak inputs; PDX raw ATAC is controlled-access",
+  "observed_samples_by_database": {
+    "CISBP": {
+      "CellLines": 26,
+      "PDX": 36,
+      "TCGA": 7
+    },
+    "JASPAR": {
+      "CellLines": 26,
+      "PDX": 38,
+      "TCGA": 7
+    }
+  },
+  "published_supported_in_at_least_one_system_count": 43,
+  "published_triple_system_count": 31,
+  "q_threshold_inclusive": 1e-05,
+  "replayed_supported_in_at_least_one_system_count": 43,
+  "replayed_triple_system_count": 31,
+  "replayed_triple_system_tfs": [
+    "BARX2",
+    "BATF3",
+    "DLX4",
+    "DMRTA1",
+    "DMRTA2",
+    "E2F2",
+    "E2F3",
+    "E2F8",
+    "EN1",
+    "ETV4",
+    "ETV6",
+    "FOXC1",
+    "FOXN2",
+    "FOXP4",
+    "GATA6",
+    "GRHL1",
+    "HIF1A",
+    "HMGA1",
+    "KLF11",
+    "MYBL2",
+    "NFIL3",
+    "OTX1",
+    "PLAGL1",
+    "SOX9",
+    "TCF7L1",
+    "TLX3",
+    "VAX1",
+    "VAX2",
+    "ZIC4",
+    "ZNF454",
+    "ZNF695"
+  ]
+}

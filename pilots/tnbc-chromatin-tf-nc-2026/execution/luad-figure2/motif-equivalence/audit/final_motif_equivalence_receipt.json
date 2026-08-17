@@ -1,0 +1,61 @@
+{
+  "anchor_equivalent_candidate_calibration_pass_fixed_denominator": false,
+  "anchor_equivalent_candidate_calibration_pass_matchable_denominator": false,
+  "anchor_equivalent_candidate_hc_tf_triple_fixed_denominator": 0,
+  "anchor_equivalent_candidate_hc_tf_triple_matchable_denominator": 0,
+  "anchor_equivalent_candidate_positive_controls_supported_fixed_denominator": {
+    "PDX": 1,
+    "cell_line": 0,
+    "patient": 0
+  },
+  "anchor_equivalent_candidate_positive_controls_supported_matchable_denominator": {
+    "PDX": 1,
+    "cell_line": 0,
+    "patient": 0
+  },
+  "anchor_vs_combined47_changed_hc_tfs": [
+    "ELF3",
+    "FOXA3"
+  ],
+  "combined47_and_full1944_hc_support_matrices_identical": true,
+  "combined_candidate_calibration_pass_fixed_denominator": true,
+  "combined_candidate_calibration_pass_matchable_denominator": true,
+  "combined_candidate_hc_tf_triple_fixed_denominator": 1,
+  "combined_candidate_hc_tf_triple_matchable_denominator": 1,
+  "combined_candidate_positive_controls_supported_fixed_denominator": {
+    "PDX": 2,
+    "cell_line": 1,
+    "patient": 1
+  },
+  "combined_candidate_positive_controls_supported_matchable_denominator": {
+    "PDX": 2,
+    "cell_line": 1,
+    "patient": 1
+  },
+  "combined_candidate_role": "more stringent sensitivity analysis because JASPAR and CIS-BP q values are corrected jointly rather than independently",
+  "full_database_calibration_pass_fixed_denominator": true,
+  "full_database_calibration_pass_matchable_denominator": true,
+  "full_database_hc_tf_triple_fixed_denominator": 1,
+  "full_database_hc_tf_triple_matchable_denominator": 1,
+  "full_database_positive_controls_supported_fixed_denominator": {
+    "PDX": 2,
+    "cell_line": 1,
+    "patient": 1
+  },
+  "full_database_positive_controls_supported_matchable_denominator": {
+    "PDX": 2,
+    "cell_line": 1,
+    "patient": 1
+  },
+  "full_database_role": "additional stringent 1,944-model multiple-testing sensitivity analysis; it does not replace the source-split anchor-equivalent candidate diagnostic",
+  "generated_utc": "2026-08-17T06:12:53.094247+00:00",
+  "interpretation": "the peak-to-HOMER chain detects lineage controls in both model arms when all catalogued candidate motifs are allowed, but the exact author JASPAR-priority selection does not; any zero under the exact rule is motif-model-selection-sensitive rather than a clean biological absence",
+  "old_unharmonized_positive_controls_supported": {
+    "PDX": 0,
+    "cell_line": 0,
+    "patient": 8
+  },
+  "tnbc_author_result_recovered": true,
+  "tnbc_replayed_supported_any_system": 43,
+  "tnbc_replayed_triple_system": 31
+}

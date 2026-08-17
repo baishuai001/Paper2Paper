@@ -1,0 +1,39 @@
+{
+  "all_samples_by_system": {
+    "PDX": 13,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "analysis_role": "diagnostic_method_equivalence_audit_not_primary_biological_gate",
+  "background_gc_mean": 0.6322225516183035,
+  "background_gc_sd": 0.09198093589215314,
+  "background_multiplier": 8,
+  "background_sha256": "52132c6a35072dc372754a4a373225fd18c038c358043f91a3f8bc8746e7c680",
+  "background_source": "TCGA-LUSC accessible regions from GDC cancer-type raw-count matrix",
+  "blacklist": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38-blacklist.v2.bed",
+  "blacklist_sha256": "31c69342df43bbc19dd8ef2886611a8150cb53e90f341de14d30e742c9251737",
+  "cell_line_arm_matching_floor": 4491,
+  "eligible_samples_by_system": {
+    "PDX": 10,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "exact_target_gc_bin_quotas_reused_for_every_matchable_sample": true,
+  "fasta_fai_sha256": "3b425de206296a5c8053023fa5ca61da43cfe78c1737c12e58c83367c7e83c21",
+  "fixed_peak_width_bp": 200,
+  "gc_bin_width": 0.05,
+  "generated_utc": "2026-08-17T03:56:21.763954+00:00",
+  "input_manifest_sha256": "5b74d29a22ae41ab4679eef29072df0a36b5ac20cbf23c6106bedd63794c2966",
+  "lusc_background_preselection_stats": {
+    "blacklist_removed": 1232,
+    "deduplicated_usable": 116417,
+    "input_rows": 117649
+  },
+  "motif_matchability_rule": "at least the minimum harmonized peak count observed across the complete 19-cell-line arm",
+  "same_background_file_reused_for_all_three_systems": true,
+  "seed": 20260817,
+  "shared_background_peak_count": 28672,
+  "shared_matched_target_peak_count": 3584,
+  "target_and_background_lengths_are_exactly_200bp": true,
+  "tcga_lusc_background_source_sha256": "60eb1618207ef6e7563dc994f08a7d17941dd471675d0c9cfe2ec805d73fd20f"
+}
