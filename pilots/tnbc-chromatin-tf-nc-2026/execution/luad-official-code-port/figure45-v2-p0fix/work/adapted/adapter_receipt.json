@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "frozen_hc_tfs": 31,
+  "cox_rows": 248,
+  "cellline_tests": 39085,
+  "replicated_drug_tf_ids": 5,
+  "pdx_tests": 423,
+  "pdx_tests_entering_validation": 0,
+  "validated_pdx_pairs": 0,
+  "strict_main_supported": ["Figure4A-H", "Figure5A-F", "SupplementaryFigure5A-B", "SupplementaryFigure6A-H", "SupplementaryFigure7A-C"],
+  "unsupported": [
+    {
+      "panel": "Figure5G",
+      "status": "UNSUPPORTED",
+      "reason": "No cell-line-replicated drug-TF pair has matched PDX response (0/423 PDX tests enter validation)",
+      "replacement_plot_permitted": false
+    },
+    {
+      "panel": "Figure5H",
+      "status": "UNSUPPORTED",
+      "reason": "No validated LUAD PDX drug-TF pair; the official response waterfall has no eligible input",
+      "replacement_plot_permitted": false
+    },
+    {
+      "panel": "SupplementaryFigure7D",
+      "status": "UNSUPPORTED",
+      "reason": "No validated LUAD PDX drug-TF pair; the official PDX AAC example has no eligible input",
+      "replacement_plot_permitted": false
+    }
+  ]
+}

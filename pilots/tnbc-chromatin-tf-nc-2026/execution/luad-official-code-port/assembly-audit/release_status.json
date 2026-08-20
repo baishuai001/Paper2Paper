@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "release_status": "STRICT_OFFICIAL_PORT_REVIEW_ONLY",
+  "publication_ready": false,
+  "upstream_component": "Supplementary Figure 3",
+  "receipt_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/verification_receipt.json",
+  "receipt_sha256": "c3fefb13c1c69ef1ce26be73cb00487c86531ebbfd2d5776dd1365b0781d8ce9",
+  "upstream_verdict": "PASS_STRICT_PORT_WITH_DECLARED_INPUT_AND_VISUAL_BOUNDARIES",
+  "upstream_publication_ready": false,
+  "receipt_contract_valid": true,
+  "partial_panels": [
+    "SupplementaryFigure3A"
+  ],
+  "visual_warning_panels": [
+    "SupplementaryFigure3D",
+    "SupplementaryFigure3F",
+    "SupplementaryFigure3K",
+    "SupplementaryFigure3L"
+  ],
+  "visual_warnings": [
+    {
+      "panel": "SupplementaryFigure3D",
+      "qa_status": "OFFICIAL_ANNOTATION_OVERLAP",
+      "observation": "The official fixed annotation positions make the detected/estimated peak labels overlap; the fitted 50% point is negative and is printed as 0 samples after official rounding.",
+      "strict_port_action": "Do not alter the official constructor; flag as not publication-ready."
+    },
+    {
+      "panel": "SupplementaryFigure3F",
+      "qa_status": "OFFICIAL_ANNOTATION_OVERLAP",
+      "observation": "The detected-peak label and Model Fit label overlap for the LUAD cell-line fit.",
+      "strict_port_action": "Do not alter the official constructor; flag as not publication-ready."
+    },
+    {
+      "panel": "SupplementaryFigure3K",
+      "qa_status": "OFFICIAL_LABEL_OVERLAP",
+      "observation": "The official fixed n-label position overlaps the promoter distribution; n=12 because one of 13 frozen PDX models has no rows after zero-peak expansion.",
+      "strict_port_action": "Do not invent a nonzero peak; flag as not publication-ready."
+    },
+    {
+      "panel": "SupplementaryFigure3L",
+      "qa_status": "OFFICIAL_LABEL_OVERLAP",
+      "observation": "The official fixed n-label position overlaps the promoter distribution.",
+      "strict_port_action": "Do not alter the official constructor; flag as not publication-ready."
+    }
+  ],
+  "release_blockers": [
+    "Supplementary Figure 3 upstream receipt sets publication_ready=false.",
+    "Partial Supplementary Figure 3 panels: SupplementaryFigure3A",
+    "Supplementary Figure 3 visual warnings: SupplementaryFigure3D,SupplementaryFigure3F,SupplementaryFigure3K,SupplementaryFigure3L"
+  ]
+}

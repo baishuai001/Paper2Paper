@@ -1,0 +1,75 @@
+--- official/06-Activity_Score_Heterogeneity_Across_Patients.R
++++ official_port/06-Activity_Score_Heterogeneity_Across_Patients.R
+@@ -5,7 +5,8 @@
+ library(moments)
+ library(argparse)
+ 
+-source("/code/Static_Scripts/plotting_aesthetics.R")
++source(file.path(Sys.getenv("PAPER2PAPER_OFFICIAL_PORT_WORK"), "Static_Scripts", "plotting_aesthetics.R"))
++sample_category_colours <- setNames(unname(sample_category_colours), c("LUAD", "Non-LUAD"))
+ 
+ #### Collect all the arguments ####################################################################
+ parser <- ArgumentParser()
+@@ -77,7 +78,7 @@
+ 
+ # Take the top 10 and plot the kernal densities
+ #TR_connections_top5 <- TR_connections$TR[c(1:5)]
+-TR_connections_top5 <- c("FOXC1", "MYBL2", "PML", "RCOR2")
++TR_connections_top5 <- readLines(Sys.getenv("PAPER2PAPER_REPRESENTATIVE_TFS_FILE"), warn = FALSE)
+ 
+ #### TCGA 
+ # Read in the TR activity scores
+@@ -89,7 +90,7 @@
+ TCGA_TR_Activity_Score <- t(TCGA_TR_Activity_Score)
+ TCGA_TR_Activity_Score <- TCGA_TR_Activity_Score[,colnames(TCGA_TR_Activity_Score) %in% TR_connections$TR]
+ TCGA_TR_Activity_Score <- as.data.frame(TCGA_TR_Activity_Score)
+-TCGA_TR_Activity_Score$subtype <- ifelse(rownames(TCGA_TR_Activity_Score) %in% TCGA_subtype_info$Sample.ID, "TNBC", "Non-TNBC")
++TCGA_TR_Activity_Score$subtype <- ifelse(rownames(TCGA_TR_Activity_Score) %in% TCGA_subtype_info$Sample.ID, "LUAD", "Non-LUAD")
+ TCGA_TR_Activity_Score$Sample <- rownames(TCGA_TR_Activity_Score)
+ TCGA_TR_Activity_Score$Cohort <- "TCGA"
+ 
+@@ -103,7 +104,7 @@
+ 
+ PDX_subtype_info <- read.table(args$PDX_subtype_info, header=TRUE, sep='\t', check.names=FALSE)
+ PDX_subtype_info_basal <- PDX_subtype_info[PDX_subtype_info$PAM50 == "Basal" & PDX_subtype_info$SCMOD2 == "Basal",]
+-PDX_TR_Activity_Score$subtype <- ifelse(rownames(PDX_TR_Activity_Score) %in% PDX_subtype_info_basal$Sample, "TNBC", "Non-TNBC")
++PDX_TR_Activity_Score$subtype <- ifelse(rownames(PDX_TR_Activity_Score) %in% PDX_subtype_info_basal$Sample, "LUAD", "Non-LUAD")
+ PDX_TR_Activity_Score$Sample <- rownames(PDX_TR_Activity_Score)
+ PDX_TR_Activity_Score$Cohort <- "PDX"
+ 
+@@ -117,7 +118,7 @@
+ 
+ CellLines_subtype_info <- read.table(args$CellLines_subtype_info, header=TRUE, sep='\t', check.names=FALSE)
+ CellLines_subtype_info_basal <- CellLines_subtype_info[CellLines_subtype_info$PAM50 == "Basal" & CellLines_subtype_info$SCMOD2 == "Basal",]
+-CellLines_TR_Activity_Score$subtype <- ifelse(rownames(CellLines_TR_Activity_Score) %in% CellLines_subtype_info_basal$Sample, "TNBC", "Non-TNBC")
++CellLines_TR_Activity_Score$subtype <- ifelse(rownames(CellLines_TR_Activity_Score) %in% CellLines_subtype_info_basal$Sample, "LUAD", "Non-LUAD")
+ CellLines_TR_Activity_Score$Sample <- rownames(CellLines_TR_Activity_Score)
+ CellLines_TR_Activity_Score$Cohort <- "CellLines"
+ 
+@@ -198,7 +199,7 @@
+                names_to  = "TR_Source",
+                values_to = "NES") %>%
+   filter(TR_Source %in% HC_TRs$V1,
+-         subtype == "TNBC") %>%
++         subtype == "LUAD") %>%
+   group_by(TR_Source, Cohort) %>%
+   summarise(
+     n        = n(),
+@@ -233,7 +234,7 @@
+                                  "TRUE"  = activating_repressing_colours[["Activated Shared Targets"]]),
+                       name = "FDR < 0.05") +
+   scale_size_continuous(name = "-log10(FDR)", range = c(1, 5)) +
+-  labs(x = "Skewness (TNBC samples)",
++  labs(x = "Skewness (LUAD samples)",
+        y = "Mean HC-TF activity (NES)") +
+   theme_bw() +
+   theme(axis.text = element_text(colour = "black", size = 8))
+@@ -258,7 +259,7 @@
+                       name = "FDR < 0.05") +
+   scale_size_continuous(name = "-log10(FDR)", range = c(1, 5)) +
+   facet_wrap(~ Cohort, nrow = 1) +
+-  labs(x = "Skewness (TNBC samples)",
++  labs(x = "Skewness (LUAD samples)",
+        y = "Mean HC-TF activity (NES)") +
+   theme_bw() +
+   theme(axis.text  = element_text(colour = "black", size = 8),

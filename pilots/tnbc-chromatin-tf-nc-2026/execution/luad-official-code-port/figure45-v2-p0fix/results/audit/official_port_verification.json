@@ -1,0 +1,345 @@
+{
+  "status": "PASS",
+  "capsule": "7227095/v1",
+  "commit": "edf5314",
+  "manifest_sha256": "127ed074d191f5855ec56cd0525fae23a034aabf5e7d90bfdd45bfc98305ced2",
+  "blocks_checked": 31,
+  "font_substitution_count": 0,
+  "supp5b_heatmap_verbatim": true,
+  "r_parse_not_applicable_unsupported_blocks": [
+    "fig5h_waterfall"
+  ],
+  "generated_blocks_strictly_parseable": 30,
+  "r_parse": [
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/official_port_p0fix_20260821/fig45/prepare_luad_inputs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/official_port_p0fix_20260821/fig45/render_official_fig45.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/aac_helper.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/aesthetics.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig4_euler.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig4_forest.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig4_km.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5_ci.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5_upset.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5e_grid.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5f_high.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5f_low.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5g_pdx.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5h_waterfall.R",
+      "returncode": 1,
+      "status": "R_PARSE_NOT_APPLICABLE_UNSUPPORTED_SOURCE_SLICE",
+      "reason": "provenance-only block is not executed and is not a standalone R program"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp5a_skew.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp5b_heatmap.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp5b_volcano.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6a_uni_gse_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6b_uni_gse_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6c_uni_tcga_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6d_uni_tcga_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6e_multi_gse_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6f_multi_gse_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6g_multi_tcga_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6h_multi_tcga_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7a_drugs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case1.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case2.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case3.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case4.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7c_high.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7c_low.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7d_pdx.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/aac_helper.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/aesthetics.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig4_euler.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig4_forest.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig4_km.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5_ci.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5_upset.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5e_grid.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5f_high.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5f_low.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5g_pdx.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5h_waterfall.R",
+      "returncode": 1,
+      "status": "R_PARSE_NOT_APPLICABLE_UNSUPPORTED_SOURCE_SLICE",
+      "reason": "provenance-only block is not executed and is not a standalone R program"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp5a_skew.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp5b_heatmap.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp5b_volcano.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6a_uni_gse_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6b_uni_gse_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6c_uni_tcga_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6d_uni_tcga_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6e_multi_gse_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6f_multi_gse_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6g_multi_tcga_os.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6h_multi_tcga_rfs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7a_drugs.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case1.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case2.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case3.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case4.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7c_high.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7c_low.R",
+      "returncode": 0,
+      "status": "PARSED"
+    },
+    {
+      "file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7d_pdx.R",
+      "returncode": 0,
+      "status": "PARSED"
+    }
+  ],
+  "results": {
+    "render_rows": 44,
+    "rendered": 39,
+    "atomic_pdf_sha256_manifest": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/results/atomic_pdf_sha256.tsv",
+    "atomic_pdf_sha256_manifest_sha256": "476ea9d139b3139bf1336bf7eaa117bdb27cd16b6f99cf03d00987eba423a5ce",
+    "executed_official_blocks": 28
+  },
+  "failures": []
+}

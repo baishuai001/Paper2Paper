@@ -1,0 +1,800 @@
+{
+  "capsule": "7227095/v1",
+  "commit": "edf5314",
+  "official_code_root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/external/code/TNBC_CodeOcean_7227095_v1/code",
+  "manifest_sha256": "127ed074d191f5855ec56cd0525fae23a034aabf5e7d90bfdd45bfc98305ced2",
+  "blocks": [
+    {
+      "block_id": "aesthetics",
+      "panel": "all",
+      "upstream_file": "Static_Scripts/plotting_aesthetics.R",
+      "sha256": "52f1fc590c6cad927ee0d1b030ddc215e99c506d15b465f3c805a9cc0ca11c1d",
+      "line_start": "1",
+      "line_end": "161",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official fixed palettes",
+      "source_sha256_observed": "52f1fc590c6cad927ee0d1b030ddc215e99c506d15b465f3c805a9cc0ca11c1d",
+      "exact_block_sha256": "52f1fc590c6cad927ee0d1b030ddc215e99c506d15b465f3c805a9cc0ca11c1d",
+      "patched_block_sha256": "52f1fc590c6cad927ee0d1b030ddc215e99c506d15b465f3c805a9cc0ca11c1d",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/aesthetics.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/aesthetics.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/aesthetics.diff"
+    },
+    {
+      "block_id": "supp5a_skew",
+      "panel": "SupplementaryFigure5A",
+      "upstream_file": "Figure3/06-Activity_Score_Heterogeneity_Across_Patients.R",
+      "sha256": "ea0ad4d093d1af0e65d2e81e25181d9f02e4b4614229acb37b4da44a8bf0df63",
+      "line_start": "245",
+      "line_end": "269",
+      "mode": "label_patch",
+      "allowed_replacements": "TNBC samples=>LUAD samples",
+      "note": "Official PDX/cell-line skewness constructor",
+      "source_sha256_observed": "ea0ad4d093d1af0e65d2e81e25181d9f02e4b4614229acb37b4da44a8bf0df63",
+      "exact_block_sha256": "5392985c49ae4986f8b7692806b3070e70f4a9a056137230a7750b07f8f62335",
+      "patched_block_sha256": "50e199619d0dddb2d3321ae6c7dfdd951d3bc659e499dfb3f85baf56befc8e31",
+      "replacement_receipt": [
+        {
+          "from": "TNBC samples",
+          "to": "LUAD samples",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp5a_skew.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp5a_skew.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp5a_skew.diff"
+    },
+    {
+      "block_id": "supp5b_volcano",
+      "panel": "SupplementaryFigure5B",
+      "upstream_file": "Figure3/08D-Plot_ESTIMATE_Volcano.R",
+      "sha256": "758248868b1375bbab20970e414294c0f085efae0104619a70019bee71a160ff",
+      "line_start": "81",
+      "line_end": "128",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official ESTIMATE volcano function",
+      "source_sha256_observed": "758248868b1375bbab20970e414294c0f085efae0104619a70019bee71a160ff",
+      "exact_block_sha256": "e5b27567016b0dda423fb66accfdf857adc056f76924c0e5a87c6d0ab6485866",
+      "patched_block_sha256": "e5b27567016b0dda423fb66accfdf857adc056f76924c0e5a87c6d0ab6485866",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp5b_volcano.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp5b_volcano.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp5b_volcano.diff"
+    },
+    {
+      "block_id": "supp5b_heatmap",
+      "panel": "SupplementaryFigure5B",
+      "upstream_file": "Figure3/08E-Plot_Heatmap_ESTIMATE.R",
+      "sha256": "43569ca10503416e48abace611445148c5e706b6d926cf1c7da58a025d0e8c38",
+      "line_start": "87",
+      "line_end": "247",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official ESTIMATE filtering, heatmap constructor, Helvetica rendering, device dimensions, and FDR-star footer",
+      "source_sha256_observed": "43569ca10503416e48abace611445148c5e706b6d926cf1c7da58a025d0e8c38",
+      "exact_block_sha256": "3e7d5ccee416da72da05b727b3d7f798496e7a8821381b166625826c02c90199",
+      "patched_block_sha256": "3e7d5ccee416da72da05b727b3d7f798496e7a8821381b166625826c02c90199",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp5b_heatmap.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp5b_heatmap.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp5b_heatmap.diff"
+    },
+    {
+      "block_id": "supp6a_uni_gse_os",
+      "panel": "SupplementaryFigure6A",
+      "upstream_file": "Figure4/03-Plot_UniVariate_METABRIC_TCGA.R",
+      "sha256": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "line_start": "32",
+      "line_end": "62",
+      "mode": "label_path_patch",
+      "allowed_replacements": "METABRIC=>GSE41271_LUAD",
+      "note": "Official univariable Cox volcano block",
+      "source_sha256_observed": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "exact_block_sha256": "a5f232ff9ce7c49843bd849e1f68226ee0a51ac38494895e9d5b419496677f86",
+      "patched_block_sha256": "420ece39141334de39013bfcf41ca16a6f4572e1274f0b83f54f3d5cc8dbbe9b",
+      "replacement_receipt": [
+        {
+          "from": "METABRIC",
+          "to": "GSE41271_LUAD",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6a_uni_gse_os.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6a_uni_gse_os.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6a_uni_gse_os.diff"
+    },
+    {
+      "block_id": "supp6b_uni_gse_rfs",
+      "panel": "SupplementaryFigure6B",
+      "upstream_file": "Figure4/03-Plot_UniVariate_METABRIC_TCGA.R",
+      "sha256": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "line_start": "69",
+      "line_end": "99",
+      "mode": "label_path_patch",
+      "allowed_replacements": "METABRIC=>GSE41271_LUAD",
+      "note": "Official univariable Cox volcano block",
+      "source_sha256_observed": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "exact_block_sha256": "7a3ac18505f88f576b743e0c6bbdb77a42d92a8e77dc222a3266cc4e936deb08",
+      "patched_block_sha256": "55b3c298d119f0ae41bb0f1a55486648ce272fe05869d93f893a42a93948c723",
+      "replacement_receipt": [
+        {
+          "from": "METABRIC",
+          "to": "GSE41271_LUAD",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6b_uni_gse_rfs.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6b_uni_gse_rfs.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6b_uni_gse_rfs.diff"
+    },
+    {
+      "block_id": "supp6c_uni_tcga_os",
+      "panel": "SupplementaryFigure6C",
+      "upstream_file": "Figure4/03-Plot_UniVariate_METABRIC_TCGA.R",
+      "sha256": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "line_start": "106",
+      "line_end": "136",
+      "mode": "label_path_patch",
+      "allowed_replacements": "TCGA=>TCGA_LUAD",
+      "note": "Official univariable Cox volcano block",
+      "source_sha256_observed": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "exact_block_sha256": "4cda7e9c414ebd21108299620cd9fcfb053a5ef6ef73163bf36924524206036c",
+      "patched_block_sha256": "b9324f9769fbfc2599d1ec4312f57da8bd20daa8dc59f555b2014e315bf9fe37",
+      "replacement_receipt": [
+        {
+          "from": "TCGA",
+          "to": "TCGA_LUAD",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6c_uni_tcga_os.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6c_uni_tcga_os.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6c_uni_tcga_os.diff"
+    },
+    {
+      "block_id": "supp6d_uni_tcga_rfs",
+      "panel": "SupplementaryFigure6D",
+      "upstream_file": "Figure4/03-Plot_UniVariate_METABRIC_TCGA.R",
+      "sha256": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "line_start": "143",
+      "line_end": "173",
+      "mode": "label_path_endpoint_patch",
+      "allowed_replacements": "TCGA=>TCGA_LUAD;RFS\\nTCGA_LUAD=>DFS\\nTCGA_LUAD",
+      "note": "Official univariable Cox volcano block; visible endpoint label audited from RFS to frozen TCGA DFS semantics",
+      "source_sha256_observed": "2bc192cab24ac5e2aff429309a9053d3f931a630b20de29e3d43d40d453187c0",
+      "exact_block_sha256": "816f838ed42c4311a4e07bfd3807039cf005459cf021d60fc61622bb8a8a540d",
+      "patched_block_sha256": "c3eb079398bf4582aacac73a691a0d2cf0d593a6aaed35a6b91a9de47f445c8e",
+      "replacement_receipt": [
+        {
+          "from": "TCGA",
+          "to": "TCGA_LUAD",
+          "count": 7
+        },
+        {
+          "from": "RFS\\nTCGA_LUAD",
+          "to": "DFS\\nTCGA_LUAD",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6d_uni_tcga_rfs.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6d_uni_tcga_rfs.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6d_uni_tcga_rfs.diff"
+    },
+    {
+      "block_id": "supp6e_multi_gse_os",
+      "panel": "SupplementaryFigure6E",
+      "upstream_file": "Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R",
+      "sha256": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "line_start": "32",
+      "line_end": "62",
+      "mode": "label_path_patch",
+      "allowed_replacements": "METABRIC=>GSE41271_LUAD",
+      "note": "Official multivariable Cox volcano block",
+      "source_sha256_observed": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "exact_block_sha256": "71c7f1babfed4dbb910b52832ae31d593ddcd2c3f6d63b1fc3571473188bd391",
+      "patched_block_sha256": "214581eec0de03356422bc2c23e42bb5f4341f511f6afe3ad3beb34c576fc2c6",
+      "replacement_receipt": [
+        {
+          "from": "METABRIC",
+          "to": "GSE41271_LUAD",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6e_multi_gse_os.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6e_multi_gse_os.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6e_multi_gse_os.diff"
+    },
+    {
+      "block_id": "supp6f_multi_gse_rfs",
+      "panel": "SupplementaryFigure6F",
+      "upstream_file": "Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R",
+      "sha256": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "line_start": "69",
+      "line_end": "99",
+      "mode": "label_path_patch",
+      "allowed_replacements": "METABRIC=>GSE41271_LUAD",
+      "note": "Official multivariable Cox volcano block",
+      "source_sha256_observed": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "exact_block_sha256": "bbea3c201a4f84e2b8218de8de95226a1abade79d693a1ab468e4a0b60d54ed8",
+      "patched_block_sha256": "a440ba98fe6922adf39be851a6353d8c0c9f4c24c028b691676259644b1741d2",
+      "replacement_receipt": [
+        {
+          "from": "METABRIC",
+          "to": "GSE41271_LUAD",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6f_multi_gse_rfs.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6f_multi_gse_rfs.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6f_multi_gse_rfs.diff"
+    },
+    {
+      "block_id": "supp6g_multi_tcga_os",
+      "panel": "SupplementaryFigure6G",
+      "upstream_file": "Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R",
+      "sha256": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "line_start": "106",
+      "line_end": "136",
+      "mode": "label_path_patch",
+      "allowed_replacements": "TCGA=>TCGA_LUAD",
+      "note": "Official multivariable Cox volcano block",
+      "source_sha256_observed": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "exact_block_sha256": "19f3473ded8a29a25b119dc94fa89d59085ac81d337b11a76cac65b6577b987d",
+      "patched_block_sha256": "d8353a20720a2c0df5d24ffc8ffad92a0bca858695255c90e21838c9dee26855",
+      "replacement_receipt": [
+        {
+          "from": "TCGA",
+          "to": "TCGA_LUAD",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6g_multi_tcga_os.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6g_multi_tcga_os.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6g_multi_tcga_os.diff"
+    },
+    {
+      "block_id": "supp6h_multi_tcga_rfs",
+      "panel": "SupplementaryFigure6H",
+      "upstream_file": "Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R",
+      "sha256": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "line_start": "143",
+      "line_end": "173",
+      "mode": "label_path_endpoint_patch",
+      "allowed_replacements": "TCGA=>TCGA_LUAD;RFS\\nTCGA_LUAD=>DFS\\nTCGA_LUAD",
+      "note": "Official multivariable Cox volcano block; visible endpoint label audited from RFS to frozen TCGA DFS semantics",
+      "source_sha256_observed": "fa6548bc8c6f5765058e6ab694a2c800ec3e09e02cb61ef8da44c34408c18961",
+      "exact_block_sha256": "122f46961c07a4b48ecc2f6ce2ad051ca13c56f4fabafadfb50e4ac2476d29a0",
+      "patched_block_sha256": "0177177971900a317dc9cb440d79acf9c65c9fd1ed5b7a7b6d50f1dbd2554f7b",
+      "replacement_receipt": [
+        {
+          "from": "TCGA",
+          "to": "TCGA_LUAD",
+          "count": 7
+        },
+        {
+          "from": "RFS\\nTCGA_LUAD",
+          "to": "DFS\\nTCGA_LUAD",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp6h_multi_tcga_rfs.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp6h_multi_tcga_rfs.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp6h_multi_tcga_rfs.diff"
+    },
+    {
+      "block_id": "fig4_km",
+      "panel": "Figure4F;Figure4H",
+      "upstream_file": "Figure4/04-Kaplan_Meyer_Curves_UniVariate_METABRIC_TCGA.R",
+      "sha256": "7b5cbcea3d59fe4707c51faecd68361e8aa6c839a4cb54ccdec814a0060f1296",
+      "line_start": "10",
+      "line_end": "65",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official Kaplan-Meier function; LUAD TF choices supplied by adapter",
+      "source_sha256_observed": "7b5cbcea3d59fe4707c51faecd68361e8aa6c839a4cb54ccdec814a0060f1296",
+      "exact_block_sha256": "f554827be96dc94fcf4c132aa77ab9968f731a2ddeeaf430a9c9fe3119d26e50",
+      "patched_block_sha256": "f554827be96dc94fcf4c132aa77ab9968f731a2ddeeaf430a9c9fe3119d26e50",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig4_km.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig4_km.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig4_km.diff"
+    },
+    {
+      "block_id": "fig4_forest",
+      "panel": "Figure4A-D",
+      "upstream_file": "Figure4/05-Plot_HazardRatio_ConfidenceInterval.R",
+      "sha256": "e2a780a83d3269eb17a1f89d9288024f1b8ee2c9f2c28763035376c9dc46211a",
+      "line_start": "20",
+      "line_end": "99",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official forest constructor",
+      "source_sha256_observed": "e2a780a83d3269eb17a1f89d9288024f1b8ee2c9f2c28763035376c9dc46211a",
+      "exact_block_sha256": "a8a2e9037a97dad732ab21b5dd3935c71bbff8e338647e32a92818b550fdd385",
+      "patched_block_sha256": "a8a2e9037a97dad732ab21b5dd3935c71bbff8e338647e32a92818b550fdd385",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig4_forest.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig4_forest.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig4_forest.diff"
+    },
+    {
+      "block_id": "fig4_euler",
+      "panel": "Figure4E;Figure4G",
+      "upstream_file": "Figure4/06-Determine_Overlap_TCGA_METABRIC_TRs.R",
+      "sha256": "d4deae4e409438e7fb73bcaabc334e67ce7e04ce601727075898729ee866de10",
+      "line_start": "51",
+      "line_end": "84",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official prognosis Euler constructor",
+      "source_sha256_observed": "d4deae4e409438e7fb73bcaabc334e67ce7e04ce601727075898729ee866de10",
+      "exact_block_sha256": "2b67c5bd409fd566b89b413777f7ba4762a8e60e6ff4e7473b8b4204a34b9866",
+      "patched_block_sha256": "2b67c5bd409fd566b89b413777f7ba4762a8e60e6ff4e7473b8b4204a34b9866",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig4_euler.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig4_euler.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig4_euler.diff"
+    },
+    {
+      "block_id": "supp7a_drugs",
+      "panel": "SupplementaryFigure7A",
+      "upstream_file": "Figure5/01A-Compare_Drugs_Overlapping_Across_CellLine_Datasets.R",
+      "sha256": "04720c86104ffcd89b54b17a99f4795fe4b8f78286c9c341222a605e51f1f44d",
+      "line_start": "37",
+      "line_end": "83",
+      "mode": "dataset_patch",
+      "allowed_replacements": "GRAY=>PRISM;GDSC1000=>GDSC2",
+      "note": "Official drug-overlap Euler block including device closure",
+      "source_sha256_observed": "04720c86104ffcd89b54b17a99f4795fe4b8f78286c9c341222a605e51f1f44d",
+      "exact_block_sha256": "7db0619ff42d44dfa546588efd6223cdb6d428cbba321bf3960b1ec40d858952",
+      "patched_block_sha256": "f5ba81ae5a5a693d56a6b4f8d9a490c43604c74c43c12125966a97302e8241ac",
+      "replacement_receipt": [
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 7
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 7
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7a_drugs.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7a_drugs.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7a_drugs.diff"
+    },
+    {
+      "block_id": "fig5_ci",
+      "panel": "Figure5A-C",
+      "upstream_file": "Figure5/03-Plot_ConcordanceIndex_Volcano.R",
+      "sha256": "9123de56edddf3138eeB07220c13c1320a4789991f417f8f2cb9acb873a5829a",
+      "line_start": "40",
+      "line_end": "105",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official cell-line concordance-index screen",
+      "source_sha256_observed": "9123de56edddf3138eeb07220c13c1320a4789991f417f8f2cb9acb873a5829a",
+      "exact_block_sha256": "7e93a988ac19dbe23b939fc930e89f63f59601e2cadf8bae22682846e6345cc8",
+      "patched_block_sha256": "7e93a988ac19dbe23b939fc930e89f63f59601e2cadf8bae22682846e6345cc8",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5_ci.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5_ci.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5_ci.diff"
+    },
+    {
+      "block_id": "fig5_upset",
+      "panel": "Figure5D",
+      "upstream_file": "Figure5/04A-Compare_Drugs_Across_CellLine_Datasets.R",
+      "sha256": "0719898545aad99c5b0428888ff3a133f59306b90fd3a39acd349ce12c15f47d",
+      "line_start": "67",
+      "line_end": "127",
+      "mode": "dataset_patch",
+      "allowed_replacements": "GRAY=>PRISM;GDSC1000=>GDSC2",
+      "note": "Official reproduced drug–TF UpSet",
+      "source_sha256_observed": "0719898545aad99c5b0428888ff3a133f59306b90fd3a39acd349ce12c15f47d",
+      "exact_block_sha256": "54ec82077b501b977c5462cf91a1e6072cd262a2df07a4f65a3d3b9eaaad2d99",
+      "patched_block_sha256": "1fed98a6cb7e224d269e1c8902d1d1c1e54c0714d73506209dc3d369648e8c1a",
+      "replacement_receipt": [
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 12
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 4
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5_upset.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5_upset.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5_upset.diff"
+    },
+    {
+      "block_id": "fig5e_grid",
+      "panel": "Figure5E",
+      "upstream_file": "Figure5/05-Generate_DotPlot_SignificantDrug_TR.R",
+      "sha256": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "line_start": "64",
+      "line_end": "80",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official OS-by-RFS 3x3 grid; counts are supplied by LUAD adapter",
+      "source_sha256_observed": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "exact_block_sha256": "48daaef1c0cc3aa2abefccdad9302a92b6af64086c0ba27f5c0c49d61fd1b2d6",
+      "patched_block_sha256": "48daaef1c0cc3aa2abefccdad9302a92b6af64086c0ba27f5c0c49d61fd1b2d6",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5e_grid.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5e_grid.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5e_grid.diff"
+    },
+    {
+      "block_id": "fig5f_low",
+      "panel": "Figure5F",
+      "upstream_file": "Figure5/05-Generate_DotPlot_SignificantDrug_TR.R",
+      "sha256": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "line_start": "104",
+      "line_end": "184",
+      "mode": "dataset_patch",
+      "allowed_replacements": "GRAY=>PRISM;GDSC1000=>GDSC2",
+      "note": "Official low-CI pathway/TF dot-matrix block",
+      "source_sha256_observed": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "exact_block_sha256": "8797998088e7f4df482d1d67396604c54cd18f650c1eb6f6ab2e149132ce8d10",
+      "patched_block_sha256": "169d52384e90b5b93641b90c0d648996437fe99cb516b49ce0c27bf6c47bbf26",
+      "replacement_receipt": [
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 2
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 2
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5f_low.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5f_low.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5f_low.diff"
+    },
+    {
+      "block_id": "supp7c_low",
+      "panel": "SupplementaryFigure7C",
+      "upstream_file": "Figure5/05-Generate_DotPlot_SignificantDrug_TR.R",
+      "sha256": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "line_start": "186",
+      "line_end": "264",
+      "mode": "dataset_patch",
+      "allowed_replacements": "GRAY=>PRISM;GDSC1000=>GDSC2",
+      "note": "Official low-CI supplementary dot-matrix block",
+      "source_sha256_observed": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "exact_block_sha256": "59ca3e27ad57deacf7f7aed9e84c3c499cf7b030efa62fccc51e14ce7db8c45f",
+      "patched_block_sha256": "eb0d01f8001972082d88094cf805aeb598883fcb4d3087587033a730138d560e",
+      "replacement_receipt": [
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 1
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7c_low.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7c_low.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7c_low.diff"
+    },
+    {
+      "block_id": "fig5f_high",
+      "panel": "Figure5F",
+      "upstream_file": "Figure5/05-Generate_DotPlot_SignificantDrug_TR.R",
+      "sha256": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "line_start": "266",
+      "line_end": "348",
+      "mode": "dataset_patch",
+      "allowed_replacements": "GRAY=>PRISM;GDSC1000=>GDSC2",
+      "note": "Official high-CI pathway/TF dot-matrix block",
+      "source_sha256_observed": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "exact_block_sha256": "e3a5b2ee8968deb12d2cf7bd79e0baaa2bd36696134248c7cb6224b6945ec021",
+      "patched_block_sha256": "240b7546f442f53db1b6c8e9c212bd91f8ca789a6bb11c9633afac331d484759",
+      "replacement_receipt": [
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 2
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 2
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5f_high.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5f_high.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5f_high.diff"
+    },
+    {
+      "block_id": "supp7c_high",
+      "panel": "SupplementaryFigure7C",
+      "upstream_file": "Figure5/05-Generate_DotPlot_SignificantDrug_TR.R",
+      "sha256": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "line_start": "350",
+      "line_end": "424",
+      "mode": "dataset_patch",
+      "allowed_replacements": "GRAY=>PRISM;GDSC1000=>GDSC2",
+      "note": "Official high-CI supplementary dot-matrix block",
+      "source_sha256_observed": "4cc23514ae36c74c4f98a028def87ec8a9f21153adb836fcbcd1f7277bb05de8",
+      "exact_block_sha256": "704ef830c88c340d789776bb6e49f4d44d6e952e791c65d9bf82d35aa01fb574",
+      "patched_block_sha256": "9d7af0bdacd3ec36cc0f29c9ad8d6faf8e894c2a1e43a5c533e0ecd75b38b38d",
+      "replacement_receipt": [
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 1
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7c_high.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7c_high.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7c_high.diff"
+    },
+    {
+      "block_id": "aac_helper",
+      "panel": "SupplementaryFigure7B-D",
+      "upstream_file": "Static_Scripts/AAC_Helper.R",
+      "sha256": "78ea7573eb3c5e6ad7234d6a68ba0438065935c86ce94a489251172018c61b43",
+      "line_start": "1",
+      "line_end": "306",
+      "mode": "verbatim",
+      "allowed_replacements": "",
+      "note": "Official AAC scatter helpers",
+      "source_sha256_observed": "78ea7573eb3c5e6ad7234d6a68ba0438065935c86ce94a489251172018c61b43",
+      "exact_block_sha256": "78ea7573eb3c5e6ad7234d6a68ba0438065935c86ce94a489251172018c61b43",
+      "patched_block_sha256": "78ea7573eb3c5e6ad7234d6a68ba0438065935c86ce94a489251172018c61b43",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/aac_helper.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/aac_helper.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/aac_helper.diff"
+    },
+    {
+      "block_id": "supp7b_case1",
+      "panel": "SupplementaryFigure7B",
+      "upstream_file": "Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R",
+      "sha256": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "line_start": "24",
+      "line_end": "36",
+      "mode": "identifier_dataset_patch",
+      "allowed_replacements": "ETV4_Trametinib=>WWC2_Pha793887;Trametinib=>Pha-793887;ETV4=>WWC2;GRAY=>PRISM",
+      "note": "Official case-1 call/save block; frozen LUAD replicated pair and cohort IDs only",
+      "source_sha256_observed": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "exact_block_sha256": "a1c7a4d7c741d27032763af74acab3c210e317307851b542bfe7827dd25e8d4d",
+      "patched_block_sha256": "ff16d55b4436ca1f60ee15a2e2207b41c065beb3bcc35e04c374a135a5725a6a",
+      "replacement_receipt": [
+        {
+          "from": "ETV4_Trametinib",
+          "to": "WWC2_Pha793887",
+          "count": 3
+        },
+        {
+          "from": "Trametinib",
+          "to": "Pha-793887",
+          "count": 1
+        },
+        {
+          "from": "ETV4",
+          "to": "WWC2",
+          "count": 1
+        },
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case1.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case1.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7b_case1.diff"
+    },
+    {
+      "block_id": "supp7b_case2",
+      "panel": "SupplementaryFigure7B",
+      "upstream_file": "Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R",
+      "sha256": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "line_start": "38",
+      "line_end": "49",
+      "mode": "identifier_dataset_patch",
+      "allowed_replacements": "RELB_Afatinib=>ZNF254_5Fluorouracil;Afatinib=>5-Fluorouracil;RELB=>ZNF254;GRAY=>GDSC2;AAC_concordance_colours_High=>AAC_concordance_colours_Low",
+      "note": "Official case-2 call/save block; frozen LUAD replicated pair, cohort IDs, and observed low-CI colour object only",
+      "source_sha256_observed": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "exact_block_sha256": "b85588db66b4b54a6f251f6e7796ef9d3fdeb86321a8aac6e03e45ef61c1d8ce",
+      "patched_block_sha256": "dfef8fe73b1dc3c6557479742ef6ed3c6ab2b2ea4f3f2e27915549bf2721c59e",
+      "replacement_receipt": [
+        {
+          "from": "RELB_Afatinib",
+          "to": "ZNF254_5Fluorouracil",
+          "count": 3
+        },
+        {
+          "from": "Afatinib",
+          "to": "5-Fluorouracil",
+          "count": 1
+        },
+        {
+          "from": "RELB",
+          "to": "ZNF254",
+          "count": 1
+        },
+        {
+          "from": "GRAY",
+          "to": "GDSC2",
+          "count": 1
+        },
+        {
+          "from": "AAC_concordance_colours_High",
+          "to": "AAC_concordance_colours_Low",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case2.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case2.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7b_case2.diff"
+    },
+    {
+      "block_id": "supp7b_case3",
+      "panel": "SupplementaryFigure7B",
+      "upstream_file": "Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R",
+      "sha256": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "line_start": "51",
+      "line_end": "62",
+      "mode": "identifier_dataset_patch",
+      "allowed_replacements": "DMRTA1_Paclitaxel=>ZNF254_Dactolisib;Paclitaxel=>Dactolisib;DMRTA1=>ZNF254;GDSC1000=>GDSC2;GRAY=>PRISM;AAC_concordance_colours_High=>AAC_concordance_colours_Low",
+      "note": "Official case-3 call/save block; frozen LUAD replicated pair, cohort IDs, and observed low-CI colour object only",
+      "source_sha256_observed": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "exact_block_sha256": "9ba25e044fdea97449e4622e3b72336f10c7dfff3800dea8982d6966c675e930",
+      "patched_block_sha256": "e34a4e16d417987b3c6bc53db2893a4fe3ca2407c9739fbf7b1731e5a3ece155",
+      "replacement_receipt": [
+        {
+          "from": "DMRTA1_Paclitaxel",
+          "to": "ZNF254_Dactolisib",
+          "count": 3
+        },
+        {
+          "from": "Paclitaxel",
+          "to": "Dactolisib",
+          "count": 1
+        },
+        {
+          "from": "DMRTA1",
+          "to": "ZNF254",
+          "count": 1
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 1
+        },
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 1
+        },
+        {
+          "from": "AAC_concordance_colours_High",
+          "to": "AAC_concordance_colours_Low",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case3.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case3.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7b_case3.diff"
+    },
+    {
+      "block_id": "supp7b_case4",
+      "panel": "SupplementaryFigure7B",
+      "upstream_file": "Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R",
+      "sha256": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "line_start": "64",
+      "line_end": "75",
+      "mode": "identifier_dataset_patch",
+      "allowed_replacements": "NCOA7_PD173074=>ZNF254_Vorinostat;PD 173074=>Vorinostat;NCOA7=>ZNF254;GDSC1000=>GDSC2;GRAY=>PRISM",
+      "note": "Official case-4 call/save block; frozen LUAD replicated pair and cohort IDs only",
+      "source_sha256_observed": "2db2ecb456d87a3b199da1877eed2c9e451831dc677dd52ee9d3e9aa764d8617",
+      "exact_block_sha256": "c876d0d2737f8716d25e78f6db95e731ddfdd1a74e0c415ba08a3a39dbe8844d",
+      "patched_block_sha256": "064c4ba0f464edca5705d0ace8f4af87cecdc3a9ad9121b35dfd65bb909c3129",
+      "replacement_receipt": [
+        {
+          "from": "NCOA7_PD173074",
+          "to": "ZNF254_Vorinostat",
+          "count": 3
+        },
+        {
+          "from": "PD 173074",
+          "to": "Vorinostat",
+          "count": 1
+        },
+        {
+          "from": "NCOA7",
+          "to": "ZNF254",
+          "count": 1
+        },
+        {
+          "from": "GDSC1000",
+          "to": "GDSC2",
+          "count": 1
+        },
+        {
+          "from": "GRAY",
+          "to": "PRISM",
+          "count": 1
+        }
+      ],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7b_case4.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7b_case4.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7b_case4.diff"
+    },
+    {
+      "block_id": "fig5g_pdx",
+      "panel": "Figure5G",
+      "upstream_file": "Figure5/07D-Plot_ConcordanceIndex_PDX.R",
+      "sha256": "0d013829f205f96746331e7a6129558c86bbb6e58023c8c78ab568e33463d237",
+      "line_start": "110",
+      "line_end": "160",
+      "mode": "unsupported",
+      "allowed_replacements": "",
+      "note": "Requires at least one cell-line-replicated drug with matched PDX response; LUAD has none",
+      "source_sha256_observed": "0d013829f205f96746331e7a6129558c86bbb6e58023c8c78ab568e33463d237",
+      "exact_block_sha256": "d853592591b38544bebed686e202318a217ce43fb20bdca397accf3e032259e4",
+      "patched_block_sha256": "d853592591b38544bebed686e202318a217ce43fb20bdca397accf3e032259e4",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5g_pdx.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5g_pdx.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5g_pdx.diff"
+    },
+    {
+      "block_id": "supp7d_pdx",
+      "panel": "SupplementaryFigure7D",
+      "upstream_file": "Figure5/07C-Plot_AAC_PDX.R",
+      "sha256": "fda94eba415bb803ff24373debb0d37626321bf9eeee5fbfc5202c51e5688207",
+      "line_start": "62",
+      "line_end": "73",
+      "mode": "unsupported",
+      "allowed_replacements": "",
+      "note": "Requires a validated LUAD PDX drug–TF pair; none exists",
+      "source_sha256_observed": "fda94eba415bb803ff24373debb0d37626321bf9eeee5fbfc5202c51e5688207",
+      "exact_block_sha256": "93618f4190702e83600f245aeaa5cbed75d2deab85aecdae78068deef798a0f4",
+      "patched_block_sha256": "93618f4190702e83600f245aeaa5cbed75d2deab85aecdae78068deef798a0f4",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/supp7d_pdx.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/supp7d_pdx.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/supp7d_pdx.diff"
+    },
+    {
+      "block_id": "fig5h_waterfall",
+      "panel": "Figure5H",
+      "upstream_file": "Figure5/07D-Plot_ConcordanceIndex_PDX.R",
+      "sha256": "0d013829f205f96746331e7a6129558c86bbb6e58023c8c78ab568e33463d237",
+      "line_start": "166",
+      "line_end": "283",
+      "mode": "unsupported",
+      "allowed_replacements": "",
+      "note": "Requires a validated LUAD PDX drug–TF pair; frozen result has zero rows",
+      "source_sha256_observed": "0d013829f205f96746331e7a6129558c86bbb6e58023c8c78ab568e33463d237",
+      "exact_block_sha256": "ca9add3365ee54a265e32baba235f3d90caa5e202e8cef8595c4b90f4809627b",
+      "patched_block_sha256": "ca9add3365ee54a265e32baba235f3d90caa5e202e8cef8595c4b90f4809627b",
+      "replacement_receipt": [],
+      "exact_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/exact/fig5h_waterfall.R",
+      "patched_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/patched/fig5h_waterfall.R",
+      "diff_path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/diff/fig5h_waterfall.diff"
+    }
+  ]
+}

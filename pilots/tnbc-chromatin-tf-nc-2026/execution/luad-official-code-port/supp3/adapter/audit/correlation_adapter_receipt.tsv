@@ -1,0 +1,4 @@
+system	cohort	n_samples	min_r	median_off_diagonal_r	max_r
+patient	TCGA	22	0.385101508755173	0.706934578336654	1
+PDX	PDX	13	0.236803584464155	0.552419688565118	1
+cell_line	CellLines	19	0.324076610758744	0.500567046052398	1

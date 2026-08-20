@@ -1,0 +1,33 @@
+panel	port_status	official_source	official_line_block	constructor	boundary_note
+Figure1A	MANUAL_REQUIRED	NONE	NONE	NONE	No Figure1A constructor exists in the edf5314 capsule; official_port must not draw it.
+Figure1B	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	28-52	ggplot2	Only paths and LUAD/LUSC labels are adapted.
+Figure1C	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	54-129	ComplexHeatmap	Official heatmap constructor; LUAD annotation keys are adapter names.
+Figure1D	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	177-217	ComplexHeatmap	Official heatmap constructor; PDMR annotation keys are adapter names.
+Figure1E	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	264-315	ComplexHeatmap	Official heatmap constructor; DepMap annotation keys are adapter names. The cross-system heatmap uses 350 genuinely estimable TFs; ZNF737 is excluded only here because all 35 regulon targets have zero DepMap-expression overlap, with no fill or imputation.
+SupplementaryFigure1_all	MANUAL_REQUIRED	NONE	NONE	NONE	The inclusion/workflow diagrams have no plotting constructor in the edf5314 capsule; official_port must not draw them.
+SupplementaryFigure2A	OFFICIAL_PORT_READY_PRIMARY_PLUS_SECONDARY	Figure1/10-Plot_Figure1.R	355-398	ggplot2	GSE41271 microarray occupies the primary METABRIC-analogue slot; GSE81089 RNA-seq is replayed in an isolated secondary slot with the same constructor.
+SupplementaryFigure2B	OFFICIAL_PORT_READY_PRIMARY_PLUS_SECONDARY	Figure1/09-Compare_TCGA_METABRIC.R	36-46;78-88	eulerr	Primary label is GSE41271 and isolated secondary label is GSE81089; geometry/fills unchanged.
+SupplementaryFigure2C	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	150-175	ComplexHeatmap	Official Purple-Green sample-correlation heatmap.
+SupplementaryFigure2D	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	238-262	ComplexHeatmap	Official Purple-Green sample-correlation heatmap.
+SupplementaryFigure2E	OFFICIAL_PORT_READY	Figure1/10-Plot_Figure1.R	336-353	ComplexHeatmap	Official Purple-Green sample-correlation heatmap.
+SupplementaryFigure2F	OFFICIAL_PORT_READY_STRICT_AND_ANCHOR_BUGFIX	Figure1/10-Plot_Figure1.R	400-607	ggplot2	Strict replay retains official line 475 TCGA-to-PDX object bug and is flagged CAPSULE_BUG_RETAINED; final output applies one audited ANCHOR_BUGFIX line only.
+Figure2A	MANUAL_REQUIRED	NONE	NONE	NONE	No Figure2A constructor exists in the edf5314 capsule; official_port must not draw it.
+Figure2B	OFFICIAL_PORT_READY	Figure2/07B-UpSet_Plot_Promoter_Accessibility.R	134-185	ComplexUpset	Only 7/38/26 sample counts change to frozen 22/13/19.
+Figure2C	CAPSULE_PRINT_MISMATCH	Figure2/06C-PromoterAccessibility_MotifEnrichment.R	1-413	ggplot2+patchwork	Capsule 06C emits four vertical TF-row blocks including motif; printed Figure2C is a different three-block horizontal layout. Port emits the 06C layout unchanged and uses only the frozen author-priority JASPAR-first motif input. Its TCGA multiomic panel uses the paired ATAC-RNA/VIPER intersection n=21/22; TCGA-44-A47F lacks RNA/VIPER and is not imputed, while Figure2B and the promoter gate retain n=22.
+Figure2D	OFFICIAL_PORT_READY	Figure2/07A-UpSet_Plot_Motif_Enrichment.R	169-250	ComplexUpset	Frozen author-priority JASPAR-first formal input contains 20 motif-testable HC-TFs and exactly three triple-system TFs (FOXA3, NFATC4, XBP1); sample counts change from 7/38/26 to 22/13/19. Candidate-anchor zero-triple output is sensitivity audit only.
+Figure2E	OFFICIAL_PORT_READY	Figure2/08-Plot_TR_Examples.R	144-275	ggplot2+ggbeeswarm	Six case TF names are an explicit LUAD adapter object; geometry/scales unchanged.
+SupplementaryFigure3A	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/02J2-Plot_Number_Peaks.R	31-60	ggplot2	Patient final-peak table must be mapped without inventing per-sample MACS2 peaks.
+SupplementaryFigure3B	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/02J2-Plot_Number_Peaks.R	31-60	ggplot2	PDX final-peak table adapter pending.
+SupplementaryFigure3C	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/02J2-Plot_Number_Peaks.R	31-60	ggplot2	Cell-line final-peak table adapter pending; IDR is not applicable where true replicates are absent.
+SupplementaryFigure3D	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/02C-Peak_Saturation_Plot.R	44-155	ggplot2	Patient saturation model objects must match the official schema.
+SupplementaryFigure3E	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/02C-Peak_Saturation_Plot.R	44-155	ggplot2	PDX saturation model objects must match the official schema.
+SupplementaryFigure3F	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/02C-Peak_Saturation_Plot.R	44-155	ggplot2	Cell-line saturation model objects must match the official schema.
+SupplementaryFigure3G	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/03D-Pearson_Correlation_Accessibility_ConsensusPeakSet.R	43-96	ComplexHeatmap	Patient consensus-signal correlation RDS adapter pending.
+SupplementaryFigure3H	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/03D-Pearson_Correlation_Accessibility_ConsensusPeakSet.R	43-96	ComplexHeatmap	PDX consensus-signal correlation RDS adapter pending.
+SupplementaryFigure3I	OFFICIAL_CONSTRUCTOR_INPUT_PENDING	Figure2/03D-Pearson_Correlation_Accessibility_ConsensusPeakSet.R	43-96	ComplexHeatmap	Cell-line consensus-signal correlation RDS adapter pending.
+SupplementaryFigure3J	OFFICIAL_CONSTRUCTOR_BLOCKED_INPUT	Figure2/04B-GenomicAnnotation.R	58-168	ggplot2	Genome-wide 500-bp annotation baseline is absent; no substitute is permitted.
+SupplementaryFigure3K	OFFICIAL_CONSTRUCTOR_BLOCKED_INPUT	Figure2/04B-GenomicAnnotation.R	58-168	ggplot2	Genome-wide 500-bp annotation baseline is absent; no substitute is permitted.
+SupplementaryFigure3L	OFFICIAL_CONSTRUCTOR_BLOCKED_INPUT	Figure2/04B-GenomicAnnotation.R	58-168	ggplot2	Genome-wide 500-bp annotation baseline is absent; no substitute is permitted.
+SupplementaryFigure4A	MANUAL_REQUIRED	NONE	NONE	NONE	No Supplementary Figure4A constructor exists in the edf5314 capsule; official_port must not draw it.
+SupplementaryFigure4B	OFFICIAL_PORT_READY	Figure3/02-Determine_HC_TR.R	68-110	ComplexUpset	Official constructor is stored under Figure3 although the output filename is SupplementaryFigure4B; the frozen mean-activity adapter and 22/13/19 counts are supplied.
+SupplementaryFigure4C	OFFICIAL_PORT_READY_ANCHOR_EMPTY_SET_BUGFIX	Figure3/01-Compare_JASPAR_CISBP_Motifs.R	22-37;43-52	eulerr	Official eulerr constructor is unchanged. This panel alone reads isolated complete two-database availability files (JASPAR 12, CIS-BP 20, both 12), never the formal JASPAR-first Figure2C-D files. The genuine empty JASPAR-only set is handled by an audited three-line length-safe data.frame bugfix without adding a dummy TF.

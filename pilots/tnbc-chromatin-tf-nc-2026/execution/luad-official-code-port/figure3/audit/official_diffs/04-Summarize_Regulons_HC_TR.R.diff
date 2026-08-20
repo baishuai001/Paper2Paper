@@ -1,0 +1,33 @@
+--- official/04-Summarize_Regulons_HC_TR.R
++++ official_port/04-Summarize_Regulons_HC_TR.R
+@@ -6,7 +6,7 @@
+ library(tidyr)
+ library(argparse)
+ 
+-source("/code/Static_Scripts/plotting_aesthetics.R")
++source(file.path(Sys.getenv("PAPER2PAPER_OFFICIAL_PORT_WORK"), "Static_Scripts", "plotting_aesthetics.R"))
+ 
+ #### Collect all the arguments ####################################################################
+ parser <- ArgumentParser()
+@@ -101,8 +101,8 @@
+     scale_fill_manual(values = activating_repressing_colours) +
+     theme_bw() +
+     scale_x_continuous(expand=c(0,0), limits = c(0,350)) +
+-    labs(x = "Number of interactions in TNBC regulatory network", 
+-        y = "TNBC-specific high-confidence TRs", fill = "") +
++    labs(x = "Number of interactions in LUAD regulatory network", 
++        y = "LUAD-specific high-confidence TFs", fill = "") +
+     theme(axis.text.y = element_text(color = "black", size = 4.5),
+         axis.text.x = element_text(color = "black", size = 8))
+ 
+@@ -151,8 +151,8 @@
+ 
+ outfile <- paste0(args$visuals_outdir, "/Figure3A_RegulonInteractions_TCGA_VIPER.pdf")
+ 
+-#write.table(VIPER_interactions, paste0(args$data_outdir, "/HC_TR_94_TCGA_VIPER_RegulonNetwork.tsv"),
+-#    col.names=TRUE, row.names=FALSE, sep='\t', quote=FALSE)
++write.table(VIPER_interactions, paste0(args$data_outdir, "/HC_TR_94_TCGA_VIPER_RegulonNetwork.tsv"),
++    col.names=TRUE, row.names=FALSE, sep='\t', quote=FALSE)
+ 
+ # Calculate per-TF activation/repression proportions
+ repressor_summary <- VIPER_interactions %>%

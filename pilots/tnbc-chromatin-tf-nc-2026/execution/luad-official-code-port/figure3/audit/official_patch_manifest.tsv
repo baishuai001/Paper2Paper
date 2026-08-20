@@ -1,0 +1,9 @@
+source_file	changed_plus_minus_lines	plot_constructor_changed	allowed_change_classes
+03-Pearson_Correlation_TRActivity.R	0	NO	none
+04-Summarize_Regulons_HC_TR.R	10	NO	path;LUAD semantic labels;expose commented official tables;LUAD representative IDs
+05-Generate_Regulon_Network.R	8	NO	path;LUAD semantic labels;expose commented official tables;LUAD representative IDs
+06-Activity_Score_Heterogeneity_Across_Patients.R	17	NO	path;LUAD semantic labels;expose commented official tables;LUAD representative IDs
+07B-Plot_MKi67_HC-TR.R	0	NO	none
+07C-Plot_Heatmap_MKI67_HC-TR.R	13	NO	path;LUAD semantic labels;expose commented official tables;LUAD representative IDs
+08D-Plot_ESTIMATE_Volcano.R	0	NO	none
+08E-Plot_Heatmap_ESTIMATE.R	0	NO	none

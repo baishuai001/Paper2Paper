@@ -1,102 +1,90 @@
-# LUAD 图形实现取证审计与重建决定
+# LUAD图形实现取证审计（历史报告，已被严格官方代码端口取代）
 
-日期：2026-08-20  
-状态：旧版成图撤回；正在按 TNBC Code Ocean v1（commit `edf5314`）重建
+> 原审计日期：2026-08-20
+>
+> 状态：**SUPERSEDED / WITHDRAWN**
+>
+> 取代版依据：TNBC CodeOcean capsule `7227095/v1`，commit `edf5314`
+>
+> 当前整体交付等级：`STRICT_OFFICIAL_PORT_REVIEW_ONLY`
 
-## 结论
+## 如何使用本报告
 
-用户指出的“字号、配色廉价，Figure 3B/3D 像涂鸦”成立。问题不是 LUAD
-数据天然只能画成这样，也不是 TNBC 官方代码无法复用，而是旧实现走错了路线：
+本报告只保留“为什么旧自绘图被撤回”的取证历史。旧版中建议的自定义wrapper、自定义解释图、统一Liberation Sans、手工面板重排、自定义色板和`tnbc_anchor_theme.R`路线已全部**SUPERSEDED**，不得再执行，也不得作为当前图件的方法依据。
 
-1. 统计分析与可视化被分开重写，只复用了部分阈值和输入概念，没有逐段移植
-   TNBC 官方绘图构造器；
-2. 多个面板改变了原文的统计对象或信息粒度；
-3. 所有原子图又被塞入固定 `13 × 10 in` 横向报告模板，附加页眉、副标题和页脚，
-   造成关键面板被二次缩小；
-4. 一个通用 `theme_pub(base_size = 8.2)` 被用于性质不同的热图、森林图、网络图和
-   药敏图，抹掉了 TNBC 官方针对每类图形设置的视觉层级；
-5. 动态 HCL 色板、过饱和模块色、圆角卡片和 UI 风格说明框替代了原文固定、低饱和、
-   全篇一致的颜色语义。
+当前唯一允许的主路线是：对有公开构造器的面板，直接执行校验锁定的官方脚本或官方原始行块；只做路径、列名、LUAD/LUSC标签、数据集显示名和冻结样本数等声明过的数据适配。无构造器的面板记为`MANUAL_REQUIRED`，缺少合格LUAD输入的面板记为`UNSUPPORTED`。
 
-因此，旧版 Figure 1–5 和 Supplementary Figure 1–9 不能作为投稿版成图，必须先恢复
-科学对象，再恢复官方视觉语法，最后重新拼版。
+## 旧自绘实现为何被撤回
 
-## 两处需要立即撤回的科学性错误
+旧实现将“数据格式适配”扩大成“重新设计图件”，因而同时改变了视觉语法和部分科学对象：
+
+1. 没有逐段执行TNBC官方绘图构造器，而是使用通用主题、动态色板和自定义几何重画。
+2. 将性质不同的热图、森林图、网络图和药敏图统一塞入报告式模板，造成二次缩小和信息层级丢失。
+3. Figure 2B/2D把官方ComplexUpset改成自制UpSet；Figure 2E把motif case examples改成prevalence气泡图。
+4. Figure 5E把官方OS×RFS的3×3预后分类计数图误画成药物效应热图。
+5. Supplementary Figure 2B、2F和Supplementary Figure 5–7多处用通用柱状图、热图或气泡图替代官方Euler、逐样本NES分布、散点和通路点阵。
+
+因此，旧`code/publication_rebuild/`渲染器、`anchor_style`拼图以及`execution/luad-publication-rebuild/results/publication/`中的PDF只保留历史追溯价值，不得进入严格端口拼版。
+
+## Figure 3B/3D的两个历史性对象错误
 
 ### Figure 3B
 
-TNBC 官方代码只把满足“靶基因对共享至少 3 个 HC-TF”的边及其端点交给
-`graph_from_data_frame()`。LUAD 在同一规则下只有 3 条边和 6 个端点：
+TNBC官方代码只把满足“靶基因对共享至少3个HC-TF”的边及其端点交给`graph_from_data_frame()`。LUAD在同一规则下只有3条边、6个端点：
 
-| 靶基因对 | 共同 HC-TF |
+| 靶基因对 | 共同HC-TF |
 |---|---|
 | NDNF–ADGRF5 | CSRNP1、ETV1、NR3C2 |
 | ADGRD1–SELENBP1 | CRY2、MXD4、ZBTB18 |
 | YPEL3–CACFD1 | MAGED2、MXD4、ZNF444 |
 
-旧代码却先把所有“被至少 3 个 TF 调控”的 30 个靶基因作为固定 vertices，再加 3 条边，
-因而额外显示了 24 个原文代码不会显示的无边节点。Fruchterman–Reingold 布局把这些
-节点随机撒满画布，再强制标注全部名称，直接制造了“散点涂鸦”。
-
-修订决定：审计版严格显示 6 节点/3 边；解释版把 3 个 dyad 做成紧凑小倍图并列出
-共同 TF。24 个无边候选只能进入补充表，不能继续出现在主图网络中。结果应解释为：
-在锚点阈值下未形成高阶靶基因群落，而不是把随机散开的孤点当成群落结构。
+旧自绘代码额外加入24个无边节点，制造了不属于官方统计对象的“散点涂鸦”。当前严格端口只保留6节点/3边，不再另画自定义dyad解释版。
 
 ### Figure 3D
 
-LUAD 的完整 TF 协作网络共有 31 个节点、134 条正边、1 个连通分量、0 个孤立节点，
-密度为 0.288。旧代码使用边权 80% 分位数作为未预注册的显示阈值，仅留下 33 条边，
-删除 101/134（75.4%）有效边，制造出 11 个组分和 10 个视觉孤立点。图中没有披露该
-裁边规则；节点大小还错误映射为 regulon 靶基因数，而 TNBC 官方代码映射网络 degree。
+LUAD完整TF协作网络为31个节点、134条正边、1个连通分量、0个孤立节点。旧自绘代码用未预注册的80%边权分位数删除101/134条边，并把节点大小误映射为regulon靶基因数。当前严格端口执行官方构造器：使用全134条正边，节点大小映射network degree，边宽映射共享激活靶基因数。
 
-修订决定：直接使用全部 134 条正边；节点大小=degree，节点统一暗红 `#981111`，
-灰色半透明边，边宽=共享激活靶基因数，标签 repel，同时给出节点 degree 与边权图例。
-这会与 Figure 3E 的 hub 定义保持一致。真实 degree 最高的 TF 为 CRY2（19）、
-MAGED2（18）、ZNF19（16）、NR3C2 和 ZBTB18（各 13）。
+Figure 3当前为`PASS`，共19个官方脚本输出PDF。运行目录中的早期失败验证日志只是历史中间件，已被最终`PASS` receipt取代，不得与最终凭据并列解读。
 
-## 其他主图中发现的对象偏移
+## 当前严格官方代码端口的冻结事实
 
-- Figure 1B–E：官方使用逐 TF 行标准化、ComplexHeatmap 和固定临床/分子注释色；
-  旧版存在动态色板、跨面板颜色语义不一致和部分函数未在绘图内执行行标准化的问题。
-- Supplementary Figure 2B：TNBC 为两组 Euler/Venn，旧版换成了分面柱状图。
-- Supplementary Figure 2F：TNBC 为全部发现 TF 在四个系统中的逐样本 NES 点分布，
-  旧版换成了 cohort-effect 热图。
-- Figure 2B/2D：TNBC 使用 ComplexUpset；旧版是自制 UpSet，motif 数据库层信息丢失。
-- Figure 2C：TNBC 展示全部发现 TF 的 sample-level 启动子、NES 和 motif 证据；旧版压缩为
-  31 个 HC-TF × 3 个系统摘要，不能作为同构主图。
-- Figure 2E：TNBC 展示 mean LOR、跨样本支持比例及 motif case examples；旧版换成了
-  primary/sensitivity prevalence 气泡图。
-- Figure 5E：TNBC 是 OS × RFS 的 3×3 预后分类计数图；旧版画成 replicated drug-effect
-  heatmap，生物学对象不相同。
-- Figure 5H：TNBC 是已验证 drug–TF 对的 PDX waterfall。LUAD 目前没有通过冻结规则的
-  PDX 验证对，因此不能用其他图形冒充；只能明确标记“不支持生成等价面板”。
-- Supplementary Figure 5–7：旧版分别把 skewness、相关结构、成对置换、Euler/散点和
-  pathway–drug 矩阵换成了通用热图/UpSet/巨型气泡图，必须恢复原图语法。
+### Figure 1–2：`PASS`
 
-## 重建规范
+- Figure 1B保留351个显著发现TF（158 LUAD＋193 LUSC）；Figure 1C–E使用350个跨系统可估计TF。ZNF737的35个regulon靶基因与DepMap表达矩阵交集为0，因此不零填充、不插补。
+- GSE41271微阵列（183 LUAD/80 LUSC）是主要外部验证，复现70/158；GSE81089 RNA-seq（108/67）是隔离的次级验证，复现95/158，不取代主要微阵列队列。
+- 31个HC-TF中20个具有可检验已知motif。冻结的作者式JASPAR优先版本得到3个正式三系统共同motif TF：FOXA3、NFATC4、XBP1。
+- 早期candidate motif输入版本得到0个三系统交集；这是输入版本敏感性边界，不是正式Figure 2结果，不得用它覆盖FOXA3/NFATC4/XBP1。
+- Figure 2C只有21/22例ATAC患者可与RNA/VIPER配对；TCGA-44-A47F无可用RNA/VIPER。Figure 2B和启动子闸门仍使用22例ATAC分母，不对第22例插补。
+- Figure 2C公开capsule输出与论文印刷版布局不一致，状态为`CAPSULE_PRINT_MISMATCH`。严格端口保留公开代码输出；本报告旧版“以印刷版为视觉锚点自行重排”的建议已**SUPERSEDED**。
 
-1. 以 TNBC 官方代码块为骨架，LUAD wrapper 仅适配列名、队列名和 endpoint；不得重新发明
-   图形类型或显示阈值。
-2. 使用固定锚点色板。LUAD/LUSC 对应官方 TNBC/non-TNBC 的 `#435773/#9bc1e5`；
-   患者/PDX/细胞系为 `#7b007c/#6c8438/#147574`；风险/保护为
-   `#A60311/#04588C`。
-3. 服务器没有 Helvetica 授权字体；全篇统一使用度量兼容的 Liberation Sans，避免 Cairo
-   自动混入 Nimbus Roman。若以后提供合法 Helvetica/Arial，可通过环境变量统一替换。
-4. 原子图和主图均输出 Cairo 矢量 PDF；KM 图不得再使用 PNG 回退。
-5. 取消固定 13×10 英寸横向报告模板、页眉、副标题和页脚。主图采用接近期刊版心的纵向
-   尺寸和 TNBC 的非等宽面板层级，关键网络获得足够空间。
-6. 最终 panel letter 为 14–16 pt；最终可见标签不得低于约 5.5–6 pt。
-7. 没有数据支持的阳性面板必须明确显示负结果或不支持，不得为了视觉对齐降低阈值或
-   伪造等价证据。
-8. 每个 PDF 必须经过逐页渲染、字体清单、裁切、重叠、空白与最小字号检查；对照图册的
-   TNBC crop 必须重新校准。
+### Figure 4–5：P0修订版`PASS`
 
-## 代码路线
+独立P0审计后，旧Figure 4–5 v1输出已**SUPERSEDED**。取代版完成了以下修正：
 
-- 共享锚点样式：`code/publication_rebuild/tnbc_anchor_theme.R`
-- Figure 1–2 / Supplementary 1–4：独立官方风格 wrapper
-- Figure 3：独立官方网络 wrapper，并修订协议与 Figure Legend
-- Figure 4–5 / Supplementary 5–7：独立官方风格 wrapper
-- 最终拼版：仅使用矢量面板，取消报告式装饰；逐图保留 TNBC 的视觉层级
+- 取消对官方`Helvetica`的`Liberation Sans`替换，并恢复Supplementary Figure 5B的FDR星号说明；字体替换数为0。
+- Supplementary Figure 6D/6H图内终点显示从`RFS`更正为冻结的`DFS`语义，不改数据对象。
+- Figure 4A–D标题恢复官方`Multivariate {cohort} {endpoint}`语义。
+- Supplementary Figure 7B实际执行4段官方case调用和保存代码，保留7×7英寸官方画布。
 
-旧版仅作为审计历史保留，不再被称为投稿版或严格复刻版。
+机器验收为`PASS`、0项失败；实际执行28个官方源码块，生成39个原子PDF，全部具有逐文件SHA-256并由receipt锁定。Figure 5G、Figure 5H和Supplementary Figure 7D由于0/423个PDX检验能进入匹配验证，依真实输入记为`UNSUPPORTED`，不用自绘图补位。
+
+### Supplementary Figure 3：代码端口通过，但`publication_ready: false`
+
+Supplementary Figure 3A–L的12个PDF均由官方构造器生成，构造器重写数为0，receipt为`PASS_STRICT_PORT_WITH_DECLARED_INPUT_AND_VISUAL_BOUNDARIES`。同时必须保留下列边界：
+
+- 3A为`PARTIAL`；3B/3C没有合格真实生物学重复，IDR为不适用。
+- 3J–L使用真实hg38 500-bp全基因组背景，共6,062,095个bin。
+- 3K的13个冻结PDX中有1个零峰，官方非空长表显示n=12。
+- **3D、3F、3K、3L共4个面板存在官方固定标签重叠。** 严格端口不移动标签，因此整组明确`publication_ready: false`。
+
+最终逐页视觉QA还确认：官方固定坐标使Figure 1B及主要验证版Supplementary Figure 2A的相关性文字在LUAD范围内被边界截断，GSE81089次级散点的部分基因标签重叠，Supplementary Figure 4D的小热图标题与图例标题叠印。它们是严格端口必须如实保留和披露的排版边界，不是数据缺失；若以后修复，只能作为单列的post-port layout版本，不能反写为“官方构造器零改动”。
+
+## 当前交付边界
+
+7个评审PDF为`Figure1.pdf`、`Figure2.pdf`、`Figure3.pdf`、`Figure4.pdf`、`Figure5.pdf`、`Supplementary_Figures.pdf`和`TNBC_vs_LUAD_comparison_atlas.pdf`，固定输出到`execution/luad-official-code-port/final/`；页数、字节数、SHA-256及最终边界见[FINAL_REVIEW_SET.md](../execution/luad-official-code-port/FINAL_REVIEW_SET.md)。
+
+即使固定输出和机器验证已经完成，由于上述Supplementary Figure 3及数据覆盖边界，整体输出仍只能称：
+
+> `STRICT_OFFICIAL_PORT_REVIEW_ONLY`
+
+不得称`publication_ready`、“最终投稿版”或“零边界完整复刻”。

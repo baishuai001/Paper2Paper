@@ -1,0 +1,45 @@
+--- upstream/Figure5/04A-Compare_Drugs_Across_CellLine_Datasets.R:67-127
++++ patched/fig5_upset.R
+@@ -1,5 +1,5 @@
+-Drug_TR_IntersectionList <- list(GRAY = GRAY_CI_sig$Drug_TR,
+-    GDSC1000 = GDSC_CI_sig$Drug_TR,
++Drug_TR_IntersectionList <- list(PRISM = PRISM_CI_sig$Drug_TR,
++    GDSC2 = GDSC_CI_sig$Drug_TR,
+     CTRPv2 = CTRPv2_CI_sig$Drug_TR)
+ 
+ Drug_TR_IntersectionMat <- ComplexHeatmap::list_to_matrix(Drug_TR_IntersectionList)
+@@ -11,19 +11,19 @@
+ Drug_TR_IntersectionMat <- Drug_TR_IntersectionMat %>% dplyr::select(-c("sum"))
+ 
+ # Create the Drug-TR fill meta data
+-GRAY_CI_included <- GRAY_CI[GRAY_CI$Drug_TR %in% rownames(Drug_TR_IntersectionMat[Drug_TR_IntersectionMat$GRAY == 1,]),]
+-GRAY_CI_included$Cohort <- "GRAY"
+-GRAY_CI_included <- GRAY_CI_included[,c("Drug_TR", "Cohort", "Category")]
++PRISM_CI_included <- PRISM_CI[PRISM_CI$Drug_TR %in% rownames(Drug_TR_IntersectionMat[Drug_TR_IntersectionMat$PRISM == 1,]),]
++PRISM_CI_included$Cohort <- "PRISM"
++PRISM_CI_included <- PRISM_CI_included[,c("Drug_TR", "Cohort", "Category")]
+ 
+-GDSC_CI_included <- GDSC_CI[GDSC_CI$Drug_TR %in% rownames(Drug_TR_IntersectionMat[Drug_TR_IntersectionMat$GDSC1000 == 1,]),]
+-GDSC_CI_included$Cohort <- "GDSC1000"
++GDSC_CI_included <- GDSC_CI[GDSC_CI$Drug_TR %in% rownames(Drug_TR_IntersectionMat[Drug_TR_IntersectionMat$GDSC2 == 1,]),]
++GDSC_CI_included$Cohort <- "GDSC2"
+ GDSC_CI_included <- GDSC_CI_included[,c("Drug_TR", "Cohort", "Category")]
+ 
+ CTRPv2_CI_included <- CTRPv2_CI[CTRPv2_CI$Drug_TR %in% rownames(Drug_TR_IntersectionMat[Drug_TR_IntersectionMat$CTRPv2 == 1,]),]
+ CTRPv2_CI_included$Cohort <- "CTRPv2"
+ CTRPv2_CI_included <- CTRPv2_CI_included[,c("Drug_TR", "Cohort", "Category")]
+ 
+-meta_data <- rbind(GRAY_CI_included, GDSC_CI_included)
++meta_data <- rbind(PRISM_CI_included, GDSC_CI_included)
+ meta_data <- rbind(meta_data, CTRPv2_CI_included)
+ meta_data <- meta_data %>% dplyr::select(-c("Cohort"))
+ meta_data <- meta_data[!duplicated(meta_data),]
+@@ -35,7 +35,7 @@
+ 
+ Drug_TR_upset <- ComplexUpset::upset(
+   data      = upset_df,
+-  intersect = rev(c("GRAY", "GDSC1000", "CTRPv2")),
++  intersect = rev(c("PRISM", "GDSC2", "CTRPv2")),
+   sort_sets = FALSE,
+   sort_intersections    = "ascending",
+   sort_intersections_by = "cardinality",

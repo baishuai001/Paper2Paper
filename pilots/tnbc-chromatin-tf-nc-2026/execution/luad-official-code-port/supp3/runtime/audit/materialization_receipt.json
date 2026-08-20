@@ -1,0 +1,11 @@
+{
+  "official_code_root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/external/code/TNBC_CodeOcean_7227095_v1/code",
+  "work_root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2",
+  "official_sources_verified": 5,
+  "runtime_substitutions": 4,
+  "plotting_constructor_rewrites": 0,
+  "allowed_change_kinds": [
+    "PATH_ONLY",
+    "PATH_ARGUMENT_TYPO_ONLY"
+  ]
+}

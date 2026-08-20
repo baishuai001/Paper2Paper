@@ -1,0 +1,22 @@
+--- upstream/Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R:51-62
++++ patched/supp7b_case3.R
+@@ -1,12 +1,12 @@
+ ### (1) New example 3
+-DMRTA1_Paclitaxel <- plot_aac_vs_nes_with_ci(
++ZNF254_Dactolisib <- plot_aac_vs_nes_with_ci(
+   prep = prep,
+-  drug = "Paclitaxel",
+-  TR   = "DMRTA1",
+-  cohorts = c("GDSC1000", "GRAY"),
+-  AAC_concordance_colours = AAC_concordance_colours_High
++  drug = "Dactolisib",
++  TR   = "ZNF254",
++  cohorts = c("GDSC2", "PRISM"),
++  AAC_concordance_colours = AAC_concordance_colours_Low
+ )
+ 
+-cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_DMRTA1_Paclitaxel_AAC_NES.pdf"))
+-print(DMRTA1_Paclitaxel)
++cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_ZNF254_Dactolisib_AAC_NES.pdf"))
++print(ZNF254_Dactolisib)
+ dev.off()

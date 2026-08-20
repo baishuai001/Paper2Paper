@@ -1,0 +1,32 @@
+--- official/07C-Plot_Heatmap_MKI67_HC-TR.R
++++ official_port/07C-Plot_Heatmap_MKI67_HC-TR.R
+@@ -3,14 +3,15 @@
+ library(circlize)
+ library(grid)
+ 
+-args <- list(visuals_out = "/results/visuals/Figure3/")
++args <- list(visuals_out = Sys.getenv("PAPER2PAPER_OFFICIAL_VISUALS_OUT"))
+ dir.create(args$visuals_out, showWarnings=FALSE, recursive=TRUE)
+ 
++mki67_dir <- file.path(Sys.getenv("PAPER2PAPER_OFFICIAL_ADAPTER_INPUTS"), "MKI67")
+ results_files <- list(
+-    TCGA     = "/data/Figure3/MKi67_Correlation/TCGA_MKi67_Correlation_HC-TR_results.tsv",
+-    METABRIC = "/data/Figure3/MKi67_Correlation/METABRIC_MKi67_Correlation_HC-TR_results.tsv",
+-    PDX      = "/data/Figure3/MKi67_Correlation/PDX_MKi67_Correlation_HC-TR_results.tsv",
+-    CellLines = "/data/Figure3/MKi67_Correlation/CellLines_MKi67_Correlation_HC-TR_results.tsv"
++    TCGA      = file.path(mki67_dir, "TCGA_MKi67_Correlation_HC-TR_results.tsv"),
++    GSE41271  = file.path(mki67_dir, "GSE41271_MKi67_Correlation_HC-TR_results.tsv"),
++    PDX       = file.path(mki67_dir, "PDX_MKi67_Correlation_HC-TR_results.tsv"),
++    CellLines = file.path(mki67_dir, "CellLines_MKi67_Correlation_HC-TR_results.tsv")
+ )
+ 
+ # --- Load and combine results ---
+@@ -32,7 +33,7 @@
+     arrange(desc(mean_r)) %>%
+     pull(TR)
+ 
+-cohort_order <- c("TCGA", "METABRIC", "PDX", "CellLines")
++cohort_order <- c("TCGA", "GSE41271", "PDX", "CellLines")
+ 
+ # --- Build r matrix (TRs x cohorts) ---
+ r_mat <- cor_all %>%

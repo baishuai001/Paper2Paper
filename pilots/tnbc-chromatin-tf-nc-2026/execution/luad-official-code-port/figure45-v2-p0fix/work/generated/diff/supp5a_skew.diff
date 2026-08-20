@@ -1,0 +1,11 @@
+--- upstream/Figure3/06-Activity_Score_Heterogeneity_Across_Patients.R:245-269
++++ patched/supp5a_skew.R
+@@ -14,7 +14,7 @@
+                       name = "FDR < 0.05") +
+   scale_size_continuous(name = "-log10(FDR)", range = c(1, 5)) +
+   facet_wrap(~ Cohort, nrow = 1) +
+-  labs(x = "Skewness (TNBC samples)",
++  labs(x = "Skewness (LUAD samples)",
+        y = "Mean HC-TF activity (NES)") +
+   theme_bw() +
+   theme(axis.text  = element_text(colour = "black", size = 8),

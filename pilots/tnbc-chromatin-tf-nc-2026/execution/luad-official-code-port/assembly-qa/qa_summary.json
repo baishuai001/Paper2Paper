@@ -1,0 +1,14 @@
+{
+  "status": "STRICT_OFFICIAL_PORT_REVIEW_ONLY",
+  "technical_checks": "VALIDATED",
+  "release_status": "STRICT_OFFICIAL_PORT_REVIEW_ONLY",
+  "publication_ready": false,
+  "release_gate_required": false,
+  "strict": true,
+  "expected_output_count": 7,
+  "verified_output_count": 7,
+  "rendered_page_count": 86,
+  "required_missing_count": 0,
+  "failure_count": 0,
+  "failures": []
+}

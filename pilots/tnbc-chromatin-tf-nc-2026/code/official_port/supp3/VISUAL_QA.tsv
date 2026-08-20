@@ -1,0 +1,13 @@
+panel	qa_status	observation	strict_port_action
+SupplementaryFigure3A	PASS	All 22 patient labels and bars are legible.	Retain official 02J2 output unchanged.
+SupplementaryFigure3B	PASS_WITH_DATA_BOUNDARY	Three frozen PDX models have zero canonical q=0.01 peaks and therefore labels without visible bars.	Retain zero values; do not fabricate peaks.
+SupplementaryFigure3C	PASS	All 19 cell-line labels and bars are legible.	Retain official 02J2 output unchanged.
+SupplementaryFigure3D	OFFICIAL_ANNOTATION_OVERLAP	The official fixed annotation positions make the detected/estimated peak labels overlap; the fitted 50% point is negative and is printed as 0 samples after official rounding.	Do not alter the official constructor; flag as not publication-ready.
+SupplementaryFigure3E	PASS_WITH_DENSE_ANNOTATION	The 50% vertical annotation intersects the bootstrap cloud but remains readable.	Retain official 02C output unchanged.
+SupplementaryFigure3F	OFFICIAL_ANNOTATION_OVERLAP	The detected-peak label and Model Fit label overlap for the LUAD cell-line fit.	Do not alter the official constructor; flag as not publication-ready.
+SupplementaryFigure3G	PASS	Patient correlation heatmap labels, dendrograms and legend are legible.	Retain official 03D output unchanged.
+SupplementaryFigure3H	PASS	PDX correlation heatmap labels, dendrograms and legend are legible.	Retain official 03D output unchanged.
+SupplementaryFigure3I	PASS	Cell-line heatmap and official sequencing-type annotation are legible; all frozen libraries are single-end.	Retain official 03D output unchanged.
+SupplementaryFigure3J	PASS	Patient annotation distribution, genome-baseline lines and statistics are legible.	Retain official 04B output unchanged.
+SupplementaryFigure3K	OFFICIAL_LABEL_OVERLAP	The official fixed n-label position overlaps the promoter distribution; n=12 because one of 13 frozen PDX models has no rows after zero-peak expansion.	Do not invent a nonzero peak; flag as not publication-ready.
+SupplementaryFigure3L	OFFICIAL_LABEL_OVERLAP	The official fixed n-label position overlaps the promoter distribution.	Do not alter the official constructor; flag as not publication-ready.

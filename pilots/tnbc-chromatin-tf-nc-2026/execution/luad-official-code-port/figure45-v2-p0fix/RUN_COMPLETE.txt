@@ -1,0 +1,17 @@
+STATUS: PASS
+RUN: run-fig45-v2-p0fix-20260821-r2
+DATE: 2026-08-21
+CAPSULE: CodeOcean 7227095/v1
+UPSTREAM_COMMIT: edf5314
+MANIFEST_SHA256: 127ed074d191f5855ec56cd0525fae23a034aabf5e7d90bfdd45bfc98305ced2
+OFFICIAL_BLOCKS_CHECKED: 31
+STRICTLY_PARSEABLE_BLOCKS: 30
+R_PARSE_NOT_APPLICABLE: fig5h_waterfall (unsupported, provenance-only source slice; never executed)
+EXECUTED_OFFICIAL_BLOCKS: 28
+RENDERED_ATOMIC_PDFS: 39
+UNSUPPORTED_PANELS: Figure5G;Figure5H;SupplementaryFigure7D
+FONT_SOURCE_SUBSTITUTIONS: 0
+SUPP5B_HEATMAP: exact official block; Helvetica declarations and FDR-star footer preserved
+SUPP7B: four official call blocks executed; default 7x7-inch Cairo devices preserved
+ATOMIC_PDF_SHA256_MANIFEST_SHA256: 476ea9d139b3139bf1336bf7eaa117bdb27cd16b6f99cf03d00987eba423a5ce
+VERIFICATION_JSON_SHA256: f2e9fd601064406a73e901f57150b34e9bd7e7288ddf630c1ccd31072bc3d77b

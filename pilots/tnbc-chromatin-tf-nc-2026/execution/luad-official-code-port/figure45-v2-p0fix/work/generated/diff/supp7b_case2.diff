@@ -1,0 +1,22 @@
+--- upstream/Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R:38-49
++++ patched/supp7b_case2.R
+@@ -1,12 +1,12 @@
+ ### (1) New example 2
+-RELB_Afatinib <- plot_aac_vs_nes_with_ci(
++ZNF254_5Fluorouracil <- plot_aac_vs_nes_with_ci(
+   prep = prep,
+-  drug = "Afatinib",
+-  TR   = "RELB",
+-  cohorts = c("CTRPv2", "GRAY"),
+-  AAC_concordance_colours = AAC_concordance_colours_High
++  drug = "5-Fluorouracil",
++  TR   = "ZNF254",
++  cohorts = c("CTRPv2", "GDSC2"),
++  AAC_concordance_colours = AAC_concordance_colours_Low
+ )
+ 
+-cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_RELB_Afatinib_AAC_NES.pdf"))
+-print(RELB_Afatinib)
++cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_ZNF254_5Fluorouracil_AAC_NES.pdf"))
++print(ZNF254_5Fluorouracil)
+ dev.off()

@@ -1,0 +1,4 @@
+system	cohort	n_samples	adapter_role
+patient	TCGA	22	schema_only_no_plotting
+PDX	PDX	13	schema_only_no_plotting
+cell_line	CellLines	19	schema_only_no_plotting

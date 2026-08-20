@@ -1,0 +1,335 @@
+[
+  {
+    "source": "Figure1/09-Compare_TCGA_METABRIC.R",
+    "rule_id": "F1S2B_CANCER_POSITIVE_LABEL",
+    "old": "== \"TNBC\"",
+    "new": "== \"LUAD\"",
+    "expected_count": 2,
+    "class": "CANCER_LABEL",
+    "reason": "Apply the official overlap constructor to LUAD-specific TFs."
+  },
+  {
+    "source": "Figure1/09-Compare_TCGA_METABRIC.R",
+    "rule_id": "F1S2B_CANCER_REFERENCE_LABEL",
+    "old": "== \"Non-TNBC\"",
+    "new": "== \"LUSC\"",
+    "expected_count": 2,
+    "class": "CANCER_LABEL",
+    "reason": "Apply the official overlap constructor to the frozen LUSC reference group."
+  },
+  {
+    "source": "Figure1/09-Compare_TCGA_METABRIC.R",
+    "rule_id": "F1S2B_VALIDATION_DATASET_NAME",
+    "old": "METABRIC = ",
+    "new": "@@VALIDATION_LABEL@@ = ",
+    "expected_count": 2,
+    "class": "ADAPTER_NAME",
+    "reason": "Expose the active external LUAD/LUSC validation cohort label."
+  },
+  {
+    "source": "Figure1/09-Compare_TCGA_METABRIC.R",
+    "rule_id": "F1S2B_VALIDATION_LIST_ACCESSOR",
+    "old": "$METABRIC",
+    "new": "$@@VALIDATION_LABEL@@",
+    "expected_count": 6,
+    "class": "ADAPTER_NAME",
+    "reason": "Keep list accessors consistent with the active validation label."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1_CANCER_PAIR_LABEL",
+    "old": "c(\"TNBC\", \"Non-TNBC\")",
+    "new": "c(\"LUAD\", \"LUSC\")",
+    "expected_count": 4,
+    "class": "CANCER_LABEL",
+    "reason": "Only the two cancer-group labels change; the official geometry and palette values remain."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1_CANCER_POSITIVE_SELECTION",
+    "old": "== \"TNBC\"",
+    "new": "== \"LUAD\"",
+    "expected_count": 4,
+    "class": "CANCER_LABEL",
+    "reason": "Select the LUAD discovery category in the official constructor."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1_CANCER_REFERENCE_SELECTION",
+    "old": "== \"Non-TNBC\"",
+    "new": "== \"LUSC\"",
+    "expected_count": 2,
+    "class": "CANCER_LABEL",
+    "reason": "Select the LUSC reference category in the official constructor."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1C_TCGA_ANNOTATION_KEYS",
+    "old": "c(\"Cancer_Type\",\"ER\",\"PR\",\"HER2\",\"Age\",\"VitalSt\",\"PAM50\",\"SCMOD2\",\"IntClust\")",
+    "new": "c(\"Cancer_Type\",\"HistologicalType\",\"Sex\",\"Age\",\"Stage\",\"VitalSt\",\"Smoking\",\"PublishedSubtype\",\"MolecularRecord\")",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Use real LUAD clinical/molecular fields in the unchanged HeatmapAnnotation call."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1S2C_TCGA_ANNOTATION_KEYS",
+    "old": "c(\"Cancer_Type\",\"HistologicalType\", \"ER\",\"PR\",\"HER2\",\"Age\",\"VitalSt\",\"PAM50\",\"SCMOD2\",\"IntClust\")",
+    "new": "c(\"Cancer_Type\",\"HistologicalType\",\"Sex\",\"Age\",\"Stage\",\"VitalSt\",\"Smoking\",\"PublishedSubtype\",\"MolecularRecord\")",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Use the same real LUAD annotations in the official correlation-heatmap constructor."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1DE_MODEL_HEATMAP_AVAILABLE_TF_PATH",
+    "old": "TRs_TCGA_Category <- read.table(\"@@ADAPTER_DATA_ROOT@@/Figure1/Tables_ForPlotting/TCGA_TR_activities_NES_viper.tsv\"",
+    "new": "TRs_TCGA_Category <- read.table(\"@@ADAPTER_DATA_ROOT@@/Figure1/Tables_ForPlotting/TCGA_TR_activities_NES_viper_ModelHeatmapsAvailable.tsv\"",
+    "expected_count": 2,
+    "class": "PATH_ONLY",
+    "reason": "Point only the PDX and cell-line heatmap row selectors to the audited 350-TF all-three-system availability set; no missing activity is filled or imputed."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1D_PDX_ANNOTATION_KEYS",
+    "old": "c(\"IntClust\", \"SCMOD2\", \"PAM50\")",
+    "new": "c(\"HistologicalType\", \"Sex\", \"Age\", \"Smoking\", \"MolecularRecord\")",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Replace breast-only annotation keys with available PDMR LUAD fields; constructor unchanged."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1E_CELLLINE_ANNOTATION_KEYS",
+    "old": "c(\"Lehmann\", \"IntClust\", \"SCMOD2\", \"PAM50\")",
+    "new": "c(\"Lehmann\", \"Sex\", \"Age\", \"Cancer_Type\", \"MolecularRecord\", \"IntClust\")",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Use available DepMap LUAD fields and retain the constant compatibility-only IntClust column because the unchanged next official statement factors it."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1S2F_TCGA_LUAD_COHORT",
+    "old": "TCGA_Basal <- TCGA_column_annotation[TCGA_column_annotation$ER == \"Negative\" & TCGA_column_annotation$PR == \"Negative\" &\n    TCGA_column_annotation$HER2 == \"Negative\",]\nTCGA_Basal <- TCGA_Basal[TCGA_Basal$PAM50 == \"Basal\" | TCGA_Basal$SCMOD2 == \"Basal\",]",
+    "new": "TCGA_Basal <- TCGA_column_annotation[TCGA_column_annotation$HistologicalType == \"LUAD\",]\n# LUAD cohort-label adapter: receptor-status continuation is not applicable.\n# LUAD cohort-label adapter: breast intrinsic-subtype filter is not applicable.",
+    "expected_count": 1,
+    "class": "CANCER_LABEL",
+    "reason": "The LUAD analogue of the TNBC-Basal sample restriction is the predefined LUAD group."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1S2F_PDX_LUAD_COHORT",
+    "old": "PDX_Basal <- PDX_column_annotation[PDX_column_annotation$PAM50 == \"Basal\" | PDX_column_annotation$SCMOD2 == \"Basal\",]",
+    "new": "PDX_Basal <- PDX_column_annotation[PDX_column_annotation$group == \"LUAD\",]",
+    "expected_count": 1,
+    "class": "CANCER_LABEL",
+    "reason": "Restrict the official distribution constructor to frozen LUAD PDX models."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1S2F_CELLLINE_LUAD_COHORT",
+    "old": "cell_line_Basal <- cell_line_molecular_subtyping[cell_line_molecular_subtyping$PAM50 == \"Basal\" | cell_line_molecular_subtyping$SCMOD2 == \"Basal\",]",
+    "new": "cell_line_Basal <- cell_line_molecular_subtyping[cell_line_molecular_subtyping$group == \"LUAD\",]",
+    "expected_count": 1,
+    "class": "CANCER_LABEL",
+    "reason": "Restrict the official distribution constructor to frozen LUAD cell lines."
+  },
+  {
+    "source": "Figure1/10-Plot_Figure1.R",
+    "rule_id": "F1S2F_VALIDATION_LUAD_COHORT",
+    "old": "METABRIC_molecular_subtype <- METABRIC_molecular_subtype[METABRIC_molecular_subtype$PAM50 == \"Basal\" | METABRIC_molecular_subtype$SCMOD2 == \"Basal\",]",
+    "new": "METABRIC_molecular_subtype <- METABRIC_molecular_subtype[METABRIC_molecular_subtype$group == \"LUAD\",]",
+    "expected_count": 1,
+    "class": "CANCER_LABEL",
+    "reason": "Restrict the official validation distribution constructor to LUAD samples in the active validation slot."
+  },
+  {
+    "source": "Figure2/06C-PromoterAccessibility_MotifEnrichment.R",
+    "rule_id": "F2C_TCGA_PATIENT_BARCODE_ACTIVITY_PATH",
+    "old": "@@ADAPTER_DATA_ROOT@@/Figure1/TCGA/TCGA_TR_activities_viper.tsv",
+    "new": "@@ADAPTER_DATA_ROOT@@/Figure2/TCGA/TCGA_TR_activities_viper_Figure2C_paired21.tsv",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Official 06C selects patient-level TCGA barcodes derived from the ATAC table; use the audited paired ATAC-RNA/VIPER intersection (21/22, no imputation) without changing activity values or the constructor."
+  },
+  {
+    "source": "Figure2/06C-PromoterAccessibility_MotifEnrichment.R",
+    "rule_id": "F2C_PAIRED_PROMOTER_ACTIVITY_PATH",
+    "old": "@@ADAPTER_DATA_ROOT@@/Figure2/Promoter_Accessibility/Combined_Promoter_Accessibility_TNBC_TR_Genes.tsv",
+    "new": "@@ADAPTER_DATA_ROOT@@/Figure2/Promoter_Accessibility/Combined_Promoter_Accessibility_TNBC_TR_Genes_Figure2C_PairedRNA.tsv",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Limit only Figure2C to the 21 TCGA ATAC patients with paired RNA/VIPER; Figure2B and the frozen promoter gate retain all 22 patients."
+  },
+  {
+    "source": "Figure2/06C-PromoterAccessibility_MotifEnrichment.R",
+    "rule_id": "F2C_VALIDATION_GROUP_VALUE",
+    "old": "METABRIC_RNA_NES$Sample_Group <- \"METABRIC\"",
+    "new": "METABRIC_RNA_NES$Sample_Group <- \"@@VALIDATION_LABEL@@\"",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Expose the active external-validation dataset name in the official 06C activity tile."
+  },
+  {
+    "source": "Figure2/06C-PromoterAccessibility_MotifEnrichment.R",
+    "rule_id": "F2C_VALIDATION_FACTOR_LABEL",
+    "old": "levels = c(\"TCGA\", \"METABRIC\", \"PDX\", \"CellLines\")",
+    "new": "levels = c(\"TCGA\", \"@@VALIDATION_LABEL@@\", \"PDX\", \"CellLines\")",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Keep the factor label consistent with the real validation cohort."
+  },
+  {
+    "source": "Figure2/07A-UpSet_Plot_Motif_Enrichment.R",
+    "rule_id": "F2D_TCGA_COUNT",
+    "old": "ceiling(7/2)",
+    "new": "ceiling(22/2)",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD patient ATAC system has 22 samples."
+  },
+  {
+    "source": "Figure2/07A-UpSet_Plot_Motif_Enrichment.R",
+    "rule_id": "F2D_PDX_COUNT",
+    "old": "ceiling(38/2)",
+    "new": "ceiling(13/2)",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD PDX ATAC system has 13 samples."
+  },
+  {
+    "source": "Figure2/07A-UpSet_Plot_Motif_Enrichment.R",
+    "rule_id": "F2D_CELLLINE_COUNT",
+    "old": "ceiling(26/2)",
+    "new": "ceiling(19/2)",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD cell-line ATAC system has 19 samples."
+  },
+  {
+    "source": "Figure2/07B-UpSet_Plot_Promoter_Accessibility.R",
+    "rule_id": "F2B_TCGA_COUNT",
+    "old": "ceiling(7/2)",
+    "new": "ceiling(22/2)",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD patient ATAC system has 22 samples."
+  },
+  {
+    "source": "Figure2/07B-UpSet_Plot_Promoter_Accessibility.R",
+    "rule_id": "F2B_PDX_COUNT",
+    "old": "ceiling(38/2)",
+    "new": "ceiling(13/2)",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD PDX ATAC system has 13 samples."
+  },
+  {
+    "source": "Figure2/07B-UpSet_Plot_Promoter_Accessibility.R",
+    "rule_id": "F2B_CELLLINE_COUNT",
+    "old": "ceiling(26/2)",
+    "new": "ceiling(19/2)",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD cell-line ATAC system has 19 samples."
+  },
+  {
+    "source": "Figure2/08-Plot_TR_Examples.R",
+    "rule_id": "F2E_CASE_TF_ADAPTER",
+    "old": "c(\"DMRTA2\", \"FOXN2\", \"E2F3\", \"VAX2\", \"ETV6\", \"FOXP4\")",
+    "new": "c(\"ZNF341\", \"ELF3\", \"ETV1\", \"FOXA3\", \"NFATC4\", \"XBP1\")",
+    "expected_count": 1,
+    "class": "ADAPTER_NAME",
+    "reason": "Six deterministic LUAD cases: top median LOR, including all three triple-system motif TFs."
+  },
+  {
+    "source": "Figure3/02-Determine_HC_TR.R",
+    "rule_id": "S4B_TCGA_COUNT",
+    "old": "sum >= 4,]",
+    "new": "sum >= 11,]",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD patient system requires promoter accessibility in at least 11 of 22 samples."
+  },
+  {
+    "source": "Figure3/02-Determine_HC_TR.R",
+    "rule_id": "S4B_PDX_COUNT",
+    "old": "sum >= 38/2,]",
+    "new": "sum >= 13/2,]",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD PDX system requires promoter accessibility in at least 7 of 13 samples."
+  },
+  {
+    "source": "Figure3/02-Determine_HC_TR.R",
+    "rule_id": "S4B_CELLLINE_COUNT",
+    "old": "sum >= 26/2,]",
+    "new": "sum >= 19/2,]",
+    "expected_count": 1,
+    "class": "SAMPLE_COUNT",
+    "reason": "Frozen LUAD cell-line system requires promoter accessibility in at least 10 of 19 samples."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_HC_PATH",
+    "old": "code/Brain_Dump/High_RNA_NES.tsv",
+    "new": "@@ADAPTER_DATA_ROOT@@/Figure2/High_RNA_NES.tsv",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Use the frozen LUAD HC-TF adapter object."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_CISBP_PATH",
+    "old": "data/Figure2_TR_Chromatin/Motif/Combined_MotifEnrichment/CISBP_Combined_MotifEnrichment_TNBC.tsv",
+    "new": "@@ADAPTER_DATA_ROOT@@/Figure2/Motif/Combined_MotifEnrichment/CISBP_Combined_MotifEnrichment_DatabaseAvailability.tsv",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Use the isolated complete CIS-BP availability input for Supplementary Figure4C; formal Figure2C-D retains the author-priority CIS-BP fallback only."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_JASPAR_PATH",
+    "old": "data/Figure2_TR_Chromatin/Motif/Combined_MotifEnrichment/JASPAR_Combined_MotifEnrichment_TNBC.tsv",
+    "new": "@@ADAPTER_DATA_ROOT@@/Figure2/Motif/Combined_MotifEnrichment/JASPAR_Combined_MotifEnrichment_DatabaseAvailability.tsv",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Use the isolated complete JASPAR availability input for Supplementary Figure4C; formal Figure2C-D remains author-priority."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_OUTPUT_PATH",
+    "old": "visuals/Figure2_TR_Chromatin/JASPAR_vs_CISBP_HC-TRs_VennDiagram.pdf",
+    "new": "@@ADAPTER_RESULTS_ROOT@@/visuals/Figure2/JASPAR_vs_CISBP_HC-TRs_VennDiagram.pdf",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Write only inside the isolated official-port result tree."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_OUTPUT_TABLE_PATH",
+    "old": "data/Figure2_TR_Chromatin/Motif/JASPAR_CISBP_comparison_long.csv",
+    "new": "@@ADAPTER_DATA_ROOT@@/Figure2/Motif/JASPAR_CISBP_comparison_long.csv",
+    "expected_count": 1,
+    "class": "PATH_ONLY",
+    "reason": "Keep the official table write inside the adapter tree."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_VISIBLE_LIST_LABELS",
+    "old": "JASPAR_HC_TR_TNBC",
+    "new": "JASPAR_HC_TR_LUAD",
+    "expected_count": 3,
+    "class": "CANCER_LABEL",
+    "reason": "Change only the visible/variable cancer label; eulerr geometry and colours remain official."
+  },
+  {
+    "source": "Figure3/01-Compare_JASPAR_CISBP_Motifs.R",
+    "rule_id": "S4C_VISIBLE_LIST_LABELS_CISBP",
+    "old": "CISBP_HC_TR_TNBC",
+    "new": "CISBP_HC_TR_LUAD",
+    "expected_count": 3,
+    "class": "CANCER_LABEL",
+    "reason": "Change only the visible/variable cancer label; eulerr geometry and colours remain official."
+  }
+]

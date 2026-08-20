@@ -1,0 +1,5 @@
+source_file	change_kind	old	new	expected_occurrences	observed_occurrences
+Figure2/02J2-Plot_Number_Peaks.R	PATH_ONLY	"source(""/code/Static_Scripts/plotting_aesthetics.R"")"	"source(""/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/code/Static_Scripts/plotting_aesthetics.R"")"	1	1
+Figure2/03D-Pearson_Correlation_Accessibility_ConsensusPeakSet.R	PATH_ONLY	"source(""/code/Static_Scripts/plotting_aesthetics.R"")"	"source(""/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/code/Static_Scripts/plotting_aesthetics.R"")"	1	1
+Figure2/04B-GenomicAnnotation.R	PATH_ONLY	"source(""/code/Static_Scripts/plotting_aesthetics.R"")"	"source(""/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/code/Static_Scripts/plotting_aesthetics.R"")"	1	1
+Figure2/04B-GenomicAnnotation.R	PATH_ARGUMENT_TYPO_ONLY	args$consensus_peakset	args$consensus_peakset_dir	1	1

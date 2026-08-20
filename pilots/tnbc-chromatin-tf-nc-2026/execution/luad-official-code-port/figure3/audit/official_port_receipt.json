@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "implementation": "checksum-locked official CodeOcean scripts with data-only LUAD adapters",
+  "hc_tf_count": 31,
+  "regulon_interaction_rows": 3026,
+  "figure3b": {
+    "nodes": 6,
+    "edges": 3,
+    "threshold": "at least 3 shared activating HC-TFs",
+    "vertices_argument": false
+  },
+  "figure3d": {
+    "nodes": 31,
+    "edges": 134,
+    "components": 1,
+    "isolates": 0,
+    "threshold": "at least 1 shared activated target",
+    "display_edge_filter": null
+  },
+  "figure3g_representatives": [
+    "CRY2",
+    "MAGED2",
+    "ZNF19",
+    "NR3C2"
+  ],
+  "pdf_count": 19,
+  "official_source_files": 8,
+  "plot_constructors_changed": false
+}

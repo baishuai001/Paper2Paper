@@ -1,0 +1,31 @@
+--- official/05-Generate_Regulon_Network.R
++++ official_port/05-Generate_Regulon_Network.R
+@@ -9,7 +9,7 @@
+ 
+ set.seed(2026)
+ 
+-source("/code/Static_Scripts/plotting_aesthetics.R")
++source(file.path(Sys.getenv("PAPER2PAPER_OFFICIAL_PORT_WORK"), "Static_Scripts", "plotting_aesthetics.R"))
+ 
+ #### Collect all the arguments ####################################################################
+ parser <- ArgumentParser()
+@@ -104,8 +104,8 @@
+ dev.off()
+ 
+ # Save the weightings
+-#write.table(edge_df, paste0(args$data_outdir, "/HC_TR_60_Plotted_Network.tsv"),
+-#  col.names=TRUE, row.names=FALSE, sep='\t', quote=FALSE)
++write.table(edge_df, paste0(args$data_outdir, "/HC_TR_60_Plotted_Network.tsv"),
++  col.names=TRUE, row.names=FALSE, sep='\t', quote=FALSE)
+ 
+ # Compute regulon size per TF
+ regulon_size <- regulons %>%
+@@ -218,7 +218,7 @@
+   theme_bw() +
+   theme(axis.text = element_text(colour = "black", size = 8))
+ 
+-scatter_df$percent_HC_TF_overlap <- scatter_df$n_partners/94
++scatter_df$percent_HC_TF_overlap <- scatter_df$n_partners/nrow(HC_TRs)
+ 
+ # Save plot
+ outfile_scatter <- paste0(args$visuals_outdir, "/Figure3E_Scatter_RegulonSize_vs_Partners.pdf")

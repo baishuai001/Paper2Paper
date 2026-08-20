@@ -1,0 +1,22 @@
+--- upstream/Figure4/03-Plot_UniVariate_METABRIC_TCGA.R:143-173
++++ patched/supp6d_uni_tcga_rfs.R
+@@ -1,8 +1,8 @@
+-## TCGA - Recurrence-Free Survival
+-TCGA_RFS_Univariate <- read.table(paste0(args$TCGA_dir, "/TCGA_RFS_CoxUniVariate.tsv"),
++## TCGA_LUAD - Recurrence-Free Survival
++TCGA_LUAD_RFS_Univariate <- read.table(paste0(args$TCGA_LUAD_dir, "/TCGA_LUAD_RFS_CoxUniVariate.tsv"),
+     header=TRUE, sep='\t')
+ 
+-TCGA_RFS_Univariate_plt <- TCGA_RFS_Univariate %>% 
++TCGA_LUAD_RFS_Univariate_plt <- TCGA_LUAD_RFS_Univariate %>% 
+     mutate(Point_Type = case_when(
+         LogRank_PVal >= 0.05 ~ "Not Significant",
+         log2(Hazard_Ratio) > 0 ~ "Risk",
+@@ -26,6 +26,6 @@
+     labs(x = "Log2(Hazard Ratio)",
+          y = "-Log10(CoxUnivPval)") +
+     annotate("text", x = -Inf, y = -Inf, 
+-             label = "RFS\nTCGA", 
++             label = "DFS\nTCGA_LUAD", 
+              hjust = 0, vjust=-0.5, 
+              size = 5)

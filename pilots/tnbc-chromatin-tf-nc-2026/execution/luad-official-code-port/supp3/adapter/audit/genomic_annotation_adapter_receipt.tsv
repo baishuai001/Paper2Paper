@@ -1,0 +1,4 @@
+system	cohort	n_samples	n_nonzero_samples	expanded_rows	expanded_file	expanded_bytes
+patient	TCGA	22	22	2561059	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/adapter/consensus/TCGA_results/PeakCalls_unionPeakSet.bed.gz	132630
+PDX	PDX	13	12	158456	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/adapter/consensus/PDX_results/PeakCalls_unionPeakSet.bed.gz	6796
+cell_line	CellLines	19	19	305050	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/adapter/consensus/CellLines_results/PeakCalls_unionPeakSet.bed.gz	11047

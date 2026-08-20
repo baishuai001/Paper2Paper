@@ -1,0 +1,226 @@
+{
+  "schema_version": 1,
+  "page_defaults": {
+    "width_pt": 612,
+    "height_pt": 792,
+    "margin_pt": 18,
+    "header_pt": 20,
+    "footer_pt": 12,
+    "panel_label_pt": 11,
+    "gutter_pt": 4
+  },
+  "atoms": {
+    "Figure1A": {"status": "MANUAL_REQUIRED", "note": "OFFICIAL CODE NOT PROVIDED"},
+    "Figure1B": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure1B*.pdf"], "match": "one", "required": true},
+    "Figure1C": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure1C*.pdf"], "match": "one", "required": true},
+    "Figure1D": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure1D*.pdf"], "match": "one", "required": true},
+    "Figure1E": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure1E*.pdf"], "match": "one", "required": true},
+
+    "SupplementaryFigure1A": {"status": "MANUAL_REQUIRED", "note": "OFFICIAL CODE NOT PROVIDED"},
+    "SupplementaryFigure1B": {"status": "MANUAL_REQUIRED", "note": "OFFICIAL CODE NOT PROVIDED"},
+    "SupplementaryFigure2A": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure2A*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure2B": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure2B*.pdf"], "match": "all", "required": true},
+    "SupplementaryFigure2A_secondary_GSE81089": {"root": "fig12", "patterns": ["adapter_final_corrected/secondary_validation/GSE81089/results/visuals/**/SupplementaryFigure2A*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure2B_secondary_GSE81089": {"root": "fig12", "patterns": ["adapter_final_corrected/secondary_validation/GSE81089/results/visuals/**/SupplementaryFigure2B*.pdf"], "match": "all", "required": true},
+    "SupplementaryFigure2C": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure2C*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure2D": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure2D*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure2E": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure2E*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure2F": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure2F*.pdf"], "match": "all", "required": true, "boundary": "ANCHOR_BUGFIX (official one-line data-object correction)"},
+
+    "Figure2A": {"status": "MANUAL_REQUIRED", "note": "OFFICIAL CODE NOT PROVIDED"},
+    "Figure2B": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure2B*.pdf"], "match": "one", "required": true},
+    "Figure2C": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure2C_JASPAR_CISBP_Combined*.pdf"], "match": "one", "required": true, "boundary": "CAPSULE_PRINT_MISMATCH"},
+    "Figure2D": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure2D*.pdf"], "match": "one", "required": true},
+    "Figure2E": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/Figure2E_Case_Examples*.pdf"], "match": "one", "required": true},
+
+    "SupplementaryFigure3A": {"root": "supp3", "patterns": ["**/SupplementaryFigure3A*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3B": {"root": "supp3", "patterns": ["**/SupplementaryFigure3B*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3C": {"root": "supp3", "patterns": ["**/SupplementaryFigure3C*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3D": {"root": "supp3", "patterns": ["**/SupplementaryFigure3D*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3E": {"root": "supp3", "patterns": ["**/SupplementaryFigure3E*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3F": {"root": "supp3", "patterns": ["**/SupplementaryFigure3F*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3G": {"root": "supp3", "patterns": ["**/SupplementaryFigure3G*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3H": {"root": "supp3", "patterns": ["**/SupplementaryFigure3H*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3I": {"root": "supp3", "patterns": ["**/SupplementaryFigure3I*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3J": {"root": "supp3", "patterns": ["**/SupplementaryFigure3J*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3K": {"root": "supp3", "patterns": ["**/SupplementaryFigure3K*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure3L": {"root": "supp3", "patterns": ["**/SupplementaryFigure3L*.pdf"], "match": "one", "required": true},
+
+    "SupplementaryFigure4A": {"status": "MANUAL_REQUIRED", "note": "OFFICIAL CODE NOT PROVIDED"},
+    "SupplementaryFigure4B": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/SupplementaryFigure4B*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure4C": {"root": "fig12", "patterns": ["adapter_final_corrected/results/visuals/**/*JASPAR*vs*CISBP*.pdf", "adapter_final_corrected/results/visuals/**/SupplementaryFigure4C*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure4D": {"root": "fig3", "patterns": ["**/SupplementaryFigure4D*.pdf"], "match": "all", "required": true},
+
+    "Figure3A": {"root": "fig3", "patterns": ["**/Figure3A_RegulonInteractions*.pdf"], "match": "one", "required": true},
+    "Figure3B": {"root": "fig3", "patterns": ["**/Figure3B_Target_Network*.pdf"], "match": "one", "required": true},
+    "Figure3C": {"root": "fig3", "patterns": ["**/Figure3C_*.pdf"], "match": "all", "required": true},
+    "Figure3D": {"root": "fig3", "patterns": ["**/Figure3D_TR_Network*.pdf"], "match": "one", "required": true},
+    "Figure3E": {"root": "fig3", "patterns": ["**/Figure3E_Scatter*.pdf"], "match": "one", "required": true},
+    "Figure3F": {"root": "fig3", "patterns": ["**/Figure3F_Skewness*.pdf"], "match": "one", "required": true},
+    "Figure3G": {"root": "fig3", "patterns": ["**/Figure3G_*_TR_Activity_Distribution.pdf"], "match": "all", "required": true},
+
+    "SupplementaryFigure5A": {"root": "fig3", "patterns": ["**/SupplementaryFigure5A*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure5B": {"root": "fig3", "patterns": ["**/SupplementaryFigure5B*.pdf"], "match": "all", "required": true},
+
+    "Figure4A": {"root": "fig45", "patterns": ["**/atomic/Figure4A.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "Figure4A"},
+    "Figure4B": {"root": "fig45", "patterns": ["**/atomic/Figure4B.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "Figure4B"},
+    "Figure4C": {"root": "fig45", "patterns": ["**/atomic/Figure4C.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "Figure4C"},
+    "Figure4D": {"root": "fig45", "patterns": ["**/atomic/Figure4D.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "Figure4D"},
+    "Figure4E": {"root": "fig45", "patterns": ["**/atomic/Figure4E_*.pdf"], "match": "all", "required": true},
+    "Figure4F": {"root": "fig45", "patterns": ["**/atomic/Figure4F_*.pdf"], "match": "all", "required": true},
+    "Figure4G": {"root": "fig45", "patterns": ["**/atomic/Figure4G_*.pdf"], "match": "all", "required": true},
+    "Figure4H": {"root": "fig45", "patterns": ["**/atomic/Figure4H_*.pdf"], "match": "all", "required": true},
+
+    "SupplementaryFigure6A": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6A.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6B": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6B.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6C": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6C.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6D": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6D.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6E": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6E.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6F": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6F.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6G": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6G.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure6H": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure6H.pdf"], "match": "one", "required": true},
+
+    "Figure5A": {"root": "fig45", "patterns": ["**/atomic/Figure5A.pdf"], "match": "one", "required": true},
+    "Figure5B": {"root": "fig45", "patterns": ["**/atomic/Figure5B.pdf"], "match": "one", "required": true},
+    "Figure5C": {"root": "fig45", "patterns": ["**/atomic/Figure5C.pdf"], "match": "one", "required": true},
+    "Figure5D": {"root": "fig45", "patterns": ["**/atomic/Figure5D.pdf"], "match": "one", "required": true},
+    "Figure5E": {"root": "fig45", "patterns": ["**/atomic/Figure5E.pdf"], "match": "one", "required": true},
+    "Figure5F_low": {"root": "fig45", "patterns": ["**/atomic/Figure5F_Concordance_Index_Low*.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "Figure5F_low"},
+    "Figure5F_high": {"root": "fig45", "patterns": ["**/atomic/Figure5F_Concordance_Index_High*.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "Figure5F_high"},
+    "Figure5G": {"status": "UNSUPPORTED", "note": "NO ELIGIBLE LUAD PDX VALIDATION INPUT"},
+    "Figure5H": {"status": "UNSUPPORTED", "note": "NO ELIGIBLE LUAD PDX RESPONSE INPUT"},
+
+    "SupplementaryFigure7A": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure7A*.pdf"], "match": "one", "required": true},
+    "SupplementaryFigure7B": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure7B_*.pdf"], "match": "all", "required": true, "zero_allowed": true, "receipt_panel": "SupplementaryFigure7B"},
+    "SupplementaryFigure7C_low": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure7C_Concordance_Index_Low*.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "SupplementaryFigure7C_low"},
+    "SupplementaryFigure7C_high": {"root": "fig45", "patterns": ["**/atomic/SupplementaryFigure7C_Concordance_Index_High*.pdf"], "match": "one", "required": true, "zero_allowed": true, "receipt_panel": "SupplementaryFigure7C_high"},
+    "SupplementaryFigure7D": {"status": "UNSUPPORTED", "note": "NO VALIDATED LUAD PDX DRUG-TF PAIR"}
+  },
+  "outputs": [
+    {
+      "filename": "Figure1.pdf",
+      "title": "Figure 1 | LUAD strict official-code port",
+      "pages": [{"items": [
+        {"panel": "Figure1A", "label": "A", "atoms": ["Figure1A"], "box": [0.00, 0.00, 0.40, 0.34]},
+        {"panel": "Figure1B", "label": "B", "atoms": ["Figure1B"], "box": [0.40, 0.00, 0.22, 0.34]},
+        {"panel": "Figure1C", "label": "C", "atoms": ["Figure1C"], "box": [0.62, 0.00, 0.38, 0.34]},
+        {"panel": "Figure1D", "label": "D", "atoms": ["Figure1D"], "box": [0.00, 0.34, 0.50, 0.66]},
+        {"panel": "Figure1E", "label": "E", "atoms": ["Figure1E"], "box": [0.50, 0.34, 0.50, 0.66]}
+      ]}]
+    },
+    {
+      "filename": "Figure2.pdf",
+      "title": "Figure 2 | LUAD strict official-code port",
+      "pages": [{"items": [
+        {"panel": "Figure2A", "label": "A", "atoms": ["Figure2A"], "box": [0.00, 0.00, 0.25, 0.25]},
+        {"panel": "Figure2B", "label": "B", "atoms": ["Figure2B"], "box": [0.00, 0.25, 0.25, 0.25]},
+        {"panel": "Figure2D", "label": "D", "atoms": ["Figure2D"], "box": [0.25, 0.00, 0.20, 0.50]},
+        {"panel": "Figure2E", "label": "E", "atoms": ["Figure2E"], "box": [0.45, 0.00, 0.55, 0.50]},
+        {"panel": "Figure2C", "label": "C", "atoms": ["Figure2C"], "box": [0.00, 0.50, 1.00, 0.50], "boundary": "CAPSULE_PRINT_MISMATCH"}
+      ]}]
+    },
+    {
+      "filename": "Figure3.pdf",
+      "title": "Figure 3 | LUAD strict official-code port",
+      "pages": [{"items": [
+        {"panel": "Figure3A", "label": "A", "atoms": ["Figure3A"], "box": [0.00, 0.00, 0.42, 0.36]},
+        {"panel": "Figure3B", "label": "B", "atoms": ["Figure3B"], "box": [0.42, 0.00, 0.58, 0.36]},
+        {"panel": "Figure3C", "label": "C", "atoms": ["Figure3C"], "box": [0.00, 0.36, 0.42, 0.40], "grid": [2, 1]},
+        {"panel": "Figure3D", "label": "D", "atoms": ["Figure3D"], "box": [0.42, 0.36, 0.58, 0.32]},
+        {"panel": "Figure3E", "label": "E", "atoms": ["Figure3E"], "box": [0.42, 0.68, 0.58, 0.14]},
+        {"panel": "Figure3F", "label": "F", "atoms": ["Figure3F"], "box": [0.00, 0.76, 0.42, 0.24]},
+        {"panel": "Figure3G", "label": "G", "atoms": ["Figure3G"], "box": [0.42, 0.82, 0.58, 0.18], "grid": [2, 2]}
+      ]}]
+    },
+    {
+      "filename": "Figure4.pdf",
+      "title": "Figure 4 | LUAD strict official-code port",
+      "pages": [{"items": [
+        {"panel": "Figure4A", "label": "A", "atoms": ["Figure4A"], "box": [0.00, 0.00, 0.25, 0.36]},
+        {"panel": "Figure4B", "label": "B", "atoms": ["Figure4B"], "box": [0.25, 0.00, 0.25, 0.36]},
+        {"panel": "Figure4C", "label": "C", "atoms": ["Figure4C"], "box": [0.50, 0.00, 0.25, 0.36]},
+        {"panel": "Figure4D", "label": "D", "atoms": ["Figure4D"], "box": [0.75, 0.00, 0.25, 0.36]},
+        {"panel": "Figure4E", "label": "E", "atoms": ["Figure4E"], "box": [0.00, 0.36, 0.50, 0.18], "grid": [1, 2]},
+        {"panel": "Figure4G", "label": "G", "atoms": ["Figure4G"], "box": [0.50, 0.36, 0.50, 0.18], "grid": [1, 2]},
+        {"panel": "Figure4F", "label": "F", "atoms": ["Figure4F"], "box": [0.00, 0.54, 0.50, 0.46], "grid": [2, 2]},
+        {"panel": "Figure4H", "label": "H", "atoms": ["Figure4H"], "box": [0.50, 0.54, 0.50, 0.46], "grid": [2, 2]}
+      ]}]
+    },
+    {
+      "filename": "Figure5.pdf",
+      "title": "Figure 5 | LUAD strict official-code port",
+      "pages": [{"items": [
+        {"panel": "Figure5A", "label": "A", "atoms": ["Figure5A"], "box": [0.00, 0.00, 0.33, 0.25]},
+        {"panel": "Figure5B", "label": "B", "atoms": ["Figure5B"], "box": [0.33, 0.00, 0.34, 0.25]},
+        {"panel": "Figure5C", "label": "C", "atoms": ["Figure5C"], "box": [0.67, 0.00, 0.33, 0.25]},
+        {"panel": "Figure5D", "label": "D", "atoms": ["Figure5D"], "box": [0.00, 0.25, 0.34, 0.28]},
+        {"panel": "Figure5E", "label": "E", "atoms": ["Figure5E"], "box": [0.00, 0.53, 0.34, 0.18]},
+        {"panel": "Figure5F", "label": "F", "atoms": ["Figure5F_low", "Figure5F_high"], "box": [0.34, 0.25, 0.66, 0.46], "grid": [2, 1]},
+        {"panel": "Figure5G", "label": "G", "atoms": ["Figure5G"], "box": [0.00, 0.71, 0.34, 0.29]},
+        {"panel": "Figure5H", "label": "H", "atoms": ["Figure5H"], "box": [0.34, 0.71, 0.66, 0.29]}
+      ]}]
+    },
+    {
+      "filename": "Supplementary_Figures.pdf",
+      "title": "LUAD Supplementary Figures | strict official-code port",
+      "pages": [
+        {"title": "Supplementary Figure 1", "items": [
+          {"panel": "SupplementaryFigure1A", "label": "A", "atoms": ["SupplementaryFigure1A"], "box": [0.00, 0.00, 0.50, 1.00]},
+          {"panel": "SupplementaryFigure1B", "label": "B", "atoms": ["SupplementaryFigure1B"], "box": [0.50, 0.00, 0.50, 1.00]}
+        ]},
+        {"title": "Supplementary Figure 2", "items": [
+          {"panel": "SupplementaryFigure2A", "label": "A", "atoms": ["SupplementaryFigure2A"], "box": [0.00, 0.00, 0.34, 0.31]},
+          {"panel": "SupplementaryFigure2B", "label": "B", "atoms": ["SupplementaryFigure2B"], "box": [0.34, 0.00, 0.66, 0.31], "grid": [1, 2]},
+          {"panel": "SupplementaryFigure2C", "label": "C", "atoms": ["SupplementaryFigure2C"], "box": [0.00, 0.31, 0.34, 0.31]},
+          {"panel": "SupplementaryFigure2D", "label": "D", "atoms": ["SupplementaryFigure2D"], "box": [0.34, 0.31, 0.33, 0.31]},
+          {"panel": "SupplementaryFigure2E", "label": "E", "atoms": ["SupplementaryFigure2E"], "box": [0.67, 0.31, 0.33, 0.31]},
+          {"panel": "SupplementaryFigure2F", "label": "F", "atoms": ["SupplementaryFigure2F"], "box": [0.00, 0.62, 1.00, 0.38], "grid": [1, 4], "boundary": "ANCHOR_BUGFIX (official one-line data-object correction)"}
+        ]},
+        {"title": "Supplementary Figure 2 | secondary GSE81089 official-block replay", "items": [
+          {"panel": "SupplementaryFigure2A_secondary_GSE81089", "label": "A", "atoms": ["SupplementaryFigure2A_secondary_GSE81089"], "box": [0.00, 0.00, 0.40, 1.00]},
+          {"panel": "SupplementaryFigure2B_secondary_GSE81089", "label": "B", "atoms": ["SupplementaryFigure2B_secondary_GSE81089"], "box": [0.40, 0.00, 0.60, 1.00], "grid": [1, 2]}
+        ]},
+        {"title": "Supplementary Figure 3", "items": [
+          {"panel": "SupplementaryFigure3A", "label": "A", "atoms": ["SupplementaryFigure3A"], "box": [0.00, 0.00, 0.333, 0.24]},
+          {"panel": "SupplementaryFigure3B", "label": "B", "atoms": ["SupplementaryFigure3B"], "box": [0.333, 0.00, 0.334, 0.24]},
+          {"panel": "SupplementaryFigure3C", "label": "C", "atoms": ["SupplementaryFigure3C"], "box": [0.667, 0.00, 0.333, 0.24]},
+          {"panel": "SupplementaryFigure3D", "label": "D", "atoms": ["SupplementaryFigure3D"], "box": [0.00, 0.24, 0.333, 0.27]},
+          {"panel": "SupplementaryFigure3E", "label": "E", "atoms": ["SupplementaryFigure3E"], "box": [0.333, 0.24, 0.334, 0.27]},
+          {"panel": "SupplementaryFigure3F", "label": "F", "atoms": ["SupplementaryFigure3F"], "box": [0.667, 0.24, 0.333, 0.27]},
+          {"panel": "SupplementaryFigure3G", "label": "G", "atoms": ["SupplementaryFigure3G"], "box": [0.00, 0.51, 0.333, 0.27]},
+          {"panel": "SupplementaryFigure3H", "label": "H", "atoms": ["SupplementaryFigure3H"], "box": [0.333, 0.51, 0.334, 0.27]},
+          {"panel": "SupplementaryFigure3I", "label": "I", "atoms": ["SupplementaryFigure3I"], "box": [0.667, 0.51, 0.333, 0.27]},
+          {"panel": "SupplementaryFigure3J", "label": "J", "atoms": ["SupplementaryFigure3J"], "box": [0.00, 0.78, 0.333, 0.22]},
+          {"panel": "SupplementaryFigure3K", "label": "K", "atoms": ["SupplementaryFigure3K"], "box": [0.333, 0.78, 0.334, 0.22]},
+          {"panel": "SupplementaryFigure3L", "label": "L", "atoms": ["SupplementaryFigure3L"], "box": [0.667, 0.78, 0.333, 0.22]}
+        ]},
+        {"title": "Supplementary Figure 4", "items": [
+          {"panel": "SupplementaryFigure4A", "label": "A", "atoms": ["SupplementaryFigure4A"], "box": [0.00, 0.00, 1.00, 0.24]},
+          {"panel": "SupplementaryFigure4B", "label": "B", "atoms": ["SupplementaryFigure4B"], "box": [0.00, 0.24, 0.43, 0.34]},
+          {"panel": "SupplementaryFigure4C", "label": "C", "atoms": ["SupplementaryFigure4C"], "box": [0.00, 0.58, 0.43, 0.42]},
+          {"panel": "SupplementaryFigure4D", "label": "D", "atoms": ["SupplementaryFigure4D"], "box": [0.43, 0.24, 0.57, 0.76], "grid": [3, 2]}
+        ]},
+        {"title": "Supplementary Figure 5", "items": [
+          {"panel": "SupplementaryFigure5A", "label": "A", "atoms": ["SupplementaryFigure5A"], "box": [0.00, 0.00, 1.00, 0.35]},
+          {"panel": "SupplementaryFigure5B", "label": "B", "atoms": ["SupplementaryFigure5B"], "box": [0.00, 0.35, 1.00, 0.65], "grid": [2, 1]}
+        ]},
+        {"title": "Supplementary Figure 6", "items": [
+          {"panel": "SupplementaryFigure6A", "label": "A", "atoms": ["SupplementaryFigure6A"], "box": [0.00, 0.00, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6B", "label": "B", "atoms": ["SupplementaryFigure6B"], "box": [0.25, 0.00, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6C", "label": "C", "atoms": ["SupplementaryFigure6C"], "box": [0.50, 0.00, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6D", "label": "D", "atoms": ["SupplementaryFigure6D"], "box": [0.75, 0.00, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6E", "label": "E", "atoms": ["SupplementaryFigure6E"], "box": [0.00, 0.50, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6F", "label": "F", "atoms": ["SupplementaryFigure6F"], "box": [0.25, 0.50, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6G", "label": "G", "atoms": ["SupplementaryFigure6G"], "box": [0.50, 0.50, 0.25, 0.50]},
+          {"panel": "SupplementaryFigure6H", "label": "H", "atoms": ["SupplementaryFigure6H"], "box": [0.75, 0.50, 0.25, 0.50]}
+        ]},
+        {"title": "Supplementary Figure 7", "items": [
+          {"panel": "SupplementaryFigure7A", "label": "A", "atoms": ["SupplementaryFigure7A"], "box": [0.00, 0.00, 0.35, 0.25]},
+          {"panel": "SupplementaryFigure7B", "label": "B", "atoms": ["SupplementaryFigure7B"], "box": [0.35, 0.00, 0.65, 0.25], "grid": [1, 4]},
+          {"panel": "SupplementaryFigure7C", "label": "C", "atoms": ["SupplementaryFigure7C_low", "SupplementaryFigure7C_high"], "box": [0.00, 0.25, 1.00, 0.55], "grid": [2, 1]},
+          {"panel": "SupplementaryFigure7D", "label": "D", "atoms": ["SupplementaryFigure7D"], "box": [0.00, 0.80, 0.35, 0.20]}
+        ]}
+      ]
+    }
+  ]
+}

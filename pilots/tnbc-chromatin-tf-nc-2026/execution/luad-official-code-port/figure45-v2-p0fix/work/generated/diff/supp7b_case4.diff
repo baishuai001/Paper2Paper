@@ -1,0 +1,21 @@
+--- upstream/Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R:64-75
++++ patched/supp7b_case4.R
+@@ -1,12 +1,12 @@
+ ### (1) New example 3
+-NCOA7_PD173074 <- plot_aac_vs_nes_with_ci(
++ZNF254_Vorinostat <- plot_aac_vs_nes_with_ci(
+   prep = prep,
+-  drug = "PD 173074",
+-  TR   = "NCOA7",
+-  cohorts = c("GDSC1000", "GRAY"),
++  drug = "Vorinostat",
++  TR   = "ZNF254",
++  cohorts = c("GDSC2", "PRISM"),
+   AAC_concordance_colours = AAC_concordance_colours_Low
+ )
+ 
+-cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_NCOA7_PD173074_AAC_NES.pdf"))
+-print(NCOA7_PD173074)
++cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_ZNF254_Vorinostat_AAC_NES.pdf"))
++print(ZNF254_Vorinostat)
+ dev.off()

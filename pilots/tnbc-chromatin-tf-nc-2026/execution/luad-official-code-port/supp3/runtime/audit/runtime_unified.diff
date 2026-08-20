@@ -1,0 +1,42 @@
+--- official/Figure2/02J2-Plot_Number_Peaks.R
++++ runtime/Figure2/02J2-Plot_Number_Peaks.R
+@@ -5,7 +5,7 @@
+ library(dplyr)
+ library(argparse)
+ 
+-source("/code/Static_Scripts/plotting_aesthetics.R")
++source("/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/code/Static_Scripts/plotting_aesthetics.R")
+ 
+ #### Collect all the arguments ####################################################################
+ parser <- ArgumentParser()
+--- official/Figure2/03D-Pearson_Correlation_Accessibility_ConsensusPeakSet.R
++++ runtime/Figure2/03D-Pearson_Correlation_Accessibility_ConsensusPeakSet.R
+@@ -6,7 +6,7 @@
+ library(dplyr)
+ library(argparse)
+ 
+-source("/code/Static_Scripts/plotting_aesthetics.R")
++source("/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/code/Static_Scripts/plotting_aesthetics.R")
+ 
+ #### Collect all the arguments ####################################################################
+ parser <- ArgumentParser()
+--- official/Figure2/04B-GenomicAnnotation.R
++++ runtime/Figure2/04B-GenomicAnnotation.R
+@@ -5,7 +5,7 @@
+ library(ggpubr)
+ library(argparse)
+ 
+-source("/code/Static_Scripts/plotting_aesthetics.R")
++source("/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/code/Static_Scripts/plotting_aesthetics.R")
+ 
+ #### Collect all the arguments ####################################################################
+ parser <- ArgumentParser()
+@@ -83,7 +83,7 @@
+ genomic_annotation_df <- rbind(genomic_annotation_df, genome_ref_freq)
+ 
+ # Read in all the consensus peak files
+-consensus_files <- list.files(paste0(args$consensus_peakset, "/", args$cohort, "_results/"), 
++consensus_files <- list.files(paste0(args$consensus_peakset_dir, "/", args$cohort, "_results/"), 
+     pattern="PeakCalls_unionPeakSet.bed.gz", full.names=TRUE)
+ 
+ for(file in consensus_files){

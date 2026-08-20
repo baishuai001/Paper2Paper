@@ -1,0 +1,9 @@
+artifact	role	biological_filter
+High_RNA_NES.tsv	official HC-TR list	31 frozen LUAD HC-TFs
+TCGA_Regulon_TF_Target_Weights_Viper.tsv	official Figure3A regulon input	all frozen signed ARACNe3/VIPER regulon edges
+JASPAR_CISBP_HC_TF_motif.tsv	official Figure3A motif annotation	motif passes original denominator rule in >=1 system
+TCGA_TR_activities_viper.tsv	official Figure3C/F/G patient activity	LUAD versus non-LUAD samples from frozen TCGA manifest
+PDX_TR_activities_viper.tsv	official Figure3G/Supp5A PDX activity	LUAD versus non-LUAD samples from frozen PDMR manifest
+CellLines_TR_activities_viper.tsv	official Figure3G/Supp5A cell-line activity	LUAD versus non-LUAD samples from frozen DepMap manifest
+MKI67/{TCGA,GSE41271,PDX,CellLines}_*.tsv	official SupplementaryFigure4D result schema	TCGA, GSE41271, PDMR, DepMap; |r|>0.4 and BH FDR<0.05 reapplied by official code
+ESTIMATE/{TCGA,GSE41271}_*.tsv	official SupplementaryFigure5B result schema	TCGA and GSE41271; |r|>0.4 and BH FDR<0.05 reapplied by official code

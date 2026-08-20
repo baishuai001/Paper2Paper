@@ -1,0 +1,13 @@
+panel	cohort	status	input_semantics	idr_status
+SupplementaryFigure3A	TCGA LUAD patients	PARTIAL	Per-sample accessible-region counts from the public fixed GDC open-count matrix; these are not newly called per-sample MACS2 peaks.	Not rerun; the public object does not support a new per-sample IDR analysis.
+SupplementaryFigure3B	LUAD PDX	COMPLETE_WITH_IDR_NA	Per-sample MACS2 q=0.01 canonical peak counts from the frozen raw-ATAC pipeline.	N/A: one public biological library per model.
+SupplementaryFigure3C	LUAD cell lines	COMPLETE_WITH_IDR_NA	Per-sample MACS2 q=0.01 canonical peak counts from the frozen raw-ATAC pipeline.	N/A: no qualifying true biological replicate set in the frozen cohort.
+SupplementaryFigure3D	TCGA LUAD patients	COMPLETE	Official saturation constructor supplied with the frozen 1000-permutation LUAD patient saturation object.	N/A to this panel.
+SupplementaryFigure3E	LUAD PDX	COMPLETE	Official saturation constructor supplied with the frozen 1000-permutation LUAD PDX saturation object.	N/A to this panel.
+SupplementaryFigure3F	LUAD cell lines	COMPLETE	Official saturation constructor supplied with the frozen 1000-permutation LUAD cell-line saturation object.	N/A to this panel.
+SupplementaryFigure3G	TCGA LUAD patients	COMPLETE	Official ComplexHeatmap constructor supplied with the frozen consensus-accessibility Pearson matrix.	N/A to this panel.
+SupplementaryFigure3H	LUAD PDX	COMPLETE	Official ComplexHeatmap constructor supplied with the frozen consensus-accessibility Pearson matrix.	N/A to this panel.
+SupplementaryFigure3I	LUAD cell lines	COMPLETE	Official ComplexHeatmap constructor supplied with the frozen consensus-accessibility Pearson matrix and sequencing-layout metadata.	N/A to this panel.
+SupplementaryFigure3J	TCGA LUAD patients	COMPLETE	Official genomic-annotation constructor supplied with per-sample annotations and the real hg38 500-bp genome baseline.	N/A to this panel.
+SupplementaryFigure3K	LUAD PDX	COMPLETE_WITH_ZERO_PEAK_BOUNDARY	Official genomic-annotation constructor supplied with per-sample annotations and the real hg38 500-bp genome baseline; 13 models are frozen, but the official table contains 12 non-empty models because one model has zero peaks.	N/A to this panel.
+SupplementaryFigure3L	LUAD cell lines	COMPLETE	Official genomic-annotation constructor supplied with per-sample annotations and the real hg38 500-bp genome baseline.	N/A to this panel.

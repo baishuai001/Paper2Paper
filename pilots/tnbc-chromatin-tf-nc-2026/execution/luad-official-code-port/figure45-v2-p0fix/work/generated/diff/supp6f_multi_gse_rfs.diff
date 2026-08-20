@@ -1,0 +1,22 @@
+--- upstream/Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R:69-99
++++ patched/supp6f_multi_gse_rfs.R
+@@ -1,8 +1,8 @@
+-## METABRIC - Recurrence Free Survival
+-METABRIC_RFS_Multivariate <- read.table(paste0(args$METABRIC_dir, "/METABRIC_RFS_CoxMultiVariate.tsv"),
++## GSE41271_LUAD - Recurrence Free Survival
++GSE41271_LUAD_RFS_Multivariate <- read.table(paste0(args$GSE41271_LUAD_dir, "/GSE41271_LUAD_RFS_CoxMultiVariate.tsv"),
+     header=TRUE, sep='\t')
+ 
+-METABRIC_RFS_Multivariate_plt <- METABRIC_RFS_Multivariate %>% 
++GSE41271_LUAD_RFS_Multivariate_plt <- GSE41271_LUAD_RFS_Multivariate %>% 
+     mutate(Point_Type = case_when(
+         CoxMultiPVal >= 0.05 ~ "Not Significant",
+         log2(Hazard_Ratio) > 0 ~ "Risk",
+@@ -26,6 +26,6 @@
+     labs(x = "Log2(Hazard Ratio)",
+          y = "-Log10(CoxMultivPval)") +
+     annotate("text", x = -Inf, y = -Inf, 
+-             label = "RFS\nMETABRIC", 
++             label = "RFS\nGSE41271_LUAD", 
+              hjust = 0, vjust=-0.5, 
+              size = 5)

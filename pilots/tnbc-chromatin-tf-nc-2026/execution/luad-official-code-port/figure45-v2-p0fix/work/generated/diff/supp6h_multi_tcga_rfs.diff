@@ -1,0 +1,22 @@
+--- upstream/Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R:143-173
++++ patched/supp6h_multi_tcga_rfs.R
+@@ -1,8 +1,8 @@
+-## TCGA - Recurrence-Free Survival
+-TCGA_RFS_Multivariate <- read.table(paste0(args$TCGA_dir, "/TCGA_RFS_CoxMultiVariate.tsv"),
++## TCGA_LUAD - Recurrence-Free Survival
++TCGA_LUAD_RFS_Multivariate <- read.table(paste0(args$TCGA_LUAD_dir, "/TCGA_LUAD_RFS_CoxMultiVariate.tsv"),
+     header=TRUE, sep='\t')
+ 
+-TCGA_RFS_Multivariate_plt <- TCGA_RFS_Multivariate %>% 
++TCGA_LUAD_RFS_Multivariate_plt <- TCGA_LUAD_RFS_Multivariate %>% 
+     mutate(Point_Type = case_when(
+         CoxMultiPVal >= 0.05 ~ "Not Significant",
+         log2(Hazard_Ratio) > 0 ~ "Risk",
+@@ -26,6 +26,6 @@
+     labs(x = "Log2(Hazard Ratio)",
+          y = "-Log10(CoxMultivPval)") +
+     annotate("text", x = -Inf, y = -Inf, 
+-             label = "RFS\nTCGA", 
++             label = "DFS\nTCGA_LUAD", 
+              hjust = 0, vjust=-0.5, 
+              size = 5)

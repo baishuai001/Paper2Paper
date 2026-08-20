@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "validated_on": "2026-08-21",
+  "scope": "layout-only official atomic PDF assembly",
+  "status": "SUPERSEDED_STATIC_DRY_RUN_RECEIPT",
+  "historical_status": "WAITING_FOR_FIG12_AND_FIG45_HASHES_STRICT_OFFICIAL_PORT_REVIEW_ONLY",
+  "superseded_on": "2026-08-21",
+  "superseded_by": [
+    "execution/luad-official-code-port/assembly-audit/assembly_summary.json",
+    "execution/luad-official-code-port/assembly-audit/final_output_sha256.tsv",
+    "execution/luad-official-code-port/assembly-qa/qa_summary.json"
+  ],
+  "supersession_note": "This file records pre-production static and partial dry-run validation only. Final runtime assembly and QA evidence is authoritative at the paths listed in superseded_by.",
+  "static_validation": {
+    "python_ast": "PASS",
+    "assembly_spec_json": "PASS",
+    "tsv_key_and_panel_coverage": "PASS",
+    "git_diff_check": "PASS",
+    "supp3_release_receipt_parser": "PASS",
+    "review_only_release_gate": "PASS",
+    "official_source_identity_gate": "PASS",
+    "configured_atoms": 75,
+    "unique_output_panels": 73,
+    "configured_main_and_supplement_outputs": 6,
+    "final_pdf_contract": 7,
+    "supplementary_pages": 8
+  },
+  "source_policy": {
+    "luad_atoms": "PDF_VECTOR_ONLY",
+    "fig12_primary_scope": "adapter_final_corrected/results/visuals/",
+    "primary_external_validation": "GSE41271 microarray",
+    "secondary_external_validation": "GSE81089 RNA-seq on a separate supplemental page",
+    "supplementary_figure_2f": "ANCHOR_BUGFIX (official one-line data-object correction)",
+    "strict_replay_selectable": false,
+    "final_output_suffix": "execution/luad-official-code-port/final/",
+    "default_runner_mode": "REVIEW_ONLY",
+    "explicit_release_gate": "--require-publication-ready"
+  },
+  "expected_missing_dry_run": {
+    "purpose": "exercise missing-input behavior without official atom roots",
+    "atoms_checked": 75,
+    "tnbc_reference_crops_resolved": 73,
+    "required_missing": 72,
+    "exit_code": 4,
+    "final_pdfs_created": 0,
+    "result": "PASS"
+  },
+  "shared_partial_dry_run": {
+    "fig3": {"resolved_pdf_slices": 19, "missing_required": 0},
+    "fig45": {"resolved_pdf_slices": 34, "missing_required": 0},
+    "supp3": {"resolved_pdf_slices": 12, "missing_required": 0},
+    "fig12": {"resolved_pdf_slices": 0, "missing_required": 18},
+    "supported_zero_boundaries": 2,
+    "tnbc_reference_crops_resolved": 73,
+    "exit_code": 4,
+    "exit_code_reason": "Figure 1/2 atoms are pending and Figure 4/5 per-PDF hashes are not yet supplied",
+    "final_pdfs_created": 0,
+    "supp3_receipt_contract_valid": true,
+    "release_status": "STRICT_OFFICIAL_PORT_REVIEW_ONLY",
+    "publication_ready": false,
+    "supp3_partial_panels": ["SupplementaryFigure3A"],
+    "supp3_visual_warning_panels": [
+      "SupplementaryFigure3D",
+      "SupplementaryFigure3F",
+      "SupplementaryFigure3K",
+      "SupplementaryFigure3L"
+    ],
+    "release_blocker_count": 3,
+    "source_identity": {
+      "fig3": {"ready": true, "verified_pdf_slices": 19},
+      "fig45": {"ready": false, "verified_pdf_slices": 0, "reason": "awaiting new per-PDF hash manifest"},
+      "supp3": {"ready": true, "verified_pdf_slices": 12},
+      "fig12": {"ready": false, "verified_pdf_slices": 0, "reason": "atoms and manifests pending"}
+    },
+    "required_missing_with_identity_gate": 20,
+    "result": "AVAILABLE_ROOTS_TECHNICALLY_VALID_REVIEW_ONLY"
+  },
+  "p0_regression": {
+    "issue": "Supplementary Figure 3 publication_ready=false was previously not consumed",
+    "fixed": true,
+    "assembly_release_status_written": true,
+    "all_pdf_pages_require_visible_release_stamp": true,
+    "technical_qa_cannot_emit_pass_for_review_only": true,
+    "require_publication_ready_exits_nonzero": true
+  },
+  "p1_regression": {
+    "issue": "same-named PDFs could be selected without official receipt/commit/output-hash identity",
+    "fixed": true,
+    "source_identity_manifest_written": true,
+    "receipt_and_commit_checks_enabled": true,
+    "sha256_and_byte_mismatches_are_required_failures": true,
+    "old_unhashed_fig45_package_accepted": false
+  }
+}

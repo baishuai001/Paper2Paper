@@ -1,0 +1,22 @@
+--- upstream/Figure4/03-Plot_UniVariate_METABRIC_TCGA.R:32-62
++++ patched/supp6a_uni_gse_os.R
+@@ -1,8 +1,8 @@
+-## METABRIC - Overall Survival
+-METABRIC_OS_Univariate <- read.table(paste0(args$METABRIC_dir, "/METABRIC_OS_CoxUniVariate.tsv"),
++## GSE41271_LUAD - Overall Survival
++GSE41271_LUAD_OS_Univariate <- read.table(paste0(args$GSE41271_LUAD_dir, "/GSE41271_LUAD_OS_CoxUniVariate.tsv"),
+     header=TRUE, sep='\t')
+ 
+-METABRIC_OS_Univariate_plt <- METABRIC_OS_Univariate %>% 
++GSE41271_LUAD_OS_Univariate_plt <- GSE41271_LUAD_OS_Univariate %>% 
+     mutate(Point_Type = case_when(
+         LogRank_PVal >= 0.05 ~ "Not Significant",
+         log2(Hazard_Ratio) > 0 ~ "Risk",
+@@ -26,6 +26,6 @@
+     labs(x = "Log2(Hazard Ratio)",
+          y = "-Log10(CoxUnivPval)") +
+     annotate("text", x = -Inf, y = -Inf, 
+-             label = "OS\nMETABRIC", 
++             label = "OS\nGSE41271_LUAD", 
+              hjust = 0, vjust=-0.5, 
+              size = 5)

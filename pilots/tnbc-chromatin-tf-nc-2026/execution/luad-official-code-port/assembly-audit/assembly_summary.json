@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "run_mode": "ASSEMBLY",
+  "release_status": "STRICT_OFFICIAL_PORT_REVIEW_ONLY",
+  "publication_ready": false,
+  "release_blocker_count": 3,
+  "source_identity_ready": true,
+  "expected_outputs": [
+    "Figure1.pdf",
+    "Figure2.pdf",
+    "Figure3.pdf",
+    "Figure4.pdf",
+    "Figure5.pdf",
+    "Supplementary_Figures.pdf",
+    "TNBC_vs_LUAD_comparison_atlas.pdf"
+  ],
+  "created_outputs": [
+    "Figure1.pdf",
+    "Figure2.pdf",
+    "Figure3.pdf",
+    "Figure4.pdf",
+    "Figure5.pdf",
+    "Supplementary_Figures.pdf",
+    "TNBC_vs_LUAD_comparison_atlas.pdf"
+  ],
+  "resolved_atom_pdf_count": 90,
+  "declared_boundary_count": 10,
+  "missing_required_count": 0,
+  "embedding_count": 253,
+  "luad_embedding_methods": [
+    "pypdf.merge_transformed_page_vector"
+  ]
+}

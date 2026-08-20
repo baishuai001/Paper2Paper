@@ -1,0 +1,22 @@
+--- upstream/Figure5/06-AAC_Key_Drug_TR_AcrossCohort.R:24-36
++++ patched/supp7b_case1.R
+@@ -1,13 +1,13 @@
+ ######## Case examples ########
+ ### (1) New example 1
+-ETV4_Trametinib <- plot_aac_vs_nes_with_ci(
++WWC2_Pha793887 <- plot_aac_vs_nes_with_ci(
+   prep = prep,
+-  drug = "Trametinib",
+-  TR   = "ETV4",
+-  cohorts = c("CTRPv2", "GRAY"),
++  drug = "Pha-793887",
++  TR   = "WWC2",
++  cohorts = c("CTRPv2", "PRISM"),
+   AAC_concordance_colours = AAC_concordance_colours_Low
+ )
+ 
+-cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_ETV4_Trametinib_AAC_NES.pdf"))
+-print(ETV4_Trametinib)
++cairo_pdf(paste0(args$visuals_outdir, "/SupplementaryFigure7B_WWC2_Pha793887_AAC_NES.pdf"))
++print(WWC2_Pha793887)
+ dev.off()

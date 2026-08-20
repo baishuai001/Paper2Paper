@@ -1,0 +1,18 @@
+role	path	bytes	md5	rows
+Figure4 frozen Cox models	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/tables/Figure4_all_Cox_models.tsv	61101	3014124edcecbdc6f19fb52bfb66bd4b	248
+Figure4 endpoint overlap	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/tables/Figure4EG_endpoint_overlap.tsv	180	f4324f6f3174f9bed295666535b3b6e8	4
+Figure4 KM receipts	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/tables/Figure4FH_KM_receipts.tsv	943	46171a560675920f548421c00e225478	8
+Figure4 survival inputs	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/figure4_survival_inputs.rds	15596	28d6505e63603c223f9ba73946bf9e4f	NA
+KM activity GSE41271_LUAD	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/gse41271_tcga_projection/GSE41271_TCGA_PROJECTED_viper_activity.tsv.gz	4398555	5d10a344a63d91639d57035d63295cdb	NA
+KM activity TCGA_LUAD	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/tcga/TCGA_viper_activity.tsv.gz	16760541	cc17919c268979727e37d5d97f7467e9	NA
+Figure5 all cell-line concordance tests	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/tables/Figure5ABC_cellline_concordance_all.tsv.gz	2732186	d40c3ab32ee31d1c451c69fa7d2baa25	39085
+Figure5 drug identity map	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/tables/Figure5_drug_identity_map.tsv	253568	f7ecffbb79774946c9d90314de6f2300	2171
+Figure5 cell-line paired values	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/data/processed/figure5_cellline_inputs.rds	12692316	b558b9319ef05632aa8d873b3e82edcb	NA
+Figure5 complete PDX audit screen	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/tables/SupplementaryFigure9B_PDXE_all_concordance_tests.tsv	73315	a237ac3c368357e9033cbf5a7cb05c01	423
+Figure5 frozen PDX validated pairs	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/tables/Figure5GH_PDX_validated_pairs.tsv	169	9cbf7942ba20ccf1a859cb3b77348207	0
+Supplementary Figure 5A skewness	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure5A_cross_system_skewness.tsv	14967	8e57619087711f50da2bb146ae9f1d07	124
+Supplementary Figure 5A activity PDMR_LUAD	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/pdmr/PDMR_viper_activity.tsv.gz	951911	0a54acc59ec1932af8259fbaecb271b1	NA
+Supplementary Figure 5A manifest PDMR_LUAD	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/processed/pdmr_manifest.tsv	10893	a7c631a0f2d44cee284b652c55f30c79	56
+Supplementary Figure 5A activity DEPMAP_LUAD	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/results/depmap/DEPMAP_viper_activity.tsv.gz	1730215	ac7a95caeae5b0429a9ff62326edf109	NA
+Supplementary Figure 5A manifest DEPMAP_LUAD	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure1/data/processed/depmap_manifest.tsv	31664	68f4e99f3b27b252bb91ee350cd62a3f	103
+Supplementary Figure 5B ESTIMATE	/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure5B_ESTIMATE_correlations.tsv	21525	ffe1275bc42e7d97db7f0046c32b55ca	186

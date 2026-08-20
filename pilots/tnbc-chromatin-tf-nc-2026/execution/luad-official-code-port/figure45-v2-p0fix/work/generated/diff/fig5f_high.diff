@@ -1,0 +1,22 @@
+--- upstream/Figure5/05-Generate_DotPlot_SignificantDrug_TR.R:266-348
++++ patched/fig5f_high.R
+@@ -2,7 +2,7 @@
+ Combined_CI_high <- merge(Combined_CI_high, drug_function, by = "drug")
+ 
+ Combined_CI_high$label <- paste0(Combined_CI_high$drug, "_", Combined_CI_high$TR, "_", Combined_CI_high$Cohort)
+-Combined_CI_high$Cohort <- factor(Combined_CI_high$Cohort, levels=c("GRAY", "GDSC1000", "CTRPv2"))
++Combined_CI_high$Cohort <- factor(Combined_CI_high$Cohort, levels=c("PRISM", "GDSC2", "CTRPv2"))
+ 
+ unique(Combined_CI_high$Label)
+ 
+@@ -15,8 +15,8 @@
+ 
+ Combined_CI_high_main_plt <- ggplot(Combined_CI_high_main, aes(x = label, y = TR)) +
+   geom_point(aes(color = Cohort, size = c_index), alpha = 0.9) +
+-  scale_color_manual(values = c(GRAY     = "#FCAE91",
+-    GDSC1000 = "#FB6A4A",
++  scale_color_manual(values = c(PRISM     = "#FCAE91",
++    GDSC2 = "#FB6A4A",
+     CTRPv2   = "#CB181D")) +
+   scale_size_continuous(
+     name  = "Concordance\nIndex (CI)",

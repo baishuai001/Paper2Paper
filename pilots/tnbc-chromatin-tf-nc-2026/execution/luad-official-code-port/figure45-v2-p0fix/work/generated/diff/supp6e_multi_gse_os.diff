@@ -1,0 +1,22 @@
+--- upstream/Figure4/02-Plot_CoxMultiVariate_METABRIC_TCGA.R:32-62
++++ patched/supp6e_multi_gse_os.R
+@@ -1,8 +1,8 @@
+-## METABRIC - Overall Survival
+-METABRIC_OS_Multivariate <- read.table(paste0(args$METABRIC_dir, "/METABRIC_OS_CoxMultiVariate.tsv"),
++## GSE41271_LUAD - Overall Survival
++GSE41271_LUAD_OS_Multivariate <- read.table(paste0(args$GSE41271_LUAD_dir, "/GSE41271_LUAD_OS_CoxMultiVariate.tsv"),
+     header=TRUE, sep='\t')
+ 
+-METABRIC_OS_Multivariate_plt <- METABRIC_OS_Multivariate %>% 
++GSE41271_LUAD_OS_Multivariate_plt <- GSE41271_LUAD_OS_Multivariate %>% 
+     mutate(Point_Type = case_when(
+         CoxMultiPVal >= 0.05 ~ "Not Significant",
+         log2(Hazard_Ratio) > 0 ~ "Risk",
+@@ -26,6 +26,6 @@
+     labs(x = "Log2(Hazard Ratio)",
+          y = "-Log10(CoxMultivPval)") +
+     annotate("text", x = -Inf, y = -Inf, 
+-             label = "OS\nMETABRIC", 
++             label = "OS\nGSE41271_LUAD", 
+              hjust = 0, vjust=-0.5, 
+              size = 5)

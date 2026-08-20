@@ -1,0 +1,5 @@
+case_block	canonical_drug	TR	display_drug	expected_datasets
+supp7b_case1	CID:46191454	WWC2	Pha-793887	CTRPv2;PRISM
+supp7b_case2	CID:3385	ZNF254	5-Fluorouracil	CTRPv2;GDSC2
+supp7b_case3	CID:11977753	ZNF254	Dactolisib	GDSC2;PRISM
+supp7b_case4	CID:5311	ZNF254	Vorinostat	GDSC2;PRISM

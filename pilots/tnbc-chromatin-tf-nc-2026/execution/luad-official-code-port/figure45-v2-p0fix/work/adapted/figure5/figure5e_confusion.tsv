@@ -1,0 +1,10 @@
+OS	RFS	n
+Good prognosis	Non-Prognostic	0
+Good prognosis	Recurrence	0
+Good prognosis	Recurrence-Free	0
+Non-Prognostic	Non-Prognostic	3
+Non-Prognostic	Recurrence	0
+Non-Prognostic	Recurrence-Free	0
+Poor prognosis	Non-Prognostic	0
+Poor prognosis	Recurrence	0
+Poor prognosis	Recurrence-Free	0

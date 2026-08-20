@@ -1,0 +1,13 @@
+--- upstream/Figure5/05-Generate_DotPlot_SignificantDrug_TR.R:350-424
++++ patched/supp7c_high.R
+@@ -7,8 +7,8 @@
+ 
+ Combined_CI_high_suppl_plt <- ggplot(Combined_CI_high_suppl, aes(x = label, y = TR)) +
+   geom_point(aes(color = Cohort, size = c_index), alpha = 0.9) +
+-  scale_color_manual(values = c(GRAY     = "#FCAE91",
+-    GDSC1000 = "#FB6A4A",
++  scale_color_manual(values = c(PRISM     = "#FCAE91",
++    GDSC2 = "#FB6A4A",
+     CTRPv2   = "#CB181D")) +
+   scale_size_continuous(
+     name  = "Concordance\nIndex (CI)",

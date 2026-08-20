@@ -1,0 +1,152 @@
+{
+  "verdict": "PASS_STRICT_PORT_WITH_DECLARED_INPUT_AND_VISUAL_BOUNDARIES",
+  "publication_ready": false,
+  "official_plotting_code_used": true,
+  "plotting_constructor_rewrites": 0,
+  "panels_verified": 12,
+  "partial_panels": [
+    "SupplementaryFigure3A"
+  ],
+  "idr_not_applicable_panels": [
+    "SupplementaryFigure3B",
+    "SupplementaryFigure3C"
+  ],
+  "real_hg38_500bp_baseline_used": true,
+  "real_hg38_500bp_baseline_bins": 6062095,
+  "visual_warnings": [
+    {
+      "panel": "SupplementaryFigure3D",
+      "qa_status": "OFFICIAL_ANNOTATION_OVERLAP",
+      "observation": "The official fixed annotation positions make the detected/estimated peak labels overlap; the fitted 50% point is negative and is printed as 0 samples after official rounding.",
+      "strict_port_action": "Do not alter the official constructor; flag as not publication-ready."
+    },
+    {
+      "panel": "SupplementaryFigure3F",
+      "qa_status": "OFFICIAL_ANNOTATION_OVERLAP",
+      "observation": "The detected-peak label and Model Fit label overlap for the LUAD cell-line fit.",
+      "strict_port_action": "Do not alter the official constructor; flag as not publication-ready."
+    },
+    {
+      "panel": "SupplementaryFigure3K",
+      "qa_status": "OFFICIAL_LABEL_OVERLAP",
+      "observation": "The official fixed n-label position overlaps the promoter distribution; n=12 because one of 13 frozen PDX models has no rows after zero-peak expansion.",
+      "strict_port_action": "Do not invent a nonzero peak; flag as not publication-ready."
+    },
+    {
+      "panel": "SupplementaryFigure3L",
+      "qa_status": "OFFICIAL_LABEL_OVERLAP",
+      "observation": "The official fixed n-label position overlaps the promoter distribution.",
+      "strict_port_action": "Do not alter the official constructor; flag as not publication-ready."
+    }
+  ],
+  "results": [
+    {
+      "panel": "SupplementaryFigure3A",
+      "status": "PARTIAL",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3A_TCGA_Number_Of_Called_Peaks.pdf",
+      "pdf_bytes": 13629,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3A_TCGA_Number_Of_Called_Peaks.png",
+      "render_width": 1050,
+      "render_height": 1050
+    },
+    {
+      "panel": "SupplementaryFigure3B",
+      "status": "COMPLETE_WITH_IDR_NA",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3B_PDX_Number_Of_Called_Peaks.pdf",
+      "pdf_bytes": 12811,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3B_PDX_Number_Of_Called_Peaks.png",
+      "render_width": 1050,
+      "render_height": 1050
+    },
+    {
+      "panel": "SupplementaryFigure3C",
+      "status": "COMPLETE_WITH_IDR_NA",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3C_CellLines_Number_Of_Called_Peaks.pdf",
+      "pdf_bytes": 13516,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3C_CellLines_Number_Of_Called_Peaks.png",
+      "render_width": 1050,
+      "render_height": 1050
+    },
+    {
+      "panel": "SupplementaryFigure3D",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3D_TCGA_peak_saturation.pdf",
+      "pdf_bytes": 200454,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3D_TCGA_peak_saturation.png",
+      "render_width": 525,
+      "render_height": 600
+    },
+    {
+      "panel": "SupplementaryFigure3E",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3E_PDX_peak_saturation.pdf",
+      "pdf_bytes": 476262,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3E_PDX_peak_saturation.png",
+      "render_width": 525,
+      "render_height": 600
+    },
+    {
+      "panel": "SupplementaryFigure3F",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3F_CellLines_peak_saturation.pdf",
+      "pdf_bytes": 722614,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3F_CellLines_peak_saturation.png",
+      "render_width": 525,
+      "render_height": 600
+    },
+    {
+      "panel": "SupplementaryFigure3G",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3G_TCGA_Pearson_Correlation_Signal_ConsensusPeakSet.pdf",
+      "pdf_bytes": 27466,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3G_TCGA_Pearson_Correlation_Signal_ConsensusPeakSet.png",
+      "render_width": 1050,
+      "render_height": 901
+    },
+    {
+      "panel": "SupplementaryFigure3H",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3H_PDX_Pearson_Correlation_Signal_ConsensusPeakSet.pdf",
+      "pdf_bytes": 17556,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3H_PDX_Pearson_Correlation_Signal_ConsensusPeakSet.png",
+      "render_width": 1050,
+      "render_height": 901
+    },
+    {
+      "panel": "SupplementaryFigure3I",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3I_CellLines_Pearson_Correlation_Signal_ConsensusPeakSet.pdf",
+      "pdf_bytes": 27327,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3I_CellLines_Pearson_Correlation_Signal_ConsensusPeakSet.png",
+      "render_width": 1050,
+      "render_height": 901
+    },
+    {
+      "panel": "SupplementaryFigure3J",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3J_TCGA_GenomicAnnotation.pdf",
+      "pdf_bytes": 18181,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3J_TCGA_GenomicAnnotation.png",
+      "render_width": 901,
+      "render_height": 600
+    },
+    {
+      "panel": "SupplementaryFigure3K",
+      "status": "COMPLETE_WITH_ZERO_PEAK_BOUNDARY",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3K_PDX_GenomicAnnotation.pdf",
+      "pdf_bytes": 16814,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3K_PDX_GenomicAnnotation.png",
+      "render_width": 901,
+      "render_height": 600
+    },
+    {
+      "panel": "SupplementaryFigure3L",
+      "status": "COMPLETE",
+      "pdf": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/panels/SupplementaryFigure3L_CellLines_GenomicAnnotation.pdf",
+      "pdf_bytes": 18644,
+      "render_png": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/rendered_png/SupplementaryFigure3L_CellLines_GenomicAnnotation.png",
+      "render_width": 901,
+      "render_height": 600
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+check	status	detail
+official_source_inventory	PASS	14 frozen plotting/aesthetic sources match OFFICIAL_SOURCE_LOCK.tsv and CodeOcean commit edf5314 SHA256 values.
+allowed_rule_schema	PASS	34 unique whitelisted content-substitution rule IDs parsed from JSON.
+runtime_materialization	PASS	14 runtime sources materialised; all expected occurrence counts matched.
+substitution_audit	PASS	65 substitutions recorded: 36 PATH_ONLY, 11 CANCER_LABEL, 9 ADAPTER_NAME, 9 SAMPLE_COUNT.
+visual_constructor_diff_scan	PASS	No changed diff line contains theme, font, geom_, scale_, or a hexadecimal colour value.
+python_compile	PASS	materialize_official_runtime.py compiled under Python 3.12.13.
+figure1_line_stability	PASS	Official Figure1/10 source remains 607 lines after allowed substitutions, preserving declared block coordinates.
+R_parse	PENDING_CLOUD	Local Windows workspace has no Rscript; cloud parse/full execution is intentionally delegated to the main agent.
+cloud_render	PENDING_CLOUD	No cloud render was started by this subtask after the main agent requested handoff.

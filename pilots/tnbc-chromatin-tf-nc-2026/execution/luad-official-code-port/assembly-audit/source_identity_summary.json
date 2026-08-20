@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "expected_official_commit": "edf5314ce5b9ee0e2f88b2310e7c2df5619ad888",
+  "identity_ready": true,
+  "roots": {
+    "fig12": {
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final",
+      "receipt_paths": [
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/audit/pdf_sha256_manifest.tsv",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/runtime_final_corrected/audit/runtime_manifest.json",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/runtime_secondary_GSE81089_corrected/audit/runtime_manifest.json"
+      ],
+      "receipts": [
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/audit/pdf_sha256_manifest.tsv",
+          "sha256": "cbececc70e2a1e1f3d672d4ec67c904b37881a841e24cdec41df450ea6c45007"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/runtime_final_corrected/audit/runtime_manifest.json",
+          "sha256": "9ecc4da47e8e19d4e645badc06a20bba97122584964454e3ad40a99070f8bf8b"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/runtime_secondary_GSE81089_corrected/audit/runtime_manifest.json",
+          "sha256": "c07aabdac1d7142b776846c43360d10a5de7bd34325c5c4cba7de468550e9e94"
+        }
+      ],
+      "commit_evidence": "edf5314ce5b9ee0e2f88b2310e7c2df5619ad888",
+      "hash_manifest": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig12-final/audit/pdf_sha256_manifest.tsv",
+      "resolved_pdf_slices": 23,
+      "verified_pdf_slices": 23,
+      "identity_ready": true,
+      "errors": []
+    },
+    "fig3": {
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3",
+      "receipt_paths": [
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_output_sha256.tsv",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_port_receipt.json",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_source_manifest.tsv"
+      ],
+      "receipts": [
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_output_sha256.tsv",
+          "sha256": "c6510900636f3f6571cfc5253f419938fbb2d3ba5700bb3739f13bc53e3e29c1"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_port_receipt.json",
+          "sha256": "d8b0fe51313ddfa24e0a0bd66e3fa0a64fe95d0a325a3240a9880c2333b5ca37"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_source_manifest.tsv",
+          "sha256": "b9bafc653e6b7030eafd443a83b5534fb9cdbadbaaf3405ba4295b2fa3370bec"
+        }
+      ],
+      "commit_evidence": "edf5314 source-hash lock (8 official scripts)",
+      "hash_manifest": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-fig3-port/run-v3/audit/official_output_sha256.tsv",
+      "resolved_pdf_slices": 19,
+      "verified_pdf_slices": 19,
+      "identity_ready": true,
+      "errors": []
+    },
+    "fig45": {
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2",
+      "receipt_paths": [
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/results/atomic_pdf_sha256.tsv",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/results/audit/official_port_verification.json",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/materialization_receipt.json"
+      ],
+      "receipts": [
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/results/atomic_pdf_sha256.tsv",
+          "sha256": "476ea9d139b3139bf1336bf7eaa117bdb27cd16b6f99cf03d00987eba423a5ce"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/results/audit/official_port_verification.json",
+          "sha256": "f2e9fd601064406a73e901f57150b34e9bd7e7288ddf630c1ccd31072bc3d77b"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/work/generated/materialization_receipt.json",
+          "sha256": "00ddf1923adf37e59a5ae2b2d4bc2f508c64670099a1133e7d0624d00ccd0100"
+        }
+      ],
+      "commit_evidence": "edf5314",
+      "hash_manifest": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-code-port-v3/run-fig45-v2-p0fix-20260821-r2/results/atomic_pdf_sha256.tsv",
+      "resolved_pdf_slices": 36,
+      "verified_pdf_slices": 36,
+      "identity_ready": true,
+      "errors": []
+    },
+    "supp3": {
+      "root": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2",
+      "receipt_paths": [
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/verification_receipt.json",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/audit/materialization_receipt.json",
+        "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/audit/official_source_manifest.tsv"
+      ],
+      "receipts": [
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/results/verification_receipt.json",
+          "sha256": "c3fefb13c1c69ef1ce26be73cb00487c86531ebbfd2d5776dd1365b0781d8ce9"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/audit/materialization_receipt.json",
+          "sha256": "a4ffa0d5ac540d9af06dd7e227e625ae72467496fbdf0fb92976728bba48195d"
+        },
+        {
+          "path": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/official-supp3-port/run-v2/runtime/audit/official_source_manifest.tsv",
+          "sha256": "8d07ce3c43f42bc6aac5ee28c1fc0a17d4bef934d4b642dce60732d2cc896706"
+        }
+      ],
+      "commit_evidence": "edf5314 source-hash lock (5 official scripts)",
+      "hash_manifest": "",
+      "resolved_pdf_slices": 12,
+      "verified_pdf_slices": 12,
+      "identity_ready": true,
+      "errors": []
+    }
+  }
+}

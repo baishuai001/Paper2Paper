@@ -1,0 +1,4 @@
+cohort	tf_rows	samples	luad_samples	non_luad_samples
+TCGA	2046	1017	516	501
+PDX	2041	56	22	34
+CellLines	2033	103	76	27

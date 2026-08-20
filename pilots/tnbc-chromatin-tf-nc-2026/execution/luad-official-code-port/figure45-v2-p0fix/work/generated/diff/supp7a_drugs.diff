@@ -1,0 +1,37 @@
+--- upstream/Figure5/01A-Compare_Drugs_Overlapping_Across_CellLine_Datasets.R:37-83
++++ patched/supp7a_drugs.R
+@@ -12,26 +12,26 @@
+ }
+ 
+ # Create standardized drug lists using the Standardized_Name column
+-GRAY_drugs <- standardize_drugs(drug_cohorts$GRAY, drug_cohorts$Standardized_Name)
+-length(GRAY_drugs)
++PRISM_drugs <- standardize_drugs(drug_cohorts$PRISM, drug_cohorts$Standardized_Name)
++length(PRISM_drugs)
+ 
+ CTRPv2_drugs <- standardize_drugs(drug_cohorts$CTRPv2, drug_cohorts$Standardized_Name)
+ length(CTRPv2_drugs)
+ 
+-GDSC1000_drugs <- standardize_drugs(drug_cohorts$GDSC1000, drug_cohorts$Standardized_Name)
+-length(GDSC1000_drugs)
++GDSC2_drugs <- standardize_drugs(drug_cohorts$GDSC2, drug_cohorts$Standardized_Name)
++length(GDSC2_drugs)
+ 
+ # Create the list for Venn diagram with standardized names
+ drug_info_list <- list(
+-    GRAY = GRAY_drugs,
++    PRISM = PRISM_drugs,
+     CTRPv2 = CTRPv2_drugs,
+-    GDSC1000 = GDSC1000_drugs
++    GDSC2 = GDSC2_drugs
+ )
+ 
+ # Print summary statistics
+-cat("GRAY drugs:", length(GRAY_drugs), "\n")
++cat("PRISM drugs:", length(PRISM_drugs), "\n")
+ cat("CTRPv2 drugs:", length(CTRPv2_drugs), "\n")
+-cat("GDSC1000 drugs:", length(GDSC1000_drugs), "\n")
++cat("GDSC2 drugs:", length(GDSC2_drugs), "\n")
+ 
+ fit <- euler(drug_info_list)
+ 
