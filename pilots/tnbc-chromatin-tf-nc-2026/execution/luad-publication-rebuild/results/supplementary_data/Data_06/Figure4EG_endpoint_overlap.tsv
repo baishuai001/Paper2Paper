@@ -1,0 +1,5 @@
+cohort	direction	OS_only	overlap	RFS_only	overlap_TFs
+GSE41271_LUAD	Favorable	2	1	3	ETV1
+GSE41271_LUAD	Adverse	0	0	0	""
+TCGA_LUAD	Favorable	9	1	0	CREBRF
+TCGA_LUAD	Adverse	0	0	1	""

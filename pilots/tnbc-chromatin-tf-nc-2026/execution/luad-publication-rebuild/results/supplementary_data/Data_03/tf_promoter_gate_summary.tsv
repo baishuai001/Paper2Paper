@@ -1,0 +1,791 @@
+analysis_definition	TF	patient_promoter_accessible	PDX_promoter_accessible	cell_line_promoter_accessible	triple_system_promoter_accessible	all_three_system_mean_NES_negative	retained_by_anchor_activity_rule	HC_TF_promoter_activity_definition	exclusion_reason
+PRIMARY_anchor_promoter_tcga_cpm1_both	ABHD14B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ABRA	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	APBB1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ARX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ASCL5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ATOH8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	BATF3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	BCLAF3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	CIITA	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	CREB3L2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	CREBRF	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	CRY2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	CSRNP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	DMRTC2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	DRGX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	E2F5	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ELF3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ELF5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	EPAS1	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ESR1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ETV1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	FOXA1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	FOXA2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	FOXA3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	FOXD2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	FOXP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	FOXP4	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	GATA5	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	GATA6	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	GCM1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	GLIS3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	HNF1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	HNF1B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	HNF4G	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	HOPX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	HOXD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	IKZF4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	IL4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	INSM2	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	IRF7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	IRX3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	JADE1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	KANK2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	KAT2B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	KLF2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	KLF9	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	LHX9	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	LIMD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	LMO3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	LPIN2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	LYL1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MAGEC3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MAGED2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	MAGEE2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MDFIC	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MEF2C	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MEF2D	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MEIS3P1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MEIS3P2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MESP1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MITF	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MLLT3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MLLT6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MSANTD1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MXD4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	MYRF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	MYRFL	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NANOGP1	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NCOA7	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	NEUROG3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NFATC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NFATC4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	NFE2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NKX2-1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NOTO	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NR0B2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NR1H4	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NR2F1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NR2F6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	NR3C2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	OLIG1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ONECUT1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	PHC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	POU1F1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	PPARGC1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	PRDM16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	PRDM8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	RARA	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	RORB	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	RORC	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	SAMD11	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	SMAD6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	SMAD7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	SP110	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	SP5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	SPDEF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TBX15	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TBX4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TBXT	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TCF21	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TFCP2L1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TOX3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	TP53INP1	TRUE	TRUE	TRUE	TRUE	TRUE	FALSE	FALSE	mean_NES_negative_in_patient_PDX_and_cell_line
+PRIMARY_anchor_promoter_tcga_cpm1_both	VDR	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	VENTX	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	VSX1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	WTIP	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	WWC1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	WWC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	XBP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZBTB10	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZBTB16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZBTB18	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZBTB42	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZBTB46	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZFHX2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZFP2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZFP57	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZMYND15	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF117	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF141	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF19	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF214	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF239	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF254	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF281	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF33A	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF33B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF341	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF382	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF396	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF429	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF441	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF444	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF467	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF483	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF486	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF493	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF540	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF541	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF597	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF608	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF620	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF662	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF671	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF678	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF681	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF69	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF710	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF717	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF737	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF75D	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF763	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF792	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF835	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF852	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZNF860	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+PRIMARY_anchor_promoter_tcga_cpm1_both	ZSCAN16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ABHD14B	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ABRA	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	APBB1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ARX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ASCL5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ATOH8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	BATF3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	BCLAF3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	CIITA	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	CREB3L2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	CREBRF	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	CRY2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	CSRNP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	DMRTC2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	DRGX	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	E2F5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ELF3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ELF5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	EPAS1	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ESR1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ETV1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	FOXA1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	FOXA2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	FOXA3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	FOXD2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	FOXP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	FOXP4	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	GATA5	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	GATA6	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	GCM1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	GLIS3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	HNF1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	HNF1B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	HNF4G	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	HOPX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	HOXD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	IKZF4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	IL4	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	INSM2	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	IRF7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	IRX3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	JADE1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	KANK2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	KAT2B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	KLF2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	KLF9	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	LHX9	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	LIMD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	LMO3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	LPIN2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	LYL1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MAGEC3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MAGED2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	MAGEE2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MDFIC	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MEF2C	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MEF2D	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MEIS3P1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MEIS3P2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MESP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MITF	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MLLT3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MLLT6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MSANTD1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MXD4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	MYRF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	MYRFL	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NANOGP1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NCOA7	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	NEUROG3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NFATC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NFATC4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	NFE2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NKX2-1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NOTO	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NR0B2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NR1H4	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NR2F1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NR2F6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	NR3C2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	OLIG1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ONECUT1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	PHC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	POU1F1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	PPARGC1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	PRDM16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	PRDM8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	RARA	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	RORB	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	RORC	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	SAMD11	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	SMAD6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	SMAD7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	SP110	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	SP5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	SPDEF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TBX15	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TBX4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TBXT	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TCF21	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TFCP2L1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TOX3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	TP53INP1	TRUE	TRUE	TRUE	TRUE	TRUE	FALSE	FALSE	mean_NES_negative_in_patient_PDX_and_cell_line
+SENS_legend_promoter_tcga_cpm1_both	VDR	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	VENTX	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	VSX1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	WTIP	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	WWC1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	WWC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	XBP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZBTB10	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZBTB16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZBTB18	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZBTB42	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZBTB46	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZFHX2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZFP2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZFP57	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZMYND15	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF117	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF141	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF19	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF214	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF239	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF254	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF281	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF33A	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF33B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF341	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF382	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF396	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF429	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF441	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF444	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF467	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF483	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF486	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF493	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF540	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF541	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF597	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF608	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF620	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF662	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF671	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF678	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF681	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF69	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF710	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF717	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF737	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF75D	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_legend_promoter_tcga_cpm1_both	ZNF763	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF792	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF835	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF852	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZNF860	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_legend_promoter_tcga_cpm1_both	ZSCAN16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ABHD14B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ABRA	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	APBB1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ARX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ASCL5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ATOH8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	BATF3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	BCLAF3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	CIITA	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	CREB3L2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	CREBRF	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	CRY2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	CSRNP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	DMRTC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	DRGX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	E2F5	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ELF3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ELF5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	EPAS1	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ESR1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ETV1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	FOXA1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	FOXA2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	FOXA3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	FOXD2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	FOXP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	FOXP4	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	GATA5	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	GATA6	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	GCM1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	GLIS3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	HNF1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	HNF1B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	HNF4G	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	HOPX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	HOXD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	IKZF4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	IL4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	INSM2	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	IRF7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	IRX3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	JADE1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	KANK2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	KAT2B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	KLF2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	KLF9	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	LHX9	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	LIMD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	LMO3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	LPIN2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	LYL1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MAGEC3	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MAGED2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	MAGEE2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MDFIC	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MEF2C	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MEF2D	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MEIS3P1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MEIS3P2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MESP1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MITF	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MLLT3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MLLT6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MSANTD1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MXD4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	MYRF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	MYRFL	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NANOGP1	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NCOA7	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	NEUROG3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NFATC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NFATC4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	NFE2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NKX2-1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NOTO	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NR0B2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NR1H4	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NR2F1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NR2F6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	NR3C2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	OLIG1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ONECUT1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	PHC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	POU1F1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	PPARGC1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	PRDM16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	PRDM8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	RARA	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	RORB	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	RORC	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	SAMD11	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	SMAD6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	SMAD7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	SP110	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	SP5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	SPDEF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TBX15	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TBX4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TBXT	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TCF21	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TFCP2L1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TOX3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	TP53INP1	TRUE	TRUE	TRUE	TRUE	TRUE	FALSE	FALSE	mean_NES_negative_in_patient_PDX_and_cell_line
+SENS_anchor_promoter_tcga_cpm0.5_both	VDR	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	VENTX	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	VSX1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	WTIP	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	WWC1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	WWC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	XBP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZBTB10	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZBTB16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZBTB18	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZBTB42	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZBTB46	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZFHX2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZFP2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZFP57	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZMYND15	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF117	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF141	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF19	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF214	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF239	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF254	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF281	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF33A	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF33B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF341	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF382	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF396	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF429	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF441	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF444	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF467	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF483	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF486	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF493	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF540	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF541	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF597	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF608	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF620	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF662	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF671	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF678	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF681	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF69	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF710	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF717	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF737	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF75D	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF763	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF792	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF835	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF852	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZNF860	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm0.5_both	ZSCAN16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ABHD14B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ABRA	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	APBB1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ARX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ASCL5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ATOH8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	BATF3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	BCLAF3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	CIITA	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	CREB3L2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	CREBRF	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	CRY2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	CSRNP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	DMRTC2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	DRGX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	E2F5	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ELF3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ELF5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	EPAS1	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ESR1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ETV1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	FOXA1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	FOXA2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	FOXA3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	FOXD2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	FOXP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	FOXP4	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	GATA5	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	GATA6	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	GCM1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	GLIS3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	HNF1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	HNF1B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	HNF4G	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	HOPX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	HOXD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	IKZF4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	IL4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	INSM2	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	IRF7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	IRX3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	JADE1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	KANK2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	KAT2B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	KLF2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	KLF9	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	LHX9	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	LIMD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	LMO3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	LPIN2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	LYL1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MAGEC3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MAGED2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	MAGEE2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MDFIC	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MEF2C	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MEF2D	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MEIS3P1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MEIS3P2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MESP1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MITF	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MLLT3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MLLT6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MSANTD1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MXD4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	MYRF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	MYRFL	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NANOGP1	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NCOA7	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	NEUROG3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NFATC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NFATC4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	NFE2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NKX2-1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NOTO	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NR0B2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NR1H4	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NR2F1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NR2F6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	NR3C2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	OLIG1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ONECUT1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	PHC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	POU1F1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	PPARGC1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	PRDM16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	PRDM8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	RARA	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	RORB	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	RORC	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	SAMD11	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	SMAD6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	SMAD7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	SP110	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	SP5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	SPDEF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TBX15	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TBX4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TBXT	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TCF21	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TFCP2L1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TOX3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	TP53INP1	TRUE	TRUE	TRUE	TRUE	TRUE	FALSE	FALSE	mean_NES_negative_in_patient_PDX_and_cell_line
+SENS_anchor_promoter_tcga_cpm2_both	VDR	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	VENTX	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	VSX1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	WTIP	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	WWC1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	WWC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	XBP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZBTB10	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZBTB16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZBTB18	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZBTB42	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZBTB46	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZFHX2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZFP2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZFP57	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZMYND15	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF117	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF141	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF19	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF214	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF239	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF254	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF281	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF33A	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF33B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF341	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF382	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF396	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF429	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF441	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF444	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF467	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF483	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF486	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF493	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF540	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF541	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF597	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF608	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF620	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF662	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF671	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF678	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF681	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF69	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF710	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF717	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF737	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF75D	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm2_both	ZNF763	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF792	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF835	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF852	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZNF860	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm2_both	ZSCAN16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ABHD14B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ABRA	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	APBB1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ARX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ASCL5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ATOH8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	BATF3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	BCLAF3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	CIITA	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	CREB3L2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	CREBRF	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	CRY2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	CSRNP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	DMRTC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	DRGX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	E2F5	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ELF3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ELF5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	EPAS1	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ESR1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ETV1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	FOXA1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	FOXA2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	FOXA3	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	FOXD2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	FOXP1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	FOXP4	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	GATA5	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	GATA6	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	GCM1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	GLIS3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	HNF1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	HNF1B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	HNF4G	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	HOPX	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	HOXD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	IKZF4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	IL4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	INSM2	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	IRF7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	IRX3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	JADE1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	KANK2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	KAT2B	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	KLF2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	KLF9	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	LHX9	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	LIMD1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	LMO3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	LPIN2	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	LYL1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MAGEC3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MAGED2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	MAGEE2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MDFIC	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MEF2C	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MEF2D	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MEIS3P1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MEIS3P2	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MESP1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MITF	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MLLT3	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MLLT6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MSANTD1	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MXD4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	MYRF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	MYRFL	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NANOGP1	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NCOA7	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	NEUROG3	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NFATC2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NFATC4	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	NFE2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NKX2-1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NOTO	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NR0B2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NR1H4	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NR2F1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NR2F6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	NR3C2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	OLIG1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ONECUT1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	PHC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	POU1F1	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	PPARGC1A	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	PRDM16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	PRDM8	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	RARA	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	RORB	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	RORC	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	SAMD11	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	SMAD6	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	SMAD7	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	SP110	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	SP5	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	SPDEF	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TBX15	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TBX4	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TBXT	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TCF21	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TFCP2L1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TOX3	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	TP53INP1	TRUE	TRUE	TRUE	TRUE	TRUE	FALSE	FALSE	mean_NES_negative_in_patient_PDX_and_cell_line
+SENS_anchor_promoter_tcga_cpm1_merged	VDR	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	VENTX	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	VSX1	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	WTIP	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	WWC1	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	WWC2	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	XBP1	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZBTB10	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZBTB16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZBTB18	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZBTB42	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZBTB46	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZFHX2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZFP2	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZFP57	FALSE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZMYND15	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF117	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF141	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF19	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF214	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF239	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF254	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF281	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF33A	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF33B	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF341	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF382	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF396	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF429	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF441	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF444	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF467	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF483	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF486	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF493	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF540	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF541	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF597	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF608	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF620	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF662	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF671	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF678	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF681	TRUE	TRUE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF69	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF710	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF717	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF737	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF75D	TRUE	TRUE	TRUE	TRUE	FALSE	TRUE	TRUE	
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF763	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF792	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF835	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF852	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZNF860	TRUE	FALSE	TRUE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems
+SENS_anchor_promoter_tcga_cpm1_merged	ZSCAN16	TRUE	FALSE	FALSE	FALSE	FALSE	TRUE	FALSE	promoter_not_open_all_systems

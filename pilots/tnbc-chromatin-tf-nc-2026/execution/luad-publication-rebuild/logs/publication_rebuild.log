@@ -1,0 +1,8 @@
+nohup: 忽略输入
+错误于h(simpleError(msg, call)): 
+  在为函数“draw”选择方法时计算参数“object”时出错：`nrow` of all heatmaps and `nobs` of all annotations should be the same
+for horizontal heatmap list.
+  annotation 'Motif evidence': 31
+  heatmap 'Mean NES': 93
+Calls: draw ... add_heatmap -> .local -> add_heatmap -> add_heatmap -> .local
+停止执行

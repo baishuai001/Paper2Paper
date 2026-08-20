@@ -1,0 +1,85 @@
+nohup: 忽略输入
+null device 
+          1 
+null device 
+          1 
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_network_nodes.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_network_edges.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_community_GO.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure4D_MKI67_correlations.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure5A_cross_system_skewness.tsv"
+[1] "Merged dataset includes 9911 genes (501 mismatched)."
+[1] "1 gene set: StromalSignature  overlap= 136"
+[1] "2 gene set: ImmuneSignature  overlap= 140"
+[1] "Merged dataset includes 9877 genes (535 mismatched)."
+[1] "1 gene set: StromalSignature  overlap= 137"
+[1] "2 gene set: ImmuneSignature  overlap= 136"
+警告信息:
+In value[[3L]](cond) : ESTIMATE failed for TCGA_LUAD: 下标出界
+警告信息:
+1: ggrepel: 3 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+2: ggrepel: 3 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure5D_significant_pair_membership_binary.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure5_replicated_pair_dataset_details.tsv"
+共有33个警告 (用warnings()来显示)
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure7B_scatter_receipts.tsv"
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+错误于vecseq(f__, len__, if (allow.cartesian || notjoin || !anyDuplicated(f__, : 
+  连接后生成1219行；多于915 = nrow(x)+nrow(i)。请检查i中是否存在重复的键值（key values），导致x中对应的组反复连接。若确定重复的连接可授受，可尝试 by=.EACHI 以使j中的语句仅在每个 i 中对应的组运行以避免大量的内存分配。如果确认要继续，请设置cartesian=TRUE 并重新运行。否则，请在常见问题（FAQ）、维基（Wiki）、Stack Overflow 和 data.table GitHub Issue中寻求帮助。
+Calls: merge ... merge -> merge.data.table -> [ -> [.data.table -> vecseq
+停止执行

@@ -1,0 +1,9 @@
+scenario	q_threshold	prevalence_threshold	TF	patient_n_enriched	patient_n_all_samples	PDX_n_enriched	PDX_n_all_samples	cell_line_n_enriched	cell_line_n_all_samples
+primary_anchor	1e-05	0.5	FOXA3	22	22	10	13	18	19
+primary_anchor	1e-05	0.5	NFATC4	22	22	10	13	19	19
+primary_anchor	1e-05	0.5	XBP1	22	22	10	13	18	19
+relaxed_q05_half_samples	0.05	0.5	ETV1	22	22	10	13	16	19
+relaxed_q05_half_samples	0.05	0.5	FOXA3	22	22	10	13	19	19
+relaxed_q05_half_samples	0.05	0.5	NFATC4	22	22	10	13	19	19
+relaxed_q05_half_samples	0.05	0.5	XBP1	22	22	10	13	19	19
+relaxed_q05_half_samples	0.05	0.5	ZNF75D	22	22	7	13	10	19

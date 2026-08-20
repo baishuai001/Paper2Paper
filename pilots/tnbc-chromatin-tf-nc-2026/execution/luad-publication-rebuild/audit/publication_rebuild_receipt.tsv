@@ -1,0 +1,12 @@
+key	value
+frozen_discovery_TFs	158
+frozen_HC_TFs	31
+strict_three_system_motif_TFs	FOXA3;NFATC4;XBP1
+sensitivity_q0.05_prev0.5_TFs	ETV1;FOXA3;NFATC4;XBP1;ZNF75D
+target_network_nodes	30
+target_network_edges	3
+MKI67_cohorts	5
+ESTIMATE_rows	186
+replicated_cellline_pairs	5
+validated_PDX_pairs	0
+supplementary_data_files	49

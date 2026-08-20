@@ -1,0 +1,43 @@
+artifact	panel	source	source_exists	destination
+Figure1_revised.pdf	A	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/Figure1A_workflow_final.pdf	True	20.0,45.0,290.0,315.0
+Figure1_revised.pdf	B	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/Figure1B_TCGA_logFC_msviper.pdf	True	300.0,45.0,560.0,315.0
+Figure1_revised.pdf	C	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/Figure1C_TCGA_TF_activity_annotated.pdf	True	570.0,45.0,916.0,315.0
+Figure1_revised.pdf	D	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/Figure1D_PDMR_PDX_TF_activity_annotated.pdf	True	20.0,330.0,463.0,700.0
+Figure1_revised.pdf	E	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/Figure1E_DepMap_22Q2_TF_activity_annotated.pdf	True	473.0,330.0,916.0,700.0
+Figure2_revised.pdf	A	tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/figures/Figure2A_design.pdf	True	20.0,45.0,245.0,255.0
+Figure2_revised.pdf	B	tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/figures/Figure2B_promoter_upset.pdf	True	255.0,45.0,465.0,255.0
+Figure2_revised.pdf	D	tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/figures/Figure2D_motif_upset.pdf	True	475.0,45.0,675.0,255.0
+Figure2_revised.pdf	E	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure2E_cross_system_motif_prevalence.pdf	True	685.0,45.0,916.0,255.0
+Figure2_revised.pdf	C	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure2C_compact_HC_TF_evidence.pdf	True	20.0,270.0,916.0,700.0
+Figure3_revised.pdf	A	tmp/tnbc-chromatin-tf-nc-2026/luad-figure3/results/figures/Figure3A_regulon_composition.pdf	True	20.0,45.0,285.0,355.0
+Figure3_revised.pdf	B	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure3B_target_gene_community_network.pdf	True	295.0,45.0,605.0,355.0
+Figure3_revised.pdf	C	tmp/tnbc-chromatin-tf-nc-2026/luad-figure3/results/figures/Figure3C_HC_TF_activity_correlation.pdf	True	615.0,45.0,916.0,355.0
+Figure3_revised.pdf	D	tmp/tnbc-chromatin-tf-nc-2026/luad-figure3/results/figures/Figure3D_TF_collaboration_network.pdf	True	20.0,370.0,300.0,700.0
+Figure3_revised.pdf	E	tmp/tnbc-chromatin-tf-nc-2026/luad-figure3/results/figures/Figure3E_regulon_size_partners.pdf	True	310.0,370.0,505.0,700.0
+Figure3_revised.pdf	F	tmp/tnbc-chromatin-tf-nc-2026/luad-figure3/results/figures/Figure3F_HC_TF_activity_skewness.pdf	True	515.0,370.0,710.0,700.0
+Figure3_revised.pdf	G	tmp/tnbc-chromatin-tf-nc-2026/luad-figure3/results/figures/Figure3G_representative_distributions.pdf	True	720.0,370.0,916.0,700.0
+Figure4_revised.pdf	A	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure4A_compact_forest.pdf	True	20.0,45.0,235.0,245.0
+Figure4_revised.pdf	B	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure4B_compact_forest.pdf	True	245.0,45.0,460.0,245.0
+Figure4_revised.pdf	C	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure4C_compact_forest.pdf	True	470.0,45.0,685.0,245.0
+Figure4_revised.pdf	D	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure4D_compact_forest.pdf	True	695.0,45.0,916.0,245.0
+Figure4_revised.pdf	E	tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/figures/Figure4E_GSE41271_endpoint_overlap.pdf	True	20.0,260.0,455.0,405.0
+Figure4_revised.pdf	G	tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/results/figures/Figure4G_TCGA_endpoint_overlap.pdf	True	481.0,260.0,916.0,405.0
+Figure4_revised.pdf	F	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure4F_GSE41271_KM_block.pdf	True	20.0,418.0,455.0,700.0
+Figure4_revised.pdf	H	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure4H_TCGA_KM_block.pdf	True	481.0,418.0,916.0,700.0
+Figure5_revised.pdf	A	tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/figures/Figure5A_GDSC2_volcano.pdf	True	20.0,45.0,315.0,250.0
+Figure5_revised.pdf	B	tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/figures/Figure5B_CTRPv2_volcano.pdf	True	321.0,45.0,615.0,250.0
+Figure5_revised.pdf	C	tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/figures/Figure5C_PRISM_volcano.pdf	True	621.0,45.0,916.0,250.0
+Figure5_revised.pdf	D	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure5D_true_upset.pdf	True	20.0,265.0,305.0,470.0
+Figure5_revised.pdf	E	tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/figures/Figure5E_replicated_association_heatmap.pdf	True	315.0,265.0,600.0,470.0
+Figure5_revised.pdf	F	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure5F_pathway_TF_bubble.pdf	True	610.0,265.0,916.0,470.0
+Figure5_revised.pdf	G	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure5G_PDX_validation_funnel.pdf	True	20.0,485.0,460.0,700.0
+Figure5_revised.pdf	H	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/Figure5H_PDX_complete_screen.pdf	True	475.0,485.0,916.0,700.0
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 1 | Cohort inclusion	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/SupplementaryFigure1_complete.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 2 | Independent TF discovery and transfer	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/SupplementaryFigure2_complete.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 2 | Independent TF discovery and transfer	tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/figures/SupplementaryFigure2_complete.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 3 | ATAC quality, saturation, and genomic distribution	tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/figures/SupplementaryFigure3_complete.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 6A-H | Cox screens	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/SupplementaryFigure6A-H_Cox_volcanoes.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 6I-P | Permutation tests	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/SupplementaryFigure6I-P_permutation_nulls.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Supplementary Figure 7C | Complete association matrix	tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/atomic_figures/SupplementaryFigure7C_complete_bubble_matrix.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Extended Supplementary Figure 8 | Cell-line and classifier audit	tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/figures/SupplementaryFigure8_complete.pdf	True	full-page
+LUAD_Supplementary_Figures_1-9.pdf	Extended Supplementary Figure 9 | PDX coverage and negative screen	tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/figures/SupplementaryFigure9_complete.pdf	True	full-page

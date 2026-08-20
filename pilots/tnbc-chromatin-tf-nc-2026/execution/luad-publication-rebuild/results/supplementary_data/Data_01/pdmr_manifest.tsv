@@ -1,0 +1,57 @@
+sample_id	patient_id	specimen_id	pdmr_sample_id	group	diagnosis	pdm_type	rsem_version	rsem_gene_url	candidate_samples_for_donor	selection_rule
+PDMR_119387	119387	122-R	XYJ	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/119387~122-R~XYJ~v2.0.2.21.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_121662	121662	129-R	K6J	LUAD	Lung adenocarcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/121662~129-R~K6J~v2.0.2.21.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_145666	145666	245-R	AJA	LUAD	Lung adenocarcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/145666~245-R~AJA~v2.0.2.21.0~RNASeq.RSEM.genes.results	4	earliest_unqualified_pdx_name
+PDMR_152527	152527	244-T	KNX	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/152527~244-T~KNX~v2.0.2.21.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_176374	176374	079-R	UPY	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/176374~079-R~UPY~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_237688	237688	112-R	N6H	LUAD	Lung adenocarcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/237688~112-R~N6H~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_258747	258747	076-R	XB9	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/258747~076-R~XB9~v2.0.1.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_269647	269647	328-T	X98	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/269647~328-T~X98~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_283833	283833	183-T	P16E03	LUAD	Lung adenocarcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/283833~183-T~P16E03~v2.0.2.21.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_283983	283983	103-R	AL-N23	LUSC	Squamous cell lung carcinoma	PDX	2.0.4.21.0	https://pdmdb.cancer.gov/pdm/283983~103-R~AL-N23~v2.0.4.21.0~RNASeq.RSEM.genes.results	4	earliest_unqualified_pdx_name
+PDMR_284588	284588	233-R	YKA	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/284588~233-R~YKA~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_287614	287614	091-R	VD6	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/287614~091-R~VD6~v2.0.1.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_349418	349418	098-R	JS4	LUAD	Lung adenocarcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/349418~098-R~JS4~v2.0.1.4.0~RNASeq.RSEM.genes.results	7	earliest_unqualified_pdx_name
+PDMR_413552	413552	270-R	G5A	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/413552~270-R~G5A~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_417612	417612	090-R	P80K57M822F19	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/417612~090-R~P80K57M822F19~v2.0.2.16.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_417821	417821	307-R	TO3	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/417821~307-R~TO3~v2.0.1.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_429463	429463	259-R	C2K	LUAD	Lung adenocarcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/429463~259-R~C2K~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_436779	436779	168-T	NW2	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/436779~168-T~NW2~v2.0.2.16.0~RNASeq.RSEM.genes.results	7	earliest_unqualified_pdx_name
+PDMR_477875	477875	180-R	X4Q	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/477875~180-R~X4Q~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_481146	481146	293-R	PKC	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/481146~293-R~PKC~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_538559	538559	288-R	A29	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/538559~288-R~A29~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_567486	567486	219-R	GPE	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/567486~219-R~GPE~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_576588	576588	073-R	CVG	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/576588~073-R~CVG~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_595498	595498	313-R	AFH	LUAD	Lung adenocarcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/595498~313-R~AFH~v2.0.2.21.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_618468	618468	307-R	PTQ	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/618468~307-R~PTQ~v2.0.1.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_628479	628479	137-R9	K21	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/628479~137-R9~K21~v2.0.2.4.0~RNASeq.RSEM.genes.results	18	earliest_unqualified_pdx_name
+PDMR_649139	649139	167-T	HXYC56J85	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/649139~167-T~HXYC56J85~v2.0.2.4.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_653999	653999	131-R	HEA	LUAD	Lung adenocarcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/653999~131-R~HEA~v2.0.1.4.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_656117	656117	040-R	CJ3	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/656117~040-R~CJ3~v2.0.2.21.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_672682	672682	312-R	KNE	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/672682~312-R~KNE~v2.0.2.16.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_683892	683892	313-R	H15	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/683892~313-R~H15~v2.0.2.16.0~RNASeq.RSEM.genes.results	8	earliest_unqualified_pdx_name
+PDMR_686756	686756	172-R	F02WN2	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.14.0	https://pdmdb.cancer.gov/pdm/686756~172-R~F02WN2~v2.0.2.14.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_692585	692585	246-R	AB7IJ0	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/692585~246-R~AB7IJ0~v2.0.1.4.0~RNASeq.RSEM.genes.results	4	earliest_unqualified_pdx_name
+PDMR_695912	695912	313-R	PWE	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/695912~313-R~PWE~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_717593	717593	335-R	UTG	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/717593~335-R~UTG~v2.0.2.21.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_729321	729321	352-R	YK2	LUAD	Lung adenocarcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/729321~352-R~YK2~v2.0.1.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_732878	732878	109-T	C3T	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.14.0	https://pdmdb.cancer.gov/pdm/732878~109-T~C3T~v2.0.2.14.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_738386	738386	334-R	J21KP4FU9	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/738386~334-R~J21KP4FU9~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_765638	765638	272-R	AG1	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.13.0	https://pdmdb.cancer.gov/pdm/765638~272-R~AG1~v2.0.1.13.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_827478	827478	307-R	AO2	LUSC	Squamous cell lung carcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/827478~307-R~AO2~v2.0.1.4.0~RNASeq.RSEM.genes.results	4	earliest_unqualified_pdx_name
+PDMR_827998	827998	364-R	FQC	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/827998~364-R~FQC~v2.0.2.16.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_864244	864244	320-R	K2V	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/864244~320-R~K2V~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_872464	872464	203-R	YTC	LUAD	Lung adenocarcinoma	PDX	2.0.2.21.0	https://pdmdb.cancer.gov/pdm/872464~203-R~YTC~v2.0.2.21.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_886529	886529	316-R	PFUU75V39	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/886529~316-R~PFUU75V39~v2.0.2.16.0~RNASeq.RSEM.genes.results	5	earliest_unqualified_pdx_name
+PDMR_914883	914883	182-B	N81	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/914883~182-B~N81~v2.0.2.4.0~RNASeq.RSEM.genes.results	4	earliest_unqualified_pdx_name
+PDMR_921179	921179	137-R	FF3	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/921179~137-R~FF3~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_941728	941728	121-R	NVC	LUAD	Lung adenocarcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/941728~121-R~NVC~v2.0.1.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_952719	952719	076-R	P53	LUAD	Lung adenocarcinoma	PDX	2.0.1.4.0	https://pdmdb.cancer.gov/pdm/952719~076-R~P53~v2.0.1.4.0~RNASeq.RSEM.genes.results	7	earliest_unqualified_pdx_name
+PDMR_996942	996942	123-R	EKV	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/996942~123-R~EKV~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_997726	997726	040-R	X16	LUSC	Squamous cell lung carcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/997726~040-R~X16~v2.0.2.4.0~RNASeq.RSEM.genes.results	7	earliest_unqualified_pdx_name
+PDMR_K00052	K00052	001-T	CTY	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/K00052~001-T~CTY~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_K08837	K08837	004-R	KXC	LUAD	Lung adenocarcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/K08837~004-R~KXC~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_K12877	K12877	001-R	CK8	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/K12877~001-R~CK8~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_K16732	K16732	211-R	K0A	LUAD	Lung adenocarcinoma	PDX	2.0.2.16.0	https://pdmdb.cancer.gov/pdm/K16732~211-R~K0A~v2.0.2.16.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_K22795	K22795	001-R	CW8	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/K22795~001-R~CW8~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name
+PDMR_K86415	K86415	001-R	C15	LUAD	Lung adenocarcinoma	PDX	2.0.2.4.0	https://pdmdb.cancer.gov/pdm/K86415~001-R~C15~v2.0.2.4.0~RNASeq.RSEM.genes.results	6	earliest_unqualified_pdx_name

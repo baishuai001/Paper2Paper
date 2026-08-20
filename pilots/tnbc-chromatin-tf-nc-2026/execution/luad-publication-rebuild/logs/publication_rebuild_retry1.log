@@ -1,0 +1,20 @@
+nohup: 忽略输入
+null device 
+          1 
+null device 
+          1 
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_network_nodes.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_network_edges.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_community_GO.tsv"
+警告信息:
+1: In RColorBrewer::brewer.pal(n, pal) :
+  n too large, allowed maximum for palette Dark2 is 8
+Returning the palette you asked for with that many colors
+
+2: In RColorBrewer::brewer.pal(n, pal) :
+  n too large, allowed maximum for palette Dark2 is 8
+Returning the palette you asked for with that many colors
+
+错误于a[tf, ids]: 下标出界
+Calls: rbindlist ... lapply -> FUN -> rbindlist -> lapply -> lapply -> FUN
+停止执行

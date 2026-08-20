@@ -1,0 +1,49 @@
+nohup: 忽略输入
+null device 
+          1 
+null device 
+          1 
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_network_nodes.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_network_edges.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure3B_target_gene_community_GO.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure4D_MKI67_correlations.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure5A_cross_system_skewness.tsv"
+警告信息:
+1: ggrepel: 3 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+2: ggrepel: 3 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure5D_significant_pair_membership_binary.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure5_replicated_pair_dataset_details.tsv"
+共有12个警告 (用warnings()来显示)
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure7B_scatter_receipts.tsv"
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+`geom_smooth()` using formula = 'y ~ x'
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure7C_all_significant_associations.tsv.gz"
+警告多于50个(用warnings()来显示第一个到第50个)
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Figure5G_PDX_validation_funnel.tsv"
+警告信息:
+1: ggrepel: 49 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+2: ggrepel: 49 unlabeled data points (too many overlaps). Consider increasing max.overlaps 
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/SupplementaryFigure7A_drug_membership.tsv"
+[1] "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/results/tables/Supplementary_Data_1-9_file_index.tsv"
+错误于setkeyv(ans, key): 
+  一些列不在data.table中：[frozen_discovery_TFs, frozen_HC_TFs, strict_three_system_motif_TFs, sensitivity_q0.05_prev0.5_TFs, target_network_nodes, target_network_edges, MKI67_cohorts, ESTIMATE_rows, replicated_cellline_pairs, validated_PDX_pairs, ...]
+Calls: data.table -> setkeyv -> stopf -> raise_condition -> signal
+停止执行

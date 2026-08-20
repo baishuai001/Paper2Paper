@@ -1,0 +1,31 @@
+target	community	regulator_n	degree	display_group
+HEMK1	1	3	0	Isolated target
+HDAC11	2	3	0	Isolated target
+TMEM150A	3	3	0	Isolated target
+NDNF	4	4	1	Connected component 1
+RAPGEF2	5	4	0	Isolated target
+SNX25	6	3	0	Isolated target
+BTBD9	7	4	0	Isolated target
+RHOBTB2	8	3	0	Isolated target
+ADGRD1	9	3	1	Connected component 2
+SELENBP1	9	3	1	Connected component 2
+AC007342.7	10	3	0	Isolated target
+ADGRF5	4	4	1	Connected component 1
+AC022497.1	11	4	0	Isolated target
+SGMS2	12	3	0	Isolated target
+MVP	13	3	0	Isolated target
+SLC34A2	14	3	0	Isolated target
+AL121839.2	15	3	0	Isolated target
+RHPN1	16	3	0	Isolated target
+KRTAP5-1	17	3	0	Isolated target
+KPNA7	18	3	0	Isolated target
+ANXA5	19	3	0	Isolated target
+FNBP1L	20	4	0	Isolated target
+PBXIP1	21	3	0	Isolated target
+YPEL3	22	3	1	Connected component 3
+CACFD1	22	3	1	Connected component 3
+PPP1R9A	23	3	0	Isolated target
+CLK4	24	3	0	Isolated target
+AL591895.1	25	3	0	Isolated target
+LRRC27	26	3	0	Isolated target
+ZMAT1	27	3	0	Isolated target
