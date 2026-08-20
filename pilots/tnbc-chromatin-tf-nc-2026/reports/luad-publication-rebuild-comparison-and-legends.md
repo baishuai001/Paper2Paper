@@ -1,146 +1,146 @@
-# LUAD publication rebuild: scientific narrative, figure legends, and TNBC panel audit
+# LUAD论文重建：科学叙事、图注与TNBC逐面板审计
 
-## Scope and central claim
+## 研究范围与中心主张
 
-The LUAD study asks whether a transcription-factor activity state discovered from large patient transcriptomes can be prioritized by chromatin accessibility, retained across patient tumors, PDX models, and cell lines, and then related to intertumoral heterogeneity, outcome, and treatment response.
+本LUAD研究要回答的问题是：从大规模患者转录组中发现的转录因子（TF）活性状态，能否利用染色质可及性进行优先筛选；该状态能否在患者肿瘤、患者来源异种移植模型（PDX）和细胞系之间保留；以及它能否进一步关联肿瘤间异质性、患者结局和治疗反应。
 
-The frozen evidence chain is:
+冻结后的证据链如下：
 
-1. TCGA-LUAD versus TCGA-LUSC identifies 158 LUAD-specific TF activities by ARACNe3/msVIPER.
-2. Independent patient cohorts reproduce 95/158 TFs in GSE81089 RNA-seq, 70/158 in GSE41271 microarray data, and 44/158 in both external cohorts.
-3. The TNBC-style promoter-accessibility and three-system activity rule prioritizes 31 chromatin-informed TFs (HC-TFs).
-4. Of the 20 HC-TFs with a testable motif, FOXA3, NFATC4, and XBP1 satisfy the strict three-system motif rule. ETV1 and ZNF75D join this set only in the declared sensitivity analysis (HOMER q<=0.05 and support in at least half of samples in every system).
-5. All 31 HC-TFs—not only the motif-positive subset—enter network, heterogeneity, survival, and pharmacogenomic analyses, matching the anchor paper's use of all 94 HC-TFs.
-6. Clinical and treatment results are asymmetric: prognosis is mainly exploratory and only TCGA OS–ZNF75D survives the frozen FDR screen; five cell-line drug–TF associations replicate across at least two pharmacogenomic resources, but none obtains matched public PDX validation.
+1. 在TCGA-LUAD与TCGA-LUSC之间进行ARACNe3/msVIPER分析，鉴定出158个LUAD特异性活性TF。
+2. 独立患者队列中，GSE81089 RNA-seq数据复现了158个TF中的95个，GSE41271微阵列数据复现了70个，两个外部队列共同复现了44个。
+3. 采用TNBC原文式的“启动子可及性＋三系统TF活性”规则，优先筛选出31个染色质信息支持的TF（HC-TF）。
+4. 31个HC-TF中有20个具备可检验的已知motif；其中FOXA3、NFATC4和XBP1满足严格的三系统motif规则。只有在预先声明的敏感性分析中，即HOMER q≤0.05且每个系统至少一半样本支持时，ETV1和ZNF75D才加入这一集合。
+5. 与锚点文献使用全部94个HC-TF一致，网络、异质性、生存和药物基因组学分析使用全部31个HC-TF，而不是只使用motif阳性子集。
+6. 临床和治疗证据并不对称：预后分析总体属于探索性结果，只有TCGA总生存期（OS）中的ZNF75D通过冻结的FDR筛选；5组细胞系“药物－TF”关联在至少两个药物基因组资源中得到重复，但没有任何一组获得匹配的公共PDX验证。
 
-The defensible manuscript theme is therefore not “a broad motif program conserved in every LUAD model.” It is:
+因此，当前论文能够辩护的主题不是“所有LUAD模型中均保守的广泛motif程序”，而是：
 
-> A chromatin-informed TF-activity framework defines a LUAD regulatory network with a selectively conserved cross-system motif core and reveals testable links between regulatory heterogeneity, patient outcome, and therapeutic response.
+> 染色质信息辅助的TF活性框架定义了LUAD调控网络及其选择性跨系统保守的motif核心，并揭示了调控异质性与患者结局及治疗反应之间可检验的联系。
 
-The words “patient outcome” and “therapeutic response” must remain qualified as exploratory until independent clinical and in-vivo validation becomes available.
+在获得独立临床验证和体内验证之前，“患者结局”和“治疗反应”必须始终被限定为探索性发现。
 
-## What was learned from the official TNBC code
+## 从TNBC官方代码中获得的方法学结论
 
-The Code Ocean capsule `v1.0` (`edf5314`) was read panel by panel. Its operative visual and statistical grammar was retained:
+我们逐面板阅读了Code Ocean代码舱的`v1.0`版本（`edf5314`），并保留了其中实际使用的可视化和统计逻辑：
 
-- Figure 1 separates network discovery, an independently reconstructed patient network, and projection into PDX/cell-line systems.
-- Figure 2 defines HC-TFs at the promoter/activity gate; distal motif enrichment is a subsequent orthogonal annotation and is not the entry rule for Figures 3–5.
-- Figure 3 uses signed regulons, shared activated targets, target-gene communities, TF collaboration, skewness, MKI67 correlations, and microenvironment-confounding checks.
-- Figure 4 in the official code uses dichotomized TF activity with script-specific cutpoints: the METABRIC `NewSelection` analysis compares the outer tertiles and the TCGA analysis uses maximally selected rank cutpoints (with a median fallback). The frozen LUAD primary screen instead uses a cohort/endpoint median split for reproducibility and keeps maximally selected cutpoints only for descriptive Kaplan–Meier displays. This adaptation is explicit; complete screens and 5,000-permutation nulls remain supplementary.
-- Figure 5 performs within-resource correction, cross-resource replication, drug/pathway summaries, example scatterplots, and independent PDX response validation.
+- 图1将患者网络发现、独立重建的患者验证网络，以及向PDX和细胞系的投射明确分开。
+- 图2在“启动子可及性＋TF活性”闸门处定义HC-TF；远端顺式调控元件的motif富集是随后加入的正交注释，并不是图3–5的入选条件。
+- 图3分析带符号的regulon、共同/特有的激活靶基因、靶基因群落、TF协作、偏度、与MKI67的相关性，以及肿瘤微环境混杂。
+- 官方代码中的图4使用二分后的TF活性，但不同脚本采用不同切点：METABRIC的`NewSelection`分析比较最高与最低三分位，TCGA分析采用最大选择秩切点（失败时回退至中位数）。为了提高可重复性，冻结的LUAD主要筛查统一采用“队列/终点内中位数”分组；最大选择秩切点仅用于描述性的Kaplan–Meier曲线。报告已明确标注这一适配，完整筛查和5,000次置换零分布保留在补充材料中。
+- 图5依次完成资源内部多重校正、跨资源复现、药物/通路归纳、示例散点图和独立PDX疗效验证。
 
-Two verified coding defects in the capsule were not copied: the PDX long table for one Figure 1 supplement is built from a TCGA object, and the cell-line PAM50 Fisher output writes a PDX object. The LUAD implementation records inputs and outputs explicitly instead.
+官方代码舱中有两处已经核实的代码错误，本项目没有照搬：其一，图1某个补充分析中的PDX长表实际由TCGA对象生成；其二，细胞系PAM50的Fisher检验输出错误地写入了PDX对象。LUAD实现对每一步输入和输出都进行了显式记录。
 
-## Main Figure Legends
+## 主图图注
 
-### Figure 1 | A transferable LUAD TF-activity framework
+### 图1｜可跨模型迁移的LUAD TF活性框架
 
-**A,** Study design. Separate ARACNe3 networks are reconstructed from TCGA RNA-seq and GSE41271 microarray data; GSE81089 provides a second RNA-seq patient validation, while the frozen TCGA regulon is projected into PDMR PDX and DepMap cell-line transcriptomes. The workflow reports cohort sizes and the 158-TF discovery set, 95- and 70-TF external support, and 44 TFs reproduced in both external patient cohorts. **B,** Relationship between LUAD-versus-LUSC differential gene expression and msVIPER TF activity in TCGA. TF activity is not treated as a surrogate for TF mRNA abundance. **C,** Patient-level activity of the 158 LUAD-specific TFs in TCGA-LUAD/LUSC with lung-cancer clinical and molecular annotations. Activity is centered and symmetrically clipped so the neutral midpoint remains visible. **D,** Projection of the LUAD TF program into independently curated PDMR PDX models. **E,** Projection into DepMap lung-cancer cell lines. Columns are independent biological models; annotations disclose diagnosis/state and available provenance rather than implying equivalence to patient tumors.
+**A，** 研究设计。分别基于TCGA RNA-seq和GSE41271微阵列数据重建ARACNe3网络；GSE81089作为第二个RNA-seq患者验证队列；冻结的TCGA regulon则投射至PDMR PDX和DepMap细胞系转录组。流程图同时报告各队列样本量、158个TF的发现集合、外部队列分别支持的95个和70个TF，以及两个外部患者队列共同复现的44个TF。**B，** TCGA中LUAD与LUSC差异基因表达和msVIPER TF活性之间的关系。TF活性不被视为TF mRNA丰度的替代指标。**C，** 158个LUAD特异性TF在TCGA-LUAD/LUSC患者中的样本级活性，并配以肺癌临床和分子注释。活性值经过中心化并进行对称截断，使中性零点保持可见。**D，** 将LUAD TF程序投射至经过独立整理的PDMR PDX模型。**E，** 将该程序投射至DepMap肺癌细胞系。每一列代表一个独立生物学模型；注释展示诊断、状态和可获得的来源信息，而不暗示这些模型与患者肿瘤完全等价。
 
-### Figure 2 | Chromatin prioritization and selective motif conservation
+### 图2｜染色质优先筛选与选择性motif保守性
 
-**A,** ATAC design across 22 primary patient tumors, 13 LUAD PDX models, and 19 LUAD cell lines. **B,** Intersection of the 158 discovery TFs whose promoters are accessible in at least half of samples within each system. **C,** Aligned evidence for the 31 HC-TFs: mean LUAD TF activity, the fraction of samples with an accessible TF promoter, and strict distal motif support in patients, PDX, and cell lines. A TF is excluded by activity only when its mean NES is negative in all three systems. **D,** Cross-system intersections of motif-supported HC-TFs under the primary HOMER rule. **E,** Sample prevalence for the strict three-system motif set (FOXA3, NFATC4, XBP1) and the explicitly labeled q<=0.05/50% sensitivity set (adding ETV1 and ZNF75D). JASPAR motifs are used first; CIS-BP is used only if no JASPAR motif exists for that TF.
+**A，** 22例原发患者肿瘤、13个LUAD PDX模型和19条LUAD细胞系构成的ATAC分析设计。**B，** 对158个发现TF取交集：要求其启动子在每个系统中至少一半样本内处于开放状态。**C，** 31个HC-TF的对齐证据，包括LUAD平均TF活性、TF启动子开放的样本比例，以及在患者、PDX和细胞系中的严格远端motif支持。只有当某个TF在三个系统中的平均NES均小于0时，才因活性规则被排除。**D，** 在主要HOMER规则下，不同系统中获得motif支持的HC-TF交集。**E，** 严格三系统motif集合（FOXA3、NFATC4和XBP1），以及明确标记的q≤0.05/50%敏感性集合（另加入ETV1和ZNF75D）的样本支持率。motif数据库严格执行JASPAR优先规则；仅当某个TF不存在JASPAR motif时才使用CIS-BP。
 
-### Figure 3 | Network architecture and intertumoral regulatory heterogeneity
+### 图3｜网络结构与肿瘤间调控异质性
 
-**A,** Activated/repressed and shared/private target composition of every 31-HC-TF regulon; strict three-system motif TFs are annotated rather than used as a filter. **B,** Target-gene graph reconstructed according to the anchor logic. Thirty activated targets are regulated by at least three HC-TFs, but only three target pairs share at least three regulators; consequently the graph contains three two-node components and 24 isolated nodes. This sparse topology is the result and does not support a broad convergent target-gene community. GO enrichment is not performed for one- or two-gene components. **C,** Pairwise activity correlation of the 31 HC-TFs across TCGA-LUAD tumors. **D,** TF collaboration network based on shared activated targets. **E,** Relationship between regulon breadth and the number of collaborating TFs. **F,** Skewness of HC-TF activity across TCGA-LUAD, with BH-adjusted skewness inference. **G,** Representative activity distributions illustrating positively skewed, negatively skewed, and approximately symmetric regulatory states.
+**A，** 31个HC-TF中每个regulon的激活/抑制及共同/特有靶基因构成；严格三系统motif TF只作为注释，不作为筛选条件。**B，** 按锚点文献规则重建的靶基因图。30个激活靶基因受到至少3个HC-TF调控，但只有3对靶基因共同拥有至少3个调控TF；因此网络仅包含3个双节点组分和24个孤立节点。这一稀疏拓扑本身就是分析结果，不支持“广泛汇聚的靶基因群落”。不对仅含1–2个基因的组分进行GO富集解释。**C，** 31个HC-TF在TCGA-LUAD肿瘤中的两两活性相关性。**D，** 基于共享激活靶基因构建的TF协作网络。**E，** regulon广度与协作TF数量之间的关系。**F，** TCGA-LUAD中HC-TF活性的偏度，并采用BH校正后的偏度推断。**G，** 代表性活性分布，分别展示正偏、负偏及近似对称的调控状态。
 
-### Figure 4 | Exploratory clinical associations of the LUAD HC-TF network
+### 图4｜LUAD HC-TF网络的探索性临床关联
 
-**A-D,** Compact multivariable Cox forest plots for GSE41271 overall survival, GSE41271 recurrence-free survival, TCGA overall survival, and TCGA disease-free survival. All 31 HC-TFs were screened after dichotomizing activity at the cohort/endpoint median; only nominally associated TFs (or the prespecified top five when none is nominal) enter the compact main panels, while subtitles disclose the full denominator and FDR count. **E, G,** Overlap of outcome-associated TFs across OS/RFS in GSE41271 and OS/DFS in TCGA, respectively. **F, H,** Representative Kaplan–Meier curves in GSE41271 and TCGA using maximally selected rank cutpoints. These display cutpoints differ from the frozen primary median split and the curves remain descriptive. Complete Cox screens and permutation nulls appear in Supplementary Figure 6.
+**A–D，** 分别展示GSE41271 OS、GSE41271无复发生存期（RFS）、TCGA OS和TCGA无病生存期（DFS）的紧凑型多变量Cox森林图。所有31个HC-TF均采用相应队列/终点内中位数进行活性二分并完成筛查；主图仅显示名义显著TF，若无名义显著TF则显示预设排名前5位，但副标题同时披露完整筛查分母和通过FDR的数量。**E、G，** 分别展示GSE41271中OS/RFS相关TF，以及TCGA中OS/DFS相关TF的重叠。**F、H，** 分别展示GSE41271和TCGA中的代表性Kaplan–Meier曲线，显示时采用最大选择秩切点。这些显示切点不同于冻结的主要中位数分组，因此曲线只作描述性展示。完整Cox筛查和置换零分布见补充图6。
 
-### Figure 5 | Replicated pharmacogenomic associations and the in-vivo validation gap
+### 图5｜可重复的药物基因组学关联与体内验证缺口
 
-**A-C,** Concordance-index screens relating HC-TF activity to drug response in GDSC2, CTRPv2, and PRISM, with BH correction within each resource. **D,** True UpSet representation of significant drug–TF memberships across resources. **E,** Effect-direction heatmap for the five drug–TF pairs that reproduce in at least two resources with a consistent direction. **F,** Drug/pathway/TF bubble plot for the replicated associations. All five indicate higher TF activity associated with resistance: 5-fluorouracil–ZNF254, 5-fluorouracil–ZNF540, PHA-793887–WWC2, vorinostat–ZNF254, and dactolisib–ZNF254. **G,** PDX validation funnel, from state-classified NSCLC PDX models through evaluable drugs/tests to validated pairs. **H,** Complete PDX concordance screen. Zero validated pairs are displayed as a result and a data-coverage limitation, not replaced by an empty placeholder or rephrased as evidence of biological absence.
+**A–C，** 分别在GDSC2、CTRPv2和PRISM中，使用一致性指数筛查HC-TF活性与药物反应的关系，并在每个资源内部进行BH校正。**D，** 使用真正的UpSet图展示不同资源中显著“药物－TF”关联的集合归属。**E，** 展示5组在至少两个资源中以相同方向复现的“药物－TF”效应热图。**F，** 复现关联的“药物－通路－TF”气泡图。5组关联均表示TF活性升高与耐药相关：5-fluorouracil–ZNF254、5-fluorouracil–ZNF540、PHA-793887–WWC2、vorinostat–ZNF254和dactolisib–ZNF254。**G，** PDX验证漏斗，从完成状态分类的NSCLC PDX模型，逐层筛至可评价药物/检验和最终验证关联。**H，** 完整PDX一致性检验。验证关联为0被作为真实结果和数据覆盖局限展示，既不以空白占位符代替，也不被改写为“生物学上不存在关联”的证据。
 
-## Supplementary Figure Legends
+## 补充图图注
 
-### Supplementary Figure 1 | Patient-cohort inclusion
+### 补充图1｜患者队列纳入过程
 
-**A-C,** Inclusion and exclusion flows for TCGA, GSE81089, and GSE41271. Each panel distinguishes downloaded profiles, independent tumor samples, accepted histology, matched expression/clinical information, and the final LUAD/LUSC comparison. GSE81089 contains 108 LUAD and 67 LUSC tumors after correcting the two sample-name aliases that were silently lost in the first pass.
+**A–C，** 分别展示TCGA、GSE81089和GSE41271的纳入及排除流程。每个面板区分已下载表达谱、独立肿瘤样本、符合要求的组织学类型、匹配的表达/临床信息，以及最终LUAD/LUSC比较集合。修正首次处理中被静默遗漏的两个样本别名后，GSE81089包含108例LUAD和67例LUSC肿瘤。
 
-### Supplementary Figure 2 | Independent TF discovery and cross-model transfer
+### 补充图2｜独立TF发现与跨模型迁移
 
-Independent GSE81089 and GSE41271 differential-expression/msVIPER panels, overlaps with the 158-TF TCGA discovery set, within-cohort sample-activity coherence for TCGA, PDX, and cell lines, and cross-cohort TF effect distributions. RNA-seq and microarray values are never merged into one expression matrix; networks are reconstructed or projected within the declared platform-specific design.
+展示GSE81089和GSE41271各自独立完成的差异表达/msVIPER分析、与TCGA发现的158个TF之间的重叠、TCGA/PDX/细胞系内部的样本级活性一致性，以及不同队列的TF效应分布。RNA-seq与微阵列数值从不合并为同一个表达矩阵；网络重建或投射始终在预先声明的平台特异性设计内完成。
 
-### Supplementary Figure 3 | ATAC quality, saturation, and genomic distribution
+### 补充图3｜ATAC质量、饱和度及基因组分布
 
-**A-C,** Canonical peak counts and available raw-QC metrics for patient, PDX, and cell-line ATAC data. **D-F,** One-thousand-permutation peak-saturation curves with asymptotic fits and the sample numbers corresponding to 50%, 90%, 95%, and 99% of the fitted asymptote. **G-I,** Pairwise accessibility correlations within each system. **J-L,** Fractions of promoter, exonic, intronic, and distal peaks under one hierarchical annotation definition. Diagnostic QC metrics are reported but are not used as an unauthorized project-stopping rule.
+**A–C，** 患者、PDX和细胞系ATAC数据的规范化峰数量及可获得的原始质量控制指标。**D–F，** 基于1,000次置换的峰饱和曲线、渐近拟合，以及达到拟合渐近值50%、90%、95%和99%时对应的样本数。**G–I，** 每个系统内部的两两可及性相关性。**J–L，** 在统一层级式注释定义下，启动子、外显子、内含子和远端峰的比例。诊断性质量控制指标只作报告，不作为未经锚点文献授权的项目停止规则。
 
-### Supplementary Figure 4 | HC-TF selection, motif availability, and proliferation
+### 补充图4｜HC-TF筛选、motif可用性与增殖
 
-**A,** Frozen 158-to-31 filtering flow. **B,** Combinations of promoter accessibility and mean-activity categories across the three systems. **C,** Motif availability and JASPAR-priority/CIS-BP-fallback status for HC-TFs. **D,** Pearson correlations between the activity of all 31 HC-TFs and MKI67 expression in TCGA patients, GSE41271 patients, PDMR PDX, and DepMap cell lines; stars denote |r|>0.4 and within-cohort BH FDR<=0.05. The additional GSE81089 results remain in the table as a sensitivity cohort.
+**A，** 冻结的158个发现TF至31个HC-TF筛选流程。**B，** 三系统中启动子可及性和平均活性类别的组合。**C，** HC-TF的motif可用性，以及JASPAR优先/CIS-BP后备状态。**D，** 31个HC-TF活性与MKI67表达在TCGA患者、GSE41271患者、PDMR PDX和DepMap细胞系中的Pearson相关性；星号表示|r|>0.4且队列内BH FDR≤0.05。额外的GSE81089结果作为敏感性队列保留在数据表中。
 
-### Supplementary Figure 5 | Regulatory heterogeneity and tumor-microenvironment confounding
+### 补充图5｜调控异质性与肿瘤微环境混杂
 
-**A,** Cross-system HC-TF activity skewness in TCGA, GSE41271, PDMR PDX, and DepMap cell lines; stars denote BH-adjusted skewness tests. **B,** Pearson correlations between HC-TF activity and ESTIMATE stromal score, immune score, and tumor purity in TCGA and GSE41271 LUAD tumors. This panel tests whether patient associations could be explained primarily by nonmalignant-cell content.
+**A，** HC-TF活性在TCGA、GSE41271、PDMR PDX和DepMap细胞系中的跨系统偏度；星号表示经BH校正的偏度检验。**B，** TCGA和GSE41271 LUAD肿瘤中，HC-TF活性与ESTIMATE基质评分、免疫评分及肿瘤纯度之间的Pearson相关性。本面板检验患者中的TF关联是否主要由非恶性细胞含量解释。
 
-### Supplementary Figure 6 | Complete outcome screens and permutation tests
+### 补充图6｜完整结局筛查与置换检验
 
-**A-H,** All 31 HC-TFs in univariable and multivariable median-dichotomized Cox screens for OS/RFS in GSE41271 and OS/DFS in TCGA. Purple denotes BH FDR<=0.05, orange denotes nominal p<=0.05, and gray denotes nonsignificant results. **I-P,** Null distributions from 5,000 outcome-label permutations for each cohort/endpoint/model combination; the red line is the observed number of nominally significant TFs, and each panel reports the empirical enrichment p value.
+**A–H，** GSE41271 OS/RFS和TCGA OS/DFS中全部31个HC-TF的单变量及多变量Cox筛查，TF活性均按中位数二分。紫色表示BH FDR≤0.05，橙色表示名义p≤0.05，灰色表示不显著。**I–P，** 每个“队列－终点－模型”组合进行5,000次结局标签置换所获得的零分布；红线表示实际观察到的名义显著TF数量，每个面板同时报告经验性富集p值。
 
-### Supplementary Figure 7 | Expanded pharmacogenomic evidence
+### 补充图7｜扩展药物基因组学证据
 
-**A,** Eligible-drug overlap across GDSC2, CTRPv2, and PRISM. **B,** Scatterplots for every dataset that contributes to each of the five replicated drug–TF pairs; panels report model count, Spearman correlation, and within-resource FDR. **C,** Complete bubble matrix of all within-resource BH-significant drug–TF associations, with drug pathway/mechanism annotations. The figure may span pages to preserve readable labels rather than suppress associations for layout convenience.
+**A，** GDSC2、CTRPv2和PRISM中符合条件的药物重叠。**B，** 5组重复“药物－TF”关联在所有贡献数据集中的散点图；各面板报告模型数量、Spearman相关系数和资源内FDR。**C，** 所有资源内经BH校正后显著的“药物－TF”关联完整气泡矩阵，并带有药物通路/机制注释。为保证标签可读，图可跨页展示，而不会仅为版式方便而删去关联。
 
-### Extended Supplementary Figure 8 | Model and classifier audit
+### 扩展补充图8｜模型与分类器审计
 
-Cell-line identifier mapping, drug eligibility, frozen LUAD/LUSC classifier variants, and classifier scores for patient, PDX, and cell-line systems. This figure documents the assumptions needed to call a model LUAD-like and prevents histology/state relabeling after outcome inspection.
+展示细胞系标识符映射、药物纳入资格、冻结的LUAD/LUSC分类器不同版本，以及患者、PDX和细胞系中的分类器评分。本图记录将某个模型判定为“LUAD样”所依赖的假设，防止在查看结局后重新定义组织学或状态标签。
 
-### Extended Supplementary Figure 9 | PDX validation audit
+### 扩展补充图9｜PDX验证审计
 
-PDX drug coverage, model counts, all evaluable PDX concordance tests, and the zero-row validated-pair table. It distinguishes “no matched/evaluable public data,” “tested but not significant,” and “opposite direction,” which are biologically different failure modes.
+展示PDX药物覆盖、模型数量、所有可评价的PDX一致性检验，以及零行的“通过验证关联”数据表。该图明确区分“没有匹配/可评价的公共数据”“已检验但不显著”和“效应方向相反”三种在生物学意义上不同的失败模式。
 
-## Panel-by-panel interpretation and visual audit
+## 逐子图生物学解释与可视化审计
 
-The comparison atlas contains 40 audit pages: 33 pages compare every main Figure 1–5 subpanel, and seven additional pages compare the complete canonical Supplementary Figures 1–7. Each page places the unmodified TNBC crop beside the independently generated LUAD panel. The concise main-panel conclusions are:
+对照图谱共包含40页审计：前33页逐一比较图1–5的每个主图子图，另有7页比较完整的规范补充图1–7。每一页都将未经修改的TNBC原图裁剪区域与独立生成的LUAD面板并列放置。各主图子图的简明结论如下：
 
-| Panel | TNBC biological role | LUAD interpretation | Explanatory/visual difference and required correction |
+| 子图 | TNBC中的生物学作用 | LUAD中的解释 | 解释力/可视化差异与必须改进之处 |
 |---|---|---|---|
-| 1A | Defines discovery, independent validation, PDX, and cell-line branches. | Defines the same analytical roles for LUAD. | LUAD has two smaller external patient cohorts rather than METABRIC's 1,980 tumors. Equal-width stacked branches and restrained result badges prevent the workflow from dominating the page. |
-| 1B | Shows TF activity contains information beyond TF expression. | Tests the same claim in LUAD versus LUSC. | The logic is equivalent; the LUAD panel must be enlarged and use symmetric axes/category counts. |
-| 1C | Displays patient heterogeneity with receptor/PAM50 annotations. | Displays LUAD/LUSC activity with stage, smoking, sex, age, driver/state annotations. | Lung annotations are biologically analogous, not identical. A centered, quantile-clipped color scale is required to avoid the former red saturation block. |
-| 1D | Transfers the TNBC program to PDX. | Transfers the LUAD program to PDMR PDX. | LUAD PDX sample size and diagnosis granularity are weaker; donor independence and state labels must be visible. |
-| 1E | Transfers the program to breast cell lines. | Transfers it to DepMap lung lines. | Cell-line identity is less clean than the anchor's curated breast panel; model eligibility and lineage state must be exposed. |
-| 2A | Introduces the three-system ATAC design. | Introduces 22/13/19 LUAD patient/PDX/cell-line models. | The LUAD PDX arm is smaller; model counts and independent-unit definitions must be prominent. |
-| 2B | Intersects promoter-open TFs across systems. | Applies the same half-sample promoter rule to 158 TFs. | A real UpSet is needed; bars that merely resemble an UpSet do not explain membership. |
-| 2C | Defines the 94 TNBC HC-TFs. | Defines 31 LUAD HC-TFs. | The first LUAD panel showed all 158 TFs and was unreadable. The rebuild aligns activity, promoter fraction, and motif status only for the 31 selected TFs while preserving the full 158-TF gate in tables. |
-| 2D | Intersects motif-supported TFs across systems. | Shows selective LUAD motif conservation. | LUAD has only three strict triple-system TFs, so the figure must emphasize exact sets and denominators rather than graphical area. |
-| 2E | Shows per-system motif enrichment for selected TFs. | Shows strict and q<=0.05/50% motif prevalence. | The former LUAD panel mixed many noncentral motifs. The rebuild focuses on the three strict and two sensitivity-only TFs and prints n/N. |
-| 3A | Quantifies signed/private/shared regulons. | Quantifies the 31-HC-TF regulons. | The evidence is structurally equivalent but smaller; common color semantics and a motif annotation avoid treating motif as the inclusion gate. |
-| 3B | Reveals target-gene communities. | Applies the same >=3-regulator node and >=3-shared-regulator edge rules, yielding 30 nodes but only three edges. | A GO dot plot cannot substitute for topology, but the corrected topology is biologically weak: three two-node components and 24 isolated nodes. The rebuild shows that sparsity rather than lowering the edge rule for appearance; GO is not interpreted for components with fewer than three genes. |
-| 3C | Shows HC-TF co-activity structure. | Shows LUAD TF co-activity in TCGA tumors. | The LUAD matrix is smaller and should be square, clustered, and readable at final size. |
-| 3D | Shows TF collaboration through shared targets. | Shows the LUAD collaboration network. | Sparse edges are a biological result; node/edge legends and a declared display threshold are required. |
-| 3E | Links regulon size and collaboration. | Tests whether broad LUAD regulons collaborate more. | Similar explanatory grammar; labels must be restricted to informative outliers. |
-| 3F | Identifies intertumoral activity skewness. | Identifies LUAD HC-TFs active in subsets of tumors. | LUAD must report BH correction and avoid making skewness synonymous with a discrete subtype. |
-| 3G | Illustrates representative activity distributions. | Shows ELF3/MAGED2/PHC2 and other representative shapes. | Density panels need matched axes, sample counts, and explicit reasons for representative selection. |
-| 4A | Shows adjusted OS associations in the anchor external cohort. | Summarizes the 31-TF median-dichotomized GSE41271 OS screen. | The LUAD rule is a reproducible median split, not the anchor METABRIC code's outer-tertile selection. The compact forest shows nominal hits while the subtitle and supplement retain the 31-TF denominator. |
-| 4B | Shows adjusted recurrence associations in the anchor external cohort. | Summarizes the 31-TF median-dichotomized GSE41271 RFS screen. | External recurrence evidence is weak; matching axes and evidence colors with 4A prevent visual overstatement. |
-| 4C | Shows adjusted OS associations in the anchor TCGA cohort. | Summarizes the 31-TF median-dichotomized TCGA-LUAD OS screen. | Only ZNF75D survives BH correction, and the LUAD split differs from the anchor code's maxstat cutpoint. The single FDR result is labeled without hiding null TFs in the supplement. |
-| 4D | Shows adjusted recurrence associations in the anchor TCGA cohort. | Summarizes the TCGA-LUAD DFS screen. | The screen is largely null. A compact panel and explicit FDR count are more truthful than a visually dominant all-null forest. |
-| 4E | Shows outcome-signal overlap in the anchor external cohort. | Shows direction-aware GSE41271 OS/RFS overlap. | Exact membership, expected overlap and permutation support are needed because the sets are small. |
-| 4F | Illustrates selected external-cohort survival differences. | Shows GSE41271 KM curves with maximally selected display cutpoints. | The curves are descriptive and use different cutpoints from the primary median-dichotomized Cox screen; risk tables, censoring and selection method are therefore mandatory. |
-| 4G | Shows outcome-signal overlap in the anchor TCGA cohort. | Shows direction-aware TCGA OS/DFS overlap. | Exact counts and the 31-TF denominator prevent a small overlap from being read as a broad outcome-stable program. |
-| 4H | Illustrates selected TCGA survival differences. | Shows TCGA-LUAD KM curves with maximally selected display cutpoints. | Curves sit below the adjusted Cox evidence, include risk tables, and are not described as independent replication. |
-| 5A | Screens drug–TF relationships in the first pharmacogenomic resource. | Screens LUAD associations in GDSC2. | The common CI axis, BH rule and line/drug/test denominators make this panel comparable to 5B/C. |
-| 5B | Screens the second pharmacogenomic resource. | Screens LUAD associations in CTRPv2. | Dataset coverage differs, so identical scale and annotation rules are needed before judging signal density. |
-| 5C | Screens the third pharmacogenomic resource. | Screens LUAD associations in PRISM. | PRISM has a different response distribution; only same-direction cross-resource replication advances to 5D/E. |
-| 5D | Shows cross-resource intersection. | Identifies replicated LUAD drug–TF pairs. | The first pass used a membership bar chart. A true UpSet restores set logic. |
-| 5E | Summarizes replicated effects. | Shows five reproducible resistance associations. | Direction and dataset identity must be visible simultaneously; clustering must not imply more pairs than observed. |
-| 5F | Places associations in drug/pathway context. | Links LUAD replicated pairs to mechanisms. | A generic integration bar chart was insufficient. The rebuild uses drug/pathway/TF bubbles with effect and FDR encodings. |
-| 5G | Validates a selected association in PDX. | Audits whether any public LUAD PDX pair is testable and validated. | LUAD lacks an anchor-equivalent successful experiment. A structured funnel honestly explains where validation is lost. |
-| 5H | Shows PDX response ordering/waterfall. | Shows the complete PDX null/negative screen. | A blank placeholder is unacceptable. The rebuilt panel plots every evaluable test and labels zero validation explicitly. |
+| 1A | 定义发现队列、独立验证队列、PDX和细胞系四条分析分支。 | 为LUAD定义相同的分析角色。 | LUAD使用两个规模较小的外部患者队列，而不是METABRIC的1,980例肿瘤。采用等宽的纵向分支和克制的结果标记，避免流程图喧宾夺主。 |
+| 1B | 表明TF活性包含超越TF表达量的信息。 | 在LUAD与LUSC比较中检验同一命题。 | 分析逻辑等价；LUAD面板需要放大，并采用对称坐标和类别计数。 |
+| 1C | 通过受体状态和PAM50注释展示患者异质性。 | 通过分期、吸烟、性别、年龄、驱动改变和分子状态注释展示LUAD/LUSC活性。 | 肺癌注释在生物学作用上与乳腺癌注释相似，但并不相同。必须使用中心化且按分位数对称截断的色标，避免旧图中大片红色饱和。 |
+| 1D | 将TNBC程序迁移至PDX。 | 将LUAD程序迁移至PDMR PDX。 | LUAD PDX样本量和诊断粒度更弱；必须显示供体独立性和状态标签。 |
+| 1E | 将程序迁移至乳腺癌细胞系。 | 将程序迁移至DepMap肺癌细胞系。 | 细胞系身份没有锚点文献中精心整理的乳腺癌面板清晰；必须公开模型纳入资格和谱系状态。 |
+| 2A | 引入患者、PDX和细胞系三系统ATAC设计。 | 引入22/13/19个LUAD患者/PDX/细胞系模型。 | LUAD的PDX臂更小；必须突出模型数和独立统计单位的定义。 |
+| 2B | 获得三系统启动子开放TF的交集。 | 对158个TF执行相同的“至少一半样本”启动子规则。 | 必须使用真正的UpSet图；仅在外观上类似UpSet的条形图无法说明集合归属。 |
+| 2C | 定义94个TNBC HC-TF。 | 定义31个LUAD HC-TF。 | 第一版LUAD图同时显示全部158个TF，导致无法阅读。重建版只对31个入选TF对齐展示活性、启动子开放比例和motif状态，同时在数据表中完整保留158个TF的筛选过程。 |
+| 2D | 获得不同系统中motif支持TF的交集。 | 展示LUAD motif保守性的选择性。 | LUAD仅有3个严格三系统TF，因此应突出精确集合和分母，而不是用图形面积制造视觉强度。 |
+| 2E | 展示选定TF在各系统中的motif富集。 | 展示严格及q≤0.05/50%规则下的motif支持率。 | 旧版LUAD面板混入了大量非核心motif。重建版聚焦3个严格TF和2个仅在敏感性分析中出现的TF，并直接标注n/N。 |
+| 3A | 量化带符号的regulon及其特有/共同靶基因。 | 量化31个HC-TF的regulon。 | 证据结构等价但规模更小；统一颜色语义，并将motif作为注释，避免误解为motif决定了HC-TF入选。 |
+| 3B | 揭示靶基因群落。 | 使用相同的“节点≥3个调控TF、边≥3个共享调控TF”规则，得到30个节点但只有3条边。 | GO点图不能替代网络拓扑，但修正后的拓扑在生物学上确实较弱：3个双节点组分和24个孤立节点。重建版如实展示稀疏性，而没有为了图形好看降低连边规则；少于3个基因的组分不作GO解释。 |
+| 3C | 展示HC-TF共同活性结构。 | 展示TCGA肿瘤中的LUAD TF共同活性。 | LUAD矩阵更小；应保持正方形、完成聚类，并确保最终版面下仍可读。 |
+| 3D | 通过共享靶基因展示TF协作。 | 展示LUAD TF协作网络。 | 稀疏连边属于生物学结果；必须给出节点/连边图例及明确的显示阈值。 |
+| 3E | 关联regulon大小与协作程度。 | 检验较宽的LUAD regulon是否拥有更多协作TF。 | 解释逻辑相同；只应标记真正有信息量的离群点。 |
+| 3F | 识别肿瘤间TF活性的偏态。 | 识别仅在部分LUAD肿瘤中活跃的HC-TF。 | LUAD必须报告BH校正，且不能把偏度直接等同于离散的分子亚型。 |
+| 3G | 展示有代表性的TF活性分布。 | 展示ELF3、MAGED2、PHC2及其他代表性分布形态。 | 密度图需要统一坐标、报告样本量，并明确说明选择这些TF作为示例的理由。 |
+| 4A | 展示锚点外部队列中经校正的OS关联。 | 汇总GSE41271中31个TF按中位数二分后的OS筛查。 | LUAD使用可重复的中位数分组，而不是锚点METABRIC代码的外侧三分位选择。紧凑森林图展示名义显著结果，副标题和补充材料仍保留31个TF这一完整分母。 |
+| 4B | 展示锚点外部队列中经校正的复发结局关联。 | 汇总GSE41271中31个TF按中位数二分后的RFS筛查。 | 外部队列的复发证据较弱；与4A统一坐标和证据颜色，避免视觉夸大。 |
+| 4C | 展示锚点TCGA队列中经校正的OS关联。 | 汇总TCGA-LUAD中31个TF按中位数二分后的OS筛查。 | 只有ZNF75D通过BH校正，且LUAD分组不同于锚点代码使用的maxstat切点。主图标记这一唯一FDR结果，但不会在补充材料中隐藏其他阴性TF。 |
+| 4D | 展示锚点TCGA队列中经校正的复发结局关联。 | 汇总TCGA-LUAD DFS筛查。 | 筛查结果大部分为阴性。与视觉上占据大量空间的全阴性森林图相比，紧凑面板加明确FDR计数更符合证据强度。 |
+| 4E | 展示锚点外部队列中不同结局信号的重叠。 | 展示GSE41271 OS/RFS中具有方向信息的重叠。 | 由于集合很小，必须报告精确成员、期望重叠和置换支持。 |
+| 4F | 展示外部队列中选定TF的生存差异。 | 使用最大选择秩显示切点展示GSE41271 KM曲线。 | 这些曲线属于描述性展示，且切点不同于主要Cox筛查的中位数分组；因此必须提供风险表、删失标记和切点选择方法。 |
+| 4G | 展示锚点TCGA队列中不同结局信号的重叠。 | 展示TCGA OS/DFS中具有方向信息的重叠。 | 精确计数和31个TF的完整分母可防止把小规模重叠误读为广泛且跨结局稳定的调控程序。 |
+| 4H | 展示TCGA中选定TF的生存差异。 | 使用最大选择秩显示切点展示TCGA-LUAD KM曲线。 | KM曲线置于经校正Cox证据之下，并配风险表；不得将其描述为独立复现。 |
+| 5A | 在第一个药物基因组资源中筛查“药物－TF”关系。 | 在GDSC2中筛查LUAD关联。 | 统一的一致性指数坐标、BH规则，以及细胞系/药物/检验分母，使本面板可与5B、5C比较。 |
+| 5B | 在第二个药物基因组资源中进行筛查。 | 在CTRPv2中筛查LUAD关联。 | 不同数据集的覆盖范围不同，因此在比较信号密度前必须采用相同坐标和注释规则。 |
+| 5C | 在第三个药物基因组资源中进行筛查。 | 在PRISM中筛查LUAD关联。 | PRISM具有不同的药物反应分布；只有跨资源同方向重复的关联才能进入5D、5E。 |
+| 5D | 展示跨资源交集。 | 识别可重复的LUAD“药物－TF”关联。 | 第一版使用了集合归属条形图；真正的UpSet图恢复了集合逻辑。 |
+| 5E | 汇总重复效应。 | 展示5组可重复的耐药关联。 | 必须同时呈现效应方向和数据集身份；聚类不得制造出超过实际观察数量的关联。 |
+| 5F | 将关联置于药物和通路背景中解释。 | 将LUAD重复关联连接至作用机制。 | 通用整合条形图解释力不足；重建版使用“药物－通路－TF”气泡图，同时编码效应和FDR。 |
+| 5G | 在PDX中验证选定关联。 | 审计公共LUAD PDX中是否存在可检验并通过验证的关联。 | LUAD缺少与锚点文献等价的成功体内实验。结构化漏斗可如实说明验证样本在哪一层损失。 |
+| 5H | 展示PDX疗效排序或瀑布图。 | 展示完整的PDX阴性/零验证筛查。 | 空白占位图不可接受。重建面板绘制所有可评价检验，并明确标记通过验证的关联为0。 |
 
-## Output locations
+## 输出位置
 
-Final PDFs are written under:
+最终PDF位于：
 
 `pilots/tnbc-chromatin-tf-nc-2026/execution/luad-publication-rebuild/results/publication/`
 
-The complete tabular evidence package and workbook are written under:
+完整表格证据包和工作簿位于：
 
 `pilots/tnbc-chromatin-tf-nc-2026/execution/luad-publication-rebuild/results/tables/`
 
-Raw cloud computation receipts remain under the server work root:
+云服务器上的原始计算凭据保留在：
 
 `tmp/tnbc-chromatin-tf-nc-2026/luad-publication-rebuild/`
