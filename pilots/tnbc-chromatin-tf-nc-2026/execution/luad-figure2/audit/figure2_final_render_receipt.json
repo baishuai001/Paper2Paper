@@ -1,0 +1,52 @@
+{
+  "status": "PASS",
+  "generated_at": "2026-08-19T23:48:43+08:00",
+  "analysis_definition": "PRIMARY_anchor_promoter_tcga_cpm1_both",
+  "primary_motif_definition": "B0_shared_lung_accessibility_background_homer_q1e-5_prevalence_0.5",
+  "system_sizes": {
+    "patient": 22,
+    "PDX": 13,
+    "cell_line": 19
+  },
+  "result_counts": {
+    "figure1_input_tfs": 158,
+    "patient_promoter_open_tfs": 141,
+    "three_system_promoter_open_tfs": 32,
+    "excluded_all_three_mean_NES_negative": 1,
+    "HC_TFs": 31,
+    "motif_testable_HC_TFs": 20,
+    "primary_three_system_motif_TFs": 3,
+    "relaxed_q05_half_samples_three_system_motif_TFs": 5
+  },
+  "primary_three_system_motif_TFs": [
+    "FOXA3",
+    "NFATC4",
+    "XBP1"
+  ],
+  "relaxed_q05_half_samples_three_system_motif_TFs": [
+    "ETV1",
+    "FOXA3",
+    "NFATC4",
+    "XBP1",
+    "ZNF75D"
+  ],
+  "pdfs": {
+    "Figure2_complete.pdf": "6c20e87124b1ba81a76d418f3e24ba8d8c85f2aefede6911717965d2dad46c57",
+    "SupplementaryFigure3_complete.pdf": "0f19dcb49bde81d01571849efdc27988c3c6956b8054c89f167f9b96dae64b0f",
+    "SupplementaryFigure4A-C_complete.pdf": "2b52039e83b5c03c62dd0075dd159efd66b0411faacf827d92cc437c05ba36e6",
+    "SupplementaryFigure5_complete.pdf": "f0d4e2d1c63f93ee331be6f510cabc98efe8891ea748349e31cac3c526dabd17"
+  },
+  "local_remote_pdf_sha256_match": true,
+  "pdfinfo_pages_each": 1,
+  "pdf_render_visual_QA": "PASS",
+  "plot_log_sha256": "7b48526f74b94eb94e3e11493d486ee2dabc3141e4fe58d5cecb161ca3bbd310",
+  "plot_script_sha256": "7786644d084c160d18e7f1d8ced0d1fef1ac8c7964d38e5678f9c37a4fb425d1",
+  "threshold_script_sha256": "62741a5076251713c23e05b9770b06c5dad99c439d83b287f8a41ff650925a90",
+  "report_sha256": "149f8066b3f117fe6b173992a4bf1d113fe82cf0360833f8a13f00e3df07bfa2",
+  "descriptive_missing_value_handling": {
+    "sample": "MGH9243",
+    "reason": "zero total peaks made four genomic-category proportions undefined",
+    "main_denominator_action": "retained as unsupported in the frozen 13-PDX denominator",
+    "supplementary_annotation_action": "undefined fractions omitted only from the descriptive boxplot and fraction tests"
+  }
+}

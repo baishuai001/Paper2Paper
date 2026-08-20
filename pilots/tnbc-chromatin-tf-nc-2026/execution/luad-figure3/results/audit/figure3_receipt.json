@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "frozen_HC_TFs": 31,
+  "three_system_motif_TFs": ["FOXA3", "NFATC4", "XBP1"],
+  "signed_regulon_edges": 3011,
+  "unique_regulon_targets": 2776,
+  "activated_overlap_edges_all": 134,
+  "activated_overlap_display_threshold": 3,
+  "activated_overlap_edges_displayed": 33,
+  "modules": 3,
+  "TCGA_LUAD_samples": 516,
+  "TCGA_LUSC_reference_samples": 501,
+  "strong_skew_TFs": ["ELF3", "MAGED2", "PHC2"],
+  "package_versions": {
+    "R": "4.4.1",
+    "data.table": "1.16.2",
+    "igraph": "2.1.1",
+    "viper": "1.38.0",
+    "clusterProfiler": "4.12.6"
+  }
+}

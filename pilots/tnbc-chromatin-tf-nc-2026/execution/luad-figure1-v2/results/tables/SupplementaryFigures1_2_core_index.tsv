@@ -1,0 +1,8 @@
+panel	content	status
+S1	Cohort inclusion/exclusion flow	generated
+S2A	Independent GSE81089 expression/activity concordance	generated
+S2B	Direction-concordant TF overlap	generated
+S2C	TCGA sample activity correlations	generated
+S2D	PDMR PDX sample activity correlations	generated
+S2E	DepMap sample activity correlations	generated
+S2F	Cross-system effects of the frozen 97 LUAD TFs	generated

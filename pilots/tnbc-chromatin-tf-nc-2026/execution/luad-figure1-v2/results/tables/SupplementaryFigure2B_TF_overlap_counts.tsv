@@ -1,0 +1,7 @@
+direction	component	n
+LUAD	TCGA only	63
+LUAD	Overlap	95
+LUAD	GSE81089 only	115
+LUSC	TCGA only	42
+LUSC	Overlap	151
+LUSC	GSE81089 only	143

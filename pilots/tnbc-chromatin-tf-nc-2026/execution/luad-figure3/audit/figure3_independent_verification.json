@@ -1,0 +1,61 @@
+{
+  "verification_status": "passed",
+  "checks": [
+    {
+      "check": "31 HC-TFs in regulon composition",
+      "passed": true
+    },
+    {
+      "check": "four signed/shared components per HC-TF",
+      "passed": true
+    },
+    {
+      "check": "nonnegative target counts",
+      "passed": true
+    },
+    {
+      "check": "31 HC-TF skewness rows",
+      "passed": true
+    },
+    {
+      "check": "516 LUAD observations per skew test",
+      "passed": true
+    },
+    {
+      "check": "finite skewness statistics",
+      "passed": true
+    },
+    {
+      "check": "three-system motif set remains FOXA3/NFATC4/XBP1",
+      "passed": true
+    },
+    {
+      "check": "all HC-TFs assigned once to a module",
+      "passed": true
+    },
+    {
+      "check": "Figure3_complete.pdf exists and is nonempty",
+      "passed": true
+    },
+    {
+      "check": "Figure3_complete.pdf has one page",
+      "passed": true
+    },
+    {
+      "check": "Figure3_complete.png exists and is nonempty",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure6_complete.pdf exists and is nonempty",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure6_complete.pdf has one page",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure6_complete.png exists and is nonempty",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+aae2c24df27c2d0faffca6c4c1c59fe0ca9206b9dd8236e8ab81bf355392ca77  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/audit/gse41271/gse41271_analysis_receipt.json
+b0e2c4defbc574d926d8858ebc709365a95d72e7a2b78a96396396e107fa5cd8  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/audit/gse41271/gse41271_independent_verification.json
+8a0a028211eeac31c5bfcb4fb878ecb823b808e8cbf54e8845af0664c71407a4  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/audit/gse41271/gse41271_output_sha256.tsv
+5dfbb28de57903adefdbeb9b066c1c13b54686b0ac5c7b0a1008dc560de0c24c  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/audit/gse41271/gse41271_preparation_receipt.json
+ea3e64f6b16572007a75e0620403bbb2402abe1223dee54f15f0cd249d87fce1  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/aracne3/aracne3_sha256.tsv
+ca4898eb7e8a698e2aad5d545f4eea0a3fe9993e6505e78ca9e50cbc8b5a3d5e  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/aracne3/consolidated-net_GSE41271_LUAD_LUSC.tsv
+198da88a2bbd42d1574e47dfad049f6d8e9dda583c489b807dc233560e3de046  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/aracne3/log_GSE41271_LUAD_LUSC.txt
+b1ccef0a4ed660c1e0a487a6c2180e39e9d4aebf29129c4293e2a64a289798c0  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/aracne3/subnets_log/log_subnet1_GSE41271_LUAD_LUSC.txt
+40c6b25f131d95d3dff337e11064d6ae0be1d40efecd64fb3b3f368f270bed9b  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/aracne3/subnets/subnet1_GSE41271_LUAD_LUSC.tsv
+d047b4354b546c7229d7efaa8ff8d62dfb4e218d1bcff820a225f36a6d9de4b0  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/GSE41271_msviper.rds
+2aaed9448ce3dbf0b18ee549561ea40917e22b8509a28efa1efd33ad2e043927  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/GSE41271_msviper.tsv
+a8b519ff712fb145703c34b6bd3a9d78cea2ff84025457005171b0370cf5585d  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/GSE41271_regulon.rds
+a0955705b12423d8da472da62612c50228f67feb857695be58ebce5fbf438a7d  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/GSE41271_viper_activity.tsv.gz
+1b08f268e7f62a9a5bfb52c734754a3103436a3b45b688e3b7583fa56e5e3016  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/results/gse41271/GSE41271_viper_receipt.json

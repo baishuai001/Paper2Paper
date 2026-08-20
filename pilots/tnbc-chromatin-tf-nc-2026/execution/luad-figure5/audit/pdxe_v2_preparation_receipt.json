@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "expression_file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/data/raw/pdxe_v2/Xeva_PDXE_tsv/molecular_profiles/RNASeq.tsv",
+  "genes": 22665,
+  "expression_samples": 399,
+  "metadata_matched": 191,
+  "NSCLC_samples": 27,
+  "tissue_counts": {
+    "BRCA": 42,
+    "CM": 32,
+    "CRC": 51,
+    "NSCLC": 27,
+    "PDAC": 39,
+    "6": 208
+  },
+  "response_models": 4706,
+  "response_patients": 277
+}

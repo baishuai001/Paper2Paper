@@ -1,0 +1,146 @@
+{
+  "analysis_role": "sensitivity_only_primary_B0_unchanged",
+  "checks": [
+    {
+      "check": "B0_20_motif_testable_hc_tfs",
+      "detail": 20,
+      "pass": true
+    },
+    {
+      "check": "B0_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B0_controls_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B1_20_motif_testable_hc_tfs",
+      "detail": 20,
+      "pass": true
+    },
+    {
+      "check": "B1_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B1_controls_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B2_20_motif_testable_hc_tfs",
+      "detail": 20,
+      "pass": true
+    },
+    {
+      "check": "B2_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B2_controls_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B3_20_motif_testable_hc_tfs",
+      "detail": 20,
+      "pass": true
+    },
+    {
+      "check": "B3_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    },
+    {
+      "check": "B3_controls_three_systems",
+      "detail": [
+        "PDX",
+        "cell_line",
+        "patient"
+      ],
+      "pass": true
+    }
+  ],
+  "failed_checks": [],
+  "generated_utc": "2026-08-19T02:42:48.263790+00:00",
+  "hc_tfs_stable_in_all_four_backgrounds": [
+    "FOXA3",
+    "NFATC4",
+    "XBP1"
+  ],
+  "interpretation_rule": "B1-B3 quantify background dependence and cannot replace the immutable B0 primary result.",
+  "status": "PASS",
+  "variants": {
+    "B0": {
+      "background_peak_count": 292983,
+      "triple_system_hc_tf_count": 3,
+      "triple_system_hc_tfs": [
+        "FOXA3",
+        "NFATC4",
+        "XBP1"
+      ]
+    },
+    "B1": {
+      "background_peak_count": 256914,
+      "triple_system_hc_tf_count": 3,
+      "triple_system_hc_tfs": [
+        "FOXA3",
+        "NFATC4",
+        "XBP1"
+      ]
+    },
+    "B2": {
+      "background_peak_count": 138103,
+      "triple_system_hc_tf_count": 3,
+      "triple_system_hc_tfs": [
+        "FOXA3",
+        "NFATC4",
+        "XBP1"
+      ]
+    },
+    "B3": {
+      "background_peak_count": 189542,
+      "triple_system_hc_tf_count": 5,
+      "triple_system_hc_tfs": [
+        "E2F5",
+        "FOXA3",
+        "NFATC4",
+        "XBP1",
+        "ZNF281"
+      ]
+    }
+  }
+}

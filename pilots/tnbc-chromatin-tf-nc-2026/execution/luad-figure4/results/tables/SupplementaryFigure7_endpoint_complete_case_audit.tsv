@@ -1,0 +1,5 @@
+cohort	endpoint	n_complete	events_10year	age_available	sex_levels	stage_levels	smoking_levels
+GSE41271_LUAD	OS	178	69	178	2	4	2
+GSE41271_LUAD	RFS	177	69	177	2	4	2
+TCGA_LUAD	OS	467	165	467	2	4	2
+TCGA_LUAD	RFS	277	80	277	2	3	2

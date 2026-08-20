@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "cohort": "GSE41271_TCGA_PROJECTED",
+  "samples": 263,
+  "genes": 25416,
+  "group_counts": {
+    "LUAD": 183,
+    "LUSC": 80
+  },
+  "regulons": 2046,
+  "TFs": 2019,
+  "seed": 2025,
+  "minsize": 1,
+  "package_versions": {
+    "R": "4.4.1",
+    "viper": "1.38.0"
+  }
+}

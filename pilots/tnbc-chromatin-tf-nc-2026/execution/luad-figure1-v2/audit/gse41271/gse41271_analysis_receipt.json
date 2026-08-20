@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "accession": "GSE41271",
+  "samples": 263,
+  "group_counts": {
+    "LUAD": 183,
+    "LUSC": 80
+  },
+  "genes": 25416,
+  "msviper_TFs": 1615,
+  "expression_activity_Pearson_r": 0.7837,
+  "expression_activity_Pearson_p": 0,
+  "replication_summary": [
+    {
+      "specificity": "LUAD",
+      "TCGA_specific": 158,
+      "GSE81089_specific": 210,
+      "GSE41271_specific": 160,
+      "TCGA_replicated_GSE81089": 95,
+      "TCGA_replicated_GSE41271": 70,
+      "TCGA_replicated_both": 44
+    },
+    {
+      "specificity": "LUSC",
+      "TCGA_specific": 193,
+      "GSE81089_specific": 294,
+      "GSE41271_specific": 213,
+      "TCGA_replicated_GSE81089": 151,
+      "TCGA_replicated_GSE41271": 93,
+      "TCGA_replicated_both": 83
+    }
+  ],
+  "validation_rule": "msVIPER raw p<=0.05; limma BH<=0.05; NES and logFC direction concordant",
+  "downstream_figure2_input_changed": false,
+  "downstream_reason": "Figure 2 remains defined by all 158 TCGA-discovered LUAD TFs",
+  "package_versions": {
+    "R": "4.4.1",
+    "limma": "3.62.1"
+  }
+}

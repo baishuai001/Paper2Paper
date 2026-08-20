@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "frozen_HC_TFs": 31,
+  "eligible_LUAD_activity_lines": 76,
+  "dataset_summary": [
+    {
+      "dataset": "GDSC2",
+      "raw_cells": 1084,
+      "raw_drugs": 190,
+      "mapped_LUAD_lines": 48,
+      "paired_cell_drug_rows": 7484,
+      "eligible_drugs_n10_AACgt0.2": 117,
+      "sensitivity_metric": "aac_recomputed"
+    },
+    {
+      "dataset": "CTRPv2",
+      "raw_cells": 887,
+      "raw_drugs": 544,
+      "mapped_LUAD_lines": 59,
+      "paired_cell_drug_rows": 26678,
+      "eligible_drugs_n10_AACgt0.2": 383,
+      "sensitivity_metric": "aac_recomputed"
+    },
+    {
+      "dataset": "PRISM",
+      "raw_cells": 480,
+      "raw_drugs": 1437,
+      "mapped_LUAD_lines": 45,
+      "paired_cell_drug_rows": 62382,
+      "eligible_drugs_n10_AACgt0.2": 768,
+      "sensitivity_metric": "aac_recomputed"
+    }
+  ],
+  "raw_md5": {
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/data/raw/psets/GDSC2.rds": "e6fc02954e3ad117829b0e96ef7564f1",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/data/raw/psets/PSet_CTRPv2.rds": "c7a0c27dba6e294ec1d3548538c94c57",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/data/raw/psets/PSet_PRISM.rds": "c8fef8626dac47f3aff745c31130c1d5"
+  },
+  "mapping_priority": ["DepMap_ID", "Cellosaurus", "COSMIC", "unambiguous normalized name"],
+  "drug_filter": "paired LUAD lines >=10 and at least one AAC >0.2"
+}

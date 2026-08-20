@@ -1,0 +1,69 @@
+{
+  "verification_status": "passed",
+  "checks": [
+    {
+      "check": "three pharmacogenomic datasets",
+      "passed": true
+    },
+    {
+      "check": "all mapped LUAD cohorts contain at least 10 models",
+      "passed": true
+    },
+    {
+      "check": "all cell-line tests use n >= 10",
+      "passed": true
+    },
+    {
+      "check": "all cell-line tests satisfy AAC dynamic-range rule",
+      "passed": true
+    },
+    {
+      "check": "cell-line FDR values reproduce BH within dataset",
+      "passed": true
+    },
+    {
+      "check": "replicated pairs have >=2 datasets and one direction",
+      "passed": true
+    },
+    {
+      "check": "classifier has TCGA, PDMR and DepMap validation",
+      "passed": true
+    },
+    {
+      "check": "PDMR external balanced accuracy >= 0.8",
+      "passed": true
+    },
+    {
+      "check": "DepMap external balanced accuracy is reported",
+      "passed": true
+    },
+    {
+      "check": "absence of main PDX pair is retained as an explicit negative result",
+      "passed": true
+    },
+    {
+      "check": "Figure5_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "Figure5_complete.pdf has one page",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure8_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure8_complete.pdf has one page",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure9_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure9_complete.pdf has one page",
+      "passed": true
+    }
+  ]
+}

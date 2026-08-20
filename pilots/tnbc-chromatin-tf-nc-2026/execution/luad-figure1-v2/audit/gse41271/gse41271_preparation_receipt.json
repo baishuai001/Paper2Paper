@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "accession": "GSE41271",
+  "platform": "GPL6884 Illumina HumanWG-6 v3.0",
+  "all_tumors": 275,
+  "group_counts_all": {
+    "LUAD": 183,
+    "LUSC": 80,
+    "OTHER": 12
+  },
+  "analysis_samples": 263,
+  "group_counts": {
+    "LUAD": 183,
+    "LUSC": 80
+  },
+  "matrix_probes": 48803,
+  "single_symbol_mapped_probes": 35916,
+  "selected_genes": 25416,
+  "pango_regulators": 2059,
+  "regulators_in_expression": 1615,
+  "expression_scale": "GEO processed log2-normalized microarray intensity",
+  "duplicate_probe_rule": "highest MAD across the frozen 263-sample LUAD/LUSC cohort; probe ID breaks exact ties",
+  "ambiguous_symbol_rule": "exclude blank and multi-symbol probe annotations",
+  "package_versions": {
+    "R": "4.4.1",
+    "data.table": "1.16.2"
+  }
+}

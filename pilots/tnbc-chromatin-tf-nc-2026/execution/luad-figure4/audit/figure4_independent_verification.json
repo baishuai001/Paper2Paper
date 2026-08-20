@@ -1,0 +1,65 @@
+{
+  "verification_status": "passed",
+  "checks": [
+    {
+      "check": "31 TF x 2 cohorts x 2 endpoints x 2 model types",
+      "passed": true
+    },
+    {
+      "check": "all Cox estimates finite",
+      "passed": true
+    },
+    {
+      "check": "all Cox analyses have at least 100 complete cases",
+      "passed": true
+    },
+    {
+      "check": "all Cox analyses have at least 20 ten-year events",
+      "passed": true
+    },
+    {
+      "check": "eight independent permutation analyses",
+      "passed": true
+    },
+    {
+      "check": "all use exactly 5,000 permutations",
+      "passed": true
+    },
+    {
+      "check": "all permutation null distributions are non-degenerate",
+      "passed": true
+    },
+    {
+      "check": "finite empirical p and fold enrichment",
+      "passed": true
+    },
+    {
+      "check": "two representatives x two endpoints x two cohorts",
+      "passed": true
+    },
+    {
+      "check": "KM groups contain at least 10 patients",
+      "passed": true
+    },
+    {
+      "check": "Figure4_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "Figure4_complete.pdf is one page",
+      "passed": true
+    },
+    {
+      "check": "Figure4 composite contains all eight KM panels",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure7_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure7_complete.pdf is one page",
+      "passed": true
+    }
+  ]
+}

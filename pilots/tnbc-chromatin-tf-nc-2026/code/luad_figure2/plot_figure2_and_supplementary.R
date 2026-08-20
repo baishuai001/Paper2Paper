@@ -25,12 +25,13 @@ system_labels <- c(patient = "Primary LUAD", PDX = "LUAD PDX", cell_line = "LUAD
 system_colors <- c(patient = "#7B2C83", PDX = "#718B32", cell_line = "#0B8585")
 
 save_figure <- function(plot, stem, width, height, dpi = 300) {
-  ggsave(file.path(figure_dir, paste0(stem, ".pdf")), plot, width = width, height = height, units = "in", limitsize = FALSE)
+  ggsave(file.path(figure_dir, paste0(stem, ".pdf")), plot, width = width, height = height,
+         units = "in", device = grDevices::cairo_pdf, limitsize = FALSE)
   ggsave(file.path(figure_dir, paste0(stem, ".png")), plot, width = width, height = height, units = "in", dpi = dpi, limitsize = FALSE)
 }
 
 save_heatmap <- function(ht, stem, width, height) {
-  pdf(file.path(figure_dir, paste0(stem, ".pdf")), width = width, height = height, useDingbats = FALSE)
+  grDevices::cairo_pdf(file.path(figure_dir, paste0(stem, ".pdf")), width = width, height = height)
   draw(ht, heatmap_legend_side = "right", annotation_legend_side = "right")
   dev.off()
   png(file.path(figure_dir, paste0(stem, ".png")), width = width, height = height, units = "in", res = 300)
@@ -71,11 +72,16 @@ make_upset <- function(combination_dt, set_columns, colors = NULL, title = "", s
   }))
   dot_rows[, combination := factor(combination, levels = totals$combination)]
   dot_rows[, set := factor(set, levels = rev(set_columns))]
-  connectors <- dot_rows[present == TRUE, .(ymin = min(as.integer(set)), ymax = max(as.integer(set))), by = combination]
-  dots <- ggplot(dot_rows, aes(combination, set)) +
+  # Use one numeric coordinate system for both dots and connector segments.
+  # Recent ggplot2 releases reject mixing a discrete y aesthetic with numeric
+  # ymin/ymax values in the same panel.
+  dot_rows[, set_index := as.integer(set)]
+  connectors <- dot_rows[present == TRUE, .(ymin = min(set_index), ymax = max(set_index)), by = combination]
+  dots <- ggplot(dot_rows, aes(combination, set_index)) +
     geom_segment(data = connectors, aes(x = combination, xend = combination, y = ymin, yend = ymax),
                  inherit.aes = FALSE, linewidth = 0.6, color = "#333333") +
     geom_point(aes(color = present), size = 2.8) +
+    scale_y_continuous(breaks = seq_along(set_columns), labels = rev(set_columns)) +
     scale_color_manual(values = c(`TRUE` = "#222222", `FALSE` = "#D9D9D9"), guide = "none") +
     labs(x = NULL, y = NULL) + theme_minimal(base_size = 9) +
     theme(panel.grid = element_blank(), axis.text.x = element_blank(), axis.ticks = element_blank())
@@ -89,9 +95,35 @@ promoter_system <- promoter_system[analysis_definition == primary_definition]
 promoter_sample <- fread(file.path(run_root, "results", "promoter_gate", "sample_tf_promoter_accessibility.tsv"))
 promoter_sample <- promoter_sample[analysis_definition == primary_definition]
 motif_inventory <- fread(file.path(run_root, "results", "motif_gate", "hc_tf_motif_inventory.tsv"))
-motif_sample <- fread(file.path(run_root, "results", "motif_gate", "sample_tf_best_motif_results.tsv"))
-motif_system <- fread(file.path(run_root, "results", "motif_gate", "system_tf_motif_summary.tsv"))
-motif_tf <- fread(file.path(run_root, "results", "motif_gate", "tf_motif_gate_summary.tsv"))
+motif_primary_dir <- file.path(run_root, "results", "motif_primary", "anchor_consensus_author")
+motif_sample <- fread(file.path(motif_primary_dir, "anchor_consensus_sample_tf_best_motif.tsv"))
+motif_system_raw <- fread(file.path(motif_primary_dir, "anchor_consensus_system_tf_motif_summary.tsv"))
+motif_tf_raw <- fread(file.path(motif_primary_dir, "anchor_consensus_hc_tf_triple_system_summary.tsv"))
+motif_lor_stats <- motif_sample[motif_test_status == "TESTED", .(
+  mean_log2_odds_ratio = mean(log2_odds_ratio, na.rm = TRUE),
+  sd_log2_odds_ratio = sd(log2_odds_ratio, na.rm = TRUE)
+), by = .(system, TF)]
+motif_lor_stats[!is.finite(sd_log2_odds_ratio), sd_log2_odds_ratio := 0]
+motif_system <- merge(
+  motif_system_raw[, .(
+    system, TF, n_all_samples, n_motif_enriched,
+    fraction_enriched_all_samples,
+    system_motif_enriched = support_fixed_original_denominator
+  )],
+  motif_lor_stats,
+  by = c("system", "TF"), all.x = TRUE
+)
+motif_tf <- motif_tf_raw[, .(
+  TF,
+  patient_motif_enriched = patient_fixed_support,
+  PDX_motif_enriched = PDX_fixed_support,
+  cell_line_motif_enriched = cell_line_fixed_support,
+  triple_system_motif_enriched = triple_system_fixed_original_denominator
+)]
+motif_tf[, any_system_motif_enriched := fifelse(
+  patient_motif_enriched == "TRUE" | PDX_motif_enriched == "TRUE" | cell_line_motif_enriched == "TRUE",
+  "TRUE", "FALSE"
+)]
 atomic_manifest <- fread(file.path(run_root, "audit", "manifests", "figure2_atomic", "figure2_atomic_sample_manifest.tsv"))
 atomic_counts <- atomic_manifest[, .N, by = system]
 system_n <- setNames(atomic_counts$N, atomic_counts$system)
@@ -124,7 +156,7 @@ promoter_combo <- promoter_tf[, .(
   cell_line = cell_line_promoter_accessible == "TRUE"
 )]
 p2b <- make_upset(promoter_combo, c("PDX", "patient", "cell_line"),
-                  title = "B", subtitle = sprintf("Promoter-open TFs (n = %d)", nrow(promoter_combo)))
+                  title = "B", subtitle = sprintf("Promoter-accessibility patterns across %d input TFs", nrow(promoter_combo)))
 
 # Figure 2C: anchor-style activity-category plus sample-level promoter matrix.
 activity_file <- file.path(project_root, "pilots", "tnbc-chromatin-tf-nc-2026", "execution", "luad-figure1", "results", "tables", "cross_system_TF_effects.tsv.gz")
@@ -181,7 +213,7 @@ ht2c <- Heatmap(
 save_heatmap(ht2c, "Figure2C_activity_promoter_matrix", 17, 10)
 g2c <- heatmap_grob(ht2c)
 
-# Figure 2D: motif combinations among motif-testable HC-TFs, stacked by database source.
+# Figure 2D: B0 author-style motif combinations among motif-testable HC-TFs.
 motif_combo <- merge(motif_tf[any_system_motif_enriched == "TRUE"],
                      motif_inventory[, .(TF, motif_database_category)], by = "TF")
 motif_combo[, `:=`(
@@ -190,11 +222,11 @@ motif_combo[, `:=`(
   cell_line = cell_line_motif_enriched == "TRUE"
 )]
 p2d <- make_upset(motif_combo, c("PDX", "patient", "cell_line"), colors = "motif_database_category",
-                  title = "D", subtitle = sprintf("Motif-supported HC-TFs (n = %d/%d)",
+                  title = "D", subtitle = sprintf("HC-TFs with >=1-system motif support (n = %d/%d testable)",
                                                    nrow(motif_combo), motif_inventory[motif_testable == "TRUE", .N])) +
   plot_annotation(theme = theme(legend.position = "right"))
 
-# Figure 2E: system LOR/SD/frequency and top motif distributions.
+# Figure 2E: B0 system LOR/SD/frequency and top motif distributions.
 supported_tfs <- motif_tf[any_system_motif_enriched == "TRUE", TF]
 motif_system <- motif_system[TF %in% supported_tfs]
 motif_sample <- motif_sample[TF %in% supported_tfs]
@@ -212,7 +244,7 @@ p2e_left <- ggplot(motif_system, aes(mean_log2_odds_ratio, TF_order, color = sys
 
 top_tf_table <- motif_system[, .(overall = mean(mean_log2_odds_ratio)), by = TF][order(-overall)]
 top_tfs <- head(top_tf_table$TF, 6L)
-top_values <- motif_sample[TF %in% top_tfs]
+top_values <- motif_sample[TF %in% top_tfs & motif_test_status == "TESTED" & is.finite(log2_odds_ratio)]
 top_values[, TF := factor(TF, levels = top_tfs)]
 p2e_right <- ggplot(top_values, aes(system, log2_odds_ratio, color = system)) +
   geom_boxplot(outlier.shape = NA, width = 0.58, linewidth = 0.45) +
@@ -229,7 +261,10 @@ save_figure(p2e, "Figure2E_motif_enrichment", 11, 8.5)
 
 top_row <- p2a + p2b + p2d + p2e + plot_layout(widths = c(1, 1, 1, 2.2))
 figure2 <- top_row / wrap_elements(full = g2c) + plot_layout(heights = c(1, 1.7)) +
-  plot_annotation(title = "Figure 2 — Chromatin support for the frozen LUAD TF program")
+  plot_annotation(
+    title = "Figure 2 — Chromatin support for the frozen LUAD TF program",
+    subtitle = "Primary motif analysis: B0 shared lung-accessibility background; HOMER q ≤ 1×10⁻⁵; ≥50% of each system"
+  )
 save_figure(figure2, "Figure2_complete", 24, 17)
 
 # Pairwise system tests for motif LOR, reported independently of plotting.
@@ -317,17 +352,21 @@ for (system_name in system_levels) {
 # Supplementary Figure 3 J-L: hierarchical genomic peak annotation.
 annotation <- fread(file.path(run_root, "results", "supplementary_figure3", "peak_genomic_annotation.tsv"))
 annotation[, category := factor(category, levels = c("distal", "intronic", "exonic", "promoter"))]
+# A zero-peak sample has undefined category fractions. Keep it in the source
+# table and in the frozen 13-PDX denominator, but omit undefined proportions
+# from this descriptive panel and its pairwise fraction tests.
+annotation_valid <- annotation[total_peaks > 0 & is.finite(fraction)]
 feature_colors <- c(distal = "#7C8B6B", intronic = "#C98265", exonic = "#6E9CB6", promoter = "#C84532")
 letters_ann <- c(patient = "J", PDX = "K", cell_line = "L")
 ann_plots <- list()
 for (system_name in system_levels) {
-  ann_plots[[system_name]] <- ggplot(annotation[system == system_name], aes(category, fraction, fill = category)) +
+  ann_plots[[system_name]] <- ggplot(annotation_valid[system == system_name], aes(category, fraction, fill = category)) +
     geom_boxplot(outlier.shape = NA, width = 0.6) + geom_jitter(width = 0.12, size = 0.8) +
     scale_fill_manual(values = feature_colors, guide = "none") +
     labs(title = paste0(letters_ann[[system_name]], " — ", system_labels[[system_name]], " peak annotation"), x = NULL, y = "Proportion of peaks") +
     theme_bw(base_size = 8) + theme(panel.grid.minor = element_blank())
 }
-ann_tests <- annotation[, {
+ann_tests <- annotation_valid[, {
   pairs <- combn(levels(category), 2, simplify = FALSE)
   rbindlist(lapply(pairs, function(pair) {
     x <- fraction[category == pair[[1]]]
@@ -407,7 +446,8 @@ p4c <- ggplot(circle, aes(x, y, group = group, fill = group)) +
   coord_equal(xlim = c(-1.8, 1.8), ylim = c(-1.55, 1.45), clip = "off") +
   labs(title = "C — HC-TF DNA motif availability") + theme_void(base_size = 10) + theme(plot.title = element_text(face = "bold"))
 
-supp4 <- p4a / (p4b + p4c + plot_layout(widths = c(1.5, 1))) +
+p4b_nested <- wrap_elements(full = p4b)
+supp4 <- p4a / (p4b_nested + p4c + plot_layout(widths = c(1.5, 1))) +
   plot_layout(heights = c(0.65, 1.5)) +
   plot_annotation(title = "Supplementary Figure 4A–C — LUAD HC-TF evidence accounting")
 save_figure(p4a, "SupplementaryFigure4A_filtering_flow", 14, 3.3)
@@ -415,10 +455,112 @@ save_figure(p4b, "SupplementaryFigure4B_promoter_activity_upset", 8, 6.5)
 save_figure(p4c, "SupplementaryFigure4C_motif_availability", 6, 5.5)
 save_figure(supp4, "SupplementaryFigure4A-C_complete", 16, 11)
 
+# Supplementary Figure 5: heterogeneity, shared-background robustness, and the
+# user-requested q<=0.05 / >=50%-of-samples sensitivity analysis.  None of
+# these panels replaces the immutable B0 primary result in Figure 2.
+state_root <- file.path(dirname(run_root), "luad-state-audit")
+state_membership <- fread(file.path(
+  state_root, "results", "tru_state_diagnostic", "state_membership.tsv"
+))
+state_membership[, subtype_plot := fifelse(
+  as.character(classifiable) == "TRUE", subtype, "Unclassified"
+)]
+state_counts <- state_membership[, .N, by = .(system, subtype_plot)]
+state_counts[, system := factor(system, levels = system_levels)]
+state_counts[, subtype_plot := factor(subtype_plot, levels = c("TRU", "PP", "PI", "Unclassified"))]
+state_palette <- c(TRU = "#2A9D8F", PP = "#E9C46A", PI = "#E76F51", Unclassified = "#B8B8B8")
+p5a <- ggplot(state_counts, aes(system, N, fill = subtype_plot)) +
+  geom_col(position = "fill", width = 0.7, color = "white", linewidth = 0.25) +
+  geom_text(aes(label = N), position = position_fill(vjust = 0.5), size = 3) +
+  scale_fill_manual(values = state_palette, drop = FALSE) +
+  scale_x_discrete(labels = system_labels) +
+  scale_y_continuous(labels = percent_format(accuracy = 1), expand = expansion(mult = c(0, 0.02))) +
+  labs(title = "A — LUAD intrinsic-state heterogeneity", x = NULL, y = "Fraction of models", fill = "State") +
+  theme_bw(base_size = 9) +
+  theme(panel.grid.minor = element_blank(), axis.text.x = element_text(angle = 15, hjust = 1))
+
+background_stability <- fread(file.path(
+  run_root, "results", "motif_background_sensitivity", "hc_tf_background_stability.tsv"
+))
+background_long <- melt(
+  background_stability,
+  id.vars = c("TF", "backgrounds_with_triple_support", "primary_B0_supported"),
+  measure.vars = paste0("B", 0:3, "_triple_support"),
+  variable.name = "background", value.name = "supported"
+)
+background_long[, background := sub("_triple_support$", "", background)]
+background_long[, supported := as.character(supported) == "TRUE"]
+tf_background_order <- background_stability[
+  order(backgrounds_with_triple_support, as.character(primary_B0_supported) == "TRUE", TF), TF
+]
+background_long[, TF := factor(TF, levels = tf_background_order)]
+background_long[, background := factor(background, levels = paste0("B", 0:3))]
+p5b <- ggplot(background_long, aes(background, TF, fill = supported)) +
+  geom_tile(color = "white", linewidth = 0.35) +
+  geom_text(aes(label = ifelse(supported, "●", "")), color = "white", size = 3) +
+  scale_fill_manual(values = c(`TRUE` = "#315B6D", `FALSE` = "#EBEEF0"), guide = "none") +
+  labs(title = "B — HC-TF support across shared backgrounds", x = "Background definition", y = NULL) +
+  theme_minimal(base_size = 8) + theme(panel.grid = element_blank())
+
+background_summary <- fread(file.path(
+  run_root, "results", "motif_background_sensitivity", "background_variant_summary.tsv"
+))
+background_summary[, variant := factor(variant, levels = paste0("B", 0:3))]
+p5c <- ggplot(background_summary, aes(variant, triple_system_hc_tf_count)) +
+  geom_col(aes(fill = variant == "B0"), width = 0.68, color = "#333333", linewidth = 0.25) +
+  geom_text(aes(label = triple_system_hc_tf_count), vjust = -0.35, fontface = "bold", size = 3.5) +
+  geom_text(aes(y = -0.28, label = sprintf("%s peaks", comma(background_peak_count))),
+            vjust = 1, size = 2.7, color = "#555555") +
+  scale_fill_manual(values = c(`TRUE` = "#A7446B", `FALSE` = "#8DA9B5"), guide = "none") +
+  scale_y_continuous(breaks = 0:6, limits = c(-0.65, 6), expand = expansion(mult = c(0, 0.04))) +
+  labs(title = "C — Background sensitivity", subtitle = "B0 is primary; B1–B3 are sensitivity analyses",
+       x = NULL, y = "Three-system motif-supported HC-TFs") +
+  theme_bw(base_size = 9) + theme(panel.grid.minor = element_blank())
+
+threshold_scenarios <- fread(file.path(
+  run_root, "results", "motif_threshold_sensitivity", "motif_threshold_sensitivity_scenarios.tsv"
+))
+threshold_tfs <- fread(file.path(
+  run_root, "results", "motif_threshold_sensitivity", "motif_threshold_sensitivity_triple_system_tfs.tsv"
+))
+scenario_levels <- threshold_scenarios$scenario
+threshold_union <- sort(unique(threshold_tfs$TF))
+threshold_grid <- CJ(scenario = scenario_levels, TF = threshold_union, unique = TRUE)
+threshold_grid <- merge(
+  threshold_grid,
+  unique(threshold_tfs[, .(scenario, TF, supported = TRUE)]),
+  by = c("scenario", "TF"), all.x = TRUE
+)
+threshold_grid[is.na(supported), supported := FALSE]
+scenario_labels <- setNames(
+  c("Primary: q≤1×10⁻⁵; ≥50%", "Sensitivity: q≤0.05; ≥50%"),
+  scenario_levels
+)
+threshold_grid[, scenario := factor(scenario, levels = scenario_levels, labels = scenario_labels)]
+threshold_grid[, TF := factor(TF, levels = threshold_union)]
+p5d <- ggplot(threshold_grid, aes(TF, scenario, fill = supported)) +
+  geom_tile(color = "white", linewidth = 0.8, width = 0.92, height = 0.78) +
+  geom_text(aes(label = ifelse(supported, "●", "")), color = "white", size = 4) +
+  scale_fill_manual(values = c(`TRUE` = "#A7446B", `FALSE` = "#E7E7E7"), guide = "none") +
+  labs(title = "D — Motif-threshold sensitivity",
+       subtitle = "The relaxed result is supplementary and does not replace B0",
+       x = "Three-system HC-TF", y = NULL) +
+  theme_minimal(base_size = 9) +
+  theme(panel.grid = element_blank(), axis.text.x = element_text(angle = 35, hjust = 1))
+
+supp5 <- (p5a + p5b) / (p5c + p5d) +
+  plot_layout(widths = c(1, 1.25), heights = c(1, 0.9)) +
+  plot_annotation(title = "Supplementary Figure 5 — LUAD heterogeneity and robustness analyses")
+save_figure(p5a, "SupplementaryFigure5A_state_heterogeneity", 7, 5)
+save_figure(p5b, "SupplementaryFigure5B_background_stability", 6.5, 7)
+save_figure(p5c, "SupplementaryFigure5C_background_counts", 6.5, 5)
+save_figure(p5d, "SupplementaryFigure5D_threshold_sensitivity", 8, 4.5)
+save_figure(supp5, "SupplementaryFigure5_complete", 15, 12)
+
 index <- data.table(
-  artifact = c("Figure2_complete", "SupplementaryFigure3_complete", "SupplementaryFigure4A-C_complete"),
-  pdf = file.path(figure_dir, c("Figure2_complete.pdf", "SupplementaryFigure3_complete.pdf", "SupplementaryFigure4A-C_complete.pdf")),
-  png = file.path(figure_dir, c("Figure2_complete.png", "SupplementaryFigure3_complete.png", "SupplementaryFigure4A-C_complete.png")),
+  artifact = c("Figure2_complete", "SupplementaryFigure3_complete", "SupplementaryFigure4A-C_complete", "SupplementaryFigure5_complete"),
+  pdf = file.path(figure_dir, c("Figure2_complete.pdf", "SupplementaryFigure3_complete.pdf", "SupplementaryFigure4A-C_complete.pdf", "SupplementaryFigure5_complete.pdf")),
+  png = file.path(figure_dir, c("Figure2_complete.png", "SupplementaryFigure3_complete.png", "SupplementaryFigure4A-C_complete.png", "SupplementaryFigure5_complete.png")),
   atomic_manifest = file.path(run_root, "audit", "manifests", "figure2_atomic", "figure2_atomic_sample_manifest.tsv"),
   primary_definition = primary_definition
 )

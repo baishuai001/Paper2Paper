@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "classifier": "cohort row-z LUAD-minus-LUSC TF activity",
+  "LUAD_signature_TFs": 158,
+  "LUSC_signature_TFs": 193,
+  "frozen_threshold": -0.1354,
+  "training_balanced_accuracy": 0.9397,
+  "PDMR_external_balanced_accuracy": 0.9037,
+  "DepMap_external_balanced_accuracy": 0.6898,
+  "PDXE_NSCLC_samples": 27,
+  "PDXE_NSCLC_LUAD_like": 14,
+  "caution": "PDXE v2 labels lung models as NSCLC; LUAD-like is a computational state, not pathology. Classifier-transform alternatives and their external validation are retained in the audit."
+}

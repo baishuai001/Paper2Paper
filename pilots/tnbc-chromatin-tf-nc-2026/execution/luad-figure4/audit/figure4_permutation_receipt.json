@@ -1,0 +1,98 @@
+{
+  "status": "passed",
+  "permutations": 5000,
+  "threads": 32,
+  "permutation_definition": "survival times shuffled; event status, median activity groups and clinical covariates fixed",
+  "random_seed": 20260820,
+  "RNGkind": "L'Ecuyer-CMRG",
+  "summary": [
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "OS",
+      "model": "univariable",
+      "observed_significant_TFs": 7,
+      "null_mean": 4.8412,
+      "null_sd": 2.9349,
+      "empirical_p": 0.26,
+      "fold_enrichment": 1.4459,
+      "permutations": 5000
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "OS",
+      "model": "multivariable",
+      "observed_significant_TFs": 3,
+      "null_mean": 2.0768,
+      "null_sd": 2.1131,
+      "empirical_p": 0.3242,
+      "fold_enrichment": 1.4445,
+      "permutations": 5000
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "RFS",
+      "model": "univariable",
+      "observed_significant_TFs": 5,
+      "null_mean": 1.8822,
+      "null_sd": 1.6958,
+      "empirical_p": 0.0792,
+      "fold_enrichment": 2.6565,
+      "permutations": 5000
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "RFS",
+      "model": "multivariable",
+      "observed_significant_TFs": 4,
+      "null_mean": 1.2814,
+      "null_sd": 1.3598,
+      "empirical_p": 0.07,
+      "fold_enrichment": 3.1216,
+      "permutations": 5000
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "OS",
+      "model": "univariable",
+      "observed_significant_TFs": 16,
+      "null_mean": 9.2828,
+      "null_sd": 3.6757,
+      "empirical_p": 0.0404,
+      "fold_enrichment": 1.7236,
+      "permutations": 5000
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "OS",
+      "model": "multivariable",
+      "observed_significant_TFs": 10,
+      "null_mean": 5.7154,
+      "null_sd": 3.3064,
+      "empirical_p": 0.1402,
+      "fold_enrichment": 1.7497,
+      "permutations": 5000
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "RFS",
+      "model": "univariable",
+      "observed_significant_TFs": 1,
+      "null_mean": 1.6244,
+      "null_sd": 1.353,
+      "empirical_p": 0.7864,
+      "fold_enrichment": 0.6156,
+      "permutations": 5000
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "RFS",
+      "model": "multivariable",
+      "observed_significant_TFs": 2,
+      "null_mean": 2.4104,
+      "null_sd": 1.6273,
+      "empirical_p": 0.6782,
+      "fold_enrichment": 0.8297,
+      "permutations": 5000
+    }
+  ]
+}

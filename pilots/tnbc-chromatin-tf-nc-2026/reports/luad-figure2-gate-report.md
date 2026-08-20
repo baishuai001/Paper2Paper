@@ -1,5 +1,7 @@
 # LUAD Figure 2 一级闸门最终报告
 
+> **历史记录，已被取代。** 本报告记录 2026-08-14 采用额外“样本失败比例不超过 20%”规则时的 v1 决策。该规则不属于 TNBC 锚点文献的 Figure 2 入选逻辑，后经用户明确要求废止，并由原文式 v2 协议及完整 Figure 2 运行取代。当前结论请以 [`luad-figure2-final-report.md`](luad-figure2-final-report.md) 为准；下文仅为 Paper2Paper 的决策溯源，不能解释为当前项目状态。
+
 日期：2026-08-14
 
 最终判定：`FAIL_DATA`

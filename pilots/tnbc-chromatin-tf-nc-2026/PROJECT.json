@@ -3,7 +3,7 @@
   "workspace_kind": "pilot",
   "project_id": "P2P-TNBC-CHROMATIN-TF-NC-2026",
   "title": "TNBC chromatin-informed regulatory framework transfer pilot",
-  "stage": "luad_figure2_fail_data_stopped",
+  "stage": "luad_figures1_to5_complete_interpretation_limited",
   "selected_route_id": "luad-vs-lusc-figure1",
   "anchor": {
     "title": "A chromatin-informed transcriptional regulatory framework to stratify patients and guide therapy selection in triple-negative breast cancer",
@@ -27,5 +27,5 @@
     "compute": "All real data processing and analysis must run on the project cloud server under /media/desk16/iy13202/projects/Paper2Paper; the local checkout is limited to source materials, Git-tracked specifications, code, compact results and reports.",
     "skills": ""
   },
-  "stop_rule": "LUAD Figure 2 FAIL_DATA on 2026-08-14: all 19 strict LUAD cell-line ATAC libraries were processed under the frozen hard QC; 14 passed and 5 failed (26.32%), exceeding the pre-registered maximum failure fraction of 20%. The 22-patient TCGA open matrix was audited. All 13 PDX raw datasets were downloaded, but after the cell-line gate locked, one active PDX job was stopped with an explicit receipt and the remaining 12 were not launched; neither category is counted as a PDX QC failure. Figure 2, Supplementary Figure 3 and Supplementary Figure 4A-C are NOT_GENERATED_DUE_FAIL_DATA; promoter, motif, robustness and Figure 3 analyses were not evaluated. Figure 1 clinical/molecular annotations and Supplementary Figures 1-2 remain independently verified PASS. Stop here; do not rescue by changing thresholds, samples or LUAD comparison."
+  "stop_rule": "Figures 1-5 and their planned supplementary figures are complete under the user-approved TNBC-anchor-aligned protocol. Do not claim a broad three-system motif program: 31 chromatin-prioritized HC-TFs were identified, but only FOXA3, NFATC4 and XBP1 met the strict three-system motif rule. Prognostic evidence is exploratory and does not reproduce as a robust cross-cohort framework. Five drug-TF associations replicated across at least two cell-line screens, but none passed the prespecified PDX validation rule; therefore no therapy-selection claim is supported. Further work requires a newly preregistered validation or redesigned biological question, not post hoc threshold relaxation."
 }

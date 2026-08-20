@@ -1,0 +1,6 @@
+d1508e5633bd933b32df667632a95b456dc778577b0ab045a640f82ee72c9d71  tmp/tnbc-chromatin-tf-nc-2026/luad-figure1-v2/audit/figure1_independent_verification.json
+ca5af7978c17ed21861f4308ccb2963b37efbba999e65c33cc80ce059b6feede  tmp/tnbc-chromatin-tf-nc-2026/luad-figure4/audit/figure4_independent_verification.json
+974422ebb5dc8b10f6c7bd42c783ea4894c446db70d41ebd26ce3c774c80ffce  tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/audit/figure5_cellline_input_receipt.json
+fd05eee2e0ce214ff745c7c6783e91890e10a1f64e6327f8d8a7c2a6fbf0d8c7  tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/audit/pdxe_lung_classifier_receipt.json
+823e5bc4899c02ad31888edfc6250cd0b1b2d0ac2829318c632725528f4c3568  tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/data/processed/figure5_cellline_inputs.rds
+0efd02cd92bfbdfa4af73fadb3f8bb33d4e24d360b5ae73ed1e735dcd987202e  tmp/tnbc-chromatin-tf-nc-2026/luad-figure5/results/pdxe_projection/PDXE_V2_viper_activity.tsv.gz

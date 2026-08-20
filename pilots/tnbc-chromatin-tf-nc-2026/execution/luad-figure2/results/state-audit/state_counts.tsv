@@ -1,0 +1,4 @@
+system	total_samples	classifiable_samples	TRU_like_samples	NKX2_1_high_TRU_evaluable_samples	NKX2_1_high_TRU_selected_samples
+patient	22	21	6	22	5
+PDX	13	13	5	0	0
+cell_line	19	19	10	19	3

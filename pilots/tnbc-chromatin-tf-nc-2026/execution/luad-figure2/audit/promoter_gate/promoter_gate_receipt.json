@@ -1,0 +1,25 @@
+{
+  "HC_TFs_after_promoter_and_activity": 31,
+  "PDX_n": 13,
+  "cell_line_n": 19,
+  "frozen_tf_count": 158,
+  "frozen_tf_file": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/promoter_gate/frozen_figure2_luad_tf_input.tsv",
+  "frozen_tf_parent_file": "/media/desk16/iy13202/projects/Paper2Paper/pilots/tnbc-chromatin-tf-nc-2026/execution/luad-figure1/results/tables/tcga_specific_TFs.tsv",
+  "frozen_tf_parent_sha256": "6f449276a97b8c66cbf93bd2a4ca6d51095fa426015dc9046a7c084431d5037b",
+  "frozen_tf_selection_rule": "discovery_category == LUAD (all Figure 1 discovery TFs)",
+  "frozen_tf_sha256": "9c43e95cc84135c061140c24afc916bb6f237976ede2b70985ec6bb06dd28cb5",
+  "gencode": "v47 basic exact-symbol candidate transcripts; protein-coding genome-wide annotation universe",
+  "gencode_sha256": "8858ec2557c2904f91e44aeda762759cd998ce663774245710cb52ad4dc334ee",
+  "generated_utc": "2026-08-16T23:21:10.353994+00:00",
+  "motif_gate_not_yet_evaluated": true,
+  "output_tables": [
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/promoter_gate/sample_tf_promoter_accessibility.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/promoter_gate/system_tf_promoter_activity_summary.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/promoter_gate/tf_promoter_gate_summary.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/promoter_gate/promoter_gate_sensitivity_summary.tsv",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/supplementary_figure3/peak_genomic_annotation.tsv"
+  ],
+  "patient_n": 22,
+  "primary_definition": "PRIMARY_anchor_promoter_tcga_cpm1_both",
+  "triple_system_promoter_accessible_TFs": 32
+}

@@ -1,0 +1,19 @@
+{
+  "checks_failed": 0,
+  "checks_passed": 241,
+  "checks_total": 241,
+  "failed_checks": [],
+  "generated_utc": "2026-08-17T22:17:53.688412+00:00",
+  "positive_control_support_by_system": {
+    "PDX": 6,
+    "cell_line": 4,
+    "patient": 7
+  },
+  "status": "PASS",
+  "triple_hc_tf_count": 3,
+  "triple_hc_tfs": [
+    "FOXA3",
+    "NFATC4",
+    "XBP1"
+  ]
+}

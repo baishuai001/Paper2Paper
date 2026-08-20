@@ -1,0 +1,24 @@
+{
+  "counts": {
+    "PDX": 13,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "generated_utc": "2026-08-16T22:32:56.467578+00:00",
+  "manifest": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/manifests/figure2_atomic/figure2_atomic_sample_manifest.tsv",
+  "one_row_per_independent_biological_sample": true,
+  "post_sequencing_read_or_peak_threshold_used_for_exclusion": false,
+  "predeclared_counts": {
+    "PDX": 13,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "shared_by": [
+    "Figure2",
+    "SupplementaryFigure3",
+    "SupplementaryFigure4A-C"
+  ],
+  "zero_peak_samples_retained": [
+    "MGH9243"
+  ]
+}

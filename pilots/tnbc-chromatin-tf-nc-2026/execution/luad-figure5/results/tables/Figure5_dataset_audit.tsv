@@ -1,0 +1,4 @@
+dataset	raw_cells	raw_drugs	mapped_LUAD_lines	paired_cell_drug_rows	eligible_drugs_n10_AACgt0.2	sensitivity_metric
+GDSC2	1084	190	48	7484	117	aac_recomputed
+CTRPv2	887	544	59	26678	383	aac_recomputed
+PRISM	480	1437	45	62382	768	aac_recomputed

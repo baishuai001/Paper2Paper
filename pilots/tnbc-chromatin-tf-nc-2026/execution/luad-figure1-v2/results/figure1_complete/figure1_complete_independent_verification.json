@@ -1,0 +1,61 @@
+{
+  "verification_status": "passed",
+  "checks": [
+    {
+      "check": "tcga_manifest.tsv frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "gse81089_manifest.tsv frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "gse41271_manifest.tsv frozen group counts",
+      "passed": true
+    },
+    {
+      "check": "158 LUAD TFs remain the Figure 2 input",
+      "passed": true
+    },
+    {
+      "check": "cross-platform table covers every discovered TF once",
+      "passed": true
+    },
+    {
+      "check": "Figure1_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "Figure1_complete.pdf page count",
+      "passed": true
+    },
+    {
+      "check": "Figure1_complete.pdf pages have nonzero geometry",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure1_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure1_complete.pdf page count",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure1_complete.pdf pages have nonzero geometry",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2_complete.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2_complete.pdf page count",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2_complete.pdf pages have nonzero geometry",
+      "passed": true
+    }
+  ]
+}

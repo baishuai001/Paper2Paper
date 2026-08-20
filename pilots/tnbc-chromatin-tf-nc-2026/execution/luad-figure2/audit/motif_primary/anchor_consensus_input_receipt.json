@@ -1,0 +1,79 @@
+{
+  "all_samples_by_system": {
+    "PDX": 13,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "analysis_role": "primary_TNBC_anchor_analog_all_peaks_shared_consensus_background",
+  "anchor_analogy_limitation": "the TNBC capsule names but does not provide construction code for its consensus background; this reproducible LUAD consensus uses the same shared-accessible-universe role rather than claiming byte-level reconstruction",
+  "author_code_basis": {
+    "background_rule": "one shared consensus accessible-peak BED reused across samples",
+    "manual_peak_count_matching_in_author_script": false,
+    "query_rule": "one sample peak BED; HOMER -size 200",
+    "script": "Figure2/05B-HOMER.sh"
+  },
+  "background_gc_mean": 0.49255422669574683,
+  "background_gc_sd": 0.10909457821626768,
+  "background_sha256": "a6942045a34590e9ded9140f982414ce1763ab3e3947b50a09d87ccddea6d9e5",
+  "background_source": "union of TCGA-LUAD and TCGA-LUSC cancer-type accessible peaks plus all predefined LUAD patient, PDX, and cell-line target peaks; overlapping intervals merged to consensus CREs and recentered to 200 bp",
+  "blacklist": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/reference/hg38-blacklist.v2.bed",
+  "blacklist_sha256": "31c69342df43bbc19dd8ef2886611a8150cb53e90f341de14d30e742c9251737",
+  "consensus_merge_iterations": 2,
+  "explicitly_not_testable_samples": [
+    {
+      "reason": "NO_CANONICAL_200BP_PEAKS_AT_MACS2_Q0.01",
+      "sample_id": "MGH1065",
+      "system": "PDX"
+    },
+    {
+      "reason": "NO_CANONICAL_200BP_PEAKS_AT_MACS2_Q0.01",
+      "sample_id": "MGH9243",
+      "system": "PDX"
+    }
+  ],
+  "fasta_fai_sha256": "3b425de206296a5c8053023fa5ca61da43cfe78c1737c12e58c83367c7e83c21",
+  "fixed_peak_width_bp": 200,
+  "gc_control": "same 200-bp background for all samples plus HOMER oligonucleotide normalization",
+  "generated_utc": "2026-08-17T07:48:08.323080+00:00",
+  "input_manifest_sha256": "5b74d29a22ae41ab4679eef29072df0a36b5ac20cbf23c6106bedd63794c2966",
+  "manual_target_gc_matching": false,
+  "manual_target_peak_count_matching": false,
+  "motif_testable_samples_by_system": {
+    "PDX": 11,
+    "cell_line": 19,
+    "patient": 22
+  },
+  "pooled_background_input_peak_records": 3263625,
+  "same_background_file_reused_for_all_three_systems": true,
+  "shared_background_peak_count": 292983,
+  "target_and_background_lengths_are_exactly_200bp": true,
+  "target_peak_count_by_system": {
+    "PDX": {
+      "max": 44133,
+      "median": 9425,
+      "min": 0
+    },
+    "cell_line": {
+      "max": 41973,
+      "median": 13539,
+      "min": 4491
+    },
+    "patient": {
+      "max": 131314,
+      "median": 113517.0,
+      "min": 101789
+    }
+  },
+  "tcga_source_stats": {
+    "LUAD": {
+      "blacklist_removed": 820,
+      "deduplicated_usable": 138315,
+      "input_rows": 139135
+    },
+    "LUSC": {
+      "blacklist_removed": 1232,
+      "deduplicated_usable": 116417,
+      "input_rows": 117649
+    }
+  }
+}

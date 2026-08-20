@@ -1,0 +1,3 @@
+scenario	q_threshold	prevalence_threshold	patient_required	PDX_required	cell_line_required	triple_system_hc_tf_count	triple_system_hc_tfs
+primary_anchor	1e-05	0.5	11	7	10	3	FOXA3;NFATC4;XBP1
+relaxed_q05_half_samples	0.05	0.5	11	7	10	5	ETV1;FOXA3;NFATC4;XBP1;ZNF75D

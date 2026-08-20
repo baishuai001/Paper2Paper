@@ -1,0 +1,135 @@
+{
+  "status": "passed",
+  "HC_TFs": 31,
+  "endpoint_audit": [
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "OS",
+      "n_complete": 178,
+      "events_10year": 69,
+      "age_available": 178,
+      "sex_levels": 2,
+      "stage_levels": 4,
+      "smoking_levels": 2
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "RFS",
+      "n_complete": 177,
+      "events_10year": 69,
+      "age_available": 177,
+      "sex_levels": 2,
+      "stage_levels": 4,
+      "smoking_levels": 2
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "OS",
+      "n_complete": 467,
+      "events_10year": 165,
+      "age_available": 467,
+      "sex_levels": 2,
+      "stage_levels": 4,
+      "smoking_levels": 2
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "RFS",
+      "n_complete": 277,
+      "events_10year": 80,
+      "age_available": 277,
+      "sex_levels": 2,
+      "stage_levels": 3,
+      "smoking_levels": 2
+    }
+  ],
+  "nominal_multivariable_counts": [
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "OS",
+      "significant": 3,
+      "FDR_significant": 0
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "endpoint": "RFS",
+      "significant": 4,
+      "FDR_significant": 0
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "OS",
+      "significant": 10,
+      "FDR_significant": 1
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "endpoint": "RFS",
+      "significant": 2,
+      "FDR_significant": 0
+    }
+  ],
+  "overlap": [
+    {
+      "cohort": "GSE41271_LUAD",
+      "direction": "Favorable",
+      "OS_only": 2,
+      "overlap": 1,
+      "RFS_only": 3,
+      "overlap_TFs": "ETV1"
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "direction": "Adverse",
+      "OS_only": 0,
+      "overlap": 0,
+      "RFS_only": 0,
+      "overlap_TFs": ""
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "direction": "Favorable",
+      "OS_only": 9,
+      "overlap": 1,
+      "RFS_only": 0,
+      "overlap_TFs": "CREBRF"
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "direction": "Adverse",
+      "OS_only": 0,
+      "overlap": 0,
+      "RFS_only": 1,
+      "overlap_TFs": ""
+    }
+  ],
+  "KM_representatives": [
+    {
+      "cohort": "GSE41271_LUAD",
+      "TF": "ETV1"
+    },
+    {
+      "cohort": "GSE41271_LUAD",
+      "TF": "ZNF444"
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "TF": "CREBRF"
+    },
+    {
+      "cohort": "TCGA_LUAD",
+      "TF": "PHC2"
+    }
+  ],
+  "cox_exposure": "activity above versus at-or-below cohort/endpoint median",
+  "censoring_months": 120,
+  "multivariable_covariates": ["age", "sex", "pathologic stage", "smoking history"],
+  "GSE41271_primary_activity_definition": "TCGA regulon projected to GSE41271 microarray expression; all 31 HC-TFs",
+  "GSE41271_independent_network_sensitivity_TFs": 26,
+  "GSE41271_independent_network_missing_TFs": ["CREBRF", "CSRNP1", "ZBTB18", "ZNF33B", "ZNF75D"],
+  "package_versions": {
+    "R": "4.4.1",
+    "survival": "3.6.4",
+    "survminer": "0.5.0"
+  }
+}

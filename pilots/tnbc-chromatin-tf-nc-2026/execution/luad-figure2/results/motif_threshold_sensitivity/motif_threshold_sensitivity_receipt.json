@@ -1,0 +1,65 @@
+{
+  "analysis_role": "supplementary_threshold_sensitivity_primary_unchanged",
+  "denominator_rule": "all frozen samples in each system; missing or untested combinations are unsupported",
+  "enrichment_rule": "HOMER enrichment q_value <= scenario threshold; no extra LOR filter",
+  "generated_utc": "2026-08-19T15:18:25.261194+00:00",
+  "input": "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/results/motif_primary/anchor_consensus_author/anchor_consensus_sample_tf_best_motif.tsv",
+  "input_sha256": "3e24b096b1beca36015fa456292d0a0132ff180e918db6dd30617851aa17a8bf",
+  "motif_testable_hc_tf_count": 20,
+  "motif_testable_hc_tfs": [
+    "CREB3L2",
+    "E2F5",
+    "ELF3",
+    "ETV1",
+    "FOXA3",
+    "FOXD2",
+    "NFATC4",
+    "NR3C2",
+    "XBP1",
+    "ZBTB18",
+    "ZNF141",
+    "ZNF19",
+    "ZNF254",
+    "ZNF281",
+    "ZNF33A",
+    "ZNF33B",
+    "ZNF341",
+    "ZNF444",
+    "ZNF540",
+    "ZNF75D"
+  ],
+  "outputs": {
+    "motif_threshold_sensitivity_scenarios.tsv": "b51a9cc11c6a9cfa7b5538b217b970ae8cdfd823d70f171273a69f79a671855d",
+    "motif_threshold_sensitivity_system_tf.tsv": "5dcb99eb6dbe03dcab588d6a47364532a198c0ac4757d7ca9d6de92bb64d3d9a",
+    "motif_threshold_sensitivity_triple_system_tfs.tsv": "14c6461f9b99b8ef705de3b32df4d9677904f2be422fb96c504b859f3dd6169f"
+  },
+  "scenarios": [
+    {
+      "PDX_required": 7,
+      "cell_line_required": 10,
+      "patient_required": 11,
+      "prevalence_threshold": "0.5",
+      "q_threshold": "1e-05",
+      "scenario": "primary_anchor",
+      "triple_system_hc_tf_count": 3,
+      "triple_system_hc_tfs": "FOXA3;NFATC4;XBP1"
+    },
+    {
+      "PDX_required": 7,
+      "cell_line_required": 10,
+      "patient_required": 11,
+      "prevalence_threshold": "0.5",
+      "q_threshold": "0.05",
+      "scenario": "relaxed_q05_half_samples",
+      "triple_system_hc_tf_count": 5,
+      "triple_system_hc_tfs": "ETV1;FOXA3;NFATC4;XBP1;ZNF75D"
+    }
+  ],
+  "selection_rule": "harmonized JASPAR-first/CIS-BP-fallback best motif per sample and TF",
+  "status": "PASS",
+  "system_sizes": {
+    "PDX": 13,
+    "cell_line": 19,
+    "patient": 22
+  }
+}

@@ -209,13 +209,33 @@ def main() -> None:
         default="full JASPAR2024 plus CIS-BP2.00 database sensitivity analysis",
     )
     parser.add_argument(
+        "--manifest-relative",
+        default="data/processed/motif_equivalence/harmonized_200bp/harmonized_motif_manifest.tsv",
+    )
+    parser.add_argument(
+        "--background-relative",
+        default="data/processed/motif_equivalence/harmonized_200bp/LUSC_accessible_common_GC_matched_background.bed",
+    )
+    parser.add_argument(
+        "--output-prefix",
+        default="harmonized",
+        help="Filename prefix only; defaults preserve the completed diagnostic audit paths.",
+    )
+    parser.add_argument(
         "--prefer-jaspar-then-cisbp",
         action="store_true",
         help="Match the TNBC author logic: use JASPAR motifs for a TF when available and CIS-BP only otherwise.",
     )
+    parser.add_argument(
+        "--not-testable-status",
+        default="NOT_TESTABLE_PEAK_COUNT_MATCH",
+        help="Status recorded for fixed samples that cannot enter HOMER; defaults preserve the sensitivity-analysis vocabulary.",
+    )
     args = parser.parse_args()
     root = args.run_root.resolve()
-    manifest = read_tsv(root / "data/processed/motif_equivalence/harmonized_200bp/harmonized_motif_manifest.tsv")
+    manifest_path = root / args.manifest_relative
+    background_path = root / args.background_relative
+    manifest = read_tsv(manifest_path)
     inventory = read_tsv(root / "results/motif_gate/hc_tf_motif_inventory.tsv")
     hc_tfs = {row["TF"] for row in inventory if row["motif_testable"] == "TRUE"}
     motif_database_path = root / args.motif_database_relative
@@ -265,7 +285,7 @@ def main() -> None:
         for tf in all_tfs:
             candidates = by_tf.get(tf, [])
             if not matchable:
-                status, selected = "NOT_TESTABLE_PEAK_COUNT_MATCH", None
+                status, selected = args.not_testable_status, None
             elif not candidates:
                 status, selected = "TESTED_MOTIF_NOT_AVAILABLE_OR_NOT_RETURNED", None
             else:
@@ -287,8 +307,8 @@ def main() -> None:
                     "motif_enriched_q1e-5": selected["motif_enriched_q1e-5"] if selected else "FALSE",
                 }
             )
-    write_tsv(out / "harmonized_all_selected_motif_results.tsv", all_rows)
-    write_tsv(out / "harmonized_sample_tf_best_motif.tsv", best_rows)
+    write_tsv(out / f"{args.output_prefix}_all_selected_motif_results.tsv", all_rows)
+    write_tsv(out / f"{args.output_prefix}_sample_tf_best_motif.tsv", best_rows)
 
     system_rows: list[dict[str, object]] = []
     for system in SYSTEM_ORDER:
@@ -318,7 +338,7 @@ def main() -> None:
                     "mean_log2_odds_ratio_tested": statistics.mean(lors) if lors else math.nan,
                 }
             )
-    write_tsv(out / "harmonized_system_tf_motif_summary.tsv", system_rows)
+    write_tsv(out / f"{args.output_prefix}_system_tf_motif_summary.tsv", system_rows)
 
     triple_rows: list[dict[str, object]] = []
     for tf in sorted(hc_tfs):
@@ -336,7 +356,7 @@ def main() -> None:
                 "triple_system_matchable_denominator": str(all(row["support_matchable_denominator"] == "TRUE" for row in rows)).upper(),
             }
         )
-    write_tsv(out / "harmonized_hc_tf_triple_system_summary.tsv", triple_rows)
+    write_tsv(out / f"{args.output_prefix}_hc_tf_triple_system_summary.tsv", triple_rows)
     # A lineage control remains a positive control even when it is also one of
     # the LUAD HC-TFs (ELF3 in the current frozen candidate set).
     positive_rows = [row for row in system_rows if row["TF"] in LINEAGE_CONTROLS]
@@ -347,8 +367,6 @@ def main() -> None:
     previous_path = root / "results/motif_gate/tf_motif_gate_summary.tsv"
     previous = read_tsv(previous_path) if previous_path.is_file() else []
     previous_triple = sum(row.get("triple_system_motif_enriched") == "TRUE" for row in previous)
-    background_path = root / "data/processed/motif_equivalence/harmonized_200bp/LUSC_accessible_common_GC_matched_background.bed"
-    manifest_path = root / "data/processed/motif_equivalence/harmonized_200bp/harmonized_motif_manifest.tsv"
     motif_count = sum(1 for line in motif_database_path.open(encoding="utf-8") if line.startswith(">"))
     target_denominators = sorted({float(row["target_total"]) for row in all_rows})
     background_denominators = sorted({float(row["background_total"]) for row in all_rows})
@@ -371,6 +389,9 @@ def main() -> None:
         "homer_effective_background_denominator_max": max(background_denominators) if background_denominators else None,
         "homer_effective_background_note": "the same input BED is reused; HOMER removes target-overlapping background regions and reports the resulting per-sample effective denominator",
         "shared_background_sha256": sha256(background_path),
+        "analysis_manifest": str(manifest_path),
+        "analysis_manifest_sha256": sha256(manifest_path),
+        "analysis_background": str(background_path),
         "harmonized_manifest_sha256": sha256(manifest_path),
         "completed_or_explicitly_not_testable_samples_by_system": {
             system: sum(row["system"] == system for row in manifest) for system in SYSTEM_ORDER

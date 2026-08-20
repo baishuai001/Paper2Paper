@@ -1,0 +1,65 @@
+{
+  "verification_status": "passed",
+  "manifest_counts": {
+    "LUAD": 183,
+    "LUSC": 80
+  },
+  "checks": [
+    {
+      "check": "official 183/80 histology counts",
+      "passed": true
+    },
+    {
+      "check": "263 unique GEO accessions",
+      "passed": true
+    },
+    {
+      "check": "gene-by-263-sample expression matrix is rectangular",
+      "passed": true
+    },
+    {
+      "check": "expression columns equal manifest order",
+      "passed": true
+    },
+    {
+      "check": "VIPER receipt passed",
+      "passed": true
+    },
+    {
+      "check": "VIPER used 263 samples",
+      "passed": true
+    },
+    {
+      "check": "VIPER group counts match manifest",
+      "passed": true
+    },
+    {
+      "check": "GSE41271 limma/msVIPER table is nonempty",
+      "passed": true
+    },
+    {
+      "check": "all core statistics are finite",
+      "passed": true
+    },
+    {
+      "check": "cross-platform TF replication recomputed independently",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2G_GSE41271_logFC_msviper.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2G_GSE41271_logFC_msviper.png exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2H_patient_cohort_TF_overlap.pdf exists",
+      "passed": true
+    },
+    {
+      "check": "SupplementaryFigure2H_patient_cohort_TF_overlap.png exists",
+      "passed": true
+    }
+  ]
+}

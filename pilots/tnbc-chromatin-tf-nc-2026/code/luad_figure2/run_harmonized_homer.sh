@@ -9,16 +9,23 @@ fi
 RUN_ROOT=$(realpath "$1")
 HOMER="$RUN_ROOT/tools/homer"
 REF="$RUN_ROOT/reference"
-INPUT="$RUN_ROOT/data/processed/motif_equivalence/harmonized_200bp"
-MANIFEST="$INPUT/harmonized_motif_manifest.tsv"
-BACKGROUND="$INPUT/LUSC_accessible_common_GC_matched_background.bed"
+INPUT=${INPUT_DIR:-"$RUN_ROOT/data/processed/motif_equivalence/harmonized_200bp"}
+MANIFEST=${MANIFEST_PATH:-"$INPUT/harmonized_motif_manifest.tsv"}
+BACKGROUND=${BACKGROUND_PATH:-"$INPUT/LUSC_accessible_common_GC_matched_background.bed"}
 MOTIF_DB=${MOTIF_DB:-"$REF/motifs/full_reference_both_databases.homer"}
 RESULTS=${RESULTS_DIR:-"$RUN_ROOT/results/motif_equivalence/harmonized_homer"}
 LOG=${LOG_DIR:-"$RUN_ROOT/logs/motif_equivalence"}
 PARALLEL_JOBS=${PARALLEL_JOBS:-4}
 THREADS_PER_JOB=${THREADS_PER_JOB:-2}
+PREPARSED_DIR=${PREPARSED_DIR:-}
+NOT_TESTABLE_STATUS=${NOT_TESTABLE_STATUS:-NOT_TESTABLE_PEAK_COUNT_MATCH}
 
 mkdir -p "$RESULTS" "$LOG"
+preparsed_args=()
+if [[ -n "$PREPARSED_DIR" ]]; then
+  mkdir -p "$PREPARSED_DIR"
+  preparsed_args=(-preparsedDir "$PREPARSED_DIR")
+fi
 for required in "$HOMER/bin/findMotifsGenome.pl" "$REF/hg38.fa" "$MANIFEST" "$BACKGROUND" "$MOTIF_DB"; do
   [[ -s "$required" ]] || { echo "Missing required input: $required" >&2; exit 2; }
 done
@@ -33,9 +40,9 @@ run_one() {
   local out="$RESULTS/$system/$slug"
   mkdir -p "$out"
   if [[ "$matchable" != "TRUE" ]]; then
-    printf 'status=NOT_TESTABLE_PEAK_COUNT_MATCH\nmanifest_sha256=%s\n' "$manifest_sha" > "$out/.not_testable"
-    printf 'status=NOT_TESTABLE_PEAK_COUNT_MATCH\nmanifest_sha256=%s\nbackground_sha256=%s\nmotif_sha256=%s\n' \
-      "$manifest_sha" "$background_sha" "$motif_sha" > "$out/.complete"
+    printf 'status=%s\nmanifest_sha256=%s\n' "$NOT_TESTABLE_STATUS" "$manifest_sha" > "$out/.not_testable"
+    printf 'status=%s\nmanifest_sha256=%s\nbackground_sha256=%s\nmotif_sha256=%s\n' \
+      "$NOT_TESTABLE_STATUS" "$manifest_sha" "$background_sha" "$motif_sha" > "$out/.complete"
     echo "HARMONIZED_HOMER_NOT_TESTABLE $system $sample"
     return 0
   fi
@@ -49,7 +56,7 @@ run_one() {
   fi
   rm -f "$out/.complete" "$out/.not_testable"
   findMotifsGenome.pl "$target" "$REF/hg38.fa" "$out" \
-    -bg "$BACKGROUND" -size 200 -nomotif -mknown "$MOTIF_DB" -p "$THREADS_PER_JOB" \
+    -bg "$BACKGROUND" -size 200 "${preparsed_args[@]}" -nomotif -mknown "$MOTIF_DB" -p "$THREADS_PER_JOB" \
     > "$LOG/${system}.${slug}.log" 2>&1
   [[ -s "$out/knownResults.txt" ]] || { echo "HOMER failed: $system/$sample" >&2; return 1; }
   printf 'status=COMPLETE\nmanifest_sha256=%s\nbackground_sha256=%s\nmotif_sha256=%s\ntarget_sha256=%s\n' \

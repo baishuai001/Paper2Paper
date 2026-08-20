@@ -1,0 +1,15 @@
+metric	value	source
+tcga_luad	516	frozen manifests and cross-platform replication summary
+tcga_lusc	501	frozen manifests and cross-platform replication summary
+gse_luad	108	frozen manifests and cross-platform replication summary
+gse_lusc	67	frozen manifests and cross-platform replication summary
+micro_luad	183	frozen manifests and cross-platform replication summary
+micro_lusc	80	frozen manifests and cross-platform replication summary
+micro_other	12	frozen manifests and cross-platform replication summary
+pdx	56	frozen manifests and cross-platform replication summary
+cell_line	103	frozen manifests and cross-platform replication summary
+luad_tf	158	frozen manifests and cross-platform replication summary
+lusc_tf	193	frozen manifests and cross-platform replication summary
+gse_luad_tf	95	frozen manifests and cross-platform replication summary
+micro_luad_tf	70	frozen manifests and cross-platform replication summary
+both_luad_tf	44	frozen manifests and cross-platform replication summary

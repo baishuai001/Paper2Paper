@@ -39,6 +39,7 @@ Key entry points:
 
 Large data and computation remain on the cloud server. Git contains code,
 manifests, compact result tables, figures, logs and receipts only. The earlier
-`FAIL_DATA` artifacts are retained under `execution/luad-figure2` as historical
-evidence of the superseded non-anchor protocol; new runs write the current
-original-style result over the active compact output paths.
+`FAIL_DATA` artifacts are retained under
+`execution/luad-figure2/audit/historical-v1-20pct-stop` (with the associated
+report under `execution/luad-figure2/historical-v1-20pct-stop`) as evidence of
+the superseded non-anchor protocol. They do not control the active v2 outputs.

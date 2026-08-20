@@ -1,6 +1,6 @@
 # LUAD Figure 1 数据审计
 
-> **2026-08-16 复核更正（优先于下文旧结论）**：GSE81089 官方肿瘤队列包含 108 例腺癌和 67 例鳞癌；现有流程因表达矩阵列名 `L608T_2122`、`L771T_1` 未映射回样本名 `L608T`、`L771T`，静默漏掉 2 例腺癌，故下文 106/67 及由此产生的外部复现统计均为待重跑结果。GSE81089 是 RNA-seq，不是 METABRIC microarray 的跨平台等价替代。既往冻结前未形成可追溯的 LUAD/LUSC 微阵列候选审计；该流程缺口已确认。TCGA 发现队列、158 个 TCGA-LUAD 特异 TF 及 Figure 2 的输入不受此样本映射错误影响。
+> **2026-08-20 最终修订**：已显式映射 `L608T_2122 -> L608T`、`L771T_1 -> L771T`，GSE81089 最终为 108 例 LUAD 和 67 例 LUSC；得到 95/158 个方向一致复现 TF。已另以 GSE41271 Illumina HumanWG-6 v3 microarray 独立建网并完成跨平台验证（183 LUAD、80 LUSC；70/158 个 TF 复现）。两个外部患者队列共同支持 44/158 个 TF。TCGA 发现的全部 158 个 TF仍是 Figure 2 输入，因此下游结果不因该两样本修订而变化。
 
 ## 审计结论
 
@@ -9,7 +9,8 @@
 | 层级 | 数据源 | LUAD | LUSC | 独立单位 | Figure 1 用途 |
 |---|---|---:|---:|---|---|
 | 患者发现 | TCGA-LUAD/TCGA-LUSC | 516 | 501 | 每位患者一个原发肿瘤 | 合并建 ARACNe3 网络、差异表达、msVIPER 和逐样本 VIPER |
-| 患者验证 | GSE81089 | 106 | 67 | 每位患者一个肿瘤 | 独立建网并验证 TF 方向 |
+| 患者验证 | GSE81089 | 108 | 67 | 每位患者一个肿瘤 | 独立 RNA-seq 建网并验证 TF 方向 |
+| 跨平台患者验证 | GSE41271 | 183 | 80 | 每位患者一个肿瘤；另 12 例其他肺癌进入建网 | 独立 microarray 建网并验证 TF 方向 |
 | PDX 验证 | NCI PDMR | 22 | 34 | 每位供体一个冻结规则选出的 PDX | 投射冻结的 TCGA regulon |
 | 细胞系验证 | DepMap 22Q2 | 76 | 27 | 每个 DepMap ID 一个模型 | 投射冻结的 TCGA regulon |
 
@@ -65,7 +66,8 @@ TNBC Figure 1 不是“四套 RNA-seq 并列验证”，而是以下四层证据
 | 层级 | 当前 LUAD 数据 | 与锚点关系 |
 |---|---|---|
 | 患者发现 | TCGA-LUAD/LUSC RNA-seq，516 + 501 = 1,017 | 对应 TCGA-BRCA RNA-seq 发现层；158 个 LUAD-specific TF 仍是 Figure 2 合法入口 |
-| 独立患者验证 | GSE81089 RNA-seq，正确目标应为 108 LUAD + 67 LUSC = 175 | 只是独立同平台验证，不等价于 METABRIC microarray 跨平台验证 |
+| 独立患者验证 | GSE81089 RNA-seq，108 LUAD + 67 LUSC = 175 | 独立同平台网络验证；95/158 个 LUAD TF 方向一致复现 |
+| 跨平台患者验证 | GSE41271 microarray，183 LUAD + 80 LUSC；另 12 个其他组织学样本用于建网 | 对应 METABRIC 所承担的跨平台独立网络角色；70/158 个 LUAD TF复现，44/158 同时被 GSE81089 支持 |
 | PDX | PDMR RNA-seq，22 LUAD + 34 LUSC = 56 | 对应 PDX 投射层 |
 | 细胞系 | DepMap 22Q2 RNA-seq，76 LUAD + 27 LUSC = 103 | 对应细胞系投射层 |
 
@@ -83,9 +85,9 @@ TNBC Figure 1 不是“四套 RNA-seq 并列验证”，而是以下四层证据
 
 GSE42127 的 176 个样本全部包含于 GSE41271，不能作为独立队列或与其相加。不同研究的已处理芯片矩阵不得直接拼接，也不得与 RNA-seq FPKM/TPM 拼接；若利用多个 GPL570 队列，应分别建网/投射后做效应合并，或从 raw CEL 联合标准化并先审计批次与组织学混杂。
 
-## 修复顺序与影响边界
+## 修复完成与影响边界
 
-1. 显式映射 `L608T_2122 -> L608T`、`L771T_1 -> L771T`，将 GSE81089 恢复为 108/67 后重跑该分支和 Supplementary Figure 1–2。
-2. 以 GSE41271 建独立 microarray ARACNe3/VIPER 验证层；其余芯片队列作为独立外部复现/效应合并，不盲目拼矩阵。
-3. 更新 Figure 1A、协议、样本流图、复现 TF 数和最终报告；旧的 97/158 复现结果在重跑前保持“暂定”。
-4. Figure 2 不等待上述修复：它按锚点同样的逻辑使用全部 158 个 TCGA 发现 TF，故 TCGA 入口和当前 ATAC 分析不受 GSE81089 两样本错误或微阵列缺口影响。
+1. GSE81089 两个别名已恢复并重跑；旧的 106/67 和 97/158 均作废。
+2. GSE41271 已完成独立 microarray ARACNe3/VIPER 验证；不同平台表达矩阵没有拼接。
+3. Figure 1、Supplementary Figures 1–2、协议、样本流图和最终报告均已更新并通过独立校验。
+4. Figure 2 按锚点逻辑继续使用全部 158 个 TCGA 发现 TF；Figure 2–5 无需因 GSE81089 两样本修订重算。

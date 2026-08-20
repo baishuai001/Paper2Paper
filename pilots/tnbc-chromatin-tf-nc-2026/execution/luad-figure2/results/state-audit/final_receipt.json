@@ -1,0 +1,94 @@
+{
+  "analysis_role": "diagnostic_state_restriction_primary_B0_unchanged",
+  "generated_utc": "2026-08-19T09:01:09.803195+00:00",
+  "immutable_hc_tf_count": 31,
+  "immutable_motif_testable_hc_tf_count": 20,
+  "interpretation_rule": "This recount can diagnose state mixing but cannot establish a TRU-specific regulatory discovery. Formal discovery requires a separately frozen Figure 1 TRU-versus-rest rerun.",
+  "nkx2_1_high_tru_limitation": "PDX has no exact matched RNA; ATAC proxy defines TRU-like state but cannot establish NKX2-1-high expression.",
+  "nkx2_1_high_tru_three_systems_evaluable": false,
+  "status": "COMPLETE",
+  "tru_like_sample_counts": {
+    "PDX": 5,
+    "cell_line": 10,
+    "patient": 6
+  },
+  "tru_like_three_systems_evaluable": true,
+  "upstream_receipts": {
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-figure2/audit/motif_background_sensitivity/final_receipt.json": "2413232785d3d6105f4fd028eafcf6780acab71854e79871cc4473ba1dec1b51",
+    "/media/desk16/iy13202/projects/Paper2Paper/tmp/tnbc-chromatin-tf-nc-2026/luad-state-audit/audit/state_classifier/state_classifier_receipt.json": "b723fd40d5ed0139782a16064cefc4e25dc46c2a7512cdc0e7a8078e90bcca0a"
+  },
+  "variant_summaries": [
+    {
+      "interpretation": "diagnostic_recount_of_immutable_31_HC_TFs_not_TRU_specific_discovery",
+      "layer": "TRU_like",
+      "triple_system_evaluable": "TRUE",
+      "triple_system_supported_hc_tf_count": 0,
+      "triple_system_supported_hc_tfs": "",
+      "variant": "B0"
+    },
+    {
+      "interpretation": "two_arm_diagnostic_only_no_PDX_NKX2_1_expression_label",
+      "layer": "NKX2_1_high_TRU_concordant",
+      "patient_cell_supported_hc_tf_count": 4,
+      "patient_cell_supported_hc_tfs": "FOXA3;NFATC4;XBP1;ZNF33A",
+      "triple_system_evaluable": "FALSE_PDX_HAS_NO_MATCHED_RNA",
+      "triple_system_supported_hc_tf_count": "NA",
+      "triple_system_supported_hc_tfs": "NA",
+      "variant": "B0"
+    },
+    {
+      "interpretation": "diagnostic_recount_of_immutable_31_HC_TFs_not_TRU_specific_discovery",
+      "layer": "TRU_like",
+      "triple_system_evaluable": "TRUE",
+      "triple_system_supported_hc_tf_count": 0,
+      "triple_system_supported_hc_tfs": "",
+      "variant": "B1"
+    },
+    {
+      "interpretation": "two_arm_diagnostic_only_no_PDX_NKX2_1_expression_label",
+      "layer": "NKX2_1_high_TRU_concordant",
+      "patient_cell_supported_hc_tf_count": 3,
+      "patient_cell_supported_hc_tfs": "FOXA3;NFATC4;XBP1",
+      "triple_system_evaluable": "FALSE_PDX_HAS_NO_MATCHED_RNA",
+      "triple_system_supported_hc_tf_count": "NA",
+      "triple_system_supported_hc_tfs": "NA",
+      "variant": "B1"
+    },
+    {
+      "interpretation": "diagnostic_recount_of_immutable_31_HC_TFs_not_TRU_specific_discovery",
+      "layer": "TRU_like",
+      "triple_system_evaluable": "TRUE",
+      "triple_system_supported_hc_tf_count": 0,
+      "triple_system_supported_hc_tfs": "",
+      "variant": "B2"
+    },
+    {
+      "interpretation": "two_arm_diagnostic_only_no_PDX_NKX2_1_expression_label",
+      "layer": "NKX2_1_high_TRU_concordant",
+      "patient_cell_supported_hc_tf_count": 5,
+      "patient_cell_supported_hc_tfs": "ELF3;FOXA3;NFATC4;XBP1;ZNF33A",
+      "triple_system_evaluable": "FALSE_PDX_HAS_NO_MATCHED_RNA",
+      "triple_system_supported_hc_tf_count": "NA",
+      "triple_system_supported_hc_tfs": "NA",
+      "variant": "B2"
+    },
+    {
+      "interpretation": "diagnostic_recount_of_immutable_31_HC_TFs_not_TRU_specific_discovery",
+      "layer": "TRU_like",
+      "triple_system_evaluable": "TRUE",
+      "triple_system_supported_hc_tf_count": 0,
+      "triple_system_supported_hc_tfs": "",
+      "variant": "B3"
+    },
+    {
+      "interpretation": "two_arm_diagnostic_only_no_PDX_NKX2_1_expression_label",
+      "layer": "NKX2_1_high_TRU_concordant",
+      "patient_cell_supported_hc_tf_count": 4,
+      "patient_cell_supported_hc_tfs": "E2F5;FOXA3;NFATC4;ZNF281",
+      "triple_system_evaluable": "FALSE_PDX_HAS_NO_MATCHED_RNA",
+      "triple_system_supported_hc_tf_count": "NA",
+      "triple_system_supported_hc_tfs": "NA",
+      "variant": "B3"
+    }
+  ]
+}

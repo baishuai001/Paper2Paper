@@ -1,0 +1,35 @@
+lung rows 639 patients 36 drugs 22 BAR available 566 
+                    drug n_patients n_models
+                  <char>      <int>    <int>
+ 1: LFW527 + binimetinib         30       30
+ 2:               BGJ398         28       28
+ 3:               CKX620         28       28
+ 4:               BKM120         27       27
+ 5: BKM120 + binimetinib         27       27
+ 6:               BYL719         27       27
+ 7:               HDM201         27       27
+ 8:  LCL161 + paclitaxel         27       27
+ 9:      BYL719 + LJM716         26       26
+10:               CLR457         26       26
+11:               LEE011         26       26
+12:               LGH447         26       26
+13:          binimetinib         26       26
+14:      BYL719 + LGH447         25       25
+15:           paclitaxel         25       25
+16:               CGM097         24       24
+17:               HSP990         24       24
+18:               LLM871         24       24
+19:            cetuximab         24       24
+20:               INC280         23       23
+21:            erlotinib         23       23
+22:            untreated         23       23
+23:                 <NA>         NA       NA
+24:                 <NA>         NA       NA
+25:                 <NA>         NA       NA
+26:                 <NA>         NA       NA
+27:                 <NA>         NA       NA
+28:                 <NA>         NA       NA
+29:                 <NA>         NA       NA
+30:                 <NA>         NA       NA
+                    drug n_patients n_models
+RNA columns 399 
