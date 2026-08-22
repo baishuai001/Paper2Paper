@@ -1,0 +1,56 @@
+{
+  "analysis_id": "luad-fdr05-hc45-primary-v1",
+  "status": "PASS",
+  "figure1": {
+    "LUAD_rule": "BH FDR <= 0.05 AND NES > 0 AND expression logFC > 0",
+    "LUSC_rule": "BH FDR <= 0.05 AND NES < 0 AND expression logFC < 0",
+    "TCGA_LUAD_candidates": 187,
+    "TCGA_LUSC_candidates": 248,
+    "TCGA_LUAD_same_direction_GSE81089": 88,
+    "TCGA_LUAD_same_direction_GSE41271": 60,
+    "TCGA_LUAD_same_direction_both": 33
+  },
+  "figure2": {
+    "candidate_TFs": 187,
+    "patient_promoter_open_TFs": 170,
+    "PDX_promoter_open_TFs": 59,
+    "cell_line_promoter_open_TFs": 63,
+    "triple_system_promoter_open_TFs": 46,
+    "HC_TFs": 45,
+    "motif_testable_HC_TFs": 25,
+    "at_least_one_system_motif_supported_HC_TFs": 19,
+    "author_priority_triple_system_motif_supported_HC_TFs": [
+      "CREBL2",
+      "FOXA3",
+      "MYBL1",
+      "NFATC4",
+      "XBP1"
+    ],
+    "all_database_union_triple_system_motif_supported_HC_TFs": 6
+  },
+  "figure3B": {
+    "minimum_shared_activating_HC_TFs": 2,
+    "activated_shared_targets_before_pair_filter": 310,
+    "nodes": 237,
+    "edges": 480,
+    "connected_components": 25,
+    "largest_component": 142,
+    "maximum_shared_HC_TFs": 3,
+    "inference": "descriptive; prior degree-preserving permutation yielded zero BH-FDR-significant target pairs"
+  },
+  "figure4": {
+    "primary_rule": "unadjusted selected-cutpoint log-rank P <= 0.05",
+    "horizon_months": 120,
+    "minimum_group_proportion": 0.2,
+    "GSE41271_LUAD_OS_hits": 29,
+    "GSE41271_LUAD_RFS_hits": 20,
+    "TCGA_LUAD_OS_hits": 34,
+    "TCGA_LUAD_DFS_hits": 14,
+    "interpretation": "exploratory screen; BH and maxstat-adjusted values retained as sensitivity analyses"
+  },
+  "quality_control": {
+    "official_figure1_2_pdf_atoms_poppler_pass": 51,
+    "official_figure4_v5_pdf_atoms_poppler_pass": 22,
+    "final_composite_pdfs_pass": 8
+  }
+}

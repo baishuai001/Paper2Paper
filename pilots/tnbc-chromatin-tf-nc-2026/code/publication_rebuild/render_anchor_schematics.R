@@ -70,7 +70,7 @@ stopifnot(
   counts$micro_luad == 183L,
   counts$micro_lusc == 80L,
   counts$micro_other == 12L,
-  counts$luad_tf == 158L
+  counts$luad_tf == 187L
 )
 
 ink <- "#111111"
@@ -136,54 +136,58 @@ save_png_copy <- function(pdf_path, png_path) {
 }
 
 render_figure1a <- function(path) {
-  open_device(path, 8.5, 5.0)
+  open_device(path, 9.2, 5.2)
   panel_letter("A")
 
-  # Discovery arm.
-  box(0.30, 0.57, 0.55, 0.67)
-  txt("RNA-seq discovery", 0.30, 0.855, fontsize = 10.2, bold = TRUE)
-  txt(sprintf("TCGA primary tumours  n = %d", nrow(tcga)), 0.135, 0.79,
-      fontsize = 8.3, just = "left")
+  # Discovery arm.  All objects remain inside this frame; the earlier version
+  # allowed the VIPER box to cross the validation-frame boundary.
+  box(0.30, 0.56, 0.54, 0.70)
+  txt("RNA-seq discovery", 0.30, 0.865, fontsize = 10.5, bold = TRUE)
+  txt(sprintf("TCGA primary tumours  n = %d", nrow(tcga)), 0.30, 0.79,
+      fontsize = 8.5)
   txt(sprintf("LUAD %d    LUSC %d", counts$tcga_luad, counts$tcga_lusc),
-      0.135, 0.745, fontsize = 7.7, col = muted, just = "left")
-  arrow_segment(0.22, 0.685, 0.30, 0.685)
-  box(0.37, 0.685, 0.13, 0.12, "ARACNe3\ninteractome", fontsize = 8.1)
-  arrow_segment(0.44, 0.685, 0.52, 0.685)
-  box(0.59, 0.685, 0.13, 0.12, "VIPER /\nmsVIPER", fontsize = 8.1)
-  box(0.37, 0.48, 0.16, 0.105, "Multi-sample\nanalysis", fontsize = 7.6)
-  box(0.59, 0.48, 0.16, 0.105, "Single-sample\nprojection", fontsize = 7.6)
-  plain_segment(0.37, 0.625, 0.37, 0.535)
-  plain_segment(0.59, 0.625, 0.59, 0.535)
-  txt(sprintf("%d LUAD-specific TFs", counts$luad_tf), 0.37, 0.36,
+      0.30, 0.745, fontsize = 7.9, col = muted)
+  arrow_segment(0.30, 0.705, 0.30, 0.645)
+  box(0.19, 0.575, 0.18, 0.12, "ARACNe3\ninteractome", fontsize = 8.1)
+  arrow_segment(0.285, 0.575, 0.35, 0.575)
+  box(0.45, 0.575, 0.18, 0.12, "VIPER /\nmsVIPER", fontsize = 8.1)
+  plain_segment(0.45, 0.515, 0.45, 0.475)
+  plain_segment(0.19, 0.475, 0.45, 0.475)
+  arrow_segment(0.19, 0.475, 0.19, 0.435)
+  arrow_segment(0.45, 0.475, 0.45, 0.435)
+  box(0.19, 0.38, 0.19, 0.105, "Multi-sample\nanalysis", fontsize = 7.6)
+  box(0.45, 0.38, 0.19, 0.105, "Single-sample\nprojection", fontsize = 7.6)
+  txt(sprintf("%d LUAD-specific TFs", counts$luad_tf), 0.19, 0.27,
       fontsize = 9.4, bold = TRUE, col = luad_col)
   txt(sprintf("%d tumours\n%d PDXs\n%d cell lines", nrow(tcga), counts$pdx, counts$cell_line),
-      0.59, 0.36, fontsize = 7.7, lineheight = 1.12)
+      0.45, 0.27, fontsize = 7.7, lineheight = 1.12)
 
   # Independent validation arm: one RNA-seq and one microarray network.
-  box(0.80, 0.57, 0.34, 0.67)
-  txt("Independent patient validation", 0.80, 0.855, fontsize = 10.2, bold = TRUE)
+  box(0.79, 0.56, 0.37, 0.70)
+  txt("Independent patient validation", 0.79, 0.865, fontsize = 10.5, bold = TRUE)
   txt(sprintf("GSE81089 RNA-seq\n%d LUAD + %d LUSC", counts$gse_luad, counts$gse_lusc),
-      0.70, 0.755, fontsize = 7.8)
+      0.69, 0.755, fontsize = 7.8)
   txt(sprintf("GSE41271 microarray\n%d LUAD + %d LUSC", counts$micro_luad, counts$micro_lusc),
       0.89, 0.755, fontsize = 7.8)
-  arrow_segment(0.70, 0.675, 0.70, 0.59)
-  arrow_segment(0.89, 0.675, 0.89, 0.59)
-  box(0.70, 0.53, 0.15, 0.11, "Independent\nARACNe3 + VIPER", fontsize = 7.3)
-  box(0.89, 0.53, 0.15, 0.11, "Independent\nARACNe3 + VIPER", fontsize = 7.3)
+  arrow_segment(0.69, 0.69, 0.69, 0.625)
+  arrow_segment(0.89, 0.69, 0.89, 0.625)
+  box(0.69, 0.565, 0.16, 0.11, "Independent\nARACNe3 + VIPER", fontsize = 7.3)
+  box(0.89, 0.565, 0.16, 0.11, "Independent\nARACNe3 + VIPER", fontsize = 7.3)
   txt(sprintf("%d/%d replicated", counts$gse_replicated, counts$luad_tf),
-      0.70, 0.405, fontsize = 8.2, bold = TRUE, col = luad_col)
+      0.69, 0.43, fontsize = 8.2, bold = TRUE, col = luad_col)
   txt(sprintf("%d/%d replicated", counts$micro_replicated, counts$luad_tf),
-      0.89, 0.405, fontsize = 8.2, bold = TRUE, col = luad_col)
-  plain_segment(0.70, 0.365, 0.70, 0.31)
-  plain_segment(0.89, 0.365, 0.89, 0.31)
-  plain_segment(0.70, 0.31, 0.89, 0.31)
-  arrow_segment(0.795, 0.31, 0.795, 0.255)
+      0.89, 0.43, fontsize = 8.2, bold = TRUE, col = luad_col)
+  plain_segment(0.69, 0.385, 0.69, 0.345)
+  plain_segment(0.89, 0.385, 0.89, 0.345)
+  plain_segment(0.69, 0.345, 0.89, 0.345)
+  arrow_segment(0.79, 0.345, 0.79, 0.30)
   txt(sprintf("%d TFs supported by both cohorts", counts$both_replicated),
-      0.795, 0.205, fontsize = 8.3, bold = TRUE)
+      0.79, 0.255, fontsize = 8.3, bold = TRUE)
+  txt("Independent replication is reported separately; it does not filter Figure 2 input.",
+      0.79, 0.19, fontsize = 7.1, col = muted)
 
-  arrow_segment(0.37, 0.30, 0.37, 0.155)
-  arrow_segment(0.795, 0.16, 0.53, 0.105, dashed = TRUE)
-  box(0.37, 0.08, 0.33, 0.09,
+  arrow_segment(0.19, 0.215, 0.19, 0.145)
+  box(0.30, 0.09, 0.48, 0.09,
       sprintf("Frozen Figure 2 input: all %d TCGA-discovered LUAD TFs", counts$luad_tf),
       fill = "#F4F6F7", border = luad_col, fontsize = 8.5, bold = TRUE)
   close_device()
@@ -237,26 +241,36 @@ render_figure2a <- function(path) {
   system_n <- manifest[, .N, by = system]
   n_lookup <- setNames(system_n$N, system_n$system)
 
-  open_device(path, 5.5, 4.8)
+  # Figure 2A is a wide schematic in the published anchor.  A square canvas
+  # forced the two evidence branches to cross labels in the previous build.
+  open_device(path, 7.5, 3.5)
   panel_letter("A")
-  txt("ATAC-seq (LUAD)", 0.68, 0.90, fontsize = 11, bold = TRUE)
-  txt(sprintf("%d primary tumours", n_lookup[["patient"]]), 0.12, 0.79,
+  txt("ATAC-seq (LUAD)", 0.68, 0.91, fontsize = 11, bold = TRUE)
+  txt(sprintf("%d primary tumours", n_lookup[["patient"]]), 0.08, 0.78,
       fontsize = 8.4, col = patient_col, just = "left")
-  txt(sprintf("%d LUAD PDX models", n_lookup[["PDX"]]), 0.12, 0.70,
+  txt(sprintf("%d LUAD PDX models", n_lookup[["PDX"]]), 0.08, 0.65,
       fontsize = 8.4, col = pdx_col, just = "left")
-  txt(sprintf("%d LUAD cell lines", n_lookup[["cell_line"]]), 0.12, 0.61,
+  txt(sprintf("%d LUAD cell lines", n_lookup[["cell_line"]]), 0.08, 0.52,
       fontsize = 8.4, col = cell_col, just = "left")
-  arrow_segment(0.43, 0.70, 0.60, 0.70)
-  box(0.76, 0.70, 0.28, 0.18, "Accessible chromatin\nprofiling", fontsize = 9)
-  txt(sprintf("VIPER-identified LUAD-specific TFs  n = %d", nrow(primary)),
-      0.10, 0.42, fontsize = 8.6, bold = TRUE, just = "left")
-  plain_segment(0.43, 0.42, 0.55, 0.42)
-  plain_segment(0.55, 0.42, 0.55, 0.52)
-  plain_segment(0.55, 0.42, 0.55, 0.29)
-  arrow_segment(0.55, 0.52, 0.68, 0.58)
-  arrow_segment(0.55, 0.29, 0.68, 0.29)
-  txt("Promoter\naccessibility", 0.80, 0.55, fontsize = 8.8)
-  txt("HOMER genome-wide enrichment\nof TF binding-site motifs", 0.80, 0.27, fontsize = 8.8)
+  arrow_segment(0.38, 0.65, 0.53, 0.65)
+  box(0.69, 0.65, 0.25, 0.24, "Accessible chromatin\nprofiling", fontsize = 9)
+
+  box(
+    0.24, 0.27, 0.38, 0.14,
+    sprintf("VIPER-identified LUAD-specific TFs  (n = %d)", nrow(primary)),
+    fill = "#F4F6F7", border = rule, fontsize = 8.4, bold = TRUE
+  )
+
+  # Both candidate identity and accessible regions are required for the two
+  # downstream readouts; the converging junction makes that logic explicit.
+  plain_segment(0.43, 0.27, 0.52, 0.27)
+  plain_segment(0.69, 0.53, 0.69, 0.43)
+  arrow_segment(0.69, 0.43, 0.52, 0.34)
+  plain_segment(0.52, 0.18, 0.52, 0.40)
+  arrow_segment(0.52, 0.40, 0.65, 0.40)
+  arrow_segment(0.52, 0.18, 0.65, 0.18)
+  txt("Promoter accessibility", 0.79, 0.40, fontsize = 8.8)
+  txt("HOMER genome-wide enrichment\nof TF binding-site motifs", 0.79, 0.18, fontsize = 8.8)
   close_device()
 }
 
@@ -332,7 +346,7 @@ render_figure2a(file.path(atomic_dir, "Figure2A_anchor_schematic.pdf"))
 render_supp4a(file.path(atomic_dir, "SupplementaryFigure4A_anchor_gate_schematic.pdf"))
 
 receipt <- data.table(
-  key = names(counts),
+  metric = names(counts),
   value = as.character(unlist(counts, use.names = FALSE))
 )
 fwrite(receipt, file.path(audit_dir, "anchor_schematic_counts.tsv"), sep = "\t")

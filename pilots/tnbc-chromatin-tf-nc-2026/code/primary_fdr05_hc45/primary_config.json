@@ -1,0 +1,30 @@
+{
+  "analysis_id": "luad-fdr05-hc45-primary-v1",
+  "figure1": {
+    "LUAD_rule": "BH FDR <= 0.05 AND NES > 0 AND expression logFC > 0",
+    "LUSC_mirror_rule": "BH FDR <= 0.05 AND NES < 0 AND expression logFC < 0",
+    "external_cohorts": ["GSE81089", "GSE41271"],
+    "external_role": "independent same-rule validation; not an additional discovery filter"
+  },
+  "figure2": {
+    "promoter_rule": "open in at least half of samples in each of patient, PDX and cell-line systems",
+    "activity_rule": "exclude only TFs whose mean LUAD NES is negative in all three systems",
+    "motif_rule": "JASPAR-first/CIS-BP-fallback; HOMER q <= 1e-5 in at least half of all samples per system",
+    "expected_input_TFs": 187,
+    "expected_HC_TFs": 45
+  },
+  "figure3B": {
+    "node": "activated shared target gene",
+    "edge": "two target genes are activated by at least two common HC-TFs",
+    "minimum_shared_HC_TFs": 2,
+    "plot_constructor": "checksum-locked TNBC Code Ocean Figure3/05"
+  },
+  "figure4": {
+    "horizon_months": 120,
+    "cutpoint": "maximally selected log-rank statistic",
+    "minimum_group_proportion": 0.2,
+    "primary_significance": "naive unadjusted log-rank P <= 0.05 at the selected cutpoint",
+    "multiplicity": "adjusted maxstat and BH values retained in supplementary tables but do not decide the primary display",
+    "interpretation": "exploratory association; not a multiplicity-controlled prognostic classifier"
+  }
+}

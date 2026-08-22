@@ -31,6 +31,7 @@ export PAPER2PAPER_REPRESENTATIVE_TFS_FILE="$output_root/data/representative_tfs
 python3 "$script_root/materialize_official_scripts.py" \
   --official-code-root "$official_code_root" \
   --output-root "$output_root" \
+  --figure3b-min-shared-tfs "${FIGURE3B_MIN_SHARED_TFS:-3}" \
   >"$output_root/logs/00_materialize.log" 2>&1
 
 Rscript "$script_root/prepare_luad_official_inputs.R" \

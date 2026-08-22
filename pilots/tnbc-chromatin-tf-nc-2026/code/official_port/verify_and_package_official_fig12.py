@@ -91,6 +91,12 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("run_root", type=Path)
     parser.add_argument("official_port_root", type=Path)
+    parser.add_argument("--expected-discovery-luad", type=int)
+    parser.add_argument("--expected-discovery-lusc", type=int)
+    parser.add_argument("--expected-hc-tfs", type=int)
+    parser.add_argument("--expected-motif-testable", type=int)
+    parser.add_argument("--expected-triple-tfs")
+    parser.add_argument("--expected-motif-supported", type=int)
     ns = parser.parse_args()
 
     run_root = ns.run_root.resolve()
@@ -209,15 +215,49 @@ def main() -> int:
     tf_availability = read_tsv(tf_availability_path)
     displayed = [r for r in tf_availability if truth(r["display_in_cross_system_heatmaps"])]
     missing = [r["TF"] for r in tf_availability if not truth(r["display_in_cross_system_heatmaps"])]
-    check("figure1::discovery_tf_count", len(tf_availability), 351, tf_availability_path)
-    check("figure1::cross_system_heatmap_tf_count", len(displayed), 350, tf_availability_path)
-    check("figure1::missing_heatmap_tf", missing, ["ZNF737"], tf_availability_path)
+    tcga_stats_path = (
+        run_root
+        / "adapter_final_corrected/data/Figure1/Tables_ForPlotting/TCGA_TR_activities_NES_viper.tsv"
+    )
+    tcga_stats = read_tsv(tcga_stats_path)
+    discovery = {
+        r["tf"].upper() for r in tcga_stats if r["category"] in {"LUAD", "LUSC"}
+    }
+    discovery_luad = {r["tf"].upper() for r in tcga_stats if r["category"] == "LUAD"}
+    discovery_lusc = {r["tf"].upper() for r in tcga_stats if r["category"] == "LUSC"}
+    availability_tfs = {r["TF"].upper() for r in tf_availability}
+    check("figure1::availability_equals_discovery_set", availability_tfs, discovery,
+          tf_availability_path)
+    if ns.expected_discovery_luad is not None:
+        check("figure1::LUAD_discovery_tf_count", len(discovery_luad),
+              ns.expected_discovery_luad, tcga_stats_path)
+    if ns.expected_discovery_lusc is not None:
+        check("figure1::LUSC_discovery_tf_count", len(discovery_lusc),
+              ns.expected_discovery_lusc, tcga_stats_path)
+    check(
+        "figure1::display_flag_matches_three_system_availability",
+        all(
+            truth(r["display_in_cross_system_heatmaps"])
+            == all(truth(r[k]) for k in ("available_TCGA", "available_PDX", "available_CellLines"))
+            for r in tf_availability
+        ),
+        True,
+        tf_availability_path,
+    )
 
     missing_tf_path = adapter_audit / "figure1_model_heatmap_missing_tf_audit.tsv"
     missing_tf = read_tsv(missing_tf_path)
-    check("figure1::znf737_audit_rows", len(missing_tf), 1, missing_tf_path)
-    check("figure1::znf737_regulon_targets", missing_tf[0]["tcga_regulon_target_count"], "35", missing_tf_path)
-    check("figure1::znf737_depmap_overlap", missing_tf[0]["depmap_expression_target_overlap"], "0", missing_tf_path)
+    check("figure1::missing_heatmap_audit_set",
+          {r["TF"].upper() for r in missing_tf}, set(missing), missing_tf_path)
+    heatmap_matrix_path = (
+        run_root
+        / "adapter_final_corrected/data/Figure1/Tables_ForPlotting/TCGA_TR_Activity_TNBC150_NonTNBC155.tsv"
+    )
+    with heatmap_matrix_path.open("r", encoding="utf-8", newline="") as handle:
+        matrix_rows = list(csv.reader(handle, delimiter="\t"))[1:]
+    matrix_tfs = {r[0].upper() for r in matrix_rows if r}
+    check("figure1::heatmap_matrix_equals_displayed_set", matrix_tfs,
+          {r["TF"].upper() for r in displayed}, heatmap_matrix_path)
 
     validation_manifest_path = adapter_audit / "external_validation_slot_manifest.tsv"
     validation_manifest = {r["dataset"]: r for r in read_tsv(validation_manifest_path)}
@@ -251,8 +291,28 @@ def main() -> int:
         run_root
         / "adapter_final_corrected/secondary_validation/GSE81089/data/Figure1/Tables_ForPlotting/TNBC_TCGA_METABRIC_comparision.tsv"
     )
-    check("validation::GSE41271_reproduced_LUAD_TFs", shared_luad_count(primary_overlap_path), 70, primary_overlap_path)
-    check("validation::GSE81089_reproduced_LUAD_TFs", shared_luad_count(secondary_overlap_path), 95, secondary_overlap_path)
+    primary_validation_stats_path = (
+        run_root
+        / "adapter_final_corrected/data/Figure1/Tables_ForPlotting/METABRIC_TR_activities_NES_viper.tsv"
+    )
+    secondary_validation_stats_path = (
+        run_root
+        / "adapter_final_corrected/secondary_validation/GSE81089/data/Figure1/Tables_ForPlotting/METABRIC_TR_activities_NES_viper.tsv"
+    )
+    primary_validation_luad = {
+        r["tf"].upper() for r in read_tsv(primary_validation_stats_path)
+        if r["category"] == "LUAD"
+    }
+    secondary_validation_luad = {
+        r["tf"].upper() for r in read_tsv(secondary_validation_stats_path)
+        if r["category"] == "LUAD"
+    }
+    check("validation::GSE41271_reproduced_LUAD_TFs",
+          shared_luad_count(primary_overlap_path),
+          len(discovery_luad & primary_validation_luad), primary_overlap_path)
+    check("validation::GSE81089_reproduced_LUAD_TFs",
+          shared_luad_count(secondary_overlap_path),
+          len(discovery_luad & secondary_validation_luad), secondary_overlap_path)
 
     pairing_path = adapter_audit / "figure2_tcga_rna_sample_id_mapping_summary.tsv"
     pairing = read_tsv(pairing_path)[0]
@@ -272,15 +332,23 @@ def main() -> int:
 
     hc_path = run_root / "adapter_final_corrected/data/Figure2/High_RNA_NES.tsv"
     hc_tfs = [line.strip().upper() for line in hc_path.read_text(encoding="utf-8").splitlines() if line.strip()]
-    check("figure2::hc_tf_count", len(set(hc_tfs)), 31, hc_path)
+    check("figure2::hc_tf_unique", len(hc_tfs), len(set(hc_tfs)), hc_path)
+    if ns.expected_hc_tfs is not None:
+        check("figure2::hc_tf_count", len(set(hc_tfs)), ns.expected_hc_tfs, hc_path)
 
     version_path = adapter_audit / "motif_analysis_version_boundary.tsv"
     version_rows = {r["analysis_slot"]: r for r in read_tsv(version_path)}
     formal = version_rows["FORMAL_PRIMARY_AUTHOR_PRIORITY"]
     candidate = version_rows["CANDIDATE_ANCHOR_VERSION_BOUNDARY"]
-    check("motif::formal_testable_hc_tf_count", formal["n_motif_testable_hc_tfs"], "20", version_path)
-    check("motif::formal_triple_count", formal["n_triple_system_tfs"], "3", version_path)
-    check("motif::formal_triple_tfs", formal["triple_system_tfs"], "FOXA3;NFATC4;XBP1", version_path)
+    if ns.expected_motif_testable is not None:
+        check("motif::formal_testable_hc_tf_count", formal["n_motif_testable_hc_tfs"],
+              str(ns.expected_motif_testable), version_path)
+    if ns.expected_triple_tfs is not None:
+        expected_triple = ";".join(sorted(filter(None, ns.expected_triple_tfs.upper().split(";"))))
+        observed_triple = ";".join(sorted(filter(None, formal["triple_system_tfs"].upper().split(";"))))
+        check("motif::formal_triple_tfs", observed_triple, expected_triple, version_path)
+        check("motif::formal_triple_count", formal["n_triple_system_tfs"],
+              str(len(expected_triple.split(";")) if expected_triple else 0), version_path)
     check("motif::formal_database_priority_violations", formal["database_priority_violations"], "0", version_path)
     check("motif::candidate_sensitivity_triple_count", candidate["n_triple_system_tfs"], "0", version_path)
     check("motif::candidate_not_formal", candidate["permitted_use"], "SENSITIVITY_AUDIT_ONLY_NOT_FORMAL_FIGURE", version_path)
@@ -292,17 +360,100 @@ def main() -> int:
 
     s4c_path = run_root / "runtime_final_corrected/audit/supplementary4c_empty_set_bugfix_manifest.tsv"
     s4c = read_tsv(s4c_path)[0]
+    adapter_manifest_path = adapter_audit / "adapter_object_manifest.tsv"
+    adapter_manifest = read_tsv(adapter_manifest_path)
+    inventory_source = Path(next(
+        r["source_path"] for r in adapter_manifest
+        if r["adapter_object"] == "Figure2_motif_database_map"
+    ))
+    inventory_rows = [r for r in read_tsv(inventory_source) if truth(r["motif_testable"])]
+    inventory_categories = {
+        "jaspar_only_count": sum(r["motif_database_category"] == "JASPAR_only" for r in inventory_rows),
+        "cisbp_only_count": sum(r["motif_database_category"] == "CIS-BP_only" for r in inventory_rows),
+        "both_count": sum(r["motif_database_category"] == "both" for r in inventory_rows),
+    }
     for field, expected in {
         "change_class": "ANCHOR_EMPTY_SET_BUGFIX",
         "changed_line_count": "3",
-        "jaspar_only_count": "0",
-        "cisbp_only_count": "8",
-        "both_count": "12",
+        "jaspar_only_count": str(inventory_categories["jaspar_only_count"]),
+        "cisbp_only_count": str(inventory_categories["cisbp_only_count"]),
+        "both_count": str(inventory_categories["both_count"]),
         "dummy_tf_added": "False",
         "eulerr_constructor_changed": "False",
         "palette_changed": "False",
     }.items():
         check(f"supplementary4c::{field}", s4c[field], expected, s4c_path)
+
+    figure2de_input_path = adapter_audit / "figure2de_input_receipt.tsv"
+    figure2de_input = {
+        row["metric"]: row["value"] for row in read_tsv(figure2de_input_path)
+    }
+    formal_best_table = read_tsv(Path(formal["best_motif_path"]))
+    formal_best_rows = sum(
+        r.get("motif_test_status", "TESTED") == "TESTED"
+        and r.get("TF_role", "LUAD_HC_TF")
+        in {"LUAD_HC_TF", "LUAD_HC_TF_AND_LINEAGE_POSITIVE_CONTROL"}
+        for r in formal_best_table
+    )
+    dynamic_figure2de_expected = {
+        "motif_testable_hc_tfs": formal["n_motif_testable_hc_tfs"],
+        "formal_best_motif_rows": str(formal_best_rows),
+        "duplicate_tf_sample_keys": "0",
+        "triple_system_supported": formal["n_triple_system_tfs"],
+    }
+    if ns.expected_motif_supported is not None:
+        dynamic_figure2de_expected["supported_in_at_least_one_system"] = str(
+            ns.expected_motif_supported
+        )
+    for metric, expected in dynamic_figure2de_expected.items():
+        check(f"figure2de_input::{metric}", figure2de_input[metric], expected,
+              figure2de_input_path)
+
+    figure2e_patch_path = (
+        run_root
+        / "runtime_final_corrected/audit/figure2e_luad_motif_bugfix_manifest.tsv"
+    )
+    figure2e_patch = read_tsv(figure2e_patch_path)[0]
+    for field, expected in {
+        "change_class": "LUAD_MOTIF_INPUT_BUGFIX_AND_DECLARED_ZOOM",
+        "official_source_unchanged": "True",
+        "supported_tf_count": figure2de_input["supported_in_at_least_one_system"],
+        "case_tf_count": "6",
+        "case_tf_sample_duplicate_keys": "0",
+        "etv1_unique_samples": "52",
+        "sd_size_direction_fixed": "True",
+        "full_observed_range_retained": "True",
+        "core_zoom_tfs": "FOXA3;NFATC4;XBP1",
+        "core_zoom_reuses_full_range_observations": "True",
+        "official_boxpoint_geometry_retained": "True",
+        "official_palette_retained": "True",
+    }.items():
+        check(f"figure2e_patch::{field}", figure2e_patch[field], expected,
+              figure2e_patch_path)
+
+    figure2e_runtime_path = (
+        run_root
+        / "adapter_final_corrected/results/visuals/Figure2/Figure2E_Runtime_Receipt.tsv"
+    )
+    figure2e_runtime = {
+        row["metric"]: row["value"] for row in read_tsv(figure2e_runtime_path)
+    }
+    for metric, expected in {
+        "summary_tf_count": figure2de_input["supported_in_at_least_one_system"],
+        "case_tf_count": "6",
+        "duplicate_case_tf_sample_keys": "0",
+    }.items():
+        check(f"figure2e_runtime::{metric}", figure2e_runtime[metric], expected,
+              figure2e_runtime_path)
+
+    for required_figure2e_pdf in (
+        "Figure2E_Motif_Enrichment_HC-TRs.pdf",
+        "Figure2E_Case_Examples_HC-TRs.pdf",
+        "Figure2E_Core_Zoom_HC-TRs.pdf",
+        "Figure2E_Complete_HC-TRs.pdf",
+    ):
+        path = figure2e_runtime_path.parent / required_figure2e_pdf
+        check(f"figure2e_output::{required_figure2e_pdf}", path.is_file(), True, path)
 
     substitution_path = run_root / "runtime_final_corrected/audit/runtime_substitution_manifest.tsv"
     substitutions = read_tsv(substitution_path)
@@ -357,7 +508,7 @@ def main() -> int:
         for suite, _ in pdf_roots
     }
     check("pdf::strict_primary_count", suite_counts["strict_primary"], 14, pdf_manifest_path)
-    check("pdf::final_primary_count", suite_counts["final_primary"], 21, pdf_manifest_path)
+    check("pdf::final_primary_count", suite_counts["final_primary"], 23, pdf_manifest_path)
     check("pdf::secondary_count", suite_counts["secondary_GSE81089"], 14, pdf_manifest_path)
     check("pdf::all_magic_ok", all(bool(r["pdf_magic_ok"]) for r in pdf_rows), True, pdf_manifest_path)
     check("pdf::all_first_pages_render", all(bool(r["first_page_render_ok"]) for r in pdf_rows), True, pdf_manifest_path)

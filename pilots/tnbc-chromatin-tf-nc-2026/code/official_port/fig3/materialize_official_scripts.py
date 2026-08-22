@@ -80,7 +80,7 @@ def replace_exact_count(text: str, old: str, new: str, expected: int, label: str
     return text.replace(old, new)
 
 
-def patch_script(name: str, source: str) -> str:
+def patch_script(name: str, source: str, figure3b_min_shared_tfs: int) -> str:
     patched = source
     source_old = 'source("/code/Static_Scripts/plotting_aesthetics.R")'
     source_new = (
@@ -128,6 +128,16 @@ def patch_script(name: str, source: str) -> str:
             "scatter_df$percent_HC_TF_overlap <- scatter_df$n_partners/nrow(HC_TRs)",
             f"{name}: dynamic HC-TF denominator",
         )
+        if figure3b_min_shared_tfs != 3:
+            patched = replace_once(
+                patched,
+                "min_shared_tfs <- 3  # Adjust threshold - targets must share at least 3 TFs",
+                (
+                    f"min_shared_tfs <- {figure3b_min_shared_tfs}  # Paper2Paper frozen LUAD parameter: "
+                    f"targets share at least {figure3b_min_shared_tfs} HC-TFs"
+                ),
+                f"{name}: explicit Figure 3B overlap parameter",
+            )
 
     if name == "06-Activity_Score_Heterogeneity_Across_Patients.R":
         patched = replace_once(
@@ -199,7 +209,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--official-code-root", required=True, type=Path)
     parser.add_argument("--output-root", required=True, type=Path)
+    parser.add_argument("--figure3b-min-shared-tfs", type=int, default=3)
     args = parser.parse_args()
+    if args.figure3b_min_shared_tfs < 1:
+        raise SystemExit("--figure3b-min-shared-tfs must be a positive integer")
 
     official_root = args.official_code_root.resolve()
     figure3_root = official_root / "Figure3"
@@ -233,7 +246,7 @@ def main() -> None:
                 f"expected {spec['sha256']}, found {source_hash}"
             )
         source_text = source_payload.decode("utf-8")
-        patched_text = patch_script(name, source_text)
+        patched_text = patch_script(name, source_text, args.figure3b_min_shared_tfs)
         patched_path = script_out / name
         patched_path.write_text(patched_text, encoding="utf-8", newline="")
 
@@ -273,10 +286,16 @@ def main() -> None:
                 "source_file": name,
                 "changed_plus_minus_lines": changed_lines,
                 "plot_constructor_changed": "NO",
+                "analysis_parameter_changed": (
+                    "YES" if name == "05-Generate_Regulon_Network.R" and args.figure3b_min_shared_tfs != 3 else "NO"
+                ),
                 "allowed_change_classes": (
                     "none"
                     if not diff
-                    else "path;LUAD semantic labels;expose commented official tables;LUAD representative IDs"
+                    else (
+                        "path;LUAD semantic labels;expose commented official tables;LUAD representative IDs;"
+                        "explicit Figure3B shared-TF threshold"
+                    )
                 ),
             }
         )

@@ -272,7 +272,14 @@ secondary_validation_activity <- read_activity(secondary_validation_activity_pat
 # missing activity score.  Restrict only these Figure 1 heatmap adapter objects
 # to TFs genuinely observed in all three systems; retain the full discovery
 # statistics for Figure 1B and the external-validation overlap.
-heatmap_tf_universe <- unique(toupper(rownames(tcga_activity_all)))
+# Figure 1C-E must start from the frozen Figure 1 discovery set, not from every
+# TF for which all three activity matrices happen to contain a row.  The latter
+# admitted SP110 even though it failed the FDR/direction rule, producing a
+# one-row mismatch when the official PDX/cell-line blocks reused the TCGA row
+# annotation.  Intersect the LUAD/LUSC discovery TFs with measured activity.
+heatmap_tf_universe <- unique(toupper(
+  tcga_stats[category %chin% c("LUAD", "LUSC"), tf]
+))
 heatmap_tf_availability <- data.table(
   TF = heatmap_tf_universe,
   available_TCGA = heatmap_tf_universe %chin% toupper(rownames(tcga_activity_all)),
@@ -366,7 +373,7 @@ write_tsv(
     "TCGA_TR_activities_NES_viper_ModelHeatmapsAvailable.tsv"
   ),
   "Figure1_model_heatmap_available_TFs", tcga_stats_path,
-  "Only official PDX/cell-line heatmap row selection uses the 350 TFs observed in all systems; Figure1B remains full"
+  "Official cross-system heatmaps use only Figure1-rule LUAD/LUSC TFs observed in all three systems; Figure1B remains full"
 )
 
 membership <- fread(tf_membership_path)
@@ -604,6 +611,10 @@ motif_inventory_path <- must_file(
   file.path(publication_root, "results", "supplementary_data", "Data_05", "hc_tf_motif_inventory.tsv")
 )
 motif_all_path <- must_file(
+  file.path(
+    figure2_root, "results", "motif_primary", "anchor_consensus_all_databases",
+    "anchor_consensus_all_databases_all_selected_motif_results.tsv"
+  ),
   file.path(figure2_root, "results", "motif_equivalence",
             "harmonized_all_selected_motif_results.tsv"),
   file.path(figure2_root, "motif-equivalence", "results", "full1944", "harmonized_all_selected_motif_results.tsv")
@@ -859,7 +870,7 @@ hc_path <- file.path(data_root, "Figure2", "High_RNA_NES.tsv")
 dir.create(dirname(hc_path), recursive = TRUE, showWarnings = FALSE)
 write.table(hc_tfs, hc_path, sep = "\t", quote = FALSE, row.names = FALSE, col.names = FALSE)
 record("Figure2_HC_TFs", promoter_gate_path, hc_path, length(hc_tfs), 1L,
-       "31 LUAD HC-TFs from the frozen promoter/activity gate")
+       sprintf("%d LUAD HC-TFs from the active promoter/activity gate", length(hc_tfs)))
 
 motif_best <- fread(motif_best_path)[grepl("HC_TF", TF_role)]
 motif_primary_all <- fread(motif_primary_all_path)
@@ -1034,11 +1045,14 @@ decorate_motif <- function(x) {
   x
 }
 motif_primary <- decorate_motif(motif_primary)
-# The formal Figure 2C/D input is exclusively the frozen author-priority run:
+# The formal Figure 2C/D/E input is exclusively the frozen author-priority run:
 # JASPAR rows whenever a JASPAR motif is available, with CIS-BP used only for
 # CIS-BP-only TFs. Complete two-database rows are written to separate files for
-# Supplementary Figure 4C and never mixed into the formal Figure 2 input.
-motif_formal_source <- motif_primary_all[toupper(TF) %chin% hc_tfs]
+# Supplementary Figure 4C and never mixed into the formal Figure 2 input.  The
+# plotting input must contain exactly one frozen best motif for each
+# TF-by-sample key; using the all-selected-motif table here duplicates ETV1 and
+# changes both the Figure 2E distributions and their statistics.
+motif_formal_source <- copy(motif_primary)
 motif_formal_source[, TF := toupper(TF)]
 motif_formal_source[, selected_database := fcase(
   grepl("^JASPAR", motif_token), "JASPAR2024",
@@ -1065,6 +1079,25 @@ if (nrow(formal_database_priority_violations)) {
   )
   stop(
     "Formal author-priority motif input contains database-priority violations.",
+    call. = FALSE
+  )
+}
+formal_plot_key_audit <- motif_formal_source[, .N, by = .(system, sample_id, TF)]
+formal_plot_duplicate_keys <- formal_plot_key_audit[N != 1L]
+if (nrow(formal_plot_duplicate_keys)) {
+  fwrite(
+    formal_plot_duplicate_keys,
+    file.path(audit_root, "motif_formal_plot_duplicate_keys.tsv"),
+    sep = "\t"
+  )
+  stop(
+    "Formal Figure2C-E motif input must contain one best motif per TF and sample.",
+    call. = FALSE
+  )
+}
+if (nrow(motif_formal_source) != nrow(motif_best_tested)) {
+  stop(
+    "Formal Figure2C-E motif row count differs from the frozen tested best-motif table.",
     call. = FALSE
   )
 }
@@ -1096,13 +1129,13 @@ cisbp_availability_path <- file.path(
 )
 write_tsv(
   motif_jaspar, jaspar_path, "Figure2_JASPAR_motif_author_priority",
-  motif_primary_all_path,
-  "Formal author-priority JASPAR rows for Figure2C-D"
+  motif_best_path,
+  "One frozen author-priority JASPAR best motif per TF/sample for Figure2C-E"
 )
 write_tsv(
   motif_cisbp, cisbp_path, "Figure2_CISBP_motif_author_fallback",
-  motif_primary_all_path,
-  "Formal CIS-BP rows only for TFs without JASPAR motifs, per author priority"
+  motif_best_path,
+  "One frozen CIS-BP best motif per TF/sample only for TFs without JASPAR motifs"
 )
 write_tsv(
   motif_availability_jaspar,
@@ -1120,14 +1153,17 @@ write_tsv(
 )
 
 inventory <- inventory[as.logical(motif_testable)]
-if (nrow(inventory) != 20L || uniqueN(toupper(inventory$TF)) != 20L) {
-  stop("Frozen formal motif-testable HC-TF set must contain exactly 20 TFs.",
-       call. = FALSE)
+if (!nrow(inventory) || uniqueN(toupper(inventory$TF)) != nrow(inventory) ||
+    any(!toupper(inventory$TF) %chin% hc_tfs)) {
+  stop(
+    "The active motif-testable inventory must contain unique HC-TFs only.",
+    call. = FALSE
+  )
 }
 inventory[, Database := fcase(
   motif_database_category == "both", "Both",
   motif_database_category == "JASPAR_only", "JASPAR_only",
-  motif_database_category == "CISBP_only", "CISBP_only",
+  motif_database_category == "CIS-BP_only", "CISBP_only",
   default = "Not HC-TR"
 )]
 compare <- inventory[, .(Database, TR = toupper(TF))]
@@ -1157,7 +1193,13 @@ for (column in c("TCGA", "PDX", "CellLines")) {
   if (!column %chin% names(support)) support[, (column) := FALSE]
 }
 support <- support[, .(TR = Motif.Name, TCGA, PDX, CellLines)]
-support[, hc_group := compare$Database[match(TR, compare$TR)]]
+support[, database_category := compare$Database[match(TR, compare$TR)]]
+support[, hc_group := fcase(
+  database_category == "Both", "Both",
+  database_category == "JASPAR_only", "JASPAR only",
+  database_category == "CISBP_only", "CISBP only",
+  default = "Not HC-TR"
+)]
 support[is.na(hc_group), hc_group := "Not HC-TR"]
 
 formal_triple_summary <- fread(motif_primary_triple_summary_path)
@@ -1176,17 +1218,9 @@ candidate_triple_tfs <- sort(unique(toupper(
 support_triple_tfs <- sort(unique(toupper(
   support[TCGA & PDX & CellLines, TR]
 )))
-expected_formal_triple_tfs <- sort(c("FOXA3", "NFATC4", "XBP1"))
-if (!identical(formal_triple_tfs, expected_formal_triple_tfs) ||
-    !identical(support_triple_tfs, expected_formal_triple_tfs)) {
+if (!identical(formal_triple_tfs, support_triple_tfs)) {
   stop(
-    "Formal Figure2D triple-system TFs must be exactly FOXA3, NFATC4 and XBP1.",
-    call. = FALSE
-  )
-}
-if (length(candidate_triple_tfs) != 0L) {
-  stop(
-    "Candidate-anchor sensitivity boundary changed; expected zero triple-system TFs.",
+    "Formal Figure2D triple-system TFs disagree between the parser receipt and plotting matrix.",
     call. = FALSE
   )
 }
@@ -1212,7 +1246,9 @@ fwrite(
       triple_summary_path = normalizePath(
         motif_candidate_triple_summary_path, mustWork = TRUE
       ),
-      n_motif_testable_hc_tfs = 20L,
+      n_motif_testable_hc_tfs = uniqueN(toupper(
+        fread(motif_candidate_best_path)[grepl("HC_TF", TF_role), TF]
+      )),
       n_triple_system_tfs = length(candidate_triple_tfs),
       triple_system_tfs = paste(candidate_triple_tfs, collapse = ";"),
       database_priority_violations = NA_integer_,
@@ -1223,12 +1259,48 @@ fwrite(
   sep = "\t",
   na = "NA"
 )
+supported_tfs <- sort(unique(support[TCGA | PDX | CellLines, TR]))
+support_for_plot <- support[TR %chin% supported_tfs]
+if (!nrow(support_for_plot) || uniqueN(support_for_plot$TR) != nrow(support_for_plot)) {
+  stop("Formal Figure2E requires at least one unique motif-supported HC-TF.", call. = FALSE)
+}
+fwrite(
+  support_for_plot[, .(
+    TF = TR, TCGA, PDX, CellLines, database_category, hc_group
+  )],
+  file.path(audit_root, "figure2de_supported_tf_manifest.tsv"),
+  sep = "\t"
+)
+fwrite(
+  data.table(
+    metric = c(
+      "motif_testable_hc_tfs", "formal_best_motif_rows",
+      "duplicate_tf_sample_keys", "supported_in_at_least_one_system",
+      "triple_system_supported", "cisbp_only_supported"
+    ),
+    value = c(
+      nrow(inventory), nrow(motif_formal_source),
+      nrow(formal_plot_duplicate_keys), length(supported_tfs),
+      length(support_triple_tfs),
+      sum(support_for_plot$database_category == "CISBP_only")
+    )
+  ),
+  file.path(audit_root, "figure2de_input_receipt.tsv"),
+  sep = "\t"
+)
+
 support_path <- file.path(data_root, "Figure2", "Motif", "JASPAR_TR_MotifEnrichment_Intersection_Sample_Groups.tsv")
-support_write <- as.data.frame(support[, .(TCGA, PDX, CellLines, hc_group)])
-rownames(support_write) <- support$TR
+support_write <- as.data.frame(
+  support_for_plot[, .(TCGA, PDX, CellLines, hc_group)]
+)
+rownames(support_write) <- support_for_plot$TR
 write_tsv(
   support_write, support_path, "Figure2_motif_support_matrix", motif_best_path,
-  "TF row names; system support and database category", row_names = TRUE
+  sprintf(
+    "%d TFs supported in at least one system; system support and official database category labels",
+    nrow(support_for_plot)
+  ),
+  row_names = TRUE
 )
 
 # Isolated secondary external-validation slot -----------------------------

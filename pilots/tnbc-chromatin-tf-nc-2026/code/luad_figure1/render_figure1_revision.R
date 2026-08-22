@@ -41,7 +41,7 @@ stopifnot(
   count$tcga_luad == 516L, count$tcga_lusc == 501L,
   count$gse_luad == 108L, count$gse_lusc == 67L,
   count$micro_luad == 183L, count$micro_lusc == 80L, count$micro_other == 12L,
-  count$luad_tf == 158L
+  count$luad_tf == 187L
 )
 
 COL <- list(
